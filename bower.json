@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "respond": "~1.2.0",
-    "html5shiv": "~3.6.2"
+    "html5shiv": "~3.6.2",
+    "normalize-css": "~2.1.2"
   }
 }

@@ -14,7 +14,7 @@ var yeomanConfig = {
 //   css: css
 //   sass: _scss
 //   javascript: js
-//   coffeescript: _src
+//   coffeescript: _coffee
 //   images: image
 //   fonts: fonts
 
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
         tasks: ['sass:server']
       },
       coffee: {
-        files: ['<%= yeoman.app %>/_src/**/*.coffee'],
+        files: ['<%= yeoman.app %>/_coffee/**/*.coffee'],
         tasks: ['coffee:server']
       },
       coffeeTest: {
@@ -132,13 +132,13 @@ module.exports = function (grunt) {
       },
       server: {
         options: {
-          debugInfo: true,
-          lineNumbers: true
+          debugInfo: false,
+          lineNumbers: false
         },
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/_scss',
-          src: '**/*.{scss,sass}',
+          src: ['**/*.{scss,sass}','!_*'],
           dest: '.tmp/css',
           filter: 'isFile',
           ext: '.css'
@@ -158,7 +158,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/_src',
+          cwd: '<%= yeoman.app %>/_coffee',
           src: '**/*.coffee',
           dest: '.tmp/js',
           ext: '.js'
@@ -167,7 +167,7 @@ module.exports = function (grunt) {
       server: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/_src',
+          cwd: '<%= yeoman.app %>/_coffee',
           src: '**/*.coffee',
           dest: '.tmp/js',
           ext: '.js'

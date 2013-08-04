@@ -10,8 +10,8 @@
     <meta name="description" content="Personal web site of Evgenii Neumerzhitckii">
     <meta name="viewport" content="width=device-width">
     <!-- build:css({app,.tmp}) /css/main.css -->
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/_bower_components/normalize-css/normalize.css">
+    <link rel="stylesheet" href="/css/app.css">
     <!-- endbuild -->
 
     <!--[if lt IE 9]>
@@ -22,8 +22,10 @@
     <![endif]-->
   </head>
   <body>
-    {{ content }}
+    <div class='layout-fixed layout-padding'>
+      {{ content }}
 
-    {% include scripts.html %}
+      {% include scripts.html %}
+    <div>
   </body>
 </html>
