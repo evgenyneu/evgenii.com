@@ -9,9 +9,9 @@ My name is Evgenii Neumerzhitckii. I am a software developer.
 
 I am developing cross-platform web applications that deliver content to different devices: smartphones, tablets, desktop computers and refrigerators.
 
-I am working with JavaScript and Ruby professionally. And on my free time I am currently learning iOS and Objective-C
+I am working with HTML, JavaScript and Ruby professionally. And on my free time I am currently learning iOS and Objective-C.
 
-Please read my Resume and go to Projects page.
+Please read my [Resume](/resume) and go to [Projects](/projects) page.
 
 Want to keep in touch?
 
