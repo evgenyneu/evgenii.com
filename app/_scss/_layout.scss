@@ -1,0 +1,8 @@
+.layout-fixed {
+  @media (min-width: $fixedBreakpoint) {
+    width: $fixedBreakpoint;
+    margin: 0 auto;
+  }
+}
+
+.layout-padding { padding: $iiMarginNormal; }
