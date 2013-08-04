@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Your New Jekyll Site
+title: Personal site of Evgenii Neumerzhitckii
 ---
 
 # Hello

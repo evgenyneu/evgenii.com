@@ -1,6 +1,10 @@
 ---
 layout: default
-title: Past Software Projects of Evgenii Neumerzhitckii
+title: My Past Software Projects
 ---
 
 # My Past Software Projects
+
+{% for post in site.categories.projects %}
+  [{{ post.title }}]({{ post.url }})
+{% endfor %}
