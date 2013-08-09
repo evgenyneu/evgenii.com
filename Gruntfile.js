@@ -124,7 +124,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/_scss',
-          src: '**/*.{scss,sass}',
+          src: ['**/*.{scss,sass}','!_*'],
           dest: '.tmp/css',
           filter: 'isFile',
           ext: '.css'
@@ -220,7 +220,7 @@ module.exports = function (grunt) {
       // Add files to be tested here
       report: {
        src: ['<%= yeoman.app %>/css/**/*.css',
-             '<%= yeoman.app %>/_scss/**/*.scss']
+             '<%= yeoman.app %>/_scss/**/*.scss' ]
       }
     },
     csslint: {
@@ -380,7 +380,7 @@ module.exports = function (grunt) {
     'sass:server',
     'coffee:server',
     'jshint:report',
-    'csscss:report',
+    // 'csscss:report',
     'csslint:report'
   ]);
 

@@ -13,12 +13,8 @@ I am working with HTML, JavaScript and Ruby professionally. And on my free time 
 
 Please read my [Resume](/resume) and go to [Projects](/projects) page.
 
-Want to keep in touch?
+## Want to keep in touch?
 
 * sausageskin at gmail dot com
 * Twitter: [@Evgenyneu](//twitter.com/Evgenyneu)
 * [GitHub](//github.com/evgenyneu)
-
-
-
-![Evgenii Home](/image/home.svg)
