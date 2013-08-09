@@ -15,6 +15,6 @@ Please read my [Resume](/resume) and go to [Projects](/projects) page.
 
 ## Want to keep in touch?
 
-* sausageskin at gmail dot com
-* Twitter: [@Evgenyneu](//twitter.com/Evgenyneu)
-* [GitHub](//github.com/evgenyneu)
+* {{ site.author.email }}
+* [@{{ site.author.twitter }}](//twitter.com/{{ site.author.twitter }})
+* [GitHub](//github.com/{{ site.author.github }})

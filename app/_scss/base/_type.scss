@@ -1,18 +1,6 @@
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-body { text-align: right; }
-
 img { max-width: 100%; }
 
-ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-li {
-  margin-bottom: $iiMarginMini;
-  &:after {
-    content: '•';
-    margin-left: $iiMarginMini;
-  }
-}
+ul { padding-left: 20px; }
+li { margin-bottom: $iiMarginSmall; }
