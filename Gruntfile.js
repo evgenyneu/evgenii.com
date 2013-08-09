@@ -124,7 +124,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/_scss',
-          src: ['**/*.{scss,sass}','!_*'],
+          src: ['**/*.{scss,sass}','!**/_*'],
           dest: '.tmp/css',
           filter: 'isFile',
           ext: '.css'
@@ -138,7 +138,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/_scss',
-          src: ['**/*.{scss,sass}','!_*'],
+          src: ['**/*.{scss,sass}','!**/_*'],
           dest: '.tmp/css',
           filter: 'isFile',
           ext: '.css'
