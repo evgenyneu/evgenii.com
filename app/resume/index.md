@@ -60,9 +60,9 @@ Freelance JavaScript and Ruby on Rails developer
 
 
 
-### December 2011 - February 2012
+### December 2012 - February 2012
 
-[siba](github.com/evgenyneu/siba) – open source backup and restore utility
+[Siba](github.com/evgenyneu/siba) – open source backup and restore utility
 
 * Developed an open source utility in Ruby for data backup and restoration.
 * Created extensions for MongoDB, MySQL sources and AWS S3, FTP backup destinations.

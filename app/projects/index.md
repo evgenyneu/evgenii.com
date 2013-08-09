@@ -1,9 +1,9 @@
 ---
 layout: default
-title: My Past Software Projects
+title: My Software Projects
 ---
 
-# My Past Software Projects
+# My Software Projects
 
 {% for post in site.categories.projects %}
   [{{ post.title }}]({{ post.url }})
