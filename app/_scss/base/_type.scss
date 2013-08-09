@@ -12,7 +12,7 @@ ul {
 li {
   margin-bottom: $iiMarginMini;
   &:after {
-    content: '⦿';
-    margin-left: 10px;
+    content: '•';
+    margin-left: $iiMarginMini;
   }
 }
