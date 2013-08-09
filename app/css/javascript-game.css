@@ -1,0 +1,285 @@
+#ch_outer
+{
+    font-family: Arial, Verdana, Sans-Serif;
+    font-size: medium;
+    text-shadow:none;
+    color: #7D4718;
+    width:250px;
+    height:250px;
+    background: url('/image/javascript-game/chessboard.jpg') no-repeat left top;
+    position:relative;
+    overflow:hidden;
+}
+
+#ch_outer * {
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+#ch_outer .dialog
+{
+    left:250px;
+    top:58px;
+    width:184px;
+    height:134px;
+    background: transparent url('/image/javascript-game/dialog.png') no-repeat left top;
+    position:absolute;
+    z-index:99;
+}
+.dice
+{
+    width:26px;
+    height:26px;
+    margin:3px;
+    float:left;
+    background: transparent url('/image/javascript-game/dice.png') no-repeat left top;
+}
+#diceDialog
+{
+    left:105px;
+    top:-50px;
+    width:40px;
+    height:40px;
+    background: transparent url('/image/javascript-game/dicedialog.png') no-repeat left top;
+    position:absolute;
+    z-index:98;
+}
+#diceDialog .dice
+{
+    margin:7px;
+    float:none;
+}
+#ch_outer .hoverable
+{
+    cursor:pointer;
+}
+.dice_q
+{
+    background-position: -0 0;
+}
+.dice_q.hovered
+{
+    background-position: 0 -26px;
+}
+.dice_1
+{
+    background-position: -26px 0;
+}
+.dice_2
+{
+    background-position: -52px 0;
+}
+.dice_3
+{
+    background-position: -78px 0;
+}
+.dice_4
+{
+    background-position: -104px 0;
+}
+.dice_5
+{
+    background-position: -130px 0;
+}
+.dice_6
+{
+    background-position: -156px 0;
+}
+
+#selectPieceDlg
+{
+    padding-top:25px;
+}
+#selectPeices
+{
+   position:relative;
+   width:118px;
+   height:25px;
+   margin:auto;
+   padding-top:15px;
+}
+#selectPeices .piece
+{
+    margin-left:2px;
+    margin-right:2px;
+    float:left;
+    position:static;
+}
+#tutorialLinkDiv
+{
+    margin-top:10px;
+}
+#addThisDiv
+{
+    margin-top:10px;
+    margin-left:25px;
+    clear:both;
+}
+#selectOpponentsDlg
+{
+    padding-top:12px;
+}
+#play3Opponents, #play2Opponents, #play1Opponent
+{
+   position:relative;
+   height:30px;
+   margin:auto;
+   text-align:center;
+}
+#play3Opponents
+{
+    width:90px;
+}
+#play2Opponents
+{
+    width:60px;
+}
+#play1Opponent
+{
+    width:30px;
+    margin-top:5px;
+}
+#selectOpponentsDlg .piece
+{
+    margin-left:2px;
+    margin-right:2px;
+    float:left;
+    position:static;
+}
+
+#whoGoesFirstDlg
+{
+    padding-top:15px;
+}
+#whoGoesFirstShow
+{
+    padding-left:25px;
+    text-align:center;
+}
+#whoGoesFirstShow .whoGoesFirstPlayer
+{
+    width:75px;
+    height:35px;
+    margin-top:10px;
+    padding-top:0px;
+    float:left;
+}
+#whoGoesFirstShow .piece
+{
+    margin-right:5px;
+    margin-top:3px;
+    float:left;
+    position:static;
+}
+#gameOverDlg
+{
+    padding-top:35px;
+}
+#opponnetWins
+{
+    margin-left:54px;
+    text-align:left;
+    height:50px;
+    display:none;
+}
+#opponnetWins .piece
+{
+    margin-top:-3px;
+    margin-right:5px;
+    float:left;
+    position:relative;
+}
+#youWin
+{
+     height:50px;
+     display:none;
+}
+#tutorialDlg .piece
+{
+    display:none;
+}
+#tutorialViewWinow
+{
+    margin:10px 10px 0 10px;
+    height:100px;
+    overflow:hidden;
+}
+#tutorialViewWinow > div
+{
+    line-height:110%;
+
+}
+#tutorial1
+{
+    display:block;
+}
+#tutorial2,#tutorial3,#tutorial4,#tutorial5,#tutorial6,#tutorial7,#tutorial8
+{
+    display:none;
+}
+#tutorial3{
+    text-align:left;
+}
+#tutorial3 div{
+    text-align:center;
+}
+#tutorial3 .dice
+{
+    margin-left:70px;
+    margin-top:5px;
+    float:none;
+}
+.p_clear
+{
+    clear:both;
+}
+.piece
+{
+    width:25px;
+    height:25px;
+    background: transparent url('/image/javascript-game/pieces.png') no-repeat;
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:100;
+}
+#play1Opponent, #play2Opponents, #play3Opponents
+{
+    cursor:pointer;
+}
+.p_white
+{
+    background-position:0 0;
+}
+.p_red{
+    background-position:-25px 0;
+}
+.p_blue
+{
+    background-position:-50px 0;
+}
+.p_green
+{
+    background-position:-75px 0;
+}
+
+#ch_outer p {
+    margin-bottom:1em;
+}
+#ch_outer a
+{
+    color: #31A814;
+    font-size: 80%;
+    text-decoration:none;
+    outline:none;
+}
+#ch_outer a:link {
+    text-decoration:none;
+}
+#ch_outer a:visited {
+    text-decoration: none;
+}
+#ch_outer a:hover {
+    text-decoration: none;
+}

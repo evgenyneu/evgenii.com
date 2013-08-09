@@ -311,11 +311,12 @@ module.exports = function (grunt) {
             // files with concat. Add other files and patterns your site
             // reqires for distrobution here, e.g., Bower components that
             // aren't in a usemin block.
-            '_bower_components/jquery.min.js',
+            '_bower_components/jquery/jquery.min.js',
             // Copy moves asset files and directories
             '*.{ico,png}',
             'image/**/*',
             'fonts/**/*',
+            'css/javascript-game.css',
             'js/javascript-game.js'
           ],
           dest: '<%= yeoman.dist %>'
