@@ -1,6 +1,6 @@
 ---
 layout: project
-title:  "Backup Utility"
+title:  "Backup utility"
 categories: projects
 ---
 

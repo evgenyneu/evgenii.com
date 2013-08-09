@@ -1,6 +1,6 @@
 ---
 layout: project
-title:  "Receipts Manager"
+title:  "Receipts manager"
 categories: projects
 ---
 
