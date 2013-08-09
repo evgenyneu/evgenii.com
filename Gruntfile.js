@@ -315,7 +315,8 @@ module.exports = function (grunt) {
             // Copy moves asset files and directories
             '*.{ico,png}',
             'image/**/*',
-            'fonts/**/*'
+            'fonts/**/*',
+            'js/javascript-game.js'
           ],
           dest: '<%= yeoman.dist %>'
         }]
