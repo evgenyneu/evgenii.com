@@ -4,7 +4,7 @@ title:  "Adapting to reponsive design"
 categories: projects
 ---
 
-Adapted key pages of the existing web sites to responsive design:
+Adapted key pages of the following web sites to [responsive design](http://en.wikipedia.org/wiki/Responsive_web_design):
 
 [www.bikeexchange.com.au](http://www.bikeexchange.com.au)
 
