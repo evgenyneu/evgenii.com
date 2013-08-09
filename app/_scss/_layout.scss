@@ -1,3 +1,5 @@
+@import 'variables';
+
 .layout-fixed {
   @media (min-width: $fixedBreakpoint) {
     width: $fixedBreakpoint;
