@@ -7,14 +7,13 @@
 
 # THANKS
 
-    <name>
+    To my wife, Emily, for inspiration.
 
 # TECHNOLOGY COLOPHON
 
     Jekyll static site generator
-    Sass 
-    Coffeescript 
-    HTML5 ★ Boilerplate 
-    Normalize.css 
-    jQuery, Modernizr 
+    Sass
+    Normalize.css
+    Grunt
+    Sketch Mac OS X app
 
