@@ -413,5 +413,5 @@ module.exports = function (grunt) {
     'build'
   ]);
 
-  grunt.registerTask('deploy', ['shell']);
+  grunt.registerTask('deploy', ['report', 'build', 'shell']);
 };
