@@ -349,6 +349,12 @@ module.exports = function (grunt) {
         'coffee:dist',
         'copy:dist'
       ]
+    },
+    shell: {
+      deploy: {
+        options: { stdout: true },
+        command: 'rsync -rvz <%= yeoman.dist %>/ www@evgenii.com:evgenii.com'
+      }
     }
   });
 
@@ -406,4 +412,6 @@ module.exports = function (grunt) {
     'report',
     'build'
   ]);
+
+  grunt.registerTask('deploy', ['shell']);
 };
