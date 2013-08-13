@@ -45,6 +45,7 @@ Full time Ruby on Rails and JavaScript developer
 * Developed integration in-browser tests using Capybara/Selenium libraries. It increased the stability of the web sites and reduced manual testing time.
 * Wrote an HTML/CSS style guide to make the web pages look and feel more consistent.
 * Rewrote parts of the legacy code. It resulted in cleaner code and happier developers.
+* Adapted main pages to responsive web design.
 
 
 
@@ -62,7 +63,7 @@ Freelance JavaScript and Ruby on Rails developer
 
 ### December 2012 - February 2012
 
-[Siba](github.com/evgenyneu/siba) – open source backup and restore utility
+[Siba](//github.com/evgenyneu/siba) – open source backup and restore utility
 
 * Developed an open source utility in Ruby for data backup and restoration.
 * Created extensions for MongoDB, MySQL sources and AWS S3, FTP backup destinations.
