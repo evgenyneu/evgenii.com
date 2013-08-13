@@ -1,8 +1,8 @@
-# evgenii.com
+## evgenii.com
 
 My personal web site.
 
-# Install
+## Installation
 
     git clone git@github.com:evgenyneu/evgenii.com.git
     npm install
