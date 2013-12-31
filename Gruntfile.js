@@ -353,7 +353,7 @@ module.exports = function (grunt) {
     shell: {
       deploy: {
         options: { stdout: true },
-        command: 'rsync -rvz <%= yeoman.dist %>/ pi@evgenii.com:evgenii.com'
+        command: 'rsync -rvz <%= yeoman.dist %>/ pi:evgenii.com'
       }
     }
   });
