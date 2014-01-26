@@ -1,6 +1,6 @@
 ---
 layout: project
-title:  "Adapting to reponsive design"
+title:  "Adapting to responsive web design"
 categories: projects
 ---
 
