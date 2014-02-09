@@ -36,7 +36,7 @@ Ok, so now I have a issue:
 
 How do we solve this issue? To be honest, I have no solution. The best I can do is to make unit test as simple as possible in order to make it easier for my eyes to catch the bugs.
 
-I am very poor at debugging in my brain. That's why I try to make unit test code as explicit as possible. In most cases I prefer using simple assertions that compare a variable with expected value.
+I am very poor at debugging in my brain. That's why I try to make unit test code explicit. In most cases I prefer using simple assertions that verify actual and expected values.
 
 ##Simple assertion example##
 
