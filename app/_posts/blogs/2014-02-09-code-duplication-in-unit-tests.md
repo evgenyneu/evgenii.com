@@ -109,7 +109,6 @@ Win-win! Easy to write. Easy to read.
 Now let’s get to the main point. What if we have two unit tests with similar logic:
 
     # Good practice
-
     # Test 1:
     person = db.find_person(‘Peter’)
     assert(person.name).to eq ‘Peter’
@@ -118,10 +117,9 @@ Now let’s get to the main point. What if we have two unit tests with similar l
     person = db.find_person(‘Ivan’)
     assert(person.name).to eq ‘Ivan’
 
-My first instinct is to remove duplication by extracting the common behaviour into a helper method ‘verify_person ‘ and then call that method from both tests:
+It is quite tempting to remove duplication by extracting the common behaviour into a helper method `verify_person` and then call that method from both tests:
 
     # Avoid
-
     # Test 1:
     verify_person(‘Peter’)
 
@@ -130,23 +128,23 @@ My first instinct is to remove duplication by extracting the common behaviour in
 
     # A helper method
     def verify_person(name)
-  person = db.find_person(name)
+      person = db.find_person(name)
       assert(person.name).to eq name
     end
 
-I try to void creating test helper methods for exactly the same reason I mentioned two times already. This reason is so important so I will repeat it again.
+I try to void this approach for exactly the same reason I mentioned two times already. This reason is so important so I will repeat it again.
 
-In order to make sure the test is bug-free I need to verify it with my eyes. Inside my brain I go though the unit test code line by line, just like in a graphical debugger in an editor application. Here is what is happening inside my brain:
+In order to make sure the test is bug-free I need to verify it with my eyes. Inside my brain I go though the unit test code line by line, just like in a IDE debugger. Here is what is happening inside my brain:
 
-    1) Start reading test 1.
-    1) Read “verify_person(‘Peter’)”.
-    1) I need to know what ‘verify_person’ does.
-    1) I search for ‘verify_person’ method.
-    1) I try to locate ‘verify_person’ on the same screen, scroll the page and/or search the current file or entire project.
-    1) After finding ‘verify_person’ helper method, I read it.
-    1) Return to test 1, and check it ‘verified’ in my brain.
+1. Start reading test 1.
+1. Read `verify_person(‘Peter’)`.
+1. I need to know what `verify_person` does.
+1. I search for `verify_person` method.
+1. I try to locate `verify_person` on the same screen, scroll the page and/or search the current file or entire project.
+1. After finding `verify_person` helper method, I read it.
+1. Return to test 1, and check it as "verified" in my brain.
 
-Now I do the same routine for test 2. Again, it all does not seem to be much work and happens very quickly especially after practice. But it is not the point. My point is - it requires MORE physical effort. Which is a limited resource. Especially at 5pm on Monday.
+Now I do the same routine for test 2. Again, it all does not seem to be much work and happens very quickly especially after practice. But it is not the point. My point is - it requires *more* physical effort. Which is a limited resource. Especially at 5pm on Monday.
 
 Now I want to repeat the preferred way of writing these tests:
 
@@ -159,7 +157,7 @@ Now I want to repeat the preferred way of writing these tests:
     person = db.find_person(‘Ivan’)
     assert(person.name).to eq ‘Ivan’
 
-Reading these tests is easy. You just go line by line. No need to jump. No need to return back. Stupid and simple. And this is exactly what I need at 5pm on Monday.
+Reading these tests is easy. You just go line by line. No need to jump. No need to return back. Stupid simple. And this is exactly what I need at 5pm on Monday.
 
 ##Conclusion##
 
@@ -167,19 +165,19 @@ Unit tests are supposed to reveal bugs and not to add new ones. Right?
 
 Here is the list of best practices that I try to follow:
 
-    * Make test code as simple as possible.
-    * Use simple assertions to compare an actual and expected value.
-    * In assertions, write verified and expected value on the same line.
+* Make test code as simple as possible.
+* Use simple assertions to compare actual and expected values.
+* Write verified and expected value on the same line.
 
 Things to avoid:
 
-    * Avoid using variables for expected values.
-    * Avoid extracting common functionality into helper methods
-    * In general avoid creating complex custom code in your tests.
+* Avoid using variables for expected values.
+* Avoid extracting common functionality into helper methods
+* In general, avoid creating complex code in your tests.
 
 ##Forget the rules. Do it your way##
 
-Here I shared my own experience in unit testing. I mentioned approaches that help me write better unit tests. I try to follow these principles most of the time. But sometimes there are exceptions. Where it makes sense I do write helper methods, loops and other complex code in unit tests. It really depends on the situation.
+Here I shared my own experience in unit testing. I mentioned approaches that help me write better unit tests. I try to follow these principles most of the time. But sometimes there are exceptions. Where it makes sense I do write helper methods, loops and other more complex code in unit tests. It really depends on the situation.
 
 And most importantly - coding should be fun.
 
