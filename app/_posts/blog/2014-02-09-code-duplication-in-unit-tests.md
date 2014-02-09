@@ -40,7 +40,7 @@ I am very poor at debugging in my brain. That's why I try to make unit test code
 
 ##Simple assertion example##
 
-Let's look at a real life example of an assertion in a unit test. I will use a Ruby RSpec syntax in the examples.
+Let's look at a real life example of an assertion in a unit test. I will use Ruby RSpec syntax in the examples.
 
 Imagine that I need to check a string variable `str` with expected value `'Hello world'`.
 
@@ -88,7 +88,7 @@ expect(str1).to eq str_expected
 expect(str2).to eq str_expected
 ```
 
-This approach has the same problem as I described above. It requires more effort to verify the unit test with one's eyes. It becomes even harder if there is some code between those two assertions or if they are located in different files.
+This approach has the same problem as I described above. It requires more effort to verify the unit test with one's eyes. It becomes even harder if these two assertions are separated in a file or if they are located in different files.
 
 There is another problem. What if our program logic changed and `str2` now equals `'My lovely horse'`? Now we need to update our unit test, which becomes even harder to read:
 
