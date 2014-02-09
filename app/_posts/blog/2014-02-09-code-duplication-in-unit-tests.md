@@ -2,7 +2,7 @@
 layout: blog_post
 title:  "Code duplication in unit tests"
 show_comments: true
-categories: blogs
+categories: blog
 ---
 
 Let me start with a statement many developers tend to agree:
