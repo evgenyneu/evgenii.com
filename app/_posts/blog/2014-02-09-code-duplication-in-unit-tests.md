@@ -19,7 +19,7 @@ This is not a dogma or absolute truth. Here I am only sharing what usually works
 
 First of all, let's ask a question. What is the main thing a unit test does? My answer is - unit test verifies behaviour of some 'code'. Important nuance here is the direction. It is the unit test that verifies its 'code' and not the other way around. The 'code' does not verify its unit test.
 
-Ok, then what verifies the unit test? The answer is - nothing. There is nothing that checks if our unit test is bug-free. Except if we decide to write a unit test for our unit test. Which sounds like a good plot to another [Inception](http://en.wikipedia.org/wiki/Inception) movie.
+Ok, then what verifies the unit test? The answer is - nothing. There is nothing that checks if our unit test is bug-free. Except if we decide to write a unit test for our unit test. Which sounds like a good plot for another [Inception](http://en.wikipedia.org/wiki/Inception) movie.
 
 ##Coffee powered debugger##
 
@@ -34,7 +34,7 @@ Ok, so now I have a issue:
   * To verify a unit test I need to look at it.
   * Verifying a test by looking at it is far from reliable.
 
-How do we solve this issue? To be honest, I have no solution. The best thing I can do is to minimise the risk of missing bugs in unit test. I try to make unit test as simple as possible in order to make it easier for my eyes to catch the bugs.
+How do we solve this issue? To be honest, I have no solution. The best I can do is to make unit test as simple as possible in order to make it easier for my eyes to catch the bugs.
 
 I am very poor at debugging in my brain. That's why I try to make unit test code as explicit as possible. In most cases I prefer using simple assertions that compare a variable with expected value.
 
