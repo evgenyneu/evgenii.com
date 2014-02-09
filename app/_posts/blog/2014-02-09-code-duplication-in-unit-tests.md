@@ -162,7 +162,7 @@ In order to make sure the test is bug-free I need to verify it with my eyes. Ins
 1. After finding `verify_person` helper method, I read it.
 1. Return to test 1, and check it as "verified" in my brain.
 
-Now I do the same routine for test 2. Again, it all does not seem to be much work and happens very quickly especially after practice. But it is not the point. My point is - it requires *more* physical effort. Which is a limited resource. Especially at 5pm on Monday.
+Now I do the same routine for test 2. Again, it does not seem to be much work and happens very quickly especially after practice. But it is not the point. My point is - it requires *more* physical effort. Which is a limited resource. Especially at 5pm on Monday.
 
 Now I want to repeat the preferred way of writing these tests:
 
