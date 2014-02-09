@@ -1,6 +1,7 @@
 ---
 layout: blog_post
 title:  "Code duplication in unit tests"
+comments_enabled: true
 categories: blogs
 ---
 
@@ -200,4 +201,7 @@ Here I shared my own experience in unit testing. I mentioned approaches that hel
 
 And most importantly - coding should be fun.
 
+## Reference
+
+* Stack overflow: [Is duplicated code more tolerable in unit tests?](http://stackoverflow.com/questions/129693/is-duplicated-code-more-tolerable-in-unit-tests)
 
