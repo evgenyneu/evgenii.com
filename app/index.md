@@ -7,11 +7,11 @@ title: Personal site of Evgenii Neumerzhitckii
 
 My name is Evgenii Neumerzhitckii. I am a software developer.
 
-I am developing cross-platform web applications that deliver content to different devices: smartphones, tablets, desktop computers and refrigerators.
+I am develop web sites and apps for smartphones, tablets, desktops and boomerangs (just kidding).
 
 I am working with HTML, JavaScript and Ruby professionally. And on my free time I am currently learning iOS and Android app development.
 
-Please read my [Resume](/resume) and go to [Projects](/projects) page.
+Read my [blog](/blog), [projects](/projects) or view [my resume](/resume).
 
 ## Want to keep in touch?
 
