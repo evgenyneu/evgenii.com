@@ -46,7 +46,7 @@ Imagine that I need to check a string variable `str` with expected value `'Hello
 I do not compare `str` with a variable:
 
 ```ruby
-# Avoid:
+# Avoid
 str_expected = 'Hello world'
 expect(str).to eq str_expected
 ```
@@ -54,7 +54,7 @@ expect(str).to eq str_expected
 Instead I prefer to explicitly write `'Hello world'` text on the same line with the `str` variable:
 
 ```ruby
-# Good practice:
+# Good practice
 expect(str).to eq 'Hello world'
 ```
 
@@ -188,7 +188,7 @@ Here is the list of best practices that I try to follow:
 * Use simple assertions to compare actual and expected values.
 * Write verified and expected value on the same line.
 
-Things to avoid:
+Things to Avoid
 
 * Avoid using variables for expected values.
 * Avoid extracting common functionality into helper methods
