@@ -5,6 +5,7 @@
     "respond": "~1.2.0",
     "html5shiv": "~3.6.2",
     "normalize-css": "~2.1.2",
-    "jquery": "1.10.2"
+    "jquery": "1.10.2",
+    "rainbow": "git://github.com/ccampbell/rainbow.git#~1.1.9"
   }
 }
