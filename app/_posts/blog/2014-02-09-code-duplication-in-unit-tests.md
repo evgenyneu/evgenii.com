@@ -187,7 +187,7 @@ Here is the list of best practices that I try to follow:
 
 * Make test code as simple as possible.
 * Use simple assertions to compare actual and expected values.
-* Write verified and expected value on the same line.
+* Put actual and expected value on the same line.
 
 Things to Avoid
 
