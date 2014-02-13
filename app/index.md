@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Personal site of Evgenii Neumerzhitckii
+meta_description: "Personal site of Evgenii Neumerzhitckii: blog, contact, projects and resume."
 ---
 
 # Hello
