@@ -12,7 +12,7 @@ Source: [Traffic Jam](http://www.veravo.com/trafficjam/), [Episode #27](http://w
 
 ## Mobile stats (as of Jan 2014)
 
-31% of Americans access the Internet ONLY from a mobile device
+31% of Americans access the Internet **only** from a mobile device.
 
 Almost 70% of all Facebook usage is mobile.
 
