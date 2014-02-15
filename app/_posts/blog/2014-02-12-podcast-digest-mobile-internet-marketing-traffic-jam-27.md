@@ -22,7 +22,7 @@ Almost 70% of all Facebook usage is mobile.
 
 ## Email marketing
 
-You email sender name is the largest text in the inbox. Take advantage of it.
+Your email sender name is the largest text in the inbox. Take advantage of it.
 
 Email subject line may get truncated on small screens. Therefore first 5 or 6 words are most important.
 
