@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Blog of @{{ site.author.twitter }}
+title: Blog of Evgenii Neumerzhitckii
 ---
 
 # My blog
