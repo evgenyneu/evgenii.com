@@ -13,7 +13,7 @@ Research your keywords using [spyfu.com](http://www.spyfu.com/) and [Google Tren
 
 Make a list of your keywords.
 
-Create a long-term SEO strategy. For example: "write 2 articles per week".
+Create a long-term SEO strategy. For example: "write 2 articles per week for a year".
 
 Each article should be dedicated to a chosen keyword.
 
