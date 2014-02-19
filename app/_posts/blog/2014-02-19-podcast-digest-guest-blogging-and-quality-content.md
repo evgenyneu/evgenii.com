@@ -20,7 +20,7 @@ Avoid publishing thin or duplicate content. Best content adds value and is highl
 
 When putting snippets from your articles on other pages use "show more" link. Show no more than one paragraph from the article in the snippet to avoid content duplication. Or show a 'teaser' text for your article.
 
-Meta description should precisely describe the content of the page. People are more likely to click on your link in Google search results if it has a description that is relevant to what they searched for.
+Meta description should precisely describe the content of the page. People are more likely to click on your link in Google search results if its description is relevant to what they searched for.
 
 Keywords in site navigation should be picked by someone outside, someone not as connected to your industry. Do not pick navigation keywords yourself. "It is hard to see the label when you are in the bottle".
 
