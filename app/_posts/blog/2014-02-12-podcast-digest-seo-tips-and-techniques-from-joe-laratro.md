@@ -3,6 +3,7 @@ layout: blog_post
 title: "Podcast Digest: SEO tips and techniques from Joe Laratro"
 show_comments: true
 categories: blog
+meta_description: "Short summary of Marketing Optimization podcast episode #31 about researching keywords and using them in content."
 ---
 
 Source: Marketing Optimization podcast, [episode #31](http://marketingoptimization.tv/joe-laratro-seo-search-engine-optimization).
