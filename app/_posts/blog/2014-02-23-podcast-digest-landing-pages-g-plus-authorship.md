@@ -28,4 +28,4 @@ Make 'thank you' page a separate page so it can be tracked as a goal in Google A
 
 ## G+ avatars
 
-At the end of 2013 Google changed algorythm of showing avatars in search results. Avatars are now shown for those who are active on their G+ page.
+At the end of 2013 Google changed algorythm of showing avatars in search results. Avatars are now shown for those who are active on their G+ accounts.
