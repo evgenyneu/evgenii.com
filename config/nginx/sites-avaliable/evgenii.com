@@ -1,7 +1,7 @@
 server {
   listen       80 default_server;
   listen  [::]:80 default_server ipv6only=on;
-  server_name  evgenii.com www.evgenii.com;
+  server_name  evgenii.com;
   root         /home/pi/evgenii.com;
   error_page   404  /404.html;
 
@@ -13,4 +13,10 @@ server {
     add_header  Cache-Control "public";
     expires     30d;
   }
+}
+
+server {
+  listen       80;
+  server_name  www.evgenii.com;
+  return       301 http://evgenii.com$request_uri;
 }
