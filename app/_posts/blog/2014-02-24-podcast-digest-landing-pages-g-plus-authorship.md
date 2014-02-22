@@ -3,7 +3,7 @@ layout: blog_post
 title: "Podcast Digest: landing, 'thank you' pages, G+ avatars"
 show_comments: true
 categories: blog
-meta_description: "Short summary of SEO podcast about landing pages and Google plus avatars in search results."
+meta_description: "Short summary of SEO podcast about landing, 'thank you' pages and Google plus avatars in search results."
 ---
 
 Source: [SEO podcast](http://www.e-webstyle.com/Internet-Marketing-Podcast.asp), episodes #220 and #221.
