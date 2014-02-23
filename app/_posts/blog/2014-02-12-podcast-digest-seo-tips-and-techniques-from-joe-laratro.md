@@ -6,7 +6,7 @@ categories: blog
 meta_description: "Short summary of Marketing Optimization podcast episode #31 about researching keywords and using them in content."
 ---
 
-Source: Marketing Optimization podcast, [episode #31](http://marketingoptimization.tv/joe-laratro-seo-search-engine-optimization).
+**Source:** Marketing Optimization podcast, [episode #31](http://marketingoptimization.tv/joe-laratro-seo-search-engine-optimization).
 
 ---
 

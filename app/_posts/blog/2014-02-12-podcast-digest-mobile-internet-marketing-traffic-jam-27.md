@@ -6,7 +6,7 @@ categories: blog
 meta_description: "Read my short summary of Traffic Jam podcast episode #27 about Mobile Marketing, including email and SMS marketing."
 ---
 
-Source: [Traffic Jam](http://www.veravo.com/trafficjam/), [Episode #27](http://www.veravo.com/trafficjam/tj27-mobile-marketing-mix/)
+**Source:** [Traffic Jam](http://www.veravo.com/trafficjam/), [Episode #27](http://www.veravo.com/trafficjam/tj27-mobile-marketing-mix/)
 
 ---
 

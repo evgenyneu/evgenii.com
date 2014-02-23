@@ -5,7 +5,7 @@ show_comments: true
 categories: blog
 ---
 
-Source: [SEO Podcast - Unknown Secrets of Internet Marketing](http://www.e-webstyle.com)
+**Source:** [SEO Podcast - Unknown Secrets of Internet Marketing](http://www.e-webstyle.com)
 
 Episode #219: 'SEO Year End Review - P2'
 
