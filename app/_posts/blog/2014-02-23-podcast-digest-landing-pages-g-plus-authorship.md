@@ -6,7 +6,7 @@ categories: blog
 meta_description: "Short summary of SEO podcast about landing, 'thank you' pages and Google plus avatars in search results."
 ---
 
-At the end of 2013 Google changed algorythm of showing avatars in search results. Avatars are now shown for those who are active on their G+ accounts.
+At the end of 2013 Google changed algorithm of showing avatars in search results. Avatars are now shown for those who are active on their G+ accounts.
 
 ## Landing page
 
@@ -20,7 +20,7 @@ Look at your competitors' landing pages for best practices.
 
 When users reached your "thank you" page they are much easier to convert because they already showed some interest.
 
-That's a great opportunity to upsale and engage through social media.
+That's a great opportunity to up-sale and engage through social media.
 
 Make 'thank you' page a separate page so it can be tracked as a goal in Google Analytics.
 
