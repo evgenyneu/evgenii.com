@@ -1,10 +1,15 @@
 ---
 layout: default
 ---
-<article class="BlogPost">
-<h1>{{ page.title }}</h1>
+<article>
+<h1>{{ page.title }}
+  <div class='ByLine'>
+    Posted <time class='ByLine-date' datetime='{{ page.date | date_to_xmlschema }}'>{{ page.date | date: "%B %-d, %Y" }}</time> by <a href="{{ site.author.google_plus_url }}?rel=author">Evgenii</a>
+  </div>
+</h1>
 {{ content }}
 </article>
+
 
 {% if page.show_comments %}
 {% include comments.html %}
