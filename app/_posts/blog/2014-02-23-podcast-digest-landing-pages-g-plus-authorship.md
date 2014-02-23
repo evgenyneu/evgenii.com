@@ -8,8 +8,6 @@ meta_description: "Short summary of SEO podcast about landing, 'thank you' pages
 
 **Source:** [SEO podcast](http://www.e-webstyle.com/Internet-Marketing-Podcast.asp), episodes #220 and #221.
 
----
-
 At the end of 2013 Google changed algorithm of showing avatars in search results. Avatars are now shown for those who are active on their G+ accounts.
 
 ## Landing page
