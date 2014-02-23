@@ -2,8 +2,6 @@
   display: block;
   font-size: 13px;
   font-weight: normal;
-}
-
-h1 + .ByLine {
-  margin-top: -$iiMarginNormal;
+  padding-top: $iiMarginMini;
+  color: $shade60;
 }
