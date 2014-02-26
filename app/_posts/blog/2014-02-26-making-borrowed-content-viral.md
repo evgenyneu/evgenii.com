@@ -42,6 +42,6 @@ There are many new websites that use similar strategy: distractify.com, boredpan
 
 ## Legal? Risky?
 
-Using content from other sources without permission is not legal.
+In many cases using content from other sources without permission is not legal.
 
 This business model depends entirely on Facebook which is risky.
