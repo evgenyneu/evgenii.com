@@ -16,8 +16,6 @@ Google Penguin update penalises those who artificially build backlinks.
 
 Posting links to your site in comments on other sites will not help your SEO today.
 
-Other forms of backlink manipulation are becoming less effective: guest blog posts and payed links on other sites.
-
 ## What works today
 
 > What works is creating great content and promoting the hell out of it.
