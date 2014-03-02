@@ -60,15 +60,17 @@ The goal is to create content that people will link to.
 
 Find people who are influential in your space and let them know about your content.
 
-Look for great resources online that will be willing to link to you. Contact their creators and ask them if they are interested to see your page.
+Look for great resources online that will be willing to link to you. Contact their creators and ask them if they are interested to see your page. Write something like:
 
-_"You linked to something similar. You have a page about this topic. I just put together a page about it. Let me know if you want to check it out."_
+_"You linked to something similar. You have a page about this topic. I just put wrote an article about it. Let me know if you want to see it."_
 
-Do not link to anything in your first email, just ask if they are interested. If you send a link - the person will feel that you are selling and will delete it right away.
+## No links in first email
 
-Once you get a response 'sure, send it over', reply with:
+Do not puts links in your first email. Just ask if they are interested in seeing your content. If you send a link the person will feel that you are selling and will delete it right away.
 
-_"Thanks for getting back to me. You can view my article here. If you like to post it on your site let me know - I will be happy to write a personalised introduction."_
+Once you get a response 'I am interested', reply with:
 
-Contact people **directly and personally**. Most effective way is email. It can also be done through social media.
+_"I am glad you are interested. You can view my article here. If you like to post it on your site let me know - I will be happy to write a personalised introduction."_
+
+
 
