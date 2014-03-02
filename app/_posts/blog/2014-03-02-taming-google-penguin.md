@@ -12,11 +12,11 @@ meta_description: "Short summary of Visible HQ podcast episode #7 covering moder
 
 > Today only those who deserve 1st page ranking can get there.
 
-Google Penguin update penalizes those who articifially build links pointing to their sites.
+Google Penguin update penalises those who artificially build backlinks.
 
 Posting links to your site in comments on other sites will not help your SEO today.
 
-Other forms of backlink manipulation are becomming less effective: guest blog posts and payed links on other sites.
+Other forms of backlink manipulation are becoming less effective: guest blog posts and payed links on other sites.
 
 ## What works today
 
@@ -50,7 +50,7 @@ It can be done with following tools: ahrefs.com, majesticseo.com, opensiteexplor
 
 Improve the content in as many ways as you can: make it more detailed, informative, entertaining and up-to-date.
 
-You need to create the best resourse about your topic.
+You need to create the best resource about your topic.
 
 The goal is to create content that people will link to.
 
