@@ -58,9 +58,7 @@ The goal is to create content that people will link to.
 
 Find people who are influential in your space and let them know about your content.
 
-Look for great resources online that will be willing to link to you.
-
-Contact their creators and ask them if they are interested to see your page. Write something like:
+Send them an email with something like this:
 
 _"You linked to something similar. You have a page about this topic. I just wrote an article about it. Let me know if you want to see it."_
 
