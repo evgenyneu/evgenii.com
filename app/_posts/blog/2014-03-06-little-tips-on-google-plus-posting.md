@@ -1,6 +1,6 @@
 ---
 layout: blog_post
-title: "Podcast Digest: how to use Google Plus for promoting your content"
+title: "Podcast Digest: how to use Google Plus to promote your content"
 show_comments: true
 categories: blog
 meta_description: "Read my short summary of SEO 101 podcast about using Google Plus for promoting your content."
