@@ -1,7 +1,6 @@
 ---
 layout: blog_post
 title:  "Podcast Digest #seopodcast 219"
-show_comments: true
 categories: blog
 ---
 

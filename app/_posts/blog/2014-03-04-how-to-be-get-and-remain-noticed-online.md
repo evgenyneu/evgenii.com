@@ -1,7 +1,6 @@
 ---
 layout: blog_post
 title: "Podcast Digest: how to get and stay noticed online"
-show_comments: true
 categories: blog
 meta_description: "Read my short summary of Traffic Jam podcast. It shows how to get noticed online by creating unique and personal content."
 ---

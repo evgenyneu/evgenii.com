@@ -1,7 +1,6 @@
 ---
 layout: blog_post
 title:  "Podcast Digest: Mobile Marketing"
-show_comments: true
 categories: blog
 meta_description: "Read my short summary of Traffic Jam podcast episode #27 about Mobile Marketing, including email and SMS marketing."
 ---

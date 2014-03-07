@@ -1,7 +1,6 @@
 ---
 layout: blog_post
 title: "Podcast Digest: guest blogging, meta descriptions and navigation"
-show_comments: true
 categories: blog
 meta_description: "Short summary of SEO 101 podcast episode from Jan 22, 2014 about guest blogging, snippets to articles, keywords in site navigation and more."
 ---

@@ -1,7 +1,6 @@
 ---
 layout: blog_post
 title: "Podcast Digest: landing, 'thank you' pages and G+ avatars"
-show_comments: true
 categories: blog
 meta_description: "Short summary of SEO podcast about landing, 'thank you' pages and Google plus avatars in search results."
 ---

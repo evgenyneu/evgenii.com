@@ -1,7 +1,6 @@
 ---
 layout: blog_post
 title: "Podcast Digest: get 100 million uniques in 7 months with 'borrowed' content. WOW"
-show_comments: true
 categories: blog
 meta_description: "Short summary of ViperChill podcast about the strategy of making high-traffic web sites by showing content from other sites and promoting it on Facebook."
 ---

@@ -1,7 +1,6 @@
 ---
 layout: blog_post
 title: "Podcast Digest: how to tame Google Penguin and build trust"
-show_comments: true
 categories: blog
 meta_description: "Short summary of Visible HQ podcast episode #7 covering modern SEO strategies of content creation and link building."
 ---

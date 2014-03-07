@@ -1,7 +1,6 @@
 ---
 layout: blog_post
 title:  "Code duplication in unit tests"
-show_comments: true
 categories: blog
 ---
 
