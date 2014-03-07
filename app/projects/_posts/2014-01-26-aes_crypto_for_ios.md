@@ -1,7 +1,6 @@
 ---
 layout: project
 title:  "AES Crypto for iOS"
-categories: projects
 ---
 
 iOS app for encrypting text messages. Uses Advanced Encryption Standard with a 256-bit key.

@@ -1,7 +1,6 @@
 ---
 layout: project
 title:  "Adapting to responsive web design"
-categories: projects
 ---
 
 Adapted key pages of the following web sites to [responsive design](http://en.wikipedia.org/wiki/Responsive_web_design):
