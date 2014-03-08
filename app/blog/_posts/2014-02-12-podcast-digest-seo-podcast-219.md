@@ -1,11 +1,12 @@
 ---
 layout: blog_post
-title:  "Podcast Digest #seopodcast 219"
+title:  "SEO year 2014 review"
+tags: podcast-digest
 ---
 
 **Source:** [SEO Podcast - Unknown Secrets of Internet Marketing](http://www.e-webstyle.com)
 
-Episode #219: 'SEO Year End Review - P2'
+Episode #219
 
 ---
 

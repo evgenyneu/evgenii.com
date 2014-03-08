@@ -1,0 +1,13 @@
+.Tag {
+  display: inline-block;
+  padding: 6px 8px;
+
+  color: #fff;
+  background-color: #ffb100;
+  text-decoration: none;
+  box-shadow: 22px 3px 0px -7px #ff6c00,
+            -13px -4px 0px -6px #ff9400,
+          -24px -10px 0px -10px #a66000;
+
+  @include border-radius(60%/100% 0);
+}

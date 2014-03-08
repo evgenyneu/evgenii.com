@@ -1,7 +1,8 @@
 ---
 layout: blog_post
-title: "Podcast Digest: how to get and stay noticed online"
+title: "How to get and stay noticed online"
 meta_description: "Read my short summary of Traffic Jam podcast. It shows how to get noticed online by creating unique and personal content."
+tags: podcast-digest
 ---
 
 **Source:** [Traffic Jam podcast](http://www.veravo.com/content-marketing-2/tj-29-mars-dorian/), episode #29. Interview with [Mars Dorian](http://www.marsdorian.com/).

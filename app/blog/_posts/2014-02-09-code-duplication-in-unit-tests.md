@@ -1,6 +1,7 @@
 ---
 layout: blog_post
 title:  "Code duplication in unit tests"
+tags: programming
 ---
 
 Let me start with a statement many developers tend to agree:
