@@ -15,7 +15,7 @@ What concepts people usually associate with bathroom renovation?
 
 ## Robots won't help us
 
-There are online tools for getting keywords ideas.
+There are online tools for getting keyword ideas.
 
 Here are the keyword suggestions that Google Keyword Planner gives for bathroom renovation:
 
