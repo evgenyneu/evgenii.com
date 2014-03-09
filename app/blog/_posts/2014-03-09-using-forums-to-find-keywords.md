@@ -39,7 +39,7 @@ Search "renovation forum" in Google.
 
 Read 'bathroom' sections on those forums and make a list of popular threads.
 
-Here are some popular topics on bathroom renovation from renovateforum.com:
+Here are some popular topics I found on renovateforum.com:
 
 * Ceramalite or laminex panels for shower walls?
 * Caesarstone
