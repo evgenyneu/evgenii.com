@@ -48,7 +48,7 @@ Here are some popular topics I found on renovateforum.com:
 * Stainless steel splash back
 * Installing new toilet
 
-Sounds a bit more interesting and human that those keywords that Google suggested, doesn't it?
+Sounds a bit more interesting and human than the keywords Google suggested, doesn't it?
 
 ## Mission accomplished. Now what?
 
