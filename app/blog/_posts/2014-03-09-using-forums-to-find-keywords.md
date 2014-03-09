@@ -46,7 +46,6 @@ Here are some popular topics I found on renovateforum.com:
 * Alternative splashbacks to glass and tile
 * DIY Frameless shower screens - thoughts?
 * Stainless steel splash back
-* My Ikea Kitchen Install project
 * Installing new toilet
 
 Sounds a bit more interesting and human that those keywords that Google suggested, doesn't it?
