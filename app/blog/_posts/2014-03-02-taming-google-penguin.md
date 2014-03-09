@@ -2,7 +2,7 @@
 layout: blog_post
 title: "How to tame Google Penguin and build trust"
 meta_description: "Short summary of Visible HQ podcast episode #7 covering modern SEO strategies of content creation and link building."
-tags: podcast-digest
+tags: online-marketing
 ---
 
 **Source:** [Visible HQ podcast](http://www.visiblehq.com/episode-7/), episode #7. Interview with Brian Dean of [backlinko.com](http://backlinko.com/).

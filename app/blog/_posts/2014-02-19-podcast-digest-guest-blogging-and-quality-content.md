@@ -2,7 +2,7 @@
 layout: blog_post
 title: "Guest blogging, meta descriptions and navigation"
 meta_description: "Short summary of SEO 101 podcast episode from Jan 22, 2014 about guest blogging, snippets to articles, keywords in site navigation and more."
-tags: podcast-digest
+tags: online-marketing
 ---
 
 **Source:** SEO 101 podcast, [episode Jan 22, 2014](http://www2.webmasterradio.fm/seo-101/2014/guest-blogging-stick-a-fork-in-it-expedia-paid-link-damage-google-slams-paid-ads).

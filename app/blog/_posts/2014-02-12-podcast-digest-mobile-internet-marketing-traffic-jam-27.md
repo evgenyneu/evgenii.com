@@ -2,7 +2,7 @@
 layout: blog_post
 title:  "Mobile marketing"
 meta_description: "Read my short summary of Traffic Jam podcast episode #27 about Mobile Marketing, including email and SMS marketing."
-tags: podcast-digest
+tags: online-marketing
 ---
 
 **Source:** [Traffic Jam](http://www.veravo.com/trafficjam/), [Episode #27](http://www.veravo.com/trafficjam/tj27-mobile-marketing-mix/)

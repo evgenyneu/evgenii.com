@@ -1,7 +1,7 @@
 ---
 layout: blog_post
 title:  "SEO year 2014 review"
-tags: podcast-digest
+tags: online-marketing
 ---
 
 **Source:** [SEO Podcast - Unknown Secrets of Internet Marketing](http://www.e-webstyle.com)

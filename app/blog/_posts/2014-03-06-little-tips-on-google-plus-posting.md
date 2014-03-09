@@ -1,9 +1,9 @@
 ---
 layout: blog_post
 title: "How to use Google Plus to promote your content"
-tags: podcast-digest
 meta_description: "Read my short summary of SEO 101 podcast about using Google Plus for promoting your content."
 subtitle: 'Podcast Digest'
+tags: online-marketing
 ---
 
 **Source:** [SEO 101 podcast](http://www2.webmasterradio.fm/seo-101/2014/more-blogging-and-google-plus-insight-with-chef-dennis-littley/) from March 3, 2014. Interview with [Chef Dennis](http://www.askchefdennis.com/).
