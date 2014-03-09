@@ -31,7 +31,7 @@ Firstly, those keywords sound artificial and boring. Secondly, the competition f
 
 Human brain can associate different concepts in the way that no computer program can emulate today.
 
-Our goal is to find interests, problems and goals of real people within 'bathroom renovation' domain. One easy to do that is to read what people actually discuss on forums.
+Our goal is to find interests, problems and goals of real people within 'bathroom renovation' domain. One easy way to do that is to read what people actually discuss on forums.
 
 ## Forum research technique
 
