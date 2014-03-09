@@ -37,7 +37,7 @@ Our goal is to find interests, problems and goals of real people within 'bathroo
 
 Search "renovation forum" in Google.
 
-Read through 'bathroom' section on those forums and make a list of popular threads.
+Read 'bathroom' sections on those forums and make a list of popular threads.
 
 Here are some popular topics on bathroom renovation from renovateforum.com:
 
