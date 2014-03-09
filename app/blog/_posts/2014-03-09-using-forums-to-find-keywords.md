@@ -35,9 +35,8 @@ Our goal is to find interests, problems and goals of real people within 'bathroo
 
 ## Forum research technique
 
-Search "renovation forum" in Google.
-
-Read 'bathroom' sections on those forums and make a list of popular threads.
+1. Search "renovation forum" in Google.
+1. Read 'bathroom' sections on those forums and make a list of popular threads.
 
 Here are some popular topics I found on renovateforum.com:
 
