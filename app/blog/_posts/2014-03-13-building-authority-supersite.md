@@ -22,8 +22,8 @@ Images are important for image search results.
 
 Develop a brand to get people searching for that brand.
 
-Spammy backlinks and thin sites with no value are not going to work in the long term.
-
 Don't worry about keyword research or backlink building.
+
+Spammy backlinks and thin sites with no value are not going to work in the long term.
 
 Spread the word about your content. Communicate with people in forums and on Facebook.
