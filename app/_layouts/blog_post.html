@@ -6,6 +6,7 @@ layout: default
   {% for tag in page.tags %}
     <a href='/tag/{{ tag }}' class='Tag'>{{ tag | replace: '-', ' ' | capitalize }}</a>
   {% endfor %}
+  {% include byline.html %}
 
   {{ content }}
 </article>
