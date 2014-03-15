@@ -1,6 +1,6 @@
 ---
 layout: blog_post
-title: "Tips on choosing keywords that bring $$$ (and not just traffic)"
+title: "Choosing keywords that bring $$$ (and not just traffic)"
 meta_description: "Short summary of SEO podcast about choosing right SEO and PPC keywords that will help achieve your goal."
 tags: online-marketing
 ---
