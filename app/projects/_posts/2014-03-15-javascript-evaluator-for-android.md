@@ -4,7 +4,7 @@ title:  "JavaScript evaluator library for Android"
 meta_description: "Download JavaScript library for evaluating JavaScript in your Android apps."
 ---
 
-A library for evaluating JavaScript in Android app.
+A library for evaluating JavaScript in Android apps.
 
 [See on GitHub](https://github.com/evgenyneu/js-evaluator-for-android)
 
