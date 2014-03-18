@@ -59,7 +59,7 @@ Your voice and passion in talking with your audience is the key. No SEO guru in 
 
 ## Google Plus is a shortcut
 
-G+ is nothing like Facebook. Its purpose is to create digital identity service for semantic search.
+G+ is nothing like Facebook. The purpose of G+ is to create digital identity service for semantic search.
 
 Your G+ activity and connections are used to assess the importance of what you do. For example, if you have a lot of connections with people who like cycling your content about it will be more trusted by Google. But not the content about ballet.
 
