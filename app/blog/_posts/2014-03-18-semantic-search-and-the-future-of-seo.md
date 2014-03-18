@@ -35,7 +35,7 @@ The answer to those questions forms your **unique business identity**.
 
 ## Transition from 'Web of sites' to a 'Web of people'
 
-> You need to have social layer to everything you do.
+> Build a social layer to everything you do.
 
 Your clients want to see people behind your website: their passion, drive, their identity. Connections create trust. And without trust all commercial activity stops.
 
