@@ -75,5 +75,5 @@ Semantic search adds new factors and old factors like backlinks are loosing thei
 
 ## Are we there yet?
 
-We are still not quite there yet.
+We are not quite there yet.
 
