@@ -1,7 +1,7 @@
 {
   "important": false,
   "adjoining-classes": false,
-  "known-properties": true,
+  "known-properties": false,
   "box-sizing": false,
   "box-model": false,
   "overqualified-elements": false,

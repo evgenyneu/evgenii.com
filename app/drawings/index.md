@@ -1,7 +1,7 @@
 ---
 layout: default
 title: See how Evgnii is not afraid of learning to draw
-layout_class: layout-wide
+layout_class: layout-wider
 ---
 
 # Learning to draw

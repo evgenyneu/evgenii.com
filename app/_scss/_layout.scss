@@ -3,6 +3,12 @@
     width: $fixedBreakpoint;
     margin: 0 auto;
   }
+
+  .layout-wider & {
+    @media (min-width: $fixedBreakpoint) { width: auto; }
+    @media (min-width: $widerBreakpoint) { width: $widerBreakpoint; }
+
+  }
 }
 
 .layout-padding { padding: $iiMarginNormal; }

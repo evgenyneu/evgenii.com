@@ -1,15 +1,19 @@
 .Drawings {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  @include flexbox();
+  @include flex-wrap(wrap);
+  @include align-items(center);
 }
 
 .Drawings-link {
+  @include flex(1 0 130px);
   text-decoration: none;
-  flex: 1 0 100px;
   margin: 5px;
-  text-align:center;
+  text-align: center;
+}
+
+@supports not (flex-wrap: wrap) {
+  .Drawings { display: block; }
+  .Drawings-link { display: inline-block; }
 }
 
 .Drawings-image {
