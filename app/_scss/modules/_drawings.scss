@@ -1,0 +1,19 @@
+.Drawings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Drawings-link {
+  text-decoration: none;
+  flex: 1 0 100px;
+  margin: 5px;
+  text-align:center;
+}
+
+.Drawings-image {
+  width: 100%;
+  max-width: 200px;
+  display: inline-block;
+}

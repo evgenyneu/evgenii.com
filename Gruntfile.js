@@ -359,7 +359,7 @@ module.exports = function (grunt) {
     },
     image_resize: {
       options: {
-        height: 300,
+        width: 300,
         overwrite: true,
         quality: 0.8,
       },
