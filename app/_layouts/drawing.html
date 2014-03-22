@@ -6,7 +6,7 @@ layout: default
   <a href='/drawings' class='Tag'>Drawings</a>
   {% include byline.html %}
 
-  <p><img src='/image/drawings/{{page.image}}' alt='{{page.title}}'/></p>
+  <p><img src='/image/drawings/{{ page.path | replace: 'drawings/_posts/', '' | replace: '.md', '.jpg'}}' alt='{{page.title}}'/></p>
 
   {{ content }}
 </article>

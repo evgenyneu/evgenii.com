@@ -18,6 +18,6 @@ images:
 
 {% for post in site.categories.drawings %}
   <a href='{{ post.url }}' title='{{post.title}}'>
-    <img class='Drawing-image' src='/image/drawings/thumbnails/{{post.image}}' alt='{{post.title}}'/>
+    <img class='Drawing-image' src='/image/drawings/thumbnails/{{ post.path | replace: 'drawings/_posts/', '' | replace: '.md', '.jpg'  }}' alt='{{post.title}}'/>
   </a>
 {% endfor %}
