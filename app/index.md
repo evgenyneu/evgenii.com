@@ -12,7 +12,7 @@ I make web sites and apps for smartphones, tablets, desktops and boomerangs (jus
 
 I am working with HTML, JavaScript and Ruby professionally. And on my free time I am currently learning iOS and Android app development.
 
-Read my [blog](/blog/), [projects](/projects/) or view [my resume](/resume/).
+Read my [blog](/blog/), [projects](/projects/), [drawings](/drawings/) or view [my resume](/resume/).
 
 ## Want to keep in touch?
 

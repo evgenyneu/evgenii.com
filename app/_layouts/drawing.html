@@ -3,12 +3,10 @@ layout: default
 ---
 <article>
   <h1 class='PostHeading'>{{ page.title }}</h1>
-  {% for tag in page.tags %}
-    <a href='/tag/{{ tag }}' class='Tag'>{{ tag | replace: '-', ' ' | capitalize }}</a>
-  {% endfor %}
+  <a href='/drawings' class='Tag'>Drawings</a>
   {% include byline.html %}
+
+  <p><img src='/image/drawings/{{page.image}}' alt='{{page.title}}'/></p>
 
   {{ content }}
 </article>
-
-

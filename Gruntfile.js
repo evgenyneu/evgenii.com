@@ -342,7 +342,8 @@ module.exports = function (grunt) {
       server: [
         'sass:server',
         'coffee:server',
-        'jekyll:server'
+        'jekyll:server',
+        'image_resize:server',
       ],
       dist: [
         'sass:dist',
@@ -355,7 +356,32 @@ module.exports = function (grunt) {
         options: { stdout: true },
         command: 'rsync -rvz <%= yeoman.dist %>/ pi:evgenii.com'
       }
-    }
+    },
+    image_resize: {
+      options: {
+        height: 300,
+        overwrite: true,
+        quality: 0.8,
+      },
+      files: {
+        expand: true,
+        cwd: '<%= yeoman.app %>',
+        src: ['image/drawings/*.{jpg,jpeg,png}'],
+        flatten: true,
+        dest: '<%= yeoman.dist %>/image/drawings/thumbnails',
+        filter: 'isFile'
+      },
+      server: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>',
+          src: ['image/drawings/*.{jpg,jpeg,png}'],
+          flatten: true,
+          dest: '.tmp/image/drawings/thumbnails',
+          filter: 'isFile'
+        }]
+      }
+    },
   });
 
   // Load plugins
@@ -396,6 +422,7 @@ module.exports = function (grunt) {
     'clean:dist',
     // Jekyll cleans all non-git files from the target directory, so must run first
     'jekyll:dist',
+    'image_resize',
     'concurrent:dist',
     'useminPrepare',
     'concat',
