@@ -360,7 +360,7 @@ module.exports = function (grunt) {
       }
     },
     autoprefixer: {
-      server: {
+      doit: {
         src: '.tmp/css/**/*.css'
       }
     }
@@ -378,7 +378,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'concurrent:server',
-      'autoprefixer:server',
+      'autoprefixer',
       'connect:livereload',
       'open',
       'watch'
@@ -398,6 +398,7 @@ module.exports = function (grunt) {
     'jekyll:dist',
     'image_resize',
     'concurrent:dist',
+    'autoprefixer',
     'useminPrepare',
     'concat',
     'cssmin',
