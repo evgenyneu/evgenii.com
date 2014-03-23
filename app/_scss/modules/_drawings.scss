@@ -9,6 +9,8 @@
   text-decoration: none;
   margin: 5px;
   text-align: center;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 @supports not (flex-wrap: wrap) {
