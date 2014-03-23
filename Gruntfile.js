@@ -208,29 +208,6 @@ module.exports = function (grunt) {
         '!<%= yeoman.app %>/js/vendor/**/*'
       ]
     },
-    csscss: {
-      options: {
-        bundleExec: true,
-        minMatch: 2,
-        ignoreSassMixins: false,
-        colorize: true,
-        shorthand: false,
-        verbose: true
-      },
-      // Add files to be tested here
-      report: {
-       src: ['<%= yeoman.app %>/css/**/*.css',
-             '<%= yeoman.app %>/_scss/**/*.scss' ]
-      }
-    },
-    csslint: {
-      options: {
-        csslintrc: '.csslintrc'
-      },
-      report: {
-        src: ['{.tmp,<%= yeoman.app %>}/css/**/*.css']
-      }
-    },
     // UseminPrepare will only scan one page for usemin blocks. If you have
     // usemin blocks that aren't used in index.html, create a usemin manifest
     // page (hackery!) and point this task there.
@@ -402,20 +379,11 @@ module.exports = function (grunt) {
     ]);
   });
 
-  // No real tests yet. Add your own.
-  // grunt.registerTask('test', [
-  //   'clean:server',
-  //   'concurrent:test',
-  //   'connect:test'
-  // ]);
-
   grunt.registerTask('report', [
     'clean:server',
     'sass:server',
     'coffee:server',
-    'jshint:report',
-    // 'csscss:report',
-    // 'csslint:report'
+    'jshint:report'
   ]);
 
   grunt.registerTask('build', [
