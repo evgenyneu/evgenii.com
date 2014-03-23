@@ -1,5 +1,3 @@
-@import 'mixins/mixins';
-@import 'mixins/flexbox';
 @import 'variables';
 
 @import 'base/headers';
@@ -14,4 +12,4 @@
 @import 'modules/post';
 @import 'modules/drawings';
 
-@import 'states/misc';
+@import 'states/_misc';

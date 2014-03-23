@@ -318,10 +318,9 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'sass:server',
-        'autoprefixer',
         'coffee:server',
         'jekyll:server',
-        'image_resize:server',
+        'image_resize:server'
       ],
       dist: [
         'sass:dist',
@@ -361,11 +360,8 @@ module.exports = function (grunt) {
       }
     },
     autoprefixer: {
-      files: {
-        expand: true,
-        cwd: '.tmpcss',
-        src: 'app.css',
-        dest: 'app_prefixed.css'
+      server: {
+        src: '.tmp/css/**/*.css'
       }
     }
   });
@@ -382,6 +378,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'concurrent:server',
+      'autoprefixer:server',
       'connect:livereload',
       'open',
       'watch'

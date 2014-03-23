@@ -1,11 +1,11 @@
 .Drawings {
-  @include flexbox();
-  @include flex-wrap(wrap);
-  @include align-items(center);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .Drawings-link {
-  @include flex(1 0 130px);
+  flex: 1 0 130px;
   text-decoration: none;
   margin: 5px;
   text-align: center;
