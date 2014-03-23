@@ -318,6 +318,7 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'sass:server',
+        'autoprefixer',
         'coffee:server',
         'jekyll:server',
         'image_resize:server',
@@ -359,6 +360,14 @@ module.exports = function (grunt) {
         }]
       }
     },
+    autoprefixer: {
+      files: {
+        expand: true,
+        cwd: '.tmpcss',
+        src: 'app.css',
+        dest: 'app_prefixed.css'
+      }
+    }
   });
 
   // Load plugins
