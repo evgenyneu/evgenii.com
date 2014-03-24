@@ -33,7 +33,7 @@ Increase your bid for mobile if you want more mobile traffic. Make sure your sit
 
 ## Remarketing
 
-Bring back your customers through remarketing. It will allow you to show Ads to people who already visited your site. Remarketing Ads can be **much** cheaper that keywords.
+Bring back your customers through remarketing. It will allow you to show Ads to people who already visited your site. Remarketing Ads can be **much** cheaper than keywords.
 
 ## Managed placements
 
@@ -41,7 +41,7 @@ Use managed placements if you want to show your Ads on certain sites where you t
 
 ## Intent keywords
 
-Bid higher on keywords that show intent. For example, 'buy dining table' or 'kitchen renovation quote'.
+Bid higher on keywords that show intent. Examples: 'buy dining table' or 'kitchen renovation quote'.
 
 ## Relevant landing pages
 
