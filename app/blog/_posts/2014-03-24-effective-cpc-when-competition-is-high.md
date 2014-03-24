@@ -17,7 +17,7 @@ Be careful with default 'broad matching' option. Your Ad may show when search te
 
 ## Close variations
 
-Consider turning off close variations. Close variations are plurals, misspellings and other related words. Otherwise you will pay for different variations of your keywords that you can't control.
+Consider turning off close variations. Otherwise you will pay for different variations of your keywords that you can't control. Close variations are plurals, misspellings and other related words.
 
 ## Negative match
 
