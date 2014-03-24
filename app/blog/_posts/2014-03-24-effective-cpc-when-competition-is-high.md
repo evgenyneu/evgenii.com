@@ -7,7 +7,7 @@ tags: online-marketing
 
 **Source:** [SEO podcast](http://www.e-webstyle.com/Internet-Marketing-Podcast.asp), episode #224.
 
-## Have proper tracking in place
+## Setup tracking
 
 Track conversions for your CPC keywords. Make sure Google Analytics is synced with AdWords. Setup ecommerce tracking on Google analytics to see how much money is generated from specific keywords and where they came from.
 
