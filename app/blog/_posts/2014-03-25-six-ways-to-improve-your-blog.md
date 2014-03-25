@@ -17,4 +17,4 @@ tags: online-marketing
 
 1. Communicate with your audience. Respond to comments.
 
-1. Avoid stuffing your content with keywords. Keyword research is useful in choosing a topic for your post. But content should be natural and read well. Write for your audience, not for search.
+1. Avoid stuffing your content with keywords. Keyword research is useful in choosing a **topic** for your post. But content should be natural and read well. Write for your audience, not for search.
