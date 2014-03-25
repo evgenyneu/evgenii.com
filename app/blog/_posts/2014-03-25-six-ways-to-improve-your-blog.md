@@ -11,9 +11,9 @@ tags: online-marketing
 
 1. Avoid constant self-promotion.
 
-1. Improve the quality of your writing or hire a professional writer, journalist and editor.
+1. Improve the quality of your writing or hire a professional writer, journalist and an editor.
 
-1. Be careful with publishing guest posts on your blog. Write your own content.
+1. Be careful with guest posts on your blog. Write your own content.
 
 1. Communicate with your audience. Respond to comments.
 
