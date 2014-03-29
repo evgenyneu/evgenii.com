@@ -44,7 +44,7 @@ If your blog post has many shares/likes take this topic and say the same thing t
 
 Take popular content that **other** people created and repurpose it. **Give original author full credit.** Then reach out to the author: "We liked your article so much that we created a video based on it. Please consider sharing it with your audience."
 
-### Track your conversions on GA
+### Track your conversions in Google Analytics
 
 Measure conversions in Google Analytics. Setup goals to track your conversions:
 
