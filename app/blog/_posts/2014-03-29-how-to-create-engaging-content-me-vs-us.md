@@ -32,7 +32,7 @@ Content is all about **them** and how good **they** are: "**our** products", "**
 
 [www.paperchef.com](http://www.paperchef.com/)
 
-It is more user-centric. It is about '**me**'. It has "recipes", "videos", "articles" that are useful to '**me**' and improves '**my**' life. This is kind of content that gets shared with friends.
+It is more user-centric. It is about '**me**'. It has "recipes", "videos", "articles" that are useful to '**me**' and improve '**my**' life. This is kind of content that gets shared with friends.
 
 ------
 
