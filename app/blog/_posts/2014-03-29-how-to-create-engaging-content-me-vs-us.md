@@ -13,7 +13,7 @@ tags: online-marketing
 
 ## 3 step strategy
 
-1. Research the topic people are interested in. Look at forums and question/answer sites. Find what **people** want to know.
+1. Research the topic people are interested in. Look on forums and question/answer sites. Find what **people** want to know.
 
 1. Create **highly relevant** content on that topic. Make content about '**me**', content that will make '**my**' life better.
 
