@@ -42,7 +42,7 @@ It is more user-centric. It is about '**me**'. It has "recipes", "videos", "arti
 
 If your blog post has many shares/likes take this topic and say the same thing through a different medium: infographic, video or a slide presentation. This way you can reach those people who consume information through **other** distribution channels.
 
-Take popular content that **other** people created and repurpose it. **Give original author full credit.** Then reach out to the author: "We liked your article so much that we created a video based on it. Please consider sharing it with your audience."
+Take popular content that **other** people created and repurpose it. **Give original author full credit.** Then reach out to the author: "We liked your article so much that we created a video based on it. Let me know if you want to share it and I will send you a link."
 
 ### Track your conversions in Google Analytics
 
