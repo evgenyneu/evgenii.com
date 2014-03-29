@@ -26,13 +26,13 @@ Build personal relationships with those people and think about how you can make 
 
 [www.cuisinesolutions.com](http://www.cuisinesolutions.com/)
 
-Content is all about **them**: "our products", "our chefs", "our industries". Content is written very well but it will not generate many links, likes and shares because it is not helpful to '**me**'.
+Content is all about **them** and how good **they** are: "**our** products", "**our** chefs", "**our** industries". Content is written very well but it will not generate many shares because it is not helpful to '**me**'.
 
 ### Good. High engagement
 
 [www.paperchef.com](http://www.paperchef.com/)
 
-It is more user centric. It is about '**me**'. It contans "recipes", "videos", "articles" that are useful to '**me**' and improves '**my**' life. This is kind of content that gets shared with friends.
+It is more user centric. It is about '**me**'. It has "recipes", "videos", "articles" that are useful to '**me**' and improves '**my**' life. This is kind of content that gets shared with friends.
 
 ------
 
@@ -40,17 +40,15 @@ It is more user centric. It is about '**me**'. It contans "recipes", "videos", "
 
 ### Repurpose good content
 
-If your blog post is shared a lot take this topic and say the same thing through a different medium: infographic, video or a slide presentation. This way you can reach those people who consume information through **other** distribution channels.
+If your blog post has many shares/likes take this topic and say the same thing through a different medium: infographic, video or a slide presentation. This way you can reach those people who consume information through **other** distribution channels.
 
-Take popular content that other people created and repurpose in a different form. **Give original author full credit.** Reach out to author: "We liked your article so much that we created a video based on it. Please consider sharing it with your audience."
+Take popular content that **other** people created and repurpose it. **Give original author full credit.** Then reach out to the author: "We liked your article so much that we created a video based on it. Please consider sharing it with your audience."
 
 ### Track your conversions on GA
 
-Measure conversions in Google Analytics. Setup Goals to track your conversions:
+Measure conversions in Google Analytics. Setup goals to track your conversions:
 
-* sharing
-* buying
-* getting phone number
-* sending a message
-
--------
+* Sharing
+* Buying
+* Getting phone number
+* Sending a message
