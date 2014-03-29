@@ -1,6 +1,6 @@
 ---
 layout: blog_post
-title: "Create engaging content by focusing on 'me'"
+title: "Create engaging content by focusing on people"
 meta_description: "Short summary of Marketing Optimization podcast with tips on how to create engaging content by focusing on 'me'."
 tags: online-marketing
 ---
