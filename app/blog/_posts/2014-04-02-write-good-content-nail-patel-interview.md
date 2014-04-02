@@ -13,9 +13,9 @@ tags: online-marketing
 
 Do content marketing. Write good content that people want to read and they will come to your site. Eventually some of them will end up converting.
 
-## Cross link
+## Cross-link
 
-Crosslink between your pages. Mashable does it well and that's why they rank high.
+Cross-link between your pages. Mashable does it well and that's why they rank high.
 
 ## Keywords ideas
 
@@ -33,7 +33,7 @@ To increase engagement in your blog post ask a question at the end of blog post.
 
 ## Infographics
 
-Create infographics: simple visual representation of complex ideas/data. Neil does 1 infographic a week: one person is collecting data and designer is making the images.
+Create infographics: simple visual representations of complex ideas/data. Neil does 1 infographic a week: one person is collecting data and designer is making the images.
 
 ## How to start blogging
 
