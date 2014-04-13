@@ -5,7 +5,7 @@ meta_description: "Short summary of SEO podcast about managing successful CPC ca
 tags: online-marketing
 ---
 
-**Source:** [SEO podcast](http://www.e-webstyle.com/Internet-Marketing-Podcast.asp), episode #224.
+**Source:** [SEO podcast](http://www.e-webstyle.com/category/seo-podcast/), episode #224.
 
 ## Setup tracking
 
