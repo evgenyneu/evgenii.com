@@ -21,7 +21,7 @@ Google does not always show avatars. It decides whether to show your avatar by l
 
 ## Does 'author rank' exist?
 
-It is not clear if Google ranks individual authors or use it as a ranking factor in search results.
+It is hard to say with certainty if Google ranks individual authors or use it as a ranking factor in search results.
 
 Google **may** boost content by established authors higher in search results. But it is hard to prove scientifically with tests.
 
