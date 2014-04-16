@@ -27,7 +27,7 @@ Google **may** boost content by established authors higher in search results. Bu
 
 ### Prediction
 
-Google **may** start promoting content by well established authors first. Than, over the coming years, Google **may** gradually boost content from other authors.
+Google **may** start promoting content by well-established authors first. Than, over the coming years, Google **may** gradually boost content from other authors.
 
 ## Do I need to be active on G+?
 
