@@ -15,7 +15,7 @@ Google authorship allows Google to associate your content with your profile on G
 
 Your content comes up in search results with your picture and name. It helps to develop your personal brand.
 
-Many studies demonstrated that having author's photo in google search results increases click-through rate. People are attracted to faces and like to see real people behind the links.
+Many studies demonstrated that having author's photo in Google search results increases click-through rate. People are attracted to faces and like to see real people behind the links.
 
 Google does not always show avatars. It decides whether to show your avatar by looking at the **overall quality** of your content. It is not clear how Google evaluates this 'overall quality'.
 
