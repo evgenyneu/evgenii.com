@@ -13,8 +13,8 @@ There are thousands of good articles in Google search for every single topic. If
 
 > The key is to find a strategy that attracts people's attention.
 
-* How do you help people solve their problem?
-* What makes it unique?
+* How do you help people solve their problems?
+* What makes your content unique?
 * What triggers emotional reaction?
 * What makes it connect with your audience?
 
