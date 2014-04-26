@@ -7,7 +7,7 @@ tags: online-marketing
 
 **Source:** [Traffic Jam](http://www.veravo.com/trafficjam/tj34-inbound-marketing-eric-enge/), episode #34, interview with <a href='http://www.stonetemple.com/about-eric-enge/'>Eric Enge</a>.
 
-## Getting through noise
+## Cutting through the noise on Google
 
 There are thousands of good articles in Google search for every single topic. If you write just another 'good' article people will never going to find it.
 
