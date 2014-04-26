@@ -34,4 +34,4 @@ This will create demand for yourself. As a result, people will link to you.
 
 ## Does social media help in ranking?
 
-Studies show no strong evidence of social signals **directly** improving your ranking. But social media presence is extremely important because it will send readers from social media channels back to your site.
+Studies show no strong evidence of social signals **directly** affecting page rank. But social media presence is extremely important because it will send readers from social media channels back to your site.
