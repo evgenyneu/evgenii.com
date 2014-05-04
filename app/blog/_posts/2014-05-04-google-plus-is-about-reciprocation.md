@@ -20,7 +20,7 @@ Build your network through engagement with other people. Share, comment and +1 o
 Create three circles to manage your G+ connections:
 
 1. **New engages**: people who never engaged with you before.
-1. **Increased engages**: people from 'new engages' who continue to engage.
+1. **Increased engages**: people from 'new engages' circle who continue to engage.
 1. **Grand evangelists**: those who are evangelising your content.
 
 The goal is to find the 100 people who are running around telling everybody that your new content is awesome.
