@@ -9,7 +9,7 @@ tags: online-marketing
 
 ## First thing: build your network
 
-If your Google Plus post gets no +1s try build your G+ network **first**. It's a two-stage strategy.
+If your Google Plus post gets no +1s try building your G+ network **first**. It's a two-stage strategy.
 
 ### Stage one
 
