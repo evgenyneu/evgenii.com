@@ -29,7 +29,7 @@ The goal is to find the 100 people who are running around telling everybody that
 
 You can use circle system to make people feel special. For example, you can contact people directly and ask if they want to join a circle on a specific topic.
 
-Another approach is to create a topical email list and ask people if they want to join it. When new content is released send those people an email notification. But avoid sending email notification without asking permission.
+Another approach is to create a topical email list and ask people if they want to join it. When new content is released send those people an email notification.
 
 > Unless people feel that you are giving something in return their attention moves elsewhere.
 
