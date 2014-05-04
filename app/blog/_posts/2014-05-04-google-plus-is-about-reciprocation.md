@@ -36,7 +36,7 @@ Another approach is to create a topical email list and ask people if they want t
 ## Feedback loop of engagement
 
 1. When people engage with your G+ content it tells Google that this content is important.
-1. It allows your content to surface at a higher positions in search. Which results in higher traffic to your website.
+1. It allows your content to surface at higher positions in search. Which results in higher traffic to your website.
 1. Finally, if your pages have +1 button it feeds engagement back to Google Plus. This closes the feedback loop.
 
 ## Tips
