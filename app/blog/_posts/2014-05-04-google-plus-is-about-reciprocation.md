@@ -42,4 +42,4 @@ Another approach is to create a topical email list and ask people if they want t
 ## Tips
 
 * Alternate business content with fun stuff. If we posted just serious content many people would disconnect.
-* Some communities consider posts with just and no text as spam.
+* Some communities consider G+ posts with just a link and no text as spam.
