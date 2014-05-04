@@ -33,16 +33,13 @@ Another approach is to create a topical email list and ask people if they want t
 
 > Unless people feel that you are giving something in return their attention moves elsewhere.
 
-## Business and cats
-
-Alternate business content with fun stuff. If one just posted serious content all the time many people would disconnect.
-
 ## Feedback loop of engagement
 
 1. When people engage with your content on G+ it sends a signal to Google that your content is important.
 1. It allows your content to surface at a higher position in search. Which results in higher traffic to your website.
 1. Finally, if your pages have +1 button it feeds engagement back to Google Plus. This closes the feedback loop.
 
-## Links without content
+## Tips
 
-Many communities consider posts with just and no text as spam.
+* Alternate business content with fun stuff. If we posted just serious content many people would disconnect.
+* Many communities consider posts with just and no text as spam.
