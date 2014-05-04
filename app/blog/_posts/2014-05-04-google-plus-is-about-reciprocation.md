@@ -9,21 +9,21 @@ tags: online-marketing
 
 ## First thing: build your network
 
-If your Google Plus post gets no +1s try building your G+ network **first**. It's a two-stage strategy.
+If your Google Plus post gets no +1s try building your G+ network **first**. It can be a two-part process.
 
-### Stage one
+### Part 1: connect with people
 
 Build your network through engagement with other people. Share, comment and +1 other people's content. Join G+ communities and start interacting with people there. When you do that other people will start engaging with you **in return**.
 
-### Stage two
+### Part 2: find top engagers
 
 Create three circles to manage your G+ connections:
 
-1. **New engages**: people who never engaged with you before.
-1. **Increased engages**: people from 'new engages' circle who continue to engage.
+1. **New engagers**: people who never engaged with you before.
+1. **Increased engagers**: people from 'new engagers' circle who continue to engage.
 1. **Grand evangelists**: those who are evangelising your content.
 
-The goal is to find the 100 people who are running around telling everybody that your new content is awesome.
+The goal is to find the 100 people who are running around telling everybody that your content is awesome.
 
 ## Make people feel special
 
