@@ -13,7 +13,7 @@ If your Google Plus post gets no +1s try building your G+ network **first**. It'
 
 ### Stage one
 
-Build your network through engagement with other people. Share, comment and +1 other people's content. Join G+ communities and start interacting with people there. When you do that other people will start to engage with you **in return**.
+Build your network through engagement with other people. Share, comment and +1 other people's content. Join G+ communities and start interacting with people there. When you do that other people will start engaging with you **in return**.
 
 ### Stage two
 
