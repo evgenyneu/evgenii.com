@@ -17,7 +17,7 @@ It is important to analyse your backlink profile. Following tools can help spot 
 * [majesticseo.com](http://www.majesticseo.com)
 * [linkrisk.com](http://linkrisk.com/)
 
-The final step is to manually remove those spammy backlinks. It can be hard and time consuming.
+The final step is to manually remove those spammy backlinks. It can be hard and time-consuming.
 
 ## What are most important SEO actions for an ecommerce web site?
 
