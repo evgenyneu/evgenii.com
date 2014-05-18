@@ -3,7 +3,7 @@ layout: project
 title:  "AES Crypto Android app"
 ---
 
-Android app that encrypts text message with Advanced Encryption Standard.
+Android app that encrypts text message with Advanced Encryption Standard. AES Crypto is open source.
 
 [![Get it on Google Play](https://developer.android.com/images/brand/en_generic_rgb_wo_60.png)](https://play.google.com/store/apps/details?id=com.evgenii.aescrypto)
 
