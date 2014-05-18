@@ -11,7 +11,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 **Address**: St Kilda, VIC, Australia, {{ site.author.email }}
 
-**Objective**: Seeking position as technical lead or senior developer in a software development project utilizing my experience.
+**Objective**: Seeking position as technical lead or senior developer in a software development project utilising my experience.
 
 I am an accomplished Senior Software Engineer focused on quality, creativity and solid results, with experience in the full software development life cycle including design, implementation, testing and deployment.
 
@@ -19,17 +19,16 @@ I am an accomplished Senior Software Engineer focused on quality, creativity and
 
 * More than 13 years of uninterrupted experience as an application and web developer.
 * Expert in JavaScript, Ruby, Ruby on Rails, jQuery, HTML, CSS, C#, ASP.NET MVC.
-* Experienced in writing automated tests.
-* Skilled in developing cross-platform web applications.
-
+* Skilled in writing automated tests.
+* Experienced in developing cross-platform Android, iOS and Web applications.
 
 ## Technical Expertise
 
-* Languages: JavaScript, CoffeeScript, Ruby, HTML, CSS, Sass, JSON, C#, XML.
-* Frameworks and libraries: Ruby on Rails, jQuery, Backbone.js, jQuery Mobile, ASP.NET MVC.
-* Test Libraries: RSpec, Capybara, Jasmine, minitest.
+* Languages: HTML, CSS, JavaScript, Ruby, Objective-C, Java, C#.
+* Frameworks and libraries: Ruby on Rails, jQuery, AngularJS, Backbone.js, jQuery Mobile, ASP.NET MVC.
+* Test Libraries: RSpec, Capybara, Jasmine, Specta, JUnit, minitest.
 * Databases: MySQL, MongoDB, SQLite, Microsoft SQL Server, PostgreSQL.
-* Development tools: Sublime Text, Vim, Xcode, NetBeans, Microsoft Visual Studio.
+* Development tools: Sublime Text, Vim, Xcode, Eclipse, NetBeans, Microsoft Visual Studio.
 * Source control tools: Git, Team Foundation Server, SVN.
 
 ## Professional Experience
