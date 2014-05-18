@@ -24,4 +24,4 @@ The final step is to manually remove those spammy backlinks. It can be hard and 
 E-commerce sites tend to have many similar product pages.
 
 * Provide SEO-friendly URLs. Canonical URLs will help solve content duplication issues.
-* Develop unique content strategy that shows your passion towards your products. Create your brand's USP, write regular features, interviews.
+* Develop unique content strategy that shows your passion towards your products. Write regular features, interviews.
