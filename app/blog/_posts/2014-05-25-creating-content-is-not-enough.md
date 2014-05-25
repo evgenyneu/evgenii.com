@@ -20,5 +20,5 @@ The war over the eyeballs on the Internet is won in many industries. Most people
 
 Experiment with paid advertising, paid advertorials and social media ads.
 
-[Relevance.com](http://relevance.com) is spending 30% of its time/budget on content promotion and distribution.
+[Relevance.com](http://relevance.com) is spending around 30% of its budget on content promotion and distribution.
 
