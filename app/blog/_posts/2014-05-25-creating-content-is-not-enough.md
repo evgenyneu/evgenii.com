@@ -12,7 +12,7 @@ Creating your own content is not enough today to get traffic. It is important to
 
 > Last year was the year of content marketing. This year is the year of content distribution and promotion.
 
-The war over the eyeballs on the Internet is won in many industries. Most people follow their habits and consume limited number of well-established Internet resources. Your goal it to get your content published on those media outlets in order to reach your audience.
+The war over the eyeballs on the Internet is won in many industries. Many people follow their habits and consume limited number of well-established Internet resources. Your goal it to get your content published on those media outlets in order to reach your audience.
 
 > We create owned media to earn media.
 
