@@ -29,4 +29,4 @@ tags: online-marketing
 
 ## Citation is almost as good
 
-If people can not provide a link to you simple citation will also be useful.
+Simple citation will also be useful in case people can not provide a link to you.
