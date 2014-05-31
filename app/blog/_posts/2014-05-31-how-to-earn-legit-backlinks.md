@@ -19,7 +19,7 @@ tags: online-marketing
 
 1. Giving away photos? Ask people who use them to link to you.
 
-1. Do something newsworthy. For example create a survey or a research.
+1. Do something newsworthy. For example, create a survey or a research.
 
 1. If you sell or review a product ask your suppliers for a link.
 
