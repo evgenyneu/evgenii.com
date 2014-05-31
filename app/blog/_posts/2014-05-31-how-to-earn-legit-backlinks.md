@@ -9,9 +9,9 @@ tags: online-marketing
 
 ## Definition
 
-**Backlinks** are links placed on **other** web sites that point to **your** site. They are important for establishing authority of your site and increasing its search rank. Here are some tips on how to earn **natural backlinks** by doing something useful for other people and kindly asking them to link back to you.
+**Backlinks** are links placed on **other** web sites that point to **your** site. They are important for establishing authority of your site and increasing its search rank. Here are some ideas on how to earn **natural backlinks** by doing something useful for other people and kindly asking them to link back to you.
 
-## How to earn high quality links
+## Earning high quality links
 
 1. If you write an article about an individual or a business ask them to consider placing a link to you.
 
