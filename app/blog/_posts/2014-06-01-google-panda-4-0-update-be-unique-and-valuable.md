@@ -25,4 +25,4 @@ A mindshift is happening right now.
 With its algo updates Google is **breaking the spirit** of traditional SEO which was concentrated mainly
 on cheating.
 
-Google is interested in showing useful information in search results. And if your product is not **unique and valuable** it does not deserve to be found in Google search.
+Google is interested in showing useful information in search results. And if a product is not **unique and valuable** it does not deserve to be found in Google search.
