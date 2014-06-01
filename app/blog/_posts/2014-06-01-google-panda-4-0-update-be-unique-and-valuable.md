@@ -21,7 +21,7 @@ This is precisely what Google tries to avoid with its anti-spam efforts.
 
 ## Build your business around your Customer
 
-Mind shift is happening right now.
+A mindshift is happening right now.
 With its algo updates Google is **breaking the spirit** of traditional SEO which was concentrated mainly
 on gaming search engines.
 
