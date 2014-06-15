@@ -15,5 +15,5 @@ Read my [blog](/blog/), [projects](/projects/), view [my resume](/resume/) and [
 ## Want to keep in touch?
 
 * {{ site.author.email }}
-* [@{{ site.author.twitter }}](//twitter.com/{{ site.author.twitter }})
+* [Google+]({{ site.author.google_plus_url }})
 * [GitHub](//github.com/{{ site.author.github }})
