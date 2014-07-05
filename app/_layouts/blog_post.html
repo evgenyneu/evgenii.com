@@ -2,7 +2,7 @@
 layout: default
 ---
 <article>
-  <h1 class='PostHeading'>{{ page.title }}</h1>
+  <h1>{{ page.title }}</h1>
 
   {{ content }}
 
@@ -14,6 +14,7 @@ layout: default
     {% for tag in page.tags %}
       <a href='/tag/{{ tag }}' class='Tag'>{{ tag | replace: '-', ' ' | capitalize }}</a>
     {% endfor %}
+    <br>
     {% include byline.html %}
   </div>
 
