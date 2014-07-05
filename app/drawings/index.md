@@ -4,7 +4,7 @@ title: See how Evgnii is not afraid of learning to draw
 layout_class: layout-wider
 ---
 
-# Learning to draw
+<h1 class='isTextCentered'>Learning to draw</h1>
 
 <div class='Drawings'>
 
