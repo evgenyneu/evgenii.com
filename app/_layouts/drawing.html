@@ -3,11 +3,21 @@ layout: default
 layout_class: layout-wider
 ---
 <article>
-  <h1 class='PostHeading'>{{ page.title }}</h1>
-  <a href='/drawings' class='Tag'>Drawings</a>
-  {% include byline.html %}
+  <h1 class='PostHeading isTextCentered'>{{ page.title }}</h1>
 
   <p><img src='/image/drawings/{{ page.path | replace: 'drawings/_posts/', '' | replace: '.md', '.jpg'}}' alt='{{page.title}}'/></p>
 
   {{ content }}
+
+  <br>
+  <br>
+  <br>
+
+  <div class='isTextCentered'>
+    <a href='/drawings' class='Tag'>Drawings</a>
+    {% include byline.html %}
+  </div>
+
+  <br>
+
 </article>
