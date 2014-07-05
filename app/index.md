@@ -4,7 +4,7 @@ title: Personal site of Evgenii Neumerzhitckii
 meta_description: "Personal site of Evgenii Neumerzhitckii: blog, contact, projects and resume."
 ---
 
-# &#9684;&#8255;&#9684; hello, Friend
+# hello, Friend &#9684;&#8255;&#9684;
 
 I am Evgenii.
 
