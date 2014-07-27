@@ -13,7 +13,7 @@ meta_description: "Personal site of Evgenii Neumerzhitckii: blog, contact, proje
 
 I am Evgenii (or just ii).
 
-Addicted to novelty. Listen to podcasts and audio books. Love EDM, hip-hop and pop music. Enjoy [programming](/projects/) and [drawing](/drawings/). Favourite book: Harry Potter.
+Addicted to novelty. Listen to podcasts and audio books. Love EDM, hip-hop and pop music. Enjoy [programming](/projects/), [drawing](/drawings/) and [blogging](/blog/). Favourite book: Harry Potter.
 
 ## Want to keep in touch?
 
