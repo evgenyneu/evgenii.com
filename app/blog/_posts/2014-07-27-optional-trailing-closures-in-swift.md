@@ -5,8 +5,8 @@ meta_description: "Writing a function with an optional trailing closure in Swift
 tags: programming
 ---
 
-Swift language has a very handy feature called `trailing closures`.
-It allows us to pass a closure into a function.
+Swift language has a handy feature called `trailing closures`.
+It is a clean way of passing a closure into a function.
 
 ```swift
 func makeTea(doNext: () -> ()) {
