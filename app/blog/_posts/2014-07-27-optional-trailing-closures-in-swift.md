@@ -9,9 +9,9 @@ Swift language has a very handy feature called `trailing closures`.
 It allows us to pass a closure into a function.
 
 ```swift
-func makeTea(doSomethingAfter: () -> ()) {
+func makeTea(doNext: () -> ()) {
   // making tea ...
-  doSomethingAfter()
+  doNext()
 }
 ```
 
@@ -35,9 +35,9 @@ It is achieved by
 3. call parameter using optional chaining `?()`.
 
 ```swift
-func makeTea(doSomethingAfter: (() -> ())? = nil) {
+func makeTea(doNext: (() -> ())? = nil) {
   // making tea ...
-  doSomethingAfter?()
+  doNext?()
 }
 ```
 
