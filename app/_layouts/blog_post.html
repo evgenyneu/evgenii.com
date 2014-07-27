@@ -12,9 +12,11 @@ layout: default
 
   <div class='isTextCentered'>
     {% for tag in page.tags %}
-      <a href='/tag/{{ tag }}' class='Tag'>{{ tag | replace: '-', ' ' | capitalize }}</a>
+      <div class='TagWrap'>
+        <a href='/tag/{{ tag }}' class='Tag'>{{ tag | replace: '-', ' ' | capitalize }}</a>
+      </div>
     {% endfor %}
-    <br>
+
     {% include byline.html %}
   </div>
 
