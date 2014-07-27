@@ -32,7 +32,7 @@ It is achieved by
 
 1. making parameter an optional type `(...)?`,
 2. using nil for its default value ` = nil` and
-3. call parameter using optional chaining `?()`.
+3. calling parameter using optional chaining `?()`.
 
 ```swift
 func makeTea(doNext: (() -> ())? = nil) {
