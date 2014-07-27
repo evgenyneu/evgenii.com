@@ -1,10 +1,10 @@
 ---
 layout: default
 title: See how Evgnii is not afraid of learning to draw
-layout_class: layout-wider
+layout_class: layout-wider isTextCentered
 ---
 
-<h1 class='isTextCentered'>Learning to draw</h1>
+<h1>Learning to draw</h1>
 
 <div class='Drawings'>
 
@@ -15,3 +15,5 @@ layout_class: layout-wider
   {% endfor %}
 
 </div>
+
+<br>

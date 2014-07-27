@@ -1,5 +1,6 @@
 ---
 layout: default
+layout_class: isTextCentered
 title: Blog of Evgenii Neumerzhitckii
 ---
 

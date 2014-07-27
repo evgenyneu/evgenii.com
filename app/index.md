@@ -1,18 +1,24 @@
 ---
 layout: default
+layout_class: isTextCentered
 title: Personal site of Evgenii Neumerzhitckii
 meta_description: "Personal site of Evgenii Neumerzhitckii: blog, contact, projects and resume."
 ---
 
-# •ᴥ• hello, Friend
+<h1>
+  hello, Friend
+  <br>
+  •ᴥ•
+</h1>
 
-I am Evgenii.
+I am Evgenii (or just ii).
 
 Addicted to novelty. Listen to podcasts and audio books. Love EDM, hip-hop and pop music. Enjoy [programming](/projects/) and [drawing](/drawings/). Favourite book: Harry Potter.
 
 ## Want to keep in touch?
 
-* [Google+]({{ site.author.google_plus_url }})
-* {{ site.author.email }}
+[Google+]({{ site.author.google_plus_url }})
 
-bu__z__ine__zzZ__: [blog](/blog/), [resume](/resume/).
+{{ site.author.email }}
+
+<br>
