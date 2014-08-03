@@ -57,7 +57,7 @@ Use `Editor` > `Import Localizations...` menu and choose the `jp.xliff` file.
 ## Finally, test the app with a different language
 
 1. Go to `Product` > `Scheme` > `Edit Scheme...`
-1. Choose a different language form `Application Language` drop down.
+1. Choose a language form `Application Language` drop down.
 1. Run your app.
 
 ## Replacing parts of localized text
