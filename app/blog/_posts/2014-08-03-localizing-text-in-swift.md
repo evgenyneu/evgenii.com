@@ -21,7 +21,7 @@ NSLocalizedString("Flat White", comment: "Coffee order name")
 
 The `comment` will be passed along with the text to translators. It is useful for describing the meaning of the text and/or the context it is used in.
 
-I really like that we still have our original text "Flat White" in the code file instead of using identifiers which can be less readable.
+I really like that we still have our original text "Flat White" in the code file instead of using identifiers. Thank you, Apple.
 
 ## Exporting project for translation
 
