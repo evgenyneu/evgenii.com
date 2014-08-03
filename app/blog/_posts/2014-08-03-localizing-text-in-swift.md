@@ -62,7 +62,7 @@ Use `Editor` > `Import Localizations...` menu and choose the `jp.xliff` file.
 
 ## Replacing parts of localized text
 
-Often we want to replace the parts of the text string with dynamic values when the app is running. We can use `String.localizedStringWithFormat` function to do that.
+Often we want to replace the parts of the text string with dynamic values when the app is running. It can be done with `String.localizedStringWithFormat` function.
 
 ```swift
 String.localizedStringWithFormat(
