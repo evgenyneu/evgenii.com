@@ -10,13 +10,13 @@ In this tutorial I want to show how to translate a text string in Swift code fil
 Suppose you have a text string in your .swift code:
 
 ```swift
-let orderName = "Flat White"
+let text = "Flat White"
 ```
 
 The text can be internationalized with `NSLocalizedString` function:
 
 ```swift
-let orderName = NSLocalizedString("Flat White", comment: "Coffee order name")
+let text = NSLocalizedString("Flat White", comment: "Coffee order name")
 ```
 
 The `comment` will be passed along with the text to translators. It is useful for describing the meaning of the text and/or the context it is used in.
