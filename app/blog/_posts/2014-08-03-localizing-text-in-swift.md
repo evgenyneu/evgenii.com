@@ -30,7 +30,7 @@ Choose `Editor` > `Export for Localization...` menu when project is selected in 
 Let's say we want to add a Japanese translation.
 
 1. Copy `en.xliff` file to `jp.xliff`.
-1. Open the file in any text editor and add a `target-language="jp"` attribute to all the `<file>` elements.
+1. Open the file and add a `target-language="jp"` attribute to all the `<file>` elements.
 
   ```xml
   <file
