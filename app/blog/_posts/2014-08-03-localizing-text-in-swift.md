@@ -5,7 +5,7 @@ meta_description: "Tutorial about localizing a text in Swift code."
 tags: programming
 ---
 
-In this tutorial I want to show how to translate text in Swift code file to a different language.
+In this tutorial I want to show how to translate a text string in Swift code file to a different language.
 
 Suppose you have a text string in your .swift code:
 
