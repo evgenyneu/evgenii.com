@@ -73,5 +73,5 @@ String.localizedStringWithFormat(
 
 ## Reference
 
-* [Localizing with Xcode 6 - WWDC 2014 Video](https://developer.apple.com/videos/wwdc/2014/?id=412)
+* [Localizing with Xcode 6](https://developer.apple.com/videos/wwdc/2014/?id=412): WWDC 2014 session video
 
