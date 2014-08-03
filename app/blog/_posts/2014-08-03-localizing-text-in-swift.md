@@ -52,7 +52,7 @@ Let's say we want to add a Japanese translation.
 
 ## Importing traslation back into the project
 
-Use `Editor` > `Import Localizations...` menu and shoose the `jp.xliff` file.
+Use `Editor` > `Import Localizations...` menu and choose the `jp.xliff` file.
 
 ## Finally, test the app with a different language
 
