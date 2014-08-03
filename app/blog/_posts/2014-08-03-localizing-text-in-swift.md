@@ -7,7 +7,7 @@ tags: programming
 
 In this tutorial I want to show how to translate a text string in Swift code file to a different language.
 
-Suppose you have a text string in your .swift code:
+Suppose you have a English text string in your .swift code:
 
 ```swift
 let text = "Flat White"
