@@ -5,7 +5,7 @@ meta_description: "Tutorial about localizing a text in Swift code."
 tags: programming
 ---
 
-This tutorial explains how to translate text in your Swift code to a different language.
+In this tutorial I want to show how to translate text in Swift code file to a different language.
 
 Suppose you have a text string in your .swift code:
 
@@ -62,7 +62,7 @@ Use `Editor` > `Import Localizations...` menu and choose the `jp.xliff` file.
 
 ## Replacing parts of localized text
 
-Use `String.localizedStringWithFormat` function to replace parts of the localized text.
+Often we want to replace the parts of the text string with dynamic values when the app is running. We can use `String.localizedStringWithFormat` function to do that.
 
 ```swift
 String.localizedStringWithFormat(
