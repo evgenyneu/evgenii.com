@@ -13,7 +13,7 @@ Suppose you have a text string in your .swift code:
 label.text = "Flat White"
 ```
 
-Let's say we want to translate the text from English to Japanese. It is easy to internationalize it with `NSLocalizedString` function:
+The text can be internationalized with `NSLocalizedString` function:
 
 ```swift
 NSLocalizedString("Flat White", comment: "Coffee order name")
@@ -23,7 +23,7 @@ The `comment` will be passed along with the text to translators. It is useful fo
 
 ## Exporting project for translation
 
-Choose `Editor` > `Export for Localization...` menu when project is selected in Project Navigator. The text will be exported to `en.xliff` file.
+Let's say we want to translate the text from English to Japanese. Choose `Editor` > `Export for Localization...` menu when project is selected in Project Navigator. The text will be exported to `en.xliff` file.
 
 ## Translating `.xliff` file
 
