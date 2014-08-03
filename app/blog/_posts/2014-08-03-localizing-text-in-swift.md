@@ -25,7 +25,7 @@ I really like that we still have our original text "Flat White" in the code file
 
 ## Exporting project for translation
 
-Let's say we want to translate the text from English to Japanese. Choose `Editor` > `Export for Localization...` menu when project is selected in Project Navigator. The text will be exported to `en.xliff` file.
+Now let's say we want to translate our project from English to Japanese. Choose `Editor` > `Export for Localization...` menu when project is selected in Project Navigator. The text will be exported to `en.xliff` file.
 
 ## Translating `.xliff` file
 
