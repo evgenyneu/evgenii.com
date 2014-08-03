@@ -21,7 +21,7 @@ NSLocalizedString("Flat White", comment: "Coffee order name")
 
 The `comment` will be passed along with the text to translators. It is useful for describing the meaning of the text and/or the context it is used in.
 
-## Exporting text for translation
+## Exporting project for translation
 
 Choose `Editor` > `Export for Localization...` menu when project is selected in Project Navigator. The text will be exported to `en.xliff` file.
 
@@ -50,7 +50,7 @@ Let's say we want to add a Japanese translation.
   </trans-unit>
   ```
 
-## Importing traslation into the project
+## Importing traslation back into the project
 
 Use `Editor` > `Import Localizations...` menu and shoose the `jp.xliff` file.
 
