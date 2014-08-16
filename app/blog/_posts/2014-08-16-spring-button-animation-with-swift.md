@@ -1,11 +1,11 @@
 ---
 layout: blog_post
-title: "Spring button animation in iOS/Swift"
+title: "Animating button with spring effect in iOS/Swift"
 meta_description: "Shows spring button animation technique in iOS using Swift language"
 tags: programming
 ---
 
-In my app I have a big Play button. I wanted to show the button with a nice spring zooming effect to make it more noticeable and less boring:
+In my app I have a big Play button. I wanted to show the button with a nice  bouncing effect to make it more noticeable and less boring:
 
 <div class='isTextCentered'>
   <img width='144' class='isTextCentered' src='/image/blog/2014-08-16-spring-style-animation-in-ios-with-swift.gif' alt='Spring style button animation iOS with Swift'>
