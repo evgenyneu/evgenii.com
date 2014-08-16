@@ -1,23 +1,23 @@
 ---
 layout: blog_post
-title: "Animating button with spring effect in iOS/Swift"
+title: "Spring button animation in iOS/Swift"
 meta_description: "Shows spring button animation technique in iOS using Swift language"
 tags: programming
 ---
 
-In my app I have a big Play button. I wanted to show the button with a nice  bouncing effect to make it more noticeable and less boring:
+In my app I have a big Play button. I wanted to show it with a nice bouncing effect to make it more noticeable and less boring.
 
 <div class='isTextCentered'>
   <img width='144' class='isTextCentered' src='/image/blog/2014-08-16-spring-style-animation-in-ios-with-swift.gif' alt='Spring style button animation iOS with Swift'>
 </div>
 
 This kind of animation is easy to create with just a few lines of code.
-First, we make the button smaller by applying scale transformation:
+First, I made the button smaller by applying scale transformation:
 
 ```swift
 button.transform = CGAffineTransformMakeScale(0.1, 0.1)
 ```
-Then we use spring style animation that resets the button to its initial state.
+Then I used spring style animation that resets the button to its initial state.
 
 ```swift
 UIView.animateWithDuration(2.0,
@@ -30,7 +30,7 @@ UIView.animateWithDuration(2.0,
   }, completion: nil)
 ```
 
-There are 3 parameters that control animation behaviour:
+## Animation parameters
 
 * First one is duration of the animation, which I set to 2 seconds.
 * `usingSpringWithDamping` sets the wobbliness of the spring animation. The closer the value to zero the more shaky the animation.
@@ -42,7 +42,7 @@ It took me many minutes to play with those 3 parameters before I achieved the an
 
 [https://github.com/evgenyneu/bubble-button-animation-ios-swift](https://github.com/evgenyneu/bubble-button-animation-ios-swift)
 
-[Button image](/files/2014-08-16-play.sketch.zip) was created with Sketch app.
+Button image was created with Sketch app - [download image source](](/files/2014-08-16-play.sketch.zip).
 
 
 
