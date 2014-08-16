@@ -42,6 +42,8 @@ It took me many minutes to play with those 3 parameters before I achieved the an
 
 [https://github.com/evgenyneu/bubble-button-animation-ios-swift](https://github.com/evgenyneu/bubble-button-animation-ios-swift)
 
+[Button image](/files/2014-08-16-play.sketch.zip) was created with Sketch app.
+
 
 
 
