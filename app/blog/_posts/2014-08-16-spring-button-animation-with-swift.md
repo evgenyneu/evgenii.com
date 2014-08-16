@@ -38,11 +38,10 @@ UIView.animateWithDuration(2.0,
 
 It took me many minutes to play with those 3 parameters before I achieved the animation effect I liked.
 
-## Demo app
+## Source files
 
-[https://github.com/evgenyneu/bubble-button-animation-ios-swift](https://github.com/evgenyneu/bubble-button-animation-ios-swift)
-
-Button image was created with Sketch app - [download image source](](/files/2014-08-16-play.sketch.zip).
+* [Demo app on GitHub](https://github.com/evgenyneu/bubble-button-animation-ios-swift)
+* [Button image source](](/files/2014-08-16-play.sketch.zip) created with Sketch app.
 
 
 
