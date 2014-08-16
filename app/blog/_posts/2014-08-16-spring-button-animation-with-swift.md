@@ -41,7 +41,7 @@ It took me many minutes to play with those 3 parameters before I achieved the an
 ## Source files
 
 * [Demo app on GitHub](https://github.com/evgenyneu/bubble-button-animation-ios-swift)
-* [Button image source](](/files/2014-08-16-play.sketch.zip) created with Sketch app.
+* [Button image source](/files/2014-08-16-play.sketch.zip) created with Sketch app.
 
 
 
