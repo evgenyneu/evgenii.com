@@ -7,7 +7,10 @@ body {
   font-size: 17px;
 }
 
-img { max-width: 100%; }
+img {
+  max-width: 100%;
+  margin: $iiMarginSmall 0;
+}
 
 ul, ol {
   margin-bottom: 2em;
