@@ -9,4 +9,4 @@ iOS app for encrypting text messages. Uses Advanced Encryption Standard with a 2
 
 <a href='https://github.com/evgenyneu/aes-text-encryption-ios' title='View source on GitHub'><img src='/image/logos/octocat.jpg' alt='View source on GitHub' class='GitHubOctocatLogo'></a>
 
-<img src='/image/projects/2014_aes_crypto_for_ios.png' class='Screenshot--IphonePortrait2x' title='AES Crypto for iOS'>
+<img src='/image/projects/2014_2_aes_crypto_for_ios.png' class='Screenshot--IphonePortrait2x' title='AES Crypto for iOS'>
