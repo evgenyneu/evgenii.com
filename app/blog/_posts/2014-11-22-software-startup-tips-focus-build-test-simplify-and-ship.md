@@ -7,7 +7,7 @@ tags: technology
 
 * **Focus.** Be very particular in what your business does. Do not try to be everything for everyone. Narrow down the scope of your product.
 
-* **Build.** start developing interactive prototyple ASAP.
+* **Build.** Start developing interactive prototyple ASAP.
 
 * **Test.** Test your ideas on people to get feedback quickly.
 
