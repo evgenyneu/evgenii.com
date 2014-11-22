@@ -21,7 +21,7 @@ tags: technology
 
 * **Ship**. It is impossible to predict how popular your product will be before it is shipped and used.
 
-**Source:** video presentation from Rohan Puri [Why You're Over-Thinking Your UI/UX](https://www.youtube.com/watch?v=Is2O666qDPs).
+**Source:** video [Why You're Over-Thinking Your UI/UX with Rohan Puri](https://www.youtube.com/watch?v=Is2O666qDPs).
 
 
 
