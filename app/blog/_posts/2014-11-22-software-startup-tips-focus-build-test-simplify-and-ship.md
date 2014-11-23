@@ -1,7 +1,7 @@
 ---
 layout: blog_post
 title: "UI tips: focus, build, test and ship"
-meta_description: "Tips for software startups on how to design successfull products."
+meta_description: "Tips for software startups on how to design successful products."
 tags: technology
 ---
 
