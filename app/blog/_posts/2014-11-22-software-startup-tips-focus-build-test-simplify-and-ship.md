@@ -7,11 +7,11 @@ tags: technology
 
 * **Focus.** Be very particular in what your business does. Do not try to be everything for everyone. Narrow down the scope of your product.
 
-* **Build.** Start developing interactive prototyple ASAP.
+* **Build.** Start developing interactive prototype ASAP. Don't overthink it, just build.
 
-* **Test.** Test your ideas on people to get feedback quickly.
+* **Test.** Test your ideas on people. Try to get user feedback during the earliest stages of development.
 
-* **Track**. Track usage of your software with Google Analytics, Heap, Flurry services. You will be surprised after you see **how** people use your product.
+* **Track**. Track usage of your software with Google Analytics, Heap, Flurry and other services. You will be surprised after you see **how** people use your product (vs how you though it would be used).
 
 * **Simplify**. But not at the beginning. Start with many features and then narrow down.
 
