@@ -1,6 +1,6 @@
 ---
 layout: blog_post
-title: "Power consumption of background location updates in iOS"
+title: "Power consumption of location updates in iOS"
 meta_description: "This test shows power consumption of using location service on iOS in different accuracy settings"
 tags: programming
 ---
@@ -30,7 +30,7 @@ Getting location updates in **kCLLocationAccuracyHundredMeters** mode consumed a
 * **iPhone 6 Plus**: 0%
 * **iPhone 5**: 7%
 
-**kCLLocationAccuracyNearestTenMeters** mode consumed 7% of battery charge on iPhone 5. Consumption on iPhone 6 Plus remained zero. Location updates are coming more frequently than in 100m mode and they have the average accuracy of 10 meters. The accuracy does not change after WiFi is switched off. I presume that's because the phones are using GPS.
+**kCLLocationAccuracyNearestTenMeters** mode consumed 7% of battery charge on iPhone 5. Consumption on iPhone 6 Plus remained zero. Location updates are coming more frequently than in 100m mode with average accuracy of 10 meters. The accuracy does not change after WiFi is switched off. I assume that's because the phones are using GPS.
 
 ## My conclusion
 
