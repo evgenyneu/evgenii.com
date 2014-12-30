@@ -20,15 +20,15 @@ Test results show percentage of battery charge consumed when running the app wit
 
 ### Accuracy '100 meters'
 
-* **iPhone 6 Plus**: 4%
-* **iPhone 5**: 16%
+* **iPhone 6 Plus**: 4% of charge consumed.
+* **iPhone 5**: 16% of charge consumed.
 
 Getting location updates in **kCLLocationAccuracyHundredMeters** mode consumed relatively little power on both devices. Incoming location updates usually show accuracy of 65 meters. The accuracy becomes worse in rural areas. Turning WiFi off makes location accuracy drop to 1 km or worse. This tells us that the phone is probably using WiFi when it's available and cell tower triangulation when there is no WiFi.
 
 ### Accuracy 'nearest ten meters'
 
-* **iPhone 6 Plus**: 22%
-* **iPhone 5**: 75%
+* **iPhone 6 Plus**: 22% of charge consumed.
+* **iPhone 5**: 75% of charge consumed.
 
 **kCLLocationAccuracyNearestTenMeters** mode ate significantly more battery than the '100 meters' mode. Location updates are coming more frequently than in 100m mode with average accuracy of 10 meters. The accuracy does not change after WiFi is switched off. I assume that's because the phones are using GPS all the time.
 
