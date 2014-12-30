@@ -16,7 +16,7 @@ I ran power consumption meter app for 12 hours. The app was started on two fully
 
 ## Test results
 
-Test results show percentage of battery charge consumed when running the app with different `desiredAccuracy` setting of location manager. The lower the percentage value - the better.
+Test results show percentage of battery charge consumed when running the app with different `desiredAccuracy` setting of location manager. The lower the percentage value - the better. No power was consumed during 12 hours when the meter app was not running.
 
 ### Accuracy '100 meters'
 
