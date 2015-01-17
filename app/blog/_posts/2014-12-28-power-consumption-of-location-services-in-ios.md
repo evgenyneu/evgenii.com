@@ -34,7 +34,7 @@ Getting location updates in **kCLLocationAccuracyHundredMeters** mode consumed r
 
 ## My conclusion
 
-From the results of the tests I can probably assume that 'nearest ten meters' (GPS) mode consumes from 4 to 6 times more energy than '100 meters' (WiFi / cell tower) mode. Therefore I would avoid running 'ten meters' mode for longer than a couple of hours per day.
+From the results of the tests I can probably assume that 'nearest ten meters' (GPS) mode consumes from 4 to 6 times more energy than '100 meters' (WiFi / cell tower) mode. Therefore I would personally avoid running 'ten meters' mode for longer than a couple of hours per day.
 
 ## Apps used
 
