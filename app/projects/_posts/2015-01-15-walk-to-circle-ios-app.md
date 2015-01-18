@@ -23,7 +23,7 @@ Next, I walk to the circle. Yes, walk, physically, with my two legs.
 
 ### 3. Circle reached!
 
-Finally I receive a notification when I reached the circle.
+Finally, I receive a notification when the circle is reached.
 
 <img src='/image/projects/2015_15_walk_to_circle_for_ios/3_circle_is_reached.png' class='Screenshot--IphonePortrait2x' title='Circle is reached on Walk to Circle iOS app'>
 
