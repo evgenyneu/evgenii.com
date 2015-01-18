@@ -29,7 +29,7 @@ Finally, I receive a notification when the circle is reached.
 
 I noticed that when I do not use the app I usually choose same roads and places. And that can get boring very quickly. I think it's like that because I unconsciously choose familiar and proven places in order to avoid risk. On the other hand, when I use the app it breaks my normal walking habits. The app suggests visiting new places and taking different paths. It chooses walking destination randomly which can lead to a very unique and different walking experience.
 
-I hope you will enjoy the app. Please send me a message, I will be happy to know your feedback about it.
+I hope you will enjoy the app. Please send me a message, I will be happy to hear what you think.
 
 ## Download Walk to Circle on the App Store
 
