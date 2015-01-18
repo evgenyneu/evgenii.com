@@ -27,7 +27,7 @@ Finally, I receive a notification when the circle is reached.
 
 <img src='/image/projects/2015_15_walk_to_circle_for_ios/3_circle_is_reached.png' class='Screenshot--IphonePortrait2x' title='Circle is reached on Walk to Circle iOS app'>
 
-I noticed that when I do not use the app I usually choose same roads and places. And that can get boring very quickly. I think it's like that because I unconsciously choose familiar and proven places in order to avoid risk. When I use the app it breaks my normal walking habits, suggests visiting new places and walk different paths. It chooses walking destination randomly and that can lead to a very unique and different walking experience.
+I noticed that when I do not use the app I usually choose same roads and places. And that can get boring very quickly. I think it's like that because I unconsciously choose familiar and proven places in order to avoid risk. On the other hand, when I use the app it breaks my normal walking habits. The app suggests visiting new places and taking different paths. It chooses walking destination randomly which can lead to a very unique and different walking experience.
 
 I hope you will enjoy the app. Please send me a message, I will be happy to know your feedback about it.
 
