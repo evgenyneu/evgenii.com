@@ -17,7 +17,7 @@ First, it drops a circle randomly at a distance of about 400 meters from my curr
 
 ### 2. Walk
 
-Then I walk to the circle. Yes, walk, physically, with my two legs.
+Next, I walk to the circle. Yes, walk, physically, with my two legs.
 
 <img src='/image/projects/2015_15_walk_to_circle_for_ios/2_map_is_closed.png' class='Screenshot--IphonePortrait2x' title='Walk to Circle app when when map is closed'>
 
