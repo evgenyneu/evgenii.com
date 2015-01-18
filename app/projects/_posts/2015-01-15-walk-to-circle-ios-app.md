@@ -37,7 +37,7 @@ I hope you will enjoy the app. Please send me a message, I will be happy to know
 
 ### Walk to Circle is open source
 
-I will be happy if you use my code for creating your own app.
+Feel free to use my code for any purpose.
 
 <a href='https://github.com/evgenyneu/walk-to-circle-ios' title='View source on GitHub'><img src='/image/logos/octocat.jpg' alt='View Walk to Circle source code on GitHub' class='GitHubOctocatLogo'></a>
 
