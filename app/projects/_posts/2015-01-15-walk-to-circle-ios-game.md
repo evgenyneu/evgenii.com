@@ -3,6 +3,8 @@ layout: project
 title:  "Walk to Circle neighbourhood exploration iOS game"
 ---
 
+<div class='embed-container'><iframe src='http://www.youtube.com/embed/rKACkn3s2uA' frameborder='0' allowfullscreen></iframe></div>
+
 I really like listening to an audio book/podcast/music while walking around the city with no purpose.
 
 When I walk  very interesting things start happening. The audiobook's narrative gets imprinted in my head along with the memories of the places I walked in. Later when I recall a part of the audiobook it always brings pictures of the streets, houses and parks. I am not sure if it's the same for other people, but it appears that my brain stores visual and audio memories together. It is wonderful that I can later retrieve a geographical memory by recalling a part of the book.
