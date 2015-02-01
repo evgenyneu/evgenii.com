@@ -33,9 +33,7 @@ I noticed that when I do not use the app I usually choose same roads and places.
 
 I hope you will enjoy the app. Please send me a message, I will be happy to hear what you think.
 
-## Download Walk to Circle on the App Store
-
-<a href='https://itunes.apple.com/us/app/walk-to-circle/id955310614' title='Download on App Store'><img src='/image/logos/appstore_badge.png' alt='Download Walk to Circle on App Store' class='AppStoreBadge'></a>
+<a href='https://itunes.apple.com/us/app/walk-to-circle/id955310614' title='Download Walk to Circle on App Store'><img src='/image/logos/appstore_badge.png' alt='Download Walk to Circle on App Store' class='AppStoreBadge'></a>
 
 ### Walk to Circle is open source
 
