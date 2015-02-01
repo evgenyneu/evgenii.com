@@ -3,7 +3,7 @@ layout: project
 title:  "Walk to Circle neighbourhood exploration iOS game"
 ---
 
-<div class='embed-container'><iframe src='http://www.youtube.com/embed/rKACkn3s2uA' frameborder='0' allowfullscreen></iframe></div>
+<div class='embed-container'><iframe src='http://www.youtube.com/embed/rKACkn3s2uA?rel=0' frameborder='0' allowfullscreen></iframe></div>
 
 I really like listening to an audio book/podcast/music while walking around the city with no purpose.
 
