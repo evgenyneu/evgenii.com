@@ -45,7 +45,7 @@ markdown: redcarpet
   # extensions: ['fenced_code_blocks', 'smart']
 
 # Use Pygments to highlight code blocks
-pygments: false
+highlighter: null
 
 # Sitemap generator settings (https://github.com/kinnetica/jekyll-plugins)
 url: http://evgenii.com
