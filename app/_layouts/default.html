@@ -37,7 +37,11 @@
     {% include google_analytics.html %}
 
     <div class='layout-fixed layout-padding'>
-      {{ content }}
+      <article class='Content'>
+        {{ content }}
+      </article>
+
+      <br>
 
       {% include scripts.html %}
 

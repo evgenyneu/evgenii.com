@@ -9,3 +9,9 @@ h1, h2, h3 {
   margin: 50px 0 30px 0;
   font-weight: 400;
 }
+
+h2 {
+  border-bottom: 1px solid $shade80;
+  padding-bottom: $iiMarginSmall;
+  margin-bottom: 20px;
+}

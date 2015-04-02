@@ -1,27 +1,22 @@
 ---
 layout: default
 ---
-<article>
-  <h1>{{ page.title }}</h1>
 
-  {{ content }}
+<h1>{{ page.title }}</h1>
 
-  <br>
-  <br>
-  <br>
+{{ content }}
 
-  <div class='isTextCentered'>
-    {% for tag in page.tags %}
-      <div class='TagWrap'>
-        <a href='/tag/{{ tag }}' class='Tag'>{{ tag | replace: '-', ' ' | capitalize }}</a>
-      </div>
-    {% endfor %}
+<br>
+<br>
+<br>
 
-    {% include byline.html %}
-  </div>
+<div class='isTextCentered'>
+  {% for tag in page.tags %}
+    <div class='TagWrap'>
+      <a href='/tag/{{ tag }}' class='Tag'>{{ tag | replace: '-', ' ' | capitalize }}</a>
+    </div>
+  {% endfor %}
 
-  <br>
-
-</article>
-
+  {% include byline.html %}
+</div>
 

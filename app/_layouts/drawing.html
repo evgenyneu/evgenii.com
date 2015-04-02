@@ -2,23 +2,19 @@
 layout: default
 layout_class: layout-wider isTextCentered
 ---
-<article>
-  <h1>{{ page.title }}</h1>
 
-  <p><img src='/image/drawings/{{ page.path | replace: 'drawings/_posts/', '' | replace: '.md', '.jpg'}}' alt='{{page.title}}'/></p>
+<h1>{{ page.title }}</h1>
 
-  {{ content }}
+<p><img src='/image/drawings/{{ page.path | replace: 'drawings/_posts/', '' | replace: '.md', '.jpg'}}' alt='{{page.title}}'/></p>
 
-  <br>
-  <br>
-  <br>
+{{ content }}
 
-  <div class='TagWrap'>
-    <a href='/drawings' class='Tag'>Drawings</a>
-  </div>
+<br>
+<br>
+<br>
 
-  {% include byline.html %}
+<div class='TagWrap'>
+  <a href='/drawings' class='Tag'>Drawings</a>
+</div>
 
-  <br>
-
-</article>
+{% include byline.html %}

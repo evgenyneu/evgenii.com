@@ -4,14 +4,15 @@
 @import 'base/type';
 @import 'layout';
 
+@import 'modules/byline';
+@import 'modules/content';
+@import 'modules/drawings';
+@import 'modules/embed_container';
 @import 'modules/home_image';
+@import 'modules/image';
+@import 'modules/logos';
 @import 'modules/project';
 @import 'modules/screenshot';
-@import 'modules/image';
-@import 'modules/byline';
 @import 'modules/tag';
-@import 'modules/drawings';
-@import 'modules/logos';
-@import 'modules/embed_container';
 
 @import 'states/_misc';
