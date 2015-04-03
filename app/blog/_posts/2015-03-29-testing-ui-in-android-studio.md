@@ -14,7 +14,7 @@ In this tutorial we will learn how to:
 
 ### TDD?
 
-Don't worry if it sounds scary and too scientific. It is actually very simple. All it means is writing tests *before* writing the app code. A aood thing is that it's easy to practice TDD for Android development. All thanks to the excellent testing capabilities of the platform.
+Don't worry if it sounds scary and too scientific. It is actually very simple. All it means is writing tests *before* writing the app code. I think it's easy to bring TDD to Android development. All thanks to the excellent testing capabilities of the platform.
 
 ### I assume you already know
 

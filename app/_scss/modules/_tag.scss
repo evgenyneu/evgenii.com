@@ -4,15 +4,15 @@
 
 .Tag {
   display: inline-block;
-  padding: 6px 8px;
+  padding: 1.5% 5%;
   min-width: 100px;
+  text-shadow: #777 0px 0px 1px;
 
   color: #fff;
   background-color: #ffb100;
   text-decoration: none;
   box-shadow: 22px 3px 0 -7px #ff6c00,
-            -13px -4px 0 -6px #ff9400,
-          -24px -10px 0 -10px #a66000;
+            -13px -4px 0 -6px #ff9400;
 
-  border-radius: 60%/100% 0;
+  border-radius: 360%/100% 470%;
 }
