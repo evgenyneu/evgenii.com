@@ -9,7 +9,7 @@ tags: programming
 In this tutorial we will learn how to:
 
 * Setup tests in Android Studio.
-* Write tests for basic UI interations in activity.
+* Write tests for basic UI interactions in activity.
 * Use test-driven development (TDD in short) approach for writing an Android app.
 
 ### TDD?
