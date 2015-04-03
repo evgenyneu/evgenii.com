@@ -1,16 +1,18 @@
 ---
 layout: blog_post
 layout_class: Content--hasImagesWithBorder
-title: "Tutorial: testing an activity in Android Studio"
+title: "Testing activity in Android Studio. Part 1."
 meta_description: "This tutorial shows how to setup tests in Android Studio and write test for basic UI interactions."
 tags: programming
 ---
 
 In this tutorial we will learn how to:
 
-* Setup tests in Android Studio.
+* Create a new project in Android Studio.
+* Create new test confiuration and run the tests.
 * Write tests for basic UI interactions in activity.
-* Use test-driven development (TDD in short) approach for writing an Android app.
+
+Here we will be using test-driven development approach (called TDD) to write a simple Android app.
 
 ### TDD?
 
@@ -86,6 +88,10 @@ We have created configuration for testing and can now use it any time we want to
 Click the configuration menu next to the run button on the toolbar. You will see **app** and **Test in `com.myapp..** configurations there. This is how we can switch between running the app and tests.
 
 ![Switch between app and test configurations](/image/blog/2015-09-27-testing-ui-in-android-studio/0220_switch_between_app_and_tests_in_android_studio.png)
+
+### Reference
+
+
 
 
 
