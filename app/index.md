@@ -15,7 +15,7 @@ I am Evgenii (or just ii).
 
 Addicted to novelty. Listen to podcasts and audio books. Love EDM, hip-hop and pop music. Enjoy [programming](/projects/), [drawing](/drawings/) and [blogging](/blog/). Favourite book: Harry Potter.
 
-## Want to keep in touch?
+### Want to keep in touch?
 
 [Google+]({{ site.author.google_plus_url }})
 

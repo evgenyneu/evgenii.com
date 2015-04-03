@@ -6,6 +6,7 @@
     color: #7D4718;
     width:250px;
     height:250px;
+    margin: 0 auto;
     background: url('/image/javascript-game/chessboard.jpg') no-repeat left top;
     position:relative;
     overflow:hidden;

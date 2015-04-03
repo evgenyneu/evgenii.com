@@ -3,7 +3,7 @@ layout: project
 title:  "AES Crypto web app"
 ---
 
-## [aescrypto.com](http://aescrypto.com)
+### [aescrypto.com](http://aescrypto.com)
 
 Web app for encrypting text messages. AES Crypto is open source and available on Android, iOS and Web.
 

@@ -15,19 +15,19 @@ I’m not sure if this works the same for everyone, but for me, audio and visual
 
 My Walk To Circle iOS App simply makes these journeys far more intriguing, and there are three fascinating stages to this process.
 
-### 1. Drop a circle
+## 1. Drop a circle
 
 First, when you start up the App it drops a circle randomly, at a distance of about 400 meters from whatever your current location might be. You then have approximately 5 seconds to memorize the placement of the circle on the map before it closes.
 
 <img src='/image/projects/2015_15_walk_to_circle_for_ios/1_drop_circle_on_map.png' class='Screenshot--IphonePortrait2x' title='Map screen of Walk to Circle iOS app '>
 
-### 2. Walk
+## 2. Walk
 
 Now, all that is required is simply putting one foot in front of the other one and taking those steps!
 
 <img src='/image/projects/2015_15_walk_to_circle_for_ios/2_map_is_closed.png' class='Screenshot--IphonePortrait2x' title='Walk to Circle app when when map is closed'>
 
-### 3. Circle reached!
+## 3. Circle reached!
 
 Finally, a notification is received once you reach that circle.
 
