@@ -26,6 +26,12 @@ We will create an app called "Greeter". It has a text input and a "Greet" button
 
 ![The `Greeter` app we will create](/image/blog/2015-09-27-testing-ui-in-android-studio/0100_finished_app_screen.png)
 
+
+
+
+
+
+
 ## 1. Let's get started: create a project in Android Studio
 
 Open Android Studio and create a new project: **File > New Project**.
@@ -47,4 +53,41 @@ Finally, click **Finish** and run the app by clicking the green start icon.
 You will see the app on device or the emulator. It will have an empty screen with "Hello world!" message.
 
 ![Empty Android app](/image/blog/2015-09-27-testing-ui-in-android-studio/0300_empty_app_first_run.png)
+
+
+
+
+
+
+
+
+## 2. Create test configuration and run tests
+
+We need to create a test configuration the first time we run the tests. There are already tests created by the New Project Wizard. Let's run them.
+
+* In your project window open **app > java**.
+* You will see two subfolders with same name **com.yourcompany.greeter**. The second one will have **(androidTest)**. Right-click on that one.
+* Select **Run > Tests in 'com.mycomp...** from the menu.
+* Select your device or emulator in the next dialog and it will run the tests.
+
+![Create test configuration and run tests](/image/blog/2015-09-27-testing-ui-in-android-studio/0200_create_test_configuration_in_android_studio.png)
+
+### View test results
+
+You will see a lot of green colour in the Run tool window. It means the tests passed successfully.
+If your Run window is closed click the **Run** button on the bottom-left or select **View > Tool Windows > Run** from the main menu.
+
+![View test results in run tool window](/image/blog/2015-09-27-testing-ui-in-android-studio/0210_view_test_results_in_run_tool_window_in_android_studio.png)
+
+### Switch between App and Test configurations
+
+We have created configuration for testing and can now use it any time we want to run our tests.
+
+Click the configuration menu next to the run button on the toolbar. You will see **app** and **Test in `com.myapp..** configurations there. This is how we can switch between running the app and tests.
+
+![Switch between app and test configurations](/image/blog/2015-09-27-testing-ui-in-android-studio/0220_switch_between_app_and_tests_in_android_studio.png)
+
+
+
+
 
