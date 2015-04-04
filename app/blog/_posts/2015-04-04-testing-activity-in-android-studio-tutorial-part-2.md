@@ -183,7 +183,7 @@ Finally, let's run our first test.
 
 ![Run our first test](/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0400_run_test.png)
 
-If you do not see the test configuration please refer to the [previous part of tutorial](/blog/testing-activity-in-android-studio-tutorial-part-1/) and create it.
+If there is no test configuration please refer to the [previous part of tutorial](/blog/testing-activity-in-android-studio-tutorial-part-1/) and create it.
 
 ## 5. Check test results
 
