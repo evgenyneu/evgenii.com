@@ -5,6 +5,7 @@ body {
   color: $shade40;
   font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   font-size: 17px;
+  word-wrap: break-word;
 }
 
 img {
@@ -34,4 +35,9 @@ hr {
   border: 0;
   border-top: 1px solid $shade90;
   border-bottom: 1px solid $shade100;
+}
+
+pre, code {
+  font-size: 1em;
+  background: $shade97;
 }

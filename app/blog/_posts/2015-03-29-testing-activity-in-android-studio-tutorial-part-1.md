@@ -20,7 +20,7 @@ For this tutorial you will need to have Android Studio installed and know how to
 
 We will create an app called "Greeter". It has a text input and a "Greet" button. In this app user enters a name and taps the "Greet" button. The app shows a greeting message.
 
-![The `Greeter` app we will create](/image/blog/2015-09-27-testing-ui-in-android-studio/0100_finished_app_screen.png)
+![The `Greeter` app we will create](/image/blog/2015-03-27-testing-ui-in-android-studio/0100_finished_app_screen.png)
 
 
 
@@ -33,23 +33,23 @@ We will create an app called "Greeter". It has a text input and a "Greet" button
 * Open Android Studio and create a new project: **File > New Project**.
 * Enter **Greeter** in Application Name and **mycompany.com** in Company Domain.
 
-![New project in Android Studio](/image/blog/2015-09-27-testing-ui-in-android-studio/0110_new_project_in_android_studio.png)
+![New project in Android Studio](/image/blog/2015-03-27-testing-ui-in-android-studio/0110_new_project_in_android_studio.png)
 
 Select a **blank activity**.
 
-![Select new project with blank activity in Android Studio](/image/blog/2015-09-27-testing-ui-in-android-studio/0120_new_project_select_blank_activity_in_android_studio.png)
+![Select new project with blank activity in Android Studio](/image/blog/2015-03-27-testing-ui-in-android-studio/0120_new_project_select_blank_activity_in_android_studio.png)
 
 Next, keep default activity name: `MainActivity`. This name will be used in our code later.
 
-![Set activity name and title](/image/blog/2015-09-27-testing-ui-in-android-studio/0130_set_activity_name_and_title_in_android_studio.png)
+![Set activity name and title](/image/blog/2015-03-27-testing-ui-in-android-studio/0130_set_activity_name_and_title_in_android_studio.png)
 
 Finally, click **Finish** and run the app by clicking the green start icon on the toolbar.
 
-![Run the app in Android Studio](/image/blog/2015-09-27-testing-ui-in-android-studio/0140_run_android_studio_project.png)
+![Run the app in Android Studio](/image/blog/2015-03-27-testing-ui-in-android-studio/0140_run_android_studio_project.png)
 
 You will see the app on your device or emulator. It will have an empty screen with "Hello world!" message.
 
-![Empty Android app](/image/blog/2015-09-27-testing-ui-in-android-studio/0300_empty_app_first_run.png)
+![Empty Android app](/image/blog/2015-03-27-testing-ui-in-android-studio/0300_empty_app_first_run.png)
 
 
 
@@ -67,14 +67,14 @@ We need to create a test configuration the first time we run the tests. There ar
 * Select **Run > Tests in 'com.mycomp...** from the context menu.
 * Select your device or emulator in the next dialog and it will run the tests.
 
-![Create test configuration and run tests](/image/blog/2015-09-27-testing-ui-in-android-studio/0200_create_test_configuration_in_android_studio.png)
+![Create test configuration and run tests](/image/blog/2015-03-27-testing-ui-in-android-studio/0200_create_test_configuration_in_android_studio.png)
 
 ### View test results
 
 You will see a lot of green colour in the Run tool window. It means the tests passed successfully.
 If your Run window is closed click the **Run** button on the bottom-left or select **View > Tool Windows > Run** from the main menu.
 
-![View test results in run tool window](/image/blog/2015-09-27-testing-ui-in-android-studio/0210_view_test_results_in_run_tool_window_in_android_studio.png)
+![View test results in run tool window](/image/blog/2015-03-27-testing-ui-in-android-studio/0210_view_test_results_in_run_tool_window_in_android_studio.png)
 
 ### Switch between App and Test configurations
 
@@ -82,7 +82,7 @@ We have created configuration for testing and can now use it any time we want to
 
 Click the configuration dropdown menu located next to the run button on the toolbar. You will see **app** and **Test in `com.myapp..** configurations there. This is how we can switch between running the app and tests.
 
-![Switch between app and test configurations](/image/blog/2015-09-27-testing-ui-in-android-studio/0220_switch_between_app_and_tests_in_android_studio.png)
+![Switch between app and test configurations](/image/blog/2015-03-27-testing-ui-in-android-studio/0220_switch_between_app_and_tests_in_android_studio.png)
 
 ### Test configuration (under the hood)
 
@@ -99,17 +99,25 @@ You will see the following settings:
 It means that this configuration will run all the tests in **com.mycompany.greeter** package.
 
 
-![Test configuration settings](/image/blog/2015-09-27-testing-ui-in-android-studio/0230_test_configuration_settings_in_android_studio.png)
+![Test configuration settings](/image/blog/2015-03-27-testing-ui-in-android-studio/0230_test_configuration_settings_in_android_studio.png)
+
+
+
+
 
 ## What's next?
 
-In Part 2 of this tutorial we will write a test that will enter a name in the text input, tap a button and verify the greeting message.
+Next we will write our first test.
 
-Stay tuned!
+[Read part 2 of this tutorial](/blog/testing-activity-in-android-studio-tutorial-part-2/)
+
+
+
 
 
 ### Reference
 
+* [Part 2 of this tutorial](/blog/testing-activity-in-android-studio-tutorial-part-2/)
 * [Sample Code for the Greet app](https://github.com/evgenyneu/greeter-android)
 * [Building Your First App - Android Developers](https://developer.android.com/training/basics/firstapp/index.html)
 
