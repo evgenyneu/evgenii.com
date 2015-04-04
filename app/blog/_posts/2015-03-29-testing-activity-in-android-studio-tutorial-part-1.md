@@ -16,7 +16,7 @@ In this tutorial we will learn how to:
 
 For this tutorial you will need to have Android Studio installed and know how to run an app. Please refer to the excellent [Building Your First App](https://developer.android.com/training/basics/firstapp/index.html) tutorial from Google.
 
-### The app we will create
+### Greeter app
 
 We will create an app called "Greeter". It has a text input and a "Greet" button. In this app user enters a name and taps the "Greet" button. The app shows a greeting message.
 
