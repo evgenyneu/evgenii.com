@@ -189,7 +189,7 @@ If all went well you will see green light for the **testActivityExists** test in
 
 ![Check results of the first test](/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0500_check_test_results.png)
 
-
+If you do not see the test configuration please refer to the [previous part of tutorial](/blog/testing-activity-in-android-studio-tutorial-part-1/) and create it.
 
 
 
