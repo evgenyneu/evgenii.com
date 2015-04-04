@@ -183,13 +183,13 @@ Finally, let's run our first test.
 
 ![Run our first test](/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0400_run_test.png)
 
+If you do not see the test configuration please refer to the [previous part of tutorial](/blog/testing-activity-in-android-studio-tutorial-part-1/) and create it.
+
 ## 5. Check test results
 
 If all went well you will see green light for the **testActivityExists** test in the Run window. You can open this window from **View > Tool Windows > Run** menu or by clicking on **Run** button in the bottom left corner.
 
 ![Check results of the first test](/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0500_check_test_results.png)
-
-If you do not see the test configuration please refer to the [previous part of tutorial](/blog/testing-activity-in-android-studio-tutorial-part-1/) and create it.
 
 
 
