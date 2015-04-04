@@ -118,7 +118,7 @@ Next we will write our first test.
 ### Reference
 
 * [Part 2 of this tutorial](/blog/testing-activity-in-android-studio-tutorial-part-2/)
-* [Sample Code for the Greet app](https://github.com/evgenyneu/greeter-android)
+* [Sample Code for the Greeter app](https://github.com/evgenyneu/greeter-android)
 * [Building Your First App - Android Developers](https://developer.android.com/training/basics/firstapp/index.html)
 
 
