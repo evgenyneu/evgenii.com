@@ -49,6 +49,7 @@ The class file will have the following code
 package com.mycompany.greeter;
 
 public class MainActivityTests {
+
 }
 ```
 
@@ -62,6 +63,7 @@ In order to test Android activity we need to extend the `MainActivityTests` clas
 
 ```Java
 public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActivity> {
+
 }
 ```
 
@@ -73,8 +75,8 @@ You may see this error message:
 
 > Can not resolve symbol 'ActivityInstrumentationTestCase2'.
 
-To fix this error we need to import `android.test.ActivityInstrumentationTestCase2` package. Add the following line
-to the top of your file.
+To fix this error we need to import `android.test.ActivityInstrumentationTestCase2` package by adding the following line
+to the top of the test file.
 
 ```Java
 import android.test.ActivityInstrumentationTestCase2;
@@ -95,6 +97,7 @@ package com.mycompany.greeter;
 import android.test.ActivityInstrumentationTestCase2;
 
 public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActivity> {
+
 }
 ```
 
@@ -131,7 +134,7 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
 
 ## 3. Write the first test
 
-At last, we are done with all the preparations and can write our first test. The test will just do two small things: get a `MainActivity` object and verify its existence.
+At last, we are done with all the preparations and can write our first test.
 
 ```Java
 public void testActivityExists() {
@@ -139,6 +142,11 @@ public void testActivityExists() {
     assertNotNull(activity);
 }
 ```
+
+The test does two things:
+
+1. `MainActivity activity = getActivity();` gets a `MainActivity` object.
+1. `assertNotNull(activity);` verifies existence of that object.
 
 Here is the full test code:
 
@@ -158,10 +166,9 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
 }
 ```
 
-### Why writing such basic test?
+### What's the purpose of this test?
 
-You may ask this question and it's a reasonable one. After all, the test looks very trivial and does not seem to do much. I personally think this test serves simple but important role. It verifies that we configured
-our app and test code correctly. In later tests we will be interacting with our `MainActivity` and I think it's good to have some confidence in its existence early in the game.
+The test verifies that we configured our app and test code correctly. In later tests we will be interacting with our `MainActivity` and I think it's good to have some confidence in its existence early in the game.
 
 
 
