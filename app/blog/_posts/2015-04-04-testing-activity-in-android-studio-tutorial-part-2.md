@@ -178,12 +178,10 @@ The test verifies that we configured our app and test code correctly. In later t
 
 Finally, let's run our first test.
 
-* Select **Test in 'com.mycompany.greeter'** configuration from the dropdown located next to the **Run** button on the toolbar.
+* Select **Test in 'com.mycompany.greeter'** configuration from the dropdown located next to the **Run** button on the toolbar. If there is no test configuration please refer to the [previous part of tutorial](/blog/testing-activity-in-android-studio-tutorial-part-1/) and create it.
 * Click **Run** button.
 
 ![Run our first test](/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0400_run_test.png)
-
-If there is no test configuration please refer to the [previous part of tutorial](/blog/testing-activity-in-android-studio-tutorial-part-1/) and create it.
 
 ## 5. Check test results
 
