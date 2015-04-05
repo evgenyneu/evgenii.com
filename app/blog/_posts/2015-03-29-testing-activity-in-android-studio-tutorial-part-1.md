@@ -2,7 +2,7 @@
 layout: blog_post
 layout_class: Content--hasImagesWithBorder
 title: "Testing activity in Android Studio. Part 1."
-meta_description: "This tutorial shows how to setup tests in Android Studio and write test for basic UI interactions."
+meta_description: "This tutorial shows how to setup tests in Android Studio and write a test for basic UI interactions."
 tags: programming
 ---
 
