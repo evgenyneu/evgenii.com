@@ -46,7 +46,7 @@ Each control on the screen will have a unique ID. Those IDs will be used in our 
 
 ## 1. Create new test
 
-Let's create a new test method. First, we get the activity object. Put this method into your `MainActivityTests` file which you crated in the previour part of the tutorial.
+Let's create a new test method. First, we get the activity object. Put this method into your `MainActivityTests` file which you crated in the previous part of the tutorial.
 
 ```Java
 public void testGreet() {
@@ -193,7 +193,7 @@ TouchUtils.clickView(this, greetButton);
 This code does two things:
 
 1. Gets a **Button** by its ID `greet_button`.
-1. Taps the button. It's stange that Google chose to use the word "click" no not "tap" in the `clickView` method of `TouchUtils` library.
+1. Taps the button.
 
 Add the new imports to the top of the test file;
 
@@ -422,7 +422,7 @@ The full layout code will be:
 
 ### Run the tests and fail
 
-Run the test and you will that `testGreet` has failed. The Run tool window has a log section on the right with two usuful bits of imformation:
+Run the test and you will that `testGreet` has failed. The Run tool window where we can find the following:
 
 1. Failure reason: `expected:<[Hello, Jake!]> but was:<[]>`
 1. Failure location: `MainActivityTests.java:49`.
@@ -545,7 +545,7 @@ import android.widget.TextView;
 
 ### Run the tests and the app
 
-If we run the tests everyting should pass. Next, try running the app and see it working. Let’s tell the boss!
+If we run the tests they should pass. Next, try running the app and see it working. Let’s tell the boss!
 
 ![Run the app](/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0500_finished_app_screen.png)
 
