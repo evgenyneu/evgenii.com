@@ -202,7 +202,7 @@ In the third part of this tutorial we will write a test that will enter a name i
 
 ### Reference
 
-* [Part 1 of this tutorial](/blog/testing-activity-in-android-studio-tutorial-part-1/)
+* [Part 1](/blog/testing-activity-in-android-studio-tutorial-part-1/), [Part 2](/blog/testing-activity-in-android-studio-tutorial-part-2/) and [Part 3](/blog/testing-activity-in-android-studio-tutorial-part-3/) of this tutorial.
 * [Sample Code for the Greeter app](https://github.com/evgenyneu/greeter-android)
 * [Building Your First App - Android Developers](https://developer.android.com/training/basics/firstapp/index.html)
 
