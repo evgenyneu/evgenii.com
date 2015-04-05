@@ -19,7 +19,7 @@ Now we will write remaining tests and build the UI for the app.
 Before we start writing our first UI test I want to describe our development process.
 
 1. First, we write a test for a UI or logic that does not yet exist.
-1. We expect to see build errors or failed test.
+1. We expect to see build errors or failed tests.
 1. Then we create a UI element or write program logic.
 1. Finally, we run the test and make sure it passes.
 
@@ -46,7 +46,7 @@ Each control on the screen will have a unique ID. Those IDs will be used in our 
 
 ## 1. Create new test
 
-Let's create a new test method. First, we get the activity object. Put this method into your `MainActivityTests` file which you crated in the previous part of the tutorial.
+Let's create a new test method. First, we get the activity object. Put this method into your `MainActivityTests` file which you created in the previous part of the tutorial.
 
 ```Java
 public void testGreet() {
@@ -54,7 +54,7 @@ public void testGreet() {
 }
 ```
 
-Run the test and watch it pass. Excellent.
+Run the test and watch it pass. Excellent!
 
 
 
@@ -67,22 +67,30 @@ The test will enter name into a EditText control, which does not exist yet.
 Let's get an **EditText** control by its ID `greet_edit_text`.
 
 ```Java
-final EditText nameEditText = (EditText) activity.findViewById(R.id.greet_edit_text);
+final EditText nameEditText =
+    (EditText) activity.findViewById(R.id.greet_edit_text);
 ```
 
-You will need add the import statement to the top of your test file: `import android.widget.EditText;` Your `testGreet` method will look like this.
+You will need to add this import statement to the top of the **MainActivityTests** file:
+
+```Java
+import android.widget.EditText;
+```
+
+Your `testGreet` method will look like this.
 
 ```Java
 public void testGreet() {
     MainActivity activity = getActivity();
 
-    final EditText nameEditText = (EditText) activity.findViewById(R.id.greet_edit_text);
+    final EditText nameEditText =
+        (EditText) activity.findViewById(R.id.greet_edit_text);
 }
 ```
 
 ### Add EditText control to activity layout
 
-You will notice an error for `greet_edit_text` ID text. That's because the EditText does not exist yet. Let's create it.
+You will notice an error for `greet_edit_text` ID text. That's because the EditText does not exist yet in our app layout. Let's create it.
 
 * Expand **app > res > layout** folder in the Project tool window and open **activity_main.xml** file.
 * Switch main window from from **Design** to **Text** mode. You will see the XML markup for the layout.
@@ -130,7 +138,10 @@ You will notice that your test no longer has errors. Run the tests and they will
 
 ### Enter text into the input
 
-Now our test will enter a name into the **EditText** input. Switch back to **MainActivityTests** file and add the following code to the end of the `testGreet` method.
+Now our test will enter a name into the **EditText** input.
+
+* Switch back to **MainActivityTests** file.
+* Add the following code to the end of the `testGreet` method.
 
 ```Java
 getInstrumentation().runOnMainSync(new Runnable() {
@@ -161,7 +172,8 @@ public void testGreet() {
     // Type name in text input
     // ----------------------
 
-    final EditText nameEditText = (EditText) activity.findViewById(R.id.greet_edit_text);
+    final EditText nameEditText =
+        (EditText) activity.findViewById(R.id.greet_edit_text);
 
     // Send string input value
     getInstrumentation().runOnMainSync(new Runnable() {
@@ -186,7 +198,9 @@ It is time to implement the "Greet" button. Let's start with the test, as usual.
 Add the following code to the end of `testGreet` method:
 
 ```Java
-Button greetButton = (Button) activity.findViewById(R.id.greet_button);
+Button greetButton =
+    (Button) activity.findViewById(R.id.greet_button);
+
 TouchUtils.clickView(this, greetButton);
 ```
 
@@ -211,7 +225,8 @@ public void testGreet() {
     // Type name in text input
     // ----------------------
 
-    final EditText nameEditText = (EditText) activity.findViewById(R.id.greet_edit_text);
+    final EditText nameEditText =
+        (EditText) activity.findViewById(R.id.greet_edit_text);
 
     // Send string input value
     getInstrumentation().runOnMainSync(new Runnable() {
@@ -228,7 +243,9 @@ public void testGreet() {
     // Tap "Greet" button
     // ----------------------
 
-    Button greetButton = (Button) activity.findViewById(R.id.greet_button);
+    Button greetButton =
+        (Button) activity.findViewById(R.id.greet_button);
+
     TouchUtils.clickView(this, greetButton);
 }
 ```
@@ -282,10 +299,12 @@ The full layout code will be:
 
 ### Add button caption to string resources
 
-You will notice that `@string/greet_button` is marked red. This is the caption of the **Greet** button that is taken from the string resource and it's currently missing. Add the button caption text to the string resource file:
+You will notice that `@string/greet_button` attribute value is marked red. This is the caption of the **Greet** button that is taken from the string resources and it is currently missing.
+
+Add the button's caption text to the string resource file:
 
 * Expand **app > res > values** in project window.
-* Open **string.xml** file
+* Open **strings.xml** file
 * Add the following element after the last string element and before the closing `</resources>` tag.
 
 ```XML
@@ -294,9 +313,19 @@ You will notice that `@string/greet_button` is marked red. This is the caption o
 
 ![Add string resource](/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0300_add_string_resource.png)
 
+The full contents of **string.xml** file will be
+
+```XML
+<resources>
+    <string name="app_name">Greeter</string>
+    <string name="action_settings">Settings</string>
+    <string name="greet_button">Greet</string>
+</resources>
+```
+
 ### Run tests
 
-Run the tests and see them pass. Well done.
+Run the tests and see them pass. Well done!
 
 
 
@@ -305,17 +334,19 @@ Run the tests and see them pass. Well done.
 
 ## 4. Verify the greeting message
 
-We are almost there. When user taps the "Greet" button the app will show the greeting message: "Hello, [name]!". Where the **[name]** part is replaced with the name that the user entered into the EditText input. We will write the test first and then implement this logic in the app.
+We are almost there. When user taps the "Greet" button the app will show the greeting message: "Hello, [name]!". The **[name]** part is replaced with the name that the user entered into the EditText input. We will write the test first and then implement this logic in the app.
 
 Switch to **MainActivityTests** and add this code to the end of `testGreet` method.
 
 ```Java
-TextView greetMessage = (TextView) activity.findViewById(R.id.message_text_view);
+TextView greetMessage =
+    (TextView) activity.findViewById(R.id.message_text_view);
+
 String actualText = greetMessage.getText().toString();
 assertEquals("Hello, Jake!", actualText);
 ```
 
-This code does two things:
+This code does the following:
 
 1. Gets the **TextView** element by its ID `message_text_view`.
 1. Obtains the text of the **TextView** element by calling `getText` method.
@@ -336,7 +367,8 @@ public void testGreet() {
     // Type name in text input
     // ----------------------
 
-    final EditText nameEditText = (EditText) activity.findViewById(R.id.greet_edit_text);
+    final EditText nameEditText =
+        (EditText) activity.findViewById(R.id.greet_edit_text);
 
     // Send string input value
     getInstrumentation().runOnMainSync(new Runnable() {
@@ -353,7 +385,9 @@ public void testGreet() {
     // Tap "Greet" button
     // ----------------------
 
-    Button greetButton = (Button) activity.findViewById(R.id.greet_button);
+    Button greetButton =
+        (Button) activity.findViewById(R.id.greet_button);
+
     TouchUtils.clickView(this, greetButton);
 
     // Verify greet message
@@ -422,20 +456,20 @@ The full layout code will be:
 
 ### Run the tests and fail
 
-Run the test and you will that `testGreet` has failed. The Run tool window where we can find the following:
+Run the test and notice how `testGreet` fails. We can find the following in the Run tool window:
 
 1. Failure reason: `expected:<[Hello, Jake!]> but was:<[]>`
 1. Failure location: `MainActivityTests.java:49`.
 
 ![Run tests and fail](/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0400_run_test_failed.png)
 
-Click on failure location link and it will bring us to this line:
+Click on failure location link and it will bring us to this line in the **MainActivityTests** file:
 
 ```Java
 assertEquals("Hello, Jake!", actualText);
 ```
 
-The test failed because we have not implemented the output of the greeting message in the app yet and the message stays empty. Let's do it now.
+The test failed because we have not implemented the output of the greeting message in the app yet. That message stays empty instead of showing the greeting text. Let's implement it.
 
 
 
@@ -449,7 +483,7 @@ The test failed because we have not implemented the output of the greeting messa
 There is just one thing left to be done. Let's remind us what the app does. When the user taps the "Greet" button, the app shows a greeting message. We now need to write code that is executed when the user taps the "Greet" button.
 
 * Open **activity_main.xml** file.
-* Add `android:onClick="didTapGreetButton"` attribute to **Button** element.
+* Add `android:onClick="didTapGreetButton"` attribute to the **Button** element.
 
 The button element will look like:
 
@@ -518,11 +552,15 @@ We will implement the `didTapGreetButton` method that will show the greeting mes
 
 ```Java
 public void didTapGreetButton(View view) {
-  EditText greetEditText = (EditText) findViewById(R.id.greet_edit_text);
+  EditText greetEditText =
+      (EditText) findViewById(R.id.greet_edit_text);
+
   String name = greetEditText.getText().toString();
   String greeting = String.format("Hello, %s!", name);
 
-  TextView messageTextView = (TextView) findViewById(R.id.message_text_view);
+  TextView messageTextView =
+      (TextView) findViewById(R.id.message_text_view);
+
   messageTextView.setText(greeting);
 }
 ```
@@ -533,9 +571,9 @@ This `didTapGreetButton` method does the following:
 1. Gets the text from the input.
 1. Next, it constructs the greeting message with the format "Hello, %s!".
 1. Finds the **TextView** by its ID `message_text_view`.
-1. And finally, sets the greeting message into the text view by calling `setText` method.
+1. And finally, shows the greeting message in the text view by calling `setText` method.
 
-Add these missing imports to the top of **MainActivity** file.
+Add these missing imports to the top of the **MainActivity** file.
 
 ```Java
 import android.view.View;
@@ -545,11 +583,12 @@ import android.widget.TextView;
 
 ### Run the tests and the app
 
-If we run the tests they should pass. Next, try running the app and see it working. Let’s tell the boss!
+If we run the tests they should all pass. Next, try running the app and see it working. Let’s tell the boss!
 
 ![Run the app](/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0500_finished_app_screen.png)
 
 
+If anything went wrong, please refer to the [sample Code for the Greeter app](https://github.com/evgenyneu/greeter-android).
 
 
 
@@ -557,7 +596,7 @@ If we run the tests they should pass. Next, try running the app and see it worki
 
 ## Miracles of programming
 
-Now isn't it amazing? I find it truly remarkable each time I run the app for the first time after doing test-driven development. The app grew naturally as if it was a by-product of our tests process. From my experience the apps tend to be very stable and robust when they are built this way.
+Now isn't it amazing? I find it truly remarkable each time I run the app for the first time after doing test-driven development. The app grows naturally as if it's just a by-product of our tests process.
 
 
 
