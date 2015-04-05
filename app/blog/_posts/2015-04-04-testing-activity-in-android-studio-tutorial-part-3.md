@@ -12,7 +12,7 @@ This is the third and the final part of tutorial.
 
 * In [the second part](/blog/testing-activity-in-android-studio-tutorial-part-2/) we created our first test.
 
-Now we will write remaining tests and build the UI for the app.
+Now we will write remaining tests and build the app in the process.
 
 ### How we build the app
 
@@ -54,7 +54,29 @@ public void testGreet() {
 }
 ```
 
-Run the test and watch it pass. Excellent!
+At this stage your **MainActivityTests** file is the following:
+
+```Java
+package com.mycompany.greeter;
+import android.test.ActivityInstrumentationTestCase2;
+
+public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActivity> {
+    public MainActivityTests() {
+        super(MainActivity.class);
+    }
+
+    public void testActivityExists() {
+        MainActivity activity = getActivity();
+        assertNotNull(activity);
+    }
+
+    public void testGreet() {
+        MainActivity activity = getActivity();
+    }
+}
+```
+
+Run the tests and watch them pass. Excellent!
 
 
 
@@ -90,7 +112,7 @@ public void testGreet() {
 
 ### Add EditText control to activity layout
 
-You will notice an error for `greet_edit_text` ID text. That's because the EditText does not exist yet in our app layout. Let's create it.
+You will notice an error for the `greet_edit_text` ID. That's because the EditText does not exist yet in our app layout. Let's create it.
 
 * Expand **app > res > layout** folder in the Project tool window and open **activity_main.xml** file.
 * Switch main window from from **Design** to **Text** mode. You will see the XML markup for the layout.
@@ -98,7 +120,7 @@ You will notice an error for `greet_edit_text` ID text. That's because the EditT
 
 ![Remove_hello_world_from_layout](/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0200_remove_hello_world_text_view.png)
 
-* Add the following **ExitText** element:
+* Add the following **ExitText** element between `RelativeLayout` opening and closing tags:
 
 ```XML
 <EditText
@@ -134,7 +156,7 @@ Your `activity_main.xml` will look like this:
 
 ### Run the test
 
-You will notice that your test no longer has errors. Run the tests and they will pass. Very good!
+You will notice that the error in your test file is fixed now. Run the tests and they will pass. Very good!
 
 ### Enter text into the input
 
@@ -161,7 +183,7 @@ This is what this code does:
 1. Waits for application to be idle: `waitForIdleSync()`.
 1. Enters text "Jake" into the input: `sendStringSync("Jake")`.
 
-If you are wondering why we need so much code and call `runOnMainSync`, `waitForIdleSync` methods you are not alone. I don't have a slightest idea. That's the code Google suggests using for entering text into text inputs from the tests.
+If you are wondering why we need so much code and call `runOnMainSync`, `waitForIdleSync` methods you are not alone. I don't have a slightest idea.
 
 The full `testGreet` method will be:
 
@@ -188,7 +210,9 @@ public void testGreet() {
 }
 ```
 
+### Run the test.
 
+Let's run the tests. Everything will be green. Great!
 
 
 
@@ -299,7 +323,7 @@ The full layout code will be:
 
 ### Add button caption to string resources
 
-You will notice that `@string/greet_button` attribute value is marked red. This is the caption of the **Greet** button that is taken from the string resources and it is currently missing.
+You will notice that `@string/greet_button` attribute value looks red. This is the caption of the **Greet** button that is taken from the string resources and it is currently missing.
 
 Add the button's caption text to the string resource file:
 
@@ -313,7 +337,7 @@ Add the button's caption text to the string resource file:
 
 ![Add string resource](/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0300_add_string_resource.png)
 
-The full contents of **string.xml** file will be
+The full contents of **string.xml** file will be the following:
 
 ```XML
 <resources>
@@ -399,7 +423,7 @@ public void testGreet() {
 }
 ```
 
-Everything should be fine with the test except the missing `message_text_view` ID.
+Everything should be fine, the only problem is that `message_text_view` ID is missing.
 
 ### Add the greeting TextView
 
@@ -469,7 +493,7 @@ Click on failure location link and it will bring us to this line in the **MainAc
 assertEquals("Hello, Jake!", actualText);
 ```
 
-The test failed because we have not implemented the output of the greeting message in the app yet. That message stays empty instead of showing the greeting text. Let's implement it.
+The test failed because we have not implemented the output of the greeting message in the app yet. That message stays empty instead of showing the greeting text. Let's fix it.
 
 
 
@@ -480,7 +504,7 @@ The test failed because we have not implemented the output of the greeting messa
 
 ## 5. Greeting message logic implementation
 
-There is just one thing left to be done. Let's remind us what the app does. When the user taps the "Greet" button, the app shows a greeting message. We now need to write code that is executed when the user taps the "Greet" button.
+There is just one thing left to be done. Let's remind us again what the app does. When the user taps the "Greet" button, the app shows a greeting message. We now need to write code that is executed when the user taps the "Greet" button.
 
 * Open **activity_main.xml** file.
 * Add `android:onClick="didTapGreetButton"` attribute to the **Button** element.
@@ -538,17 +562,17 @@ The full layout code will be the following:
 </RelativeLayout>
 ```
 
-You will see that **didTapGreetButton** is highlighted with an error message:
+You will see that **didTapGreetButton** is highlighted and reports this error message:
 
 > Method didTapGreetButton is missing in 'MainActivity'...
 
 ### Implement didTapGreetButton method
 
-We will implement the `didTapGreetButton` method that will show the greeting message.
+We will now implement the last bit of code. It will be the `didTapGreetButton` method that will show the greeting message.
 
 * Expand **app > java > com.mycompany.greeter** module.
 * Open **MainActivity** class.
-* Add the following method.
+* Add the following method to it.
 
 ```Java
 public void didTapGreetButton(View view) {

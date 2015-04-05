@@ -47,7 +47,7 @@ Finally, click **Finish** and run the app by clicking the green start icon on th
 
 ![Run the app in Android Studio](/image/blog/2015-03-27-testing-ui-in-android-studio/0140_run_android_studio_project.png)
 
-You will see the app on your device or emulator. It will have an empty screen with "Hello world!" message.
+You will see the app on your device or emulator. It will have an empty screen with "Hello world!" message. Beautiful!
 
 ![Empty Android app](/image/blog/2015-03-27-testing-ui-in-android-studio/0300_empty_app_first_run.png)
 
@@ -72,7 +72,7 @@ We need to create a test configuration the first time we run the tests. There ar
 ### View test results
 
 You will see a lot of green colour in the Run tool window. It means the tests passed successfully.
-If your Run window is closed click the **Run** button on the bottom-left or select **View > Tool Windows > Run** from the main menu.
+If your Run window is closed click the **Run** button on the bottom panel or select **View > Tool Windows > Run** from the main menu.
 
 ![View test results in run tool window](/image/blog/2015-03-27-testing-ui-in-android-studio/0210_view_test_results_in_run_tool_window_in_android_studio.png)
 
@@ -107,7 +107,7 @@ It means that this configuration will run all the tests in **com.mycompany.greet
 
 ## What's next?
 
-Next we will write our first test.
+Cool! We have created an app project and a test configuration. Next we will write our first test.
 
 [Read part 2 of this tutorial](/blog/testing-activity-in-android-studio-tutorial-part-2/)
 

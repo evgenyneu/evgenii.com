@@ -35,7 +35,7 @@ Let's start by adding a new class to the test package.
 
 ![Add new class to the test package](/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0100_adding_new_class_to_test_package.png)
 
-You will be asked to enter the name for the class. Call it **MainActivityTests**.
+You will be asked to enter the name for the class. Call it **MainActivityTests**, plural.
 
 ![Name the test file](/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0110_name_the_test_class.png)
 
@@ -134,7 +134,7 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
 
 ## 3. Write the first test
 
-At last, we are done with all the preparations and can write our first test.
+Excellent! We are done with all the preparations and can write our first test.
 
 ```Java
 public void testActivityExists() {
@@ -185,7 +185,7 @@ Finally, let's run our first test.
 
 ## 5. Check test results
 
-If all went well you will see green light for the **testActivityExists** test in the Run window. You can open this window from **View > Tool Windows > Run** menu or by clicking on **Run** button in the bottom left corner.
+If all went well you will see green light for the **testActivityExists** test in the Run window.You can open this window from **View > Tool Windows > Run** menu or by clicking on **Run** button in the bottom left corner.
 
 ![Check results of the first test](/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0500_check_test_results.png)
 
@@ -195,9 +195,9 @@ If all went well you will see green light for the **testActivityExists** test in
 
 ## What's next?
 
-In the third part of this tutorial we will write a test that will enter a name in the text input, tap the "Greet" button and verify the greeting message.
+Very nice! We have written our first test. Next we will write a test that will enter a name in the text input, tap the "Greet" button and verify the greeting message.
 
-
+[Read part 3 of this tutorial](/blog/testing-activity-in-android-studio-tutorial-part-3/)
 
 
 ### Reference
