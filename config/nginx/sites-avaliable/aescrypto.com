@@ -10,6 +10,7 @@ server {
   listen  [::]:80;
   server_name  aescrypto.com;
   root         /home/pi/aescrypto.com;
+  access_log   /var/log/nginx/aescrypto.log combined;
 
   # static content
   location ~ \.(?:ico|jpg|css|png|js|swf|woff|eot|svg|ttf|gif)$ {

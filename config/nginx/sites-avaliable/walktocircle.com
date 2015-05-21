@@ -10,6 +10,7 @@ server {
   listen  [::]:80;
   server_name  walktocircle.com;
   root         /home/pi/walktocircle.com;
+  access_log   /var/log/nginx/walktocircle.log combined;
 
   # static content
   location ~ \.(?:ico|jpg|css|png|js|swf|woff|eot|svg|ttf|gif)$ {

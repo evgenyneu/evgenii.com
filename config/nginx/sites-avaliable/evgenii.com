@@ -11,6 +11,7 @@ server {
   server_name  evgenii.com;
   root         /home/pi/evgenii.com;
   error_page   404  /404.html;
+  access_log   /var/log/nginx/evgenii.log combined;
 
   # static content
   location ~ \.(?:ico|jpg|css|png|js|swf|woff|eot|svg|ttf|gif)$ {
