@@ -21,6 +21,14 @@ My personal web site.
 
 ./_scripts/deploy.sh
 
+### Optimize PNG images
+
+```
+brew install pngcrush
+./_scripts/pngcrushall.sh ./image
+```
+
+
 ### Update javascript
 
 ```
