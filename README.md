@@ -1,6 +1,6 @@
 ## evgenii.com
 
-My personal web site.
+This repository contains my personal web site project: http://evgenii.com.
 
 ## Installation
 
