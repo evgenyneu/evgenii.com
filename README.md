@@ -21,11 +21,16 @@ This repository contains my personal web site project: http://evgenii.com.
 
 ./_scripts/deploy.sh
 
-### Optimize PNG images
+
+
+### Optimize images
+
+Runs lossless optimization on png and jpg images in the image directory.
 
 ```
 brew install pngcrush
-./_scripts/pngcrushall.sh ./image
+./_scripts/optimize_images.sh ./image
+./_scripts/optimize_images.sh ./files
 ```
 
 
