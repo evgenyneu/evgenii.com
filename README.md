@@ -4,9 +4,18 @@ My personal web site.
 
 ## Installation
 
-
     git clone git@github.com:evgenyneu/evgenii.com.git
+    gem install jekyll
 
+
+### Serve
+
+    jekyll serve
+
+
+### Build
+
+    jekyll build
 
 ### Deploy
 
