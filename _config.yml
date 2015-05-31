@@ -1,51 +1,25 @@
-# Base Jekyll configuration
-
-# Note: Grunt handles some Jekyll configuration. If you set something here and
-# it doesn't work, check if it is set in the Gruntfile. There is also a
-# _config.build.yml to set custom overrides for `grunt build`.
-
+# Site settings
 name: evgenii
 description: Home of Evgenii
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://evgenii.com" # the base hostname & protocol for your site
 
 author:
   name: Evgenii Neumerzhitckii
   email: sausageskin-at-gmail-com
-  github: evgenyneu
-  twitter: evgenyneu
   google_plus_url: https://plus.google.com/+EvgeniiNeumerzhitckii
   google_plus_page_url: https://www.google.com/+EvgeniiN
 
-# Exclude directories and/or files from the conversion.
-# Grunt moves image files and asset directories.
-exclude: ['image', 'css', 'js', 'fonts',
-          '**.png', '**.jpg', '**.jpeg', '**.gif', '**.webp', '**.svg', '**.ico']
-
-# Force inclusion of directories and/or files in the conversion.
-# .htaccess is a good example since dotfiles are excluded by default.
-include: ['.htaccess']
-
-# Default post path style
-# date  /:categories/:year/:month/:day/:title.html
-# pretty  /:categories/:year/:month/:day/:title/
-# none  /:categories/:title.html
-permalink: /:categories/:title/
-
-# Publish posts with future date.
-# _config.build.yml sets this to false on `grunt build`
-future: true
-
-# Compile posts in the _drafts directory.
-# _config.build.yml sets this to false on `grunt build`
-show_drafts: true
-
-# Markdown library
+# Build settings
 markdown: redcarpet
-# Markdown library options
-# redcarpet:
-  # extensions: ['fenced_code_blocks', 'smart']
 
-# Use Pygments to highlight code blocks
+# No syntax highlighter. JavaScript one is used intead.
 highlighter: null
 
-# Sitemap generator settings (https://github.com/kinnetica/jekyll-plugins)
-url: http://evgenii.com
+# sass:
+  # style: :compressed
+
+permalink: /:categories/:title/
+
+sitemap:
+  exclude: ["/atom.xml", "/feed.xml", "/feed/index.xml", "/js/script.js", "/js/old_ie.js", "/css/main.scss", "/js/javascript-game-bundle.js"]

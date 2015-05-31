@@ -1,0 +1,18 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Evgenii Neumerzhitckii -- Site Maker --
+
+# THANKS
+
+    To my wife, Emily, for inspiration.
+
+# TECHNOLOGY COLOPHON
+
+    Jekyll static site generator
+    Sass
+    Normalize.css
+    Sketch Mac OS X app
+

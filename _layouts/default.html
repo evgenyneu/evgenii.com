@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    {% if page.noindex %}
+    <meta name="robots" content="noindex, nofollow">
+    {% endif %}
+    <title>{{ page.title }}</title>
+    {% if page.meta_description %}
+    <meta name="description" content="{{ page.meta_description }}">
+    {% endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html',''}}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+
+    <link href="{{ site.author.google_plus_page_url }}" rel="publisher" />
+    {% if page.date %}
+    <meta property="article:published_time" content='{{ page.date | date_to_xmlschema }}' />
+    {% endif %}
+
+    <!--[if lt IE 9]>
+    <script src="/js/old_ie.js"></script>
+    <![endif]-->
+  </head>
+  <body class='{{ page.layout_class }}'>
+    {% include google_analytics.html %}
+
+    <div class='layout-fixed layout-padding'>
+      <article class='Content'>
+        {{ content }}
+      </article>
+
+      <br>
+
+      <script src="/js/script.js"></script>
+
+      <br>
+      <br>
+      <div class='isTextCentered'>
+        <a href='/' title="Evgenii's Home"><img src='/image/home.png' class='HomeImage' alt="Evgenii's home page"></a>
+      </div>
+      <br>
+    <div>
+  </body>
+</html>
