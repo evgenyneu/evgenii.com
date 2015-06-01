@@ -13,6 +13,6 @@ title: My Software Projects
 <br>
 <br>
 
-See my [GitHub](//github.com/{{ site.author.github }}) projects.
+See my [GitHub](//github.com/evgenyneu) projects.
 
 <br>
