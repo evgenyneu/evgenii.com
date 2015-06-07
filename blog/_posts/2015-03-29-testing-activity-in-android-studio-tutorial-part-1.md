@@ -12,6 +12,8 @@ In this tutorial we will learn how to:
 * Create new test configuration and run the tests.
 * Write tests for basic UI interactions in activity.
 
+I used Android Studio version 1.2.1.
+
 ### I assume you already know
 
 For this tutorial you will need to have Android Studio installed and know how to run an app. Please refer to the excellent [Building Your First App](https://developer.android.com/training/basics/firstapp/index.html) tutorial from Google.
@@ -35,6 +37,11 @@ We will create an app called "Greeter". It has a text input and a "Greet" button
 
 ![New project in Android Studio](/image/blog/2015-03-27-testing-ui-in-android-studio/0110_new_project_in_android_studio.png)
 
+Accept the default settings on "Target Android Devices" screen with just "Phone and Tablet" option selected.
+
+![Target android devices](/image/blog/2015-03-27-testing-ui-in-android-studio/0115_new_project_in_android_studio_form_activity.png)
+
+
 Select a **blank activity**.
 
 ![Select new project with blank activity in Android Studio](/image/blog/2015-03-27-testing-ui-in-android-studio/0120_new_project_select_blank_activity_in_android_studio.png)
@@ -43,7 +50,7 @@ Next, keep default activity name: `MainActivity`. This name will be used in our 
 
 ![Set activity name and title](/image/blog/2015-03-27-testing-ui-in-android-studio/0130_set_activity_name_and_title_in_android_studio.png)
 
-Finally, click **Finish** and run the app by clicking the green start icon on the toolbar.
+Finally, click **Finish** and give Android Studio a minute to setup your project. When it's done **run the app** by clicking the green start icon on the toolbar.
 
 ![Run the app in Android Studio](/image/blog/2015-03-27-testing-ui-in-android-studio/0140_run_android_studio_project.png)
 
@@ -64,10 +71,14 @@ We need to create a test configuration the first time we run the tests. There ar
 
 * In your project window expand **app > java** folders.
 * You will see two packages with the same name **com.mycompany.greeter**. The second one will have **(androidTest)**. Right-click on that one.
-* Select **Run > Tests in 'com.mycomp...** from the context menu.
+* Select **Run > Tests in 'com.mycomp...** from the context menu. There are two menus with this name. You need to select one with green Android robot.
+
+![Select robot](/image/blog/2015-03-27-testing-ui-in-android-studio/0205_create_test_configuration_in_android_studio_select_robot.png)
+
 * Select your device or emulator in the next dialog and it will run the tests.
 
 ![Create test configuration and run tests](/image/blog/2015-03-27-testing-ui-in-android-studio/0200_create_test_configuration_in_android_studio.png)
+
 
 ### View test results
 

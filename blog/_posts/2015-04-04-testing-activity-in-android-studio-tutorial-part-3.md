@@ -328,7 +328,8 @@ You will notice that `@string/greet_button` attribute value looks red. This is t
 Add the button's caption text to the string resource file:
 
 * Expand **app > res > values** in project window.
-* Open **strings.xml** file
+* Open **strings.xml** file.
+* Remove the element containing the **Hello world!** text, we are not using it.
 * Add the following element after the last string element and before the closing `</resources>` tag.
 
 ```XML
@@ -483,11 +484,11 @@ The full layout code will be:
 Run the test and notice how `testGreet` fails. We can find the following in the Run tool window:
 
 1. Failure reason: `expected:<[Hello, Jake!]> but was:<[]>`
-1. Failure location: `MainActivityTests.java:49`.
+1. Failure location: `MainActivityTests.java`.
 
 ![Run tests and fail](/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0400_run_test_failed.png)
 
-Click on failure location link and it will bring us to this line in the **MainActivityTests** file:
+Click on failure location link (MainActivityTests.java) and it will bring us to this line in the **MainActivityTests** file:
 
 ```Java
 assertEquals("Hello, Jake!", actualText);
@@ -570,7 +571,7 @@ You will see that **didTapGreetButton** is highlighted and reports this error me
 
 We will now implement the last bit of code. It will be the `didTapGreetButton` method that will show the greeting message.
 
-* Expand **app > java > com.mycompany.greeter** module.
+* Expand **app > java > com.mycompany.greeter** module. Note that this time we are editing the app's main module and not the test one.
 * Open **MainActivity** class.
 * Add the following method to it.
 
