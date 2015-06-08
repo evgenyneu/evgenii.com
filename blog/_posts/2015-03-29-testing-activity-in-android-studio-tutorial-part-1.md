@@ -71,7 +71,7 @@ We need to create a test configuration the first time we run the tests. There ar
 
 * In your project window expand **app > java** folders.
 * You will see two packages with the same name **com.mycompany.greeter**. The second one will have **(androidTest)**. Right-click on that one.
-* Select **Run > Tests in 'com.mycomp...** from the context menu. There are two menus with this name. You need to select one with green Android robot.
+* Select **Run > Tests in 'com.mycomp...** from the context menu. There are two menu items with this name. You need to select one with green Android robot.
 
 ![Select robot](/image/blog/2015-03-27-testing-ui-in-android-studio/0205_create_test_configuration_in_android_studio_select_robot.png)
 
