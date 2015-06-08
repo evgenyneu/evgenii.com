@@ -12,7 +12,7 @@ In this tutorial we will learn how to:
 * Create new test configuration and run the tests.
 * Write tests for basic UI interactions in activity.
 
-I used Android Studio version 1.2.1.
+Android Studio version 1.2.1 was used in this tutorial.
 
 ### I assume you already know
 
