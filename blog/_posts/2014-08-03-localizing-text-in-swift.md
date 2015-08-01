@@ -66,12 +66,21 @@ Often we want to replace the parts of the text string with dynamic values when t
 
 ```swift
 String.localizedStringWithFormat(
-  NSLocalizedString("My name is %@. I am %d years old",
+  NSLocalizedString("My name is %@. I am %d years old.",
     comment: "Greeting"), name, age)
 
 ```
 
+
+Translator can change the order in which the populated arguments are copied into the string.
+
+`I am %$2@ years old and my name is %$1@.`
+
 ## Reference
 
 * [Localizing with Xcode 6](https://developer.apple.com/videos/wwdc/2014/?id=412): WWDC 2014 session video
+
+* [What's New in Internationalization](https://developer.apple.com/videos/wwdc/2015/?id=227): WWDC 2015 session video
+
+
 
