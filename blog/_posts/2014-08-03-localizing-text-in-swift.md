@@ -78,7 +78,7 @@ Translator can change the order in which the populated arguments are copied into
 
 ## Localizing lower and upper case text
 
-iOS 9 introduces function to change the case of the string according to local rules.
+Here is how to change the case of a string according to local rules.
 
 ```swift
 "istanbul".localizedCapitalizedString
@@ -101,9 +101,9 @@ iOS 9 introduces function to change the case of the string according to local ru
 
 * [About Internationalization and Localization](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html): iOS Developer Library.
 
-* [Localizing numbers, date, time and names in iOS with Swift.](/blog/localizing-numbers-date-time-and-names-in-ios-with-swift/)
+* [Localizing numbers, date, time and names in iOS / Swift](/blog/localizing-numbers-date-time-and-names-in-ios-with-swift/)
 
-* [How to support right-to-left languages in iOS with Swift.](/blog/supporting-right-to-left-languages-in-ios-with-swift/)
+* [Supporting right-to-left languages in iOS / Swift](/blog/supporting-right-to-left-languages-in-ios-with-swift/)
 
 
 

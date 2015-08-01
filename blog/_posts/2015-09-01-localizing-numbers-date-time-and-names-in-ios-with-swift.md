@@ -1,6 +1,6 @@
 ---
 layout: blog_post
-title: "Localizing numbers, date, time and names in iOS with Swift."
+title: "Localizing numbers, date, time and names in iOS / Swift"
 meta_description: "This tutorial shows how to format numbers, dates, times and names for different languages in iOS using Swift."
 tags: programming
 ---
@@ -84,4 +84,4 @@ nameFormatter.stringFromPersonNameComponents(nameComponents)
 
 * [Localizing text in Swift code](/blog/localizing-text-in-swift).
 
-* [How to support right-to-left languages in iOS with Swift.](/blog/supporting-right-to-left-languages-in-ios-with-swift/)
+* [Supporting right-to-left languages in iOS / Swift](/blog/supporting-right-to-left-languages-in-ios-with-swift/)

@@ -1,7 +1,7 @@
 ---
 layout: blog_post
 layout_class: Content--hasImagesWithBorder
-title: "How to support right-to-left languages in iOS with Swift."
+title: "Supporting right-to-left languages in iOS / Swift"
 meta_description: "List of best practices for supporting right-to-left language in iOS apps with Swift."
 tags: programming
 ---
@@ -28,7 +28,7 @@ myView.semanticContentAttribute) == .LeftToRight
 
 * [Localizing text in Swift code](/blog/localizing-text-in-swift).
 
-* [Localizing numbers, date, time and names in iOS with Swift.](/blog/localizing-numbers-date-time-and-names-in-ios-with-swift/)
+* [Localizing numbers, date, time and names in iOS / Swift](/blog/localizing-numbers-date-time-and-names-in-ios-with-swift/)
 
 
 
