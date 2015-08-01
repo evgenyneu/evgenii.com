@@ -76,6 +76,21 @@ Translator can change the order in which the populated arguments are copied into
 
 `I am %$2@ years old and my name is %$1@.`
 
+## Localized lower and upper case
+
+iOS 9 intruduces function to change the case of the string according to local rules.
+
+```swift
+"istanbul".localizedCapitalizedString
+// In Turkish: "İstanbul"
+
+"İstanbul".localizedLowercaseString
+// In Turkish: "istanbul"
+
+"istanbul".localizedUppercaseString
+// In Turkish: "İSTANBUL"
+```
+
 
 
 ## Reference
