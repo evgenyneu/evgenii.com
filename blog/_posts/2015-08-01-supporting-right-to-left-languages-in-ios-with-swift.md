@@ -1,8 +1,8 @@
 ---
 layout: blog_post
 layout_class: Content--hasImagesWithBorder
-title: "How to support right-to-left languages in iOS 9."
-meta_description: "List of best practices for supporting right-to-left language in iOS 9 apps and Xcode 7."
+title: "How to support right-to-left languages in iOS with Swift."
+meta_description: "List of best practices for supporting right-to-left language in iOS apps with Swift."
 tags: programming
 ---
 
@@ -22,9 +22,13 @@ myView.semanticContentAttribute) == .LeftToRight
 
 ## Reference
 
-* [WWDC 2015 Video](https://developer.apple.com/videos/wwdc/2015/?id=222) "New UIKit Support for International User Interfaces".
+* [New UIKit Support for International User Interfaces Video](https://developer.apple.com/videos/wwdc/2015/?id=222): WWDC 2015 video.
+
+* [About Internationalization and Localization](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html): iOS Developer Library.
+
 * [Localizing text in Swift code](/blog/localizing-text-in-swift).
 
+* [Localizing numbers, date, time and names in iOS with Swift.](/blog/localizing-numbers-date-time-and-names-in-ios-with-swift/)
 
 
 

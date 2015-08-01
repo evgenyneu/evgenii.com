@@ -76,11 +76,19 @@ Translator can change the order in which the populated arguments are copied into
 
 `I am %$2@ years old and my name is %$1@.`
 
+
+
 ## Reference
 
 * [Localizing with Xcode 6](https://developer.apple.com/videos/wwdc/2014/?id=412): WWDC 2014 session video
 
 * [What's New in Internationalization](https://developer.apple.com/videos/wwdc/2015/?id=227): WWDC 2015 session video
+
+* [About Internationalization and Localization](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html): iOS Developer Library.
+
+* [Localizing numbers, date, time and names in iOS with Swift.](/blog/localizing-numbers-date-time-and-names-in-ios-with-swift/)
+
+* [How to support right-to-left languages in iOS with Swift.](/blog/supporting-right-to-left-languages-in-ios-with-swift/)
 
 
 
