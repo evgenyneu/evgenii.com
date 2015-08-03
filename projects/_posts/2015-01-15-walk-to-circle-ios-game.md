@@ -5,9 +5,9 @@ title:  "Walk to Circle neighbourhood exploration iOS game"
 
 <div class='embed-container'><iframe src='http://www.youtube.com/embed/rKACkn3s2uA?rel=0' frameborder='0' allowfullscreen></iframe></div>
 
-After beginning my morning walk I’m constantly scouring my surroundings, seeking out those things that motivate and excite me. Sound is a clear motivator for me, so I either have my podcast, radio or my audio book playing when venturing out for a rejuvenating walk.  Everyone has that certain something they use when walking.
+After beginning my morning walk I’m constantly scouring my surroundings, seeking out those things that motivate and excite me. Sound is a clear motivator for me, so I either have my podcast, radio or my audiobook playing when venturing out for a rejuvenating walk.  Everyone has that certain something they use when walking.
 
-So, oddly enough, the audiobook, or music I choose to listen to ingrains the places where I’ve walked into my mind, so it is far easier to recall a part of the audio book (or part of a song).  I’m also able to create a mental image within my mind of the places visited when out on an adventurous walk, places such as the streets and the houses and parks I’ve seen along my journeys.  These are all there, like collective puzzle pieces.
+So, oddly enough, the audiobook, or music I choose to listen to ingrains the places where I’ve walked into my mind, so it is far easier to recall a part of the audiobook (or part of a song).  I’m also able to create a mental image within my mind of the places visited when out on an adventurous walk, places such as the streets and the houses and parks I’ve seen along my journeys.  These are all there, like collective puzzle pieces.
 
 I’m not sure if this works the same for everyone, but for me, audio and visual stimuli come together perfectly when I’m walking.  I love the fact that I have the ability to retrieve a geographical memory just by recalling what I was listening to when I was walking to my location!
 
