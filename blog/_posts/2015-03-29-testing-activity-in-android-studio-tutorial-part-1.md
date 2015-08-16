@@ -71,13 +71,9 @@ We need to create a test configuration the first time we run the tests. There ar
 
 * In your project window expand **app > java** folders.
 * You will see two packages with the same name **com.mycompany.greeter**. The second one will have **(androidTest)**. Right-click on that one.
-* Select **Run > Tests in 'com.mycomp...** from the context menu.
+* Select **Run  'Tests in 'com.mycomp...'** from the context menu.
 
 ![Create test configuration and run tests](/image/blog/2015-03-27-testing-ui-in-android-studio/0200_create_test_configuration_in_android_studio.png)
-
-There are two menu items with text **Tests in 'com.mycomp...**. You need to select the one with green Android robot.
-
-![Select robot](/image/blog/2015-03-27-testing-ui-in-android-studio/0205_create_test_configuration_in_android_studio_select_robot.png)
 
 * Finally, select your device or emulator in the next dialog and it will run the tests.
 

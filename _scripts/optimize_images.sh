@@ -11,7 +11,7 @@
 #    ./optimize_images.sh somedir/
 #
 
-pngcrushall.sh $1
+optimize_pngs.sh $1
 optimize_jpegs.sh $1
 
 echo "Image optimization complete!"
