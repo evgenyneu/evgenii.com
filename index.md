@@ -6,7 +6,7 @@ meta_description: "Personal site of Evgenii Neumerzhitckii: blog, contact, proje
 ---
 
 <h1>
-  hello, Friend
+  Hello, Friend
   <br>
   •ᴥ•
 </h1>
