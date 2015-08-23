@@ -1,0 +1,3 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www\.walktocircle\.com$
+RewriteRule ^(.*)$ "http\:\/\/walktocircle\.com\/$1" [R=301,L]

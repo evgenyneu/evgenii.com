@@ -1,0 +1,3 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www\.aescrypto\.com$
+RewriteRule ^(.*)$ "http\:\/\/aescrypto\.com\/$1" [R=301,L]

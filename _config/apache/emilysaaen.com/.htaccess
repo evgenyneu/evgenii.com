@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^emilysaaen\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.emilysaaen\.com$
+RewriteRule ^(.*)$ "http\:\/\/emilysaaen\.bandcamp\.com\/$1" [R=302,L]
