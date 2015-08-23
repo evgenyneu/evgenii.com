@@ -11,7 +11,9 @@
 #    ./optimize_images.sh somedir/
 #
 
-optimize_pngs.sh $1
-optimize_jpegs.sh $1
+BASEDIR=$(dirname $0)
+
+$BASEDIR/optimize_pngs.sh $1
+$BASEDIR/optimize_jpegs.sh $1
 
 echo "Image optimization complete!"
