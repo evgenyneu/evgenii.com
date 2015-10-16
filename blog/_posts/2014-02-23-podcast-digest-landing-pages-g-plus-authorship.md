@@ -5,7 +5,7 @@ meta_description: "Short summary of SEO podcast about landing, 'thank you' pages
 tags: online-marketing
 ---
 
-**Source:** [SEO podcast](http://www.e-webstyle.com/category/seo-podcast/), episodes #220 and #221.
+**Source:** [SEO podcast](http://www.ewebresults.com/seo-podcast/), episodes #220 and #221.
 
 ## Landing page
 

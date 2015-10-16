@@ -5,7 +5,7 @@ meta_description: "Short summary of SEO podcast: improving Ad copy and social me
 tags: online-marketing
 ---
 
-**Source:** [SEO podcast](http://www.e-webstyle.com/category/seo-podcast/), episodes #226 and #227.
+**Source:** [SEO podcast](http://www.ewebresults.com/seo-podcast/), episodes #226 and #227.
 
 ## How to improve your Ad copy
 

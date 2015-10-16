@@ -5,7 +5,7 @@ meta_description: "Short summary of SEO podcast about choosing right SEO and PPC
 tags: online-marketing
 ---
 
-**Source:** [SEO podcast](http://www.e-webstyle.com/category/seo-podcast/), episode #222.
+**Source:** [SEO podcast](http://www.ewebresults.com/seo-podcast/), episode #222.
 
 Assess the demand for the keywords. How many people are looking for them? What is the demographics?
 

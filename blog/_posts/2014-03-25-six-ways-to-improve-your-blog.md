@@ -5,7 +5,7 @@ meta_description: "Short summary of SEO podcast containing tips on improving you
 tags: online-marketing
 ---
 
-**Source:** [SEO podcast](http://www.e-webstyle.com/category/seo-podcast/), episode #225.
+**Source:** [SEO podcast](http://www.ewebresults.com/seo-podcast/), episode #225.
 
 1. Post frequently and on regular basis.
 
