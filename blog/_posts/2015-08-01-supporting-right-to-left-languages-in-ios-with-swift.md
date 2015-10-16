@@ -22,7 +22,7 @@ myView.semanticContentAttribute) == .LeftToRight
 
 ## Reference
 
-* [New UIKit Support for International User Interfaces Video](https://developer.apple.com/videos/wwdc/2015/?id=222): WWDC 2015 video.
+* [New UIKit Support for International User Interfaces Video](https://developer.apple.com/videos/play/wwdc2015-222/): WWDC 2015 video.
 
 * [About Internationalization and Localization](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html): iOS Developer Library.
 

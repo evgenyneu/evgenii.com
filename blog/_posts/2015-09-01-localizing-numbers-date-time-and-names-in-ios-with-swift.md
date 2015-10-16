@@ -78,7 +78,7 @@ nameFormatter.stringFromPersonNameComponents(nameComponents)
 
 ## Reference
 
-* [What's New in Internationalization](https://developer.apple.com/videos/wwdc/2015/?id=227): WWDC 2015 video.
+* [What's New in Internationalization](https://developer.apple.com/videos/play/wwdc2015-227/): WWDC 2015 video.
 
 * [About Internationalization and Localization](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html): iOS Developer Library.
 

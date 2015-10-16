@@ -32,4 +32,4 @@ There are two ways of fixing this problem:
 
 ## Reference
 
-* [Networking with NSURLSession](https://developer.apple.com/videos/wwdc/2015/?id=711): WWDC 2015 video.
+* [Networking with NSURLSession](https://developer.apple.com/videos/play/wwdc2015-711/): WWDC 2015 video.

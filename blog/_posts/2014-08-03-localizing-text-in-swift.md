@@ -95,9 +95,9 @@ Here is how to change the case of a string according to local rules.
 
 ## Reference
 
-* [Localizing with Xcode 6](https://developer.apple.com/videos/wwdc/2014/?id=412): WWDC 2014 session video
+* [Localizing with Xcode 6](https://developer.apple.com/videos/play/wwdc2014-412/): WWDC 2014 session video
 
-* [What's New in Internationalization](https://developer.apple.com/videos/wwdc/2015/?id=227): WWDC 2015 session video
+* [What's New in Internationalization](https://developer.apple.com/videos/play/wwdc2015-227/): WWDC 2015 session video
 
 * [About Internationalization and Localization](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html): iOS Developer Library.
 
