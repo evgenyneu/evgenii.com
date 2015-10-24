@@ -44,6 +44,11 @@
       <div class='isTextCentered'>
         <a href='/' title="Evgenii's Home"><img src='/image/home.png' class='HomeImage' alt="Evgenii's home page"></a>
       </div>
+
+      {% if page.comments %}
+        {% include comments.html %}
+      {% endif %}
+
       <br>
     <div>
   </body>
