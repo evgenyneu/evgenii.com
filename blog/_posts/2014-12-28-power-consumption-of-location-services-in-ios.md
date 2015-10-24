@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Power consumption of location updates in iOS"
 meta_description: "This test shows power consumption of using location service on iOS in different accuracy settings"
 tags: programming

@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Loading data from insecure HTTP hosts in iOS 9 with NSURLSession"
 meta_description: "This tutorial shows how to access data from insecure HTTP hosts in iOS 9 with NSURLSession."
 tags: programming

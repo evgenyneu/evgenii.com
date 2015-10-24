@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Optional trailing closures in Swift"
 meta_description: "Writing a function with an optional trailing closure in Swift language."
 tags: programming

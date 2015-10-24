@@ -1,6 +1,7 @@
 ---
 layout: blog_post
 layout_class: Content--hasImagesWithBorder
+comments: true
 title: "Supporting right-to-left languages in iOS / Swift"
 meta_description: "List of best practices for supporting right-to-left language in iOS apps with Swift."
 tags: programming

@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Localizing numbers, date, time and names in iOS / Swift"
 meta_description: "This tutorial shows how to format numbers, dates, times and names for different languages in iOS using Swift."
 tags: programming

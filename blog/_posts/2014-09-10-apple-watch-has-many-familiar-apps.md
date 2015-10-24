@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Web browser was not invited to the Apple Watch party"
 meta_description: "In September 9 2014 Apple Watch was introduced"
 tags: technology

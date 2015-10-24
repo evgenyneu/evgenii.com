@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Spring button animation in iOS/Swift"
 meta_description: "Shows spring button animation technique in iOS using Swift language"
 tags: programming
