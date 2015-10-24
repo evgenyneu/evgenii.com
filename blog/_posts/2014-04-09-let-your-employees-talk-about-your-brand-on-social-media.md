@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Let your employees talk about your brand on social media"
 meta_description: "My short summary of an interview with Alex Coté on Traffic Jam podcast.Embracing your employees and let them talk about your brand on social media."
 tags: online-marketing

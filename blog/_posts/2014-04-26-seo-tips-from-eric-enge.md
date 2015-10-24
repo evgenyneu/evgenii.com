@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "SEO tips from Eric Enge"
 meta_description: "Summary of an interview with Eric Enge about content strategy, keyword research, link building and social media."
 tags: online-marketing

@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Get 100 million uniques in 7 months with 'borrowed' content. WOW"
 meta_description: "Short summary of ViperChill podcast about the strategy of making high-traffic web sites by showing content from other sites and promoting it on Facebook."
 tags: online-marketing

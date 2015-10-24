@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Guest blogging, meta descriptions and navigation"
 meta_description: "Short summary of SEO 101 podcast episode from Jan 22, 2014 about guest blogging, snippets to articles, keywords in site navigation and more."
 tags: online-marketing

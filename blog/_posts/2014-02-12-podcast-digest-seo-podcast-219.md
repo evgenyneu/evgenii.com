@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title:  "SEO year 2014 review"
 tags: online-marketing
 ---

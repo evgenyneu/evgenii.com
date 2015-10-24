@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Ad copy and social media tips"
 meta_description: "Short summary of SEO podcast: improving Ad copy and social media tips."
 tags: online-marketing

@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Landing, 'thank you' pages and G+ avatars"
 meta_description: "Short summary of SEO podcast about landing, 'thank you' pages and Google plus avatars in search results."
 tags: online-marketing

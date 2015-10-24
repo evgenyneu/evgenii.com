@@ -1,5 +1,6 @@
----
+--
 layout: blog_post
+comments: true
 title: "Earning links instead of building them"
 meta_description: "Summary of an interview with Nichola Stott about analyzing backlink profile and content strategy."
 tags: online-marketing

@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Content marketing tips from Neil Patel"
 meta_description: "Short summary of an interview with Neil Patel on Traffic Jam podcast about successfull internet marketing strategies."
 tags: online-marketing

@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Creating content is not enough. Promote it."
 meta_description: "Summary of an interview with Chad Pollitt about the importance of content promotion and distibution."
 tags: online-marketing

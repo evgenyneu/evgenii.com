@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Google Plus is about reciprocation"
 meta_description: "Summary of an interview with Martin Shervington about engaing with people on Google Plus and promoting your content."
 tags: online-marketing

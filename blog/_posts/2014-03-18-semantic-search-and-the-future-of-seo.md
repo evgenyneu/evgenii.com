@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Semantic search and the future of SEO"
 meta_description: "Short summary of an interview with David Amerland on Traffic Jam podcast where he talks about the future of search."
 tags: online-marketing

@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "How to use Google Plus to promote your content"
 meta_description: "Read my short summary of SEO 101 podcast about using Google Plus for promoting your content."
 tags: online-marketing

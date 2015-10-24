@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Build an authority supersite and get rewarded"
 meta_description: "Read my short summary of Visible HQ containing tips on how to build an authority supersite."
 tags: online-marketing

@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Google Authorship"
 meta_description: "My short summary of an interview with Mark Traphagen on Traffic Jam podcast about Google Authorship."
 tags: online-marketing

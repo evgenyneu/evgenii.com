@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "SEO tips and techniques from Joe Laratro"
 meta_description: "Short summary of Marketing Optimization podcast episode #31 about researching keywords and using them in content."
 tags: online-marketing

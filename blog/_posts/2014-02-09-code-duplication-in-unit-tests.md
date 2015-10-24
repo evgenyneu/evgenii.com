@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title:  "Code duplication in unit tests"
 tags: programming
 ---

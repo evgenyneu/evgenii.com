@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Lesson from Panda 4.0: be unique and valuable"
 meta_description: "My thoughts on Google Panda 4.0 update and what I learned"
 tags: online-marketing

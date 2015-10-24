@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "7 ways to earn a backlink"
 meta_description: "Summary of an SEO 101 podcast episode about earning non-spammy backlinks."
 tags: online-marketing

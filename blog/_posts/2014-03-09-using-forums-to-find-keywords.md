@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "How to use forums to find topics for online content"
 meta_description: "Read how to use online forums to find interesting topics for your posts and videos."
 tags: online-marketing

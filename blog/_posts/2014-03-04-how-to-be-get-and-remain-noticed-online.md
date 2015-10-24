@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "How to get and stay noticed online"
 meta_description: "Read my short summary of Traffic Jam podcast. It shows how to get noticed online by creating unique and personal content."
 tags: online-marketing

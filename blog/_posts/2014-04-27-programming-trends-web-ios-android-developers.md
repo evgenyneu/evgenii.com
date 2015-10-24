@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 tags: programming
 title: "Infographic: relative popularity of Web, iOS and Android developers"
 meta_description: "Inforgraphic shows relative popularity of Web, iOS and Android in developers"

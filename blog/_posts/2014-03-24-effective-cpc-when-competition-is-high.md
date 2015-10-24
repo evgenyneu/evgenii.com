@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "How to run effective CPC campaign when competition is high"
 meta_description: "Short summary of SEO podcast about managing successful CPC campaigns when there is a lot of competition in your space."
 tags: online-marketing

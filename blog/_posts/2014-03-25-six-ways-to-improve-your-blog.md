@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Six ways to improve your blog"
 meta_description: "Short summary of SEO podcast containing tips on improving your blog."
 tags: online-marketing

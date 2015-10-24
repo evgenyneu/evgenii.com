@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "Risky SEO strategies. How to avoid Google penalties."
 meta_description: "Short summary of an interview with Matthew Newton on Visible HQ podcast where he talks about risky SEO strategies."
 tags: online-marketing

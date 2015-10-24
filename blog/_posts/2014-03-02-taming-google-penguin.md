@@ -1,5 +1,6 @@
 ---
 layout: blog_post
+comments: true
 title: "How to tame Google Penguin and build trust"
 meta_description: "Short summary of Visible HQ podcast episode #7 covering modern SEO strategies of content creation and link building."
 tags: online-marketing
