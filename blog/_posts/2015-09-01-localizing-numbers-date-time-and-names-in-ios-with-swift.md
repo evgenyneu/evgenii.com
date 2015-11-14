@@ -11,10 +11,15 @@ Here is a list of techniques I use to present values to international users in i
 ### Numbers
 
 ```swift
+// Float with decimal places
 String.localizedStringWithFormat("%.3f", M_PI)
 // 3.142
 
-// With thousands separator
+// Integer with thousands separator
+String.localizedStringWithFormat("%i", 12_345)
+// 12,345
+
+// Another way
 let formatter = NSNumberFormatter()
 formatter.numberStyle = .DecimalStyle
 formatter.stringFromNumber(NSNumber(integer: 12_345))
