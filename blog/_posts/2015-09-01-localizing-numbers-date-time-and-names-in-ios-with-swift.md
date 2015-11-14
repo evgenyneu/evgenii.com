@@ -13,6 +13,12 @@ Here is a list of techniques I use to present values to international users in i
 ```swift
 String.localizedStringWithFormat("%.3f", M_PI)
 // 3.142
+
+// With thousands separator
+let formatter = NSNumberFormatter()
+formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle;
+formatter.stringFromNumber(NSNumber(integer: 12345))
+// 12,345
 ```
 
 ### Currencies
