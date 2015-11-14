@@ -16,8 +16,8 @@ String.localizedStringWithFormat("%.3f", M_PI)
 
 // With thousands separator
 let formatter = NSNumberFormatter()
-formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle;
-formatter.stringFromNumber(NSNumber(integer: 12345))
+formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+formatter.stringFromNumber(NSNumber(integer: 12_345))
 // 12,345
 ```
 
