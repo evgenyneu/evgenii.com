@@ -93,6 +93,8 @@ We have created configuration for testing and can now use it any time we want to
 
 Click the configuration dropdown menu located next to the run button on the toolbar. You will see **app** and **Test in `com.myapp..** configurations there. This is how we can switch between running the app and tests.
 
+Click **Save 'Tests 'com.mycompany.Greeter'' Configuration** item from the menu to save the test configuration that you just created.
+
 ![Switch between app and test configurations](/image/blog/2015-03-27-testing-ui-in-android-studio/0220_switch_between_app_and_tests_in_android_studio.png)
 
 ### Test configuration (under the hood)
