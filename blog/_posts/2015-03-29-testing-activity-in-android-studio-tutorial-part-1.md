@@ -13,7 +13,7 @@ In this tutorial we will learn how to:
 * Create new test configuration and run the tests.
 * Write tests for basic UI interactions in activity.
 
-Android Studio version 1.3.1 was used in this tutorial.
+This tutorial is updated for Android Studio version 1.5.
 
 ### I assume you already know
 
@@ -33,7 +33,7 @@ We will create an app called "Greeter". It has a text input and a "Greet" button
 
 ## 1. Let's get started: create a project in Android Studio
 
-* Open Android Studio and create a new project: **File > New Project**.
+* Open Android Studio and create a new project: **File > New > New Project**.
 * Enter **Greeter** in Application Name and **mycompany.com** in Company Domain.
 
 ![New project in Android Studio](/image/blog/2015-03-27-testing-ui-in-android-studio/0110_new_project_in_android_studio.png)
