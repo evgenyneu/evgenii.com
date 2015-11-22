@@ -115,7 +115,7 @@ public void testGreet() {
 
 You will notice an error for the `greet_edit_text` ID. That's because the EditText does not exist yet in our app layout. Let's create it.
 
-* Expand **app > res > layout** folder in the Project tool window and open **activity_main.xml** file.
+* Expand **app > res > layout** folder in the Project tool window and open **content_main.xml** file.
 * Switch main window from from **Design** to **Text** mode. You will see the XML markup for the layout.
 * Remove automatically generated **TextView** element with "Hello world!" message.
 
@@ -132,18 +132,22 @@ You will notice an error for the `greet_edit_text` ID. That's because the EditTe
     android:inputType="textCapSentences"/>
 ```
 
-Your `activity_main.xml` will look like this:
+Your `content_main.xml` will look like this:
 
 ```html
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp"
-    tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.mycompany.greeter.MainActivity"
+    tools:showIn="@layout/activity_main">
 
     <EditText
         android:id="@+id/greet_edit_text"
@@ -213,7 +217,7 @@ public void testGreet() {
 
 ### Run the test.
 
-Let's run the tests. Everything will be green. Great!
+Let's run the tests and watch in amazement how it enters the text into the text field. Everything will be green. Great!
 
 
 
@@ -279,7 +283,7 @@ The test will have one remaining error for the missing `greet_button` ID, which 
 
 ### Add Button to activity layout
 
-Switch back to **activity_main.xml** file and add the following text **after** the **EditText** element:
+Switch back to **content_main.xml** file and add the following text **after** the **EditText** element:
 
 ```html
 <Button
@@ -294,15 +298,19 @@ Switch back to **activity_main.xml** file and add the following text **after** t
 The full layout code will be:
 
 ```html
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp"
-    tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.mycompany.greeter.MainActivity"
+    tools:showIn="@layout/activity_main">
 
     <EditText
         android:id="@+id/greet_edit_text"
@@ -330,7 +338,6 @@ Add the button's caption text to the string resource file:
 
 * Expand **app > res > values** in project window.
 * Open **strings.xml** file.
-* Remove the element containing the **Hello world!** text, we are not using it.
 * Add the following element after the last string element and before the closing `</resources>` tag.
 
 ```html
@@ -429,7 +436,7 @@ Everything should be fine, the only problem is that `message_text_view` ID is mi
 
 ### Add the greeting TextView
 
-Switch to **activity_main.xml** and add the following text **after** the Button element:
+Switch to **content_main.xml** and add the following text **after** the Button element:
 
 ```html
 <TextView
@@ -444,15 +451,19 @@ Switch to **activity_main.xml** and add the following text **after** the Button 
 The full layout code will be:
 
 ```html
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp"
-    tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.mycompany.greeter.MainActivity"
+    tools:showIn="@layout/activity_main">
 
     <EditText
         android:id="@+id/greet_edit_text"
@@ -508,7 +519,7 @@ The test failed because we have not implemented the output of the greeting messa
 
 There is just one thing left to be done. Let's remind us again what the app does. When the user taps the "Greet" button, the app shows a greeting message. We now need to write code that is executed when the user taps the "Greet" button.
 
-* Open **activity_main.xml** file.
+* Open **content_main.xml** file.
 * Add `android:onClick="didTapGreetButton"` attribute to the **Button** element.
 
 The button element will look like:
@@ -527,15 +538,19 @@ The button element will look like:
 The full layout code will be the following:
 
 ```html
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp"
-    tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.mycompany.greeter.MainActivity"
+    tools:showIn="@layout/activity_main">
 
     <EditText
         android:id="@+id/greet_edit_text"
@@ -566,7 +581,7 @@ The full layout code will be the following:
 
 You will see that **didTapGreetButton** is highlighted and reports this error message:
 
-> Method didTapGreetButton is missing in 'MainActivity'...
+> Cannot resolve symbol 'didTapGreetButton'...
 
 ### Implement didTapGreetButton method
 
@@ -602,7 +617,6 @@ This `didTapGreetButton` method does the following:
 Add these missing imports to the top of the **MainActivity** file.
 
 ```Java
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 ```
