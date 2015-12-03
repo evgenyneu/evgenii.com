@@ -1,4 +1,4 @@
---
+---
 layout: blog_post
 comments: true
 title: "Earning links instead of building them"
