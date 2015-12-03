@@ -27,7 +27,7 @@ The Water Footprint source code is distributed under Creative Commons Attributio
 [Android source code](https://github.com/evgenyneu/water-footprint-android)
 
 
-## Help me localizing the app
+## Help me to localize the app
 
 Currently the app is available in Chinese, English, Japanese and Russian languages. I would be grateful if you can help me translate the app to other languages. Translation includes the list of agricultural products (500 words), the app title, description (400 words) and a couple of words in the UI.
 
