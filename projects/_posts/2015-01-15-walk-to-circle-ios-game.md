@@ -1,5 +1,6 @@
 ---
 layout: project
+comments: true
 title:  "Walk to Circle neighbourhood exploration iOS game"
 ---
 

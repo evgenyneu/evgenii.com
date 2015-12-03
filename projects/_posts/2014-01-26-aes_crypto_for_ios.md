@@ -1,5 +1,6 @@
 ---
 layout: project
+comments: true
 title:  "AES Crypto iOS app"
 ---
 

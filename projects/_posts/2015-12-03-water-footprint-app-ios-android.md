@@ -1,5 +1,6 @@
 ---
 layout: project
+comments: true
 title:  "Water Footprint for iOS and Android"
 ---
 
