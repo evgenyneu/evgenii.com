@@ -15,7 +15,7 @@ The app shows how many litres of water is required to produce one kilogram of di
 
 Data used in this app is released under the Creative Commons Attribution Non-commercial License and is derived from the following publications:
 
-1. Mekonnen, M.M. and Hoekstra, A.Y. (2011) The green, blue and grey water footprint of crops and derived crop products, Hydrology and Earth System Sciences, 15, 1577-1600. [Download PDF](/files/2015/12/crop_products_water_footprint.pdf).
+1. Mekonnen, M.M. and Hoekstra, A.Y. (2011) The green, blue and grey water footprint of crops and derived crop products, Hydrology and Earth System Sciences, 15, 1577-1600. [Download PDF](/files/2015/12/crop_products_water_footprint.pdf)
 1. Mekonnen, M.M. and Hoekstra, A.Y. (2012) A global assessment of the water footprint of farm animal products, Ecosystems, 15, 401-415. [Download PDF](/files/2015/12/animal_products_water_footprint.pdf)
 
 ## Water Footprint is free and open source
