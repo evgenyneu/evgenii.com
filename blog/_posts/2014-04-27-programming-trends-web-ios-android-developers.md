@@ -6,7 +6,7 @@ title: "Infographic: relative popularity of Web, iOS and Android developers"
 meta_description: "Inforgraphic shows relative popularity of Web, iOS and Android in developers"
 ---
 
-![Relative popularity of Web, iOS and Android developers](/image/blog/2014-04-27-relative-popularity-of-web-ios-android-developers-inforgraphic.png)
+<img src='/image/blog/2014-04-27-relative-popularity-of-web-ios-android-developers-inforgraphic.png' title='Relative popularity of Web, iOS and Android developers' class='isMax100PercentWide'>
 
 ## Description
 

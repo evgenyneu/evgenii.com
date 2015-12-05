@@ -11,7 +11,7 @@ Today I watched the introduction of the Apple Watch. Some apps on this device ar
 There was one app missing - the Web browser.
 
 <p class='isTextCentered'>
-  <img width='400' class='isTextCentered' src='/image/blog/2014-09-10-apple-watch-has-many-icons.jpg' alt='Apple Watch introduction september 9 2014'>
+  <img class='isTextCentered isMax400PxWide is100PercentWide' src='/image/blog/2014-09-10-apple-watch-has-many-icons.jpg' alt='Apple Watch introduction september 9 2014'>
 </p>
 
 > (Apple Watch) apps are designed for light-weight interaction *-- Jony Ive*

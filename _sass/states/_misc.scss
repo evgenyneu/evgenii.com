@@ -1,3 +1,11 @@
 .isTextCentered { text-align: center; }
+
+// Width
+.is100PercentWide { width: 100%; }
+
+// Max width
 .isMax100PercentWide { max-width: 100%; }
+.isMax400PxWide { max-width: 400px; }
+
+// Border
 .hasBorderShade90 { border: 1px solid $shade90; }
