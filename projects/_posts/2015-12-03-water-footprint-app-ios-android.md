@@ -4,7 +4,7 @@ comments: true
 title:  "Water Footprint for iOS and Android"
 ---
 
-The app shows how many litres of water are needed to produce one kilogram of different agricultural products. For example, to make one kilogram of shelled almonds one needs to use about 16 thousand litres of freshwater.
+The app shows how many litres of water are needed to produce one kilogram of different agricultural products. For example, to make one kilogram of shelled almonds one needs to use about 16 thousand litres of freshwater. The app allows to understand our indirect freshwater usage through consumption of various products. This knowledge can help us preserve scarce freshwater resources.
 
 <a href='https://play.google.com/store/apps/details?id=com.evgenii.waterfootprint' title='Get it on Google Play'><img src='/image/logos/google_play_badge.png' alt='Get it on Google Play' class='AppStoreBadge has-noMargin'></a>
 
@@ -33,6 +33,9 @@ Currently the app is available in Chinese, English, Japanese and Russian languag
 
 ## Screenshots
 
-<img src='/image/projects/2015_12_03_water_footprint/water_footprint_android_english.png' class='Screenshot--IphonePortrait2x' title='Water Footprint for Android'>
+#### Water Footprint for Android
+<img src='/image/projects/2015_12_03_water_footprint/water_footprint_android_english.png' class='Screenshot--IphonePortrait2x has-noMargin' title='Water Footprint for Android'>
 
-<img src='/image/projects/2015_12_03_water_footprint/water_footprint_iphone_english.png' class='Screenshot--IphonePortrait2x' title='Water Footprint for iOS'>
+#### Water Footprint for iOS
+
+<img src='/image/projects/2015_12_03_water_footprint/water_footprint_iphone_english.png' class='Screenshot--IphonePortrait2x has-noMargin' title='Water Footprint for iOS'>
