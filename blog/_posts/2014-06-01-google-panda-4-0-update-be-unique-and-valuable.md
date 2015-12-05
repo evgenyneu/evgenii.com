@@ -8,7 +8,7 @@ tags: online-marketing
 
 This is how it happened. Matt Cutts from Google announces update in Google search algorithm.
 
-<img class='Image-width300 Image--hasBorder' src='/image/blog/2014-06-01-panda-4.0-matt-cutts-tweet.png' alt='Matt Cutts announces Panda 4.0 update on Google'>
+<img class='isMax300PxWide hasBorderShade90' src='/image/blog/2014-06-01-panda-4.0-matt-cutts-tweet.png' alt='Matt Cutts announces Panda 4.0 update on Google'>
 
 That's it. Apart from this single tweet there was **no** official confirmation from Google.
 
