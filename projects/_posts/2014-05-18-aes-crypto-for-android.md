@@ -12,4 +12,4 @@ Android app that encrypts text message with Advanced Encryption Standard. AES Cr
 
 <a href='https://github.com/evgenyneu/aes-crypto-android' title='View source on GitHub'><img src='/image/logos/octocat.jpg' alt='View source on GitHub' class='GitHubOctocatLogo'></a>
 
-<img src='/image/projects/2014_05_aes_crypto_for_android.png' class='Screenshot--IphonePortrait2x' title='AES Crypto Android'>
+<img src='/image/projects/2014_05_aes_crypto_for_android.png' title='AES Crypto Android'>

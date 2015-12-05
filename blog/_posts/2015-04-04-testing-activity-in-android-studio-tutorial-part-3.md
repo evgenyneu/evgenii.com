@@ -1,6 +1,5 @@
 ---
 layout: blog_post
-layout_class: Content--hasImagesWithBorder
 comments: true
 title: "Testing activity in Android Studio. Part 3."
 meta_description: "In this tutorial we'll learn how to write tests for Android activity and build an app in Android Studio."
