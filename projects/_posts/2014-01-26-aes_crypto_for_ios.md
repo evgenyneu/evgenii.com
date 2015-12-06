@@ -13,4 +13,4 @@ iOS app for encrypting text messages. Uses Advanced Encryption Standard with a 2
 
 ### AES Crypto is open source
 
-<a href='https://github.com/evgenyneu/aes-text-encryption-ios' title='View source on GitHub'><img src='/image/logos/octocat.jpg' alt='View source on GitHub' class='GitHubOctocatLogo'></a>
+<a href='https://github.com/evgenyneu/aes-text-encryption-ios' title='View source on GitHub'>View its source code on GitHub.</a>

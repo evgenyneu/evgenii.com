@@ -10,6 +10,8 @@ title:  "AES Crypto web app"
 
 Web app for encrypting text messages. AES Crypto is open source and available on Android, iOS and Web.
 
-<a href='https://github.com/evgenyneu/aes-crypto-web' title='View source on GitHub'><img src='/image/logos/octocat.jpg' alt='View source on GitHub' class='GitHubOctocatLogo'></a>
+<a href='https://github.com/evgenyneu/aes-crypto-web' title='View source on GitHub'>View source code on GitHub.</a>
 
-<img src='/image/projects/2014_05_aes_crypto_for_web.png' title='AES Crypto Web'>
+<br>
+
+<img src='/image/projects/2014_05_aes_crypto_for_web.png' title='AES Crypto Web' class='isMax100PercentWide'>
