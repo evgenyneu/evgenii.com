@@ -29,7 +29,8 @@ There are two ways of fixing this problem:
 </dict>
 ```
 
-![Loading data from insecure HTTP sources in iOS 9 with NSURLSession](/image/blog/2015-09-09-loading-data-from-non-secure-hosts-in-ios9-with-nsurlsession.png)
+<img src='/image/blog/2015-09-09-loading-data-from-non-secure-hosts-in-ios9-with-nsurlsession.png' title='Loading data from insecure HTTP sources in iOS 9 with NSURLSession' class='isMax100PercentWide'>
+
 
 ## Reference
 
