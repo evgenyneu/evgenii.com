@@ -11,6 +11,6 @@ Adapted key pages of the following web sites to [responsive design](http://en.wi
 
 [www.renoexchange.com.au](http://www.renoexchange.com.au)
 
-[www.furnitureexchange.com.au](http://www.furnitureexchange.com.au)
+[www.houseofhome.com.au](http://www.houseofhome.com.au)
 
-![Adapting to reponsive design](/image/projects/adapting_to_responsive_design_bikeexchange.png)
+<img src='/image/projects/adapting_to_responsive_design_bikeexchange.png' title='Adapting to reponsive design' class='isMax100PercentWide hasBorderShade90'>

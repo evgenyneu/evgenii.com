@@ -5,4 +5,4 @@ title:  "Saint Paul's church website"
 
 A web site for a local church built on Joomla content management system with a custom-made HTML/CSS template.
 
-![Saint Paul's Episcopal Church](/image/projects/stpaulschurch.png)
+<img src='/image/projects/stpaulschurch.png' title="Saint Paul's Episcopal Church" class='isMax100PercentWide hasBorderShade90'>
