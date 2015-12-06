@@ -6,8 +6,8 @@
 // Max width
 .isMax100PercentWide { max-width: 100%; }
 .isMax200PxWide { max-width: 200px; }
-.isMax300PxWide { max-width: 300px; }
-.isMax400PxWide { max-width: 400px; }
+.isMax300PxWide { width: 100%; max-width: 300px; }
+.isMax400PxWide { width: 100%; max-width: 400px; }
 
 // Border
 .hasBorderShade90 { border: 1px solid $shade90; }

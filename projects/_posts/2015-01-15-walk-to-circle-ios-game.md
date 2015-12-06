@@ -6,6 +6,8 @@ title:  "Walk to Circle neighbourhood exploration iOS game"
 
 <div class='embed-container'><iframe src='http://www.youtube.com/embed/rKACkn3s2uA?rel=0' frameborder='0' allowfullscreen></iframe></div>
 
+<a href='https://itunes.apple.com/us/app/walk-to-circle/id955310614' title='Download Walk to Circle on App Store'><img src='/image/logos/appstore_badge.png' alt='Download Walk to Circle on App Store' class='isMax200PxWide'></a>
+
 After beginning my morning walk I’m constantly scouring my surroundings, seeking out those things that motivate and excite me. Sound is a clear motivator for me, so I either have my podcast, radio or my audiobook playing when venturing out for a rejuvenating walk.  Everyone has that certain something they use when walking.
 
 So, oddly enough, the audiobook, or music I choose to listen to ingrains the places where I’ve walked into my mind, so it is far easier to recall a part of the audiobook (or part of a song).  I’m also able to create a mental image within my mind of the places visited when out on an adventurous walk, places such as the streets and the houses and parks I’ve seen along my journeys.  These are all there, like collective puzzle pieces.
@@ -37,7 +39,7 @@ I’ve noticed that without using this app, I seem to almost always choose roads
 
 I do hope you’ll enjoy my app and if you have any questions at all don’t hesitate to drop me a message.  I’ll be more than happy to offer advice and I’d love to hear what you think!
 
-<a href='https://itunes.apple.com/us/app/walk-to-circle/id955310614' title='Download Walk to Circle on App Store'><img src='/image/logos/appstore_badge.png' alt='Download Walk to Circle on App Store' class='AppStoreBadge'></a>
+
 
 ### Walk to Circle is open source
 

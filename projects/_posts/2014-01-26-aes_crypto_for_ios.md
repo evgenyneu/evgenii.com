@@ -8,7 +8,7 @@ title:  "AES Crypto iOS app"
 
 iOS app for encrypting text messages. Uses Advanced Encryption Standard with a 256-bit key.
 
-<a href='https://itunes.apple.com/us/app/aes-crypto/id782965050' title='Download on App Store'><img src='/image/logos/appstore_badge.png' alt='Download on App Store' class='AppStoreBadge'></a>
+<a href='https://itunes.apple.com/us/app/aes-crypto/id782965050' title='Download on App Store'><img src='/image/logos/appstore_badge.png' alt='Download on App Store' class='isMax200PxWide'></a>
 
 
 ### AES Crypto is open source
