@@ -46,7 +46,7 @@ Remember this access group name you created, you will be using it in code.
 
 Now you can delete, add and retrieve shared Keychain items. To work with Keychain you can use one of many Keychain libraries that support access groups ([Keychain Swift](https://github.com/marketplacer/keychain-swift) is one). But here I will show how to do it directly using the built-in Keychain API. The main rule is to pass the access group name with the `kSecAttrAccessGroup` query key into `SecItemAdd`, `SecItemDelete` and `SecItemCopyMatching` functions.
 
-### 4.1) Delete a shared Keychain item
+### Delete a shared Keychain item
 
 ```Swift
 let itemKey = "My key"
@@ -66,7 +66,7 @@ if resultCodeDelete != noErr {
 }
 ```
 
-### 4.2) Add a shared Keychain item
+### Add a shared Keychain item
 
 ```Swift
 guard let valueData = itemValue.dataUsingEncoding(NSUTF8StringEncoding) else {
@@ -89,7 +89,7 @@ if resultCode != noErr {
 }
 ```
 
-### 4.3) Find a shared Keychain item
+### Find a shared Keychain item
 
 ```Swift
 let queryLoad: [String: AnyObject] = [
