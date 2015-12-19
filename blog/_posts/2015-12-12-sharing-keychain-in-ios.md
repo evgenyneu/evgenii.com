@@ -124,3 +124,8 @@ if resultCodeLoad == noErr {
 * Turn on key Keychain sharing in all apps.
 * Change Keychain access group in entitlements file. Use the same name in all apps.
 * Pass the Keychain group to `kSecAttrAccessGroup` key to add, find or delete a Keychain item.
+
+## Reference
+
+* [Sample source code](https://github.com/evgenyneu/sharing-keychain-demo)
+* [Keychain Swift](https://github.com/marketplacer/keychain-swift) library
