@@ -1,0 +1,34 @@
+.table {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border-collapse: collapse;
+  border-bottom: 2px solid $shade50;
+
+  tr {
+     &:hover {
+      background: $shade90;
+
+      td {
+        color: $shade40;
+      }
+    }
+  }
+
+  th, td {
+    padding: 12px 10px;
+    border-collapse: collapse;
+  }
+
+  td {
+    border: 1px solid $shade90;
+  }
+
+  th {
+    background: $shade50;
+    color: $shade100;
+    text-transform: none;
+    font-weight: normal;
+    border-right: 1px solid $shade90;
+    &:last-child { border-right: none; }
+  }
+}
