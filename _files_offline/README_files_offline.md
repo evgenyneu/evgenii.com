@@ -1,0 +1,1 @@
+This directory contains files like vector graphics that are used to make images for the web site. The files in this directory are not copied to the web server.

@@ -16,70 +16,70 @@ When I was a kid I saw many pictures of our Sun, the Earth and other planets. Th
 
 Looking at this simplified picture I can only see the names of the planets and their order from the Sun. Unfortunately, this image does not tell me the differences in sizes, orbits and appearances of the bodies. The following is my attempt to fix those problems and create a better drawing of the Solar System. But first, let me write down sizes and distances I will use to draw the picture.
 
-### Sizes of the Sun and its planets
+## Sizes of the Sun and its planets
 
-Table 1 shows the sizes of the Sun and its planets. The size is expressed as the mean radius in kilometers. The *mean radius* of an astronomical object is the average distance from its surface to its center. In addition, the table shows the sizes relative to the size of the Earth.
+Table 1 shows the sizes of the Sun and its planets. The size is expressed as the mean radius in kilometers. The *mean radius* of an astronomical object is the average distance from its surface to its center. In addition, the table shows the sizes relative to the size of the Sun.
 
 <table class='table isBlockCentered'>
   <thead>
     <tr>
       <th>Object name</th>
       <th>Radius (km)</th>
-      <th>Relative to Earth</th>
+      <th>Relative to the Sun</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Sun</td>
       <td class='isTextRightAligned'>696,342</td>
-      <td class='isTextRightAligned'>109.30</td>
+      <td class='isTextRightAligned'>1.000000</td>
     </tr>
     <tr>
       <td>Mercury</td>
       <td class='isTextRightAligned'>2,440</td>
-      <td class='isTextRightAligned'>0.38</td>
+      <td class='isTextRightAligned'>0.003504</td>
     </tr>
     <tr>
       <td>Venus</td>
       <td class='isTextRightAligned'>6,052</td>
-      <td class='isTextRightAligned'>0.95</td>
+      <td class='isTextRightAligned'>0.008691</td>
     </tr>
     <tr>
       <td>Earth</td>
       <td class='isTextRightAligned'>6,371</td>
-      <td class='isTextRightAligned'>1.00</td>
+      <td class='isTextRightAligned'>0.009149</td>
     </tr>
     <tr>
       <td>Mars</td>
       <td class='isTextRightAligned'>3,390</td>
-      <td class='isTextRightAligned'>0.53</td>
+      <td class='isTextRightAligned'>0.004868</td>
     </tr>
     <tr>
       <td>Jupiter</td>
       <td class='isTextRightAligned'>69,911</td>
-      <td class='isTextRightAligned'>10.97</td>
+      <td class='isTextRightAligned'>0.100398</td>
     </tr>
     <tr>
       <td>Saturn</td>
       <td class='isTextRightAligned'>58,232</td>
-      <td class='isTextRightAligned'>9.14</td>
+      <td class='isTextRightAligned'>0.083626</td>
     </tr>
     <tr>
       <td>Uranus</td>
       <td class='isTextRightAligned'>25,362</td>
-      <td class='isTextRightAligned'>3.98</td>
+      <td class='isTextRightAligned'>0.036422</td>
     </tr>
     <tr>
       <td>Neptune</td>
       <td class='isTextRightAligned'>24,622</td>
-      <td class='isTextRightAligned'>3.87</td>
+      <td class='isTextRightAligned'>0.035359</td>
     </tr>
   </tbody>
 </table>
 
 <p class='isTextCentered'>Table 1: Mean radii of the Sun and its planets.</p>
 
-### Distances from solar planets to the Sun
+## Distances from solar planets to the Sun
 
 Table 2 describes the distance of solar planets from the center of the Sun in kilometers and astronomical units (AU). *Astronomical unit* is the distance form the Earth to the Sun. The distances of the planets are calculated as the averages between the nearest (perihelion) and farthest (aphelion) points of their orbits.
 
@@ -136,3 +136,12 @@ Table 2 describes the distance of solar planets from the center of the Sun in ki
 </table>
 
 <p class='isTextCentered'>Table 2: Distances from solar planets to the Sun.</p>
+
+Another value that I will use is the ratio of one astronomical unit and the diameter of the Sun, which is 429.66824635. It means that you would need to put 430 Suns side by side to fill the distance between the Sun and the Earth.
+
+## Solar System object sizes in scale
+
+
+<img src='/image/blog/2015-12-26-sun-and-planets-in-scale/0020_solar_system_object_sizes_in_scale.png' title='Simplified image of the Solar System, not in scale.' class='isMax100PercentWide'>
+
+<p class='isTextCentered'>Figure 2: Picture of the Sun and its planets with object sizes in scale.</p>
