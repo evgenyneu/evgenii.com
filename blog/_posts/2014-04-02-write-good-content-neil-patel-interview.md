@@ -23,7 +23,7 @@ Cross-link between your pages. Mashable does it well and that's why they rank hi
 Type keywords into Google search and see other keywords it suggests. Integrate those keywords within your existing content. Do it where it is natural, avoid keyword stuffing.
 
 
-<img src='/image/blog/2014-04-02-write-good-content-nail-patel-interview.png' title='Get keywords ideas from Google suggestions' class='isMax100PercentWide'>
+<img src='/image/blog/2014-04-02-write-good-content-nail-patel-interview.png' alt='Get keywords ideas from Google suggestions' class='isMax100PercentWide'>
 
 ## Steal your competitor's followers
 

@@ -35,7 +35,7 @@ Just to remind us again, our app will have three components:
 
 Each control on the screen will have a unique ID. Those IDs will be used in our tests to get those controls and interact with them. The IDs are: `greet_edit_text`, `greet_button` and `message_text_view`.
 
-<img src='/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0000_greeter_app_components_with_ids.png' title='Components of the Greeter app with IDs' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0000_greeter_app_components_with_ids.png' alt='Components of the Greeter app with IDs' class='isMax100PercentWide hasBorderShade90'>
 
 
 
@@ -118,7 +118,7 @@ You will notice an error for the `greet_edit_text` ID. That's because the EditTe
 * Switch main window from from **Design** to **Text** mode. You will see the XML markup for the layout.
 * Remove automatically generated **TextView** element with "Hello world!" message.
 
-<img src='/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0200_remove_hello_world_text_view.png' title='Remove hello world from layout' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0200_remove_hello_world_text_view.png' alt='Remove hello world from layout' class='isMax100PercentWide hasBorderShade90'>
 
 * Add the following **ExitText** element between `RelativeLayout` opening and closing tags:
 
@@ -343,7 +343,7 @@ Add the button's caption text to the string resource file:
 <string name="greet_button">Greet</string>
 ```
 
-<img src='/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0300_add_string_resource.png' title='Add string resource' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0300_add_string_resource.png' alt='Add string resource' class='isMax100PercentWide hasBorderShade90'>
 
 The full contents of **string.xml** file will be the following:
 
@@ -497,7 +497,7 @@ Run the test and notice how `testGreet` fails. We can find the following in the 
 1. Failure reason: `expected:<[Hello, Jake!]> but was:<[]>`
 1. Failure location: `MainActivityTests.java`.
 
-<img src='/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0400_run_test_failed.png' title='Run tests and fail' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0400_run_test_failed.png' alt='Run tests and fail' class='isMax100PercentWide hasBorderShade90'>
 
 Click on failure location link (MainActivityTests.java) and it will bring us to this line in the **MainActivityTests** file:
 
@@ -624,7 +624,7 @@ import android.widget.TextView;
 
 If we run the tests they should all pass. Next, try running the app and see it working. Let’s tell the boss!
 
-<img src='/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0500_finished_app_screen.png' title='Run the app' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0500_finished_app_screen.png' alt='Run the app' class='isMax100PercentWide hasBorderShade90'>
 
 
 If anything went wrong, please refer to the [sample Code for the Greeter app](https://github.com/evgenyneu/greeter-android).

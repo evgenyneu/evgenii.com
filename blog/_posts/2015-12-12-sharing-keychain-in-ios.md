@@ -17,13 +17,13 @@ Fortunately, there is a way to share Keychain items between apps and it can be d
 1. Select your app target and click *Capabilities* tab.
 2. Turn on the *Keychain Sharing* capability.
 
-<img src='/image/blog/2015-12-12-sharing-keychain-between-ios-osx-tvos-apps/0020_keychain_shaing_opions.png' title='Turn on Keychain sharing in Xcode' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-12-12-sharing-keychain-between-ios-osx-tvos-apps/0020_keychain_shaing_opions.png' alt='Turn on Keychain sharing in Xcode' class='isMax100PercentWide hasBorderShade90'>
 
 
 ## 2) Select developer team
 
 <div class='isTextCentered'>
-  <img src='/image/blog/2015-12-12-sharing-keychain-between-ios-osx-tvos-apps/0030_select_developer_team.png' title='Select developer team to enable Keychain sharing' class='isMax400PxWide hasBorderShade90'>
+  <img src='/image/blog/2015-12-12-sharing-keychain-between-ios-osx-tvos-apps/0030_select_developer_team.png' alt='Select developer team to enable Keychain sharing' class='isMax400PxWide hasBorderShade90'>
 </div>
 
 ## 3) Change Keychain access group
@@ -31,7 +31,7 @@ Fortunately, there is a way to share Keychain items between apps and it can be d
 1. Click the *.entitlements* file that was created automatically.
 1. Change the name of the Keychain access group.
 
-<img src='/image/blog/2015-12-12-sharing-keychain-between-ios-osx-tvos-apps/0040_change_keychain_access_group.png' title='Change Keychain access group' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-12-12-sharing-keychain-between-ios-osx-tvos-apps/0040_change_keychain_access_group.png' alt='Change Keychain access group' class='isMax100PercentWide hasBorderShade90'>
 
 By default the Keychain access group has the form of *$(AppIdentifierPrefix)your-bundle-id*. If you keep it unchanged the *$(AppIdentifierPrefix)* part will be replaced with your app identifier. This is not what we need here because we do not know the app identifier.
 

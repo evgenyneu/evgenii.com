@@ -7,4 +7,4 @@ SIBA is a command line utility written in Ruby. It can backup and restore local 
 
 [SIBA on GitHub](//github.com/evgenyneu/siba)
 
-<img src='/image/projects/siba.png' title='Backup utility' class='isMax100PercentWide'>
+<img src='/image/projects/siba.png' alt='Backup utility' class='isMax100PercentWide'>

@@ -16,4 +16,4 @@ Android app that encrypts text message with Advanced Encryption Standard. AES Cr
 
 <br>
 
-<img src='/image/projects/2014_05_aes_crypto_for_android.png' title='AES Crypto Android' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/projects/2014_05_aes_crypto_for_android.png' alt='AES Crypto Android' class='isMax100PercentWide hasBorderShade90'>

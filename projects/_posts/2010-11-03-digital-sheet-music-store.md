@@ -7,4 +7,4 @@ eCommerce system for digital sheet music production and distribution. In 2010 it
 
 [www.onlinesheetmusic.com](http://www.onlinesheetmusic.com)
 
-<img src='/image/projects/freehandmusic.png' title='FreeHandMusic.com' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/projects/freehandmusic.png' alt='FreeHandMusic.com' class='isMax100PercentWide hasBorderShade90'>

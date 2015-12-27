@@ -9,7 +9,7 @@ tags: science
 When I was a kid I saw many pictures of our Sun, the Earth and other planets. Those pictures and usually showed planets as circles that were rotating around a big central yellow circle.
 
 <div class='isTextCentered'>
-  <img src='/image/blog/2015-12-26-sun-and-planets-in-scale/0010_the_solar_system_not_in_scale.png' title='Simplified image of the Solar System, not in scale.' class='isMax100PercentWidei isMax400PxWide'>
+  <img src='/image/blog/2015-12-26-sun-and-planets-in-scale/0010_the_solar_system_not_in_scale.png' alt='Simplified image of the Solar System, not in scale.' class='isMax100PercentWidei isMax400PxWide'>
 
   <p class='isTextCentered'>Figure 1: Simplified picture of the Solar System.</p>
 </div>
@@ -141,7 +141,10 @@ Another value that I will use is the ratio of one astronomical unit and the diam
 
 ## Solar System object sizes in scale
 
-
-<img src='/image/blog/2015-12-26-sun-and-planets-in-scale/0020_solar_system_object_sizes_in_scale.png' title='Simplified image of the Solar System, not in scale.' class='isMax100PercentWide'>
+<div class='isFullScreenWide isTextCentered hasBackgroundColorShade10'>
+  <br>
+  <img src='/image/blog/2015-12-26-sun-and-planets-in-scale/0020_solar_system_object_sizes_in_scale.png' alt='Simplified image of the Solar System, not in scale.' class='isMax800PxWide'>
+  <br>
+</div>
 
 <p class='isTextCentered'>Figure 2: Picture of the Sun and its planets with object sizes in scale.</p>

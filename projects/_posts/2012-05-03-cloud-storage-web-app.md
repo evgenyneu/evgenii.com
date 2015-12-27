@@ -7,4 +7,4 @@ Mobile-friendly web app for organizing and keeping personal data securely in the
 
 [www.digitalsafe.ch](http://www.digitalsafe.ch)
 
-<img src='/image/projects/cloud_storage_web_app_digital_safe.png' title='Cloud storage web app' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/projects/cloud_storage_web_app_digital_safe.png' alt='Cloud storage web app' class='isMax100PercentWide hasBorderShade90'>

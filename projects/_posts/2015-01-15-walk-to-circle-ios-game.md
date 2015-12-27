@@ -20,20 +20,20 @@ My Walk To Circle iOS App simply makes these journeys far more intriguing, and t
 
 First, when you start up the App it drops a circle randomly, at a distance of about 400 meters from whatever your current location might be. You then have approximately 5 seconds to memorize the placement of the circle on the map before it closes.
 
-<img src='/image/projects/2015_15_walk_to_circle_for_ios/1_drop_circle_on_map.png' title='Map screen of Walk to Circle iOS app' class='isMax300PxWide'>
+<img src='/image/projects/2015_15_walk_to_circle_for_ios/1_drop_circle_on_map.png' alt='Map screen of Walk to Circle iOS app' class='isMax300PxWide'>
 
 
 ## 2. Walk
 
 Now, all that is required is simply putting one foot in front of the other one and taking those steps!
 
-<img src='/image/projects/2015_15_walk_to_circle_for_ios/2_map_is_closed.png' title='Walk to Circle app when when map is closed' class='isMax300PxWide'>
+<img src='/image/projects/2015_15_walk_to_circle_for_ios/2_map_is_closed.png' alt='Walk to Circle app when when map is closed' class='isMax300PxWide'>
 
 ## 3. Circle reached!
 
 Finally, a notification is received once you reach that circle.
 
-<img src='/image/projects/2015_15_walk_to_circle_for_ios/3_circle_is_reached.png' title='Circle is reached on Walk to Circle iOS app' class='isMax300PxWide'>
+<img src='/image/projects/2015_15_walk_to_circle_for_ios/3_circle_is_reached.png' alt='Circle is reached on Walk to Circle iOS app' class='isMax300PxWide'>
 
 I’ve noticed that without using this app, I seem to almost always choose roads I’m familiar with, but then that takes all the fun out of a walk.  It actually removes any risks to my health or my life, but then, at the same time, it takes away the exploration of my environment too.  In fact, this gets down right boring, which is the entire reason I designed an application that would encourage structured, yet exciting walks.  This helps me to avoid choosing those paths I feel most comfortable with and it helps me become more of a traveller rather than someone who sticks to the straight and narrow.
 

@@ -18,7 +18,7 @@ The app we are building will have three components:
 1. A "Greet" **Button**.
 1. And a **TextView** that will show the greeting message.
 
-<img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0000_greeter_app_components.png' title='Components of the Greeter app' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0000_greeter_app_components.png' alt='Components of the Greeter app' class='isMax100PercentWide hasBorderShade90'>
 
 
 
@@ -32,15 +32,15 @@ Let's start by adding a new class to the test package.
 * Right click on **com.mycompany.greeter (androidTest)** package. Please note that you have two packages named com.mycompany.greeter. You need to click on the one that has **androidTest** text.
 * Select **New > Java Class** from the context menu.
 
-<img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0100_adding_new_class_to_test_package.png' title='Add new class to the test package' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0100_adding_new_class_to_test_package.png' alt='Add new class to the test package' class='isMax100PercentWide hasBorderShade90'>
 
 You will be asked to enter the name for the class. Call it **MainActivityTests**, plural.
 
-<img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0110_name_the_test_class.png' title='Name the test file' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0110_name_the_test_class.png' alt='Name the test file' class='isMax100PercentWide hasBorderShade90'>
 
 Android Studio will create a new class that will look like this:
 
-<img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0120_test_class_created.png' title='New class created' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0120_test_class_created.png' alt='New class created' class='isMax100PercentWide hasBorderShade90'>
 
 The class file will have the following code
 
@@ -87,7 +87,7 @@ I use a shortcut for importing missing packages in Android Studio.
 * Press **Alt + Enter** on Windows or **Option + Enter** on Mac.
 * Select **Import Class** from the context menu.
 
-<img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0200_import_activity_instrumentation_test_case_2.png' title='Import missing package shortcut' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0200_import_activity_instrumentation_test_case_2.png' alt='Import missing package shortcut' class='isMax100PercentWide hasBorderShade90'>
 
 Your code will look like this:
 
@@ -180,13 +180,13 @@ Finally, let's run our first test.
 * Select **Test in 'com.mycompany.greeter'** configuration from the dropdown located next to the **Run** button on the toolbar. If there is no test configuration please refer to the [previous part of tutorial](/blog/testing-activity-in-android-studio-tutorial-part-1/) and create it.
 * Click **Run** button.
 
-<img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0400_run_test.png' title='Run our first test' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0400_run_test.png' alt='Run our first test' class='isMax100PercentWide hasBorderShade90'>
 
 ## 5. Check test results
 
 If all went well you will see green light for the **testActivityExists** test in the Run window.You can open this window from **View > Tool Windows > Run** menu or by clicking on **Run** button in the bottom left corner.
 
-<img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0500_check_test_results.png' title='Check results of the first test' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0500_check_test_results.png' alt='Check results of the first test' class='isMax100PercentWide hasBorderShade90'>
 
 
 

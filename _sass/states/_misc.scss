@@ -1,15 +1,35 @@
+// Horizontal alignment
+// -----------------
+
 .isBlockCentered { margin-left: auto; margin-right: auto; }
 .isTextCentered { text-align: center; }
 .isTextRightAligned { text-align: right; }
 
 // Width
+// -----------------
+
 .is100PercentWide { width: 100%; }
 
+.isFullScreenWide {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
 // Max width
+// -----------------
+
 .isMax100PercentWide { max-width: 100%; }
 .isMax200PxWide { max-width: 200px; }
 .isMax300PxWide { width: 100%; max-width: 300px; }
 .isMax400PxWide { width: 100%; max-width: 400px; }
+.isMax800PxWide { width: 100%; max-width: 800px; }
 
 // Border
+// -----------------
+
 .hasBorderShade90 { border: 1px solid $shade90; }
+
+// Color
+// -----------------
+
+.hasBackgroundColorShade10 { background-color: $shade10; }

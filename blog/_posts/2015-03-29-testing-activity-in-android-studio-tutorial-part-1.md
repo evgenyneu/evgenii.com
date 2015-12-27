@@ -23,7 +23,7 @@ For this tutorial you will need to have Android Studio installed and know how to
 We will create an app called "Greeter". It has a text input and a "Greet" button. In this app user enters a name and taps the "Greet" button. The app shows a greeting message.
 
 
-<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0100_finished_app_screen.png' title='The `Greeter` app we will create' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0100_finished_app_screen.png' alt='The `Greeter` app we will create' class='isMax100PercentWide hasBorderShade90'>
 
 
 
@@ -34,27 +34,27 @@ We will create an app called "Greeter". It has a text input and a "Greet" button
 * Open Android Studio and create a new project: **File > New > New Project**.
 * Enter **Greeter** in Application Name and **mycompany.com** in Company Domain.
 
-<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0110_new_project_in_android_studio.png' title='New project in Android Studio' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0110_new_project_in_android_studio.png' alt='New project in Android Studio' class='isMax100PercentWide hasBorderShade90'>
 
 Accept the default settings on "Target Android Devices" screen with just "Phone and Tablet" option selected.
 
-<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0115_new_project_in_android_studio_form_activity.png' title='Target android devices' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0115_new_project_in_android_studio_form_activity.png' alt='Target android devices' class='isMax100PercentWide hasBorderShade90'>
 
 Select a **blank activity**.
 
-<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0120_new_project_select_blank_activity_in_android_studio.png' title='Select new project with blank activity in Android Studio' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0120_new_project_select_blank_activity_in_android_studio.png' alt='Select new project with blank activity in Android Studio' class='isMax100PercentWide hasBorderShade90'>
 
 Next, keep default activity name: `MainActivity`. This name will be used in our code later.
 
-<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0130_set_activity_name_and_title_in_android_studio.png' title='Set activity name and title' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0130_set_activity_name_and_title_in_android_studio.png' alt='Set activity name and title' class='isMax100PercentWide hasBorderShade90'>
 
 Finally, click **Finish** and give Android Studio a minute to setup your project. When it's done **run the app** by clicking the green start icon on the toolbar.
 
-<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0140_run_android_studio_project.png' title='Run the app in Android Studio' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0140_run_android_studio_project.png' alt='Run the app in Android Studio' class='isMax100PercentWide hasBorderShade90'>
 
 You will see the app on your device or emulator. It will have an empty screen with "Hello world!" message. Beautiful!
 
-<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0300_empty_app_first_run.png' title='Empty Android app' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0300_empty_app_first_run.png' alt='Empty Android app' class='isMax100PercentWide hasBorderShade90'>
 
 
 
@@ -69,7 +69,7 @@ We need to create a test configuration the first time we run the tests. There ar
 * You will see two packages with the same name **com.mycompany.greeter**. The second one will have **(androidTest)**. Right-click on that one.
 * Select **Run  'Tests in 'com.mycomp...'** from the context menu.
 
-<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0200_create_test_configuration_in_android_studio.png' title='Create test configuration and run tests' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0200_create_test_configuration_in_android_studio.png' alt='Create test configuration and run tests' class='isMax100PercentWide hasBorderShade90'>
 
 * Finally, select your device or emulator in the next dialog and it will run the tests.
 
@@ -80,7 +80,7 @@ We need to create a test configuration the first time we run the tests. There ar
 You will see a lot of green colour in the Run tool window. It means the tests passed successfully.
 If your Run window is closed click the **Run** button on the bottom panel or select **View > Tool Windows > Run** from the main menu.
 
-<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0210_view_test_results_in_run_tool_window_in_android_studio.png' title='View test results in run tool window' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0210_view_test_results_in_run_tool_window_in_android_studio.png' alt='View test results in run tool window' class='isMax100PercentWide hasBorderShade90'>
 
 ### Switch between App and Test configurations
 
@@ -90,7 +90,7 @@ Click the configuration dropdown menu located next to the run button on the tool
 
 Click **Save 'Tests 'com.mycompany.Greeter'' Configuration** item from the menu to save the test configuration that you just created.
 
-<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0220_switch_between_app_and_tests_in_android_studio.png' title='Switch between app and test configurations' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0220_switch_between_app_and_tests_in_android_studio.png' alt='Switch between app and test configurations' class='isMax100PercentWide hasBorderShade90'>
 
 ### Test configuration (under the hood)
 
@@ -107,7 +107,7 @@ You will see the following settings:
 It means that this configuration will run all the tests in **com.mycompany.greeter** package.
 
 
-<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0230_test_configuration_settings_in_android_studio.png' title='Test configuration settings' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0230_test_configuration_settings_in_android_studio.png' alt='Test configuration settings' class='isMax100PercentWide hasBorderShade90'>
 
 
 
