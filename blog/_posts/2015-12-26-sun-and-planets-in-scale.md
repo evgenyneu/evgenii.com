@@ -151,7 +151,11 @@ Another value that I will use is the ratio of one astronomical unit and the diam
 
 ## Photo sources
 
-1. **Mercury**: NASA, [source](http://www.nasa.gov/mission_pages/messenger/multimedia/messenger_orbit_image20111129_1.html)
-1. **Venus**: NASA, Mattias Malmer, [source](http://planetary.s3.amazonaws.com/image/VENUS_HQ_MOSAIC_malmer_cropped.jpg).
-1. **Earth**: NASA, [source](https://commons.wikimedia.org/wiki/File:Apollo17WorldReversed.jpg).
-1. **Mars**: NASA, [source](http://dayton.hq.nasa.gov/IMAGES/LARGE/GPN-2000-000923.jpg).
+1. **Mercury**: NASA, Messanger, [source](http://www.nasa.gov/mission_pages/messenger/multimedia/messenger_orbit_image20111129_1.html)
+1. **Venus**: NASA, Mattias Malmer, Mariner 10, [source](https://commons.wikimedia.org/wiki/File:Venus_in_Real_Color_(Mosaic).jpg).
+1. **Earth**: NASA, Apollo 17, [source](https://commons.wikimedia.org/wiki/File:Apollo17WorldReversed.jpg).
+1. **Mars**: NASA, Hubble Space Telescope, [source](http://grin.hq.nasa.gov/ABSTRACTS/GPN-2000-000923.html).
+1. **Jupiter**: NASA, ESA, and A. Simon (Goddard Space Flight Center), Hubble Space Telescope, [source](http://www.spacetelescope.org/images/heic1410a/).
+1. **Saturn**: NASA, Voyager 2, [source](http://www.ciclops.org/view/3163/Saturn-taken-from-Voyager-2?js=1).
+1. **Uranus**: NASA, Voyager 2, [source](http://photojournal.jpl.nasa.gov/catalog/PIA18182).
+1. **Neptune**: NASA, Hubble Space Telescope, [source](http://www.nasa.gov/multimedia/imagegallery/image_feature_399.html).
