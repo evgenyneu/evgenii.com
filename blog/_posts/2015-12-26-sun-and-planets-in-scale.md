@@ -148,3 +148,10 @@ Another value that I will use is the ratio of one astronomical unit and the diam
 </div>
 
 <p class='isTextCentered'>Figure 2: Picture of the Sun and its planets with object sizes in scale.</p>
+
+## Photo sources
+
+1. **Mercury**: NASA, [source](http://www.nasa.gov/mission_pages/messenger/multimedia/messenger_orbit_image20111129_1.html)
+1. **Venus**: NASA, Mattias Malmer, [source](http://planetary.s3.amazonaws.com/image/VENUS_HQ_MOSAIC_malmer_cropped.jpg).
+1. **Earth**: NASA, [source](https://commons.wikimedia.org/wiki/File:Apollo17WorldReversed.jpg).
+1. **Mars**: NASA, [source](http://dayton.hq.nasa.gov/IMAGES/LARGE/GPN-2000-000923.jpg).
