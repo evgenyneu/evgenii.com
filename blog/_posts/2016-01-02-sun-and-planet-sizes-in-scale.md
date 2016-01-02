@@ -8,11 +8,11 @@ tags: science
 
 <div class='isFullScreenWide isTextCentered hasBackgroundColorShade10'>
   <br>
-  <img src='/image/blog/2015-12-26-sun-and-planets-in-scale/0020_solar_system_object_sizes_in_scale.png' alt='The Sun and planets in natural color with correct relative sizes' class='isMax800PxWide'>
+  <img src='/image/blog/2015-12-26-sun-and-planets-in-scale/0020_solar_system_object_sizes_in_scale.png' alt='The Sun and planets in natural colors with correct relative sizes' class='isMax800PxWide'>
   <br>
 </div>
 
-<p class='isTextCentered'>Figure 1: Picture of proprotionally sized planets and the Sun in natural color. Zoom in to view details.</p>
+<p class='isTextCentered'>Figure 1: Picture of proprotionally sized planets and the Sun in natural colors. Zoom in to view details.</p>
 
 ## Seeing planets in context
 
