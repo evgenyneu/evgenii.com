@@ -110,11 +110,9 @@ To create Figure 1 I used the data for the sizes of the Sun and its planets show
 
 ## Feedback is welcome
 
-Feel free to reach me if you notice a mistake or want to improve the image. Download the [image source file](/files/2015/12/solar_system_object_sizes_in_scale.sketch) made in Sketch app.
+Feel free to reach me if you notice a mistake or want to improve the image. Download the [image source file](/files/2015/12/solar_system_object_sizes_in_scale.sketch) made in Sketch app. This work is released under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
-## License
 
-This work is released under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
 ## Photo sources
 
