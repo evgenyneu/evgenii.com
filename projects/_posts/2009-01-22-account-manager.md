@@ -1,6 +1,7 @@
 ---
 layout: project
 title:  "Account and invoice manager"
+layout_class: isTextCentered
 ---
 
 Web application for account and invoice management used in an online store. Written in C#/ASP.NET and T-SQL.

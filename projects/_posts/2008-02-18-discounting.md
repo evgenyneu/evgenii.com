@@ -1,6 +1,7 @@
 ---
 layout: project
 title:  "Discount manager"
+layout_class: isTextCentered
 ---
 
 The system is used to manage discounts, coupons and gift certificates for an eCommerce system selling digital products. Implemented using ASP.NET framework and MS SQL database.

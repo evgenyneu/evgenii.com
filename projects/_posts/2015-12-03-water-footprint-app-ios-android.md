@@ -2,6 +2,7 @@
 layout: project
 comments: true
 title:  "Water Footprint for iOS and Android"
+layout_class: isTextCentered
 ---
 
 <img src='/image/projects/2015_12_03_water_footprint/water_footprint_for_android_and_ios_logo.png' alt='Water Footprint for Android and iOS logo' class='isMax200PxWide'>
@@ -37,8 +38,8 @@ Currently the app is available in Chinese, English, Japanese and Russian languag
 
 ### Water Footprint for Android
 
-<img src='/image/projects/2015_12_03_water_footprint/water_footprint_android_english.png' alt='Water Footprint for Android' class='isMax400PxWide hasBorderShade90'>
+<img src='/image/projects/2015_12_03_water_footprint/water_footprint_android_english.png' alt='Water Footprint for Android' class='isMax300PxWide hasBorderShade90'>
 
 ### Water Footprint for iOS
 
-<img src='/image/projects/2015_12_03_water_footprint/water_footprint_iphone_english.png' alt='Water Footprint for iOS' class='isMax400PxWide hasBorderShade90'>
+<img src='/image/projects/2015_12_03_water_footprint/water_footprint_iphone_english.png' alt='Water Footprint for iOS' class='isMax300PxWide hasBorderShade90'>

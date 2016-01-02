@@ -2,6 +2,7 @@
 layout: project
 comments: true
 title:  "Walk to Circle neighbourhood exploration iOS game"
+layout_class: isTextCentered
 ---
 
 <div class='embed-container'><iframe src='http://www.youtube.com/embed/rKACkn3s2uA?rel=0' frameborder='0' allowfullscreen></iframe></div>

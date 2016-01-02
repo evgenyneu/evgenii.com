@@ -1,6 +1,7 @@
 ---
 layout: project
 title:  "Cloud storage web app"
+layout_class: isTextCentered
 ---
 
 Mobile-friendly web app for organizing and keeping personal data securely in the cloud storage. Client side code is written in CoffeeScript language. It uses jQueryMobile and Backbone.js libraries. Client application communicates with the server using REST API. The back-end is done in Ruby on Rails.

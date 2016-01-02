@@ -1,6 +1,7 @@
 ---
 layout: project
 title:  "Adapting to responsive web design"
+layout_class: isTextCentered
 ---
 
 Adapted key pages of the following web sites to [responsive design](http://en.wikipedia.org/wiki/Responsive_web_design):

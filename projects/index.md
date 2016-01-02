@@ -1,7 +1,7 @@
 ---
 layout: default
-layout_class: isTextCentered
 title: My Software Projects
+layout_class: isTextCentered
 ---
 
 # My Software Projects
