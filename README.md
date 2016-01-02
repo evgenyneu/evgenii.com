@@ -93,5 +93,5 @@ AAAA Address: 2001:44b8:41d7:f900:20f:13ff:fe50:461
 
 ## License
 
-The source code for evgenii.com is released under the [MIT License](/files/LICENSE.txt).
+This work is released under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
