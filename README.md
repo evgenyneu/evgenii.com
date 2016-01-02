@@ -93,5 +93,5 @@ AAAA Address: 2001:44b8:41d7:f900:20f:13ff:fe50:461
 
 ## License
 
-This work is released under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
+The content and the source code of evgenii.com is released under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
