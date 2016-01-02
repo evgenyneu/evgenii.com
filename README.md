@@ -91,4 +91,7 @@ dns4.name-services.com
 A Address: 59.167.177.118
 AAAA Address: 2001:44b8:41d7:f900:20f:13ff:fe50:461
 
+## License
+
+The source code for evgenii.com is released under the [MIT License](/files/LICENSE.txt).
 
