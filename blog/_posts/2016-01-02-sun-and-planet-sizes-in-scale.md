@@ -1,7 +1,7 @@
 ---
 layout: blog_post
 comments: true
-title: "Proportionally sized Solar System objects in natural color"
+title: "Proportionally sized Solar System objects in natural colors"
 meta_description: "An attempt to create a picture of the Solar system with true relative sizes of the Sun and its planets."
 tags: science
 ---
