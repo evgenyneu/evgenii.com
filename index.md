@@ -17,8 +17,6 @@ Addicted to novelty. Listen to podcasts and audio books. Love EDM, hip-hop and p
 
 ### Want to keep in touch?
 
-[Google+]({{ site.author.google_plus_url }})
-
 {{ site.author.email }}
 
 <br>
