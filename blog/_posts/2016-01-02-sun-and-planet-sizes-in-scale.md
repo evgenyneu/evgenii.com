@@ -16,7 +16,7 @@ tags: science
 
 ## Seeing planets in context
 
-On Figure 1 I hoped to preserve the differences in sizes between the planets and the Sun in order to visualize the magnitude of our cosmic neighborhood. We know that planet Earth is approximately 109 times smaller than the Sun. It is surprising to actually see how small our planet is when it is placed next to the "gas giants" Jupiter and Saturn. When looking at this picture I try to imagine the size of my city, my house or my own body and realize how insignificant they are at the planetary scale.
+On Figure 1 I hoped to illustrate the differences in sizes between the planets and the Sun in order to visualize the magnitude of our cosmic neighborhood. We know that planet Earth is approximately 109 times smaller than the Sun. It is surprising to actually see how small our planet is when it is placed next to the "gas giants" Jupiter and Saturn. When looking at this picture I try to imagine the size of my city, my house or my own body and realize how insignificant they are at the planetary scale.
 
 ## What's wrong with this image?
 
@@ -24,9 +24,7 @@ The relative sizes of the planets and the Sun shown on Figure 1 are approximatel
 
 ### 1) Distances between planets
 
-The image above shows the planets separated by equal intervals. In reality, of course, those distances are unequal and much greater than the sizes of the planets. I could not draw the image with both planet sizes and distances in scale, and I tried.
-
-For example, the distance between the Sun and Mercury equals roughly to 83 Sun diameters. Or we can imagine it this way: it would take 83 Suns to fill the space between the Sun and Mercury. A realistic image of the Solar System would be so big that you would need to scroll the screen 100 times to get from the Sun to its first planet Mercury. It would take another 150 screens to see the Earth. Although such image would be more realistic very few people would find it useful.
+The image above shows the planets separated by equal intervals. In reality, of course, those distances are unequal. I could not draw the image with both planet sizes and distances in scale because the distances between planets are many times greater than their sizes. For example, the distance between the Sun and Mercury equals roughly to 83 Sun diameters. Or we can imagine it this way: it would take 83 Suns to fill the distance between the Sun and Mercury. A realistic image of the Solar System would be so big that you would need to scroll the screen 100 times to get from the Sun to its first planet Mercury. It would take another 150 screens to reach the Earth. Although such image would be more realistic I doubt anyone could find it useful.
 
 ### 2) Colors
 
@@ -42,7 +40,7 @@ It can be seen from this equation that the farther away the planet is from the S
 
 ### 4) Positions of the planets
 
-Needless to say, the planets of the Solar System do not magically align to form a straight line shown on the image. Perfect alignment of the planets within a degree is such an improbable event that it would unlikely to happen in the future within the life span of the Solar System.
+Needless to say, the planets of the Solar System do not magically align to form a straight line shown on the image. Perfect alignment of the planets within a degree is such an improbable event that it would unlikely to happen in the future during the lifespan of the Solar System.
 
 
 ## Data for the sizes of the Sun and its planets
