@@ -16,7 +16,7 @@ tags: science
 
 ## Seeing planets in context
 
-On Figure 1 I hoped to preserve the differences in sizes between the astronomical objects in order to visualize the magnitude of our cosmic neighborhood. We know that planet Earth is approximately 109 times smaller than the Sun. It is surprising to actually see how small our planet is when it is placed next to the "gas giants" Jupiter and Saturn. When looking at this picture I try to imagine the size of my city, my house or my own body and realize how insignificant they are at the planetary scale.
+On Figure 1 I hoped to preserve the differences in sizes between the planets and the Sun in order to visualize the magnitude of our cosmic neighborhood. We know that planet Earth is approximately 109 times smaller than the Sun. It is surprising to actually see how small our planet is when it is placed next to the "gas giants" Jupiter and Saturn. When looking at this picture I try to imagine the size of my city, my house or my own body and realize how insignificant they are at the planetary scale.
 
 ## What's wrong with this image?
 
