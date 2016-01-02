@@ -1,0 +1,1 @@
+The entire contents of this directory is accessible online under /files/... URL.

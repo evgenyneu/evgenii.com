@@ -2,7 +2,7 @@
 layout: default
 layout_class: isTextCentered
 title: Personal site of Evgenii Neumerzhitckii
-meta_description: "Personal site of Evgenii Neumerzhitckii: blog, contact, projects and resume."
+meta_description: "Personal site of Evgenii Neumerzhitckii: blog and projects."
 ---
 
 <h1>
