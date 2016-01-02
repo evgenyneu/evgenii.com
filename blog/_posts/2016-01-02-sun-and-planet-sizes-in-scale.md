@@ -26,7 +26,7 @@ The relative sizes of the planets and the Sun shown on Figure 1 are approximatel
 
 The image above shows the planets separated by equal intervals. In reality, of course, those distances are unequal and much greater than the sizes of the planets. I could not draw the image with both planet sizes and distances in scale, and I tried.
 
-For example, the distance between the Sun and Mercury equals roughly to 83 Sun diameters. Or we can image it this way: it would take 83 Suns to fill the space between the Sun and Mercury. A realistic image of the Solar System would be so big that you would need to scroll the screen 100 times to get from the Sun to its first planet Mercury. It would take another 150 screens to see the Earth. Although such image would be more realistic very few people would find it useful.
+For example, the distance between the Sun and Mercury equals roughly to 83 Sun diameters. Or we can imagine it this way: it would take 83 Suns to fill the space between the Sun and Mercury. A realistic image of the Solar System would be so big that you would need to scroll the screen 100 times to get from the Sun to its first planet Mercury. It would take another 150 screens to see the Earth. Although such image would be more realistic very few people would find it useful.
 
 ### 2) Colors
 
@@ -38,7 +38,7 @@ While planet colors shown on Figure 1 are approximately correct their brightness
 
 > A = 4πr²
 
-It can be seen from this equation that the farther away the planet is from the Sun the less light it receives. For example, Uranus is approximately 19 times farther away from the Sun than the Earth. Consequently, when compared with Earth a square meter on Uranus receives 361 times less light. As a result, distant planets like Uranus and Neptune should appear darker then they are on Figure 1.
+It can be seen from this equation that the farther away the planet is from the Sun the less light it receives. For example, Uranus is approximately 19 times farther away from the Sun than the Earth. Consequently, when compared with Earth a square meter on Uranus receives 361 times less light. As a result, distant planets like Uranus and Neptune should appear darker than they are on Figure 1.
 
 ### 4) Positions of the planets
 
