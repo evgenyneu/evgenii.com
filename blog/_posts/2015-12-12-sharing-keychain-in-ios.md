@@ -8,7 +8,7 @@ tags: programming
 
 Keychain is a secure storage suitable for short bits of sensitive information like passwords or credit card numbers. By default the data saved in one app can not be read in other apps. In most cases this is exactly what we need because it protects our data from leaking out.
 
-However, sometimes we need to share Keychain items between multiple apps that we trust. For instance, suppose we created two apps where users can log into the same account. It would be nice to have ability to share the login information between these app. This way the user will only need to log in once in one of the apps.
+However, sometimes we need to share Keychain items between multiple apps that we trust. For instance, suppose we created two apps where users can log into the same account. It would be nice to have ability to share the login information between these apps. This way the user will only need to log in once in one of the apps.
 
 Fortunately, there is a way to share Keychain items between apps and it can be done by using *Keychain Groups*. Here is how to do it. The following steps need to be done **in all apps** where you want to share the Keychain items.
 
