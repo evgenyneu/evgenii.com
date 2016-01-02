@@ -12,7 +12,7 @@ tags: science
   <br>
 </div>
 
-<p class='isTextCentered'>Figure 1: Picture of proprotionally sized planets and the Sun in natural colors. Zoom in to view details.</p>
+<p class='isTextCentered'>Figure 1: Proprotionally sized planets and the Sun in natural colors. Zoom in to view details.</p>
 
 ## Seeing planets in context
 
