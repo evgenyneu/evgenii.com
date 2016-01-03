@@ -12,13 +12,24 @@ tags: science
   <br>
 </div>
 
-<p class='isTextCentered'>Figure 1: Proprotionally sized planets and the Sun in natural colors. Zoom in to view details.</p>
+<p class='isTextCentered'>Figure 1: Proportionally sized planets and the Sun in natural colors. Zoom in to view details.</p>
 
 ## Seeing planets in context
 
 On Figure 1 I hoped to illustrate the differences in sizes between the planets and the Sun in order to visualize the magnitude of our cosmic neighborhood. We know that planet Earth is approximately 109 times smaller than the Sun. It is surprising to actually see how small our planet is when it is placed next to the "gas giants" Jupiter and Saturn. When looking at this picture I try to imagine the size of my city, my house or my own body and realize how insignificant they are at the planetary scale.
 
-## What's wrong with this image?
+## If planet Earth was a hamster ...
+
+Looking at different sizes of the Solar System objects I could not help but think of common sense analogies.
+
+1. If planet Earth was a hamster (5.5 cm in length) the Sun would be as big as an African bush elephant (6 m in length) and Jupiter would be a koala (60 cm in length) chewing eucalyptus leaves.
+
+1. If you took all the land area from Earth and transfer it to Mars it would cover Mars almost entirely. There  would be no room for the Earth oceans on Mars so don't expect to have long cruises there in the future. Surprising fact about Mars is that its surface area (145 million km²) is almost equal to the land area of Earth (149 million km²).
+
+1. If the Earth was the size of the Sun a flight from New York to London would take one month. The Sun is 109 times larger than the Earth, so the 7 hour flight would take 7 * 109 = 763 hours. Here I assume that distances on Earth would grow proportionally but the speed of a commercial airplane would stay the same.
+
+
+## But the image is still not quite right
 
 The relative sizes of the planets and the Sun shown on Figure 1 are approximately correct but some other physical properties are imprecise.
 
@@ -111,7 +122,6 @@ To create Figure 1 I used the data for the sizes of the Sun and its planets show
 Feel free to reach me if you notice a mistake or want to improve the image. Download the [image source file](/files/2015/12/solar_system_object_sizes_in_scale.sketch) made in Sketch app.
 
 
-
 ## Photo sources
 
 1. **Mercury**: NASA, Messanger, [source](http://www.nasa.gov/mission_pages/messenger/multimedia/messenger_orbit_image20111129_1.html)
@@ -122,6 +132,7 @@ Feel free to reach me if you notice a mistake or want to improve the image. Down
 1. **Saturn**: NASA, Voyager 2, [source](http://www.ciclops.org/view/3163/Saturn-taken-from-Voyager-2?js=1).
 1. **Uranus**: NASA, Voyager 2, [source](http://photojournal.jpl.nasa.gov/catalog/PIA18182).
 1. **Neptune**: NASA, Hubble Space Telescope, [source](http://www.nasa.gov/multimedia/imagegallery/image_feature_399.html).
+
 
 ## Sources of the size data
 
