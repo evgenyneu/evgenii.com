@@ -26,7 +26,7 @@ Looking at different sizes of the Solar System objects I could not help but thin
 
 1. If you took all the land area from Earth and transfer it to Mars it would cover Mars almost entirely. There  would be no room for the Earth oceans on Mars so don't expect to have long cruises there in the future. Surprising fact about Mars is that its surface area (145 million km²) is almost equal to the land area of Earth (149 million km²).
 
-1. If the Earth was the size of the Sun a flight from New York to London would take one month. The Sun is 109 times larger than the Earth, so the 7 hour flight would take 7 * 109 = 763 hours. Here I assume that distances on Earth would grow proportionally but the speed of a commercial airplane would stay the same.
+1. If the Earth was the size of the Sun a flight from New York to London would take one month. The Sun is 109 times larger than the Earth, so the 7 hour flight would take 7 * 109 = 763 hours. Here I assume that distances on Earth would grow proportionally but the speed of a commercial airplane would stay the same. And the prospect of eating airplane meals for one month would probably make me reconsider the journey.
 
 
 ## But the image is still not quite right
