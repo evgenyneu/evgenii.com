@@ -32,3 +32,7 @@
     &:last-child { border-right: none; }
   }
 }
+
+.table-hasBottomBorder {
+  border-bottom: 1px solid $shade90;
+}
