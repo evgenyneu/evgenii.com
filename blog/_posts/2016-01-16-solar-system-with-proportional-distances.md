@@ -1,7 +1,7 @@
 ---
 layout: blog_post
 comments: true
-title: "The Solar System with proportional distances"
+title: "A picture of the Solar System with proportional distances"
 meta_description: "This is a picture of Solar System that shows proportional distances between planets and other objects."
 tags: science
 ---
@@ -12,7 +12,7 @@ tags: science
   <br>
 </div>
 
-<p class='isTextCentered'>Figure 1: The Solar System with proportional distances. <a href="/files/2016/01/solar_system_proportional_distances.sketch">[source]</a></p>
+<p class='isTextCentered'>Figure 1: Solar System with proportional distances. <a href="/files/2016/01/solar_system_proportional_distances.sketch">[source]</a></p>
 
 ## Understanding Solar System distances
 
@@ -20,13 +20,13 @@ It is hard to grasp the the magnitude of our Solar System because the sizes and 
 
 It is quite normal for us to have this disability for appreciating cosmic sizes. After all, our body is the product of natural selection which until very recent times rarely encountered anything closer than a river or a wolf. The machinery for dealing with astronomical units of measurement never evolved in us because it did not give us any survival benefits.
 
-But we shouldn't give up in our quest to understand the world outside our cave. One way to learn anything is to draw a picture. In the [previous post](/blog/sun-and-planet-sizes-in-scale/) I illustrated the relative *sizes* of the Solar System objects. Today my focus is to show the *distances* between them. Figures 1 and 3 illustrate the Solar System, locations of various objects in it and their distances from the Sun. The distances are expressed in *astronomical units* abbreviated as *au*. One astronomical unit is approximate distance from the Earth to the Sun.
+But we shouldn't give up in our quest to understand the world outside our cave. One way to learn anything is to draw a picture. In the [previous post](/blog/sun-and-planet-sizes-in-scale/) I illustrated the relative *sizes* of the Solar System objects. Today my focus is to show the *distances* between them. Figures 1 and 3 illustrate locations of various objects in the Solar System and their distances from the Sun. The distances are expressed in *astronomical units* abbreviated as *au*. One astronomical unit is the approximate distance from Earth to the Sun.
 
-Let me explain a bit more about those distances. The title of this post includes the words '*proportional distances*'. This simply means that spaces between objects shown in the picture would be roughly correct if we looked at the real Solar System from a spaceship. For example, we know that planet Neptune is about 30 times farther from the Sun than Earth. Therefore, the picture of Neptune should also be 30 times farther away from the Sun than the Earth. This is all I meant by '*proportional distances*'.
+Let me explain a bit more about those distances. The title of this post includes the words '*proportional distances*'. This simply means that spaces between objects shown in the picture would be roughly correct if we looked at the real Solar System from a spaceship. For example, we know that planet Neptune is about 30 times farther from the Sun than Earth. Therefore, the picture of Neptune should also be 30 times farther away from the Sun than Earth. This is all I meant by '*proportional distances*'.
 
 ## Orbits aren't circles
 
-As you probably know the orbits of the planets are not usually circles but rather stretched circles called *ellipses*. This means that the distance from an object to the Sun changes over time as the object moves along its orbit. One of the standard ways to measure the orbit is to use the length of its *semi-major axis*. This simply means taking the half of the longest part of the orbit (see Figure 2). This is all the term *semi-major axis* means and I used it on Figures 1 and 2 to for the distances.
+As you probably know the orbits of the planets are not usually circles but rather stretched circles called *ellipses*. This means that the distance from an object to the Sun changes over time as the object moves along its orbit. One of the standard ways to measure the orbit is to use the length of its *semi-major axis*. This simply means taking the half of the longest part of the orbit (see Figure 2). This is all the term *semi-major axis* means and I used it on Figures 1 and 3 to for the distances.
 
 <img src='/image/blog/2016-01-16-solar-system-with-proportional-distances/0020_semi_major_axis_and_planet_orbit.png' alt='Semi-mejor axis of elliptical orbit' class='isMax100PercentWide'>
 
@@ -35,9 +35,9 @@ As you probably know the orbits of the planets are not usually circles but rathe
 
 ## Beyond Eris
 
-Fugues 1 and 3 show the region of the Solar System from the Sun to the dwarf planet Eris. This is the region I understand reasonably well. Beyond Eris there are other important objects and regions of the Solar System including *termination shock*, *heliopause* and *Oort cloud*. I decided not to include them into the pictures for two reasons. Firstly, I don't understand them yet. Secondly, those regions are much further away and drawing them would require much taller pictures.
+Figures 1 and 3 show the region of the Solar System from the Sun to the dwarf planet Eris. Beyond Eris there are other important objects and regions of the Solar System including *termination shock*, *heliopause* and *Oort cloud*. I decided not to include them into the pictures for two reasons. Firstly, I don't understand them yet. Secondly, those regions are much further away and drawing them would require much taller pictures.
 
-## Solar System objects distances data
+## Data for the distances of the Solar System objects
 
 Table 1 shows the distances from Solar System objects to the Sun. Each distance is the length of the semi-major axis of the object's orbit. The distances are measured in million kilometers and astronomical units.
 
@@ -143,15 +143,15 @@ The Figure 3 shown bellow is a zoomed-in picture of the Solar System that includ
   <br>
 </div>
 
-<p class='isTextCentered'>Figure 3: More detailed view of the Solar System with proportional distances. <a href="/files/2016/01/detailed_solar_system_proportional_distances.sketch">[source]</a></p></p>
+<p class='isTextCentered'>Figure 3: More detailed picture of the Solar System with proportional distances. <a href="/files/2016/01/detailed_solar_system_proportional_distances.sketch">[source]</a></p></p>
 
 ## Traveling to Saturn by bus
 
-Here are some hypothetical analogies that may help understand the distances in the Solar System.
+In conclusion, I would like to present some hypothetical analogies that may help us understand the distances in the Solar System.
 
-* It would take about **four thousand years** to travel to Saturn **by bus** at speed of 40 km/h relative to the Sun.
-* If you used an airplane instead it would take roughly **200 years** at speed of 800 km/h.
-* Finally, a journey to Saturn would take approximately **three years** if you managed to board a space probe Voyager 1 traveling at speed of 60,000 km/h. This is about as fast as humans can move today.
+* It would take about **four thousand years** to travel to Saturn **by bus** at the speed of 40 km/h relative to the Sun.
+* If you used an airplane instead it would take roughly **200 years** at the speed of 800 km/h.
+* Finally, a journey to Saturn would take approximately **three years** if you managed to board a space probe Voyager 1 traveling at the speed of 60,000 km/h. This is about as fast as humans can move today.
 
 ## Sources of the distance data
 

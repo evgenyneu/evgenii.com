@@ -12,7 +12,7 @@ tags: science
   <br>
 </div>
 
-<p class='isTextCentered'>Figure 1: Proportionally sized planets and the Sun in natural colors. Zoom in to view details.</p>
+<p class='isTextCentered'>Figure 1: Proportionally sized planets and the Sun in natural colors. Zoom in to view details. <a href="/files/2015/12/solar_system_object_sizes_in_scale.sketch">[source]</a></p>
 
 ## Seeing planets in context
 
@@ -117,10 +117,6 @@ To create Figure 1 I used the data for the sizes of the Sun and its planets show
 
 <p class='isTextCentered'>Table 1: Mean radii of the Sun and its planets.</p>
 
-## Feedback is welcome
-
-Feel free to reach me if you notice a mistake or want to improve the image. Download the [image source file](/files/2015/12/solar_system_object_sizes_in_scale.sketch) made in Sketch app.
-
 
 ## Photo sources
 
@@ -139,3 +135,8 @@ Feel free to reach me if you notice a mistake or want to improve the image. Down
 * **Sun**: Emilio, M.; Kuhn, J. R.; Bush, R. I.; Scholl, I. F. (2012). "Measuring the Solar Radius from Space during the 2003 and 2006 Mercury Transits". The Astrophysical Journal, Volume 750, Issue 2, article id. 135, 8 pp. (2012). Links: [arXiv:1203.4898v1](http://arxiv.org/abs/1203.4898), [2012ApJ...750..135E](http://adsabs.harvard.edu/abs/2012ApJ...750..135E), [doi:10.1088/0004-637X/750/2/135.](http://dx.doi.org/10.1088/0004-637X/750/2/135).
 * **Mercury, Venus, Mars, Jupiter, Saturn, Uranus and Neptune**: Seidelmann, P. Kenneth; Archinal, Brent A.; A'Hearn, Michael F.; et al. (2007). "Report of the IAU/IAG Working Group on cartographic coordinates and rotational elements: 2006". Celestial Mechanics and Dynamical Astronomy, Volume 98, Issue 3, pp.155-180. Links: [2007CeMDA..98..155S](http://adsabs.harvard.edu/abs/2007CeMDA..98..155S), [doi:10.1007/s10569-007-9072-y](http://link.springer.com/article/10.1007%2Fs10569-007-9072-y).
 * **Earth**: Various (2000). David R. Lide, ed. Handbook of Chemistry and Physics (81st ed.). CRC Press. ISBN 0-8493-0481-4.
+
+## References
+
+* [A picture of the Solar System with proportional distances](/blog/solar-system-with-proportional-distances/)
+* [Image source file in Sketch format](/files/2015/12/solar_system_object_sizes_in_scale.sketch)
