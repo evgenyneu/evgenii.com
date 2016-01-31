@@ -145,6 +145,14 @@ The Figure 3 shown bellow is a zoomed-in picture of the Solar System that includ
 
 <p class='isTextCentered'>Figure 3: More detailed view of the Solar System with proportional distances. <a href="/files/2016/01/detailed_solar_system_proportional_distances.sketch">[source]</a></p></p>
 
+## Traveling to Saturn by bus
+
+Here are some hypothetical analogies that may help understand the distances in the Solar System.
+
+* It would take about **four thousand years** to travel to Saturn **by bus** at speed of 40 km/h relative to the Sun.
+* If you used an airplane instead it would take roughly **200 years** at speed of 800 km/h.
+* Finally, a journey to Saturn would take approximately **three years** if you managed to board a space probe Voyager 1 traveling at speed of 60,000 km/h. This is about as fast as humans can move today.
+
 ## Sources of the distance data
 
 * **Mercury**: Mercury Fact Sheet, NASA. [[link]](http://nssdc.gsfc.nasa.gov/planetary/factsheet/mercuryfact.html)
