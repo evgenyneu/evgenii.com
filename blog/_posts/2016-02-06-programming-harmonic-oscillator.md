@@ -61,6 +61,15 @@ tags: programming science
     var canvasHeight = 100;
     var boxSize = 50;
 
+    var colors = {
+      box: "#ffb100",
+      boxBorder: "#a66000",
+      middleLine: "#ff6c00"
+    }
+
+    var xDisplacement = 0.0;
+    var isMovingRight = true;
+
     // Resize the canvas
     // ----------------------
 
@@ -85,7 +94,6 @@ tags: programming science
     //
     // Draw a box at position. Position is a value from -1 to 1.
     // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
-    //
     function drawBox(position) {
       var boxTopY = Math.floor((canvasHeight - boxSize) / 2);
       var boxSpaceWidth = canvas.width - boxSize;
@@ -93,16 +101,17 @@ tags: programming science
       var middleX = boxSpaceWidth * (position + 1) / 2;
 
       // Rectangle
-      context.fillStyle = "#ffb100";
+      context.fillStyle = colors.box;
       context.fillRect(middleX, boxTopY, boxSize, boxSize);
 
       // Border around rectangle
       context.lineWidth = 1;
-      context.strokeStyle = "#a66000";
+      context.strokeStyle = colors.boxBorder;
       context.setLineDash([1, 0]);
       context.strokeRect(middleX + .5, boxTopY + .5, boxSize - 1, boxSize - 1)
     }
 
+    // Draw vertical line in the middle
     function drawMiddleLine() {
       var middleX = Math.floor(canvas.width / 2);
 
@@ -116,11 +125,36 @@ tags: programming science
     }
 
     function draw() {
+      context.clearRect(0, 0, canvas.width, canvas.height)
       drawMiddleLine();
-      drawBox(0);
+      drawBox(xDisplacement);
     }
 
-    draw();
+    function updatePosition() {
+      if (isMovingRight) {
+        if (xDisplacement >= 1) {
+          isMovingRight = false;
+        }
+      } else {
+        if (xDisplacement <= -1) {
+          isMovingRight = true;
+        }
+      }
+
+      if (isMovingRight) {
+        xDisplacement += 0.03;
+      } else {
+        xDisplacement -= 0.03;
+      }
+    }
+
+    function animate() {
+      updatePosition();
+      draw();
+      window.requestAnimationFrame(animate)
+    }
+
+    animate();
   }
 
   function init() {
@@ -136,35 +170,6 @@ tags: programming science
   }
 
   init();
-
-
-  // var positionPercent = 0;
-  // var isMovingForward = true;
-
-
-  // function updatePosition() {
-  //   if (isMovingForward) {
-  //     if (positionPercent == 100) {
-  //       isMovingForward = false;
-  //     }
-  //   } else {
-  //     if (positionPercent == 0) {
-  //       isMovingForward = true;
-  //     }
-  //   }
-
-  //   if (isMovingForward) {
-  //     positionPercent += 1;
-  //   } else {
-  //     positionPercent -= 1;
-  //   }
-  // }
-
-  // function animate() {
-  //   updatePosition();
-  //   box.style.left = positionPercent + "%";
-  //   window.requestAnimationFrame(animate)
-  // }
 }());
 
 // var box = document.querySelector(".HarmonicOscillator-box");
