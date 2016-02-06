@@ -6,8 +6,10 @@ meta_description: "This tutorial shows how to program the motion of harmonic osc
 tags: programming science
 ---
 
-<canvas class="HarmonicOscillator-canvas" height="100">
+<canvas class="HarmonicOscillator-canvas">
 </canvas>
+
+<h3 class="isHidden" id="CanvasNotSupportedMessage">Please use a newer browser to see the simulation</h3>
 
 
 <!-- <div class='HarmonicOscillator'>
@@ -54,65 +56,116 @@ tags: programming science
 
 // ----------------------
 
-var canvas = document.querySelector(".HarmonicOscillator-canvas");
-// canvas.style.width ='100%';
-// canvas.width  = canvas.offsetWidth;
-var context = canvas.getContext("2d");
+(function(){
+  function start(canvas, context) {
+    var canvasHeight = 100;
+    var boxSize = 50;
 
-function fitToContainer(canvas){
-  canvas.style.width='100%';
-  canvas.style.height='100px';
-  canvas.width  = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
-}
+    // Resize the canvas
+    // ----------------------
 
-fitToContainer(canvas);
-
-function draw() {
-  context.fillStyle = "#ffb100";
-  context.fillRect(0,0,50,50);
-
-  context.strokeStyle = "#a66000";
-  context.strokeRect(0,0,50,50)
-}
-
-
-window.addEventListener('resize', function(event){
-  console.log("resizing");
-  fitToContainer(canvas);
-  draw();
-});
-
-draw();
-
-var positionPercent = 0;
-var isMovingForward = true;
-
-
-function updatePosition() {
-  if (isMovingForward) {
-    if (positionPercent == 100) {
-      isMovingForward = false;
+    function fitToContainer(canvas){
+      canvas.style.width='100%';
+      canvas.style.height= canvasHeight + 'px';
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
     }
-  } else {
-    if (positionPercent == 0) {
-      isMovingForward = true;
+
+    window.addEventListener('resize', function(event){
+      console.log("resizing");
+      fitToContainer(canvas);
+      draw();
+    });
+
+    fitToContainer(canvas);
+
+    // Draw
+    // ----------------------
+
+    //
+    // Draw a box at position. Position is a value from -1 to 1.
+    // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
+    //
+    function drawBox(position) {
+      var boxTopY = Math.floor((canvasHeight - boxSize) / 2);
+      var boxSpaceWidth = canvas.width - boxSize;
+
+      var middleX = boxSpaceWidth * (position + 1) / 2;
+
+      // Rectangle
+      context.fillStyle = "#ffb100";
+      context.fillRect(middleX, boxTopY, boxSize, boxSize);
+
+      // Border around rectangle
+      context.lineWidth = 1;
+      context.strokeStyle = "#a66000";
+      context.setLineDash([1, 0]);
+      context.strokeRect(middleX + .5, boxTopY + .5, boxSize - 1, boxSize - 1)
+    }
+
+    function drawMiddleLine() {
+      var middleX = Math.floor(canvas.width / 2);
+
+      context.beginPath();
+      context.moveTo(middleX, 0);
+      context.lineTo(middleX, canvas.height);
+      context.lineWidth = 2;
+      context.strokeStyle = "#ff6c00";
+      context.setLineDash([2,3]);
+      context.stroke();
+    }
+
+    function draw() {
+      drawMiddleLine();
+      drawBox(0);
+    }
+
+    draw();
+  }
+
+  function init() {
+    var canvas = document.querySelector(".HarmonicOscillator-canvas");
+
+    if (!!(canvas && canvas.getContext && canvas.getContext('2d'))) {
+      var context = canvas.getContext("2d");
+      start(canvas, context);
+    } else {
+      // Canvas is not supported
+      document.getElementById("CanvasNotSupportedMessage").className = "";
     }
   }
 
-  if (isMovingForward) {
-    positionPercent += 1;
-  } else {
-    positionPercent -= 1;
-  }
-}
+  init();
 
-function animate() {
-  updatePosition();
-  box.style.left = positionPercent + "%";
-  window.requestAnimationFrame(animate)
-}
 
+  // var positionPercent = 0;
+  // var isMovingForward = true;
+
+
+  // function updatePosition() {
+  //   if (isMovingForward) {
+  //     if (positionPercent == 100) {
+  //       isMovingForward = false;
+  //     }
+  //   } else {
+  //     if (positionPercent == 0) {
+  //       isMovingForward = true;
+  //     }
+  //   }
+
+  //   if (isMovingForward) {
+  //     positionPercent += 1;
+  //   } else {
+  //     positionPercent -= 1;
+  //   }
+  // }
+
+  // function animate() {
+  //   updatePosition();
+  //   box.style.left = positionPercent + "%";
+  //   window.requestAnimationFrame(animate)
+  // }
+}());
 
 // var box = document.querySelector(".HarmonicOscillator-box");
 // var positionPercent = 0;
@@ -148,14 +201,6 @@ function animate() {
 </script>
 
 <style>
-
-.HarmonicOscillator-canvas {
-  /*width: 200px;*/
-  /*height: 100px;*/
-  /*width: 100%;*/
-  /*height: auto;*/
-  background-color: green;
-}
 
 .HarmonicOscillator {
   position: relative;
