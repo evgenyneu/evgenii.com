@@ -106,7 +106,7 @@ tags: programming science
     // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
     function drawSpring(xDisplacement) {
       var springEndX = boxMiddleX(xDisplacement),
-        springTopY = (canvasHeight - springInfo.height) / 2;
+        springTopY = (canvasHeight - springInfo.height) / 2,
         springEndY = canvasHeight / 2,
         canvasMiddleX = canvas.width / 2,
         singleSegmentWidth = (canvasMiddleX - springEndX) / (springInfo.numberOfSegments - 1),
@@ -117,14 +117,14 @@ tags: programming science
       context.strokeStyle = colors.shade40;
       context.moveTo(springEndX, springEndY);
 
-      for (i = 0; i < springInfo.numberOfSegments; i++) {
+      for (var i = 0; i < springInfo.numberOfSegments; i++) {
         var currentSegmentWidth = singleSegmentWidth;
-        if (i == 0 || i == springInfo.numberOfSegments - 1) { currentSegmentWidth /= 2; }
+        if (i === 0 || i === springInfo.numberOfSegments - 1) { currentSegmentWidth /= 2; }
 
         springEndX += currentSegmentWidth;
         springEndY = springTopY;
         if (!springGoesUp) { springEndY += springInfo.height; }
-        if (i == springInfo.numberOfSegments - 1) { springEndY = canvasHeight / 2; }
+        if (i === springInfo.numberOfSegments - 1) { springEndY = canvasHeight / 2; }
 
         context.lineTo(springEndX, springEndY);
         springGoesUp = !springGoesUp;
