@@ -61,11 +61,16 @@ tags: programming science
     var canvasHeight = 100;
     var boxSize = 50;
 
+    var springInfo = {
+      height: 30,
+      numberOfSegments: 12
+    };
+
     var colors = {
-      box: "#ffb100",
-      boxBorder: "#a66000",
-      middleLine: "#ff6c00"
-    }
+      shade30: "#a66000",
+      shade40: "#ff6c00",
+      shade50: "#ffb100"
+    };
 
     var xDisplacement = 0.0;
     var isMovingRight = true;
@@ -91,24 +96,59 @@ tags: programming science
     // Draw
     // ----------------------
 
-    //
+    // Return the middle X position of the box
+    function boxMiddleX(xDisplacement) {
+      var boxSpaceWidth = canvas.width - boxSize;
+      return boxSpaceWidth * (xDisplacement + 1) / 2 + boxSize / 2;
+    }
+
+    // Draw spring from the box to the center. Position argument is the box position and varies from -1 to 1.
+    // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
+    function drawSpring(xDisplacement) {
+      var springEndX = boxMiddleX(xDisplacement),
+        springTopY = (canvasHeight - springInfo.height) / 2;
+        springEndY = canvasHeight / 2,
+        canvasMiddleX = canvas.width / 2,
+        singleSegmentWidth = (canvasMiddleX - springEndX) / (springInfo.numberOfSegments - 1),
+        springGoesUp = true;
+
+      context.beginPath();
+      context.lineWidth = 1;
+      context.strokeStyle = colors.shade40;
+      context.moveTo(springEndX, springEndY);
+
+      for (i = 0; i < springInfo.numberOfSegments; i++) {
+        var currentSegmentWidth = singleSegmentWidth;
+        if (i == 0 || i == springInfo.numberOfSegments - 1) { currentSegmentWidth /= 2; }
+
+        springEndX += currentSegmentWidth;
+        springEndY = springTopY;
+        if (!springGoesUp) { springEndY += springInfo.height; }
+        if (i == springInfo.numberOfSegments - 1) { springEndY = canvasHeight / 2; }
+
+        context.lineTo(springEndX, springEndY);
+        springGoesUp = !springGoesUp;
+      }
+
+      context.stroke();
+    }
+
     // Draw a box at position. Position is a value from -1 to 1.
     // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
-    function drawBox(position) {
+    function drawBox(xDisplacement) {
       var boxTopY = Math.floor((canvasHeight - boxSize) / 2);
-      var boxSpaceWidth = canvas.width - boxSize;
-
-      var middleX = boxSpaceWidth * (position + 1) / 2;
+      var startX = boxMiddleX(xDisplacement) - boxSize / 2;
 
       // Rectangle
-      context.fillStyle = colors.box;
-      context.fillRect(middleX, boxTopY, boxSize, boxSize);
+      context.beginPath();
+      context.fillStyle = colors.shade50;
+      context.fillRect(startX, boxTopY, boxSize, boxSize);
 
       // Border around rectangle
+      context.beginPath();
       context.lineWidth = 1;
-      context.strokeStyle = colors.boxBorder;
-      context.setLineDash([1, 0]);
-      context.strokeRect(middleX + .5, boxTopY + .5, boxSize - 1, boxSize - 1)
+      context.strokeStyle = colors.shade30;
+      context.strokeRect(startX + 0.5, boxTopY + 0.5, boxSize - 1, boxSize - 1);
     }
 
     // Draw vertical line in the middle
@@ -119,14 +159,16 @@ tags: programming science
       context.moveTo(middleX, 0);
       context.lineTo(middleX, canvas.height);
       context.lineWidth = 2;
-      context.strokeStyle = "#ff6c00";
+      context.strokeStyle = colors.shade40;
       context.setLineDash([2,3]);
       context.stroke();
+      context.setLineDash([1,0]);
     }
 
     function draw() {
-      context.clearRect(0, 0, canvas.width, canvas.height)
+      context.clearRect(0, 0, canvas.width, canvas.height);
       drawMiddleLine();
+      drawSpring(xDisplacement);
       drawBox(xDisplacement);
     }
 
@@ -151,10 +193,12 @@ tags: programming science
     function animate() {
       updatePosition();
       draw();
-      window.requestAnimationFrame(animate)
+      window.requestAnimationFrame(animate);
     }
 
     animate();
+
+    // draw();
   }
 
   function init() {
