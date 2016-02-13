@@ -13,7 +13,7 @@ All seven Harry Potter novels are my favorite books and I became very excited af
 
 The answers to these questions were not clear to me at first. Moreover, they seemed contradictory. If the book is the eighth Harry Potter story how can it not be written by J.K. Rowling? After all, if the book was written somebody else it should not be considered official, right?
 
-I will show how I found the answers. I do not want to be compared with Rita Skeeter and therefore I would try to stick to the facts and analyze official information from official sources before making conclusions.
+I will show how I found the answers. I do not want to be compared with Rita Skeeter and therefore I would try to stick to the facts and analyze information from official sources before making conclusions.
 
 ## The cover of the book
 
