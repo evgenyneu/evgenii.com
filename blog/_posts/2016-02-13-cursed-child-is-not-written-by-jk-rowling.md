@@ -71,4 +71,4 @@ I think it is fair to make the following conclusions based on the information fr
 
 
 
-After all this investigation I find myself protected from the charms of the marketing wizards and can see what the Cursed Child story is and what it isn't. It is the official Harry Potter story because J.K. Rowling said so. At the same time, Cursed Child is the the first official Harry Potter story that is not written by J.K. Rowling. I hope my logic was reasonably convincing.
+After all this investigation I find myself protected from the charms of the marketing wizards and can see what the Cursed Child story is and what it isn't. It is the official Harry Potter story because J.K. Rowling said so. At the same time, Cursed Child is the the first official Harry Potter story that is not written by her. I hope my logic was reasonably convincing.
