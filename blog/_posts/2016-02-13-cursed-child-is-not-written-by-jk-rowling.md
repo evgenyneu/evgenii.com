@@ -31,7 +31,7 @@ If we spend more time examining the cover we can reveal more ingenious marketing
 
 ## The pottermore.com
 
-Let us examine more official sources about the book and turn our attention to the pottermore.com web site. A post titled "New details on Cursed Child, the ‘eighth Harry Potter story’" has the following subtitle:
+Let us examine other official sources about the book and turn our attention to the pottermore.com web site. A post titled "New details on Cursed Child, the ‘eighth Harry Potter story’" has the following subtitle:
 
 > ‘Harry Potter and the Cursed Child' is *the official eighth Potter story* and the first to be presented on stage.
 
