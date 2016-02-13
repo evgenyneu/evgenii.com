@@ -70,4 +70,6 @@ I think it is fair to make the following conclusions based on the information fr
 1. Thirdly, all sources make it clear that the Cursed Child is canon and the official eighth Harry Potter story.
 1. And finally, and more importantly, J.K. Rowling explicitly stated more than once that she did not write the story.
 
-After all this investigation I find myself protected from the charms of the marketing wizards and can see what the Cursed Child story is and what it isn't. I hope my logic was reasonably convincing to you as well.
+
+
+After all this investigation I find myself protected from the charms of the marketing wizards and can see what the Cursed Child story is and what it isn't. It is the official Harry Potter story because J.K. Rowling said so and it is not written by her. I hope my logic was reasonably convincing to you as well.
