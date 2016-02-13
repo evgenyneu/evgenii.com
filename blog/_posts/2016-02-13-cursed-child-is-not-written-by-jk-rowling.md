@@ -1,7 +1,7 @@
 ---
 layout: blog_post
 comments: false
-title: "Harry Potter and the Cursed Child book is not written by J.K. Rowling"
+title: "Harry Potter and the Cursed Child is not written by J.K. Rowling"
 meta_description: "I would like to know what the Cursed Child is how exactly was J.K. Rowling involved in its creation."
 tags: books
 ---
