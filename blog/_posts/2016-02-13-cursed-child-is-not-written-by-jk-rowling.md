@@ -11,7 +11,7 @@ All seven Harry Potter novels are my favorite books and I became very excited af
 1. Was the script or the book written by J.K. Rowling? The answer is no.
 1. Is the Cursed Child the official eighth part of Harry Potter story? The answer is yes, paradoxically.
 
-The answers to these questions were not clear to me at first. Moreover, they seemed contradictory. If the book is the eighth Harry Potter story how can it not be written by J.K. Rowling? If the book was not written by her it should not be considered official, right?
+The answers to these questions were not clear to me at first. Moreover, they seemed contradictory. If the book is the eighth Harry Potter story how can it not be written by J.K. Rowling? If the book was written somebody else it should not be considered official, right?
 
 I will show how I found the answers. I do not want to be compared with Rita Skeeter and therefore I would try to stick to the facts and analyze official information from official sources before making conclusions.
 
