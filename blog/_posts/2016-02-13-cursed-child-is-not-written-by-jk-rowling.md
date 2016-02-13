@@ -45,7 +45,7 @@ Another post from pottermore.com shares the following details:
 
 > The three of them [meaning J.K. Rowling, Jack Thorne and John Tiffany] *set the plot* that day in J.K. Rowling’s writing room. They strung together the narrative then and there in notebooks and then Jack and John flew back to London to get started.
 
-This text is accompanied by a picture of J.K. Rowling sitting at a table and writing something with a pen or a pencil in the company of two gentlemen who are not writing. What this text tells us is that J.K. Rowling discussed the plot of the play with Jack Thorne and John Tiffany before the gentlemen started working on it. The article does not say that J.K. Rowling was writing the Cursed Child script even though she is writing something in the photo and we are told that the discussion happened in her writing room. Very smart indeed.
+This text is accompanied by a picture of J.K. Rowling sitting at a table and writing something with a pen or a pencil in the company of two gentlemen who are not writing. What this text tells us is that J.K. Rowling discussed the plot of the play with Jack Thorne and John Tiffany before the gentlemen started working on it. The article does not say whether J.K. Rowling was writing the Cursed Child script even though she is writing something in the photo and we are told that the discussion happened in her writing room. Very smart indeed.
 
 
 ## Tweets from J.K. Rowling
