@@ -27,7 +27,7 @@ Among other things the cover says:
 
 Notice the use of the word "story" which is followed by the name "J.K. Rowling". The word "story" does not mean a *written* story or a book. This is a very smart cover design from the marketing perspective because it tricked me to believe that J.K. Rowling was one of the authors.
 
-If we spend more time examining the cover we can reveal more ingenious marketing traps in the choice of the font sizes. For example, the words "Based on an *original new story* by" are written in the smallest font while the words "Eight Story", "Harry Potter" and "J.K. Rowling" dominate the cover. I was amused to notice that the text "J.K. Rowling" was printed with slightly larger size than "Jack Thorne & John Tiffany" and the words "a new play by Jack Thorne" were smaller still.
+If we spend more time examining the cover we can reveal more ingenious marketing traps in the choice of the font sizes. For example, the words "Based on an *original new story* by" are written in the smallest font while the words "Eighth Story", "Harry Potter" and "J.K. Rowling" dominate the cover. I was amused to notice that the text "J.K. Rowling" was printed with slightly larger size than "Jack Thorne & John Tiffany" and the words "a new play by Jack Thorne" were smaller still.
 
 ## The pottermore.com
 
