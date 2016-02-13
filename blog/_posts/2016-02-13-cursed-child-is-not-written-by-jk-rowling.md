@@ -64,10 +64,10 @@ Finally, here are some tweets related to the Cursed Child story posted under @jk
 
 I think it is fair to make the following conclusions based on the information from the official sources presented above.
 
-1. Firstly, J.K. Rowling said multiple times that she worked on the Cursed Child story with Jack Thorne and John Tiffany.
+1. Firstly, J.K. Rowling said multiple times that she had worked on the Cursed Child story with Jack Thorne and John Tiffany.
 1. Secondly, the blog post on pottermore.com mentioned three of them discussing the plot of the story.
 1. Thirdly, all sources make it clear that the Cursed Child is canon and the official eighth Harry Potter story.
-1. And finally, and more importantly, J.K. Rowling explicitly stated more than once that she did not write the story.
+1. And finally, and more importantly, J.K. Rowling explicitly stated more than once that she had not written the story.
 
 
 
