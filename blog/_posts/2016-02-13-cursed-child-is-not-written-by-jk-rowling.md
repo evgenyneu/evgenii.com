@@ -52,14 +52,13 @@ This text is accompanied by a picture of J.K. Rowling sitting at a table and wri
 
 Finally, here are some tweets related to the Cursed Child story posted under @jk_rowling account. I assume it was J.K. Rowling who wrote them.
 
-<blockquote>... I haven't written the script for #CursedChild, @jackthorne has.</blockquote>
-
-<blockquote>#CursedChild is a play and while we have worked very closely on it, the wonderful writer is @jackthorne</blockquote>
+<blockquote>It will tell a new story, which is the result of a collaboration between writer Jack Thorne, director John Tiffany and myself.</blockquote>
 
 <blockquote>The story of #CursedChild should be considered canon, though. @jackthorne, John Tiffany (the director) and I developed it together.</blockquote>
 
-<blockquote>It will tell a new story, which is the result of a collaboration between writer Jack Thorne, director John Tiffany and myself.</blockquote>
+<blockquote>#CursedChild is a play and while we have worked very closely on it, the wonderful writer is @jackthorne</blockquote>
 
+<blockquote>... I haven't written the script for #CursedChild, @jackthorne has.</blockquote>
 
 ## My conclusion
 
