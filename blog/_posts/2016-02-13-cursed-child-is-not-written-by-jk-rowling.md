@@ -39,7 +39,7 @@ This article continues with the following sentence:
 
 > Written by Jack Thorne and directed by Olivier and Tony award-winner John Tiffany, the play is a brand new story *written in collaboration* with J.K. Rowling.
 
-I hope you are more attentive than me and noticed a subtlety in the language here which I missed at first. The article says that the story was written *in collaboration* with J.K. Rowling. What it does not say, however, is whether J.K. Rowling participated in the writing.
+I hope you are more attentive than me and noticed a subtlety in the language here which I missed at first. The article says that the story was written *in collaboration* with J.K. Rowling. What it does not say, however, is whether J.K. Rowling participated in the actual writing.
 
 Another post from pottermore.com shares the following details:
 
