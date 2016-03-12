@@ -61,6 +61,22 @@ tags: programming science
     var canvasHeight = 100;
     var boxSize = 50;
 
+    // Initial condition for the system
+    var initialConditions = {
+      xDisplacement:  1.0, // Box is displaced to the right
+      velocity:       0.0  // Velocity is zero
+    };
+
+    /*
+      Position of the box:
+        0 is when the box is at the center.
+        1.0 is the maximum position to the right.
+        -1.0 is the maximum position to the left.
+    */
+    var xDisplacement = initialConditions.xDisplacement;
+    var velocity = initialConditions.velocity;
+    var previousTime = 0; // Stores time of the previous iteration (in milliseconds)
+
     var springInfo = {
       height: 30,
       numberOfSegments: 12
@@ -72,8 +88,6 @@ tags: programming science
       shade50: "#ffb100"
     };
 
-    var xDisplacement = 0.0;
-    var isMovingRight = true;
 
     // Resize the canvas
     // ----------------------
@@ -88,7 +102,7 @@ tags: programming science
     window.addEventListener('resize', function(event){
       console.log("resizing");
       fitToContainer(canvas);
-      draw();
+      drawScene();
     });
 
     fitToContainer(canvas);
@@ -165,40 +179,89 @@ tags: programming science
       context.setLineDash([1,0]);
     }
 
-    function draw() {
+    // Clears everything and draws the whole scene: the line, spring and the box.
+    function drawScene() {
       context.clearRect(0, 0, canvas.width, canvas.height);
       drawMiddleLine();
       drawSpring(xDisplacement);
       drawBox(xDisplacement);
     }
 
-    function updatePosition() {
-      if (isMovingRight) {
-        if (xDisplacement >= 1) {
-          isMovingRight = false;
-        }
-      } else {
-        if (xDisplacement <= -1) {
-          isMovingRight = true;
-        }
-      }
+    var initialVelocity = 0;
 
-      if (isMovingRight) {
-        xDisplacement += 0.03;
-      } else {
-        xDisplacement -= 0.03;
-      }
+    // Returns acceleration (change of velocity) at displacement x
+    function accelerationAtDisplacement(x) {
+      // We are using the main formula for harmonic oscillator:
+      // a = -(k/m) * x
+      return -x;
     }
 
-    function animate() {
-      updatePosition();
-      draw();
+    // Returns the time elapsed from previous iteration
+    function deltaT(time) {
+      return time - previousTime;
+    }
+
+    // Calculates velocity of the box at given time
+    function calculateVelocity(time) {
+      // console.log("Velocity: " + deltaT(time))
+      return velocity + deltaT(time) * accelerationAtDisplacement(xDisplacement);
+    }
+
+    // Calculates displacement at given time and velocity
+    function calculateXDisplacelement(time, velocity) {
+      return xDisplacement + deltaT(time) * velocity;
+    }
+
+    // Calculate the new X position of the box at given time
+    function updateXDisplacement(time) {
+      velocity = calculateVelocity(time);
+      xDisplacement = calculateXDisplacelement(time, velocity);
+      // if (isMovingRight) {
+      //   if (xDisplacement >= 1) {
+      //     isMovingRight = false;
+      //   }
+      // } else {
+      //   if (xDisplacement <= -1) {
+      //     isMovingRight = true;
+      //   }
+      // }
+
+      // if (isMovingRight) {
+      //   xDisplacement += 0.03;
+      // } else {
+      //   xDisplacement -= 0.03;
+      // }
+    }
+
+    function formatFloat(float) {
+      return parseFloat(Math.round(float * 100) / 100).toFixed(2);
+    }
+
+    function animate(time) {
+      if (time === 0) {
+        // First iteration, do nothing but record the time.
+        time = 0;
+      } else {
+        time = time / 1000;
+        updateXDisplacement(time);
+        // var velocityFormatted = formatFloat(velocity);
+        // var displacementFormatted = formatFloat(xDisplacement);
+        //console.log("velocity: " + velocityFormatted + ", x: " + displacementFormatted);
+        drawScene();
+      }
+
+      previousTime = time;
       window.requestAnimationFrame(animate);
     }
 
-    animate();
+    animate(0);
 
-    // draw();
+    // for (var i = 1; i < 60; i++) {
+    //   animate(80 * i);
+    //   var velocityFormatted = formatFloat(velocity);
+    //   var displacementFormatted = formatFloat(xDisplacement);
+    //   console.log(i + ". velocity: " + velocityFormatted + ", x: " + displacementFormatted);
+    // }
   }
 
   function init() {
@@ -262,7 +325,7 @@ tags: programming science
   display: inline-block;
   position: relative;
   left: 40%;
-  -webkit-transform: translate(-50%, 0);;
+  -webkit-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
   vertical-align: middle;
 
@@ -281,8 +344,6 @@ tags: programming science
   padding-right: 25px;
   margin-left: -25px;
   left: 40%;
- /* -webkit-transform: translate(-25px, 0);
-  transform: translate(-25px, 0);*/
   vertical-align: middle;
   z-index: -1;
 }
