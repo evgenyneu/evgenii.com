@@ -83,7 +83,6 @@ tags: programming science
 
     var previousTime = 0; // Stores time of the previous iteration (in milliseconds)
     var timeElapsed = 0; // Stores elapsed time in seconds from the start of emulation.
-    var previousRealTime = 0; // Contains previous timestamp, used for detecting drops in animation.
 
     var springInfo = {
       height: 30,
@@ -238,22 +237,9 @@ tags: programming science
     }
 
     function animate(timeReal) {
-      var missecondsInOneFrame = 16;
-
-      if (timeReal - previousRealTime > 25) {
-        // This happes on slow devices when they drop frames.
-        // Speed up animation to make it smoother.
-        missecondsInOneFrame *= 2;
-      }
-
-      previousRealTime = timeReal
-
-      timeElapsed += (missecondsInOneFrame / 1000);
-
+      timeElapsed += 16 / 1000; // Increment time by 16 milliseconds (1/60 of a second)
       updateXDisplacement(timeElapsed);
       drawScene();
-
-
       previousTime = timeElapsed;
       window.requestAnimationFrame(animate);
     }
