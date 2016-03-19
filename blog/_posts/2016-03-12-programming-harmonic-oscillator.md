@@ -9,6 +9,8 @@ tags: programming science
 <canvas class="HarmonicOscillator-canvas">
 </canvas>
 
+<div class='DebugText'></div>
+
 <h3 class="isHidden" id="CanvasNotSupportedMessage">Please use a newer browser to see the simulation</h3>
 
 
@@ -75,7 +77,13 @@ tags: programming science
     */
     var xDisplacement = initialConditions.xDisplacement;
     var velocity = initialConditions.velocity;
+
+    // Time
+    // ----------
+
     var previousTime = 0; // Stores time of the previous iteration (in milliseconds)
+    var timeElapsed = 0; // Stores elapsed time in seconds from the start of emulation.
+    var previousRealTime = 0; // Contains previous timestamp, used for detecting drops in animation.
 
     var springInfo = {
       height: 30,
@@ -87,6 +95,17 @@ tags: programming science
       shade40: "#ff6c00",
       shade50: "#ffb100"
     };
+
+    function showDebugMessage(message) {
+      var debugElement = document.querySelector(".DebugText");
+
+      if (debugElement.textContent !== undefined) {
+        debugElement.textContent = message;
+      }
+      else {
+        debugElement.innerText = message;
+      }
+    }
 
 
     // Resize the canvas
@@ -100,7 +119,6 @@ tags: programming science
     }
 
     window.addEventListener('resize', function(event){
-      console.log("resizing");
       fitToContainer(canvas);
       drawScene();
     });
@@ -187,8 +205,6 @@ tags: programming science
       drawBox(xDisplacement);
     }
 
-    var initialVelocity = 0;
-
     // Returns acceleration (change of velocity) at displacement x
     function accelerationAtDisplacement(x) {
       // We are using the main formula for harmonic oscillator:
@@ -203,7 +219,6 @@ tags: programming science
 
     // Calculates velocity of the box at given time
     function calculateVelocity(time) {
-      // console.log("Velocity: " + deltaT(time))
       return velocity + deltaT(time) * accelerationAtDisplacement(xDisplacement);
     }
 
@@ -216,41 +231,30 @@ tags: programming science
     function updateXDisplacement(time) {
       velocity = calculateVelocity(time);
       xDisplacement = calculateXDisplacelement(time, velocity);
-      // if (isMovingRight) {
-      //   if (xDisplacement >= 1) {
-      //     isMovingRight = false;
-      //   }
-      // } else {
-      //   if (xDisplacement <= -1) {
-      //     isMovingRight = true;
-      //   }
-      // }
-
-      // if (isMovingRight) {
-      //   xDisplacement += 0.03;
-      // } else {
-      //   xDisplacement -= 0.03;
-      // }
     }
 
     function formatFloat(float) {
       return parseFloat(Math.round(float * 100) / 100).toFixed(2);
     }
 
-    function animate(time) {
-      if (time === 0) {
-        // First iteration, do nothing but record the time.
-        time = 0;
-      } else {
-        time = time / 1000;
-        updateXDisplacement(time);
-        // var velocityFormatted = formatFloat(velocity);
-        // var displacementFormatted = formatFloat(xDisplacement);
-        //console.log("velocity: " + velocityFormatted + ", x: " + displacementFormatted);
-        drawScene();
+    function animate(timeReal) {
+      var missecondsInOneFrame = 16;
+
+      if (timeReal - previousRealTime > 25) {
+        // This happes on slow devices when they drop frames.
+        // Speed up animation to make it smoother.
+        missecondsInOneFrame *= 2;
       }
 
-      previousTime = time;
+      previousRealTime = timeReal
+
+      timeElapsed += (missecondsInOneFrame / 1000);
+
+      updateXDisplacement(timeElapsed);
+      drawScene();
+
+
+      previousTime = timeElapsed;
       window.requestAnimationFrame(animate);
     }
 
@@ -264,51 +268,27 @@ tags: programming science
     // }
   }
 
+  function showCanvasNotSupportedMessage() {
+    document.getElementById("CanvasNotSupportedMessage").className = "";
+  }
+
   function init() {
     var canvas = document.querySelector(".HarmonicOscillator-canvas");
+    var context = null;
 
-    if (!!(canvas && canvas.getContext && canvas.getContext('2d'))) {
-      var context = canvas.getContext("2d");
-      start(canvas, context);
-    } else {
-      // Canvas is not supported
-      document.getElementById("CanvasNotSupportedMessage").className = "";
+    if (!!(canvas && canvas.getContext)) {
+      var context = canvas.getContext("2d", { alpha: false });
+      if (!!context) {
+        start(canvas, context);
+        return;
+      }
     }
+
+    showCanvasNotSupportedMessage()
   }
 
   init();
 }());
-
-// var box = document.querySelector(".HarmonicOscillator-box");
-// var positionPercent = 0;
-// var isMovingForward = true;
-
-
-// function updatePosition() {
-//   if (isMovingForward) {
-//     if (positionPercent == 100) {
-//       isMovingForward = false;
-//     }
-//   } else {
-//     if (positionPercent == 0) {
-//       isMovingForward = true;
-//     }
-//   }
-
-//   if (isMovingForward) {
-//     positionPercent += 1;
-//   } else {
-//     positionPercent -= 1;
-//   }
-// }
-
-// function animate() {
-//   updatePosition();
-//   box.style.left = positionPercent + "%";
-//   window.requestAnimationFrame(animate)
-// }
-
-// window.onload = function() { window.requestAnimationFrame(animate); }
 
 </script>
 
