@@ -112,7 +112,7 @@ Senior .NET/C# developer, independent contractor
 
 .NET/C#/C++ developer
 
-* Initiated and performed complete migration of legacy ASP system to ASP.NET (C#) platform.
+* Migrated legacy ASP system to ASP.NET (C#) platform.
 * Programmed [www.freehandmusic.com](http://www.freehandmusic.com) web site.
 * Developed a Windows Forms application (C#) to remotely manage catalog of digital sheet music products.
 
