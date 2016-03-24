@@ -102,7 +102,7 @@ Senior .NET/C# developer, independent contractor
 
 * Participated in development of the main web site www.freehandmusic.com and two private web sites.
 * Developed solution to make scheduled backups of the web site, catalog and databases to a remote repository.
-* Optimized web site code and database which reduced the server load and made the response faster.
+* Optimized web site code and database to improve web site loading speed.
 
 
 
