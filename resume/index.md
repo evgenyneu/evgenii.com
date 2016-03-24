@@ -84,26 +84,6 @@ Freelance JavaScript and Ruby on Rails developer
 
 
 
-### December 2012 - February 2012
-
-[Siba](//github.com/evgenyneu/siba) – open source backup and restore utility
-
-* Developed an open source utility in Ruby for data backup and restoration.
-* Created extensions for MongoDB, MySQL sources and AWS S3, FTP backup destinations.
-
-
-
-### Sep 2011 - Nov 2011
-
-Dozmo.com – private client in CA, USA
-
-Ruby on Rails and jQuery Mobile developer
-
-* Developed a mobile web application using Ruby on Rails and jQuery Mobile frameworks.
-* Wrote custom Ruby and shell scripts to receive and process incomming emails from customers using Postfix email server.
-* Installed full Rails application stack on Amazon EC2 server, including Nginx web server.
-* Developed an automated backup solution of web site and database to Amazon S3.
-
 
 ### January 2010 - December 2011
 
