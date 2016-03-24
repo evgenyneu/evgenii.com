@@ -65,11 +65,9 @@ Full time iOS/Swift developer.
 
 Full time Ruby on Rails and JavaScript developer
 
-* Developed integration in-browser tests using Capybara/Selenium libraries. It increased the stability of the web sites and reduced manual testing time.
-* Wrote an HTML/CSS style guide to make the web pages look and feel more consistent.
-* Rewrote parts of the legacy code. It resulted in cleaner code and happier developers.
 * Adapted main pages to responsive web design.
-
+* Developed integration and unit tests.
+* Wrote an HTML/CSS style guide to make the web pages look and feel more consistent.
 
 
 ### February 2012 - July 2012
@@ -94,8 +92,6 @@ Freelance web developer
 * Designed and implemented an eCommerce web site using .NET MVC, jQuery and jQuery UI frameworks.
 * Developed custom content management system, order and user account management, promotion components.
 * Performed custom integration with Authorize.net and PayPal payment services and UPS shipping service.
-* Developed an API that allows partners to place orders.
-
 
 
 ### September 2008 – July 2009
@@ -104,9 +100,8 @@ Freelance web developer
 
 Senior .NET/C# developer, independent contractor
 
-* Supported and enhanced the main web site www.freehandmusic.com and two private web sites.
+* Participated in development of the main web site www.freehandmusic.com and two private web sites.
 * Developed solution to make scheduled backups of the web site, catalog and databases to a remote repository.
-* Discovered and prevented web site DoS attacks. Implemented a filter to block the attacks.
 * Optimized web site code and database which reduced the server load and made the response faster.
 
 
@@ -117,9 +112,9 @@ Senior .NET/C# developer, independent contractor
 
 .NET/C#/C++ developer
 
-* Initiated and performed complete migration of legacy ASP system to ASP.NET (C#) platform. It resulted in 500% increase in sales during the next 5 years.
-* Took a leading role in designing and developing [www.freehandmusic.com](http://www.freehandmusic.com) web site.
-* Architected and created a Windows Forms application (C#) to remotely manage the catalog of digital sheet music products.
+* Initiated and performed complete migration of legacy ASP system to ASP.NET (C#) platform.
+* Programmed [www.freehandmusic.com](http://www.freehandmusic.com) web site.
+* Developed a Windows Forms application (C#) to remotely manage catalog of digital sheet music products.
 
 
 ## Education
