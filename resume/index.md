@@ -48,7 +48,7 @@ I am a Senior Software Engineer with experience in the full software development
 
 ### August 2014 - November 2015
 
-[marketplacer](http://marketplacer.com) – online marketplace, Melbourne, Australia
+[marketplacer.com](http://marketplacer.com) – online marketplace, Melbourne, Australia
 
 Full time iOS/Swift developer.
 
