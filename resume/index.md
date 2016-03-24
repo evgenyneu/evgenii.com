@@ -40,6 +40,7 @@ I am a Senior Software Engineer with experience in the full software development
 
 * [Auk](https://github.com/evgenyneu/Auk)
 * [Cosmos](https://github.com/marketplacer/Cosmos)
+* [Dodo](https://github.com/marketplacer/Dodo)
 * [js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
 
 
