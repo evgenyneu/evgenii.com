@@ -52,7 +52,9 @@ I am a Senior Software Engineer with experience in the full software development
 
 Full time iOS/Swift developer.
 
-* Building a new online store iOS app.
+* Designed and built an online store iOS app.
+* Programmed Ruby on Rails backend for the iOS app.
+* Wrote API documentation.
 
 
 ### August 2012 - July 2014
