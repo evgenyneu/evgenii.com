@@ -11,7 +11,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 **Address**: St Kilda, VIC, Australia, {{ site.author.email }}
 
-**Objective**: Seeking position as a part time iOS/Android software developer in a science related project.
+**Objective**: Seeking position as a part time iOS/Android software developer in a science-related project.
 
 I am a software developer who values simplicity and focus.
 
