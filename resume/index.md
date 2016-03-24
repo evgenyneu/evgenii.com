@@ -55,6 +55,7 @@ Full time iOS/Swift developer.
 * Designed and built an online store iOS app.
 * Programmed Ruby on Rails backend for the iOS app.
 * Wrote API documentation.
+* Created unit and end-to-end tests for the iOS project.
 
 
 ### August 2012 - July 2014
