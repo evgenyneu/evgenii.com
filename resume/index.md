@@ -11,29 +11,44 @@ title: Resume of Evgenii Neumerzhitckii
 
 **Address**: St Kilda, VIC, Australia, {{ site.author.email }}
 
-**Objective**: Seeking position as technical lead or senior developer in a software development project utilising my experience.
+**Objective**: Seeking position as a part time iOS/Android software developer in a science related project.
 
-I am an accomplished Senior Software Engineer focused on quality, creativity and solid results, with experience in the full software development life cycle including design, implementation, testing and deployment.
+I am a Senior Software Engineer with experience in the full software development life cycle including design, implementation, testing and deployment.
 
 ## Summary of Qualifications
 
-* 16 years of uninterrupted experience as a software developer.
-* Expert in Swift, Ruby, HTML, CSS, JavaScript.
-* Skilled in writing automated tests.
+* 16 years of experience as a software developer.
 * Experienced in developing cross-platform Android, iOS and Web applications.
+* Skilled in writing automated tests.
 
 ## Technical Expertise
 
-* Languages: Swift, Ruby, Objective-C, Java, HTML, CSS, JavaScript.
-* Test Libraries: XCText, Quick / Nimbler, RSpec, Capybara, Jasmine.
+* Languages: Swift, Java, HTML, CSS, JavaScript, Ruby (Ruby on Rails).
 * Databases: PostgreSQL, MySQL, SQLite.
-* Development tools: Xcode, Sublime Text, Vim, Android Studio, Eclipse.
+* Development tools: Xcode, Android Studio, Sublime Text.
+
+
+## Personal Projects
+
+
+* [Water Footprint](http://evgenii.com/projects/water-footprint-app-ios-android/) for iOS and Android.
+* AES Crypto for [iOS](http://evgenii.com/projects/aes_crypto_for_ios/), [Android](http://evgenii.com/projects/aes-crypto-for-android/) and [Web](http://evgenii.com/projects/aes-crypto-for-web/).
+* [Walk to Circle](http://walktocircle.com) for iOS.
+
+
+## Open Source Projects
+
+* [Auk](https://github.com/evgenyneu/Auk)
+* [Cosmos](https://github.com/marketplacer/Cosmos)
+* [js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
+
 
 ## Professional Experience
 
-### August 2014 - present
 
-[marketplacer](http://marketplacer.com.au) – online marketplace, Melbourne, Australia
+### August 2014 - November 2015
+
+[marketplacer](http://marketplacer.com) – online marketplace, Melbourne, Australia
 
 Full time iOS/Swift developer.
 
@@ -124,6 +139,10 @@ Senior .NET/C# developer, independent contractor
 
 
 ## Education
+
+Monash University, Melbourne, Australia
+
+* Currently studying two science units.
 
 South Ural State University, Chelyabinsk, Russia.
 
