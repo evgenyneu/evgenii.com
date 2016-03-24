@@ -13,8 +13,6 @@ title: Resume of Evgenii Neumerzhitckii
 
 **Objective**: Seeking position as a part time iOS/Android software developer in a project related to science or conservation of environment.
 
-I am a software developer who values simplicity and focus.
-
 ## Summary of Qualifications
 
 * 16 years of experience as a software developer.
@@ -40,7 +38,6 @@ I am a software developer who values simplicity and focus.
 
 * [Auk](https://github.com/evgenyneu/Auk)
 * [Cosmos](https://github.com/marketplacer/Cosmos)
-* [Dodo](https://github.com/marketplacer/Dodo)
 * [js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
 
 
@@ -55,7 +52,6 @@ Full time iOS/Swift developer.
 
 * Designed and built an online store iOS app.
 * Programmed Ruby on Rails backend for the iOS app.
-* Wrote API documentation.
 * Created unit and end-to-end tests for the iOS project.
 
 
