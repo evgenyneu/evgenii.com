@@ -13,7 +13,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 **Objective**: Seeking position as a part time iOS/Android software developer in a science related project.
 
-I am a Senior Software Engineer with experience in the full software development life cycle including design, implementation, testing and deployment.
+I am a software developer who values simplicity and focus.
 
 ## Summary of Qualifications
 
