@@ -6,14 +6,14 @@ meta_description: "This tutorial shows how to program the motion of harmonic osc
 tags: programming science
 ---
 
+<!--  To embed this simulator into your web page copy this source until "Harmonic Oscillator Simulator END" comment. -->
+
 <!--
 
   Harmonic Oscillator Simulator
 
   http://evgenii.com
   License: MIT
-
-  To embed this simulator into your web page copy this source until "Harmonic Oscillator Simulator END" text.
 
 -->
 
