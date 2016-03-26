@@ -24,6 +24,68 @@ tags: programming science
 <script>
 
 (function(){
+   // Calculate position and velocity of the box
+  var physics = (function() {
+    // Initial condition for the system
+    var initialConditions = {
+      xDisplacement:  1.0, // Box is displaced to the right
+      velocity:       0.0  // Velocity is zero
+    };
+
+    /*
+      Position of the box:
+        0 is when the box is at the center.
+        1.0 is the maximum position to the right.
+        -1.0 is the maximum position to the left.
+    */
+    var xDisplacement = initialConditions.xDisplacement;
+    var velocity = initialConditions.velocity;
+
+    function currentXDisplacement() {
+      return xDisplacement;
+    }
+
+    var previousTime = 0; // Stores time of the previous iteration in seconds
+    var timeElapsed = 0; // Stores elapsed time in seconds from the start of emulation.
+
+    // Returns acceleration (change of velocity) at displacement x
+    function accelerationAtDisplacement(x) {
+      // We are using the formula for harmonic oscillator:
+      // a = -(k/m) * x
+      // Where a is acceleration, x is displacement, k is spring constant and m is mass.
+      // The k and m are 1 for simplicity. Therefore, the formula is:
+      // a = -x
+      return -x;
+    }
+
+    // Returns the time elapsed from previous iteration
+    function deltaT(time) {
+      return time - previousTime;
+    }
+
+    // Calculates velocity of the box at given time
+    function calculateVelocity(time) {
+      return velocity + deltaT(time) * accelerationAtDisplacement(xDisplacement);
+    }
+
+    // Calculates displacement at given time and velocity
+    function calculateXDisplacelement(time, velocity) {
+      return xDisplacement + deltaT(time) * velocity;
+    }
+
+    // Calculate the new X position of the box
+    function updateXDisplacement() {
+      timeElapsed += 16 / 1000; // Increment time by 16 milliseconds (1/60 of a second)
+      velocity = calculateVelocity(timeElapsed);
+      xDisplacement = calculateXDisplacelement(timeElapsed, velocity);
+      previousTime = timeElapsed;
+    }
+
+    return {
+      updateXDisplacement: updateXDisplacement,
+      currentXDisplacement: currentXDisplacement
+    };
+  })();
 
   // Draw the scene
   var graphics = (function() {
@@ -136,7 +198,7 @@ tags: programming science
       if (!(window.requestAnimationFrame && canvas && canvas.getContext)) { return; }
       context = canvas.getContext("2d", { alpha: false });
       if (!context) { return; }
-      hideCanvasNotSupportedMessage()
+      hideCanvasNotSupportedMessage();
       fitToContainer(); // Update the size of the canvas
       success();
     }
@@ -145,66 +207,6 @@ tags: programming science
       fitToContainer: fitToContainer,
       drawScene: drawScene,
       init: init
-    };
-  })();
-
-  // Calculate position and velocity of the box
-  var physics = (function() {
-    // Initial condition for the system
-    var initialConditions = {
-      xDisplacement:  1.0, // Box is displaced to the right
-      velocity:       0.0  // Velocity is zero
-    };
-
-    /*
-      Position of the box:
-        0 is when the box is at the center.
-        1.0 is the maximum position to the right.
-        -1.0 is the maximum position to the left.
-    */
-    var xDisplacement = initialConditions.xDisplacement;
-    var velocity = initialConditions.velocity;
-
-    function currentXDisplacement() {
-      return xDisplacement;
-    }
-
-    var previousTime = 0; // Stores time of the previous iteration (in milliseconds)
-    var timeElapsed = 0; // Stores elapsed time in seconds from the start of emulation.
-
-    // Returns acceleration (change of velocity) at displacement x
-    function accelerationAtDisplacement(x) {
-      // We are using the main formula for harmonic oscillator:
-      // a = -(k/m) * x
-      return -x;
-    }
-
-    // Returns the time elapsed from previous iteration
-    function deltaT(time) {
-      return time - previousTime;
-    }
-
-    // Calculates velocity of the box at given time
-    function calculateVelocity(time) {
-      return velocity + deltaT(time) * accelerationAtDisplacement(xDisplacement);
-    }
-
-    // Calculates displacement at given time and velocity
-    function calculateXDisplacelement(time, velocity) {
-      return xDisplacement + deltaT(time) * velocity;
-    }
-
-    // Calculate the new X position of the box
-    function updateXDisplacement() {
-      timeElapsed += 16 / 1000; // Increment time by 16 milliseconds (1/60 of a second)
-      velocity = calculateVelocity(timeElapsed);
-      xDisplacement = calculateXDisplacelement(timeElapsed, velocity);
-      previousTime = timeElapsed;
-    }
-
-    return {
-      updateXDisplacement: updateXDisplacement,
-      currentXDisplacement: currentXDisplacement
     };
   })();
 
