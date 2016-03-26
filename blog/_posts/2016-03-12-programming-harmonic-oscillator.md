@@ -6,55 +6,16 @@ meta_description: "This tutorial shows how to program the motion of harmonic osc
 tags: programming science
 ---
 
+<h3 class="isHidden" id="CanvasNotSupportedMessage">Please use a newer browser to see the simulation</h3>
+
 <canvas class="HarmonicOscillator-canvas">
 </canvas>
 
 <div class='DebugText'></div>
 
-<h3 class="isHidden" id="CanvasNotSupportedMessage">Please use a newer browser to see the simulation</h3>
 
-
-<!-- <div class='HarmonicOscillator'>
-  <div class='HarmonicOscillator-box'></div><img class='HarmonicOscillator-springRight'
-    src="/image/blog/2016-02-06-programming-harmonic-oscillator/harmonic_oscillator_spring.png">
-</div> -->
 
 <script>
-
-// Request Animatino Frame polyfill
-// https://gist.github.com/paulirish/1579671
-//
-// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
-// http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
-
-// requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
-
-// MIT license
-
-(function() {
-    var lastTime = 0;
-    var vendors = ['ms', 'moz', 'webkit', 'o'];
-    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
-        window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
-                                   || window[vendors[x]+'CancelRequestAnimationFrame'];
-    }
-
-    if (!window.requestAnimationFrame)
-        window.requestAnimationFrame = function(callback, element) {
-            var currTime = new Date().getTime();
-            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
-              timeToCall);
-            lastTime = currTime + timeToCall;
-            return id;
-        };
-
-    if (!window.cancelAnimationFrame)
-        window.cancelAnimationFrame = function(id) {
-            clearTimeout(id);
-        };
-}());
 
 // ----------------------
 
@@ -245,13 +206,6 @@ tags: programming science
     }
 
     animate(0);
-
-    // for (var i = 1; i < 60; i++) {
-    //   animate(80 * i);
-    //   var velocityFormatted = formatFloat(velocity);
-    //   var displacementFormatted = formatFloat(xDisplacement);
-    //   console.log(i + ". velocity: " + velocityFormatted + ", x: " + displacementFormatted);
-    // }
   }
 
   function showCanvasNotSupportedMessage() {
@@ -262,8 +216,9 @@ tags: programming science
     var canvas = document.querySelector(".HarmonicOscillator-canvas");
     var context = null;
 
-    if (!!(canvas && canvas.getContext)) {
+    if (!!(window.requestAnimationFrame && canvas && canvas.getContext)) {
       var context = canvas.getContext("2d", { alpha: false });
+
       if (!!context) {
         start(canvas, context);
         return;
