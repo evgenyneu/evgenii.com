@@ -1,7 +1,7 @@
 ---
 layout: blog_post
 comments: false
-title: "Programming harmonic oscillator"
+title: "Programming harmonic oscillator with JavaScript"
 meta_description: "This tutorial shows how to program the motion of harmonic oscillator."
 tags: programming science
 ---
@@ -17,7 +17,7 @@ tags: programming science
 
 -->
 
-<h3 id="CanvasNotSupportedMessage" class="HarmonicOscillator-isHidden">Please use a newer browser to see the simulation</h3>
+<p id="CanvasNotSupportedMessage">Please use a newer browser to see the simulation</p>
 
 <canvas class="HarmonicOscillator-canvas"></canvas>
 
@@ -118,8 +118,8 @@ tags: programming science
       drawBox(xDisplacement);
     }
 
-    function showCanvasNotSupportedMessage() {
-      document.getElementById("CanvasNotSupportedMessage").className = "";
+    function hideCanvasNotSupportedMessage() {
+      document.getElementById("CanvasNotSupportedMessage").style.display ='none';
     }
 
     // Resize canvas to will the width of container
@@ -133,19 +133,10 @@ tags: programming science
     // Create canvas for drawing and call success argument
     function init(success) {
       canvas = document.querySelector(".HarmonicOscillator-canvas");
-
-      if (!(window.requestAnimationFrame && canvas && canvas.getContext)) {
-        showCanvasNotSupportedMessage();
-        return;
-      }
-
+      if (!(window.requestAnimationFrame && canvas && canvas.getContext)) { return; }
       context = canvas.getContext("2d", { alpha: false });
-
-      if (!context) {
-        showCanvasNotSupportedMessage();
-        return;
-      }
-
+      if (!context) { return; }
+      hideCanvasNotSupportedMessage()
       fitToContainer(); // Update the size of the canvas
       success();
     }
@@ -247,58 +238,5 @@ tags: programming science
 })();
 
 </script>
-
-<style>
-
-.HarmonicOscillator {
-  position: relative;
-  margin: 0 25px 0 25px;
-  padding: 10px 0 10px 0;
-  border: 1px solid #ff6c00;
-}
-
-.HarmonicOscillator-box {
-  display: inline-block;
-  position: relative;
-  left: 40%;
-  -webkit-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
-  vertical-align: middle;
-
-  width: 50px;
-  height: 50px;
-  border: 1px solid #a66000;
-  background-color: #ffb100;
-  z-index: -1;
-}
-
-.HarmonicOscillator-springRight {
-  display: inline-block;
-  position: relative;
-  width: 10%;
-  height: 30px;
-  padding-right: 25px;
-  margin-left: -25px;
-  left: 40%;
-  vertical-align: middle;
-  z-index: -1;
-}
-
-/* Vertical line in the center */
-.HarmonicOscillator:after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  border-left: 2px dotted #ff6c00;
-  -webkit-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
-}
-
-.HarmonicOscillator-isHidden { display: none; }
-
-</style>
 
 <!-- Harmonic Oscillator Simulator END -->
