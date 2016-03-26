@@ -6,39 +6,40 @@ meta_description: "This tutorial shows how to program the motion of harmonic osc
 tags: programming science
 ---
 
-<h3 class="isHidden" id="CanvasNotSupportedMessage">Please use a newer browser to see the simulation</h3>
+<!--
+
+  Harmonic Oscillator Simulator
+
+  http://evgenii.com
+  License: MIT
+
+  To embed this simulator into your web page copy this source until "Harmonic Oscillator Simulator END" text.
+
+-->
+
+<h3 id="CanvasNotSupportedMessage" class="HarmonicOscillator-isHidden">Please use a newer browser to see the simulation</h3>
 
 <canvas class="HarmonicOscillator-canvas"></canvas>
 
 <script>
 
-// ----------------------
-
 (function(){
 
   // Draw the scene
-  var graphics = function() {
-    var canvas = null; // Canvas DOM element.
-    var context = null; // Canvas context for drawing.
-
-    var canvasHeight = 100;
-    var boxSize = 50;
-
-    /*
-      Stores last drawn position of the box. Used for redrawing the scene when the size of the page changes.
-    */
-    var lastXDisplacement = 1;
-
-    var springInfo = {
-      height: 30, // Height of the spring
-      numberOfSegments: 12 // Number of segments in the spring.
-    };
-
-    var colors = {
-      shade30: "#a66000",
-      shade40: "#ff6c00",
-      shade50: "#ffb100"
-    };
+  var graphics = (function() {
+    var canvas = null, // Canvas DOM element.
+      context = null, // Canvas context for drawing.
+      canvasHeight = 100,
+      boxSize = 50,
+      springInfo = {
+        height: 30, // Height of the spring
+        numberOfSegments: 12 // Number of segments in the spring.
+      },
+      colors = {
+        shade30: "#a66000",
+        shade40: "#ff6c00",
+        shade50: "#ffb100"
+      };
 
     // Return the middle X position of the box
     function boxMiddleX(xDisplacement) {
@@ -122,40 +123,42 @@ tags: programming science
     }
 
     // Resize canvas to will the width of container
-    function fitToContainer(canvas){
+    function fitToContainer(){
       canvas.style.width='100%';
       canvas.style.height= canvasHeight + 'px';
       canvas.width  = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     }
 
+    // Create canvas for drawing and call success argument
     function init(success) {
       canvas = document.querySelector(".HarmonicOscillator-canvas");
 
-      if (!!(window.requestAnimationFrame && canvas && canvas.getContext)) {
-        context = canvas.getContext("2d", { alpha: false });
-
-        if (!!context) {
-          // Update the size of canvas
-          fitToContainer(canvas);
-
-          success()
-          return;
-        }
+      if (!(window.requestAnimationFrame && canvas && canvas.getContext)) {
+        showCanvasNotSupportedMessage();
+        return;
       }
 
-      showCanvasNotSupportedMessage()
+      context = canvas.getContext("2d", { alpha: false });
+
+      if (!context) {
+        showCanvasNotSupportedMessage();
+        return;
+      }
+
+      fitToContainer(); // Update the size of the canvas
+      success();
     }
 
     return {
       fitToContainer: fitToContainer,
       drawScene: drawScene,
       init: init
-    }
-  }();
+    };
+  })();
 
   // Calculate position and velocity of the box
-  var physics = function() {
+  var physics = (function() {
     // Initial condition for the system
     var initialConditions = {
       xDisplacement:  1.0, // Box is displaced to the right
@@ -208,18 +211,14 @@ tags: programming science
       previousTime = timeElapsed;
     }
 
-    function formatFloat(float) {
-      return parseFloat(Math.round(float * 100) / 100).toFixed(2);
-    }
-
     return {
       updateXDisplacement: updateXDisplacement,
       currentXDisplacement: currentXDisplacement
-    }
-  }();
+    };
+  })();
 
   // Start the animation
-  var main = function() {
+  var main = (function() {
     function animate() {
       physics.updateXDisplacement();
       graphics.drawScene(physics.currentXDisplacement());
@@ -230,8 +229,8 @@ tags: programming science
       graphics.init(function() {
         // Redraw the scene if page is resized
         window.addEventListener('resize', function(event){
-          graphics.fitToContainer(canvas);
-          drawScene(physics.currentXDisplacement());
+          graphics.fitToContainer();
+          graphics.drawScene(physics.currentXDisplacement());
         });
 
         // Start the animation sequence
@@ -241,11 +240,11 @@ tags: programming science
 
     return {
       init: init
-    }
-  }();
+    };
+  })();
 
   main.init();
-}());
+})();
 
 </script>
 
@@ -298,5 +297,8 @@ tags: programming science
   transform: translate(-50%, 0);
 }
 
+.HarmonicOscillator-isHidden { display: none; }
+
 </style>
 
+<!-- Harmonic Oscillator Simulator END -->
