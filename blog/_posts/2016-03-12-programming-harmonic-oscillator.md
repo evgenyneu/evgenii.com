@@ -16,19 +16,18 @@ tags: programming science
 
 (function(){
 
+  // Draw the scene
   var graphics = function() {
     var canvas = null; // Canvas DOM element.
     var context = null; // Canvas context for drawing.
+
     var canvasHeight = 100;
     var boxSize = 50;
 
     /*
-      Position of the box:
-        0 is when the box is at the center.
-        1.0 is the maximum position to the right.
-        -1.0 is the maximum position to the left.
+      Stores last drawn position of the box. Used for redrawing the scene when the size of the page changes.
     */
-    var xDisplacement = 1; // 1 is the initial displacement.
+    var lastXDisplacement = 1;
 
     var springInfo = {
       height: 30, // Height of the spring
@@ -40,18 +39,6 @@ tags: programming science
       shade40: "#ff6c00",
       shade50: "#ffb100"
     };
-
-    // Resize the canvas
-    // ----------------------
-
-    // Resize canvas to will the width of container
-    function fitToContainer(canvas){
-      canvas.style.width='100%';
-      canvas.style.height= canvasHeight + 'px';
-      canvas.width  = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    }
-
 
     // Return the middle X position of the box
     function boxMiddleX(xDisplacement) {
@@ -123,7 +110,7 @@ tags: programming science
     }
 
     // Clears everything and draws the whole scene: the line, spring and the box.
-    function drawScene() {
+    function drawScene(xDisplacement) {
       context.clearRect(0, 0, canvas.width, canvas.height);
       drawMiddleLine();
       drawSpring(xDisplacement);
@@ -134,36 +121,25 @@ tags: programming science
       document.getElementById("CanvasNotSupportedMessage").className = "";
     }
 
-    function animate() {
-      timeElapsed += 16 / 1000; // Increment time by 16 milliseconds (1/60 of a second)
-      updateXDisplacement(timeElapsed);
-      drawScene();
-      previousTime = timeElapsed;
-      window.requestAnimationFrame(animate);
+    // Resize canvas to will the width of container
+    function fitToContainer(canvas){
+      canvas.style.width='100%';
+      canvas.style.height= canvasHeight + 'px';
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
     }
 
-    function start() {
-      // Redraw the scene if page is resized
-      window.addEventListener('resize', function(event){
-        fitToContainer(canvas);
-        drawScene();
-      });
-
-      // Update the size of canvas
-      fitToContainer(canvas);
-
-      // Start animation sequence
-      animate();
-    }
-
-    function init() {
+    function init(success) {
       canvas = document.querySelector(".HarmonicOscillator-canvas");
 
       if (!!(window.requestAnimationFrame && canvas && canvas.getContext)) {
         context = canvas.getContext("2d", { alpha: false });
 
         if (!!context) {
-          start(canvas, context);
+          // Update the size of canvas
+          fitToContainer(canvas);
+
+          success()
           return;
         }
       }
@@ -171,17 +147,15 @@ tags: programming science
       showCanvasNotSupportedMessage()
     }
 
-
     return {
+      fitToContainer: fitToContainer,
+      drawScene: drawScene,
       init: init
     }
   }();
 
-
-  function start(canvas, context) {
-    var canvasHeight = 100;
-    var boxSize = 50;
-
+  // Calculate position and velocity of the box
+  var physics = function() {
     // Initial condition for the system
     var initialConditions = {
       xDisplacement:  1.0, // Box is displaced to the right
@@ -197,119 +171,12 @@ tags: programming science
     var xDisplacement = initialConditions.xDisplacement;
     var velocity = initialConditions.velocity;
 
-    // Time
-    // ----------
+    function currentXDisplacement() {
+      return xDisplacement;
+    }
 
     var previousTime = 0; // Stores time of the previous iteration (in milliseconds)
     var timeElapsed = 0; // Stores elapsed time in seconds from the start of emulation.
-
-    var springInfo = {
-      height: 30,
-      numberOfSegments: 12
-    };
-
-    var colors = {
-      shade30: "#a66000",
-      shade40: "#ff6c00",
-      shade50: "#ffb100"
-    };
-
-    // Resize the canvas
-    // ----------------------
-
-    function fitToContainer(canvas){
-      canvas.style.width='100%';
-      canvas.style.height= canvasHeight + 'px';
-      canvas.width  = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    }
-
-    window.addEventListener('resize', function(event){
-      fitToContainer(canvas);
-      drawScene();
-    });
-
-    fitToContainer(canvas);
-
-    // Draw
-    // ----------------------
-
-    // Return the middle X position of the box
-    function boxMiddleX(xDisplacement) {
-      var boxSpaceWidth = canvas.width - boxSize;
-      return boxSpaceWidth * (xDisplacement + 1) / 2 + boxSize / 2;
-    }
-
-    // Draw spring from the box to the center. Position argument is the box position and varies from -1 to 1.
-    // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
-    function drawSpring(xDisplacement) {
-      var springEndX = boxMiddleX(xDisplacement),
-        springTopY = (canvasHeight - springInfo.height) / 2,
-        springEndY = canvasHeight / 2,
-        canvasMiddleX = canvas.width / 2,
-        singleSegmentWidth = (canvasMiddleX - springEndX) / (springInfo.numberOfSegments - 1),
-        springGoesUp = true;
-
-      context.beginPath();
-      context.lineWidth = 1;
-      context.strokeStyle = colors.shade40;
-      context.moveTo(springEndX, springEndY);
-
-      for (var i = 0; i < springInfo.numberOfSegments; i++) {
-        var currentSegmentWidth = singleSegmentWidth;
-        if (i === 0 || i === springInfo.numberOfSegments - 1) { currentSegmentWidth /= 2; }
-
-        springEndX += currentSegmentWidth;
-        springEndY = springTopY;
-        if (!springGoesUp) { springEndY += springInfo.height; }
-        if (i === springInfo.numberOfSegments - 1) { springEndY = canvasHeight / 2; }
-
-        context.lineTo(springEndX, springEndY);
-        springGoesUp = !springGoesUp;
-      }
-
-      context.stroke();
-    }
-
-    // Draw a box at position. Position is a value from -1 to 1.
-    // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
-    function drawBox(xDisplacement) {
-      var boxTopY = Math.floor((canvasHeight - boxSize) / 2);
-      var startX = boxMiddleX(xDisplacement) - boxSize / 2;
-
-      // Rectangle
-      context.beginPath();
-      context.fillStyle = colors.shade50;
-      context.fillRect(startX, boxTopY, boxSize, boxSize);
-
-      // Border around rectangle
-      context.beginPath();
-      context.lineWidth = 1;
-      context.strokeStyle = colors.shade30;
-      context.strokeRect(startX + 0.5, boxTopY + 0.5, boxSize - 1, boxSize - 1);
-    }
-
-    // Draw vertical line in the middle
-    function drawMiddleLine() {
-      var middleX = Math.floor(canvas.width / 2);
-
-      context.beginPath();
-      context.moveTo(middleX, 0);
-      context.lineTo(middleX, canvas.height);
-      context.lineWidth = 2;
-      context.strokeStyle = colors.shade40;
-      context.setLineDash([2,3]);
-      context.stroke();
-      context.setLineDash([1,0]);
-    }
-
-    // Clears everything and draws the whole scene: the line, spring and the box.
-    function drawScene() {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      drawMiddleLine();
-      drawSpring(xDisplacement);
-      drawBox(xDisplacement);
-    }
 
     // Returns acceleration (change of velocity) at displacement x
     function accelerationAtDisplacement(x) {
@@ -333,48 +200,51 @@ tags: programming science
       return xDisplacement + deltaT(time) * velocity;
     }
 
-    // Calculate the new X position of the box at given time
-    function updateXDisplacement(time) {
-      velocity = calculateVelocity(time);
-      xDisplacement = calculateXDisplacelement(time, velocity);
+    // Calculate the new X position of the box
+    function updateXDisplacement() {
+      timeElapsed += 16 / 1000; // Increment time by 16 milliseconds (1/60 of a second)
+      velocity = calculateVelocity(timeElapsed);
+      xDisplacement = calculateXDisplacelement(timeElapsed, velocity);
+      previousTime = timeElapsed;
     }
 
     function formatFloat(float) {
       return parseFloat(Math.round(float * 100) / 100).toFixed(2);
     }
 
-    function animate(timeReal) {
-      timeElapsed += 16 / 1000; // Increment time by 16 milliseconds (1/60 of a second)
-      updateXDisplacement(timeElapsed);
-      drawScene();
-      previousTime = timeElapsed;
+    return {
+      updateXDisplacement: updateXDisplacement,
+      currentXDisplacement: currentXDisplacement
+    }
+  }();
+
+  // Start the animation
+  var main = function() {
+    function animate() {
+      physics.updateXDisplacement();
+      graphics.drawScene(physics.currentXDisplacement());
       window.requestAnimationFrame(animate);
     }
 
-    animate(0);
-  }
+    function init() {
+      graphics.init(function() {
+        // Redraw the scene if page is resized
+        window.addEventListener('resize', function(event){
+          graphics.fitToContainer(canvas);
+          drawScene(physics.currentXDisplacement());
+        });
 
-  function showCanvasNotSupportedMessage() {
-    document.getElementById("CanvasNotSupportedMessage").className = "";
-  }
-
-  function init() {
-    var canvas = document.querySelector(".HarmonicOscillator-canvas");
-    var context = null;
-
-    if (!!(window.requestAnimationFrame && canvas && canvas.getContext)) {
-      var context = canvas.getContext("2d", { alpha: false });
-
-      if (!!context) {
-        start(canvas, context);
-        return;
-      }
+        // Start the animation sequence
+        animate();
+      });
     }
 
-    showCanvasNotSupportedMessage()
-  }
+    return {
+      init: init
+    }
+  }();
 
-  init();
+  main.init();
 }());
 
 </script>
