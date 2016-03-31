@@ -70,7 +70,7 @@ When the build is finished Sublime Text will show its results. The build results
 
 This method was tested on Mac OS X El Capitan with MacTeX-2015 and Sublime Text build 3103.
 
-## Previewing PDF with auto reload
+## Previewing a PDF with auto reload
 
 Usually as I am writing a LaTeX document in Sublime Text I want to see the preview of the PDF. For that purpose I was first using the Preview app which is pre-installed on OS X. The Preview app works well and reloads the PDF file when it is updated. The problem is that it goes back to the first page of the PDF when it is reloaded and you need to manually scroll back to the current page.
 
