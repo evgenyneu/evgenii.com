@@ -1,7 +1,7 @@
 ---
 layout: blog_post
 comments: true
-title: "Creating a PDF file from LaTeX in Sublime Text 3 on Mac OS X"
+title: "Creating a PDF file from a LaTeX document in Sublime Text 3 on Mac OS X"
 meta_description: "Instructions on how to setup Sublime Text 3 to build PDF from a LaTeX document."
 tags: science programming
 ---
