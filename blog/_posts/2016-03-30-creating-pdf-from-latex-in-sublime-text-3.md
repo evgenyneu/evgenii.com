@@ -6,7 +6,7 @@ meta_description: "Instructions on how to setup Sublime Text 3 to build PDF from
 tags: science programming
 ---
 
-LaTeX is a markup language used for writing scientific documents and Sublime Text is a cross-platform text editor which I like for its speed, looks and simplicity.
+LaTeX is a markup language used for writing scientific documents and Sublime Text is a text editor which I like for its speed, looks and simplicity.
 
 This tutorial shows how to setup a LaTeX build system for Sublime Text 3. We will be able to create a PDF file from the current LaTeX document by pressing *Command-B* in Sublime Text. The build will run the `pdflatex` program that is installed with MacTeX distribution which will convert the LaTeX document to a PDF file. On completion Sublime Text will show the results of the build.
 This setup requires [MacTeX distribution](http://www.tug.org/mactex/), [Sublime Text 3](https://www.sublimetext.com/3) and writing four lines of text.
@@ -57,7 +57,7 @@ If the output of the command is different, put it in the build file instead of `
 Congratulations, the setup is complete!
 
 
-## Building LaTeX to PDF
+## Building PDF from a LaTeX document
 
 To create a PDF file from a LaTeX document open it in Sublime Text and press Command-B. This can also be done by selecting the *Tools > Build* menu item.
 
@@ -67,11 +67,13 @@ When the build is finished Sublime Text will show its results. The build results
   <img src='/image/blog/2016-03-30-creating-pdf-from-latex-sublime-text-3/020_latex_build_results_sublime_text.png' alt='LaTeX build results in Sublime Text' class='isMax100PercentWide hasBorderShade90'>
 </div>
 
+
 This method was tested on Mac OS X El Capitan with MacTeX-2015 and Sublime Text build 3103.
 
+## Previewing PDF with auto reload
 
+Usually as I am writing a LaTeX document in Sublime Text I want to see the preview of the PDF. Fot that purpose I was first using the Preview app which is pre-installed on OS X. The Preview app works well and reloads the PDF file when it is updated. The problem is that it goes back to the first page of the PDF when it is reloaded and you need to manually scroll back to the current page.
 
+Fortunately, there is another PDF reader app called [Skim](http://skim-app.sourceforge.net/) that reloads PDF without loosing the current reading position. Turn on the "Check for file changes" setting in its *Sync* preferences, open your PDF document and it will reload each time you rebuild your LaTeX document from Sublime Text.
 
-
-
-
+I hope that was useful. If you have any difficulties with the setup please leave a comment below.
