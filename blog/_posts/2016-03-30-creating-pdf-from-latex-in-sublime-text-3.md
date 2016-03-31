@@ -8,7 +8,7 @@ tags: science programming
 
 LaTeX is a markup language that is often used for writing scientific documents.  Sublime Text is a text editor which I like for its speed, looks and simplicity.
 
-This tutorial shows how to setup a LaTeX build system for Sublime Text 3. We will be able to create a PDF file from the current LaTeX document by pressing *Command-B* in Sublime Text. The build will run the `pdflatex` program that is installed with MacTeX distribution which will convert the LaTeX document to a PDF file. On completion Sublime Text will show the results of the build.
+In this tutorial I will show how I setup a LaTeX build system for Sublime Text 3. We will be able to create a PDF file from the current LaTeX document by pressing *Command-B* in Sublime Text. The build will run the `pdflatex` program that is installed with MacTeX distribution which will convert the LaTeX document to a PDF file. On completion Sublime Text will show the results of the build.
 This setup requires [MacTeX distribution](http://www.tug.org/mactex/), [Sublime Text 3](https://www.sublimetext.com/3) and writing four lines of text.
 
 
