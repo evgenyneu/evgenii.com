@@ -8,7 +8,7 @@ tags: science programming
 
 LaTeX is a markup language that is often used for writing scientific documents.  Sublime Text is a text editor which I like for its speed, looks and simplicity. I am currently writing a math assignment in LaTeX in Sublime Text 3 and I want to share my setup.
 
-With my setup I can create a PDF file from the current LaTeX document by pressing *Command-B* keys in Sublime Text. Under the hood this runs the `pdflatex` program that is installed with MacTeX distribution. On completion Sublime Text shows the results of the build.
+With my setup I can create a PDF file from the current LaTeX document by pressing *Command-B* keys in Sublime Text. Under the hood this runs the `pdflatex` program that is installed with the MacTeX distribution. On completion Sublime Text shows the results of the build.
 This setup requires [MacTeX distribution](http://www.tug.org/mactex/), [Sublime Text 3](https://www.sublimetext.com/3) and writing four lines of text.
 
 
