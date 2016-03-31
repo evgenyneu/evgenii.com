@@ -1,0 +1,76 @@
+---
+layout: blog_post
+comments: true
+title: "Creating a PDF file from LaTeX in Sublime Text 3 on Mac OS X"
+meta_description: "Instructions on how to setup Sublime Text 3 to build PDF from a LaTeX adocument."
+tags: science programming
+---
+
+LaTeX is a markup language used for writing scientific documents and Sublime Text is a cross-platform text editor which I like for its speed, looks and simplicity.
+
+This tutorial shows how to setup a LaTeX build system for Sublime Text 3. We will be able to create a PDF file from the current LaTeX document by pressing *Command-B* in Sublime Text. The build will run the `pdflatex` program that is installed with MacTeX distribution which will convert the LaTeX document to a PDF file. On completion Sublime Text will show the results of the build.
+This setup requires [MacTeX distribution](http://www.tug.org/mactex/), [Sublime Text 3](https://www.sublimetext.com/3) and writing four lines of text.
+
+
+
+1) Open Sublime Text 3 and select *New Build System...* from *Tools > Build System* menu.
+
+<div class='isTextCentered'>
+  <img src='/image/blog/2016-03-30-creating-pdf-from-latex-sublime-text-3/010_create_new_build_system.png' alt='Create new LaTeX build system' class='isMax400PxWide hasBorderShade90'>
+</div>
+
+2) A new window will appear in Sublime Text containing the text:
+
+```JSON
+{
+  "shell_cmd": "make"
+}
+```
+
+4) Replace it with the following:
+
+```JSON
+{
+    "cmd": ["/Library/TeX/texbin/pdflatex","$file"],
+    "selector": "text.tex.latex"
+}
+```
+
+These are the Sublime Text build instructions. The `cmd` part instructs Sublime Text to run `pdflatex` command with the path to the current file. The `selector` setting is for using this build method for all ".tex" files when *Tools > Build System > Automatic* is selected.
+
+5) Notice that we used the following path: `/Library/TeX/texbin/pdflatex`. Verify that this path is correct by launching the Terminal app and executing the command
+
+```
+which pdflatex
+```
+
+If the output of the command is different, put it in the build file instead of `/Library/TeX/texbin/pdflatex`.
+
+6) Save the build ssytem file with *Command-S* and name it `LaTeX.sublime-build`. The file will be saved to
+
+```
+/Users/YOUR_USER_NAME/Library/Application Support/Sublime Text 3/Packages/User/LaTeX.sublime-build
+```
+
+7) Open *Tools > Build System menu*. You will see the new *LaTeX* build system option that we created. Select LaTeX or *Automatic* option.
+
+Congratulations, the setup is complete!
+
+
+## Building LaTeX to PDF
+
+To create a PDF file from a LaTeX document open it in Sublime Text and press Command-B. This can also be done by selecting the *Tools > Build* menu item.
+
+When the build is finished Sublime Text will show its results. The build results area can be opened at any time from *Tools > Build Results* menu and closed with *Esc* key.
+
+<div class='isTextCentered'>
+  <img src='/image/blog/2016-03-30-creating-pdf-from-latex-sublime-text-3/020_latex_build_results_sublime_text.png' alt='LaTeX build results in Sublime Text' class='isMax100PercentWide hasBorderShade90'>
+</div>
+
+*This method was tested on Mac OS X El Capitan with MacTeX-2015 and Sublime Text build 3103.*
+
+
+
+
+
+
