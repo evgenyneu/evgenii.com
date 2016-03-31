@@ -2,7 +2,7 @@
 layout: blog_post
 comments: true
 title: "Creating a PDF file from LaTeX in Sublime Text 3 on Mac OS X"
-meta_description: "Instructions on how to setup Sublime Text 3 to build PDF from a LaTeX adocument."
+meta_description: "Instructions on how to setup Sublime Text 3 to build PDF from a LaTeX document."
 tags: science programming
 ---
 
@@ -46,7 +46,7 @@ which pdflatex
 
 If the output of the command is different, put it in the build file instead of `/Library/TeX/texbin/pdflatex`.
 
-6) Save the build ssytem file with *Command-S* and name it `LaTeX.sublime-build`. The file will be saved to
+6) Save the build system file with *Command-S* and name it `LaTeX.sublime-build`. The file will be saved to
 
 ```
 /Users/YOUR_USER_NAME/Library/Application Support/Sublime Text 3/Packages/User/LaTeX.sublime-build
@@ -67,7 +67,8 @@ When the build is finished Sublime Text will show its results. The build results
   <img src='/image/blog/2016-03-30-creating-pdf-from-latex-sublime-text-3/020_latex_build_results_sublime_text.png' alt='LaTeX build results in Sublime Text' class='isMax100PercentWide hasBorderShade90'>
 </div>
 
-*This method was tested on Mac OS X El Capitan with MacTeX-2015 and Sublime Text build 3103.*
+This method was tested on Mac OS X El Capitan with MacTeX-2015 and Sublime Text build 3103.
+
 
 
 
