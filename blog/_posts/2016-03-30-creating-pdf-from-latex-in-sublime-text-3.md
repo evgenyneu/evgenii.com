@@ -72,7 +72,7 @@ This method was tested on Mac OS X El Capitan with MacTeX-2015 and Sublime Text 
 
 ## Viewing a PDF with auto reload
 
-Usually as I am writing a LaTeX document in Sublime Text I want to see the PDF. For that purpose I was first using the Preview app which is pre-installed on OS X. The Preview app works well and reloads the PDF file when it is updated. The problem is that it goes back to the first page of the PDF when it is reloaded and you need to manually scroll back to the current page.
+Usually as I am writing a LaTeX document in Sublime Text I want to see the PDF. For that purpose I was first using the Preview app which is pre-installed on OS X. The app works well and reloads the PDF file when it is updated. The problem is that it goes back to the first page of the PDF when it is reloaded and you need to manually scroll back to the current page.
 
 Fortunately, there is another PDF reader app called [Skim](http://skim-app.sourceforge.net/) that reloads PDF without loosing the current reading position. Turn on the "Check for file changes" setting in its *Sync* preferences, open your PDF document and it will reload each time you rebuild your LaTeX document from Sublime Text.
 
