@@ -59,7 +59,7 @@ Congratulations, the setup is complete!
 
 ## Building a PDF from a LaTeX document
 
-To create a PDF file from a LaTeX document open it in Sublime Text and press Command-B. This can also be done by selecting the *Tools > Build* menu item.
+To create a PDF file from a LaTeX document open it in Sublime Text and press *Command-B*. This can also be done by selecting the *Tools > Build* menu item.
 
 When the build is finished Sublime Text will show its results. The build results area can be opened at any time from *Tools > Build Results* menu and closed with *Esc* key.
 
