@@ -63,8 +63,9 @@ To create a PDF file from a LaTeX document open it in Sublime Text and press *Co
 
 When the build is finished Sublime Text will show its results. The build results area can be opened at any time from *Tools > Build Results* menu and closed with *Esc* key.
 
-<div class='isTextCentered'>
-  <img src='/image/blog/2016-03-30-creating-pdf-from-latex-sublime-text-3/020_latex_build_results_sublime_text.png' alt='LaTeX build results in Sublime Text' class='isMax100PercentWide hasBorderShade90'>
+
+<div class='isFullScreenWide isTextCentered'>
+  <img src='/image/blog/2016-03-30-creating-pdf-from-latex-sublime-text-3/020_latex_build_results_sublime_text.png' alt='LaTeX build results in Sublime Text' class='isMax100PercentWide isMax700PxWide'>
 </div>
 
 
