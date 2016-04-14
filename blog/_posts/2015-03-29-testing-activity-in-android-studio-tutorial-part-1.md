@@ -66,7 +66,7 @@ You will see the app on your device or emulator. It will have an empty screen wi
 We need to create a test configuration the first time we run the tests. There are already tests created by the New Project Wizard. Let's run them.
 
 * In your project window expand **app > java** folders.
-* You will see two packages with the same name **com.mycompany.greeter**. The second one will have **(androidTest)**. Right-click on that one.
+* You will see three packages with the same name **com.mycompany.greeter**. The second one will have **(androidTest)**. Right-click on that one.
 * Select **Run  'Tests in 'com.mycomp...'** from the context menu.
 
 <img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0200_create_test_configuration_in_android_studio.png' alt='Create test configuration and run tests' class='isMax100PercentWide hasBorderShade90'>
