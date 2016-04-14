@@ -29,7 +29,7 @@ The app we are building will have three components:
 Let's start by adding a new class to the test package.
 
 * In **Project** tool window expand **app > java** folder.
-* Right click on **com.mycompany.greeter (androidTest)** package. Please note that you have two packages named com.mycompany.greeter. You need to click on the one that has **androidTest** text.
+* Right click on **com.mycompany.greeter (androidTest)** package. Please note that you have three packages named com.mycompany.greeter. You need to click on the one that has **androidTest** text.
 * Select **New > Java Class** from the context menu.
 
 <img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0100_adding_new_class_to_test_package.png' alt='Add new class to the test package' class='isMax100PercentWide hasBorderShade90'>
