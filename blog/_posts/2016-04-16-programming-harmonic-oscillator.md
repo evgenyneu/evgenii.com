@@ -18,6 +18,21 @@ tags: programming science
 
 -->
 
+
+<!-- Styles for Harmonic Oscillator -->
+<style>
+  .HarmonicOscillator-alert {
+    color: red;
+    border: 1px solid red;
+    background: #ffeeee;
+    padding: 5px;
+  }
+
+  .HarmonicOscillator-input { padding: 10px 7px 7px 7px; }
+  .HarmonicOscillator-inputSmall { width: 4em; }
+  .HarmonicOscillator-isTextCentered { text-align: center; }
+</style>
+
 <!-- Message shown in old browsers. -->
 <p id="HarmonicOscillator-notSupportedMessage" class="HarmonicOscillator-alert">Please use a newer browser to see the simulation.</p>
 
@@ -310,14 +325,6 @@ tags: programming science
 
 </script>
 
-<!-- Styles for Harmonic Oscillator -->
-<style>
-  .HarmonicOscillator-input { padding: 10px 7px 7px 7px; }
-  .HarmonicOscillator-inputSmall { width: 4em; }
-  .HarmonicOscillator-isTextCentered { text-align: center; }
-  .HarmonicOscillator-alert { color: red; border: 1px solid red; background: #ffdddd; padding: 5px;}
-</style>
-
 <!-- Harmonic Oscillator Simulator END -->
 
 <br>
@@ -368,14 +375,14 @@ First, we will create an HTML file with a test message and open it in the web br
 Hello World!
 ```
 
-<a href="/files/2016/04/harmonic_oscillator/01_01_create_html_file.html" target="_blank" class="Button">Demo</a>
+<a href="/files/2016/04/harmonic_oscillator/02_010_create_html_file.html" target="_blank" class="Button">Demo</a>
 
 
 <h3 id="drawing">2.2 Canvas element</h2>
 
 Now we will create the HTML canvas element. As you might have guessed from its name, this element is used for drawing.
 
-Replace "Hello World!" text in your HTML file with the following HTML code:
+* Replace "Hello World!" text in your HTML file with the following HTML code:
 
 ```HTML
 <div class="HarmonicOscillator">
@@ -383,7 +390,7 @@ Replace "Hello World!" text in your HTML file with the following HTML code:
 </div>
 ```
 
-<a href="/files/2016/04/harmonic_oscillator/01_02_canvas_element.html" target="_blank" class="Button">Demo</a>
+<a href="/files/2016/04/harmonic_oscillator/02_020_canvas_element.html" target="_blank" class="Button">Demo</a>
 
 View the file in a web browser and it will show a blank page. This is expected because we have not drawn anything in the canvas. Do not worry if you do not understand the html code, you will get familiar with it with practice.
 
@@ -391,7 +398,7 @@ View the file in a web browser and it will show a blank page. This is expected b
 
 We will write our first JavaScript code by showing a "Hello World!" message. We will later extend this code to draw the box and the spring.
 
-Put this text *at the end* of your HTML file and you will see the 'Hello from JavaScript!' greeting in the web browser.
+* Put this text *at the end* of your HTML file and you will see the 'Hello from JavaScript!' greeting in the web browser.
 
 ```HTML
 <script>
@@ -407,33 +414,103 @@ Put this text *at the end* of your HTML file and you will see the 'Hello from Ja
 </script>
 ```
 
-<a href="/files/2016/04/harmonic_oscillator/01_03_javascript.html" target="_blank" class="Button">Demo</a>
+<a href="/files/2016/04/harmonic_oscillator/02_030_javascript.html" target="_blank" class="Button">Demo</a>
 
 <h3 id="drawing">2.4 View page source</h2>
 
-You probably noticed the "Demo" buttons located under the code blocks. Click on this one.
+You probably noticed the "Demo" buttons located under the code blocks.
 
-<a href="/files/2016/04/harmonic_oscillator/01_03_javascript.html" target="_blank" class="Button">Demo</a>
+* Click the demo button.
+
+<a href="/files/2016/04/harmonic_oscillator/02_030_javascript.html" target="_blank" class="Button">Demo</a>
 
 
 The button opens a web page showing the progress we've made up to this point. It can be also used to see the full source code we have written so far by using the **View Page Source** function of the web browser. In many desktop web browsers you can view the source by right clicking on the web page and selecting *View Source* option.
 
-View the source code of the last demo page, it should look like this:
 
-```HTML
-<div class="HarmonicOscillator">
-  <canvas class="HarmonicOscillator-canvas"></canvas>
+
+<div class='isTextCentered'>
+  <img class='isMax250PxWide hasBorderShade90' src='/image/blog/2016-04-16-programming-harmonic-oscillator/002_040_view_page_source.png' alt='View web page source in Google Chrome.'>
 </div>
 
-<script>
 
-(function(){
+* View the source code of the last demo page, it should look like this:
 
-  document.write('Hello from JavaScript!');
 
-  // This is a comment. Here we will write JavaScript that draws the simulation.
+<img class='isMax100PercentWide hasBorderShade90' src='/image/blog/2016-04-16-programming-harmonic-oscillator/002_041_view_page_source.png' alt='View web page source in Google Chrome.'>
 
+
+
+<h3 id="drawing">2.4 Graphics module</h2>
+
+We create the JavaScript module called `graphics` that will be responsible for drawing.
+
+* Replace the `document.write('Hello from JavaScript!');` line with the following code.
+
+```JavaScript
+// Draw the scene
+var graphics = (function() {
+
+  // Create canvas for drawing and call success argument
+  function init(success) {
+    document.write("Graphics initialized!");
+  }
+
+  return {
+    init: init
+  };
 })();
 
-</script>
+graphics.init();
 ```
+
+<a href="/files/2016/04/harmonic_oscillator/02_040_graphics_module.html" target="_blank" class="Button">Demo</a>
+
+You will see the text "Graphics initialized!" in your browser. If you don't see the message check the source code in the demo page.
+
+The `graphics` module we created consists of a single function called `init` that shows the text "Graphics initialized!" message. The function is exported by `return {init: init}` statement which allows to call this function from other modules. This trick is called "JavaScript module pattern"  and it is one of many ways to organize JavaScript code. We will use this module pattern to create other modules for physical simulation and user input.
+
+After we defined the module we call its `init` function `graphics.init();` which outputs the message.
+
+
+<h3 id="drawing">2.5 Old browser alert</h2>
+
+Some old browser do not support the HTML canvas features we will be using. We need to detect if our program can draw in the browser and notify the user in case there is a problem.
+
+* Add the following HTML code *in the beginning* of your file.
+
+```HTML
+<style>
+  .HarmonicOscillator-alert {
+    color: red;
+    border: 1px solid red;
+    background: #ffeeee;
+    padding: 5px;
+  }
+</style>
+
+<p id="HarmonicOscillator-notSupportedMessage" class="HarmonicOscillator-alert">Please use a newer browser to see the simulation.</p>
+```
+
+<a href="/files/2016/04/harmonic_oscillator/02_050_browser_support_message.html" target="_blank" class="Button">Demo</a>
+
+This will show an alert message "Please use a newer browser to see the simulation." on top of the page. We will later hide this message on browsers that support canvas drawing.
+
+As you can see the code includes the CSS styles that set the text, border and the background colors for the alert message.
+
+
+<h3 id="drawing">2.6 Hide old browser alert function</h2>
+
+We add the function that we will later use to hide the "old browser" alert.
+
+* Add this function **above** `init` function.
+
+```JavaScript
+function hideCanvasNotSupportedMessage() {
+  document.getElementById("HarmonicOscillator-notSupportedMessage").style.display ='none';
+}
+```
+
+<a href="/files/2016/04/harmonic_oscillator/02_060_hide_old_browser_message.html" target="_blank" class="Button">Demo</a>
+
+You will still see the alert because we only defined and have not called the function that hides it.

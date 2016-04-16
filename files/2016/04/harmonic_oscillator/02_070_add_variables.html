@@ -1,0 +1,54 @@
+<style>
+  .HarmonicOscillator-alert {
+    color: red;
+    border: 1px solid red;
+    background: #ffeeee;
+    padding: 5px;
+  }
+</style>
+
+<p id="HarmonicOscillator-notSupportedMessage" class="HarmonicOscillator-alert">Please use a newer browser to see the simulation.</p>
+
+<div class="HarmonicOscillator">
+  <canvas class="HarmonicOscillator-canvas"></canvas>
+</div>
+
+<script>
+
+(function(){
+
+  // Draw the scene
+  var graphics = (function() {
+    var canvas = null, // Canvas DOM element.
+      context = null, // Canvas context for drawing.
+      canvasHeight = 100,
+      boxSize = 50,
+      springInfo = {
+        height: 30, // Height of the spring
+        numberOfSegments: 12 // Number of segments in the spring.
+      },
+      colors = {
+        shade30: "#a66000",
+        shade40: "#ff6c00",
+        shade50: "#ffb100"
+      };
+
+    function hideCanvasNotSupportedMessage() {
+      document.getElementById("HarmonicOscillator-notSupportedMessage").style.display ='none';
+    }
+
+    // Create canvas for drawing and call success argument
+    function init(success) {
+      document.write("Graphics initialized!");
+    }
+
+    return {
+      init: init
+    };
+  })();
+
+  graphics.init();
+
+})();
+
+</script>

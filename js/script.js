@@ -8,3 +8,4 @@
 {% include js/rainbow/js/language/swift.min.js %}
 {% include js/rainbow/js/language/html.min.js %}
 {% include js/rainbow/js/language/java.min.js %}
+{% include js/rainbow/js/language/javascript.min.js %}
