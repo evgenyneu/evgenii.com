@@ -1,7 +1,7 @@
 ---
 layout: blog_post
 comments: false
-title: "Programming harmonic oscillator in JavaScript"
+title: "Programming harmonic oscillator in HTML &amp; JavaScript"
 meta_description: "This tutorial shows how to program the motion of harmonic oscillator with JavaScript."
 tags: programming science
 ---
@@ -18,22 +18,20 @@ tags: programming science
 
 -->
 
-<p id="CanvasNotSupportedMessage">Please use a newer browser to see the simulation</p>
+<!-- Message shown in old browsers. -->
+<p id="HarmonicOscillator-notSupportedMessage" class="HarmonicOscillator-alert">Please use a newer browser to see the simulation.</p>
 
-<canvas class="HarmonicOscillator-canvas"></canvas>
+<div class="HarmonicOscillator">
+  <canvas class="HarmonicOscillator-canvas"></canvas>
 
-<style>
-  .HarmonicOscillator-input { padding: 10px 7px 7px 7px; }
-  .HarmonicOscillator-isTextCentered { text-align: center; }
-</style>
+  <p class="HarmonicOscillator-isTextCentered">Mass<br>
+    <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-mass" min="1" max="100" step="1" pattern="\d*">
+  </p>
 
-<p class="HarmonicOscillator-isTextCentered">Mass:<br>
-  <input class="HarmonicOscillator-input HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-mass" min="1" max="100" step="1" pattern="\d*">
-</p>
-
-<p class="HarmonicOscillator-isTextCentered">Spring constant:<br>
-  <input class="HarmonicOscillator-input HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-springConstant" name="springConstant" min="1" max="100" step="1" pattern="\d*">
-</p>
+  <p class="HarmonicOscillator-isTextCentered">Spring constant<br>
+    <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-springConstant" name="springConstant" min="1" max="100" step="1" pattern="\d*">
+  </p>
+</div>
 
 <script>
 
@@ -206,7 +204,7 @@ tags: programming science
     }
 
     function hideCanvasNotSupportedMessage() {
-      document.getElementById("CanvasNotSupportedMessage").style.display ='none';
+      document.getElementById("HarmonicOscillator-notSupportedMessage").style.display ='none';
     }
 
     // Resize canvas to will the width of container
@@ -312,6 +310,32 @@ tags: programming science
 
 </script>
 
+<!-- Styles for Harmonic Oscillator -->
+<style>
+  .HarmonicOscillator-input { padding: 10px 7px 7px 7px; }
+  .HarmonicOscillator-inputSmall { width: 4em; }
+  .HarmonicOscillator-isTextCentered { text-align: center; }
+  .HarmonicOscillator-alert { color: red; border: 1px solid red; background: #ffdddd; padding: 5px;}
+</style>
+
 <!-- Harmonic Oscillator Simulator END -->
+
+
+In this tutorial I will show how to program a simulation of a harmonic oscillator in HTML and JavaScript. All you will need is a text editor and a web browser. No prior knowledge in programming or physics is required. The simulation can then be shown on any web site.
+
+## 1. What's harmonic oscillator?
+
+Harmonic oscillator is a system frequently used to describe many different processes in physics. This system has a rest position called *equilibrium*. If we move it in any direction from the equilibrium there is force that pushes it back. The further away we displace the system the stronger the force in the opposite direction. Or, in math language, the force is opposite and proportional to the displacement *x*:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/001_0010_harmonic_oscillator_equation.png' alt='Harmonic oscillator equation: F=-kx'>.
+  </span>
+  <span>(1)</span>
+</div>
+
+We can think of a simple model for the harmonic oscillator. The model consists of a box that is attached to the ground with a spring. The *k* in the equation is the *spring constant* which describes the stiffness of the spring. The larger the *k* value the harder it is to stretch or compress the spring.
+
 
 

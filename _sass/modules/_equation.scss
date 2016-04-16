@@ -1,0 +1,20 @@
+/*
+
+Styles for the equations
+
+Equation consistes of a centered image and an equation number aligned to the right.
+
+Example:
+
+<div class='isTextCentered Equation'>
+  <img class="Equation-formula" src='/image/blog/2016-04-16-programming-harmonic-oscillator/001_0010_harmonic_oscillator_equation.png' alt='Harmonic oscillator equation: F=-kx' class='isMax150PxWide'>.
+  <span class="Equation-number">(1)</span>
+</div>
+
+*/
+
+.Equation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
