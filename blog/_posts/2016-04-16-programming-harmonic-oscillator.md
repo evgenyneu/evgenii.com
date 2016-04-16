@@ -362,7 +362,7 @@ To make things simple let's assume we are living in an ideal world with no frict
 
 Let's begin writing our program by drawing the model consisting of a box and a spring. In later chapters we will animate this drawing according to the equation of motion of harmonic oscillator.
 
-<h3 id="drawing">2.1 Hello from HTML</h2>
+### 2.1 Hello from HTML
 
 First, we will create an HTML file with a test message and open it in the web browser.
 
@@ -378,7 +378,7 @@ Hello World!
 <a href="/files/2016/04/harmonic_oscillator/02_010_create_html_file.html" target="_blank" class="Button">Demo</a>
 
 
-<h3 id="drawing">2.2 Canvas element</h2>
+### 2.2 Canvas element
 
 Now we will create the HTML canvas element. As you might have guessed from its name, this element is used for drawing.
 
@@ -392,9 +392,9 @@ Now we will create the HTML canvas element. As you might have guessed from its n
 
 <a href="/files/2016/04/harmonic_oscillator/02_020_canvas_element.html" target="_blank" class="Button">Demo</a>
 
-View the file in a web browser and it will show a blank page. This is expected because we have not drawn anything in the canvas. Do not worry if you do not understand the html code, you will get familiar with it with practice.
+View the file in a web browser and it will show a blank page. This is expected because we have not drawn anything in the canvas. Do not worry if you do not understand the code, you will get familiar with it with practice.
 
-<h3 id="drawing">2.3 Hello from JavaScript</h2>
+### 2.3 Hello from JavaScript
 
 We will write our first JavaScript code by showing a "Hello World!" message. We will later extend this code to draw the box and the spring.
 
@@ -416,16 +416,16 @@ We will write our first JavaScript code by showing a "Hello World!" message. We 
 
 <a href="/files/2016/04/harmonic_oscillator/02_030_javascript.html" target="_blank" class="Button">Demo</a>
 
-<h3 id="drawing">2.4 View page source</h2>
+### 2.4 View page source
 
 You probably noticed the "Demo" buttons located under the code blocks.
 
-* Click the demo button.
+* Click this demo button.
 
 <a href="/files/2016/04/harmonic_oscillator/02_030_javascript.html" target="_blank" class="Button">Demo</a>
 
 
-The button opens a web page showing the progress we've made up to this point. It can be also used to see the full source code we have written so far by using the **View Page Source** function of the web browser. In many desktop web browsers you can view the source by right clicking on the web page and selecting *View Source* option.
+The button opens a web page showing the progress we've made up to this point. It can be also used to see the full source code we have written so far by using the **View Page Source** function of the web browser. In many desktop web browsers you can view the source by right clicking on the web page and selecting **View Page Source** option.
 
 
 
@@ -439,9 +439,9 @@ The button opens a web page showing the progress we've made up to this point. It
 
 <img class='isMax100PercentWide hasBorderShade90' src='/image/blog/2016-04-16-programming-harmonic-oscillator/002_041_view_page_source.png' alt='View web page source in Google Chrome.'>
 
+If you can not see the "View Page Source" menu option, try doing the right-click on a different place of the web page.
 
-
-<h3 id="drawing">2.4 Graphics module</h2>
+### 2.4 Graphics module
 
 We create the JavaScript module called `graphics` that will be responsible for drawing.
 
@@ -470,14 +470,14 @@ You will see the text "Graphics initialized!" in your browser. If you don't see 
 
 The `graphics` module we created consists of a single function called `init` that shows the text "Graphics initialized!" message. The function is exported by `return {init: init}` statement which allows to call this function from other modules. This trick is called "JavaScript module pattern"  and it is one of many ways to organize JavaScript code. We will use this module pattern to create other modules for physical simulation and user input.
 
-After we defined the module we call its `init` function `graphics.init();` which outputs the message.
+After we defined the module we call its `init` function `graphics.init();` which prints the message.
 
 
-<h3 id="drawing">2.5 Old browser alert</h2>
+### 2.5 Old browser alert
 
-Some old browser do not support the HTML canvas features we will be using. We need to detect if our program can draw in the browser and notify the user in case there is a problem.
+Some old browser do not support the drawing with HTML canvas. If this is the case we need notify the user.
 
-* Add the following HTML code *in the beginning* of your file.
+* Add the following HTML code **in the beginning** of your file.
 
 ```HTML
 <style>
@@ -496,14 +496,14 @@ Some old browser do not support the HTML canvas features we will be using. We ne
 
 This will show an alert message "Please use a newer browser to see the simulation." on top of the page. We will later hide this message on browsers that support canvas drawing.
 
-As you can see the code includes the CSS styles that set the text, border and the background colors for the alert message.
+As you probably noticed the code also includes styles the alert message. This language is called CSS (Cascading Style Sheets).
 
 
-<h3 id="drawing">2.6 Hide old browser alert function</h2>
+### 2.6 Hide old browser alert function
 
 We add the function that we will later use to hide the "old browser" alert.
 
-* Add this function **above** `init` function.
+* Add this code **above** `init` function.
 
 ```JavaScript
 function hideCanvasNotSupportedMessage() {
@@ -514,3 +514,29 @@ function hideCanvasNotSupportedMessage() {
 <a href="/files/2016/04/harmonic_oscillator/02_060_hide_old_browser_message.html" target="_blank" class="Button">Demo</a>
 
 You will still see the alert because we only defined and have not called the function that hides it.
+
+### 2.6 Declare variables
+
+We declare variables that will be used in the graphics module.
+
+* Add the following JavaScript code in the beginning of the `graphics` module just below `var graphics = (function() {` line:
+
+```JavaScript
+var canvas = null, // Canvas DOM element.
+  context = null, // Canvas context for drawing.
+  canvasHeight = 100,
+  boxSize = 50,
+  springInfo = {
+    height: 30, // Height of the spring
+    numberOfSegments: 12 // Number of segments in the spring.
+  },
+  colors = {
+    shade30: "#a66000",
+    shade40: "#ff6c00",
+    shade50: "#ffb100"
+  };
+```
+
+<a href="/files/2016/04/harmonic_oscillator/02_070_add_variables.html" target="_blank" class="Button">Demo</a>
+
+A variable is a named storage for information, like numbers of strings of text. When reading a source code you can infer the purpose of a variable from its name. For example, you can see a definition for the variable `boxSize = 50`. This is the place were we define the size of the box in our simulation.
