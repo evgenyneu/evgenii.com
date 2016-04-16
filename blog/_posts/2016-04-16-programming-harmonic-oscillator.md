@@ -320,10 +320,19 @@ tags: programming science
 
 <!-- Harmonic Oscillator Simulator END -->
 
+<br>
 
-In this tutorial we will program a simulation of a harmonic oscillator in HTML and JavaScript. All you will need is a text editor and a web browser. No prior knowledge in programming or physics is required. The simulation code can be embedded on any web page.
+In this tutorial we will program a simulation of a harmonic oscillator shown above using HTML and JavaScript. All you will need is a text editor and a web browser. No prior knowledge in programming or physics is required. Feel free to skip those physics parts that you are not familiar with, they are not necessary for writing the program. The resulting code is released under MIT license and can be embedded into a page on any web site.
 
-## 1. What's harmonic oscillator?
+In this tutorial consist of the following chapters:
+
+1. [Overview of harmonic oscillator](#overview)
+1. [Drawing the model using HTML canvas](#drawing)
+1. Deriving the equation of motion for harmonic oscillator
+1. Solving the equation of motion numerically with Euler's method
+1. Programming user input for mass and spring constant
+
+<h2 id="overview">1. Overview of harmonic oscillator</h2>
 
 Harmonic oscillator is a system frequently used in physics to describe various processes. This system has a rest position called *equilibrium*. If we move the system in any direction from the equilibrium there is force that pushes it back. The further away we displace the system the stronger is the force in the opposite direction. Or if we use the math language the force is opposite and proportional to the displacement *x*:
 
@@ -340,4 +349,22 @@ We can think of a simple model for the harmonic oscillator consisting of a box t
 To make things simple let's assume we are living in an ideal world with no friction. Therefore, if we displace the box and let it go it will keep moving back and forth forever.
 
 
+
+
+<h2 id="drawing">2. Drawing the model using HTML canvas</h2>
+
+Let's begin our program by drawing the model consisting of a box and a spring. In later chapters we will animate this drawing according to the equation of motion of harmonic oscillator.
+
+<h3 id="drawing">2.1 Creating HTML document</h2>
+
+* Create a new text file using a text editor of your choice.
+* Write "Hello World!" in that file and save it to a local folder.
+* Name the file **harmonic.html**
+* Open the file in any web browser and you will see a page containing "Hello World!" message. On most operating systems you can open a local html file by just double-clicking it in your file manager. Alternatively, you can open it from your web browser's *File > Open* menu.
+
+<a href="/files/2016/04/harmonic_oscillator/1.1.create_html_file.html" target="_blank" class="Button">Demo</a>
+
+```HTML
+Hello World!
+```
 

@@ -8,11 +8,11 @@
   min-width: 100px;
 
   color: #fff;
-  background-color: #ffb100;
+  background-color: $colorSignature4;
   text-decoration: none;
-  box-shadow: 22px 3px 0 -7px #ff6c00,
-            -13px -4px 0 -6px #ff9400,
-          -24px -10px 0 -11px #a66000;
+  box-shadow: 22px 3px 0 -7px $colorSignature1,
+            -13px -4px 0 -6px $colorSignature2,
+          -24px -10px 0 -11px $colorSignature3;
 
   border-radius: 60%/100% 0;
 }
