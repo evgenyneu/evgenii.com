@@ -463,7 +463,7 @@ As you probably noticed the code also includes styles for the alert message. Thi
 
 We will write our first JavaScript code by showing a "Hello World!" message and later extend it to draw the box and the spring.
 
-* Put this text **at the end** of your HTML file and you will see the 'Hello from JavaScript!' greeting in the web browser.
+* Put this text **at the end** of your HTML file and you will see the 'Hello from JavaScript!' greeting in the web browser along with the alert message.
 
 ```HTML
 <script>
@@ -651,6 +651,6 @@ With `-1` it will draw the box on the left.
 
 <a href="/files/2016/04/harmonic_oscillator/02_063_draw_box_on_the_left.html" target="_blank" class="Button">Demo</a>
 
-Later the simulation will be calling the `drawScene` function with a position value between -1 and 1 as the box moves.
+The simulation code will be calling the `drawScene` function with a position value between -1 and 1 as the box moves.
 
 
