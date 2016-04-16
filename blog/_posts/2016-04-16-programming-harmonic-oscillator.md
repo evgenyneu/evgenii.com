@@ -322,12 +322,12 @@ tags: programming science
 
 <br>
 
-In this tutorial we will program a simulation of a harmonic oscillator shown above using HTML and JavaScript. All you will need is a text editor and a web browser. No prior knowledge in programming or physics is required. Feel free to skip those physics parts that you are not familiar with, they are not necessary for writing the program. The resulting code is released under MIT license and can be embedded into a page on any web site.
+In this tutorial we will program a simulation of a harmonic oscillator shown above using HTML and JavaScript. All you will need is a text editor and a web browser. No prior knowledge of programming or physics is required. Feel free to skip those physics parts that you are not familiar with, they are not necessary for doing this job. The resulting code can be embedded into a page on any web site.
 
-In this tutorial consist of the following chapters:
+## Contents
 
 1. [Overview of harmonic oscillator](#overview)
-1. [Drawing the model using HTML canvas](#drawing)
+1. [Drawing the box-spring model with HTML canvas](#drawing)
 1. Deriving the equation of motion for harmonic oscillator
 1. Solving the equation of motion numerically with Euler's method
 1. Programming user input for mass and spring constant
@@ -351,20 +351,89 @@ To make things simple let's assume we are living in an ideal world with no frict
 
 
 
-<h2 id="drawing">2. Drawing the model using HTML canvas</h2>
+<h2 id="drawing">2. Drawing the box-spring model with HTML canvas</h2>
 
-Let's begin our program by drawing the model consisting of a box and a spring. In later chapters we will animate this drawing according to the equation of motion of harmonic oscillator.
+Let's begin writing our program by drawing the model consisting of a box and a spring. In later chapters we will animate this drawing according to the equation of motion of harmonic oscillator.
 
-<h3 id="drawing">2.1 Creating HTML document</h2>
+<h3 id="drawing">2.1 Hello from HTML</h2>
+
+First, we will create an HTML file with a test message and open it in the web browser.
 
 * Create a new text file using a text editor of your choice.
 * Write "Hello World!" in that file and save it to a local folder.
 * Name the file **harmonic.html**
 * Open the file in any web browser and you will see a page containing "Hello World!" message. On most operating systems you can open a local html file by just double-clicking it in your file manager. Alternatively, you can open it from your web browser's *File > Open* menu.
 
-<a href="/files/2016/04/harmonic_oscillator/1.1.create_html_file.html" target="_blank" class="Button">Demo</a>
-
 ```HTML
 Hello World!
 ```
 
+<a href="/files/2016/04/harmonic_oscillator/01_01_create_html_file.html" target="_blank" class="Button">Demo</a>
+
+
+<h3 id="drawing">2.2 Canvas element</h2>
+
+Now we will create the HTML canvas element. As you might have guessed from its name, this element is used for drawing.
+
+Replace "Hello World!" text in your HTML file with the following HTML code:
+
+```HTML
+<div class="HarmonicOscillator">
+  <canvas class="HarmonicOscillator-canvas"></canvas>
+</div>
+```
+
+<a href="/files/2016/04/harmonic_oscillator/01_02_canvas_element.html" target="_blank" class="Button">Demo</a>
+
+View the file in a web browser and it will show a blank page. This is expected because we have not drawn anything in the canvas. Do not worry if you do not understand the html code, you will get familiar with it with practice.
+
+<h3 id="drawing">2.3 Hello from JavaScript</h2>
+
+We will write our first JavaScript code by showing a "Hello World!" message. We will later extend this code to draw the box and the spring.
+
+Put this text *at the end* of your HTML file and you will see the 'Hello from JavaScript!' greeting in the web browser.
+
+```HTML
+<script>
+
+(function(){
+
+  document.write('Hello from JavaScript!');
+
+  // This is a comment. Here we will write JavaScript that draws the simulation.
+
+})();
+
+</script>
+```
+
+<a href="/files/2016/04/harmonic_oscillator/01_03_javascript.html" target="_blank" class="Button">Demo</a>
+
+<h3 id="drawing">2.4 View page source</h2>
+
+You probably noticed the "Demo" buttons located under the code blocks. Click on this one.
+
+<a href="/files/2016/04/harmonic_oscillator/01_03_javascript.html" target="_blank" class="Button">Demo</a>
+
+
+The button opens a web page showing the progress we've made up to this point. It can be also used to see the full source code we have written so far by using the **View Page Source** function of the web browser. In many desktop web browsers you can view the source by right clicking on the web page and selecting *View Source* option.
+
+View the source code of the last demo page, it should look like this:
+
+```HTML
+<div class="HarmonicOscillator">
+  <canvas class="HarmonicOscillator-canvas"></canvas>
+</div>
+
+<script>
+
+(function(){
+
+  document.write('Hello from JavaScript!');
+
+  // This is a comment. Here we will write JavaScript that draws the simulation.
+
+})();
+
+</script>
+```
