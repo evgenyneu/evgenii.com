@@ -321,11 +321,11 @@ tags: programming science
 <!-- Harmonic Oscillator Simulator END -->
 
 
-In this tutorial I will show how to program a simulation of a harmonic oscillator in HTML and JavaScript. All you will need is a text editor and a web browser. No prior knowledge in programming or physics is required. The simulation can then be shown on any web site.
+In this tutorial we will program a simulation of a harmonic oscillator in HTML and JavaScript. All you will need is a text editor and a web browser. No prior knowledge in programming or physics is required. The simulation code can be embedded on any web page.
 
 ## 1. What's harmonic oscillator?
 
-Harmonic oscillator is a system frequently used to describe many different processes in physics. This system has a rest position called *equilibrium*. If we move it in any direction from the equilibrium there is force that pushes it back. The further away we displace the system the stronger the force in the opposite direction. Or if we use the math language the force is opposite and proportional to the displacement *x*:
+Harmonic oscillator is a system frequently used in physics to describe various processes. This system has a rest position called *equilibrium*. If we move the system in any direction from the equilibrium there is force that pushes it back. The further away we displace the system the stronger is the force in the opposite direction. Or if we use the math language the force is opposite and proportional to the displacement *x*:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -335,7 +335,9 @@ Harmonic oscillator is a system frequently used to describe many different proce
   <span>(1)</span>
 </div>
 
-We can think of a simple model for the harmonic oscillator consisting of a box that is attached to the ground with a spring. The *k* value in Equation 1 is the *spring constant* which describes the stiffness of the spring. The larger the *k* value the harder it is to stretch or compress the spring.
+We can think of a simple model for the harmonic oscillator consisting of a box that is attached to the ground with a spring. The *k* value in Equation 1 is the **spring constant** which describes the stiffness of the spring. The larger the *k* value the harder it is to stretch or compress the spring.
+
+To make things simple let's assume we are living in an ideal world with no friction. Therefore, if we displace the box and let it go it will keep moving back and forth forever.
 
 
 
