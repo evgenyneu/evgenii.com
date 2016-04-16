@@ -33,6 +33,43 @@
         shade50: "#ffb100"
       };
 
+    // Return the middle X position of the box
+    function boxMiddleX(xDisplacement) {
+      var boxSpaceWidth = canvas.width - boxSize;
+      return boxSpaceWidth * (xDisplacement + 1) / 2 + boxSize / 2;
+    }
+
+    // Draw spring from the box to the center. Position argument is the box position and varies from -1 to 1.
+    // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
+    function drawSpring(xDisplacement) {
+      var springEndX = boxMiddleX(xDisplacement),
+        springTopY = (canvasHeight - springInfo.height) / 2,
+        springEndY = canvasHeight / 2,
+        canvasMiddleX = canvas.width / 2,
+        singleSegmentWidth = (canvasMiddleX - springEndX) / (springInfo.numberOfSegments - 1),
+        springGoesUp = true;
+
+      context.beginPath();
+      context.lineWidth = 1;
+      context.strokeStyle = colors.shade40;
+      context.moveTo(springEndX, springEndY);
+
+      for (var i = 0; i < springInfo.numberOfSegments; i++) {
+        var currentSegmentWidth = singleSegmentWidth;
+        if (i === 0 || i === springInfo.numberOfSegments - 1) { currentSegmentWidth /= 2; }
+
+        springEndX += currentSegmentWidth;
+        springEndY = springTopY;
+        if (!springGoesUp) { springEndY += springInfo.height; }
+        if (i === springInfo.numberOfSegments - 1) { springEndY = canvasHeight / 2; }
+
+        context.lineTo(springEndX, springEndY);
+        springGoesUp = !springGoesUp;
+      }
+
+      context.stroke();
+    }
+
     // Draw a box at position. Position is a value from -1 to 1.
     // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
     function drawBox(xDisplacement) {
@@ -49,6 +86,28 @@
       context.lineWidth = 1;
       context.strokeStyle = colors.shade30;
       context.strokeRect(startX + 0.5, boxTopY + 0.5, boxSize - 1, boxSize - 1);
+    }
+
+    // Draw vertical line in the middle
+    function drawMiddleLine() {
+      var middleX = Math.floor(canvas.width / 2);
+
+      context.beginPath();
+      context.moveTo(middleX, 0);
+      context.lineTo(middleX, canvas.height);
+      context.lineWidth = 2;
+      context.strokeStyle = colors.shade40;
+      context.setLineDash([2,3]);
+      context.stroke();
+      context.setLineDash([1,0]);
+    }
+
+    // Clears everything and draws the whole scene: the line, spring and the box.
+    function drawScene(xDisplacement) {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      drawMiddleLine();
+      drawSpring(xDisplacement);
+      drawBox(xDisplacement);
     }
 
     function hideCanvasNotSupportedMessage() {
@@ -87,12 +146,17 @@
     }
 
     return {
+      fitToContainer: fitToContainer,
+      drawScene: drawScene,
       init: init
     };
   })();
 
   // Call init function
   graphics.init(function(){});
+
+  // Draw scene
+  graphics.drawScene(-1);
 
 })();
 

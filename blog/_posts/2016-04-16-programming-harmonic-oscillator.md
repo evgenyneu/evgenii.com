@@ -389,8 +389,36 @@ Hello World!
 
 <a href="/files/2016/04/harmonic_oscillator/02_010_create_html_file.html" target="_blank" class="Button">Demo</a>
 
+### 2.2 View page source
 
-### 2.2 Canvas element
+You probably noticed the "Demo" buttons located under the code blocks.
+
+* Click this demo button.
+
+<a href="/files/2016/04/harmonic_oscillator/02_010_create_html_file.html" target="_blank" class="Button">Demo</a>
+
+The button opens a web page showing the progress we've made up to this point. It can be also used to see the full source code we have written so far by using the **View Page Source** function of the web browser. In many desktop web browsers you can view the source by right clicking on the web page and selecting **View Page Source** option.
+
+
+
+<div class='isTextCentered'>
+  <img class='isMax250PxWide hasBorderShade90' src='/image/blog/2016-04-16-programming-harmonic-oscillator/002_020_view_page_source.png' alt='View web page source in Google Chrome.'>
+</div>
+
+
+* View the source code of the last demo page, it should look like this:
+
+
+<div class='isTextCentered'>
+  <img class='isMax300PxWide hasBorderShade90' src='/image/blog/2016-04-16-programming-harmonic-oscillator/002_021_view_page_source.png' alt='View web page source in Google Chrome.'>
+</div>
+
+If you can not see the "View Page Source" menu option, try doing the right-click on a different place of the web page.
+
+If something goes wrong with your code, you can always view the source from the demo and copy it to your HTML file.
+
+
+### 2.3 Canvas element
 
 Now we will create the HTML canvas element. As you might have guessed from its name, this element is used for drawing.
 
@@ -402,91 +430,11 @@ Now we will create the HTML canvas element. As you might have guessed from its n
 </div>
 ```
 
-<a href="/files/2016/04/harmonic_oscillator/02_020_canvas_element.html" target="_blank" class="Button">Demo</a>
+<a href="/files/2016/04/harmonic_oscillator/02_032_canvas_element.html" target="_blank" class="Button">Demo</a>
 
-View the file in a web browser and it will show a blank page. This is expected because we have not drawn anything in the canvas. Do not worry if you do not understand the code, you will get familiar with it with practice.
+View the file in a web browser and it will show a blank page. This is expected because we have not drawn anything in the canvas yet. Do not worry if you do not understand the code, you will get familiar with it with practice.
 
-### 2.3 Hello from JavaScript
-
-We will write our first JavaScript code by showing a "Hello World!" message and later extend it to draw the box and the spring.
-
-* Put this text *at the end* of your HTML file and you will see the 'Hello from JavaScript!' greeting in the web browser.
-
-```HTML
-<script>
-
-(function(){
-
-  document.write('Hello from JavaScript!');
-
-  // This is a comment. Here we will write JavaScript that draws the simulation.
-
-})();
-
-</script>
-```
-
-<a href="/files/2016/04/harmonic_oscillator/02_030_javascript.html" target="_blank" class="Button">Demo</a>
-
-### 2.4 View page source
-
-You probably noticed the "Demo" buttons located under the code blocks.
-
-* Click this demo button.
-
-<a href="/files/2016/04/harmonic_oscillator/02_030_javascript.html" target="_blank" class="Button">Demo</a>
-
-
-The button opens a web page showing the progress we've made up to this point. It can be also used to see the full source code we have written so far by using the **View Page Source** function of the web browser. In many desktop web browsers you can view the source by right clicking on the web page and selecting **View Page Source** option.
-
-
-
-<div class='isTextCentered'>
-  <img class='isMax250PxWide hasBorderShade90' src='/image/blog/2016-04-16-programming-harmonic-oscillator/002_040_view_page_source.png' alt='View web page source in Google Chrome.'>
-</div>
-
-
-* View the source code of the last demo page, it should look like this:
-
-
-<img class='isMax100PercentWide hasBorderShade90' src='/image/blog/2016-04-16-programming-harmonic-oscillator/002_041_view_page_source.png' alt='View web page source in Google Chrome.'>
-
-If you can not see the "View Page Source" menu option, try doing the right-click on a different place of the web page.
-
-### 2.4 Graphics module
-
-We create the JavaScript module called `graphics` that will be responsible for drawing.
-
-* Replace the `document.write('Hello from JavaScript!');` line with the following code.
-
-```JavaScript
-// Draw the scene
-var graphics = (function() {
-
-  // Create canvas for drawing and call success argument
-  function init(success) {
-    document.write("Graphics initialized!");
-  }
-
-  return {
-    init: init
-  };
-})();
-
-// Call init function
-graphics.init(function(){});
-```
-
-<a href="/files/2016/04/harmonic_oscillator/02_040_graphics_module.html" target="_blank" class="Button">Demo</a>
-
-You will see the text "Graphics initialized!" in your browser. If you don't see the message check the source code in the demo page.
-
-The `graphics` module we created consists of a single function called `init` that shows the text "Graphics initialized!" message. The function is exported by `return {init: init}` statement which allows to call this function from other modules. This trick is called "JavaScript module pattern"  and it is one of many ways to organize JavaScript code. We will use this module pattern to create other modules for physical simulation and user input.
-
-After we defined the module we call its `init` function which prints the message.
-
-
-### 2.5 Old browser alert
+### 2.4 Old browser alert
 
 Some old browser do not support the drawing with HTML canvas. If this is the case we need notify the user.
 
@@ -505,94 +453,204 @@ Some old browser do not support the drawing with HTML canvas. If this is the cas
 <p id="HarmonicOscillator-notSupportedMessage" class="HarmonicOscillator-alert">Please use a newer browser to see the simulation.</p>
 ```
 
-<a href="/files/2016/04/harmonic_oscillator/02_050_browser_support_message.html" target="_blank" class="Button">Demo</a>
+<a href="/files/2016/04/harmonic_oscillator/02_042_browser_support_message.html" target="_blank" class="Button">Demo</a>
 
-This will show an alert message "Please use a newer browser to see the simulation." on top of the page. We will later hide this message on browsers that support canvas drawing.
+This will show an alert message "Please use a newer browser to see the simulation." on top of the page. We will later hide this message in browsers that support canvas drawing.
 
-As you probably noticed the code also includes styles the alert message. This language is called CSS (Cascading Style Sheets).
+As you probably noticed the code also includes styles for the alert message. This language is called CSS (Cascading Style Sheets).
 
+### 2.5 Hello from JavaScript
 
-### 2.6 Hide old browser alert function
+We will write our first JavaScript code by showing a "Hello World!" message and later extend it to draw the box and the spring.
 
-We add the function that we will later use to hide the "old browser" alert.
+* Put this text **at the end** of your HTML file and you will see the 'Hello from JavaScript!' greeting in the web browser.
 
-* Add this code **above** `init` function.
+```HTML
+<script>
 
-```JavaScript
-function hideCanvasNotSupportedMessage() {
-  document.getElementById("HarmonicOscillator-notSupportedMessage").style.display ='none';
-}
+(function(){
+
+  document.write('Hello from JavaScript!');
+
+  // This is a comment. Here we will write JavaScript that draws the simulation.
+
+})();
+
+</script>
 ```
 
-<a href="/files/2016/04/harmonic_oscillator/02_060_hide_old_browser_message.html" target="_blank" class="Button">Demo</a>
+<a href="/files/2016/04/harmonic_oscillator/02_050_javascript.html" target="_blank" class="Button">Demo</a>
 
-You will still see the alert because we only defined and have not called the function that hides it.
 
-### 2.6 Declare variables
+### 2.6 Graphics module
 
-We declare variables that will be used in the graphics module.
+Now we will create a big chunk of code responsible for drawing of the simulation. This code is located in the JavaScript module named `graphics`.
 
-* Add the following JavaScript code in the beginning of the `graphics` module just below `var graphics = (function() {` line:
+* Replace the `document.write('Hello from JavaScript!');` line with the following code.
 
 ```JavaScript
-var canvas = null, // Canvas DOM element.
-  context = null, // Canvas context for drawing.
-  canvasHeight = 100,
-  boxSize = 50,
-  springInfo = {
-    height: 30, // Height of the spring
-    numberOfSegments: 12 // Number of segments in the spring.
-  },
-  colors = {
-    shade30: "#a66000",
-    shade40: "#ff6c00",
-    shade50: "#ffb100"
+// Draw the scene
+var graphics = (function() {
+  var canvas = null, // Canvas DOM element.
+    context = null, // Canvas context for drawing.
+    canvasHeight = 100,
+    boxSize = 50,
+    springInfo = {
+      height: 30, // Height of the spring
+      numberOfSegments: 12 // Number of segments in the spring.
+    },
+    colors = {
+      shade30: "#a66000",
+      shade40: "#ff6c00",
+      shade50: "#ffb100"
+    };
+
+  // Return the middle X position of the box
+  function boxMiddleX(xDisplacement) {
+    var boxSpaceWidth = canvas.width - boxSize;
+    return boxSpaceWidth * (xDisplacement + 1) / 2 + boxSize / 2;
+  }
+
+  // Draw spring from the box to the center. Position argument is the box position and varies from -1 to 1.
+  // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
+  function drawSpring(xDisplacement) {
+    var springEndX = boxMiddleX(xDisplacement),
+      springTopY = (canvasHeight - springInfo.height) / 2,
+      springEndY = canvasHeight / 2,
+      canvasMiddleX = canvas.width / 2,
+      singleSegmentWidth = (canvasMiddleX - springEndX) / (springInfo.numberOfSegments - 1),
+      springGoesUp = true;
+
+    context.beginPath();
+    context.lineWidth = 1;
+    context.strokeStyle = colors.shade40;
+    context.moveTo(springEndX, springEndY);
+
+    for (var i = 0; i < springInfo.numberOfSegments; i++) {
+      var currentSegmentWidth = singleSegmentWidth;
+      if (i === 0 || i === springInfo.numberOfSegments - 1) { currentSegmentWidth /= 2; }
+
+      springEndX += currentSegmentWidth;
+      springEndY = springTopY;
+      if (!springGoesUp) { springEndY += springInfo.height; }
+      if (i === springInfo.numberOfSegments - 1) { springEndY = canvasHeight / 2; }
+
+      context.lineTo(springEndX, springEndY);
+      springGoesUp = !springGoesUp;
+    }
+
+    context.stroke();
+  }
+
+  // Draw a box at position. Position is a value from -1 to 1.
+  // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
+  function drawBox(xDisplacement) {
+    var boxTopY = Math.floor((canvasHeight - boxSize) / 2);
+    var startX = boxMiddleX(xDisplacement) - boxSize / 2;
+
+    // Rectangle
+    context.beginPath();
+    context.fillStyle = colors.shade50;
+    context.fillRect(startX, boxTopY, boxSize, boxSize);
+
+    // Border around rectangle
+    context.beginPath();
+    context.lineWidth = 1;
+    context.strokeStyle = colors.shade30;
+    context.strokeRect(startX + 0.5, boxTopY + 0.5, boxSize - 1, boxSize - 1);
+  }
+
+  // Draw vertical line in the middle
+  function drawMiddleLine() {
+    var middleX = Math.floor(canvas.width / 2);
+
+    context.beginPath();
+    context.moveTo(middleX, 0);
+    context.lineTo(middleX, canvas.height);
+    context.lineWidth = 2;
+    context.strokeStyle = colors.shade40;
+    context.setLineDash([2,3]);
+    context.stroke();
+    context.setLineDash([1,0]);
+  }
+
+  // Clears everything and draws the whole scene: the line, spring and the box.
+  function drawScene(xDisplacement) {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    drawMiddleLine();
+    drawSpring(xDisplacement);
+    drawBox(xDisplacement);
+  }
+
+  function hideCanvasNotSupportedMessage() {
+    document.getElementById("HarmonicOscillator-notSupportedMessage").style.display ='none';
+  }
+
+  // Resize canvas to will the width of container
+  function fitToContainer(){
+    canvas.style.width='100%';
+    canvas.style.height= canvasHeight + 'px';
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  // Create canvas for drawing and call success argument
+  function init(success) {
+    // Find the canvas HTML element
+    canvas = document.querySelector(".HarmonicOscillator-canvas");
+
+    // Check if the browser supports canvas drawing
+    if (!(window.requestAnimationFrame && canvas && canvas.getContext)) { return; }
+
+    // Get canvas context for drawing
+    context = canvas.getContext("2d", { alpha: false });
+    if (!context) { return; } // Error, browser does not support canvas
+
+    // If we got to this point it means the browser can draw
+    // Hide the old browser message
+    hideCanvasNotSupportedMessage();
+
+    // Update the size of the canvas
+    fitToContainer();
+
+    // Execute success callback function
+    success();
+  }
+
+  return {
+    fitToContainer: fitToContainer,
+    drawScene: drawScene,
+    init: init
   };
+})();
+
+// Call init function
+graphics.init(function(){});
+
+// Draw scene
+graphics.drawScene(1);
 ```
 
-<a href="/files/2016/04/harmonic_oscillator/02_070_add_variables.html" target="_blank" class="Button">Demo</a>
+<a href="/files/2016/04/harmonic_oscillator/02_061_graphics_module.html" target="_blank" class="Button">Demo</a>
 
-A variable is a named storage for information, like numbers of strings of text. When reading a source code you can infer the purpose of a variable from its name. For example, you can see a definition for the variable `boxSize = 50`. This is the place were we define the size of the box in our simulation, which is 50 pixels.
+Can you see the box on your screen? Well done!
 
-### Init drawing function
+If you don't see the box, try viewing the source of the demo page and copying it to your HTML. The box is not animated yet, we will do it in later chapters.
 
-Now we will prepare the canvas for drawing.
-
-* Replace the entire `init` function (starts with `function init`) with the following code:
+At the end of the JavaScript code you can find the following line:
 
 ```JavaScript
-// Resize canvas to will the width of container
-function fitToContainer(){
-  canvas.style.width='100%';
-  canvas.style.height= canvasHeight + 'px';
-  canvas.width  = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
-}
-
-// Create canvas for drawing and call success argument
-function init(success) {
-  // Find the canvas HTML element
-  canvas = document.querySelector(".HarmonicOscillator-canvas");
-
-  // Check if the browser supports canvas drawing
-  if (!(window.requestAnimationFrame && canvas && canvas.getContext)) { return; }
-
-  // Get canvas context for drawing
-  context = canvas.getContext("2d", { alpha: false });
-  if (!context) { return; } // Error, browser does not support canvas
-
-  // If we got to this point it means the browser can draw
-  // Hide the old browser message
-  hideCanvasNotSupportedMessage();
-
-  // Update the size of the canvas
-  fitToContainer();
-
-  // Execute success callback function
-  success();
-}
+graphics.drawScene(1);
 ```
 
-<a href="/files/2016/04/harmonic_oscillator/02_080_init_function.html" target="_blank" class="Button">Demo</a>
+This line calls the `drawScene` function supplying number `1`. This asks the program to draw the box at the rightmost position on screen. If you change the `1` to `0` it will draw the box in the middle of the screen.
 
-You will see a black rectangle and no alert message. We have also added a new function `fitToContainer` which is used to set the size of the canvas.
+<a href="/files/2016/04/harmonic_oscillator/02_062_draw_box_in_middle.html" target="_blank" class="Button">Demo</a>
+
+With `-1` it will draw the box on the left.
+
+<a href="/files/2016/04/harmonic_oscillator/02_063_draw_box_on_the_left.html" target="_blank" class="Button">Demo</a>
+
+Later the simulation will be calling the `drawScene` function with a position value between -1 and 1 as the box moves.
+
+
