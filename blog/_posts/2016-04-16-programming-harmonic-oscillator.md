@@ -232,12 +232,24 @@ tags: programming science
 
     // Create canvas for drawing and call success argument
     function init(success) {
+      // Find the canvas HTML element
       canvas = document.querySelector(".HarmonicOscillator-canvas");
+
+      // Check if the browser supports canvas drawing
       if (!(window.requestAnimationFrame && canvas && canvas.getContext)) { return; }
+
+      // Get canvas context for drawing
       context = canvas.getContext("2d", { alpha: false });
-      if (!context) { return; }
+      if (!context) { return; } // Error, browser does not support canvas
+
+      // If we got to this point it means the browser can draw
+      // Hide the old browser message
       hideCanvasNotSupportedMessage();
-      fitToContainer(); // Update the size of the canvas
+
+      // Update the size of the canvas
+      fitToContainer();
+
+      // Execute success callback function
       success();
     }
 
@@ -396,7 +408,7 @@ View the file in a web browser and it will show a blank page. This is expected b
 
 ### 2.3 Hello from JavaScript
 
-We will write our first JavaScript code by showing a "Hello World!" message. We will later extend this code to draw the box and the spring.
+We will write our first JavaScript code by showing a "Hello World!" message and later extend it to draw the box and the spring.
 
 * Put this text *at the end* of your HTML file and you will see the 'Hello from JavaScript!' greeting in the web browser.
 
@@ -461,7 +473,8 @@ var graphics = (function() {
   };
 })();
 
-graphics.init();
+// Call init function
+graphics.init(function(){});
 ```
 
 <a href="/files/2016/04/harmonic_oscillator/02_040_graphics_module.html" target="_blank" class="Button">Demo</a>
@@ -470,7 +483,7 @@ You will see the text "Graphics initialized!" in your browser. If you don't see 
 
 The `graphics` module we created consists of a single function called `init` that shows the text "Graphics initialized!" message. The function is exported by `return {init: init}` statement which allows to call this function from other modules. This trick is called "JavaScript module pattern"  and it is one of many ways to organize JavaScript code. We will use this module pattern to create other modules for physical simulation and user input.
 
-After we defined the module we call its `init` function `graphics.init();` which prints the message.
+After we defined the module we call its `init` function which prints the message.
 
 
 ### 2.5 Old browser alert
@@ -539,4 +552,47 @@ var canvas = null, // Canvas DOM element.
 
 <a href="/files/2016/04/harmonic_oscillator/02_070_add_variables.html" target="_blank" class="Button">Demo</a>
 
-A variable is a named storage for information, like numbers of strings of text. When reading a source code you can infer the purpose of a variable from its name. For example, you can see a definition for the variable `boxSize = 50`. This is the place were we define the size of the box in our simulation.
+A variable is a named storage for information, like numbers of strings of text. When reading a source code you can infer the purpose of a variable from its name. For example, you can see a definition for the variable `boxSize = 50`. This is the place were we define the size of the box in our simulation, which is 50 pixels.
+
+### Init drawing function
+
+Now we will prepare the canvas for drawing.
+
+* Replace the entire `init` function (starts with `function init`) with the following code:
+
+```JavaScript
+// Resize canvas to will the width of container
+function fitToContainer(){
+  canvas.style.width='100%';
+  canvas.style.height= canvasHeight + 'px';
+  canvas.width  = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
+
+// Create canvas for drawing and call success argument
+function init(success) {
+  // Find the canvas HTML element
+  canvas = document.querySelector(".HarmonicOscillator-canvas");
+
+  // Check if the browser supports canvas drawing
+  if (!(window.requestAnimationFrame && canvas && canvas.getContext)) { return; }
+
+  // Get canvas context for drawing
+  context = canvas.getContext("2d", { alpha: false });
+  if (!context) { return; } // Error, browser does not support canvas
+
+  // If we got to this point it means the browser can draw
+  // Hide the old browser message
+  hideCanvasNotSupportedMessage();
+
+  // Update the size of the canvas
+  fitToContainer();
+
+  // Execute success callback function
+  success();
+}
+```
+
+<a href="/files/2016/04/harmonic_oscillator/02_080_init_function.html" target="_blank" class="Button">Demo</a>
+
+You will see a black rectangle and no alert message. We have also added a new function `fitToContainer` which is used to set the size of the canvas.

@@ -1,0 +1,99 @@
+<style>
+  .HarmonicOscillator-alert {
+    color: red;
+    border: 1px solid red;
+    background: #ffeeee;
+    padding: 5px;
+  }
+</style>
+
+<p id="HarmonicOscillator-notSupportedMessage" class="HarmonicOscillator-alert">Please use a newer browser to see the simulation.</p>
+
+<div class="HarmonicOscillator">
+  <canvas class="HarmonicOscillator-canvas"></canvas>
+</div>
+
+<script>
+
+(function(){
+
+  // Draw the scene
+  var graphics = (function() {
+    var canvas = null, // Canvas DOM element.
+      context = null, // Canvas context for drawing.
+      canvasHeight = 100,
+      boxSize = 50,
+      springInfo = {
+        height: 30, // Height of the spring
+        numberOfSegments: 12 // Number of segments in the spring.
+      },
+      colors = {
+        shade30: "#a66000",
+        shade40: "#ff6c00",
+        shade50: "#ffb100"
+      };
+
+    // Draw a box at position. Position is a value from -1 to 1.
+    // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
+    function drawBox(xDisplacement) {
+      var boxTopY = Math.floor((canvasHeight - boxSize) / 2);
+      var startX = boxMiddleX(xDisplacement) - boxSize / 2;
+
+      // Rectangle
+      context.beginPath();
+      context.fillStyle = colors.shade50;
+      context.fillRect(startX, boxTopY, boxSize, boxSize);
+
+      // Border around rectangle
+      context.beginPath();
+      context.lineWidth = 1;
+      context.strokeStyle = colors.shade30;
+      context.strokeRect(startX + 0.5, boxTopY + 0.5, boxSize - 1, boxSize - 1);
+    }
+
+    function hideCanvasNotSupportedMessage() {
+      document.getElementById("HarmonicOscillator-notSupportedMessage").style.display ='none';
+    }
+
+    // Resize canvas to will the width of container
+    function fitToContainer(){
+      canvas.style.width='100%';
+      canvas.style.height= canvasHeight + 'px';
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+
+    // Create canvas for drawing and call success argument
+    function init(success) {
+      // Find the canvas HTML element
+      canvas = document.querySelector(".HarmonicOscillator-canvas");
+
+      // Check if the browser supports canvas drawing
+      if (!(window.requestAnimationFrame && canvas && canvas.getContext)) { return; }
+
+      // Get canvas context for drawing
+      context = canvas.getContext("2d", { alpha: false });
+      if (!context) { return; } // Error, browser does not support canvas
+
+      // If we got to this point it means the browser can draw
+      // Hide the old browser message
+      hideCanvasNotSupportedMessage();
+
+      // Update the size of the canvas
+      fitToContainer();
+
+      // Execute success callback function
+      success();
+    }
+
+    return {
+      init: init
+    };
+  })();
+
+  // Call init function
+  graphics.init(function(){});
+
+})();
+
+</script>

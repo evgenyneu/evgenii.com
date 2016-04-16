@@ -37,9 +37,35 @@
       document.getElementById("HarmonicOscillator-notSupportedMessage").style.display ='none';
     }
 
+    // Resize canvas to will the width of container
+    function fitToContainer(){
+      canvas.style.width='100%';
+      canvas.style.height= canvasHeight + 'px';
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+
     // Create canvas for drawing and call success argument
     function init(success) {
-      document.write("Graphics initialized!");
+      // Find the canvas HTML element
+      canvas = document.querySelector(".HarmonicOscillator-canvas");
+
+      // Check if the browser supports canvas drawing
+      if (!(window.requestAnimationFrame && canvas && canvas.getContext)) { return; }
+
+      // Get canvas context for drawing
+      context = canvas.getContext("2d", { alpha: false });
+      if (!context) { return; } // Error, browser does not support canvas
+
+      // If we got to this point it means the browser can draw
+      // Hide the old browser message
+      hideCanvasNotSupportedMessage();
+
+      // Update the size of the canvas
+      fitToContainer();
+
+      // Execute success callback function
+      success();
     }
 
     return {
