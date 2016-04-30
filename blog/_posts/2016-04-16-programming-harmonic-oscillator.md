@@ -350,7 +350,7 @@ In this tutorial we will program a simulation of a harmonic oscillator shown abo
 ## Contents
 
 1. [What is a harmonic oscillator?](#overview)
-1. [Drawing the box-spring model with HTML canvas](#drawing)
+1. [Drawing a box-spring model with HTML canvas](#drawing)
 1. [Equation of motion for the harmonic oscillator](#equation_of_motion)
 1. [Solving the equation of motion numerically with Euler's method](#eulers_method)
 1. [Starting the simulation](#start_simulation)
@@ -375,9 +375,9 @@ To make things simple let's assume we are living in an ideal world with no frict
 
 
 
-<h2 id="drawing">2. Drawing the box-spring model with HTML canvas</h2>
+<h2 id="drawing">2. Drawing a box-spring model with HTML canvas</h2>
 
-Let's begin writing our program by drawing the model consisting of a box and a spring. In later chapters we will animate this drawing according to the equation of motion of harmonic oscillator.
+Let's begin writing our program by drawing the model consisting of a box and a spring. In later chapters we will animate this drawing according to the equation of motion of a harmonic oscillator.
 
 ### 2.1 Hello from HTML
 
@@ -425,7 +425,7 @@ If something goes wrong with your code, you can always view the source from the 
 
 ### 2.3 Canvas element
 
-Now we will create the HTML canvas element. As you might have guessed from its name, this element is used for drawing.
+Now we will create an HTML canvas element. As you might have guessed from its name, this element is used for drawing.
 
 * Replace "Hello World!" text in your HTML file with the following HTML code:
 
@@ -437,11 +437,11 @@ Now we will create the HTML canvas element. As you might have guessed from its n
 
 <a href="/files/2016/04/harmonic_oscillator/02_032_canvas_element.html" target="_blank" class="Button">Demo</a>
 
-View the file in a web browser and it will show a blank page. This is expected because we have not drawn anything in the canvas yet. Do not worry if you do not understand the code, you will get familiar with it with practice.
+View the file in a web browser and it will show a blank page. This is expected because we have not drawn anything in the canvas yet. Do not worry if you do not understand the code, you will get familiar with it with a little bit of practice.
 
 ### 2.4 Old browser alert
 
-Some old browser do not support the drawing with HTML canvas. If this is the case we need notify the user.
+Some old web browsers do not support the drawing with HTML canvas. If this is the case we need notify the user.
 
 * Add the following HTML code **in the beginning** of your file.
 
@@ -656,7 +656,7 @@ With `-1` it will draw the box on the left.
 
 <a href="/files/2016/04/harmonic_oscillator/02_063_draw_box_on_the_left.html" target="_blank" class="Button">Demo</a>
 
-Try changing it to an intermediate value between 0 and 1, like *0.4*. The simulation code will be calling the `drawScene` function with a position value between -1 and 1 as the box moves from left to right and back.
+Try changing it to an intermediate value between 0 and 1, like *0.4*. Later we will write a simulation code that will be call this `drawScene` function with a position value between -1 and 1 as the box moves from left to right and back.
 
 
 
@@ -696,7 +696,7 @@ where *x* is the position of the box, *m* is its mass, *k* is the spring constan
   <span>(3)</span>
 </div>
 
-We will use a numerical method to solve Equation 3 and position the box in the simulation.
+We will use a numerical method to solve Equation 3 and move the box in the simulation.
 
 
 <h2 id="eulers_method">4. Solving the equation of motion numerically with Euler's method</h2>
@@ -705,7 +705,7 @@ Up to this point we have written the *graphics module* that draws the box and th
 
 <a href="/files/2016/04/harmonic_oscillator/02_061_graphics_module.html" target="_blank" class="Button">Demo</a>
 
-Now we will add the *physics module* that calculates the position of the box as the time goes by. As a reminder, we describe the position by a decimal number between *-1* and *1*, where *-1* is the left, *0* is the center and *1* is the right.
+Now we will add the *physics module* that calculates the position of the box as time goes by.
 
 * Paste the following code **above** the graphics module (`var graphics = (function() {`):
 
@@ -789,9 +789,9 @@ The demo page should look exactly like the previous one, with the motionless box
 
 The program keeps the following information in memory.
 
-1. The `initialConditions` object contains the initial values for the velocity and position. We start the simulation by moving the box to the right and then let it go. Therefore, the initial position is *1* and velocity is zero.
+1. The `initialConditions` object contains the initial values for the velocity and position. We start the simulation by moving the box to the right and then let it go. Therefore, the initial position is *1* and the velocity is zero.
 
-2. The `state` object keeps the current position and velocity as the system evolves through time.
+2. The `state` object keeps the *current* position and velocity as the system evolves through time.
 
 3. The `deltaT` variable stores the length of the time increment equal to 16 milliseconds. This tells the program by how much the time changes between frames. The value is used it to calculate the velocity and position of the box.
 
@@ -879,7 +879,7 @@ The new position of the box is calculated by adding the current position and the
 
 <h2 id="start_simulation">5. Starting the simulation</h2>
 
-We are finally ready to connect the drawing and physical modules together and start the simulation.
+We are finally ready to connect the graphics and physics modules together and start the simulation.
 
 * Remove `graphics.init(function(){});` line from the bottom part of the code.
 * Remove the next `graphics.drawScene(1);` line.
