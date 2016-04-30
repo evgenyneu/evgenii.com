@@ -347,7 +347,7 @@ In this tutorial we will program a simulation of a harmonic oscillator shown abo
 
 1. [Overview of harmonic oscillator](#overview)
 1. [Drawing the box-spring model with HTML canvas](#drawing)
-1. Deriving the equation of motion for harmonic oscillator
+1. [Equation of motion for the harmonic oscillator](#equation_of_motion)
 1. Solving the equation of motion numerically with Euler's method
 1. Programming user input for mass and spring constant
 
@@ -358,7 +358,7 @@ Harmonic oscillator is a system frequently used in physics to describe various p
 <div class='Equation isTextCentered'>
   <span></span>
   <span>
-    <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/001_0010_harmonic_oscillator_equation.png' alt='Harmonic oscillator equation: F=-kx'>.
+    <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/001_0010_harmonic_oscillator_equation.png' alt='Harmonic oscillator equation: F=-kx'>
   </span>
   <span>(1)</span>
 </div>
@@ -654,3 +654,54 @@ With `-1` it will draw the box on the left.
 The simulation code will be calling the `drawScene` function with a position value between -1 and 1 as the box moves.
 
 
+
+
+
+
+
+
+<h2 id="equation_of_motion">3. Equation of motion for the harmonic oscillator</h2>
+
+The force law for the harmonic oscillator is
+
+<div class='isTextCentered'>
+  <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/001_0010_harmonic_oscillator_equation.png' alt='Harmonic oscillator equation: F=-kx'>
+</div>
+We can use Newton's `F = ma` formula to write the force law as
+
+<div class='isTextCentered'>
+  <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/003_0010_harmonic_oscillator_deriving_equation_of_motion.png' alt='Deriving the equation of motion for harmonic oscillator: ma=-kx'>
+</div>
+
+and get the *equation of motion* for the harmonic oscillator
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/003_0015_harmonic_oscillator_equation_of_motion.png' alt='Equation of motion for harmonic oscillator equation: a=-(k/m)x'>
+  </span>
+  <span>(2)</span>
+</div>
+
+where *x* is the position of the box, *m* is its mass, *k* is the spring constant and *a* is the acceleration. In Equation 2 the acceleration *a* can be replaced with the second derivative of position *x*
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/003_0017_harmonic_oscillator_equation_of_motion.png' alt='Equation of motion for harmonic oscillator equation: a=-(k/m)x'>
+  </span>
+  <span>(3)</span>
+</div>
+
+There is a general solution to Equation 3
+
+<div class='isTextCentered'>
+  <img class='isMax200PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/003_0020_general_solution_to_equation_of_motion_harmonic_oscillator.png' alt='General solution to equation of motion for the harmonic oscillator x(t) = Acos(omega t) + Bsin(omega t)'>
+</div>
+where 𝜔 (omega) is the *angular frequency* defined by
+
+<div class='isTextCentered'>
+  <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/003_0030_angular_frequency_of_harmonic_oscillator.png' alt='Angular frequency of harmonic oscillator omega = sqrt(k/m)'>
+</div>
+
+However, instead of this general solution we will use Euler's numerical method of solving the Equation 3 to simulate the movement of the harmonic oscillator.
