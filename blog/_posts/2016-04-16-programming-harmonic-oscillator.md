@@ -75,8 +75,7 @@ tags: programming science
       mass: 0 // The mass of the box
     };
 
-    var previousTime = 0; // Stores time of the previous iteration in seconds
-    var timeElapsed = 0; // Stores elapsed time in seconds from the start of emulation.
+    var deltaT = 0.016; // The length of the time increment.
 
     function resetStateToInitialConditions() {
       state.xDisplacement = initialConditions.xDisplacement;
@@ -94,27 +93,20 @@ tags: programming science
       return -(state.springConstant / state.mass) * x;
     }
 
-    // Returns the time elapsed from previous iteration
-    function deltaT(time) {
-      return time - previousTime;
+    // Calculates velocity of the box
+    function calculateVelocity() {
+      return state.velocity + deltaT * accelerationAtDisplacement(state.xDisplacement);
     }
 
-    // Calculates velocity of the box at given time
-    function calculateVelocity(time) {
-      return state.velocity + deltaT(time) * accelerationAtDisplacement(state.xDisplacement);
-    }
-
-    // Calculates displacement at given time and velocity
-    function calculateXDisplacelement(time, velocity) {
-      return state.xDisplacement + deltaT(time) * state.velocity;
+    // Calculates displacement
+    function calculateXDisplacelement() {
+      return state.xDisplacement + deltaT * state.velocity;
     }
 
     // Calculate the new X position of the box
     function updateXDisplacement() {
-      timeElapsed += (16 / 1000); // Increment time by 16 milliseconds (1/60 of a second)
-      state.velocity = calculateVelocity(timeElapsed);
-      state.xDisplacement = calculateXDisplacelement(timeElapsed, state.velocity);
-      previousTime = timeElapsed;
+      state.velocity = calculateVelocity();
+      state.xDisplacement = calculateXDisplacelement();
     }
 
     return {
@@ -830,6 +822,23 @@ state.velocity = calculateVelocity(timeElapsed);
 state.xDisplacement = calculateXDisplacelement(timeElapsed, state.velocity);
 ```
 
+
+### Calculating acceleration
+
+The phy
+The current acceleration is calculated by the function `accelerationAtDisplacement` which simply uses the equation of motion we derived in Equation 3.
+
+```JavaScript
+// Returns acceleration (change of velocity) at displacement x
+function accelerationAtDisplacement(x) {
+  // We are using the formula for harmonic oscillator:
+  // a = -(k/m) * x
+  // Where a is acceleration, x is displacement, k is spring constant and m is mass.
+
+  return -(state.springConstant / state.mass) * x;
+}
+```
+
 ### Calculating velocity
 
 The velocity is calculated by `calculateVelocity()` function.
@@ -854,24 +863,11 @@ The new velocity is calculated by adding two values:
 Remember that the time increment *delta t* is 16 milliseconds. We multiply it by the current acceleration *a* to see by how much the velocity has changed.
 
 
-### Calculating acceleration
 
-The current acceleration is calculated by the function `accelerationAtDisplacement` which simply uses the equation of motion we derived in Equation 3.
-
-```JavaScript
-// Returns acceleration (change of velocity) at displacement x
-function accelerationAtDisplacement(x) {
-  // We are using the formula for harmonic oscillator:
-  // a = -(k/m) * x
-  // Where a is acceleration, x is displacement, k is spring constant and m is mass.
-
-  return -(state.springConstant / state.mass) * x;
-}
-```
 
 ### Calculating position
 
-
+Finally
 
 
 
