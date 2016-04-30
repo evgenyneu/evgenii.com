@@ -662,7 +662,7 @@ The simulation code will be calling the `drawScene` function with a position val
 
 <h2 id="equation_of_motion">3. Equation of motion for the harmonic oscillator</h2>
 
-The force law for the harmonic oscillator is
+As we already shown in the beginning, the force law for the harmonic oscillator is
 
 <div class='isTextCentered'>
   <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/001_0010_harmonic_oscillator_equation.png' alt='Harmonic oscillator equation: F=-kx'>
