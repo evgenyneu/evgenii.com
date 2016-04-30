@@ -55,7 +55,7 @@ tags: programming science
   var physics = (function() {
     // Initial condition for the system
     var initialConditions = {
-      xDisplacement:  1.0, // Box is displaced to the right
+      position:       1.0, // Box is shown on the right initially
       velocity:       0.0, // Velocity is zero
       springConstant: 100.0, // The higher the value the stiffer the spring
       mass:           10.0 // The mass of the box
@@ -69,49 +69,50 @@ tags: programming science
         1.0 is the maximum position to the right.
         -1.0 is the maximum position to the left.
       */
-      xDisplacement: 0,
+      position: 0,
       velocity: 0,
       springConstant: 0, // The higher the value the stiffer the spring
       mass: 0 // The mass of the box
     };
 
-    var deltaT = 0.016; // The length of the time increment.
+    var deltaT = 0.016; // The length of the time increment, in seconds.
 
     function resetStateToInitialConditions() {
-      state.xDisplacement = initialConditions.xDisplacement;
+      state.position = initialConditions.position;
       state.velocity = initialConditions.velocity;
       state.springConstant = initialConditions.springConstant;
       state.mass = initialConditions.mass;
     }
 
-    // Returns acceleration (change of velocity) at displacement x
-    function accelerationAtDisplacement(x) {
-      // We are using the formula for harmonic oscillator:
+    // Returns acceleration (change of velocity) for the given position
+    function calculateAcceleration(x) {
+      // We are using the equation of motion for the harmonic oscillator:
       // a = -(k/m) * x
       // Where a is acceleration, x is displacement, k is spring constant and m is mass.
 
       return -(state.springConstant / state.mass) * x;
     }
 
-    // Calculates velocity of the box
-    function calculateVelocity() {
-      return state.velocity + deltaT * accelerationAtDisplacement(state.xDisplacement);
+    // Calculates the new velocity: current velocity plus the change.
+    function newVelocity(acceleration) {
+      return state.velocity + deltaT * acceleration;
     }
 
-    // Calculates displacement
-    function calculateXDisplacelement() {
-      return state.xDisplacement + deltaT * state.velocity;
+    // Calculates the new position: current position plus the change.
+    function newPosition() {
+      return state.position + deltaT * state.velocity;
     }
 
-    // Calculate the new X position of the box
-    function updateXDisplacement() {
-      state.velocity = calculateVelocity();
-      state.xDisplacement = calculateXDisplacelement();
+    // Calculate the new position of the box
+    function updatePosition() {
+      var acceleration = calculateAcceleration(state.position);
+      state.velocity = newVelocity(acceleration);
+      state.position = newPosition();
     }
 
     return {
       resetStateToInitialConditions: resetStateToInitialConditions,
-      updateXDisplacement: updateXDisplacement,
+      updatePosition: updatePosition,
       initialConditions: initialConditions,
       state: state,
     };
@@ -134,15 +135,15 @@ tags: programming science
       };
 
     // Return the middle X position of the box
-    function boxMiddleX(xDisplacement) {
+    function boxMiddleX(position) {
       var boxSpaceWidth = canvas.width - boxSize;
-      return boxSpaceWidth * (xDisplacement + 1) / 2 + boxSize / 2;
+      return boxSpaceWidth * (position + 1) / 2 + boxSize / 2;
     }
 
     // Draw spring from the box to the center. Position argument is the box position and varies from -1 to 1.
     // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
-    function drawSpring(xDisplacement) {
-      var springEndX = boxMiddleX(xDisplacement),
+    function drawSpring(position) {
+      var springEndX = boxMiddleX(position),
         springTopY = (canvasHeight - springInfo.height) / 2,
         springEndY = canvasHeight / 2,
         canvasMiddleX = canvas.width / 2,
@@ -172,9 +173,9 @@ tags: programming science
 
     // Draw a box at position. Position is a value from -1 to 1.
     // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
-    function drawBox(xDisplacement) {
+    function drawBox(position) {
       var boxTopY = Math.floor((canvasHeight - boxSize) / 2);
-      var startX = boxMiddleX(xDisplacement) - boxSize / 2;
+      var startX = boxMiddleX(position) - boxSize / 2;
 
       // Rectangle
       context.beginPath();
@@ -203,11 +204,11 @@ tags: programming science
     }
 
     // Clears everything and draws the whole scene: the line, spring and the box.
-    function drawScene(xDisplacement) {
+    function drawScene(position) {
       context.clearRect(0, 0, canvas.width, canvas.height);
       drawMiddleLine();
-      drawSpring(xDisplacement);
-      drawBox(xDisplacement);
+      drawSpring(position);
+      drawBox(position);
     }
 
     function hideCanvasNotSupportedMessage() {
@@ -298,8 +299,8 @@ tags: programming science
   // Start the animation
   var main = (function() {
     function animate() {
-      physics.updateXDisplacement();
-      graphics.drawScene(physics.state.xDisplacement);
+      physics.updatePosition();
+      graphics.drawScene(physics.state.position);
       window.requestAnimationFrame(animate);
     }
 
@@ -311,7 +312,7 @@ tags: programming science
         // Redraw the scene if page is resized
         window.addEventListener('resize', function(event){
           graphics.fitToContainer();
-          graphics.drawScene(physics.state.xDisplacement);
+          graphics.drawScene(physics.state.position);
         });
 
         // Start the animation sequence
