@@ -51,7 +51,7 @@ tags: programming science
 <script>
 
 (function(){
-   // Calculate position and velocity of the box
+  // Calculate position and velocity of the box
   var physics = (function() {
     // Initial condition for the system
     var initialConditions = {
@@ -239,7 +239,7 @@ tags: programming science
       if (!(window.requestAnimationFrame && canvas && canvas.getContext)) { return; }
 
       // Get canvas context for drawing
-      context = canvas.getContext("2d", { alpha: false });
+      context = canvas.getContext("2d");
       if (!context) { return; } // Error, browser does not support canvas
 
       // If we got to this point it means the browser can draw
@@ -348,7 +348,7 @@ In this tutorial we will program a simulation of a harmonic oscillator shown abo
 1. [Overview of harmonic oscillator](#overview)
 1. [Drawing the box-spring model with HTML canvas](#drawing)
 1. [Equation of motion for the harmonic oscillator](#equation_of_motion)
-1. Solving the equation of motion numerically with Euler's method
+1. [Solving the equation of motion numerically with Euler's method](#eulers_method)
 1. Programming user input for mass and spring constant
 
 <h2 id="overview">1. Overview of harmonic oscillator</h2>
@@ -363,7 +363,7 @@ Harmonic oscillator is a system frequently used in physics to describe various p
   <span>(1)</span>
 </div>
 
-We can think of a simple model for the harmonic oscillator consisting of a box that is attached to the ground with a spring. The *k* value in Equation 1 is the **spring constant** which describes the stiffness of the spring. The larger the *k* value the harder it is to stretch or compress the spring.
+We can think of a simple model for the harmonic oscillator consisting of a box that is attached to the ground with a spring. The *k* value in Equation 1 is the *spring constant* which describes the stiffness of the spring. The larger the *k* value the harder it is to stretch or compress the spring.
 
 To make things simple let's assume we are living in an ideal world with no friction. Therefore, if we displace the box and let it go it will keep moving back and forth forever.
 
@@ -603,7 +603,7 @@ var graphics = (function() {
     if (!(window.requestAnimationFrame && canvas && canvas.getContext)) { return; }
 
     // Get canvas context for drawing
-    context = canvas.getContext("2d", { alpha: false });
+    context = canvas.getContext("2d");
     if (!context) { return; } // Error, browser does not support canvas
 
     // If we got to this point it means the browser can draw
@@ -651,7 +651,7 @@ With `-1` it will draw the box on the left.
 
 <a href="/files/2016/04/harmonic_oscillator/02_063_draw_box_on_the_left.html" target="_blank" class="Button">Demo</a>
 
-The simulation code will be calling the `drawScene` function with a position value between -1 and 1 as the box moves.
+The simulation code will be calling the `drawScene` function with a position value between -1 and 1 as the box moves from left to right and back.
 
 
 
@@ -698,10 +698,22 @@ There is a general solution to Equation 3
 <div class='isTextCentered'>
   <img class='isMax200PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/003_0020_general_solution_to_equation_of_motion_harmonic_oscillator.png' alt='General solution to equation of motion for the harmonic oscillator x(t) = Acos(omega t) + Bsin(omega t)'>
 </div>
-where *t* is time and, *A* and *B* are constant terms and 𝜔 (omega) is the *angular frequency* defined by
+where *t* is time and, *A* and *B* are constant terms and &omega; (omega) is the *angular frequency* defined by
 
 <div class='isTextCentered'>
   <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/003_0030_angular_frequency_of_harmonic_oscillator.png' alt='Angular frequency of harmonic oscillator omega = sqrt(k/m)'>
 </div>
 
-However, instead of this general solution we will use Euler's numerical method of solving the Equation 3 to simulate the movement of the harmonic oscillator.
+However, instead of this general solution we will use a numerical method of solving the Equation 3.
+
+
+
+
+
+<h2 id="eulers_method">4. Solving the equation of motion numerically with Euler's method</h2>
+
+At this point we have written the *graphics module* that draws the box and the spring of the harmonic oscillator.
+
+<a href="/files/2016/04/harmonic_oscillator/02_061_graphics_module.html" target="_blank" class="Button">Demo</a>
+
+Now we need to write the *physics module* that calculates the position of the box as the time goes by. As a reminder, the position is described by a decimal number between *-1* and *1*, where *-1* is the left, *0* is the center and *1* is the right.

@@ -131,7 +131,7 @@
       if (!(window.requestAnimationFrame && canvas && canvas.getContext)) { return; }
 
       // Get canvas context for drawing
-      context = canvas.getContext("2d", { alpha: false });
+      context = canvas.getContext("2d");
       if (!context) { return; } // Error, browser does not support canvas
 
       // If we got to this point it means the browser can draw
