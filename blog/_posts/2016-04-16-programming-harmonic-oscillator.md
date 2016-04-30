@@ -358,7 +358,7 @@ In this tutorial we will program a simulation of a harmonic oscillator shown abo
 
 <h2 id="overview">1. What is a harmonic oscillator?</h2>
 
-Harmonic oscillator is a system frequently used in physics to describe various processes. This system has a rest position called *equilibrium*. If we move the system in any direction from the equilibrium there is force that pushes it back. The further away we displace the system the stronger is the force in the opposite direction. Or if we use the math language the force is opposite and proportional to the position *x*:
+A harmonic oscillator is a system frequently used in physics to describe various processes. This system has a rest position called *equilibrium*. If we move the system in any direction from the equilibrium there is force that pushes it back. The further away we displace the system the stronger is the force in the opposite direction. Or if we use the math language the force is opposite and proportional to the position *x*:
 
 <div class='Equation isTextCentered'>
   <span></span>
