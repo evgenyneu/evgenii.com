@@ -29,7 +29,7 @@ tags: programming science
   }
 
   .HarmonicOscillator-input { padding: 10px 7px 7px 7px; }
-  .HarmonicOscillator-inputSmall { width: 4em; }
+  .HarmonicOscillator-inputSmall { width: 5em; }
   .HarmonicOscillator-isTextCentered { text-align: center; }
 </style>
 
@@ -254,9 +254,40 @@ tags: programming science
     };
   })();
 
-  // Get input for the spring constant and mass form user
-  var userInput = (function(){
+  // Start the simulation
+  var simulation = (function() {
+    // The method is called 60 times per second
+    function animate() {
+      physics.updatePosition();
+      graphics.drawScene(physics.state.position);
+      window.requestAnimationFrame(animate);
+    }
 
+    function start() {
+      graphics.init(function() {
+        // Use the initial conditions for the simulation
+        physics.resetStateToInitialConditions();
+
+        // Redraw the scene if page is resized
+        window.addEventListener('resize', function(event){
+          graphics.fitToContainer();
+          graphics.drawScene(physics.state.position);
+        });
+
+        // Start the animation sequence
+        animate();
+      });
+    }
+
+    return {
+      start: start
+    };
+  })();
+
+  simulation.start();
+
+  // Get input for the mass and the spring constant from the user
+  var userInput = (function(){
     // Update mass and spring constant with selected values
     function updateSimulation(massInput, springConstantInput) {
       physics.resetStateToInitialConditions();
@@ -297,36 +328,7 @@ tags: programming science
     };
   })();
 
-  // Start the animation
-  var main = (function() {
-    function animate() {
-      physics.updatePosition();
-      graphics.drawScene(physics.state.position);
-      window.requestAnimationFrame(animate);
-    }
-
-    function init() {
-      graphics.init(function() {
-        userInput.init();
-        physics.resetStateToInitialConditions();
-
-        // Redraw the scene if page is resized
-        window.addEventListener('resize', function(event){
-          graphics.fitToContainer();
-          graphics.drawScene(physics.state.position);
-        });
-
-        // Start the animation sequence
-        animate();
-      });
-    }
-
-    return {
-      init: init
-    };
-  })();
-
-  main.init();
+  userInput.init();
 })();
 
 </script>
@@ -343,7 +345,8 @@ In this tutorial we will program a simulation of a harmonic oscillator shown abo
 1. [Drawing the box-spring model with HTML canvas](#drawing)
 1. [Equation of motion for the harmonic oscillator](#equation_of_motion)
 1. [Solving the equation of motion numerically with Euler's method](#eulers_method)
-1. Programming user input for mass and spring constant
+1. [Starting the simulation](#start_simulation)
+1. [Adding user input for the mass and spring constant](#user_input)
 
 <h2 id="overview">1. Overview of harmonic oscillator</h2>
 
@@ -858,4 +861,149 @@ function newPosition() {
 ```
 
 The new position of the box is calculated by adding the current position and the change in position. The change in position is the length of time increment *deltaT* multiplied by the velocity.
+
+
+
+
+
+
+<h2 id="start_simulation">5. Starting the simulation</h2>
+
+We are finally ready to connect the drawing and physical modules together and start the simulation.
+
+* Remove `graphics.init(function(){});` line.
+* Remove `graphics.drawScene(1);` line.
+* Paste the following code in place of the two removed lines.
+
+```JavaScript
+// Start the simulation
+var simulation = (function() {
+  // The method is called 60 times per second
+  function animate() {
+    physics.updatePosition();
+    graphics.drawScene(physics.state.position);
+    window.requestAnimationFrame(animate);
+  }
+
+  function start() {
+    graphics.init(function() {
+      // Use the initial conditions for the simulation
+      physics.resetStateToInitialConditions();
+
+      // Redraw the scene if page is resized
+      window.addEventListener('resize', function(event){
+        graphics.fitToContainer();
+        graphics.drawScene(physics.state.position);
+      });
+
+      // Start the animation sequence
+      animate();
+    });
+  }
+
+  return {
+    start: start
+  };
+})();
+
+simulation.start();
+```
+
+<a href="/files/2016/04/harmonic_oscillator/05_010_starting_simulation.html" target="_blank" class="Button">Demo</a>
+
+Your page should now show the harmonic oscillator wiggling from side to side. Fantastic!
+
+The simulation module contains the `animate()` function which is executed 60 times per second. This function updates the position of the box and draws the scene.
+
+
+
+<h2 id="user_input">6. Adding user input for the mass and spring constant</h2>
+
+We are almost there. The final step is to add the ability for the user to tweak the mass of the box and spring constant.
+
+### Adding the text input controls
+
+* At the beginning of the file, replace the existing `style` with the following CSS code
+
+```HTML
+<style>
+  .HarmonicOscillator-alert {
+    color: red;
+    border: 1px solid red;
+    background: #ffeeee;
+    padding: 5px;
+  }
+  .HarmonicOscillator-input { padding: 10px 7px 7px 7px; }
+  .HarmonicOscillator-inputSmall { width: 7em; }
+  .HarmonicOscillator-isTextCentered { text-align: center; }
+</style>
+```
+
+* Add the following HTML code immediately **after** the `canvas` element:
+
+```
+<p class="HarmonicOscillator-isTextCentered">Mass<br>
+  <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-mass" min="1" max="100" step="1" pattern="\d*">
+</p>
+
+<p class="HarmonicOscillator-isTextCentered">Spring constant<br>
+  <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-springConstant" name="springConstant" min="1" max="100" step="1" pattern="\d*">
+</p>
+```
+
+<a href="/files/2016/04/harmonic_oscillator/06_010_user_input.html" target="_blank" class="Button">Demo</a>
+
+You will two text input controls under the harmonic oscillator. Next we will add the JavaScript code to connect these controls to the simulation.
+
+### User input JavaScript
+
+* Add the user input module **below** the `simulation.start();` line:
+
+```JavaScript
+// Get input for the mass and the spring constant from the user
+var userInput = (function(){
+  // Update mass and spring constant with selected values
+  function updateSimulation(massInput, springConstantInput) {
+    physics.resetStateToInitialConditions();
+    physics.state.mass = parseFloat(massInput.value) || physics.initialConditions.mass;
+    physics.state.springConstant = parseFloat(springConstantInput.value) || physics.initialConditions.springConstant;
+  }
+
+  function init() {
+    // Mass
+    // -----------
+
+    var massInput = document.getElementById("HarmonicOscillator-mass");
+
+    // Set initial mass value
+    massInput.value = physics.initialConditions.mass;
+
+    // User updates mass in simulation
+    massInput.addEventListener('input', function() {
+      updateSimulation(massInput, springConstantInput);
+    });
+
+    // Spring constant
+    // -----------
+
+    var springConstantInput = document.getElementById("HarmonicOscillator-springConstant");
+
+    // Set initial spring constant value
+    springConstantInput.value = physics.initialConditions.springConstant;
+
+    // User updates spring constant in simulation
+    springConstantInput.addEventListener('input', function() {
+      updateSimulation(massInput, springConstantInput);
+    });
+  }
+
+  return {
+    init: init
+  };
+})();
+
+userInput.init();
+```
+
+<a href="/files/2016/04/harmonic_oscillator/06_020_user_input_javascript.html" target="_blank" class="Button">Demo</a>
 
