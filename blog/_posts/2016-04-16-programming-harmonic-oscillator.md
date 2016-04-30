@@ -667,15 +667,13 @@ As we already shown in the beginning, the force law for the harmonic oscillator 
 <div class='isTextCentered'>
   <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/001_0010_harmonic_oscillator_equation.png' alt='Harmonic oscillator equation: F=-kx'>
 </div>
-We can use Newton's `F = ma` formula to write the force law as
+We can use Newton's `F = ma` formula to rewrite the force law
 
 <div class='isTextCentered'>
   <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/003_0010_harmonic_oscillator_deriving_equation_of_motion.png' alt='Deriving the equation of motion for harmonic oscillator: ma=-kx'>
 </div>
 
-and get the *equation of motion* for the harmonic oscillator
-
-<div class='Equation isTextCentered'>
+<div class='Equation isTextCentered hasTopMarginSmall'>
   <span></span>
   <span>
     <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/003_0015_harmonic_oscillator_equation_of_motion.png' alt='Equation of motion for harmonic oscillator equation: a=-(k/m)x'>
@@ -683,7 +681,7 @@ and get the *equation of motion* for the harmonic oscillator
   <span>(2)</span>
 </div>
 
-where *x* is the position of the box, *m* is its mass, *k* is the spring constant and *a* is the acceleration. In Equation 2 the acceleration *a* can be replaced with the second derivative of position *x*
+where *x* is the position of the box, *m* is its mass, *k* is the spring constant and *a* is the acceleration. In Equation 2 the acceleration *a* can be replaced with the second derivative of the position *x* to get the *equation of motion* for the harmonic oscillator
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -704,7 +702,7 @@ where *t* is time and, *A* and *B* are constant terms and &omega; (omega) is the
   <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/003_0030_angular_frequency_of_harmonic_oscillator.png' alt='Angular frequency of harmonic oscillator omega = sqrt(k/m)'>
 </div>
 
-However, instead of this general solution we will use a numerical method of solving the Equation 3.
+However, instead of this general solution we will use a numerical method to solve Equation 3 and position the box in the simulation.
 
 
 
@@ -716,4 +714,4 @@ At this point we have written the *graphics module* that draws the box and the s
 
 <a href="/files/2016/04/harmonic_oscillator/02_061_graphics_module.html" target="_blank" class="Button">Demo</a>
 
-Now we need to write the *physics module* that calculates the position of the box as the time goes by. As a reminder, the position is described by a decimal number between *-1* and *1*, where *-1* is the left, *0* is the center and *1* is the right.
+Now we need to write the *physics module* that calculates the position of the box as the time goes by. As a reminder, we describe the position by a decimal number between *-1* and *1*, where *-1* is the left, *0* is the center and *1* is the right.
