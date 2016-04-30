@@ -354,11 +354,11 @@ In this tutorial we will program a simulation of a harmonic oscillator shown abo
 1. [Equation of motion for the harmonic oscillator](#equation_of_motion)
 1. [Solving the equation of motion numerically with Euler's method](#eulers_method)
 1. [Starting the simulation](#start_simulation)
-1. [Adding user input for the mass and spring constant](#user_input)
+1. [Adding user input for the mass and the spring constant](#user_input)
 
 <h2 id="overview">1. What is a harmonic oscillator?</h2>
 
-A harmonic oscillator is a system frequently used in physics to describe various processes. This system has a rest position called *equilibrium*. If we move the system in any direction from the equilibrium there is force that pushes it back. The further away we displace the system the stronger is the force in the opposite direction. Or if we use the math language the force is opposite and proportional to the position *x*:
+A harmonic oscillator is a system frequently used in physics to describe various processes. This system has a rest position called *equilibrium*. If we move the system in any direction from the equilibrium there is force that pushes it back. The further away we displace the system the stronger is the force in the opposite direction. Or if we use the math language the force is opposite and proportional to the displacement *x*:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -368,7 +368,7 @@ A harmonic oscillator is a system frequently used in physics to describe various
   <span>(1)</span>
 </div>
 
-We can think of a simple model for the harmonic oscillator consisting of a box that is attached to the ground with a spring. The *k* value in Equation 1 is the *spring constant* which describes the stiffness of the spring. The larger the *k* value the harder it is to stretch or compress the spring.
+We can imagine a simple model for the harmonic oscillator consisting of a box that is attached to the ground with a spring. The *k* value in Equation 1 is the *spring constant* which describes the stiffness of the spring. The larger the *k* value the harder it is to stretch or compress the spring.
 
 To make things simple let's assume we are living in an ideal world with no friction. Therefore, if we move the box and let it go it will keep wiggling back and forth forever.
 
@@ -489,7 +489,7 @@ We will write our first JavaScript code by showing a "Hello World!" message and 
 
 ### 2.6 Graphics module
 
-Now we will create a big chunk of code responsible for drawing of the simulation. This code is located in the JavaScript module named `graphics`.
+Now we will add a big chunk of code responsible for drawing of the simulation. This code is organized into a JavaScript module named `graphics`.
 
 * Replace the `document.write('Hello from JavaScript!');` line with the following code.
 
@@ -656,7 +656,7 @@ With `-1` it will draw the box on the left.
 
 <a href="/files/2016/04/harmonic_oscillator/02_063_draw_box_on_the_left.html" target="_blank" class="Button">Demo</a>
 
-The simulation code will be calling the `drawScene` function with a position value between -1 and 1 as the box moves from left to right and back.
+Try changing it to an intermediate value between 0 and 1, like *0.4*. The simulation code will be calling the `drawScene` function with a position value between -1 and 1 as the box moves from left to right and back.
 
 
 
@@ -701,7 +701,7 @@ We will use a numerical method to solve Equation 3 and position the box in the s
 
 <h2 id="eulers_method">4. Solving the equation of motion numerically with Euler's method</h2>
 
-At this point we have written the *graphics module* that draws the box and the spring of the harmonic oscillator.
+Up to this point we have written the *graphics module* that draws the box and the spring of the harmonic oscillator.
 
 <a href="/files/2016/04/harmonic_oscillator/02_061_graphics_module.html" target="_blank" class="Button">Demo</a>
 
@@ -783,17 +783,17 @@ var physics = (function() {
 
 <a href="/files/2016/04/harmonic_oscillator/03_010_physics.html" target="_blank" class="Button">Demo</a>
 
-The demo page should look exactly like the previous one, with the motionless box on the right. Here are the key parts of the physics code that we added.
+The demo page should look exactly like the previous one, with the motionless box. Here are the key parts of the physics code that we added.
 
 ### The memory of the simulation
 
 The program keeps the following information in memory.
 
-1. The `initialConditions` object contains the initial values for velocity and position. We start the simulation by moving the box to the right and letting it go. Therefore, the initial position is *1* and velocity is zero.
+1. The `initialConditions` object contains the initial values for the velocity and position. We start the simulation by moving the box to the right and then let it go. Therefore, the initial position is *1* and velocity is zero.
 
 2. The `state` object keeps the current position and velocity as the system evolves through time.
 
-3. The `deltaT` variable stores the length of time increment which is 16 milliseconds. This tells the program by how much the time changes between frames. The value is used it to calculate the velocity and position of the box.
+3. The `deltaT` variable stores the length of the time increment equal to 16 milliseconds. This tells the program by how much the time changes between frames. The value is used it to calculate the velocity and position of the box.
 
 ### Updating box position
 
@@ -811,17 +811,17 @@ b) Secondly, it calculates the new velocity based on the current acceleration:
 state.velocity = newVelocity(acceleration);
 ```
 
-c) And fianlly, it computes and updates the position of the box based on the current velocity:
+c) And finally, it computes and updates the position of the box based on the current velocity:
 
 ```JavaScript
 state.position = newPosition();
 ```
 
-Here is what we do for each of the three steps.
+Here is what we do in each of the three steps.
 
 ### a) Calculating the acceleration
 
-The current acceleration is calculated by the `calculateAcceleration` function. It uses the equation of motion we derived in Equation 3.
+The current acceleration is calculated by the `calculateAcceleration` function. It uses the equation of motion we derived earlier (Equation 3).
 
 ```JavaScript
 // Returns acceleration (change of velocity) for the given position
@@ -854,14 +854,14 @@ The new velocity is calculated by adding two values:
   <img class='isMax300PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/004_0010_calculating_velocity.png' alt='Calculating velocity v_new = v_current + deltaT * acceleration'>
 </div>
 
-In out simulation the time increment *deltaT* is 16 milliseconds. We multiply i by the current acceleration to see by how much the velocity has changed since the last animation frame.
+In our simulation the time increment *deltaT* is 16 milliseconds. We multiply it by the current acceleration to see by how much the velocity has changed since the last animation frame.
 
 
 
 
 ### c) Calculating the position
 
-The method of determining the position is very similar to the one we used for velocity.
+The method of determining the position is very similar to the one we used for the velocity.
 
 ```JavaScript
 // Calculates the new position: current position plus the change.
@@ -881,9 +881,9 @@ The new position of the box is calculated by adding the current position and the
 
 We are finally ready to connect the drawing and physical modules together and start the simulation.
 
-* Remove `graphics.init(function(){});` line.
-* Remove `graphics.drawScene(1);` line.
-* Paste the following code in place of the two removed lines.
+* Remove `graphics.init(function(){});` line from the bottom part of the code.
+* Remove the next `graphics.drawScene(1);` line.
+* Paste the following code instead of the two removed lines.
 
 ```JavaScript
 // Start the simulation
@@ -921,15 +921,15 @@ simulation.start();
 
 <a href="/files/2016/04/harmonic_oscillator/05_010_starting_simulation.html" target="_blank" class="Button">Demo</a>
 
-Your page should now show the harmonic oscillator wiggling from side to side. Fantastic!
+Your page should now show the harmonic oscillator running recklessly from side to side. Fantastic!
 
-The simulation module contains the `animate()` function which is executed 60 times per second. This function updates the position of the box and draws the scene.
+The simulation module contains the `animate()` function which is executed 60 times per second. This function calculates the new position of the box and then draws the scene.
 
 
 
-<h2 id="user_input">6. Adding user input for the mass and spring constant</h2>
+<h2 id="user_input">6. Adding user input for the mass and the spring constant</h2>
 
-We are almost there. The final step is to add the ability for the user to tweak the mass of the box and spring constant.
+We are almost there. The final step is to add the ability for the user to tweak the mass and the spring constant.
 
 ### Adding the text input controls
 
@@ -951,12 +951,12 @@ We are almost there. The final step is to add the ability for the user to tweak 
     padding: 10px 7px 7px 7px;
   }
 
-  .HarmonicOscillator-inputSmall { width: 7em; }
+  .HarmonicOscillator-inputSmall { width: 5em; }
   .HarmonicOscillator-isTextCentered { text-align: center; }
 </style>
 ```
 
-* Add the following HTML code immediately **after** the element `<canvas class="HarmonicOscillator-canvas"></canvas>`:
+* Add the following HTML code immediately **after** the element `<canvas class="HarmonicOscillator-canvas"></canvas>` but before the closing `</div>` tag:
 
 ```
 <p class="HarmonicOscillator-isTextCentered">Mass<br>
@@ -970,11 +970,11 @@ We are almost there. The final step is to add the ability for the user to tweak 
 
 <a href="/files/2016/04/harmonic_oscillator/06_010_user_input.html" target="_blank" class="Button">Demo</a>
 
-You will see two text input controls centered under the harmonic oscillator. Next we will add the JavaScript code to connect these controls to the simulation.
+You will see two empty text boxes centered under the harmonic oscillator. Next we will add the JavaScript code to connect these controls to the simulation.
 
 ### User input JavaScript
 
-* Add the user input module **below** the `simulation.start();` line:
+* Add the following code **below** the `simulation.start();` line at the bottom part of the file:
 
 ```JavaScript
 // Get input for the mass and the spring constant from the user
@@ -1027,9 +1027,17 @@ userInput.init();
 You will now be able to change the mass and the spring constant and update the simulation. That's it, we are done!
 
 
+## Modeling the universe
+
+We have learned how to create an HTML simulation of a physical process by using a numerical method of solving its equation of motion. It is convenient because we do not need to know the analitical solution to the equation, which may not even exist for more complex systems. This approach can be used to simulate all kind of things from double pendulums to motions of planets.
+
+The simulation we created can be used on any web site. Fee free to leave a comment if you had any problems.
+
 ## References
 
 * [The complete source code](/files/2016/04/harmonic_oscillator/the_complete_code/) of the harmonic oscillator simulation.
 
 * Susskind, L., &amp; Hrabovsky, G. (2013). The theoretical minimum: What you need to know to start doing physics. New York: Basic Boks.
+
+* [Euler's method](https://www.khanacademy.org/math/differential-equations/first-order-differential-equations/eulers-method-tutorial/v/eulers-method) on Khan Academy.
 
