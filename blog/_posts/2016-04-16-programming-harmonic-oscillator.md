@@ -698,7 +698,7 @@ There is a general solution to Equation 3
 <div class='isTextCentered'>
   <img class='isMax200PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/003_0020_general_solution_to_equation_of_motion_harmonic_oscillator.png' alt='General solution to equation of motion for the harmonic oscillator x(t) = Acos(omega t) + Bsin(omega t)'>
 </div>
-where 𝜔 (omega) is the *angular frequency* defined by
+where *t* is time and, *A* and *B* are constant terms and 𝜔 (omega) is the *angular frequency* defined by
 
 <div class='isTextCentered'>
   <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/003_0030_angular_frequency_of_harmonic_oscillator.png' alt='Angular frequency of harmonic oscillator omega = sqrt(k/m)'>
