@@ -103,7 +103,8 @@ tags: programming science
       return state.position + deltaT * state.velocity;
     }
 
-    // Calculate the new position of the box
+    // The main function that is called on every animation frame.
+    // It calculates and updates the current position of the box.
     function updatePosition() {
       var acceleration = calculateAcceleration(state.position);
       state.velocity = newVelocity(acceleration);
@@ -346,7 +347,7 @@ In this tutorial we will program a simulation of a harmonic oscillator shown abo
 
 <h2 id="overview">1. Overview of harmonic oscillator</h2>
 
-Harmonic oscillator is a system frequently used in physics to describe various processes. This system has a rest position called *equilibrium*. If we move the system in any direction from the equilibrium there is force that pushes it back. The further away we displace the system the stronger is the force in the opposite direction. Or if we use the math language the force is opposite and proportional to the displacement *x*:
+Harmonic oscillator is a system frequently used in physics to describe various processes. This system has a rest position called *equilibrium*. If we move the system in any direction from the equilibrium there is force that pushes it back. The further away we displace the system the stronger is the force in the opposite direction. Or if we use the math language the force is opposite and proportional to the position *x*:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -358,7 +359,7 @@ Harmonic oscillator is a system frequently used in physics to describe various p
 
 We can think of a simple model for the harmonic oscillator consisting of a box that is attached to the ground with a spring. The *k* value in Equation 1 is the *spring constant* which describes the stiffness of the spring. The larger the *k* value the harder it is to stretch or compress the spring.
 
-To make things simple let's assume we are living in an ideal world with no friction. Therefore, if we displace the box and let it go it will keep moving back and forth forever.
+To make things simple let's assume we are living in an ideal world with no friction. Therefore, if we move the box and let it go it will keep wiggling back and forth forever.
 
 
 
@@ -499,15 +500,15 @@ var graphics = (function() {
     };
 
   // Return the middle X position of the box
-  function boxMiddleX(xDisplacement) {
+  function boxMiddleX(position) {
     var boxSpaceWidth = canvas.width - boxSize;
-    return boxSpaceWidth * (xDisplacement + 1) / 2 + boxSize / 2;
+    return boxSpaceWidth * (position + 1) / 2 + boxSize / 2;
   }
 
   // Draw spring from the box to the center. Position argument is the box position and varies from -1 to 1.
   // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
-  function drawSpring(xDisplacement) {
-    var springEndX = boxMiddleX(xDisplacement),
+  function drawSpring(position) {
+    var springEndX = boxMiddleX(position),
       springTopY = (canvasHeight - springInfo.height) / 2,
       springEndY = canvasHeight / 2,
       canvasMiddleX = canvas.width / 2,
@@ -537,9 +538,9 @@ var graphics = (function() {
 
   // Draw a box at position. Position is a value from -1 to 1.
   // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
-  function drawBox(xDisplacement) {
+  function drawBox(position) {
     var boxTopY = Math.floor((canvasHeight - boxSize) / 2);
-    var startX = boxMiddleX(xDisplacement) - boxSize / 2;
+    var startX = boxMiddleX(position) - boxSize / 2;
 
     // Rectangle
     context.beginPath();
@@ -568,11 +569,11 @@ var graphics = (function() {
   }
 
   // Clears everything and draws the whole scene: the line, spring and the box.
-  function drawScene(xDisplacement) {
+  function drawScene(position) {
     context.clearRect(0, 0, canvas.width, canvas.height);
     drawMiddleLine();
-    drawSpring(xDisplacement);
-    drawBox(xDisplacement);
+    drawSpring(position);
+    drawBox(position);
   }
 
   function hideCanvasNotSupportedMessage() {
@@ -684,21 +685,7 @@ where *x* is the position of the box, *m* is its mass, *k* is the spring constan
   <span>(3)</span>
 </div>
 
-There is a general solution to Equation 3
-
-<div class='isTextCentered'>
-  <img class='isMax200PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/003_0020_general_solution_to_equation_of_motion_harmonic_oscillator.png' alt='General solution to equation of motion for the harmonic oscillator x(t) = Acos(omega t) + Bsin(omega t)'>
-</div>
-where *t* is time and, *A* and *B* are constant terms and &omega; (omega) is the *angular frequency* defined by
-
-<div class='isTextCentered'>
-  <img class='isMax150PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/003_0030_angular_frequency_of_harmonic_oscillator.png' alt='Angular frequency of harmonic oscillator omega = sqrt(k/m)'>
-</div>
-
-However, instead of this general solution we will use a numerical method to solve Equation 3 and position the box in the simulation.
-
-
-
+We will use a numerical method to solve Equation 3 and position the box in the simulation.
 
 
 <h2 id="eulers_method">4. Solving the equation of motion numerically with Euler's method</h2>
@@ -707,7 +694,7 @@ At this point we have written the *graphics module* that draws the box and the s
 
 <a href="/files/2016/04/harmonic_oscillator/02_061_graphics_module.html" target="_blank" class="Button">Demo</a>
 
-Now we add the *physics module* that calculates the position of the box as the time goes by. As a reminder, we describe the position by a decimal number between *-1* and *1*, where *-1* is the left, *0* is the center and *1* is the right.
+Now we will add the *physics module* that calculates the position of the box as the time goes by. As a reminder, we describe the position by a decimal number between *-1* and *1*, where *-1* is the left, *0* is the center and *1* is the right.
 
 * Paste the following code **above** the graphics module (`var graphics = (function() {`):
 
@@ -716,7 +703,7 @@ Now we add the *physics module* that calculates the position of the box as the t
 var physics = (function() {
   // Initial condition for the system
   var initialConditions = {
-    xDisplacement:  1.0, // Box is displaced to the right
+    position:       1.0, // Box is shown on the right initially
     velocity:       0.0, // Velocity is zero
     springConstant: 100.0, // The higher the value the stiffer the spring
     mass:           10.0 // The mass of the box
@@ -730,57 +717,51 @@ var physics = (function() {
       1.0 is the maximum position to the right.
       -1.0 is the maximum position to the left.
     */
-    xDisplacement: 0,
+    position: 0,
     velocity: 0,
     springConstant: 0, // The higher the value the stiffer the spring
     mass: 0 // The mass of the box
   };
 
-  var previousTime = 0; // Stores time of the previous iteration in seconds
-  var timeElapsed = 0; // Stores elapsed time in seconds from the start of emulation.
+  var deltaT = 0.016; // The length of the time increment, in seconds.
 
   function resetStateToInitialConditions() {
-    state.xDisplacement = initialConditions.xDisplacement;
+    state.position = initialConditions.position;
     state.velocity = initialConditions.velocity;
     state.springConstant = initialConditions.springConstant;
     state.mass = initialConditions.mass;
   }
 
-  // Returns acceleration (change of velocity) at displacement x
-  function accelerationAtDisplacement(x) {
-    // We are using the formula for harmonic oscillator:
+  // Returns acceleration (change of velocity) for the given position
+  function calculateAcceleration(x) {
+    // We are using the equation of motion for the harmonic oscillator:
     // a = -(k/m) * x
     // Where a is acceleration, x is displacement, k is spring constant and m is mass.
 
     return -(state.springConstant / state.mass) * x;
   }
 
-  // Returns the time elapsed from previous iteration
-  function deltaT(time) {
-    return time - previousTime;
+  // Calculates the new velocity: current velocity plus the change.
+  function newVelocity(acceleration) {
+    return state.velocity + deltaT * acceleration;
   }
 
-  // Calculates velocity of the box at given time
-  function calculateVelocity(time) {
-    return state.velocity + deltaT(time) * accelerationAtDisplacement(state.xDisplacement);
+  // Calculates the new position: current position plus the change.
+  function newPosition() {
+    return state.position + deltaT * state.velocity;
   }
 
-  // Calculates displacement at given time and velocity
-  function calculateXDisplacelement(time, velocity) {
-    return state.xDisplacement + deltaT(time) * state.velocity;
-  }
-
-  // Calculate the new X position of the box
-  function updateXDisplacement() {
-    timeElapsed += (16 / 1000); // Increment time by 16 milliseconds (1/60 of a second)
-    state.velocity = calculateVelocity(timeElapsed);
-    state.xDisplacement = calculateXDisplacelement(timeElapsed, state.velocity);
-    previousTime = timeElapsed;
+  // The main function that is called on every animation frame.
+  // It calculates and updates the current position of the box.
+  function updatePosition() {
+    var acceleration = calculateAcceleration(state.position);
+    state.velocity = newVelocity(acceleration);
+    state.position = newPosition();
   }
 
   return {
     resetStateToInitialConditions: resetStateToInitialConditions,
-    updateXDisplacement: updateXDisplacement,
+    updatePosition: updatePosition,
     initialConditions: initialConditions,
     state: state,
   };
@@ -789,50 +770,49 @@ var physics = (function() {
 
 <a href="/files/2016/04/harmonic_oscillator/03_010_physics.html" target="_blank" class="Button">Demo</a>
 
-The demo page should look excatly like the prious one, with the motionless box on the right. Here are the key parts of the physics code that we added.
+The demo page should look exactly like the previous one, with the motionless box on the right. Here are the key parts of the physics code that we added.
 
 ### The memory of the simulation
 
-1. The `initialConditions` object contains the initial values. We start the simulation by displacing the box to the right and letting it go. Therefore, the initial position is *1* and velocity is zero.
+The program keeps the following information in memory.
 
-2. The `state` object keeps the current position and velocity as the system evolves.
+1. The `initialConditions` object contains the initial values for velocity and position. We start the simulation by moving the box to the right and letting it go. Therefore, the initial position is *1* and velocity is zero.
 
-3. The `timeElapsed` variable stores the current time from the start of the simulation.
+2. The `state` object keeps the current position and velocity as the system evolves through time.
+
+3. The `deltaT` variable stores the length of time increment which is 16 milliseconds. This tells the program by how much the time changes between frames. The value is used it to calculate the velocity and position of the box.
 
 ### Updating box position
 
-The main function of the physics module is `updateXDisplacement()`. It will be called by the animation code 60 times per second to update the box position. The function does three things:
+The central function of the physics module is `updatePosition()` which will be called 60 times per second. The function calculates and updates the current box position by using the Euler's numerical method to solve the equation of motion (Equation 3). This is done in three steps:
 
-1) Increments the current time by 16 milliseconds.
+1) Firstly, it determines the acceleration based on the current position.
 
 ```JavaScript
-timeElapsed += (16 / 1000);
+var acceleration = calculateAcceleration(state.position);
 ```
 
-We call this time increment of 16 milliseconds *delta t* and use it to calculate the velocity and position of the box.
-
-2) Calculates the new velocity value for the incremented time:
+2) Secondly, it calculates the new velocity based on the current acceleration:
 
 ```JavaScript
-state.velocity = calculateVelocity(timeElapsed);
+state.velocity = newVelocity(acceleration);
 ```
 
-3) Updates the position of the box given the new time and velocity:
+3) And fianlly, it computes and updates the position of the box:
 
 ```JavaScript
-state.xDisplacement = calculateXDisplacelement(timeElapsed, state.velocity);
+state.position = newPosition();
 ```
 
 
-### Calculating acceleration
+### Calculating the acceleration
 
-The phy
-The current acceleration is calculated by the function `accelerationAtDisplacement` which simply uses the equation of motion we derived in Equation 3.
+The current acceleration is calculated by the `calculateAcceleration` function. It uses the equation of motion we derived in Equation 3.
 
 ```JavaScript
-// Returns acceleration (change of velocity) at displacement x
-function accelerationAtDisplacement(x) {
-  // We are using the formula for harmonic oscillator:
+// Returns acceleration (change of velocity) for the given position
+function calculateAcceleration(x) {
+  // We are using the equation of motion for the harmonic oscillator:
   // a = -(k/m) * x
   // Where a is acceleration, x is displacement, k is spring constant and m is mass.
 
@@ -840,35 +820,41 @@ function accelerationAtDisplacement(x) {
 }
 ```
 
-### Calculating velocity
+### Calculating the velocity
 
-The velocity is calculated by `calculateVelocity()` function.
+The velocity is calculated by the `newVelocity` function.
 
 ```JavaScript
-function calculateVelocity(time) {
-  return state.velocity + deltaT(time) * accelerationAtDisplacement(state.xDisplacement);
+// Calculates the new velocity: current velocity plus the change.
+function newVelocity(acceleration) {
+  return state.velocity + deltaT * acceleration;
 }
 ```
 
-Here we use Euler's method of solving the differential Equation 3
-
-<div class='isTextCentered'>
-  <img class='isMax200PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/004_0010_calculating_velocity.png' alt='Calculating velocity v_new = v_current + delta_t * acceleration'>
-</div>
-
 The new velocity is calculated by adding two values:
 
-1. the current velocity value *v current* and
-1. the change in velocity *delta_t * a*.
+1. the current velocity value and
+1. the change in velocity, which is *deltaT* times acceleration.
 
-Remember that the time increment *delta t* is 16 milliseconds. We multiply it by the current acceleration *a* to see by how much the velocity has changed.
+<div class='isTextCentered'>
+  <img class='isMax300PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/004_0010_calculating_velocity.png' alt='Calculating velocity v_new = v_current + deltaT * acceleration'>
+</div>
 
-
-
-
-### Calculating position
-
-Finally
+In out simulation the time increment *deltaT* is 16 milliseconds. We multiply i by the current acceleration to see by how much the velocity has changed since the last animation frame.
 
 
+
+
+### Calculating the position
+
+The method of determining the position is very similar to the one we used for velocity.
+
+```JavaScript
+// Calculates the new position: current position plus the change.
+function newPosition() {
+  return state.position + deltaT * state.velocity;
+}
+```
+
+The new position of the box is calculated by adding the current position and the change in position. The change in position is the length of time increment *deltaT* multiplied by the velocity.
 

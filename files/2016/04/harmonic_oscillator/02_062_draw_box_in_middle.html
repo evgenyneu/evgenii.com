@@ -34,15 +34,15 @@
       };
 
     // Return the middle X position of the box
-    function boxMiddleX(xDisplacement) {
+    function boxMiddleX(position) {
       var boxSpaceWidth = canvas.width - boxSize;
-      return boxSpaceWidth * (xDisplacement + 1) / 2 + boxSize / 2;
+      return boxSpaceWidth * (position + 1) / 2 + boxSize / 2;
     }
 
     // Draw spring from the box to the center. Position argument is the box position and varies from -1 to 1.
     // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
-    function drawSpring(xDisplacement) {
-      var springEndX = boxMiddleX(xDisplacement),
+    function drawSpring(position) {
+      var springEndX = boxMiddleX(position),
         springTopY = (canvasHeight - springInfo.height) / 2,
         springEndY = canvasHeight / 2,
         canvasMiddleX = canvas.width / 2,
@@ -72,9 +72,9 @@
 
     // Draw a box at position. Position is a value from -1 to 1.
     // Value 0 corresponds to the central position, while -1 and 1 are the left and right respectively.
-    function drawBox(xDisplacement) {
+    function drawBox(position) {
       var boxTopY = Math.floor((canvasHeight - boxSize) / 2);
-      var startX = boxMiddleX(xDisplacement) - boxSize / 2;
+      var startX = boxMiddleX(position) - boxSize / 2;
 
       // Rectangle
       context.beginPath();
@@ -103,11 +103,11 @@
     }
 
     // Clears everything and draws the whole scene: the line, spring and the box.
-    function drawScene(xDisplacement) {
+    function drawScene(position) {
       context.clearRect(0, 0, canvas.width, canvas.height);
       drawMiddleLine();
-      drawSpring(xDisplacement);
-      drawBox(xDisplacement);
+      drawSpring(position);
+      drawBox(position);
     }
 
     function hideCanvasNotSupportedMessage() {
