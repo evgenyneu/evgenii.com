@@ -714,4 +714,164 @@ At this point we have written the *graphics module* that draws the box and the s
 
 <a href="/files/2016/04/harmonic_oscillator/02_061_graphics_module.html" target="_blank" class="Button">Demo</a>
 
-Now we need to write the *physics module* that calculates the position of the box as the time goes by. As a reminder, we describe the position by a decimal number between *-1* and *1*, where *-1* is the left, *0* is the center and *1* is the right.
+Now we add the *physics module* that calculates the position of the box as the time goes by. As a reminder, we describe the position by a decimal number between *-1* and *1*, where *-1* is the left, *0* is the center and *1* is the right.
+
+* Paste the following code **above** the graphics module (`var graphics = (function() {`):
+
+```JavaScript
+// Calculate position and velocity of the box
+var physics = (function() {
+  // Initial condition for the system
+  var initialConditions = {
+    xDisplacement:  1.0, // Box is displaced to the right
+    velocity:       0.0, // Velocity is zero
+    springConstant: 100.0, // The higher the value the stiffer the spring
+    mass:           10.0 // The mass of the box
+  };
+
+  // Current state of the system
+  var state = {
+    /*
+    Position of the box:
+      0 is when the box is at the center.
+      1.0 is the maximum position to the right.
+      -1.0 is the maximum position to the left.
+    */
+    xDisplacement: 0,
+    velocity: 0,
+    springConstant: 0, // The higher the value the stiffer the spring
+    mass: 0 // The mass of the box
+  };
+
+  var previousTime = 0; // Stores time of the previous iteration in seconds
+  var timeElapsed = 0; // Stores elapsed time in seconds from the start of emulation.
+
+  function resetStateToInitialConditions() {
+    state.xDisplacement = initialConditions.xDisplacement;
+    state.velocity = initialConditions.velocity;
+    state.springConstant = initialConditions.springConstant;
+    state.mass = initialConditions.mass;
+  }
+
+  // Returns acceleration (change of velocity) at displacement x
+  function accelerationAtDisplacement(x) {
+    // We are using the formula for harmonic oscillator:
+    // a = -(k/m) * x
+    // Where a is acceleration, x is displacement, k is spring constant and m is mass.
+
+    return -(state.springConstant / state.mass) * x;
+  }
+
+  // Returns the time elapsed from previous iteration
+  function deltaT(time) {
+    return time - previousTime;
+  }
+
+  // Calculates velocity of the box at given time
+  function calculateVelocity(time) {
+    return state.velocity + deltaT(time) * accelerationAtDisplacement(state.xDisplacement);
+  }
+
+  // Calculates displacement at given time and velocity
+  function calculateXDisplacelement(time, velocity) {
+    return state.xDisplacement + deltaT(time) * state.velocity;
+  }
+
+  // Calculate the new X position of the box
+  function updateXDisplacement() {
+    timeElapsed += (16 / 1000); // Increment time by 16 milliseconds (1/60 of a second)
+    state.velocity = calculateVelocity(timeElapsed);
+    state.xDisplacement = calculateXDisplacelement(timeElapsed, state.velocity);
+    previousTime = timeElapsed;
+  }
+
+  return {
+    resetStateToInitialConditions: resetStateToInitialConditions,
+    updateXDisplacement: updateXDisplacement,
+    initialConditions: initialConditions,
+    state: state,
+  };
+})();
+```
+
+<a href="/files/2016/04/harmonic_oscillator/03_010_physics.html" target="_blank" class="Button">Demo</a>
+
+The demo page should look excatly like the prious one, with the motionless box on the right. Here are the key parts of the physics code that we added.
+
+### The memory of the simulation
+
+1. The `initialConditions` object contains the initial values. We start the simulation by displacing the box to the right and letting it go. Therefore, the initial position is *1* and velocity is zero.
+
+2. The `state` object keeps the current position and velocity as the system evolves.
+
+3. The `timeElapsed` variable stores the current time from the start of the simulation.
+
+### Updating box position
+
+The main function of the physics module is `updateXDisplacement()`. It will be called by the animation code 60 times per second to update the box position. The function does three things:
+
+1) Increments the current time by 16 milliseconds.
+
+```JavaScript
+timeElapsed += (16 / 1000);
+```
+
+We call this time increment of 16 milliseconds *delta t* and use it to calculate the velocity and position of the box.
+
+2) Calculates the new velocity value for the incremented time:
+
+```JavaScript
+state.velocity = calculateVelocity(timeElapsed);
+```
+
+3) Updates the position of the box given the new time and velocity:
+
+```JavaScript
+state.xDisplacement = calculateXDisplacelement(timeElapsed, state.velocity);
+```
+
+### Calculating velocity
+
+The velocity is calculated by `calculateVelocity()` function.
+
+```JavaScript
+function calculateVelocity(time) {
+  return state.velocity + deltaT(time) * accelerationAtDisplacement(state.xDisplacement);
+}
+```
+
+Here we use Euler's method of solving the differential Equation 3
+
+<div class='isTextCentered'>
+  <img class='isMax200PxWide' src='/image/blog/2016-04-16-programming-harmonic-oscillator/004_0010_calculating_velocity.png' alt='Calculating velocity v_new = v_current + delta_t * acceleration'>
+</div>
+
+The new velocity is calculated by adding two values:
+
+1. the current velocity value *v current* and
+1. the change in velocity *delta_t * a*.
+
+Remember that the time increment *delta t* is 16 milliseconds. We multiply it by the current acceleration *a* to see by how much the velocity has changed.
+
+
+### Calculating acceleration
+
+The current acceleration is calculated by the function `accelerationAtDisplacement` which simply uses the equation of motion we derived in Equation 3.
+
+```JavaScript
+// Returns acceleration (change of velocity) at displacement x
+function accelerationAtDisplacement(x) {
+  // We are using the formula for harmonic oscillator:
+  // a = -(k/m) * x
+  // Where a is acceleration, x is displacement, k is spring constant and m is mass.
+
+  return -(state.springConstant / state.mass) * x;
+}
+```
+
+### Calculating position
+
+
+
+
+
