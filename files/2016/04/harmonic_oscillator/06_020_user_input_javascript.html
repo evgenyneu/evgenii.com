@@ -5,8 +5,15 @@
     background: #ffeeee;
     padding: 5px;
   }
-  .HarmonicOscillator-input { padding: 10px 7px 7px 7px;}
-  .HarmonicOscillator-inputSmall { width: 7em; }
+
+  .HarmonicOscillator-input {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+    padding: 10px 7px 7px 7px;
+  }
+
+  .HarmonicOscillator-inputSmall { width: 5em; }
   .HarmonicOscillator-isTextCentered { text-align: center; }
 </style>
 
@@ -16,11 +23,11 @@
   <canvas class="HarmonicOscillator-canvas"></canvas>
 
   <p class="HarmonicOscillator-isTextCentered">Mass<br>
-    <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-mass" min="1" max="100" step="1" pattern="\d*">
+    <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-mass" min="1" max="10000" step="1" pattern="\d*">
   </p>
 
   <p class="HarmonicOscillator-isTextCentered">Spring constant<br>
-    <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-springConstant" name="springConstant" min="1" max="100" step="1" pattern="\d*">
+    <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-springConstant" name="springConstant" min="1" max="10000" step="1" pattern="\d*">
   </p>
 </div>
 
@@ -85,6 +92,8 @@
       var acceleration = calculateAcceleration(state.position);
       state.velocity = newVelocity(acceleration);
       state.position = newPosition();
+      if (state.position > 1) { state.position = 1; }
+      if (state.position < -1) { state.position = -1; }
     }
 
     return {

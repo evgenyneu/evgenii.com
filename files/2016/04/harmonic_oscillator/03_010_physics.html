@@ -74,6 +74,8 @@
       var acceleration = calculateAcceleration(state.position);
       state.velocity = newVelocity(acceleration);
       state.position = newPosition();
+      if (state.position > 1) { state.position = 1; }
+      if (state.position < -1) { state.position = -1; }
     }
 
     return {

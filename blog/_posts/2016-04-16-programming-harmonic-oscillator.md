@@ -1,7 +1,7 @@
 ---
 layout: blog_post
-comments: false
-title: "Programming harmonic oscillator in HTML &amp; JavaScript"
+comments: true
+title: "Programming a harmonic oscillator in HTML &amp; JavaScript"
 meta_description: "This tutorial shows how to program the motion of harmonic oscillator with JavaScript."
 tags: programming science
 ---
@@ -28,7 +28,13 @@ tags: programming science
     padding: 5px;
   }
 
-  .HarmonicOscillator-input { padding: 10px 7px 7px 7px; }
+  .HarmonicOscillator-input {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+    padding: 10px 7px 7px 7px;
+  }
+
   .HarmonicOscillator-inputSmall { width: 5em; }
   .HarmonicOscillator-isTextCentered { text-align: center; }
 </style>
@@ -40,11 +46,11 @@ tags: programming science
   <canvas class="HarmonicOscillator-canvas"></canvas>
 
   <p class="HarmonicOscillator-isTextCentered">Mass<br>
-    <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-mass" min="1" max="100" step="1" pattern="\d*">
+    <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-mass" min="1" max="10000" step="1" pattern="\d*">
   </p>
 
   <p class="HarmonicOscillator-isTextCentered">Spring constant<br>
-    <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-springConstant" name="springConstant" min="1" max="100" step="1" pattern="\d*">
+    <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-springConstant" name="springConstant" min="1" max="10000" step="1" pattern="\d*">
   </p>
 </div>
 
@@ -109,6 +115,8 @@ tags: programming science
       var acceleration = calculateAcceleration(state.position);
       state.velocity = newVelocity(acceleration);
       state.position = newPosition();
+      if (state.position > 1) { state.position = 1; }
+      if (state.position < -1) { state.position = -1; }
     }
 
     return {
@@ -337,18 +345,18 @@ tags: programming science
 
 <br>
 
-In this tutorial we will program a simulation of a harmonic oscillator shown above using HTML and JavaScript. All you will need is a text editor and a web browser. No prior knowledge of programming or physics is required. Feel free to skip those physics parts that you are not familiar with, they are not necessary for doing this job. The resulting code can be embedded into a page on any web site.
+In this tutorial we will program a simulation of a harmonic oscillator shown above using HTML and JavaScript. All you will need is a text editor and a web browser. No prior knowledge of programming or physics is required. Feel free to skip those physics parts that you are not familiar with, they are not necessary for doing this job. The [resulting code](/files/2016/04/harmonic_oscillator/the_complete_code/) can be embedded into any web page.
 
 ## Contents
 
-1. [Overview of harmonic oscillator](#overview)
+1. [What is a harmonic oscillator?](#overview)
 1. [Drawing the box-spring model with HTML canvas](#drawing)
 1. [Equation of motion for the harmonic oscillator](#equation_of_motion)
 1. [Solving the equation of motion numerically with Euler's method](#eulers_method)
 1. [Starting the simulation](#start_simulation)
 1. [Adding user input for the mass and spring constant](#user_input)
 
-<h2 id="overview">1. Overview of harmonic oscillator</h2>
+<h2 id="overview">1. What is a harmonic oscillator?</h2>
 
 Harmonic oscillator is a system frequently used in physics to describe various processes. This system has a rest position called *equilibrium*. If we move the system in any direction from the equilibrium there is force that pushes it back. The further away we displace the system the stronger is the force in the opposite direction. Or if we use the math language the force is opposite and proportional to the position *x*:
 
@@ -760,6 +768,8 @@ var physics = (function() {
     var acceleration = calculateAcceleration(state.position);
     state.velocity = newVelocity(acceleration);
     state.position = newPosition();
+    if (state.position > 1) { state.position = 1; }
+    if (state.position < -1) { state.position = -1; }
   }
 
   return {
@@ -923,7 +933,7 @@ We are almost there. The final step is to add the ability for the user to tweak 
 
 ### Adding the text input controls
 
-* At the beginning of the file, replace the existing `style` with the following CSS code
+* At the beginning of the file, replace the entire `<style> ... </style>` block with the following CSS code
 
 ```HTML
 <style>
@@ -933,27 +943,34 @@ We are almost there. The final step is to add the ability for the user to tweak 
     background: #ffeeee;
     padding: 5px;
   }
-  .HarmonicOscillator-input { padding: 10px 7px 7px 7px; }
+
+  .HarmonicOscillator-input {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+    padding: 10px 7px 7px 7px;
+  }
+
   .HarmonicOscillator-inputSmall { width: 7em; }
   .HarmonicOscillator-isTextCentered { text-align: center; }
 </style>
 ```
 
-* Add the following HTML code immediately **after** the `canvas` element:
+* Add the following HTML code immediately **after** the element `<canvas class="HarmonicOscillator-canvas"></canvas>`:
 
 ```
 <p class="HarmonicOscillator-isTextCentered">Mass<br>
-  <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-mass" min="1" max="100" step="1" pattern="\d*">
+  <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-mass" min="1" max="10000" step="1" pattern="\d*">
 </p>
 
 <p class="HarmonicOscillator-isTextCentered">Spring constant<br>
-  <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-springConstant" name="springConstant" min="1" max="100" step="1" pattern="\d*">
+  <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-springConstant" name="springConstant" min="1" max="10000" step="1" pattern="\d*">
 </p>
 ```
 
 <a href="/files/2016/04/harmonic_oscillator/06_010_user_input.html" target="_blank" class="Button">Demo</a>
 
-You will two text input controls under the harmonic oscillator. Next we will add the JavaScript code to connect these controls to the simulation.
+You will see two text input controls centered under the harmonic oscillator. Next we will add the JavaScript code to connect these controls to the simulation.
 
 ### User input JavaScript
 
@@ -1006,4 +1023,13 @@ userInput.init();
 ```
 
 <a href="/files/2016/04/harmonic_oscillator/06_020_user_input_javascript.html" target="_blank" class="Button">Demo</a>
+
+You will now be able to change the mass and the spring constant and update the simulation. That's it, we are done!
+
+
+## References
+
+* [The complete source code](/files/2016/04/harmonic_oscillator/the_complete_code/) of the harmonic oscillator simulation.
+
+* Susskind, L., &amp; Hrabovsky, G. (2013). The theoretical minimum: What you need to know to start doing physics. New York: Basic Boks.
 
