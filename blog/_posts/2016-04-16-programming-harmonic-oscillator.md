@@ -786,26 +786,27 @@ The program keeps the following information in memory.
 
 The central function of the physics module is `updatePosition()` which will be called 60 times per second. The function calculates and updates the current box position by using the Euler's numerical method to solve the equation of motion (Equation 3). This is done in three steps:
 
-1) Firstly, it determines the acceleration based on the current position.
+a) Firstly, it determines the acceleration based on the current position.
 
 ```JavaScript
 var acceleration = calculateAcceleration(state.position);
 ```
 
-2) Secondly, it calculates the new velocity based on the current acceleration:
+b) Secondly, it calculates the new velocity based on the current acceleration:
 
 ```JavaScript
 state.velocity = newVelocity(acceleration);
 ```
 
-3) And fianlly, it computes and updates the position of the box:
+c) And fianlly, it computes and updates the position of the box based on the current velocity:
 
 ```JavaScript
 state.position = newPosition();
 ```
 
+Here is what we do for each of the three steps.
 
-### Calculating the acceleration
+### a) Calculating the acceleration
 
 The current acceleration is calculated by the `calculateAcceleration` function. It uses the equation of motion we derived in Equation 3.
 
@@ -820,7 +821,7 @@ function calculateAcceleration(x) {
 }
 ```
 
-### Calculating the velocity
+### b) Calculating the velocity
 
 The velocity is calculated by the `newVelocity` function.
 
@@ -845,7 +846,7 @@ In out simulation the time increment *deltaT* is 16 milliseconds. We multiply i 
 
 
 
-### Calculating the position
+### c) Calculating the position
 
 The method of determining the position is very similar to the one we used for velocity.
 
