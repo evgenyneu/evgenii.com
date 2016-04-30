@@ -956,6 +956,8 @@ We are almost there. The final step is to add the ability for the user to tweak 
 </style>
 ```
 
+The code we just added contains the styles for the alert message and the text boxes.
+
 * Add the following HTML code immediately **after** the element `<canvas class="HarmonicOscillator-canvas"></canvas>` but before the closing `</div>` tag:
 
 ```
@@ -970,9 +972,9 @@ We are almost there. The final step is to add the ability for the user to tweak 
 
 <a href="/files/2016/04/harmonic_oscillator/06_010_user_input.html" target="_blank" class="Button">Demo</a>
 
-You will see two empty text boxes centered under the harmonic oscillator. Next we will add the JavaScript code to connect these controls to the simulation.
+You will see two empty text boxes centered under the harmonic oscillator. Next we will add the JavaScript code to connect these controls with the simulation.
 
-### User input JavaScript
+### Add the user input JavaScript
 
 * Add the following code **below** the `simulation.start();` line at the bottom part of the file:
 
@@ -1029,7 +1031,7 @@ You will now be able to change the mass and the spring constant and update the s
 
 ## Modeling the universe
 
-We have learned how to create an HTML simulation of a physical process by using a numerical method of solving its equation of motion. It is convenient because we do not need to know the analitical solution to the equation, which may not even exist for more complex systems. This approach can be used to simulate all kind of things from double pendulums to motions of planets.
+We have learned how to create an HTML simulation of a physical process by using a numerical method of solving its equation of motion. It was convenient because we did not need to know the analytical solution to the equation, which may not even exist for more complex systems. This approach can be used to simulate all kinds of things from double pendulums to motions of planets.
 
 The simulation we created can be used on any web site. Fee free to leave a comment if you had any problems.
 
