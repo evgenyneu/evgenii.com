@@ -1031,7 +1031,7 @@ You will now be able to change the mass and the spring constant and update the s
 
 ## Modeling the universe
 
-We have learned how to create an HTML simulation of a physical process by using a numerical method of solving its equation of motion. It was convenient because we did not need to know the analytical solution to the equation, which may not even exist for more complex systems. This approach can be used to simulate all kinds of things from double pendulums to motions of planets.
+We have learned how to create an HTML simulation of a physical process by using a numerical method of solving its equation of motion. It was convenient because we did not need to know the analytical solution to the equation, which may not even exist for more complex systems. This approach can be used to simulate all kinds of things from double pendulums to the motions of planets.
 
 The simulation we created can be used on any web site. Fee free to leave a comment if you had any problems.
 
