@@ -43,7 +43,7 @@ The image shows the planets and the Sun in real colors. It means that the object
 
 ### 3) Brightness
 
-While planet colors shown on Figure 1 are approximately correct their brightness is not. This is because the amount of light from a star that reaches a fixed area of space is proportional to the square of the distance from that star. This physical fact is described by the following equation for the *surface area of the sphere*, where `r` is the radius of the sphere.
+While planet colors shown on Figure 1 are approximately correct their brightness is not. This is because the amount of light from a star that reaches a fixed area of space is inversely proportional to the square of the distance from that star. This physical fact is described by the following equation for the *surface area of the sphere*, where `r` is the radius of the sphere.
 
 > A = 4πr²
 
