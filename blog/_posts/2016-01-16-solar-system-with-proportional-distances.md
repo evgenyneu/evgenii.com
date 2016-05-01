@@ -12,7 +12,7 @@ tags: science
   <br>
 </div>
 
-<p class='isTextCentered'>Figure 1: Solar System with proportional distances. <a href="/files/2016/01/solar_system_proportional_distances.sketch">[source]</a></p>
+<p class='isTextCentered'>Figure 1: Solar System with proportional distances.</p>
 
 ## Understanding Solar System distances
 
@@ -30,7 +30,7 @@ As you probably know the orbits of the planets are not usually circles but rathe
 
 <img src='/image/blog/2016-01-16-solar-system-with-proportional-distances/0020_semi_major_axis_and_planet_orbit.png' alt='Semi-mejor axis of elliptical orbit' class='isMax100PercentWide'>
 
-<p class='isTextCentered'>Figure 2: Measuring the size of an orbit. <a href="/files/2016/01/semi_major_axis_and_planet_orbit.sketch">[source]</a></p></p>
+<p class='isTextCentered'>Figure 2: Measuring the size of an orbit.</p>
 
 
 ## Beyond Eris
@@ -143,7 +143,7 @@ The Figure 3 shown bellow is a zoomed-in picture of the Solar System that includ
   <br>
 </div>
 
-<p class='isTextCentered'>Figure 3: More detailed picture of the Solar System with proportional distances. <a href="/files/2016/01/detailed_solar_system_proportional_distances.sketch">[source]</a></p></p>
+<p class='isTextCentered'>Figure 3: More detailed picture of the Solar System with proportional distances.</p>
 
 ## Traveling to Saturn by bus
 

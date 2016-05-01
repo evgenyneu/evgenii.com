@@ -12,7 +12,7 @@ tags: science
   <br>
 </div>
 
-<p class='isTextCentered'>Figure 1: Proportionally sized planets and the Sun in natural colors. Zoom in to view details. <a href="/files/2015/12/solar_system_object_sizes_in_scale.sketch">[source]</a></p>
+<p class='isTextCentered'>Figure 1: Proportionally sized planets and the Sun in natural colors. Zoom in to view details.</p>
 
 ## Seeing planets in context
 
