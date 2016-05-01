@@ -2,7 +2,7 @@
 layout: blog_post
 comments: true
 title: "Localizing text in Swift code"
-meta_description: "Tutorial about localizing a text in Swift code."
+meta_description: "This tutorial shows how to localize text and prepare it for translation in an iOS app with Swift and Xcode."
 tags: programming
 ---
 
