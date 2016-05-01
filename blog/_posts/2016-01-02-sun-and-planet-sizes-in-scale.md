@@ -39,7 +39,7 @@ The image above shows the planets separated by equal intervals. In reality, of c
 
 ### 2) Colors
 
-The image shows the planets and the Sun in real colors. It means that the objects look similar to what an astronaut would see when observing them from space. For example, if you were on a space ship you would perceive the Sun as white, while it looks yellow or orange from Earth due to the effect of *Rayleigh scattering* of sunlight in the atmosphere.
+The image shows the planets and the Sun in real colors. It means that the objects look similar to what an astronaut would see when observing them from space. For example, if you were on a space ship you would perceive the Sun as almost white, while it looks yellow or orange from Earth due to the effect of *Rayleigh scattering* of sunlight in the atmosphere.
 
 ### 3) Brightness
 
