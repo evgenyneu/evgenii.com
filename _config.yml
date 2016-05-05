@@ -23,5 +23,3 @@ permalink: /:categories/:title/
 
 sitemap:
   exclude: ["/atom.xml", "/feed.xml", "/feed/index.xml", "/js/script.js", "/js/old_ie.js", "/css/main.scss", "/js/javascript-game-bundle.js"]
-
-keep_files: ["water-footprint"]
