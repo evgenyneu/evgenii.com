@@ -1,7 +1,7 @@
 ---
 layout: project
 comments: true
-title:  "Water Footprint for iOS and Android"
+title:  "Water Footprint for Android, iOS and Web"
 layout_class: isTextCentered
 ---
 
@@ -12,6 +12,8 @@ The app shows how many litres of water are needed to produce one kilogram of dif
 <a href='https://play.google.com/store/apps/details?id=com.evgenii.waterfootprint' title='Get it on Google Play'><img src='/image/logos/google_play_badge.png' alt='Get it on Google Play' class='isMax200PxWide'></a>
 
 <a href='https://itunes.apple.com/us/app/water-footprint/id1044041294' title='Download on App Store'><img src='/image/logos/appstore_badge.png' alt='Download on App Store' class='isMax200PxWide'></a>
+
+<h3><a href='http://evgenii.com/water-footprint/en/'>Water Footprint for Web<a></h3>
 
 
 ## Attribution
@@ -25,9 +27,12 @@ Data used in this app is released under the Creative Commons Attribution Non-com
 
 The Water Footprint source code is distributed under Creative Commons Attribution Non-commercial License.
 
+[Android source code](https://github.com/evgenyneu/water-footprint-android)
+
 [iOS source code](https://github.com/evgenyneu/water-footprint-ios)
 
-[Android source code](https://github.com/evgenyneu/water-footprint-android)
+[Web source code](https://github.com/evgenyneu/water-footprint-web)
+
 
 
 ## Help me to localize the app
