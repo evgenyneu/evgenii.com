@@ -29,8 +29,8 @@ title: Resume of Evgenii Neumerzhitckii
 ## Personal Projects
 
 
-* [Water Footprint](http://evgenii.com/projects/water-footprint-app-ios-android/) for iOS and Android.
-* AES Crypto for [iOS](http://evgenii.com/projects/aes_crypto_for_ios/), [Android](http://evgenii.com/projects/aes-crypto-for-android/) and [Web](http://evgenii.com/projects/aes-crypto-for-web/).
+* Water Footprint for [Android](https://play.google.com/store/apps/details?id=com.evgenii.waterfootprint), [iOS](https://itunes.apple.com/us/app/water-footprint/id1044041294) and [Web](http://evgenii.com/water-footprint/en/).
+* AES Crypto for [Android](http://evgenii.com/projects/aes-crypto-for-android/), [iOS](http://evgenii.com/projects/aes_crypto_for_ios/) and [Web](http://evgenii.com/projects/aes-crypto-for-web/).
 * [Walk to Circle](http://walktocircle.com) for iOS.
 
 
