@@ -50,3 +50,7 @@ Currently the app is available in Chinese, English, Japanese and Russian languag
 ### Water Footprint for iOS
 
 <img src='/image/projects/2015_12_03_water_footprint/water_footprint_iphone_english.png' alt='Water Footprint for iOS' class='isMax300PxWide hasBorderShade90'>
+
+### Water Footprint for Web
+
+<img src='/image/projects/2015_12_03_water_footprint/water_footprint_web_english.png' alt='Water Footprint for Web' class='isMax300PxWide hasBorderShade90'>
