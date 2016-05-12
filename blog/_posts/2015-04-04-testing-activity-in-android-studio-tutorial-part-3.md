@@ -122,7 +122,7 @@ You will notice an error for the `greet_edit_text` ID. That's because the EditTe
 
 * Add the following **ExitText** element between `RelativeLayout` opening and closing tags:
 
-```html
+```Html
 <EditText
     android:id="@+id/greet_edit_text"
     android:layout_width="match_parent"
@@ -133,7 +133,7 @@ You will notice an error for the `greet_edit_text` ID. That's because the EditTe
 
 Your `content_main.xml` will look like this:
 
-```html
+```Html
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -284,7 +284,7 @@ The test will have one remaining error for the missing `greet_button` ID, which 
 
 Switch back to **content_main.xml** file and add the following text **after** the **EditText** element:
 
-```html
+```Html
 <Button
     android:id="@+id/greet_button"
     android:text="@string/greet_button"
@@ -296,7 +296,7 @@ Switch back to **content_main.xml** file and add the following text **after** th
 
 The full layout code will be:
 
-```html
+```Html
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -339,7 +339,7 @@ Add the button's caption text to the string resource file:
 * Open **strings.xml** file.
 * Add the following element after the last string element and before the closing `</resources>` tag.
 
-```html
+```Html
 <string name="greet_button">Greet</string>
 ```
 
@@ -347,7 +347,7 @@ Add the button's caption text to the string resource file:
 
 The full contents of **string.xml** file will be the following:
 
-```html
+```Html
 <resources>
     <string name="app_name">Greeter</string>
     <string name="action_settings">Settings</string>
@@ -437,7 +437,7 @@ Everything should be fine, the only problem is that `message_text_view` ID is mi
 
 Switch to **content_main.xml** and add the following text **after** the Button element:
 
-```html
+```Html
 <TextView
     android:id="@+id/message_text_view"
     android:layout_width="match_parent"
@@ -449,7 +449,7 @@ Switch to **content_main.xml** and add the following text **after** the Button e
 
 The full layout code will be:
 
-```html
+```Html
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -523,7 +523,7 @@ There is just one thing left to be done. Let's remind us again what the app does
 
 The button element will look like:
 
-```html
+```Html
 <Button
     android:id="@+id/greet_button"
     android:text="@string/greet_button"
@@ -536,7 +536,7 @@ The button element will look like:
 
 The full layout code will be the following:
 
-```html
+```Html
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
