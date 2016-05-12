@@ -9,7 +9,7 @@ tags: programming
 Swift language has a handy feature called `trailing closures`.
 It is a clean way of passing a closure into a function.
 
-```swift
+```Swift
 func makeTea(doNext: () -> ()) {
   // making tea ...
   doNext()
@@ -18,7 +18,7 @@ func makeTea(doNext: () -> ()) {
 
 We can then call the function this way.
 
-```swift
+```Swift
 makeTea { drinkTea() }
 ```
 
@@ -35,7 +35,7 @@ It is achieved by
 2. using nil for its default value ` = nil` and
 3. calling parameter using optional chaining `?()`.
 
-```swift
+```Swift
 func makeTea(doNext: (() -> ())? = nil) {
   // making tea ...
   doNext?()
@@ -44,6 +44,6 @@ func makeTea(doNext: (() -> ())? = nil) {
 
 Now we can call `makeTea` function without supplying the closure.
 
-```swift
+```Swift
 makeTea()
 ```

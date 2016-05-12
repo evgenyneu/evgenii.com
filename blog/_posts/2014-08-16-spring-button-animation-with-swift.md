@@ -15,12 +15,12 @@ In my app I have a big Play button. I wanted to show it with a nice bouncing eff
 This kind of animation is easy to create with just a few lines of code.
 First, I made the button smaller by applying scale transformation:
 
-```swift
+```Swift
 button.transform = CGAffineTransformMakeScale(0.1, 0.1)
 ```
 Then I used spring style animation that resets the button to its initial state.
 
-```swift
+```Swift
 UIView.animateWithDuration(2.0,
   delay: 0,
   usingSpringWithDamping: 0.2,

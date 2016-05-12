@@ -10,7 +10,7 @@ Here is a list of techniques I use to present values to international users in i
 
 ### Numbers
 
-```swift
+```Swift
 // Float
 String.localizedStringWithFormat("%.3f", M_PI)
 // 3.142
@@ -22,7 +22,7 @@ String.localizedStringWithFormat("%i", 12_345)
 
 ### Currencies
 
-```swift
+```Swift
 let currencyFormatter = NSNumberFormatter()
 currencyFormatter.numberStyle = .CurrencyStyle
 currencyFormatter.stringFromNumber(99.95)
@@ -31,7 +31,7 @@ currencyFormatter.stringFromNumber(99.95)
 
 ### Date and time
 
-```swift
+```Swift
 let dateFormatter = NSDateFormatter()
 dateFormatter.dateStyle = .ShortStyle
 dateFormatter.timeStyle = .ShortStyle
@@ -43,7 +43,7 @@ dateFormatter.stringFromDate(NSDate())
 
 This technique can be used if you need to have more control on date and time formatting.
 
-```swift
+```Swift
 let dateFormatterTemplate = NSDateFormatter()
 dateFormatterTemplate.setLocalizedDateFormatFromTemplate("yyyyMMMMdjjmmss")
 dateFormatterTemplate.stringFromDate(NSDate())
@@ -52,7 +52,7 @@ dateFormatterTemplate.stringFromDate(NSDate())
 
 ### Mass
 
-```swift
+```Swift
 let massFormatter = NSMassFormatter()
 massFormatter.unitStyle = .Long
 massFormatter.stringFromKilograms(1.5)
@@ -61,7 +61,7 @@ massFormatter.stringFromKilograms(1.5)
 
 ### Distance
 
-```swift
+```Swift
 let lengthFormatter = NSLengthFormatter()
 lengthFormatter.unitStyle = .Long
 lengthFormatter.stringFromMeters(900)
@@ -70,7 +70,7 @@ lengthFormatter.stringFromMeters(900)
 
 ### Personal names
 
-```swift
+```Swift
 let nameComponents = NSPersonNameComponents()
 nameComponents.givenName = "Brian"
 nameComponents.middleName = "Edward"

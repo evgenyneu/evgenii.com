@@ -14,7 +14,7 @@ Here is the list of techniques I use to make my iOS apps compatible with [right-
 1. In order to flip images for right-to-left users use `imageFlippedForRightToLeftLayoutDirection()` method of an `UIImage` object.
 1. And finally, here is how to check if the view is currently displayed in the left-to-right mode:
 
-```swift
+```Swift
 let isLeftToRight = UIView.userInterfaceLayoutDirectionForSemanticContentAttribute(
 myView.semanticContentAttribute) == .LeftToRight
 ```

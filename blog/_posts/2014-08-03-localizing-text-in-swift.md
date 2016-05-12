@@ -10,13 +10,13 @@ In this tutorial I want to show how to translate a text string in Swift code fil
 
 Suppose you have an English text string in your .swift code:
 
-```swift
+```Swift
 let text = "Flat White"
 ```
 
 The text can be internationalized with `NSLocalizedString` function:
 
-```swift
+```Swift
 let text = NSLocalizedString("Flat White", comment: "Coffee order name")
 ```
 
@@ -33,7 +33,7 @@ Now let's say we want to translate our project from English to Japanese. Choose 
 1. Copy `en.xliff` file to `jp.xliff`.
 1. Open the file and add a `target-language="jp"` attribute to all the `<file>` elements.
 
-  ```xml
+  ```Xml
   <file
   original="project/InfoPlist.strings"
   source-language="en"
@@ -43,7 +43,7 @@ Now let's say we want to translate our project from English to Japanese. Choose 
 
 3. Add `<target>` element with translated text under the English `<source>` element:
 
-  ```xml
+  ```Xml
   <trans-unit id="Flat White">
       <source>Flat White</source>
       <target>フラットホワイト</target>
@@ -65,7 +65,7 @@ Use `Editor` > `Import Localizations...` menu and choose the `jp.xliff` file.
 
 Often we want to replace the parts of the text string with dynamic values when the app is running. It can be done with `String.localizedStringWithFormat` function.
 
-```swift
+```Swift
 String.localizedStringWithFormat(
   NSLocalizedString("My name is %@. I am %d years old.",
     comment: "Greeting"), name, age)
@@ -81,7 +81,7 @@ Translator can change the order in which the populated arguments are copied into
 
 Here is how to change the case of a string according to local rules.
 
-```swift
+```Swift
 "istanbul".localizedCapitalizedString
 // In Turkish: "İstanbul"
 
