@@ -10,7 +10,7 @@ title: "The complete code for the harmonic oscillator."
 
 This is the complete source code for the [harmonic oscilaltor simulation](/blog/programming-harmonic-oscillator/). Feel free to use it on any web site.
 
-```HTML
+```Html
 <!--  To embed this simulator into your web page copy this source code until "Harmonic Oscillator Simulator END" comment. -->
 
 <!--
