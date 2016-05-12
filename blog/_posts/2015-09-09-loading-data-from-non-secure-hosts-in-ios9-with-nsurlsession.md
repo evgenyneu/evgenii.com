@@ -13,7 +13,7 @@ There are two ways of fixing this problem:
 1. Either change URLs from **http://** to **https://** which requires an SSL certificate to be installed on the server.
 2. Or add an exception to the **Info.plist** file to allow using insecure HTTP protocol. The **yoursite.com** text in the following example needs to be replaced with your domain name.
 
-```html
+```Html
 <key>NSAppTransportSecurity</key>
 <dict>
     <key>NSExceptionDomains</key>

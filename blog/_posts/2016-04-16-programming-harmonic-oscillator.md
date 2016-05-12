@@ -388,7 +388,7 @@ First, we will create an HTML file with a test message and open it in the web br
 * Name the file **harmonic.html**
 * Open the file in any web browser and you will see a page containing "Hello World!" message. On most operating systems you can open a local html file by just double-clicking it in your file manager. Alternatively, you can open it from your web browser's *File > Open* menu.
 
-```HTML
+```Html
 Hello World!
 ```
 
@@ -429,7 +429,7 @@ Now we will create an HTML canvas element. As you might have guessed from its na
 
 * Replace "Hello World!" text in your HTML file with the following HTML code:
 
-```HTML
+```Html
 <div class="HarmonicOscillator">
   <canvas class="HarmonicOscillator-canvas"></canvas>
 </div>
@@ -445,7 +445,7 @@ Some old web browsers do not support the drawing with HTML canvas. If this is th
 
 * Add the following HTML code **in the beginning** of your file.
 
-```HTML
+```Html
 <style>
   .HarmonicOscillator-alert {
     color: red;
@@ -470,7 +470,7 @@ We will write our first JavaScript code by showing a "Hello World!" message and 
 
 * Put this text **at the end** of your HTML file and you will see the 'Hello from JavaScript!' greeting in the web browser along with the alert message.
 
-```HTML
+```Html
 <script>
 
 (function(){
@@ -935,7 +935,7 @@ We are almost there. The final step is to add the ability for the user to tweak 
 
 * At the beginning of the file, replace the entire `<style> ... </style>` block with the following CSS code
 
-```HTML
+```Html
 <style>
   .HarmonicOscillator-alert {
     color: red;
@@ -960,7 +960,7 @@ The code we just added contains the styles for the alert message and the text bo
 
 * Add the following HTML code immediately **after** the element `<canvas class="HarmonicOscillator-canvas"></canvas>` but before the closing `</div>` tag:
 
-```
+```Html
 <p class="HarmonicOscillator-isTextCentered">Mass<br>
   <input class="HarmonicOscillator-input HarmonicOscillator-inputSmall HarmonicOscillator-isTextCentered" type="number" id="HarmonicOscillator-mass" min="1" max="10000" step="1" pattern="\d*">
 </p>
