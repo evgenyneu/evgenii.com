@@ -46,7 +46,7 @@ Imagine that I need to check a string variable `str` with expected value `'Hello
 
 I do not compare `str` with a variable:
 
-```ruby
+```Ruby
 # Avoid
 str_expected = 'Hello world'
 expect(str).to eq str_expected
@@ -54,7 +54,7 @@ expect(str).to eq str_expected
 
 Instead I prefer to explicitly write `'Hello world'` text on the same line with the `str` variable:
 
-```ruby
+```Ruby
 # Good practice
 expect(str).to eq 'Hello world'
 ```
@@ -67,7 +67,7 @@ What happens if I use a variable `str_expected` in the assertion?
 
 When we look at
 
-```ruby
+```Ruby
 expect(str).to eq str_expected
 ```
 
@@ -81,7 +81,7 @@ I will start with a simple example - duplication of expected value in assertions
 
 My first instinct is to see that `'Hello world'` is mentioned twice, put it to a variable and use this variable in both assertions:
 
-```ruby
+```Ruby
 # Avoid
 str_expected = 'Hello world'
 expect(str1).to eq str_expected
@@ -92,7 +92,7 @@ This approach has the same problem as I described above. It requires more effort
 
 There is another problem. What if our program logic changed and `str2` now equals `'My lovely horse'`? Now we need to update our unit test, which becomes even harder to read:
 
-```ruby
+```Ruby
 # Avoid (str2 value changed)
 str1_expected = 'Hello world'
 expect(str1).to eq str1_expected
@@ -102,7 +102,7 @@ expect(str2).to eq str2_expected
 
 To make things simple, I prefer just duplicating `'Hello world'` in both assertions.
 
-```ruby
+```Ruby
 # Good practice
 expect(str1).to eq 'Hello world'
 expect(str2).to eq 'Hello world'
@@ -110,7 +110,7 @@ expect(str2).to eq 'Hello world'
 
 And if `str2` changes, I just change one line:
 
-```ruby
+```Ruby
 # Good practice (str2 value changed)
 expect(str1).to eq 'Hello world'
 expect(str2).to eq 'My lovely horse'
@@ -122,7 +122,7 @@ Win-win! Easy to write. Easy to read.
 
 Now let's get to the main point. What if we have two unit tests with similar logic:
 
-```ruby
+```Ruby
 # Good practice
 # Test 1:
 person = db.find_person('Peter')
@@ -135,7 +135,7 @@ assert(person.name).to eq 'Ivan'
 
 It is quite tempting to remove duplication by extracting the common behaviour into a helper method `verify_person` and then call that method from both tests:
 
-```ruby
+```Ruby
 # Avoid
 # Test 1:
 verify_person('Peter')
@@ -166,7 +166,7 @@ Now I do the same routine for test 2. Again, it does not seem to be much work an
 
 Now I want to repeat the preferred way of writing these tests:
 
-```ruby
+```Ruby
 # Good practice
 # Test 1:
 person = db.find_person('Peter')
