@@ -97,5 +97,6 @@ tags: programming science
 
 ## Reference
 
+* [Identities in PDF format](http://evgenii.com/files/2016/05/trigonometric_identities.pdf)
 * [Source of the formulas in LaTeX format](https://github.com/evgenyneu/trigonometric_identities_latex)
 
