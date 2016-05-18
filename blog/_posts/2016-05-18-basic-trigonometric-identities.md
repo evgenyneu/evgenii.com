@@ -6,70 +6,80 @@ meta_description: "A collection of basic trigonometric formulas that may be usef
 tags: programming science
 ---
 
-### Common angles
+1. [Common angles](#common_angles)
+1. [Reciprocal functions](#reciprocal_functions)
+1. [Pythagorean identities](#pythagorean_identities)
+1. [Cofunction identities](#cofunction_identities)
+1. [Sum and difference of angles](#sum_and_difference_of_angles)
+1. [Double angles](#double_angles)
+1. [Half angles](#half_angles)
+1. [Power reducing formulas](#power_reducing_formulas)
+1. [Product to sum](#product_to_sum)
+1. [Sum to product](#sum_to_product)
+
+<h3 id="common_angles">Common angles</h2>
 
 <div class='isTextCentered'>
   <img src='/image/blog/2016-05-18-basic-trigonometric-identities/trigonometry_sin_cos_tan_of_common_angles.png' alt='Sin, cos and tan of common angles' class='isMax400PxWide'>
 </div>
 
 
-### Reciprocal functions
+<h3 id="reciprocal_functions">Reciprocal functions</h2>
 
 <div class='isTextCentered'>
   <img src='/image/blog/2016-05-18-basic-trigonometric-identities/reciprocal_functions_trigonometry.png' alt='Reciprocal trigonometric functions' class='isMax120PxWide'>
 </div>
 
 
-### Pythagorean identities
+<h3 id="pythagorean_identities">Pythagorean identities</h2>
 
 <div class='isTextCentered'>
   <img src='/image/blog/2016-05-18-basic-trigonometric-identities/pythagorean_trigonometric_identities.png' alt='Pythagorean trigonometric indentities' class='isMax200PxWide'>
 </div>
 
 
-### Cofunction identities
+<h3 id="cofunction_identities">Cofunction identities</h2>
 
 <div class='isTextCentered'>
   <img src='/image/blog/2016-05-18-basic-trigonometric-identities/cofunction_identities.png' alt='Cofunction trigonometric indentities' class='isMax170PxWide'>
 </div>
 
 
-### Sum and difference of angles
+<h3 id="sum_and_difference_of_angles">Sum and difference of angles</h2>
 
 <div class='isTextCentered'>
   <img src='/image/blog/2016-05-18-basic-trigonometric-identities/sum_and_difference_of_angles_trigonometry.png' alt='Trigonometric formulas for the sum and difference of angles' class='isMax300PxWide'>
 </div>
 
 
-### Double angles
+<h3 id="double_angles">Double angles</h2>
 
 <div class='isTextCentered'>
   <img src='/image/blog/2016-05-18-basic-trigonometric-identities/double_angles_trigonometry.png' alt='Trigonometric formulas for double angles' class='isMax200PxWide'>
 </div>
 
 
-### Half angles
+<h3 id="half_angles">Half angles</h2>
 
 <div class='isTextCentered'>
   <img src='/image/blog/2016-05-18-basic-trigonometric-identities/half_angles_trigonometry.png' alt='Trigonometric formulas for half angles' class='isMax180PxWide'>
 </div>
 
-
-### Power reducing formulas
+<h3 id="power_reducing_formulas">Power reducing formulas</h2>
 
 <div class='isTextCentered'>
-  <img src='/image/blog/2016-05-18-basic-trigonometric-identities/power_reducing_formulas_trigonometry.png' alt='Power reducing trigonometric formulas' class='isMax180PxWide'>
+  <img src='/image/blog/2016-05-18-basic-trigonometric-identities/power_reducing_formulas_trigonometry.png' alt='Power reducing trigonometric formulas' class='isMax160PxWide'>
 </div>
 
 
-### Product to sum
+<h3 id="product_to_sum">Product to sum</h2>
 
 <div class='isTextCentered'>
   <img src='/image/blog/2016-05-18-basic-trigonometric-identities/product_to_sum_trigonometric_formulas.png' alt='Product-to-sum trigonometric formulas' class='isMax350PxWide'>
 </div>
 
 
-### Sum to product
+<h3 id="sum_to_product">Sum to product</h2>
 
 <div class='isTextCentered'>
   <img src='/image/blog/2016-05-18-basic-trigonometric-identities/sum_to_product_trigonometric_formulas.png' alt='Sum-to-product trigonometric formulas' class='isMax350PxWide'>
@@ -78,5 +88,5 @@ tags: programming science
 
 ## Reference
 
-* [Source of formulas in LaTeX format](https://github.com/evgenyneu/trigonometric_identities_latex)
+* [Source of the formulas in LaTeX format](https://github.com/evgenyneu/trigonometric_identities_latex)
 
