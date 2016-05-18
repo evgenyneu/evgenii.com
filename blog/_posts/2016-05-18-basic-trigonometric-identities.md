@@ -3,7 +3,7 @@ layout: blog_post
 comments: true
 title: "Basic trigonometric identities"
 meta_description: "A collection of basic trigonometric formulas that may be useful to a student."
-tags: programming science
+tags: science
 ---
 
 1. [Common angles](#common_angles)
