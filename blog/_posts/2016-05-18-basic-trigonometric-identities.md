@@ -21,7 +21,7 @@ tags: science
 <h3 id="common_angles">Common angles</h2>
 
 <div class='isTextCentered'>
-  <img src='/image/blog/2016-05-18-basic-trigonometric-identities/trigonometry_sin_cos_tan_of_common_angles.png' alt='Sin, cos and tan of common angles' class='isMax400PxWide'>
+  <img src='/image/blog/2016-05-18-basic-trigonometric-identities/trigonometry_sin_cos_tan_of_common_angles_2.png' alt='Sin, cos and tan of common angles' class='isMax400PxWide'>
 </div>
 
 
