@@ -7,9 +7,10 @@ tags: programming science
 ---
 
 1. [Common angles](#common_angles)
-1. [Reciprocal functions](#reciprocal_functions)
-1. [Pythagorean identities](#pythagorean_identities)
-1. [Cofunction identities](#cofunction_identities)
+1. [Reciprocal](#reciprocal_functions)
+1. [Even/odd](#even_odd)
+1. [Pythagorean](#pythagorean_identities)
+1. [Cofunction](#cofunction_identities)
 1. [Sum and difference of angles](#sum_and_difference_of_angles)
 1. [Double angles](#double_angles)
 1. [Half angles](#half_angles)
@@ -24,21 +25,29 @@ tags: programming science
 </div>
 
 
-<h3 id="reciprocal_functions">Reciprocal functions</h2>
+<h3 id="reciprocal_functions">Reciprocal</h2>
 
 <div class='isTextCentered'>
   <img src='/image/blog/2016-05-18-basic-trigonometric-identities/reciprocal_functions_trigonometry.png' alt='Reciprocal trigonometric functions' class='isMax120PxWide'>
 </div>
 
 
-<h3 id="pythagorean_identities">Pythagorean identities</h2>
+<h3 id="even_odd">Even/odd</h2>
+
+<div class='isTextCentered'>
+  <img src='/image/blog/2016-05-18-basic-trigonometric-identities/even_odd_triginometric_identities
+.png' alt='Even/odd trigonometric identities' class='isMax160PxWide'>
+</div>
+
+
+<h3 id="pythagorean_identities">Pythagorean</h2>
 
 <div class='isTextCentered'>
   <img src='/image/blog/2016-05-18-basic-trigonometric-identities/pythagorean_trigonometric_identities.png' alt='Pythagorean trigonometric indentities' class='isMax200PxWide'>
 </div>
 
 
-<h3 id="cofunction_identities">Cofunction identities</h2>
+<h3 id="cofunction_identities">Cofunction</h2>
 
 <div class='isTextCentered'>
   <img src='/image/blog/2016-05-18-basic-trigonometric-identities/cofunction_identities.png' alt='Cofunction trigonometric indentities' class='isMax170PxWide'>
