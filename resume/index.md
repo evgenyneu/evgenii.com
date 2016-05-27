@@ -11,8 +11,6 @@ title: Resume of Evgenii Neumerzhitckii
 
 **Address**: St Kilda, VIC, Australia, {{ site.author.email }}
 
-**Phone**: +61 403 574 406
-
 **Objective**: Seeking position as a part time (10 hr per week) iOS or Android software developer.
 
 
