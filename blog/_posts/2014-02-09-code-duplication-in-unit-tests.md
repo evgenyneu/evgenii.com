@@ -152,7 +152,7 @@ end
 
 I try to void this approach for exactly the same reason I mentioned two times already. This reason is so important so I will repeat it again.
 
-In order to make sure the test is bug-free I need to verify it with my eyes. Inside my brain I go though the unit test code line by line, just like in a IDE debugger. Here is what is happening inside my brain:
+In order to make sure the test is bug-free I need to verify it with my eyes. Inside my brain I go through the unit test code line by line, just like in a IDE debugger. Here is what is happening inside my brain:
 
 1. Start reading test 1.
 1. Read `verify_person('Peter')`.
