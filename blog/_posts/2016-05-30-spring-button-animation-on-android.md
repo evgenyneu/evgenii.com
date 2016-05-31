@@ -12,7 +12,7 @@ tags: programming
 
 In this tutorial I show how to animate a button with bounce effect on Android. This tutorial was tested on Android Studio version 2.1.
 
-I assume that you know how to create an app in Android Studio. If you don't have this experience yet then I would recommend reading the [Building Your First App](https://developer.android.com/training/basics/firstapp/index.html) tutorial from Google first.
+I assume that you know how to create an app in Android Studio. If you don't have this experience yet then I would recommend reading the excellent [Building Your First App](https://developer.android.com/training/basics/firstapp/index.html) tutorial from Google first.
 
 ## 1) Add a button view
 
