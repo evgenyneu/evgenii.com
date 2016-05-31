@@ -1,16 +1,16 @@
 ---
 layout: blog_post
 comments: true
-title: "Creating a bubble button animation on Android"
-meta_description: "This tutorial shows how to animate a button with spring/bubble effect on Android."
+title: "Creating a bubble button animation for Android"
+meta_description: "This tutorial shows how to animate a button with spring/bubble effect for Android."
 tags: programming
 ---
 
 <div class='isTextCentered'>
-  <img width='144' class='isTextCentered' src='/image/blog/2016-05-30-spring-button-animation-on-android/005-spring-button-animation.gif' alt='Spring style button animation on Android'>
+  <img width='144' class='isTextCentered' src='/image/blog/2016-05-30-spring-button-animation-on-android/005-spring-button-animation.gif' alt='Spring style button animation for Android'>
 </div>
 
-This tutorial shows how to animate a button with bounce effect on Android using Android Studio version 2.1.
+This tutorial shows how to animate a button with bounce effect for Android using Android Studio version 2.1.
 
 I assume that you know how to create an app in Android Studio. If you don't have this experience yet then I would recommend reading the excellent [Building Your First App](https://developer.android.com/training/basics/firstapp/index.html) tutorial from Google first.
 
