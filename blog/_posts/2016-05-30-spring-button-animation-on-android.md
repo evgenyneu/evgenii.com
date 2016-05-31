@@ -10,13 +10,13 @@ tags: programming
   <img width='144' class='isTextCentered' src='/image/blog/2016-05-30-spring-button-animation-on-android/005-spring-button-animation.gif' alt='Spring style button animation on Android'>
 </div>
 
-In this tutorial I show how to animate a button with bounce effect on Android. This tutorial was tested on Android Studio version 2.1.
+This tutorial shows how to animate a button with bounce effect on Android using Android Studio version 2.1.
 
 I assume that you know how to create an app in Android Studio. If you don't have this experience yet then I would recommend reading the excellent [Building Your First App](https://developer.android.com/training/basics/firstapp/index.html) tutorial from Google first.
 
 ## 1) Add a button view
 
-We begin by placing a button into activity layout file **res/layout/activity_main.xml**.
+We begin by placing a button in the activity layout file **res/layout/activity_main.xml**.
 
 
 ```XML
@@ -44,7 +44,7 @@ We begin by placing a button into activity layout file **res/layout/activity_mai
 
 ## 2) Create a scale animation
 
-Next we create an animation file **res/anim/bounce.xml** that scales a view.
+Next, we create an animation file **res/anim/bounce.xml** for scaling views.
 
 * Right click on the **res** folder.
 * Select *New / Android resource file*.
@@ -82,7 +82,7 @@ This code creates an animation that changes the size of a view from 30% to 100% 
 
 ## 3) React to button tap
 
-Now we add the code that will handle the button tap. Add the following method to your activity Java file.
+Now we add the code that animates the button on tap. Add the following method to your activity Java file.
 
 ```Java
 public void didTapButton(View view) {
@@ -102,9 +102,9 @@ If you run the app and tap the button it will animate smoothly from smaller to b
 
 ## 4) Implement the bounce interpolator
 
-Next we will write the code that will add the bounce effect to the scale animation.
+Next, we write the code that adds the bounce effect to the scale animation.
 
-* Create a new Java Class file in your app module and name it **BounceInterpolator**.
+* Create a new *Java Class* file in your app module and name it **BounceInterpolator**.
 * Open the Java file that was created and replace the class code with the following.
 
 ```Java
@@ -124,6 +124,8 @@ class BounceInterpolator implements android.view.animation.Interpolator {
 }
 ```
 
+I will explain how this code works in a moment.
+
 ## 5) Use the bounce interpolator
 
 Finally, open your activity Java file again and replace the entire `didTapButton` method with the following code.
@@ -141,7 +143,7 @@ public void didTapButton(View view) {
 }
 ```
 
-If you run the app and tap the button it will animate with the spring effect.
+Here we added the `BounceInterpolator` to the animation with `setInterpolator` method. If you run the app and tap the button it will animate with the spring effect.
 
 <div class='isTextCentered'>
   <img width='100' src='/image/blog/2016-05-30-spring-button-animation-on-android/030-bounce-button-animation-android.gif' alt='Animating a button with abounce effect on Android'>
@@ -164,7 +166,7 @@ In order to achieve the bounce effect the `getInterpolation` method maps the tim
   <img class='isMax300PxWide' src='/image/blog/2016-05-30-spring-button-animation-on-android/040-bounce-function-equation.png' alt='Bounce animation function equation'>
 </div>
 
-In this equation, *a* and *w* are the amplitude and frequency values and *t* is the time.
+In this equation, *a* and *w* are the amplitude and frequency values and *t* is the time. The equation contains a  cosine function that causes the periodic wobbles during the animation. In order to reduce its amplitude with time we multiply the cosine by an exponential function. The following graph shows that the animation overshoots above the value 1 first and then settles closer to it.
 
 <div class='isTextCentered'>
   <img class='isMax300PxWide hasBorderShade90' src='/image/blog/2016-05-30-spring-button-animation-on-android/050-graph-of-bounce-interpolation.png' alt='The graph of bounce animation interpolation'>
