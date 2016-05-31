@@ -151,7 +151,7 @@ Here we added the `BounceInterpolator` to the animation with `setInterpolator` m
 
 ## How the bounce animation interpolator works
 
-We initialized the `BounceInterpolator` with two arguments.
+We initialized the `BounceInterpolator` object with two arguments.
 
 ```Java
 BounceInterpolator interpolator = new BounceInterpolator(0.2, 20);
