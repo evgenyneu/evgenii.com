@@ -16,7 +16,7 @@ I assume that you know how to create an app in Android Studio. If you don't have
 
 ## 1) Add a button view
 
-We begin by placing a button view into activity layout file **res/layout/activity_mail.xml**.
+We begin by placing a button into activity layout file **res/layout/activity_main.xml**.
 
 
 ```XML
@@ -44,7 +44,7 @@ We begin by placing a button view into activity layout file **res/layout/activit
 
 ## 2) Create a scale animation
 
-Next we create an animation file **res/animator/bounce.xml** that scales a view. Here is how to create an animation file in Android Studio.
+Next we create an animation file **res/anim/bounce.xml** that scales a view.
 
 * Right click on the **res** folder.
 * Select *New / Android resource file*.
@@ -54,7 +54,7 @@ Next we create an animation file **res/animator/bounce.xml** that scales a view.
 </div>
 
 * Write **bounce** as the name of the file
-* Choose the **Animation** resource type. After you selected it the directory name field will be *anim*. There is also the type called *Animator*, don't choose this one.
+* Choose the **Animation** resource type. The directory name field will change to **anim**.
 
 <div class='isTextCentered'>
   <img src='/image/blog/2016-05-30-spring-button-animation-on-android/012-name-animation-file-android-studio.png' alt='Name the animation file in Android Studio' class='isMax100PercentWide hasBorderShade90'>
@@ -78,7 +78,7 @@ Next, open the **res/anim/bounce.xml** file that was created for you and replace
 </set>
 ```
 
-This code creates an animation that changes the size a view from 30% to 100% during two seconds.
+This code creates an animation that changes the size of a view from 30% to 100% during two seconds.
 
 ## 3) React to button tap
 
@@ -100,11 +100,11 @@ If you run the app and tap the button it will animate smoothly from smaller to b
   <img width='100' src='/image/blog/2016-05-30-spring-button-animation-on-android/020-button-animation-scale-android.gif' alt='Animating a button with scale effect on Android'>
 </div>
 
-## 4) Write a bounce interpolator
+## 4) Implement the bounce interpolator
 
-Next we will add the code that will add the bounce effect to the scale animation.
+Next we will write the code that will add the bounce effect to the scale animation.
 
-* Create a new Java Class in your app module and name it **BounceInterpolator**.
+* Create a new Java Class file in your app module and name it **BounceInterpolator**.
 * Open the Java file that was created and replace the class code with the following.
 
 ```Java
@@ -126,7 +126,7 @@ class BounceInterpolator implements android.view.animation.Interpolator {
 
 ## 5) Use the bounce interpolator
 
-Finally, open your activity Java file again and modify the `didTapButton` method.
+Finally, open your activity Java file again and replace the entire `didTapButton` method with the following code.
 
 ```Java
 public void didTapButton(View view) {
@@ -155,16 +155,16 @@ We initialized the `BounceInterpolator` with two arguments.
 BounceInterpolator interpolator = new BounceInterpolator(0.2, 20);
 ```
 
-1. The first value `0.2` is the bounce **amplitude**. The higher the value (10, for example) produces more pronounced bounces.
-1. The second value `20` is The **frequency** of the bounces. The higher value produces more wobbles during the animation time period.
+1. The first value `0.2` is the bounce **amplitude**. The higher value produces more pronounced bounces.
+1. The second value `20` is the **frequency** of the bounces. The higher value creates more wobbles during the animation time period.
 
-In order to achive the bounce effect the `getInterpolation` method maps the time using the following function:
+In order to achieve the bounce effect the `getInterpolation` method maps the time using the following function:
 
 <div class='isTextCentered'>
   <img class='isMax300PxWide' src='/image/blog/2016-05-30-spring-button-animation-on-android/040-bounce-function-equation.png' alt='Bounce animation function equation'>
 </div>
 
-In this equation, *a* and *w* are the amplitude and frequency values we supply and *t* is the time.
+In this equation, *a* and *w* are the amplitude and frequency values and *t* is the time.
 
 <div class='isTextCentered'>
   <img class='isMax300PxWide hasBorderShade90' src='/image/blog/2016-05-30-spring-button-animation-on-android/050-graph-of-bounce-interpolation.png' alt='The graph of bounce animation interpolation'>
