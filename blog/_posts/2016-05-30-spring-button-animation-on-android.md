@@ -1,7 +1,7 @@
 ---
 layout: blog_post
 comments: true
-title: "Bubble button animation on Android"
+title: "Creating a bubble button animation on Android"
 meta_description: "This tutorial shows how to animate a button with spring/bubble effect on Android."
 tags: programming
 ---
