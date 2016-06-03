@@ -16,15 +16,15 @@ title: Resume of Evgenii Neumerzhitckii
 
 ## Summary of Qualifications
 
-* 18 years of experience as a software developer.
+* 16 years of experience as a software developer.
 * Experienced in developing cross-platform Android, iOS and Web applications.
 * Skilled in writing automated tests.
 
 ## Technical Expertise
 
-* Languages: Swift, Java, HTML, CSS, JavaScript, Ruby (Ruby on Rails).
-* Databases: PostgreSQL, MySQL, SQLite.
-* Development tools: Xcode, Android Studio, Sublime Text.
+* Languages: Swift, Java, HTML, CSS, JavaScript, Ruby (Ruby on Rails), C#, C++.
+* Databases: PostgreSQL, MySQL, SQLite, SQL Server.
+* Development tools: Xcode, Android Studio, Sublime Text, Visual Studio.
 
 
 ## Personal Projects
