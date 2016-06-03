@@ -16,7 +16,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 ## Summary of Qualifications
 
-* 16 years of experience as a software developer.
+* 18 years of experience as a software developer.
 * Experienced in developing cross-platform Android, iOS and Web applications.
 * Skilled in writing automated tests.
 
