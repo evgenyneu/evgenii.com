@@ -11,7 +11,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 **Address**: St Kilda, VIC, Australia, {{ site.author.email }}
 
-**Objective**: Seeking position as a part time (10 hr per week) iOS or Android software developer.
+**Objective**: Seeking position as a part time or casual (10 hr per week) iOS or Android software developer.
 
 
 ## Summary of Qualifications
