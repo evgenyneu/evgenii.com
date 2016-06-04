@@ -32,7 +32,7 @@ Seeking position as an iOS/Swift or Android programmer.
 
 ## Technical Expertise
 
-* Languages: Swift, Java, HTML, CSS, JavaScript, Ruby on Rails, C#, C++.
+* Languages: Swift, Java, HTML, CSS, JavaScript, Ruby on Rails, C#.
 * Databases: PostgreSQL, MySQL, SQLite, SQL Server.
 * Tools: Xcode, Android Studio, Sublime Text, Visual Studio.
 
