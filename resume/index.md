@@ -3,11 +3,7 @@ layout: default
 title: Resume of Evgenii Neumerzhitckii
 ---
 
-# Resume
-
-**Name**: Evgenii Neumerzhitckii
-
-**Web site**: [evgenii.com](http://evgenii.com)
+# Resume of Evgenii Neumerzhitckii
 
 **Address**: St Kilda, VIC, Australia
 
@@ -15,9 +11,17 @@ title: Resume of Evgenii Neumerzhitckii
 
 **Phone**: +61 403 574 406
 
-**Objective**: Seeking position as an iOS/Swift or Android programmer.
+**Web site**: [evgenii.com](http://evgenii.com)
+
+
+## Objective
+
+Seeking position as an iOS/Swift or Android programmer.
 
 **Working hours**: 10 hours a week, part-time or casual.
+
+**Work right in Australia**: Australian permanent resident.
+
 
 
 ## Summary of Qualifications
