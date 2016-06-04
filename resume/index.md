@@ -20,7 +20,7 @@ Seeking position as an iOS/Swift or Android programmer.
 
 **Working hours**: 10 hours a week, part-time or casual.
 
-**Work right in Australia**: permanent resident.
+**Residency**: Australian permanent resident.
 
 
 
