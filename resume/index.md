@@ -28,7 +28,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 ## Technical Expertise
 
-* Languages: Swift, Java, HTML, CSS, JavaScript, Ruby on Rails, C#, C++.
+* Languages: Swift, Java, HTML, CSS, JavaScript, Ruby on Rails, C#.
 * Databases: PostgreSQL, MySQL, SQLite, SQL Server.
 * Development tools: Xcode, Android Studio, Sublime Text.
 
