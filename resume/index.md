@@ -30,7 +30,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 * Languages: Swift, Java, HTML, CSS, JavaScript, Ruby on Rails, C#.
 * Databases: PostgreSQL, MySQL, SQLite, SQL Server.
-* Development tools: Xcode, Android Studio, Sublime Text.
+* Tools: Xcode, Android Studio, Sublime Text, Visual Studio.
 
 
 ## Personal Projects
