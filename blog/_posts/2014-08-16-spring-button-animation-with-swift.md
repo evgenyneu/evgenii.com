@@ -43,7 +43,7 @@ It took me many minutes to play with those 3 parameters before I achieved the an
 
 * [Demo app on GitHub](https://github.com/evgenyneu/bubble-button-animation-ios-swift)
 * [Button image source](/files/2014-08-16-play.sketch.zip) created with Sketch app.
-* Spring button animation [tutorial](http://evgenii.com/blog/spring-button-animation-on-android/) on Android.
+* Spring button animation [tutorial](http://evgenii.com/blog/spring-button-animation-on-android/) for Android.
 
 
 
