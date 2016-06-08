@@ -16,13 +16,14 @@ title: Resume of Evgenii Neumerzhitckii
 
 ## Objective
 
-Seeking position as an iOS/Swift or Android programmer.
-
-**Working hours**: 10 hours a week, part-time or casual.
-
-**Residency**: Australian permanent resident.
+Seeking position as software developer in a research project.
 
 
+## Referees
+
+* Jason Wyatt, CEO of marketplacer.com, phone: (03) 9257 3200.
+* Brooke Camov, accounting at marketplacer.com, phone: (03) 9257 3200.
+* Michael Pearson, collegue at marketplacer.com, phone: (03) 9257 3200.
 
 ## Summary of Qualifications
 
