@@ -25,7 +25,7 @@ let package = Package(
 
 The *exclude* setting allows to exclude the directories that are not part of the library code, like unit tests. Those excluded directories will not be built by the users of your library.
 
-### Release a new library version
+## Release a new library version
 
 Now we need to publish the library so other people can download it with Swift Package Manager. First, we upload the code to a Git hosting service like GitHub or Bitbucket. After it's done we create a new tag version *1.0.0* and push it to the hosting service:
 
@@ -36,7 +36,7 @@ git push origin --tags
 
 In the future you can release updates to your library by creating new version tags, for example, *1.0.1* or *1.0.2*. If the library contains breaking changes [the convention](http://semver.org/) is to increment the first *major* digit of the version so it does not break apps of the users, for example, *2.0.0* or *3.0.0*
 
-### Using your library with Swift Package Manager
+## Using your library with Swift Package Manager
 
 Finally, we can test if your library is working with Swift Package Manager by creating a simple Swift code that depends on it.
 
@@ -119,7 +119,7 @@ swift build
 .build/debug/MyApp
 ```
 
-### Example
+## Example
 
 [SigmaSwiftStatistics](https://github.com/evgenyneu/SigmaSwiftStatistics) is an example of a real library that supports Swift Package Manager.
 
