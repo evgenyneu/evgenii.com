@@ -21,7 +21,7 @@ cd MyLibrary
 #### 2) Create the library source file
 
 
-Create the *Sources* directory
+Create the **Sources** directory
 
 ```
 mkdir Sources
@@ -85,7 +85,7 @@ git push origin --tags
 
 In the future you can release updates to your library by creating new version tags, for example, *1.0.1* or *1.0.2*. If the library contains breaking changes [the convention](http://semver.org/) is to increment the first *major* digit of the version, for example, *2.0.0* or *3.0.0*. This will ensure the apps of existing library users will not be broken.
 
-Congratilations! The library is published and ready to be used with Swift Package Manager.
+Congratulations! The library is published and ready to be used with Swift Package Manager.
 
 ## Using your library with Swift Package Manager
 
@@ -171,6 +171,8 @@ Build/run the app again and it you will see "Hello from the library!" text.
 swift build
 .build/debug/MyApp
 ```
+
+
 
 ## Examples
 
