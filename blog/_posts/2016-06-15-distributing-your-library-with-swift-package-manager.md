@@ -7,27 +7,76 @@ tags: programming
 ---
 
 
-[Swift Package Manager](https://swift.org/package-manager/) allows to include external libraries into your Swift code. In this tutorial I will show to how to add support for Swift Package Manager to your library. The method was tested with Xcode 8 Beta and Swift 3.0.
+[Swift Package Manager](https://swift.org/package-manager/) allows to include external libraries into your Swift code. In this tutorial I will show how create a library that can be used with Swift Package Manager. The method was tested with Xcode 8 Beta and Swift 3.0.
+
+## Create a library
+
+#### 1) Create the library directory
+
+```
+mkdir MyLibrary
+cd MyLibrary
+```
+
+#### 2) Create the library source file
 
 
-## Package.swift file
+Create the *Sources* directory
 
-If you have an existing library you can add support for Swift Package Manager by creating the **Package.swift** file in its root directory.
+```
+mkdir Sources
+```
+
+and add the library source file **my_library.swift**:
+
+```
+touch Sources/my_library.swift
+```
+
+
+#### 3) Write the library code
+
+Write your library code in the **Sources/my_library.swift** file.
+
+```Swift
+public func hiThere() -> String {
+  return "Hello from the library!"
+}
+```
+
+Here we created a method `hiThere` that simply prints a greeting. Notice that we marked the method as **public** in order to make it accessible to the library users.
+
+
+#### 4) Create library Package.swift file
+
+Finally, create an empty **Package.swift** file in the **root directory** of the library
+
+```
+touch Package.swift
+```
+
+and put the following code in it.
 
 ```Swift
 import PackageDescription
 
 let package = Package(
-    name: "YOUR_PACKAGE_NAME",
+    name: "MyLibrary",
     exclude: ["DirectoryToExclude"]
 )
 ```
 
-The *exclude* setting allows to exclude the directories that are not part of the library code, like unit tests. Those excluded directories will not be built by the users of your library.
+If you have an existing library that has Swift files that you do not want to distribute to users you can exclude them in the **Package.swift** file with the **exclude** option.
 
-## Release a new library version
 
-Now we need to publish the library so other people can download it with Swift Package Manager. First, we upload the code to a Git hosting service like GitHub or Bitbucket. After it's done we create a new tag version *1.0.0* and push it to the hosting service:
+#### 5) Publish the library
+
+Now we need to publish the library so other people can download it with Swift Package Manager. This can be done by uploading the code to a Git hosting service of your choice. If you are new to this please refer to the instructions about creating a new repository for your Git hosting service. Here are [instructions](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/) for GitHub.
+
+#### 6) Release a new library version
+
+
+After the code is published we create a new tag version *1.0.0* and push it to the hosting service:
 
 ```
 git tag 1.0.0
@@ -38,7 +87,7 @@ In the future you can release updates to your library by creating new version ta
 
 ## Using your library with Swift Package Manager
 
-Finally, we can test if your library is working with Swift Package Manager by creating a simple Swift code that depends on it.
+Now we can test if your library is working with Swift Package Manager by creating a simple Swift code that uses it.
 
 #### 1) Create app directory.
 
@@ -55,7 +104,7 @@ touch Package.swift
 
 #### 3) Write Swift program code
 
-Next we create the *Sources* directory and add the `main.swift` file that prints "Hello World" message.
+Next we create the **Sources** directory and add the `main.swift` file that prints "Hello World" message.
 
 ```
 mkdir Sources
@@ -81,7 +130,7 @@ If everything went well you will see "Hello world!" message in the console.
 
 #### 5) Include your library to the Package.swift file.
 
-Add the following text to the **Package.swift** file and use the correct URL to your remote repository.
+Now it is time to use our library. Add the following text to the **Package.swift** file.
 
 ```Swift
 import PackageDescription
@@ -90,17 +139,19 @@ let package = Package(
     name: "MyApp",
     targets: [],
     dependencies: [
-        .Package(url: "https://github.com/YOUR_USER_NAME/YOUR_REPOSITORY.git",
+        .Package(url: "https://github.com/evgenyneu/LibraryWithSwiftPackageManager.git",
                  versions: Version(1,0,0)..<Version(2,0,0))
     ]
 )
 ```
 
-This is the code that you may show in your library's README file as a setup instruction for the users. In this example your users will download the most recent library version that starts with 1. For example, it will use *1.3.6* or *1.0.0* version but not *2.0.1*.
+This dependency includes a sample project that I created. Your app, of course, will point to your own repository.
+
+You may want to show the Package.swift file contents in your library's README file as a setup instruction for the users. In this example your users will download the most recent library version that starts with 1. For example, it will use *1.3.6* or *1.0.0* version but not *2.0.1*.
 
 #### 6) Build your dependency
 
-Run `swift build` and it will clone and build your library into the *Packages* directory.
+Run `swift build` and it will download and build the library into the *Packages* directory.
 
 
 #### 7) Use your library
@@ -108,19 +159,21 @@ Run `swift build` and it will clone and build your library into the *Packages* d
 Finally, you can test your library by including it in the `Source/main.swift` file:
 
 ```Swift
-import YourLibraryName
-// Use your library here for a test
+import MyLibrary
+print(hiThere())
 ```
 
-Build/run the app again to check that it is working:
+Build/run the app again and it you will see "Hello from the library!" text.
 
 ```
 swift build
 .build/debug/MyApp
 ```
 
-## Example
+## Examples
 
-[SigmaSwiftStatistics](https://github.com/evgenyneu/SigmaSwiftStatistics) is an example of a real library that supports Swift Package Manager.
+* [LibraryWithSwiftPackageManager](https://github.com/evgenyneu/LibraryWithSwiftPackageManager) is the demo library used in the tutorial.
+
+* [SigmaSwiftStatistics](https://github.com/evgenyneu/SigmaSwiftStatistics) is an example of a real library that supports Swift Package Manager.
 
 
