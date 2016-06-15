@@ -9,7 +9,7 @@ tags: programming
 
 [Swift Package Manager](https://swift.org/package-manager/) allows to use external code in your Swift app. In this tutorial I will show how create a library that can be used with Swift Package Manager. The method was tested with Xcode 8 Beta and Swift 3.0.
 
-## Create a library
+## Create a Swift library
 
 #### 1) Create the library directory
 
