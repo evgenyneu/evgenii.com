@@ -27,7 +27,7 @@ The *exclude* setting allows to exclude the directories that are not part of the
 
 ### Release a new library version
 
-Now we need to publish the library so other people can download it with Swift Package Manager. First, we upload the code to a Git hosting service like GitHub or Bitbucket. Then we create a new tag version *1.0.0* and push it to the hosting service:
+Now we need to publish the library so other people can download it with Swift Package Manager. First, we upload the code to a Git hosting service like GitHub or Bitbucket. After it's done we create a new tag version *1.0.0* and push it to the hosting service:
 
 ```
 git tag 1.0.0
