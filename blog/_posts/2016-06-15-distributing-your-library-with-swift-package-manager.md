@@ -49,7 +49,7 @@ Here we created a method `hiThere` that simply returns a greeting text. Notice t
 
 #### 4) Create the Package.swift file for the library
 
-Finally, create an empty **Package.swift** file in the **root directory** of the library
+Next, create an empty **Package.swift** file in the **root directory** of the library
 
 ```
 touch Package.swift
