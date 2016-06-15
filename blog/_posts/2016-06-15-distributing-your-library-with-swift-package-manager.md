@@ -7,11 +7,11 @@ tags: programming
 ---
 
 
-[Swift Package Manager](https://swift.org/package-manager/) allows to use external code in your Swift code. In this tutorial I will show how create a library that can be used with Swift Package Manager. The method was tested with Swift 3.0.
+[Swift Package Manager](https://swift.org/package-manager/) allows to use external code in your Swift code. In this tutorial I will show how create a library that can be used with Swift Package Manager. This method was tested with Swift 3.0.
 
 ## Setting up Swift
 
-Before we begin, let's check that Swift is installed on the system by opening the *Terminal* app and requesting Swift version.
+Before we begin, let's check that Swift is installed on the system by launching the *Terminal* app and requesting the Swift version.
 
 ```
 swift --version
@@ -27,7 +27,11 @@ If the command did not work please follow the Swift [installation instructions](
 
 ## Creating a Swift library
 
+First, we will create and publish a simple Swift library.
+
 #### 1) Create the library directory
+
+Create the library directory by running the following commands in the *Terminal* app.
 
 ```
 mkdir MyLibrary
