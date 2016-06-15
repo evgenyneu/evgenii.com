@@ -44,7 +44,7 @@ public func hiThere() -> String {
 }
 ```
 
-Here we created a method `hiThere` that simply prints a greeting. Notice that we marked the method as **public** in order to make it accessible to the library users.
+Here we created a method `hiThere` that simply returns a greeting string. Notice that we marked the method as **public** in order to make it accessible to the library users.
 
 
 #### 4) Create the Package.swift file for the library
