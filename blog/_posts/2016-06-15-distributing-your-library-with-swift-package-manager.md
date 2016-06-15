@@ -12,7 +12,7 @@ tags: programming
 
 ## Package.swift file
 
-If you have an existing library you can add support for Swift Package Manger by creating the **Package.swift** file in its root directory.
+If you have an existing library you can add support for Swift Package Manager by creating the **Package.swift** file in its root directory.
 
 ```Swift
 import PackageDescription
