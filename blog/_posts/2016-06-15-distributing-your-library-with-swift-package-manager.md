@@ -83,7 +83,7 @@ If everything went well you will see "Hello world!" message in the console.
 
 Add the following text to the **Package.swift** file and use the correct URL to your remote repository.
 
-```
+```Swift
 import PackageDescription
 
 let package = Package(
@@ -114,7 +114,7 @@ import YourLibraryName
 
 Build/run the app again to check that it is working:
 
-```Swift
+```
 swift build
 .build/debug/MyApp
 ```
