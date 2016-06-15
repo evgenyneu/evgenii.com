@@ -34,7 +34,7 @@ git tag 1.0.0
 git push origin --tags
 ```
 
-As you update your library in the future you will release new versions by creating new tags, for example, *1.0.1* or *1.0.2*. If the library contains breaking changes [the convention](http://semver.org/) is to increment the first *major* digit of the version so it does not break apps of the users, for example, *2.0.0* or *3.0.0*
+In the future you can release updates to your library by creating new version tags, for example, *1.0.1* or *1.0.2*. If the library contains breaking changes [the convention](http://semver.org/) is to increment the first *major* digit of the version so it does not break apps of the users, for example, *2.0.0* or *3.0.0*
 
 ### Using your library with Swift Package Manager
 
