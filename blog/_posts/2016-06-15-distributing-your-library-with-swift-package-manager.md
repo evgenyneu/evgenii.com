@@ -98,7 +98,7 @@ mkdir MyApp
 cd MyApp
 ```
 
-#### 2) Create an empty *Package.swift* file
+#### 2) Create an empty Package.swift file
 
 ```
 touch Package.swift
