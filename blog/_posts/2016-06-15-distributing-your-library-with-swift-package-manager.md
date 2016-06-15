@@ -165,7 +165,7 @@ import MyLibrary
 print(hiThere())
 ```
 
-Build/run the app again and it you will see "Hello from the library!" text.
+Build/run the app again and you will see "Hello from the library!" text.
 
 ```
 swift build
