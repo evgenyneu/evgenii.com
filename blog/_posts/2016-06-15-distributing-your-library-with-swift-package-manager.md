@@ -96,7 +96,7 @@ let package = Package(
 )
 ```
 
-Current example will include the most recent library version that starts with 1. For example, it will use *1.3.6* or *1.0.0* version but not *2.0.1*.
+This is the code that you may show in your library's README file as a setup instruction for the users. This example will include the most recent library version that starts with 1. For example, it will use *1.3.6* or *1.0.0* version but not *2.0.1*.
 
 #### 6) Build your dependency
 
