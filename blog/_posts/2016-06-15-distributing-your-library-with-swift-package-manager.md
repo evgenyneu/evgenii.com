@@ -76,7 +76,7 @@ Now we need to publish the library so other people can download it with Swift Pa
 #### 6) Release a new library version
 
 
-After the code is published we create a new tag version **1.0.0** and publish it:
+After the code is published we create a new tag version **1.0.0**.
 
 ```
 git tag 1.0.0
