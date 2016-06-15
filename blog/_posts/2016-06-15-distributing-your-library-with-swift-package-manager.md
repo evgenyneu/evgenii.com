@@ -150,7 +150,7 @@ and run the app.
 
 If everything went well you will see "Hello world!" message in the terminal.
 
-#### 5) Include Swift library to the Package.swift file.
+#### 5) Include Swift library in the Package.swift file
 
 Now it is time to use our library. Add the following text to the **Package.swift** file.
 
