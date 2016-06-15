@@ -7,9 +7,20 @@ tags: programming
 ---
 
 
-[Swift Package Manager](https://swift.org/package-manager/) allows to use external code in your Swift app. In this tutorial I will show how create a library that can be used with Swift Package Manager. The method was tested with Xcode 8 Beta and Swift 3.0.
+[Swift Package Manager](https://swift.org/package-manager/) allows to use external code in your Swift code. In this tutorial I will show how create a library that can be used with Swift Package Manager. The method was tested with Swift 3.0.
 
-## Create a Swift library
+## Setting up Swift
+
+Before we begin, let's check that Swift is installed on the system by opening the *Terminal* app and requesting Swift version
+
+```
+$ swift --version
+Apple Swift version 3.0 (swiftlang-800.0.30 clang-800.0.24)
+```
+
+If the command did not work please follow the Swift [installation instructions](https://swift.org/getting-started).
+
+## Creating a Swift library
 
 #### 1) Create the library directory
 
@@ -87,7 +98,7 @@ In the future you can release updates to your library by creating new version ta
 
 Congratulations! The library is published and ready to be used with Swift Package Manager.
 
-## Using your library with Swift Package Manager
+## Using Swift library with Swift Package Manager
 
 Now we can test if the library is working by creating a simple Swift app that includes it with Swift Package Manager.
 
@@ -130,7 +141,7 @@ and run the app.
 
 If everything went well you will see "Hello world!" message in the terminal.
 
-#### 5) Include your library to the Package.swift file.
+#### 5) Include Swift library to the Package.swift file.
 
 Now it is time to use our library. Add the following text to the **Package.swift** file.
 
@@ -151,12 +162,12 @@ The code above includes a sample project that I created. Your app, of course, wi
 
 You may want to show the contents of the Package.swift file in your library's README file as a setup instruction for the users. In this example your users will download the most recent library version that starts with 1. For example, it will use *1.3.6* or *1.0.0* version but not *2.0.1*.
 
-#### 6) Build your dependency
+#### 6) Build Swift library
 
 Run `swift build` and it will download and build the library into the *Packages* directory.
 
 
-#### 7) Use your library
+#### 7) Use Swift library
 
 Finally, we can test the library by using it in the `Source/main.swift` file of the app:
 
@@ -172,6 +183,7 @@ swift build
 .build/debug/MyApp
 ```
 
+Awesome! We learned how to create a Swift library and use it with Swift Package Manager.
 
 
 ## Examples
