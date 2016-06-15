@@ -158,7 +158,7 @@ Run `swift build` and it will download and build the library into the *Packages*
 
 #### 7) Use your library
 
-Finally, we can test the library by using it in the `Source/main.swift` file:
+Finally, we can test the library by using it in the `Source/main.swift` file of the app:
 
 ```Swift
 import MyLibrary
