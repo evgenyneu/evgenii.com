@@ -77,7 +77,7 @@ and run the app.
 .build/debug/MyApp
 ```
 
-If everything went well you will see "Hello world!" message in console.
+If everything went well you will see "Hello world!" message in the console.
 
 #### 5) Include your library to the Package.swift file.
 
