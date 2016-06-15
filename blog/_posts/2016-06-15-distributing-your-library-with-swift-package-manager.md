@@ -11,10 +11,15 @@ tags: programming
 
 ## Setting up Swift
 
-Before we begin, let's check that Swift is installed on the system by opening the *Terminal* app and requesting Swift version
+Before we begin, let's check that Swift is installed on the system by opening the *Terminal* app and requesting Swift version.
 
 ```
-$ swift --version
+swift --version
+```
+
+The command will show the current Swift version that looks like this:
+
+```
 Apple Swift version 3.0 (swiftlang-800.0.30 clang-800.0.24)
 ```
 
@@ -188,8 +193,8 @@ Awesome! We learned how to create a Swift library and use it with Swift Package 
 
 ## Examples
 
-* [LibraryWithSwiftPackageManager](https://github.com/evgenyneu/LibraryWithSwiftPackageManager) is the demo library used in the tutorial.
+* [The demo](https://github.com/evgenyneu/LibraryWithSwiftPackageManager) library used in this tutorial.
 
-* [SigmaSwiftStatistics](https://github.com/evgenyneu/SigmaSwiftStatistics) is an example of a real library that supports Swift Package Manager.
+* [SigmaSwiftStatistics](https://github.com/evgenyneu/SigmaSwiftStatistics) is real library that supports Swift Package Manager.
 
 
