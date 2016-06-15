@@ -149,7 +149,7 @@ let package = Package(
 
 The code above includes a sample project that I created. Your app, of course, will point to your own repository instead.
 
-You may want to show the Package.swift file contents in your library's README file as a setup instruction for the users. In this example your users will download the most recent library version that starts with 1. For example, it will use *1.3.6* or *1.0.0* version but not *2.0.1*.
+You may want to show the contents of the Package.swift file in your library's README file as a setup instruction for the users. In this example your users will download the most recent library version that starts with 1. For example, it will use *1.3.6* or *1.0.0* version but not *2.0.1*.
 
 #### 6) Build your dependency
 
