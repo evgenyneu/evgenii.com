@@ -31,7 +31,7 @@ First, we will create and publish a simple Swift library.
 
 #### 1) Create the library directory
 
-Create the library directory by running the following commands in the *Terminal* app.
+Run the following commands in the *Terminal* app.
 
 ```
 mkdir MyLibrary
