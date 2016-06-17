@@ -199,6 +199,6 @@ Awesome! We learned how to create a Swift library and use it with Swift Package 
 
 * [The demo](https://github.com/evgenyneu/LibraryWithSwiftPackageManager) library used in this tutorial.
 
-* [SigmaSwiftStatistics](https://github.com/evgenyneu/SigmaSwiftStatistics) is real library that supports Swift Package Manager.
+* Real libraries that support Swift Package Manager: [SigmaSwiftStatistics](https://github.com/evgenyneu/SigmaSwiftStatistics), [JsonSwiftson](https://github.com/evgenyneu/JsonSwiftson).
 
 
