@@ -91,7 +91,7 @@ If you have an existing library that has Swift files that you do not want to dis
 
 #### 5) Publish the library
 
-Now we need to publish the library so other people can download it with Swift Package Manager. This can be done by uploading the code to a Git hosting service of your choice. If you are new to this please refer to the instructions from your hosting service. Here is how to [create a repository](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/) on GitHub. As a result your will have a public repository that looks like this:
+Now we need to publish the library so other people can download it with Swift Package Manager. This can be done by uploading the code to a Git hosting service of your choice. If you are new to this please refer to the instructions from your hosting service. Here is how to [create a repository](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/) on GitHub. As a result your will have a public Git repository that looks like this:
 
 [https://github.com/evgenyneu/LibraryWithSwiftPackageManager](https://github.com/evgenyneu/LibraryWithSwiftPackageManager)
 
@@ -111,7 +111,7 @@ Congratulations! The library is published and ready to be used with Swift Packag
 
 ## Using Swift library with Swift Package Manager
 
-Now we can test if the library is working by creating a simple Swift app that includes it with Swift Package Manager.
+Now we can test if the library is working by creating a simple Swift app that includes the library with Swift Package Manager.
 
 #### 1) Create app directory.
 
