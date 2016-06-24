@@ -7,7 +7,7 @@ tags: programming
 ---
 
 
-[Swift Package Manager](https://swift.org/package-manager/) allows to download and use external code in a Swift program. In this tutorial I will show how create a library that can be used with Swift Package Manager. This method was tested with Swift 3.0.
+[Swift Package Manager](https://swift.org/package-manager/) allows to download and use external code in a Swift program. In this tutorial I will show how create a Swift library and then use it from a Swift program with Swift Package Manager. This method was tested with Swift 3.0.
 
 ## Setting up Swift
 
@@ -38,6 +38,8 @@ mkdir MyLibrary
 cd MyLibrary
 ```
 
+
+
 #### 2) Create the library source file
 
 
@@ -47,16 +49,16 @@ Create the **Sources** directory
 mkdir Sources
 ```
 
-and add the library source file **my_library.swift**:
+and add the library source file **MyLibrary.swift**:
 
 ```
-touch Sources/my_library.swift
+touch Sources/MyLibrary.swift
 ```
 
 
 #### 3) Write the library code
 
-Write your library code in the **Sources/my_library.swift** file.
+Write your library code in the **Sources/MyLibrary.swift** file.
 
 ```Swift
 public func hiThere() -> String {
@@ -89,11 +91,14 @@ let package = Package(
 If you have an existing library that has Swift files that you do not want to distribute to users you can exclude them in the **Package.swift** file with the **exclude** option.
 
 
+
 #### 5) Publish the library
 
 Now we need to publish the library so other people can download it with Swift Package Manager. This can be done by uploading the code to a Git hosting service of your choice. If you are new to this please refer to the instructions from your hosting service. Here is how to [create a repository](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/) on GitHub. As a result your will have a public Git repository that looks like this:
 
 [https://github.com/evgenyneu/LibraryWithSwiftPackageManager](https://github.com/evgenyneu/LibraryWithSwiftPackageManager)
+
+
 
 #### 6) Release a new library version
 
@@ -109,11 +114,22 @@ In the future you can release updates to your library by creating new version ta
 
 Congratulations! The library is published and ready to be used with Swift Package Manager.
 
-## Using Swift library with Swift Package Manager
+
+#### Another way of initializing a new library with Swift Package Manager
+
+We have just created all the project files for a Swift library manually. There is a shortcut command `swift package init` that does that automatically.
+
+```Swift
+mkdir MyLibrary
+cd MyLibrary
+swift package init
+```
+
+## Using a Swift library with Swift Package Manager
 
 Now we can test if the library is working by creating a simple Swift app that includes the library with Swift Package Manager.
 
-#### 1) Create app directory.
+#### 1) Create app directory
 
 ```
 mkdir MyApp
@@ -175,7 +191,11 @@ You may want to show the contents of the Package.swift file in your library's RE
 
 #### 6) Build Swift library
 
-Run `swift build` and it will download and build the library into the *Packages* directory.
+Run the `swift build` command. It will download and build the library into the *Packages* directory.
+
+```Swift
+swift build
+```
 
 
 #### 7) Use Swift library
@@ -194,7 +214,21 @@ swift build
 .build/debug/MyApp
 ```
 
-Awesome! We learned how to create a Swift library and use it with Swift Package Manager.
+#### Alternative way of creating a new app project with Swift Package Manager
+
+We have created the files for the Swift app manually. It can also be done automatically with the following commands:
+
+```Swift
+mkdir MyApp
+cd MyApp
+swift package init --type executable
+```
+
+
+### We are done. Now what?
+
+Awesome! We just learned how to create a Swift library and use it in a Swift app with Swift Package Manager. It is now your turn to create great libraries that can be useful to many people. Good luck!
+
 
 
 ## Examples
