@@ -138,7 +138,7 @@ if resultCodeLoad == noErr {
 
 ## How secure is Keychain sharing?
 
-A couple of people asked me if it is possible for apps from other developers to access the Keychain items that we share and steal the sensitive information. To my knowledge, it is not possible. You can only share Keychain between the apps that are signed with your developer account. This is ensured by using the App ID Prefix in the keychain access group name which uniquely identifies your Apple developer account. Other developers will have different App ID prefixes and even if they try using your prefix the Xcode will not allow it.
+A couple of people asked me if it is possible for apps from other developers to access the Keychain items that we share and steal the sensitive information. To my knowledge, it is not possible. You can only share Keychain between the apps that are signed with your account certificate. This is ensured by using the App ID Prefix in the keychain access group name which uniquely identifies your Apple developer account. Other developers will have different App ID prefixes and even if they try using your prefix the Xcode will not allow it.
 
 You can try it yourself by replacing the *$(AppIdentifierPrefix)* text in the Keychain group in the *.entitlements* file with something different and run the app on a *physical* device. Xcode will refuse to do it by showing the following error.
 
