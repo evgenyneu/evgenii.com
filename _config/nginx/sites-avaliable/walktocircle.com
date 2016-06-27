@@ -18,6 +18,6 @@ server {
     log_not_found off;
     add_header  Pragma "public";
     add_header  Cache-Control "public";
-    expires     30d;
+    expires     7d;
   }
 }
