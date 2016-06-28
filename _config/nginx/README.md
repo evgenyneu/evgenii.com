@@ -7,6 +7,8 @@
 ### Create simlink for the sites
 
 sudo ln -s /etc/nginx/sites-available/walktocircle.com /etc/nginx/sites-enabled/walktocircle.com
+sudo ln -s /etc/nginx/sites-available/evgenii.com /etc/nginx/sites-enabled/evgenii.com
+
 
 ### Test config and reload the web server
 
