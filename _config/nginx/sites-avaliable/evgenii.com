@@ -9,7 +9,7 @@ server {
   listen       80;
   listen  [::]:80;
   server_name  evgenii.com;
-  root         /home/pi/evgenii.com;
+  root         /home/ubuntu/web/evgenii.com;
   error_page   404  /404.html;
   access_log   /var/log/nginx/evgenii.log combined;
 

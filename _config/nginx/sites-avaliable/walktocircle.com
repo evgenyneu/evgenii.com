@@ -9,7 +9,7 @@ server {
   listen       80;
   listen  [::]:80;
   server_name  walktocircle.com;
-  root         /home/pi/walktocircle.com;
+  root         /home/ubuntu/web/walktocircle.com;
   access_log   /var/log/nginx/walktocircle.log combined;
 
   # static content

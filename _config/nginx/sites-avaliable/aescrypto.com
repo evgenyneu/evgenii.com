@@ -9,7 +9,7 @@ server {
   listen       80;
   listen  [::]:80;
   server_name  aescrypto.com;
-  root         /home/pi/aescrypto.com;
+  root         /home/ubuntu/web/aescrypto.com;
   access_log   /var/log/nginx/aescrypto.log combined;
 
   # static content
