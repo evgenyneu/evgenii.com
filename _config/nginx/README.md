@@ -8,6 +8,8 @@
 
 sudo ln -s /etc/nginx/sites-available/walktocircle.com /etc/nginx/sites-enabled/walktocircle.com
 sudo ln -s /etc/nginx/sites-available/evgenii.com /etc/nginx/sites-enabled/evgenii.com
+sudo ln -s /etc/nginx/sites-available/aescrypto.com /etc/nginx/sites-enabled/aescrypto.com
+
 
 
 ### Test config and reload the web server
