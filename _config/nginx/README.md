@@ -10,5 +10,11 @@ sudo ln -s /etc/nginx/sites-available/walktocircle.com /etc/nginx/sites-enabled/
 
 ### Test config and reload the web server
 
-nginx -t
-nginx -s reload
+sudo nginx -t
+sudo systemctl reload nginx
+
+### Stop/start/restart ngingx
+
+sudo systemctl stop nginx
+sudo systemctl start nginx
+sudo systemctl restart nginx
