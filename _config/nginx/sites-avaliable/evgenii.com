@@ -1,6 +1,6 @@
 server {
-  listen       80;
-  listen  [::]:80 ipv6only=on;
+  listen       80 default_server;
+  listen  [::]:80 default_server;
   server_name  www.evgenii.com;
   return       301 http://evgenii.com$request_uri;
 }
