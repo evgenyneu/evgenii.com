@@ -16,11 +16,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 ## Objective
 
-Seeking position as an iOS/Swift or Android programmer.
-
-**Working hours**: 10 hours a week, part-time or casual.
-
-**Residency**: Australian permanent resident.
+Seeking part-time or casual position as an iOS/Swift or Android programmer.
 
 
 
