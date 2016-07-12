@@ -24,6 +24,6 @@ server {
 
   # Redirects for pages that changed URLs
   location /projects/walk-to-circle-ios-game {
-   rewrite ^/projects/walk-to-circle-ios-game(.*) http://$server_name/projects/walk-to-circle-for-android-and-ios/ permanent;
+    rewrite ^/projects/walk-to-circle-ios-game(.*) http://$server_name/projects/walk-to-circle-for-android-and-ios/ permanent;
   }
 }
