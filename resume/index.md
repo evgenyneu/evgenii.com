@@ -16,7 +16,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 ## Objective
 
-Seeking a part-time position as an iOS or Android programmer.
+Looking for part-time/freelance work as an iOS or Android programmer.
 
 
 
