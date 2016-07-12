@@ -16,7 +16,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 ## Objective
 
-Seeking part-time or casual position as an iOS/Swift or Android programmer.
+Seeking a part-time position as an iOS or Android programmer.
 
 
 
@@ -36,14 +36,14 @@ Seeking part-time or casual position as an iOS/Swift or Android programmer.
 ## Personal Projects
 
 
+* Walk to Circle for [Android](https://play.google.com/store/apps/details?id=com.evgenii.walktocircle) and [iOS](https://itunes.apple.com/us/app/walk-to-circle/id955310614).
 * Water Footprint for [Android](https://play.google.com/store/apps/details?id=com.evgenii.waterfootprint), [iOS](https://itunes.apple.com/us/app/water-footprint/id1044041294) and [Web](http://evgenii.com/water-footprint/en/).
 * AES Crypto for [Android](http://evgenii.com/projects/aes-crypto-for-android/), [iOS](http://evgenii.com/projects/aes_crypto_for_ios/) and [Web](http://evgenii.com/projects/aes-crypto-for-web/).
-* [Walk to Circle](http://walktocircle.com) for iOS.
 
 
 ## Open Source Projects
 
-* [Auk](https://github.com/evgenyneu/Auk)
+* [Moa](https://github.com/evgenyneu/moa/)
 * [Cosmos](https://github.com/marketplacer/Cosmos)
 * [js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
 
@@ -124,7 +124,7 @@ Senior .NET/C# developer, independent contractor
 
 Monash University, Melbourne, Australia
 
-* Currently studying two science units.
+* Currently studying astrophysics.
 
 South Ural State University, Chelyabinsk, Russia.
 
