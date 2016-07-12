@@ -8,9 +8,9 @@ layout_class: isTextCentered
 <div class='embed-container'><iframe src='http://www.youtube.com/embed/DGZpFsrwC7I?rel=0?rel=0' frameborder='0' allowfullscreen></iframe></div>
 
 <br>
-<br>
 
 <a href='https://play.google.com/store/apps/details?id=com.evgenii.walktocircle' title='Download Walk to Circle on App Store'><img src='/image/logos/google_play_badge.png' alt='Get Walk to Circle on Google Play' class='isMax200PxWide'></a>
+
 <a href='https://itunes.apple.com/us/app/walk-to-circle/id955310614' title='Download Walk to Circle on App Store'><img src='/image/logos/appstore_badge.png' alt='Download Walk to Circle on App Store' class='isMax200PxWide'></a>
 
 <h3><a href="http://walktocircle.com">walktocircle.com</a><h3>
