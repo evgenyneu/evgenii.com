@@ -12,7 +12,7 @@ In this tutorial we will learn how to:
 * Create new test configuration and run the tests.
 * Write tests for basic UI interactions in activity.
 
-This tutorial is updated for Android Studio version 2.0.
+This tutorial is updated for Android Studio version 2.1.
 
 ### I assume you already know
 
@@ -40,9 +40,9 @@ Accept the default settings on "Target Android Devices" screen with just "Phone 
 
 <img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0115_new_project_in_android_studio_form_activity.png' alt='Target android devices' class='isMax100PercentWide hasBorderShade90'>
 
-Select a **blank activity**.
+Select a **Empty Activity**.
 
-<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0120_new_project_select_blank_activity_in_android_studio.png' alt='Select new project with blank activity in Android Studio' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2015-03-27-testing-ui-in-android-studio/0120_new_project_select_empty_activity_in_android_studio.png' alt='Select new project with blank activity in Android Studio' class='isMax100PercentWide hasBorderShade90'>
 
 Next, keep default activity name: `MainActivity`. This name will be used in our code later.
 
