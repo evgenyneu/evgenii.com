@@ -52,7 +52,7 @@ onView(withId(R.id.greetEditText))
     .perform(typeText("Jake"), closeSoftKeyboard());
 ```
 
-You will need to add these import statements to the top of the **MainActivityTests** file:
+You will also need to add these import statements to the top of the **MainActivityTests** file:
 
 ```Java
 import static android.support.test.espresso.Espresso.onView;
