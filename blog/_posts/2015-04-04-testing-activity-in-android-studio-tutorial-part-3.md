@@ -33,7 +33,7 @@ Just to remind us again, our app will have three components:
 1. A "Greet" **Button**.
 1. And a **TextView** that will show the greeting message.
 
-Each control on the screen will have a unique ID. Those IDs will be used in our tests to get those controls and interact with them. The IDs are: `greet_edit_text`, `greet_button` and `message_text_view`.
+Each control on the screen will have a unique ID. Those IDs will be used in our tests to get those controls and interact with them. The IDs are: `greetEditText`, `greetButton` and `messageTextView`.
 
 <img src='/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0000_greeter_app_components_with_ids.png' alt='Components of the Greeter app with IDs' class='isMax100PercentWide hasBorderShade90'>
 
@@ -43,9 +43,9 @@ Each control on the screen will have a unique ID. Those IDs will be used in our 
 
 
 
-## 1. Extend test: enter name into EditText
+## 1. Enter a name into the EditText
 
-We will start by extending the test method `testGreet` we created earlier. The test will enter a name into a EditText control, which does not exist yet.
+We will start by extending the test method `testGreet` we created earlier. The test will enter a name into the EditText control which does not exist yet.
 
 ```Java
 onView(withId(R.id.greetEditText))
@@ -91,7 +91,7 @@ You will notice an error for the `greetEditText` ID. That's because the EditText
 
 ```Html
 <EditText
-    android:id="@+id/greet_edit_text"
+    android:id="@+id/greetEditText"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
@@ -426,11 +426,11 @@ You will see that **didTapGreetButton** is highlighted and reports this error me
 
 > Method 'didTapGreetButton' is missing in 'MainActivity' or has incorrect signature.
 
-This is unbelievable! We have a human-readable error message that actually makes sense! Let's pause for a moment and appreciate this rare moment.
+Now I find this unbelievable! We have a human-readable error message that actually makes sense! Let's pause for a second to appreciate this rare convenience.
 
 ### Implement didTapGreetButton method
 
-We are at the finish line and we write the final piece of code. It will be the `didTapGreetButton` method that will show the greeting message.
+We are at the finish line and will write the final piece of code. It will be the `didTapGreetButton` method that will show the greeting message.
 
 * Expand **app > java > com.mycompany.greeter** module. Note that this time we are editing the app's main module and not the test one.
 * Open **MainActivity** class.
