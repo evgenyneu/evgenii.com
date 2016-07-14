@@ -41,7 +41,7 @@ testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 Android Studio will ask to sync the project. Click the "Sync Now" button.
 
 
-My complete module gradle file looks like this. Your gradle will may have different library versions.
+My complete module gradle file looks like this. Your gradle may have different library versions.
 
 <div class='isFullScreenWide isTextCentered'>
     <img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0050_add_test_dependencies_to_gradle.png' alt='Adding test dependencies to gradle file' class='isMax800PxWide hasBorderShade90'>
