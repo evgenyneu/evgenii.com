@@ -29,7 +29,7 @@ This workflow is sometimes called **test-driven development**. Which means writi
 
 Just to remind us again, our app will have three components:
 
-1. An **EditText** where user enters name.
+1. An **EditText** where user enters a name.
 1. A "Greet" **Button**.
 1. And a **TextView** that will show the greeting message.
 
