@@ -21,12 +21,68 @@ The app we are building will have three components:
 <img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0000_greeter_app_components.png' alt='Components of the Greeter app' class='isMax100PercentWide hasBorderShade90'>
 
 
+## 1. Setting up activity testing
+
+Let's start by adding some testing dependencies to the Gradle file. We will need to do two modifications. Firstly, add the following text to the **dependencies** section of your **module** gradle file.
+
+```
+androidTestCompile 'com.android.support:support-annotations:24.0.0'
+androidTestCompile 'com.android.support.test:runner:0.5'
+androidTestCompile 'com.android.support.test:rules:0.5'
+androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+```
+
+And secondly, add the following text to the **defaultConfig** section of the same **module** gradle file.
+
+```
+testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+```
+
+Android Studio will ask to sync the project. Click the "Sync Now" button.
+
+
+My complete module gradle file looks like this. Your gradle will may have different library versions.
+
+```
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
+
+    defaultConfig {
+        applicationId "com.mycompany.greeter"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    androidTestCompile 'com.android.support:support-annotations:24.0.0'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+}
+```
 
 
 
-## 1. Create a test class
 
-Let's start by adding a new class to the test package.
+## 2. Create a test class
+
+Next, we will add a new class to the test package.
 
 * In **Project** tool window expand **app > java** folder.
 * Right click on **com.mycompany.greeter (androidTest)** package. Please note that you have three packages named com.mycompany.greeter. You need to click on the one that has **androidTest** text.
@@ -54,38 +110,43 @@ public class MainActivityTests {
 
 
 
+## 3. Adding annotation to the test class
 
+Add the `@RunWith(AndroidJUnit4.class)` annotation above the `MainActivityTests` class definition.
 
-## 2. Extend class for testing Android activity
-
-In order to test Android activity we need to extend the `MainActivityTests` class with `ActivityInstrumentationTestCase2` sub-class.
+The class file will have the following code
 
 ```Java
-public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActivity> {
+package com.mycompany.greeter;
+
+@RunWith(AndroidJUnit4.class)
+public class MainActivityTests {
 
 }
 ```
 
-As you can see `ActivityInstrumentationTestCase2` is a generic class. We used `MainActivity` as its type parameter. You have already created `MainActivity` class in [the first part](/blog/testing-activity-in-android-studio-tutorial-part-1/) of this tutorial.
-
 ### Import missing package
 
-You may see this error message:
+You may see these error messages:
 
-> Can not resolve symbol 'ActivityInstrumentationTestCase2'.
+> Cannot find symbol class RunWith.
 
-To fix this error we need to import `android.test.ActivityInstrumentationTestCase2` package by adding the following line
+> Cannot resolve symbol 'AndroidJUnit4'.
+
+To fix this error we need to import `import org.junit.runner.RunWith` and `import android.support.test.runner.AndroidJUnit4` packages by adding the following code
 to the top of the test file.
 
 ```Java
-import android.test.ActivityInstrumentationTestCase2;
+import android.support.test.runner.AndroidJUnit4;
+import org.junit.runner.RunWith;
 ```
 
 I use a shortcut for importing missing packages in Android Studio.
 
-* Put your cursor to the `ActivityInstrumentationTestCase2` text in your code.
+* Put your cursor to the `RunWith` text in your code.
 * Press **Alt + Enter** on Windows or **Option + Enter** on Mac.
 * Select **Import Class** from the context menu.
+* Do the same for `AndroidJUnit4` text.
 
 <img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0200_import_activity_instrumentation_test_case_2.png' alt='Import missing package shortcut' class='isMax100PercentWide hasBorderShade90'>
 
@@ -93,83 +154,83 @@ Your code will look like this:
 
 ```Java
 package com.mycompany.greeter;
-import android.test.ActivityInstrumentationTestCase2;
+import android.support.test.runner.AndroidJUnit4;
+import org.junit.runner.RunWith;
 
-public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActivity> {
+@RunWith(AndroidJUnit4.class)
+public class MainActivityTests {
 
 }
 ```
 
-### Add missing constructor
 
-There is just one problem left to fix before we can write our test.
+## 4. Launching activity in tests
 
-> There is no default constructor available in 'android.test.ActivityInstrumentationTestCase2'.
-
-It can be fixed by adding the following constructor:
+Just a reminder, our goal here is to test our android activity. Add to following code to the `MainActivityTests` class, this will ask the test to launch `MainActivity` during the test.
 
 ```Java
-public MainActivityTests() {
-    super(MainActivity.class);
-}
+@Rule
+public ActivityTestRule<MainActivity> mActivityRule =
+    new ActivityTestRule<>(MainActivity.class);
 ```
 
-Here is the full code:
+You will also need to add the missing imports `import org.junit.Rule;` and `import android.support.test.rule.ActivityTestRule;`.
+
+The full code for `MainActivityTests` looks like this:
+
 
 ```Java
 package com.mycompany.greeter;
-import android.test.ActivityInstrumentationTestCase2;
+import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
 
-public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActivity> {
-    public MainActivityTests() {
-        super(MainActivity.class);
-    }
+import org.junit.Rule;
+import org.junit.runner.RunWith;
+
+@RunWith(AndroidJUnit4.class)
+public class MainActivityTests {
+    @Rule
+    public ActivityTestRule<MainActivity> mActivityRule
+        = new ActivityTestRule<>(MainActivity.class);
 }
 ```
 
 
-
-
-
-## 3. Write the first test
+## 5. Write the first test
 
 Excellent! We are done with all the preparations and can write our first test.
 
 ```Java
-public void testActivityExists() {
-    MainActivity activity = getActivity();
-    assertNotNull(activity);
+@Test
+public void testGreet() {
+
 }
 ```
 
-The test does two things:
+In addition, add the missing dependency to the top of the test file `import org.junit.Test;`.
 
-1. `MainActivity activity = getActivity();` gets a `MainActivity` object.
-1. `assertNotNull(activity);` verifies existence of that object.
-
-Here is the full test code:
+The test is empty for now and we will extend it later. Here is the full test code:
 
 ```Java
 package com.mycompany.greeter;
-import android.test.ActivityInstrumentationTestCase2;
+import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
-public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActivity> {
-    public MainActivityTests() {
-        super(MainActivity.class);
-    }
+@RunWith(AndroidJUnit4.class)
+public class MainActivityTests {
+    @Rule
+    public ActivityTestRule<MainActivity> mActivityRule
+            = new ActivityTestRule<>(MainActivity.class);
 
-    public void testActivityExists() {
-        MainActivity activity = getActivity();
-        assertNotNull(activity);
+    @Test
+    public void testGreet() {
+
     }
 }
 ```
-
-### What's the purpose of this test?
-
-The test verifies that we configured our app and test code correctly. In later tests we will be interacting with our `MainActivity` and I think it's good to have some confidence in its existence early in the game.
-
-
 
 
 
