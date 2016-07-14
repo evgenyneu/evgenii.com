@@ -45,7 +45,7 @@ Each control on the screen will have a unique ID. Those IDs will be used in our 
 
 ## 1. Enter a name into the EditText
 
-We will start by extending the test method `testGreet` which we created earlier. The test will enter a name into the EditText control. Add this code into the `testGreet` method of the `MainActivityTests` class.
+We will start by extending the empty test method `testGreet` which we created earlier. The test will enter a name into the EditText control. Add this code into the `testGreet` method of the `MainActivityTests` class.
 
 ```Java
 onView(withId(R.id.greetEditText))
