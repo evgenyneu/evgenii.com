@@ -176,8 +176,12 @@ public ActivityTestRule<MainActivity> mActivityRule =
 
 The code we just added may look like a bit of magic. It actually is almost magic as it automatically launches `MainActivity` during the test.
 
-You will also need to add the missing imports `import org.junit.Rule;` and `import android.support.test.rule.ActivityTestRule;`.
+You will also need to add the missing imports to the top of the **MainActivityTests** file:
 
+```Java
+import org.junit.Rule;
+import android.support.test.rule.ActivityTestRule;
+```
 
 
 The full code for `MainActivityTests` looks like this:
