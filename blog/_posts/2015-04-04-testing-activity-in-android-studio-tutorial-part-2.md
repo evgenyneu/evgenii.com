@@ -133,7 +133,7 @@ You may see these error messages:
 
 > Cannot resolve symbol 'AndroidJUnit4'.
 
-To fix this error we need to import `import org.junit.runner.RunWith` and `import android.support.test.runner.AndroidJUnit4` packages by adding the following code
+To fix this error we need to import `org.junit.runner.RunWith` and `android.support.test.runner.AndroidJUnit4` packages by adding the following code
 to the top of the test file.
 
 ```Java
@@ -259,7 +259,7 @@ If all went well you will see green light for the **testActivityExists** test in
 
 ## What's next?
 
-Very nice! We have written our first test. Next we will write a test that will enter a name in the text input, tap the "Greet" button and verify the greeting message.
+Very nice! We have written our first test. Next we will extend our test method. It will enter a name in the text input, tap the "Greet" button and verify the greeting message.
 
 [Read part 3 of this tutorial](/blog/testing-activity-in-android-studio-tutorial-part-3/)
 
