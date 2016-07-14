@@ -166,7 +166,7 @@ public class MainActivityTests {
 
 ## 4. Launching activity in tests
 
-Just a reminder, our goal here is to test our android activity. Add to following code to the `MainActivityTests` class, this will ask the test to launch `MainActivity` during the test.
+Just a reminder, our goal here is to test our android activity. This is done by adding the following code to the `MainActivityTests` class.
 
 ```Java
 @Rule
@@ -174,7 +174,11 @@ public ActivityTestRule<MainActivity> mActivityRule =
     new ActivityTestRule<>(MainActivity.class);
 ```
 
+The code we just added may look like a bit of magic. It actually is almost magic as it automatically launches `MainActivity` during the test.
+
 You will also need to add the missing imports `import org.junit.Rule;` and `import android.support.test.rule.ActivityTestRule;`.
+
+
 
 The full code for `MainActivityTests` looks like this:
 
@@ -207,7 +211,7 @@ public void testGreet() {
 }
 ```
 
-In addition, add the missing dependency to the top of the test file `import org.junit.Test;`.
+You will need to add the missing dependency to the top of the test file `import org.junit.Test;`.
 
 The test is empty for now and we will extend it later. Here is the full test code:
 
