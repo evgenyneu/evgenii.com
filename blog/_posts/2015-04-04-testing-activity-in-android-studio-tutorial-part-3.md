@@ -248,7 +248,7 @@ Run the tests and see them pass. Mathematical!
 
 
 
-## 4. Verify the greeting message
+## 3. Verify the greeting message
 
 We are almost there. When you ran the test you probably noticed how it entered the "Jake" text and tapped the "Greet" button. After the button is tapped our app is supposed to show the greeting message "Hello, Jake!". But this is not happening yet.
 
@@ -361,7 +361,7 @@ As you probably realized, the test failed because we have not implemented the ou
 
 
 
-## 5. Greeting message logic implementation
+## 4. Greeting message logic implementation
 
 There are two things left to be done. Let's remind us again what the app does. When the user taps the "Greet" button, the app shows a greeting message. We now need to write code that is executed when the user taps the "Greet" button.
 
