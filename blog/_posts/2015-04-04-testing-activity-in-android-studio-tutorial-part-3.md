@@ -45,7 +45,7 @@ Each control on the screen will have a unique ID. Those IDs will be used in our 
 
 ## 1. Enter a name into the EditText
 
-We will start by extending the test method `testGreet` we created earlier. The test will enter a name into the EditText control which does not exist yet.
+We will start by extending the test method `testGreet` which we created earlier. The test will enter a name into the EditText control. Add this code into the `testGreet` method of the `MainActivityTests` class.
 
 ```Java
 onView(withId(R.id.greetEditText))
@@ -71,7 +71,7 @@ public void testGreet() {
 }
 ```
 
-This test looks very compact but it is packed with magic:
+This test looks very compact but it is packed with action:
 
 1. First it finds a view with given ID `R.id.greetEditText` for the text input.
 2. Next it simulates a user tapping a text input and typing the text "Jake".
@@ -140,7 +140,7 @@ onView(withText("Greet")).perform(click());
 This code does two things:
 
 1. Gets a view by its text "Greet".
-1. Taps the button.
+1. Taps it.
 
 Add the new imports to the top of the test file;
 
@@ -168,7 +168,7 @@ If we run the tests now it will fail with the following error message:
 
 As you probably already figured out, the test can not find the greet button because we have not created it yet. Let's do that now.
 
-### Add Button to activity layout
+### Add a button to activity layout
 
 Switch back to **activity_main.xml** file and add the following text **after** the **EditText** element:
 
@@ -250,9 +250,9 @@ Run the tests and see them pass. Mathematical!
 
 ## 4. Verify the greeting message
 
-We are almost there. When you ran the test you probably notices how it entered the "Jake" text and tapped the "Greet" button. After the button is tapped our app is supposed to show the greeting message "Hello, Jake!". But this is not happening yet.
+We are almost there. When you ran the test you probably noticed how it entered the "Jake" text and tapped the "Greet" button. After the button is tapped our app is supposed to show the greeting message "Hello, Jake!". But this is not happening yet.
 
-We will now write the test first and then implement this logic in the app.
+We will now make it happen by first writing the test and then implementing this logic in the app code.
 
 Switch to **MainActivityTests** and add this code to the end of `testGreet` method.
 
@@ -363,7 +363,7 @@ As you probably realized, the test failed because we have not implemented the ou
 
 ## 5. Greeting message logic implementation
 
-There is just one thing left to be done. Let's remind us again what the app does. When the user taps the "Greet" button, the app shows a greeting message. We now need to write code that is executed when the user taps the "Greet" button.
+There are two things left to be done. Let's remind us again what the app does. When the user taps the "Greet" button, the app shows a greeting message. We now need to write code that is executed when the user taps the "Greet" button.
 
 * Open **activity_main.xml** file.
 * Add `android:onClick="didTapGreetButton"` attribute to the **Button** element.
@@ -426,7 +426,7 @@ You will see that **didTapGreetButton** is highlighted and reports this error me
 
 > Method 'didTapGreetButton' is missing in 'MainActivity' or has incorrect signature.
 
-Now I find this unbelievable! We have a human-readable error message that actually makes sense! Let's pause for a second to appreciate this rare convenience.
+Now I find this unbelievable! We have a human-readable error message that actually makes sense! Let's pause for a second to enjoy this rare convenience.
 
 ### Implement didTapGreetButton method
 

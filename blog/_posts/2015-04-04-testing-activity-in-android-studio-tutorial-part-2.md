@@ -43,39 +43,10 @@ Android Studio will ask to sync the project. Click the "Sync Now" button.
 
 My complete module gradle file looks like this. Your gradle will may have different library versions.
 
-```
-apply plugin: 'com.android.application'
+<div class='isFullScreenWide isTextCentered'>
+    <img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0050_add_test_dependencies_to_gradle.png' alt='Adding test dependencies to gradle file' class='isMax800PxWide hasBorderShade90'>
+</div>
 
-android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.0"
-
-    defaultConfig {
-        applicationId "com.mycompany.greeter"
-        minSdkVersion 15
-        targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
-
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.0.0'
-    androidTestCompile 'com.android.support:support-annotations:24.0.0'
-    androidTestCompile 'com.android.support.test:runner:0.5'
-    androidTestCompile 'com.android.support.test:rules:0.5'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
-}
-```
 
 
 
@@ -92,7 +63,9 @@ Next, we will add a new class to the test package.
 
 You will be asked to enter the name for the class. Call it **MainActivityTests**, plural.
 
-<img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0110_name_the_test_class.png' alt='Name the test file' class='isMax100PercentWide hasBorderShade90'>
+<div class='isTextCentered'>
+    <img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0110_name_the_test_class.png' alt='Name the test file' class='isMax400PxWide hasBorderShade90'>
+</div>
 
 Android Studio will create a new class that will look like this:
 
@@ -133,7 +106,7 @@ You may see these error messages:
 
 > Cannot resolve symbol 'AndroidJUnit4'.
 
-To fix this error we need to import `org.junit.runner.RunWith` and `android.support.test.runner.AndroidJUnit4` packages by adding the following code
+To fix this error we need to import missing packages by adding the following code
 to the top of the test file.
 
 ```Java
@@ -141,7 +114,7 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.runner.RunWith;
 ```
 
-I use a shortcut for importing missing packages in Android Studio.
+Another way of adding missing packages is by using a shortcut.
 
 * Put your cursor to the `RunWith` text in your code.
 * Press **Alt + Enter** on Windows or **Option + Enter** on Mac.
@@ -206,7 +179,7 @@ public class MainActivityTests {
 
 ## 5. Write the first test
 
-Excellent! We are done with all the preparations and can write our first test.
+Excellent! We are done with all the preparations and can write our first test. Add this method to your `MainActivityTests` class.
 
 ```Java
 @Test
@@ -253,7 +226,7 @@ Finally, let's run our first test.
 
 ## 5. Check test results
 
-If all went well you will see green light for the **testActivityExists** test in the Run window.You can open this window from **View > Tool Windows > Run** menu or by clicking on **Run** button in the bottom left corner.
+If all went well you will see green light for the tests in the Run window. You can open this window from **View > Tool Windows > Run** menu or by clicking on **Run** button in the bottom left corner.
 
 <img src='/image/blog/2015-04-04-testing-activity-in-android-studio-tutorial-part-2/0500_check_test_results.png' alt='Check results of the first test' class='isMax100PercentWide hasBorderShade90'>
 
