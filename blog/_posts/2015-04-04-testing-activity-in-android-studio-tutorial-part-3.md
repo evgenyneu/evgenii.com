@@ -33,7 +33,7 @@ Just to remind us again, our app will have three components:
 1. A "Greet" **Button**.
 1. And a **TextView** that will show the greeting message.
 
-Each control on the screen will have a unique ID. Those IDs will be used in our tests to interact with them. The IDs are: `greetEditText`, `greetButton` and `messageTextView`.
+Each control on the screen will have a unique ID. Those IDs will be used in our tests to interact with the views. The IDs are: `greetEditText`, `greetButton` and `messageTextView`.
 
 <img src='/image/blog/2015-04-05-testing-activity-in-android-studio-tutorial-part-3/0000_greeter_app_components_with_ids.png' alt='Components of the Greeter app with IDs' class='isMax100PercentWide hasBorderShade90'>
 
