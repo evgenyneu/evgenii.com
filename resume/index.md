@@ -16,7 +16,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 ## Objective
 
-Looking for part-time/freelance work as an iOS or Android programmer.
+I am looking for part-time/freelance work as an iOS or Android programmer. I can work for 10 hours a week and particularly interested in projects connected with science and education.
 
 
 
