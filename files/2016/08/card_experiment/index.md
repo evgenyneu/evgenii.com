@@ -5,7 +5,17 @@ comments: false
 title: "The complete code for the harmonic oscillator."
 ---
 
-# Magic card experiment
+# Magic card trick
+
+A magician performs the following card trick. She asks a volunteer to secretly select a number between 1 and 10 and deal out that many cards from a well- shuffled deck of 52 standard playing cards. The last card dealt determines a new number of cards to be dealt form those remaining: if it is an ace, the new number is 1; if it is a Jack, Queen or King, the new number is 5; otherwise the new number is the face value of the card. The process is repeated until there are not enough cards left in the deck to deal. The magician then identifies the last dealt card.
+
+The trick is that the magician repeats the process with the same deck that was given to the volunteer starting with the number 1. This will usually (but not always) result in selecting the correct final card, no matter what number the volunteer originally selected.
+
+---
+
+## Cart experiment
+
+The following program runs the magic trick multiple times and computes its *success rate*. By *success* here we mean an event when magician selects the same card as did the volunteer. By using the large number of experiments we can estimate the probability of the success for this trick.
 
 <p>Number of experiments<br>
     <input class="CardsExperiment-input" type="number" name="springConstant" min="1" max="100000" step="1" pattern="\d*">
@@ -16,7 +26,7 @@ title: "The complete code for the harmonic oscillator."
 </p>
 
 <p>
-  <span>Success rate:</span> <span class="CardsExperiment-successRate">Unknown</span>
+  <span>Success rate:</span> <span class="CardsExperiment-successRate">unknown</span>
 </p>
 
 <script>
@@ -84,13 +94,6 @@ title: "The complete code for the harmonic oscillator."
   }
 
   /**
-   * Returns a random number between min (inclusive) and max (exclusive)
-   */
-  function getRandomArbitrary(min, max) {
-      return Math.random() * (max - min) + min;
-  }
-
-  /**
    * Returns a random integer between min (inclusive) and max (inclusive)
    * Using Math.round() will give you a non-uniform distribution!
    */
@@ -110,7 +113,7 @@ title: "The complete code for the harmonic oscillator."
 
   /**
    * Removes "number" from the start of the deck.
-   * Return the last card dealt or null if the deck does not have enough
+   * Returns the last card dealt or null if the deck does not have enough
    * cards to deal.
    */
   function dealCardsFromDeck(deck, number) {
@@ -131,18 +134,35 @@ title: "The complete code for the harmonic oscillator."
     switch(rank) {
       case "A":
         return 1;
-        break;
       case "J":
       case "K":
       case "Q":
         return 5;
-        break;
       default:
         if (card.length == 3) { return 10; } // This is card "10"
         return parseInt(rank, 10);
     }
   }
 
+  /**
+   * Deals the cards from the deck until there are not enough cards to deal.
+   *
+   * Starts by dealing `startNumber` of cards from the deck.
+   * The last card dealt determines a new number of cards to be dealt form those remaining:
+   *   if it is an ace, the new number is 1;
+   *   if it is a Jack, Queen or King, the new number is 5;
+   *   otherwise the new number is the face value of the card.
+   *
+   * Returns the last dealt card.
+   */
+  function dealCards(deck, startNumber) {
+    var lastCard = dealCardsFromDeck(deck, startNumber);
+    return lastCard;
+  }
+
+  /**
+   * Shuffles the deck and runs the experiment.
+   */
   function runExperiment() {
     var shuffledDeck = originalDeck.slice();
 
@@ -152,15 +172,15 @@ title: "The complete code for the harmonic oscillator."
     // Volunteer picks a random number between 1 and 10
     var randomNumber = getRandomInt(1,10);
 
-    var lastCard = dealCardsFromDeck(shuffledDeck, randomNumber);
+    var lastCard = dealCards(shuffledDeck, randomNumber);
 
     var len = shuffledDeck.length;
     updateSuccessRate("random: " + randomNumber + " " + len + " " + lastCard + " " + cardValue(lastCard));
   }
 
-  button.onclick = runExperiment;
 
-  document.write("hello");
+
+  button.onclick = runExperiment;
 })();
 
 </script>
