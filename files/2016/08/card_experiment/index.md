@@ -2,7 +2,7 @@
 layout: default
 noindex: true
 comments: false
-title: "The complete code for the harmonic oscillator."
+title: "The magic card trick"
 ---
 
 # Magic card trick
@@ -14,20 +14,22 @@ The trick is that the magician repeats the process with the same deck that was g
 
 ## Cart experiment
 
-The following program runs the magic trick multiple times and computes its *success rate*. By *success* here we mean an event when magician selects the same card as did the volunteer. By using the large number of experiments we can estimate the probability of the success for this trick.
+The following program runs the magic trick multiple times and computes its *success rate*. By *success* here we mean an event when magician selects the same card as did the volunteer. By using the large number of experiments we can estimate the probability of the success for this trick. View the [source code](/files/2016/08/card_experiment/the_complete_code/).
 
-<p>
-  <button class="CardsExperiment-runButton">Repeat the experiment</button> <input class="CardsExperiment-numberOfTrials" type="number" min="1" max="100000" step="1" pattern="\d*" value="10000"> times
+<br>
+
+<p class='isTextCentered'>
+  <button class="CardsExperiment-runButton Button">Repeat the experiment</button> <input class="CardsExperiment-numberOfTrials isTextCentered Input Input--isMedium" type="number" min="1" max="100000" step="1" pattern="\d*" value="10000"> times
 </p>
 
-<p>
+<h3 class="isTextCentered">
   <span>Success rate:</span> <span class="CardsExperiment-successRate">unknown</span>
-</p>
+</h3>
 
 <script>
 
 (function(){
-  // The deck of cards. The cirst character is the rank and the second is the suit.
+  // The deck of cards. The first character is the rank and the second is the suit.
   var originalDeck = [
     "AH",
     "2H",
@@ -84,6 +86,9 @@ The following program runs the magic trick multiple times and computes its *succ
 
   var button = document.querySelector(".CardsExperiment-runButton");
 
+  /**
+   * Updates the success rate message.
+   */
   function updateSuccessRate(text) {
     var successRate = document.querySelector(".CardsExperiment-successRate");
     successRate.innerHTML=text;
@@ -112,6 +117,9 @@ The following program runs the magic trick multiple times and computes its *succ
       return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  /**
+   * Sorts the array with random order.
+   */
   function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
@@ -217,7 +225,7 @@ The following program runs the magic trick multiple times and computes its *succ
   function runExperiment() {
     var shuffledDeck = originalDeck.slice();
 
-    // Vounteer shuffles the deck
+    // Volunteer shuffles the deck
     var shuffledDeckVolunteer = shuffleArray(shuffledDeck);
 
     // Make a copy of volunteer's deck, it will be used later by the magician
@@ -234,7 +242,6 @@ The following program runs the magic trick multiple times and computes its *succ
 
     return lastCardVolunteer === lastCardMagician;
   }
-
 
 
   button.onclick = repeatTheExperiment;
