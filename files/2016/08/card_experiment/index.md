@@ -12,7 +12,7 @@ A magician performs the following card trick. She asks a volunteer to secretly s
 The trick is that the magician repeats the process with the same deck that was given to the volunteer but starts by dealing the first card. This will usually (but not always) result in selecting the correct final card, no matter what number the volunteer originally selected.
 
 
-## Cart experiment
+## Card experiment
 
 The following program runs the magic trick multiple times and computes its *success rate*. By *success* here we mean an event when magician selects the same card as did the volunteer. By using the large number of experiments we can estimate the probability of the success for this trick. View the [source code](/files/2016/08/card_experiment/the_complete_code/).
 
@@ -178,12 +178,12 @@ The following program runs the magic trick multiple times and computes its *succ
     var lastCardDealt;
 
     do {
-      var currentLastCart = dealCardsFromDeck(deck, number);
+      var currentLastCard = dealCardsFromDeck(deck, number);
 
-      if (currentLastCart === null) {
+      if (currentLastCard === null) {
         return lastCardDealt;
       } else {
-        lastCardDealt = currentLastCart;
+        lastCardDealt = currentLastCard;
         number = cardValue(lastCardDealt);
       }
     }

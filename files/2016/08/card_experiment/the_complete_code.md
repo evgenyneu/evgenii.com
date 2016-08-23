@@ -171,12 +171,12 @@ This is the complete source code for the [magic card trick](/files/2016/08/card_
     var lastCardDealt;
 
     do {
-      var currentLastCart = dealCardsFromDeck(deck, number);
+      var currentLastCard = dealCardsFromDeck(deck, number);
 
-      if (currentLastCart === null) {
+      if (currentLastCard === null) {
         return lastCardDealt;
       } else {
-        lastCardDealt = currentLastCart;
+        lastCardDealt = currentLastCard;
         number = cardValue(lastCardDealt);
       }
     }
