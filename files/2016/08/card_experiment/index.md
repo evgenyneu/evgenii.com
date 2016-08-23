@@ -18,7 +18,7 @@ The trick is that the magician repeats the process with the same deck that was g
 The following program runs the magic trick multiple times and computes its *success rate*. By *success* here we mean an event when magician selects the same card as did the volunteer. By using the large number of experiments we can estimate the probability of the success for this trick.
 
 <p>
-  <button class="CardsExperiment-runButton">Repeat the experiment</button> <input class="CardsExperiment-input" type="number" name="springConstant" min="1" max="100000" step="1" pattern="\d*"> times
+  <button class="CardsExperiment-runButton">Repeat the experiment</button> <input class="CardsExperiment-numberOfTrials" type="number" min="1" max="100000" step="1" pattern="\d*" value="10000"> times
 </p>
 
 <p>
@@ -28,6 +28,7 @@ The following program runs the magic trick multiple times and computes its *succ
 <script>
 
 (function(){
+  // The deck of cards. The cirst character is the rank and the second is the suit.
   var originalDeck = [
     "AH",
     "2H",
@@ -87,6 +88,21 @@ The following program runs the magic trick multiple times and computes its *succ
   function updateSuccessRate(text) {
     var successRate = document.querySelector(".CardsExperiment-successRate");
     successRate.innerHTML=text;
+  }
+
+  /**
+   * Returns the number of trials the user has selected. The default number is 1000.
+   */
+  function numberOfTrialsSelected() {
+    var input = document.querySelector(".CardsExperiment-numberOfTrials");
+    var value = parseInt(input.value, 10);
+
+    if (isNaN(value)) {
+      input.value = 1000;
+      return 1000;
+    }
+
+    return value;
   }
 
   /**
@@ -167,32 +183,39 @@ The following program runs the magic trick multiple times and computes its *succ
     while (true);
   }
 
+  var successes = 0;// The number of successful experiments;
+
+  /**
+   * Shows the proportion of successful trials to the user.
+   */
+  function showSuccessRate(numberOfTrials) {
+    var proportion = successes / numberOfTrials;
+
+    proportion = parseFloat(Math.round(proportion * 100000) / 100000).toFixed(5);
+    updateSuccessRate(proportion);
+  }
+
   /**
    * Shuffles the deck and runs the experiment many times.
    */
   function repeatTheExperiment() {
-    var shuffledDeck = originalDeck.slice();
+    successes = 0;
+    var numberOfTrials = numberOfTrialsSelected();
 
-    // Vounteer shuffles the deck
-    var shuffledDeckVolunteer = shuffleArray(shuffledDeck);
+    for (var i = 0; i < numberOfTrials; i++) {
+      if (runExperiment()) {
+        successes += 1;
+      }
+    }
 
-    // Make a copy of volunteer's deck, it will be used later by the magician
-    var shuffledDeckMagician = shuffledDeckVolunteer.slice();
-
-    // Volunteer picks a random number between 1 and 10
-    var randomNumber = getRandomInt(1,10);
-
-    // Volunteer deals the cards
-    var lastCardVolunteer = dealCards(shuffledDeckVolunteer, randomNumber);
-
-    // Magician deals the cards starting with 1
-    var lastCardMagician = dealCards(shuffledDeckMagician, 1);
-
-    var len = shuffledDeckVolunteer.length;
-    updateSuccessRate("volunteer: " + lastCardVolunteer + " magician: " + lastCardMagician);
+    showSuccessRate(numberOfTrials);
   }
 
-  function runExperimentManyTimes() {
+  /**
+   * Shuffles the deck and runs the experiment.
+   * Returns true if the experiment was successful (when magician and volunteer select the same card)
+   */
+  function runExperiment() {
     var shuffledDeck = originalDeck.slice();
 
     // Vounteer shuffles the deck
@@ -210,8 +233,7 @@ The following program runs the magic trick multiple times and computes its *succ
     // Magician deals the cards starting with 1
     var lastCardMagician = dealCards(shuffledDeckMagician, 1);
 
-    var len = shuffledDeckVolunteer.length;
-    updateSuccessRate("volunteer: " + lastCardVolunteer + " magician: " + lastCardMagician);
+    return lastCardVolunteer === lastCardMagician;
   }
 
 
