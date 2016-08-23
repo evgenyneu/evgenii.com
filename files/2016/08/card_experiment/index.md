@@ -147,7 +147,7 @@ The following program runs the magic trick multiple times and computes its *succ
   /**
    * Deals the cards from the deck until there are not enough cards to deal.
    *
-   * Starts by dealing `startNumber` of cards from the deck.
+   * Starts by dealing `number` of cards from the deck.
    * The last card dealt determines a new number of cards to be dealt form those remaining:
    *   if it is an ace, the new number is 1;
    *   if it is a Jack, Queen or King, the new number is 5;
@@ -155,9 +155,20 @@ The following program runs the magic trick multiple times and computes its *succ
    *
    * Returns the last dealt card.
    */
-  function dealCards(deck, startNumber) {
-    var lastCard = dealCardsFromDeck(deck, startNumber);
-    return lastCard;
+  function dealCards(deck, number) {
+    var lastCardDealt;
+
+    do {
+      var currentLastCart = dealCardsFromDeck(deck, number);
+
+      if (currentLastCart === null) {
+        return lastCardDealt;
+      } else {
+        lastCardDealt = currentLastCart;
+        number = cardValue(lastCardDealt);
+      }
+    }
+    while (true);
   }
 
   /**
@@ -166,16 +177,23 @@ The following program runs the magic trick multiple times and computes its *succ
   function runExperiment() {
     var shuffledDeck = originalDeck.slice();
 
-    // Shuffle the deck
-    shuffledDeck = shuffleArray(shuffledDeck);
+    // Vounteer shuffles the deck
+    var shuffledDeckVolunteer = shuffleArray(shuffledDeck);
+
+    // Make a copy of volunteer's deck, it will be used later by the magician
+    var shuffledDeckMagician = shuffledDeckVolunteer.slice();
 
     // Volunteer picks a random number between 1 and 10
     var randomNumber = getRandomInt(1,10);
 
-    var lastCard = dealCards(shuffledDeck, randomNumber);
+    // Volunteer deals the cards
+    var lastCardVolunteer = dealCards(shuffledDeckVolunteer, randomNumber);
 
-    var len = shuffledDeck.length;
-    updateSuccessRate("random: " + randomNumber + " " + len + " " + lastCard + " " + cardValue(lastCard));
+    // Magician deals the cards starting with 1
+    var lastCardMagician = dealCards(shuffledDeckMagician, 1);
+
+    var len = shuffledDeckVolunteer.length;
+    updateSuccessRate("volunteer: " + lastCardVolunteer + " magician: " + lastCardMagician);
   }
 
 
