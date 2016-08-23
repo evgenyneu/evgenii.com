@@ -6,9 +6,9 @@ title: "The complete code for magic card trick."
 ---
 
 
-# The source code for the magic card trick
+# Magic card trick experiment source code
 
-This is the complete source code for the [magic card trick](/files/2016/08/card_experiment/).
+This is the complete source code for the [magic card trick](/files/2016/08/card_experiment/) experiment.
 
 ```Html
 <p class='isTextCentered'>
