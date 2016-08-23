@@ -2,8 +2,9 @@
 
 User-agent: *
 
-# Disallow demo HTML files
+# Disallow HTML files
 Disallow: /files/2016/04/harmonic_oscillator/
+Disallow: /files/2016/08/card_experiment/
 
 Sitemap: http://evgenii.com/sitemap.xml
 
