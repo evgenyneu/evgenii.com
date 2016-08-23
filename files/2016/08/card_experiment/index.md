@@ -19,12 +19,15 @@ The following program repeats the magic trick multiple times and computes its *s
 <br>
 
 <p class='isTextCentered'>
-  <button class="CardsExperiment-runButton Button">Repeat the experiment</button> <input class="CardsExperiment-numberOfTrials isTextCentered Input Input--isMedium" type="number" min="1" max="100000" step="1" pattern="\d*" value="10000"> times
+  <button class="CardsExperiment-runButton Button">Repeat the experiment</button>
+  <br>
+  <br>
+  <input class="CardsExperiment-numberOfTrials isTextCentered Input Input--isMedium" type="number" min="1" max="100000" step="1" pattern="\d*" value="10000"> times
 </p>
 
-<h3 class="isTextCentered">
+<h4 class="isTextCentered">
   <span>Success rate:</span> <span class="CardsExperiment-successRate">unknown</span>
-</h3>
+</h4>
 
 <script>
 

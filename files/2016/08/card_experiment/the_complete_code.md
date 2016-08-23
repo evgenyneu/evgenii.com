@@ -12,7 +12,10 @@ This is the complete source code for the [magic card trick](/files/2016/08/card_
 
 ```Html
 <p class='isTextCentered'>
-  <button class="CardsExperiment-runButton Button">Repeat the experiment</button> <input class="CardsExperiment-numberOfTrials isTextCentered Input Input--isMedium" type="number" min="1" max="100000" step="1" pattern="\d*" value="10000"> times
+  <button class="CardsExperiment-runButton Button">Repeat the experiment</button>
+  <br>
+  <br>
+  <input class="CardsExperiment-numberOfTrials isTextCentered Input Input--isMedium" type="number" min="1" max="100000" step="1" pattern="\d*" value="10000"> times
 </p>
 
 <h3 class="isTextCentered">
