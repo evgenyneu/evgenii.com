@@ -6,7 +6,7 @@ title: "The complete code for magic card trick."
 ---
 
 
-# The source code for the maric card trick
+# The source code for the magic card trick
 
 This is the complete source code for the [magic card trick](/files/2016/08/card_experiment/).
 
