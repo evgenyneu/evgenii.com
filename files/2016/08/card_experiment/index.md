@@ -14,7 +14,7 @@ The trick is that the magician repeats the process with the same deck that was g
 
 ## Card experiment
 
-The following program repeats the magic trick multiple times and computes its *success rate*. By *success* here we mean an event when magician selects the same card as did the volunteer. By repeating the experiment very large number of times we can estimate the probability of the success for this trick. View the [source code](/files/2016/08/card_experiment/the_complete_code/).
+The following program repeats the magic trick multiple times and computes its *success rate*. By *success* here we mean an event when magician selects the same card as did the volunteer. By repeating the experiment a very large number of times we can estimate the probability of the success for this trick. View the [source code](/files/2016/08/card_experiment/the_complete_code/).
 
 <br>
 
