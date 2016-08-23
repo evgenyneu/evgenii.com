@@ -17,12 +17,8 @@ The trick is that the magician repeats the process with the same deck that was g
 
 The following program runs the magic trick multiple times and computes its *success rate*. By *success* here we mean an event when magician selects the same card as did the volunteer. By using the large number of experiments we can estimate the probability of the success for this trick.
 
-<p>Number of experiments<br>
-    <input class="CardsExperiment-input" type="number" name="springConstant" min="1" max="100000" step="1" pattern="\d*">
-</p>
-
 <p>
-  <button class="CardsExperiment-runButton">Run experiments</button>
+  <button class="CardsExperiment-runButton">Repeat the experiment</button> <input class="CardsExperiment-input" type="number" name="springConstant" min="1" max="100000" step="1" pattern="\d*"> times
 </p>
 
 <p>
@@ -172,9 +168,31 @@ The following program runs the magic trick multiple times and computes its *succ
   }
 
   /**
-   * Shuffles the deck and runs the experiment.
+   * Shuffles the deck and runs the experiment many times.
    */
-  function runExperiment() {
+  function repeatTheExperiment() {
+    var shuffledDeck = originalDeck.slice();
+
+    // Vounteer shuffles the deck
+    var shuffledDeckVolunteer = shuffleArray(shuffledDeck);
+
+    // Make a copy of volunteer's deck, it will be used later by the magician
+    var shuffledDeckMagician = shuffledDeckVolunteer.slice();
+
+    // Volunteer picks a random number between 1 and 10
+    var randomNumber = getRandomInt(1,10);
+
+    // Volunteer deals the cards
+    var lastCardVolunteer = dealCards(shuffledDeckVolunteer, randomNumber);
+
+    // Magician deals the cards starting with 1
+    var lastCardMagician = dealCards(shuffledDeckMagician, 1);
+
+    var len = shuffledDeckVolunteer.length;
+    updateSuccessRate("volunteer: " + lastCardVolunteer + " magician: " + lastCardMagician);
+  }
+
+  function runExperimentManyTimes() {
     var shuffledDeck = originalDeck.slice();
 
     // Vounteer shuffles the deck
@@ -198,7 +216,7 @@ The following program runs the magic trick multiple times and computes its *succ
 
 
 
-  button.onclick = runExperiment;
+  button.onclick = repeatTheExperiment;
 })();
 
 </script>
