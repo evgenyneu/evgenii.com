@@ -9,9 +9,8 @@ title: "The complete code for the harmonic oscillator."
 
 A magician performs the following card trick. She asks a volunteer to secretly select a number between 1 and 10 and deal out that many cards from a well- shuffled deck of 52 standard playing cards. The last card dealt determines a new number of cards to be dealt form those remaining: if it is an ace, the new number is 1; if it is a Jack, Queen or King, the new number is 5; otherwise the new number is the face value of the card. The process is repeated until there are not enough cards left in the deck to deal. The magician then identifies the last dealt card.
 
-The trick is that the magician repeats the process with the same deck that was given to the volunteer starting with the number 1. This will usually (but not always) result in selecting the correct final card, no matter what number the volunteer originally selected.
+The trick is that the magician repeats the process with the same deck that was given to the volunteer but starts by dealing the first card. This will usually (but not always) result in selecting the correct final card, no matter what number the volunteer originally selected.
 
----
 
 ## Cart experiment
 
@@ -225,7 +224,7 @@ The following program runs the magic trick multiple times and computes its *succ
     var shuffledDeckMagician = shuffledDeckVolunteer.slice();
 
     // Volunteer picks a random number between 1 and 10
-    var randomNumber = getRandomInt(1,10);
+    var randomNumber = getRandomInt(1, 10);
 
     // Volunteer deals the cards
     var lastCardVolunteer = dealCards(shuffledDeckVolunteer, randomNumber);
