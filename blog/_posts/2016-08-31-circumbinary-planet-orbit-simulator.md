@@ -43,29 +43,45 @@ tags: programming science
 
 
     var initialConditions = {
-      distance:    70.0,
-      angle:       Math.PI / 6
+      distance: {
+        value: 70.0,
+        speed: 0
+      },
+      angle: {
+        value: Math.PI / 6,
+        speed: 0
+      }
     };
 
     // Current state of the system
     var state = {
-      distance: 0,
-      angle: 0
+      distance: {
+        value: 0,
+        speed: 0
+      },
+      angle: {
+        value: 0,
+        speed: 0
+      }
     };
 
     var deltaT = 0.016; // The length of the time increment, in seconds.
 
     function resetStateToInitialConditions() {
-      state.distance = initialConditions.distance;
-      state.angle = initialConditions.angle;
+      state.distance.value = initialConditions.distance.value;
+      state.distance.speed = initialConditions.distance.speed;
+
+      state.angle.value = initialConditions.angle.value;
+      state.angle.speed = initialConditions.angle.speed;
     }
 
     // The main function that is called on every animation frame.
     // It calculates and updates the current positions of the bodies
     function updatePosition() {
-      state.angle -= Math.PI / 30;
-      if (state.angle > 2 * Math.PI) {
-        state.angle = state.angle % (2 * Math.PI);
+      state.angle.value -= Math.PI / 30;
+
+      if (state.angle.value > 2 * Math.PI) {
+        state.angle.value = state.angle.value % (2 * Math.PI);
       }
     }
 
@@ -167,7 +183,7 @@ tags: programming science
     // The method is called 60 times per second
     function animate() {
       physics.updatePosition();
-      graphics.drawScene(physics.state.distance, physics.state.angle);
+      graphics.drawScene(physics.state.distance.value, physics.state.angle.value);
       window.requestAnimationFrame(animate);
     }
 
@@ -179,7 +195,7 @@ tags: programming science
         // Redraw the scene if page is resized
         window.addEventListener('resize', function(event){
           graphics.fitToContainer();
-          graphics.drawScene(physics.state.distance, physics.state.angle);
+          graphics.drawScene(physics.state.distance.value, physics.state.angle.value);
         });
 
         animate();
