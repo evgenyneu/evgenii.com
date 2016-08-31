@@ -41,7 +41,7 @@ tags: programming science
 
       context.beginPath();
       context.arc(middleX, middleY, 50, 0, 2 * Math.PI);
-      context.stroke();
+      context.fill();
     }
 
     // Clears everything and draws the whole scene: the line, spring and the box.
