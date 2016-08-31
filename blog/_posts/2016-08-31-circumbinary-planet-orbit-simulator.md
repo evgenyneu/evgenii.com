@@ -29,25 +29,83 @@ tags: programming science
 <script>
 
 (function(){
+  var physics = (function() {
+    var initialConditions = {
+      distance:    70.0,
+      angle:       Math.PI / 6
+    };
+
+    // Current state of the system
+    var state = {
+      distance: 0,
+      angle: 0
+    };
+
+    var deltaT = 0.016; // The length of the time increment, in seconds.
+
+    function resetStateToInitialConditions() {
+      state.distance = initialConditions.distance;
+      state.angle = initialConditions.angle;
+    }
+
+    // The main function that is called on every animation frame.
+    // It calculates and updates the current positions of the bodies
+    function updatePosition() {
+      state.angle -= Math.PI / 30;
+      if (state.angle > 2 * Math.PI) {
+        state.angle = state.angle % (2 * Math.PI);
+      }
+    }
+
+    return {
+      resetStateToInitialConditions: resetStateToInitialConditions,
+      updatePosition: updatePosition,
+      initialConditions: initialConditions,
+      state: state,
+    };
+  })();
+
   // Draw the scene
   var graphics = (function() {
     var canvas = null, // Canvas DOM element.
       context = null, // Canvas context for drawing.
-      canvasHeight = 200;
+      canvasHeight = 200,
+      bodySizes = {
+        star1: 15,
+        star2: 5
+      },
+      colors = {
+        star1: "#FF120D",
+        star2: "#2289FF"
+      };
 
-    function drawStar() {
+    function drawStarOne() {
       var middleX = Math.floor(canvas.width / 2);
       var middleY = Math.floor(canvas.height / 2);
 
       context.beginPath();
-      context.arc(middleX, middleY, 50, 0, 2 * Math.PI);
+      context.fillStyle = colors.star1;
+      context.arc(middleX, middleY, bodySizes.star1, 0, 2 * Math.PI);
+      context.fill();
+    }
+
+    function drawStarTwo(distance, angle) {
+      var middleX = Math.floor(canvas.width / 2);
+      var middleY = Math.floor(canvas.height / 2);
+      var centerX = Math.cos(angle) * distance + middleX;
+      var centerY = Math.sin(angle) * distance + middleY;
+
+      context.beginPath();
+      context.fillStyle = colors.star2;
+      context.arc(centerX, centerY, bodySizes.star2, 0, 2 * Math.PI);
       context.fill();
     }
 
     // Clears everything and draws the whole scene: the line, spring and the box.
-    function drawScene() {
+    function drawScene(distance, angle) {
       context.clearRect(0, 0, canvas.width, canvas.height);
-      drawStar();
+      drawStarOne();
+      drawStarTwo(distance, angle);
     }
 
     function hideCanvasNotSupportedMessage() {
@@ -94,15 +152,25 @@ tags: programming science
 
   // Start the simulation
   var simulation = (function() {
+    // The method is called 60 times per second
+    function animate() {
+      physics.updatePosition();
+      graphics.drawScene(physics.state.distance, physics.state.angle);
+      window.requestAnimationFrame(animate);
+    }
+
     function start() {
       graphics.init(function() {
+        // Use the initial conditions for the simulation
+        physics.resetStateToInitialConditions();
+
         // Redraw the scene if page is resized
         window.addEventListener('resize', function(event){
           graphics.fitToContainer();
-          graphics.drawScene();
+          graphics.drawScene(physics.state.distance, physics.state.angle);
         });
 
-        graphics.drawScene();
+        animate();
       });
     }
 
