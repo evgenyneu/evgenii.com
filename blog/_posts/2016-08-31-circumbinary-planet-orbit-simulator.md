@@ -30,6 +30,18 @@ tags: programming science
 
 (function(){
   var physics = (function() {
+    var distanceCalculator = (function() {
+      function calculateAcceleration(state) {
+        // [acceleration of distance] = [distance][speed of angle]^2 - GMm / [distance]^2
+        return 2;
+      }
+
+      return {
+        calculateAcceleration: calculateAcceleration,
+      };
+    })();
+
+
     var initialConditions = {
       distance:    70.0,
       angle:       Math.PI / 6
