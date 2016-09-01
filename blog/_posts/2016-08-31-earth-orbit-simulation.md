@@ -1,14 +1,14 @@
 ---
 layout: blog_post
 comments: false
-title: "A simulation of an orbit of a circumbinary planet"
-meta_description: "This is aAsimulation of a planet orbiting two stars. It allows to set masses and distances."
+title: "A simulation of the Earth orbiting the Sun"
+meta_description: "This is a simulation of the Earth orbiting the Sun."
 tags: programming science
 ---
 
 <!-- Styles for Harmonic Oscillator -->
 <style>
-  .CircumbinaryPlanetSimulator-alert {
+  .EarthOrbitSimulation-alert {
     color: red;
     border: 1px solid red;
     background: #ffeeee;
@@ -17,11 +17,11 @@ tags: programming science
 </style>
 
 <!-- Message shown in old browsers. -->
-<p id="CircumbinaryPlanetSimulator-notSupportedMessage" class="CircumbinaryPlanetSimulator-alert">Please use a newer browser to see the simulation.</p>
+<p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
 
-<canvas class="CircumbinaryPlanetSimulator-canvas"></canvas>
+<canvas class="EarthOrbitSimulation-canvas"></canvas>
 
-<p class='CircumbinaryPlanetSimulator-debugOutput'></p>
+<p class='EarthOrbitSimulation-debugOutput'></p>
 
 
 <div class='isTextCentered'>
@@ -32,7 +32,7 @@ tags: programming science
 
 (function(){
   var debug = (function(){
-    var debugOutput = document.querySelector(".CircumbinaryPlanetSimulator-debugOutput");
+    var debugOutput = document.querySelector(".EarthOrbitSimulation-debugOutput");
 
     function print(text) {
       debugOutput.innerHTML = text;
@@ -211,7 +211,7 @@ tags: programming science
     }
 
     function hideCanvasNotSupportedMessage() {
-      document.getElementById("CircumbinaryPlanetSimulator-notSupportedMessage").style.display ='none';
+      document.getElementById("EarthOrbitSimulation-notSupportedMessage").style.display ='none';
     }
 
     // Resize canvas to will the width of container
@@ -225,7 +225,7 @@ tags: programming science
     // Create canvas for drawing and call success argument
     function init(success) {
       // Find the canvas HTML element
-      canvas = document.querySelector(".CircumbinaryPlanetSimulator-canvas");
+      canvas = document.querySelector(".EarthOrbitSimulation-canvas");
 
       // Check if the browser supports canvas drawing
       if (!(window.requestAnimationFrame && canvas && canvas.getContext)) { return; }
