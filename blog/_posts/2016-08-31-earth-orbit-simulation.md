@@ -48,7 +48,7 @@ tags: programming science
       function calculateAcceleration(state) {
         // [acceleration of distance] = [distance][angular velocity]^2 - G * M / [distance]^2
         return state.distance.value * Math.pow(state.angle.speed, 2) -
-          (constants.gravitationalConstant * state.star1.mass)
+          (constants.gravitationalConstant * constants.massOfTheSunKg)
             / Math.pow(state.distance.value, 2);
       }
 
@@ -92,9 +92,6 @@ tags: programming science
       angle: {
         value: Math.PI / 6,
         speed: constants.earthAngularVelocityMetersPerSecond
-      },
-      star1: {
-        mass: constants.massOfTheSunKg
       }
     };
 
@@ -107,12 +104,6 @@ tags: programming science
       angle: {
         value: 0,
         speed: 0
-      },
-      star1: {
-        mass: 0
-      },
-      star2: {
-        mass: 0
       }
     };
 
@@ -126,8 +117,6 @@ tags: programming science
 
       state.angle.value = initialConditions.angle.value;
       state.angle.speed = initialConditions.angle.speed;
-
-      state.star1.mass = initialConditions.star1.mass;
     }
 
     // The distance that is used for drawing on screen
