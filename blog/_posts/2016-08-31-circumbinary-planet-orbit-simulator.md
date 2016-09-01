@@ -48,7 +48,7 @@ tags: programming science
       function calculateAcceleration(state) {
         // [acceleration of distance] = [distance][angular velocity]^2 - G * M / [distance]^2
         return state.distance.value * Math.pow(state.angle.speed, 2) -
-          (gravitationalConstant * state.star1.mass)
+          (constants.gravitationalConstant * state.star1.mass)
             / Math.pow(state.distance.value, 2);
       }
 
@@ -68,19 +68,33 @@ tags: programming science
       };
     })();
 
-    var gravitationalConstant = 6.67408 * Math.pow(10, -11);
+    var constants = {
+      gravitationalConstant: 6.67408 * Math.pow(10, -11),
+      earthSunDistanceMeters: 1.496 * Math.pow(10, 11),
+      earthAngularVelocityMetersPerSecond: 1.990986 *  Math.pow(10, -7),
+      massOfTheSunKg: 1.98855 * Math.pow(10, 30)
+    }
+
+    // The length of one AU (Earth-Sun distance) in pixels.
+    var pixelsInOneEarthSunDistancePerPixel = 50;
+
+    // A factor by which we scale the distance between the Sun and the Earth
+    // in order to show it on screen
+    var scaleFactor = constants.earthSunDistanceMeters / pixelsInOneEarthSunDistancePerPixel;
+
+    var deltaT = 3600 * 24; // The length of the time increment, in seconds.
 
     var initialConditions = {
       distance: {
-        value: 40.0,
+        value: constants.earthSunDistanceMeters,
         speed: 0.00
       },
       angle: {
         value: Math.PI / 6,
-        speed: 1
+        speed: constants.earthAngularVelocityMetersPerSecond
       },
       star1: {
-        mass: 9 * Math.pow(10, 14)
+        mass: constants.massOfTheSunKg
       }
     };
 
@@ -102,8 +116,6 @@ tags: programming science
       }
     };
 
-    var deltaT = 0.016; // The length of the time increment, in seconds.
-
     function newValue(currentValue, deltaT, derivative) {
       return currentValue + deltaT * derivative;
     }
@@ -116,6 +128,11 @@ tags: programming science
       state.angle.speed = initialConditions.angle.speed;
 
       state.star1.mass = initialConditions.star1.mass;
+    }
+
+    // The distance that is used for drawing on screen
+    function scaledDistance() {
+      return state.distance.value / scaleFactor;
     }
 
     // The main function that is called on every animation frame.
@@ -131,11 +148,10 @@ tags: programming science
       state.angle.speed = newValue(state.angle.speed, deltaT, angleAcceleration);
       state.angle.value = newValue(state.angle.value, deltaT, state.angle.speed);
 
-      // debug.print("<b>Angle</b> <br> Acceleration: "
-      //   + angleAcceleration + "<br>Speed: " + state.angle.speed + "<br>Value: " + state.angle.value + "<br><br><b>Distance</b> <br> Acceleration: "
-      //   + distanceAcceleration + "<br>Speed: " + state.distance.speed + "<br>Value: " + state.distance.value);
-
-      // state.angle.value -= Math.PI / 30;
+      debug.print("Scaled distance:<br>" + scaledDistance() + "<br>"
+        + "<br><b>Angle</b> <br> Acceleration: "
+        + angleAcceleration + "<br>Speed: " + state.angle.speed + "<br>Value: " + state.angle.value + "<br><br><b>Distance</b> <br> Acceleration: "
+        + distanceAcceleration + "<br>Speed: " + state.distance.speed + "<br>Value: " + state.distance.value);
 
       if (state.angle.value > 2 * Math.PI) {
         state.angle.value = state.angle.value % (2 * Math.PI);
@@ -143,6 +159,7 @@ tags: programming science
     }
 
     return {
+      scaledDistance: scaledDistance,
       resetStateToInitialConditions: resetStateToInitialConditions,
       updatePosition: updatePosition,
       initialConditions: initialConditions,
@@ -240,7 +257,7 @@ tags: programming science
     // The method is called 60 times per second
     function animate() {
       physics.updatePosition();
-      graphics.drawScene(physics.state.distance.value, physics.state.angle.value);
+      graphics.drawScene(physics.scaledDistance(), physics.state.angle.value);
       window.requestAnimationFrame(animate);
     }
 
@@ -252,7 +269,7 @@ tags: programming science
         // Redraw the scene if page is resized
         window.addEventListener('resize', function(event){
           graphics.fitToContainer();
-          graphics.drawScene(physics.state.distance.value, physics.state.angle.value);
+          graphics.drawScene(physics.scaledDistance(), physics.state.angle.value);
         });
 
         animate();
