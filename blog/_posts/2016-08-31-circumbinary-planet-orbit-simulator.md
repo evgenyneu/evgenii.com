@@ -21,6 +21,8 @@ tags: programming science
 
 <canvas class="CircumbinaryPlanetSimulator-canvas"></canvas>
 
+<p class='CircumbinaryPlanetSimulator-debugOutput'></p>
+
 
 <div class='isTextCentered'>
   <img src='/image/blog/2016-08-31-circumbinary-planet-orbit-simulator/mockup_circumbinary_planet.png' alt='Circumbinary planet simulator mockup' class='isMax400PxWide'>
@@ -29,11 +31,25 @@ tags: programming science
 <script>
 
 (function(){
+  var debug = (function(){
+    var debugOutput = document.querySelector(".CircumbinaryPlanetSimulator-debugOutput");
+
+    function print(text) {
+      debugOutput.innerHTML = text;
+    }
+
+    return {
+        print: print,
+      };
+    })();
+
   var physics = (function() {
     var distanceCalculator = (function() {
       function calculateAcceleration(state) {
-        // [acceleration of distance] = [distance][speed of angle]^2 - GMm / [distance]^2
-        return 2;
+        // [acceleration of distance] = [distance][angular velocity]^2 - G * M / [distance]^2
+        return state.distance.value * Math.pow(state.angle.speed, 2) -
+          (gravitationalConstant * state.star1.mass)
+            / Math.pow(state.distance.value, 2);
       }
 
       return {
@@ -41,15 +57,30 @@ tags: programming science
       };
     })();
 
+    var angleCalculator = (function() {
+      function calculateAcceleration(state) {
+        // [acceleration of angle] = - 2[speed][angular velocity] / [distance]
+        return -2.0 * state.distance.speed * state.angle.speed / state.distance.value;
+      }
+
+      return {
+        calculateAcceleration: calculateAcceleration,
+      };
+    })();
+
+    var gravitationalConstant = 6.67408 * Math.pow(10, -11);
 
     var initialConditions = {
       distance: {
-        value: 70.0,
-        speed: 0
+        value: 40.0,
+        speed: 0.00
       },
       angle: {
         value: Math.PI / 6,
-        speed: 0
+        speed: 1
+      },
+      star1: {
+        mass: 9 * Math.pow(10, 14)
       }
     };
 
@@ -62,10 +93,20 @@ tags: programming science
       angle: {
         value: 0,
         speed: 0
+      },
+      star1: {
+        mass: 0
+      },
+      star2: {
+        mass: 0
       }
     };
 
     var deltaT = 0.016; // The length of the time increment, in seconds.
+
+    function newValue(currentValue, deltaT, derivative) {
+      return currentValue + deltaT * derivative;
+    }
 
     function resetStateToInitialConditions() {
       state.distance.value = initialConditions.distance.value;
@@ -73,12 +114,28 @@ tags: programming science
 
       state.angle.value = initialConditions.angle.value;
       state.angle.speed = initialConditions.angle.speed;
+
+      state.star1.mass = initialConditions.star1.mass;
     }
 
     // The main function that is called on every animation frame.
     // It calculates and updates the current positions of the bodies
     function updatePosition() {
-      state.angle.value -= Math.PI / 30;
+      // Calculate new distance
+      var distanceAcceleration = distanceCalculator.calculateAcceleration(state);
+      state.distance.speed = newValue(state.distance.speed, deltaT, distanceAcceleration);
+      state.distance.value = newValue(state.distance.value, deltaT, state.distance.speed);
+
+      // Calculate new angle
+      var angleAcceleration = angleCalculator.calculateAcceleration(state);
+      state.angle.speed = newValue(state.angle.speed, deltaT, angleAcceleration);
+      state.angle.value = newValue(state.angle.value, deltaT, state.angle.speed);
+
+      // debug.print("<b>Angle</b> <br> Acceleration: "
+      //   + angleAcceleration + "<br>Speed: " + state.angle.speed + "<br>Value: " + state.angle.value + "<br><br><b>Distance</b> <br> Acceleration: "
+      //   + distanceAcceleration + "<br>Speed: " + state.distance.speed + "<br>Value: " + state.distance.value);
+
+      // state.angle.value -= Math.PI / 30;
 
       if (state.angle.value > 2 * Math.PI) {
         state.angle.value = state.angle.value % (2 * Math.PI);
