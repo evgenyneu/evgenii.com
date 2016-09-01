@@ -44,29 +44,17 @@ tags: programming science
     })();
 
   var physics = (function() {
-    var distanceCalculator = (function() {
-      function calculateAcceleration(state) {
-        // [acceleration of distance] = [distance][angular velocity]^2 - G * M / [distance]^2
-        return state.distance.value * Math.pow(state.angle.speed, 2) -
-          (constants.gravitationalConstant * constants.massOfTheSunKg)
-            / Math.pow(state.distance.value, 2);
-      }
+    function calculateDistanceAcceleration(state) {
+      // [acceleration of distance] = [distance][angular velocity]^2 - G * M / [distance]^2
+      return state.distance.value * Math.pow(state.angle.speed, 2) -
+        (constants.gravitationalConstant * constants.massOfTheSunKg)
+          / Math.pow(state.distance.value, 2);
+    }
 
-      return {
-        calculateAcceleration: calculateAcceleration,
-      };
-    })();
-
-    var angleCalculator = (function() {
-      function calculateAcceleration(state) {
-        // [acceleration of angle] = - 2[speed][angular velocity] / [distance]
-        return -2.0 * state.distance.speed * state.angle.speed / state.distance.value;
-      }
-
-      return {
-        calculateAcceleration: calculateAcceleration,
-      };
-    })();
+    function calculateAngleAcceleration(state) {
+      // [acceleration of angle] = - 2[speed][angular velocity] / [distance]
+      return -2.0 * state.distance.speed * state.angle.speed / state.distance.value;
+    }
 
     var constants = {
       gravitationalConstant: 6.67408 * Math.pow(10, -11),
@@ -107,6 +95,9 @@ tags: programming science
       }
     };
 
+    // Calculates a new value based on the time change and its derivative
+    // For example, it calculates the new distance based on the distance derivative (velocity)
+    // and the elapsed time interval.
     function newValue(currentValue, deltaT, derivative) {
       return currentValue + deltaT * derivative;
     }
@@ -128,12 +119,12 @@ tags: programming science
     // It calculates and updates the current positions of the bodies
     function updatePosition() {
       // Calculate new distance
-      var distanceAcceleration = distanceCalculator.calculateAcceleration(state);
+      var distanceAcceleration = calculateDistanceAcceleration(state);
       state.distance.speed = newValue(state.distance.speed, deltaT, distanceAcceleration);
       state.distance.value = newValue(state.distance.value, deltaT, state.distance.speed);
 
       // Calculate new angle
-      var angleAcceleration = angleCalculator.calculateAcceleration(state);
+      var angleAcceleration = calculateAngleAcceleration(state);
       state.angle.speed = newValue(state.angle.speed, deltaT, angleAcceleration);
       state.angle.value = newValue(state.angle.value, deltaT, state.angle.speed);
 
@@ -162,41 +153,41 @@ tags: programming science
       context = null, // Canvas context for drawing.
       canvasHeight = 200,
       bodySizes = {
-        star1: 15,
-        star2: 5
+        sun: 15,
+        earth: 5
       },
       colors = {
-        star1: "#FF120D",
-        star2: "#2289FF"
+        sun: "#FF120D",
+        earth: "#2289FF"
       };
 
-    function drawStarOne() {
+    function drawTheSun() {
       var middleX = Math.floor(canvas.width / 2);
       var middleY = Math.floor(canvas.height / 2);
 
       context.beginPath();
-      context.fillStyle = colors.star1;
-      context.arc(middleX, middleY, bodySizes.star1, 0, 2 * Math.PI);
+      context.fillStyle = colors.sun;
+      context.arc(middleX, middleY, bodySizes.sun, 0, 2 * Math.PI);
       context.fill();
     }
 
-    function drawStarTwo(distance, angle) {
+    function drawTheEarth(distance, angle) {
       var middleX = Math.floor(canvas.width / 2);
       var middleY = Math.floor(canvas.height / 2);
       var centerX = Math.cos(angle) * distance + middleX;
       var centerY = Math.sin(angle) * distance + middleY;
 
       context.beginPath();
-      context.fillStyle = colors.star2;
-      context.arc(centerX, centerY, bodySizes.star2, 0, 2 * Math.PI);
+      context.fillStyle = colors.earth;
+      context.arc(centerX, centerY, bodySizes.earth, 0, 2 * Math.PI);
       context.fill();
     }
 
     // Clears everything and draws the whole scene: the line, spring and the box.
     function drawScene(distance, angle) {
       context.clearRect(0, 0, canvas.width, canvas.height);
-      drawStarOne();
-      drawStarTwo(distance, angle);
+      drawTheSun();
+      drawTheEarth(distance, angle);
     }
 
     function hideCanvasNotSupportedMessage() {
