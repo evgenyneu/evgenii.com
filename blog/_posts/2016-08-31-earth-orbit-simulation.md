@@ -1,7 +1,7 @@
 ---
 layout: blog_post
 comments: false
-title: "A simulation of the Earth orbiting the Sun"
+title: "A simulation of the Earth orbiting the Sun written in JavaScript"
 meta_description: "This is a simulation of the Earth orbiting the Sun."
 tags: programming science
 ---
@@ -22,11 +22,6 @@ tags: programming science
 <canvas class="EarthOrbitSimulation-canvas"></canvas>
 
 <p class='EarthOrbitSimulation-debugOutput'></p>
-
-
-<div class='isTextCentered'>
-  <img src='/image/blog/2016-08-31-circumbinary-planet-orbit-simulator/mockup_circumbinary_planet.png' alt='Circumbinary planet simulator mockup' class='isMax400PxWide'>
-</div>
 
 <script>
 
