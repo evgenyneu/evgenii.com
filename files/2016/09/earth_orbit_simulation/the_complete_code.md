@@ -2,11 +2,11 @@
 layout: default
 noindex: true
 comments: false
-title: "The complete code for the Earth orbit simulation."
+title: "The complete code of the Earth orbit simulation."
 ---
 
 
-# The source code for the simulation of the Earth orbiting the Sun
+# The source code of the Earth orbit simulation
 
 This is the complete source code for the [simulation of the Earth orbiting the Sun](/blog/earth-orbit-simulation/). Feel free to use it on any web site.
 
