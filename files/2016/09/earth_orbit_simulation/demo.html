@@ -1,12 +1,3 @@
----
-layout: blog_post
-comments: false
-title: "A simulation of the Earth orbiting the Sun"
-meta_description: "This is a simulation of the Earth orbiting the Sun."
-layout_class: theme-nightSky
-tags: programming science
----
-
 <!-- Styles -->
 <style>
   .EarthOrbitSimulation-alert {
@@ -19,10 +10,6 @@ tags: programming science
   .EarthOrbitSimulation-container {
     background-color: #000000;
     position: relative;
-    background-image: url("/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
-    background-position: right bottom;
-    background-repeat: repeat;
-    background-size: 874px 260px;
   }
 
   .EarthOrbitSimulation-isTextCentered { text-align: center; }
@@ -39,16 +26,12 @@ tags: programming science
 
   .EarthOrbitSimulation-earthEnd {
     position: absolute;
-    background-color: #443344;
+    background-color: #C50707;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     z-index: 1001;
-    background-image: url("/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
-    background-position: left top;
-    background-repeat: repeat;
-    background-size: 674px 220px;
   }
 
   .EarthOrbitSimulation-earthEndMessage {
@@ -111,7 +94,7 @@ tags: programming science
 
   .SickSlider {
     position: relative;
-    height: 60px;
+    height: 40px;
     cursor: pointer;
   }
 
@@ -121,13 +104,13 @@ tags: programming science
     background-color: #2289FF;
     border: 1px solid #699DFE;
     position: absolute;
-    top: 28px;
+    top: 18px;
     left: 0px;
   }
 
   .SickSlider-head {
     position: absolute;
-    top: 10px;
+    top: 0;
     left: 0;
     width: 30px;
     height: 40px;
@@ -155,7 +138,7 @@ tags: programming science
     </div>
 </div>
 
-<p class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-earthColor hasNoBottomMargin isUnselectable'>
+<p class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-earthColor hasBottomMarginSmall'>
   Sun's mass: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
 </p>
 
@@ -595,7 +578,6 @@ tags: programming science
         // Redraw the scene if page is resized
         window.addEventListener('resize', function(event){
           graphics.fitToContainer();
-          graphics.reset();
           graphics.drawScene(physics.scaledDistance(), physics.state.angle.value);
         });
 
@@ -655,9 +637,3 @@ tags: programming science
 })();
 
 </script>
-
-## Photo credits
-
-1. **The Blue Marble**: NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans, [source](http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg), [source](https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg).
-
-1. **The Sun photographed at 304 angstroms**: NASA/SDO (AIA), [source](http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg), [source](https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg).
