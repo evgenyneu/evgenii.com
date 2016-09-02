@@ -130,7 +130,7 @@ tags: programming science
       earthSunDistanceMeters: 1.496 * Math.pow(10, 11),
       earthAngularVelocityMetersPerSecond: 1.990986 *  Math.pow(10, -7),
       massOfTheSunKg: 1.98855 * Math.pow(10, 30)
-    }
+    };
 
     // The length of one AU (Earth-Sun distance) in pixels.
     var pixelsInOneEarthSunDistancePerPixel = 150;
@@ -172,8 +172,7 @@ tags: programming science
     function calculateDistanceAcceleration(state) {
       // [acceleration of distance] = [distance][angular velocity]^2 - G * M / [distance]^2
       return state.distance.value * Math.pow(state.angle.speed, 2) -
-        (constants.gravitationalConstant * state.massOfTheSunKg)
-          / Math.pow(state.distance.value, 2);
+        (constants.gravitationalConstant * state.massOfTheSunKg) / Math.pow(state.distance.value, 2);
     }
 
     function calculateAngleAcceleration(state) {
@@ -204,8 +203,7 @@ tags: programming science
     // The main function that is called on every animation frame.
     // It calculates and updates the current positions of the bodies
     function updatePosition() {
-
-      for (i = 0; i < numberOfCalculationsPerFrame; i++) {
+      for (var i = 0; i < numberOfCalculationsPerFrame; i++) {
         calculateNewPosition();
       }
 
@@ -274,7 +272,7 @@ tags: programming science
       return {
         x: centerX,
         y: centerY
-      }
+      };
     }
 
     function drawOrbitalLine(newEarthPosition) {
@@ -294,7 +292,7 @@ tags: programming science
 
     // Clears everything and draws the whole scene: the line, spring and the box.
     function drawScene(distance, angle) {
-      var earthPosition = calculateEarthPosition(distance, angle)
+      var earthPosition = calculateEarthPosition(distance, angle);
       drawTheEarth(earthPosition);
       drawOrbitalLine(earthPosition);
     }
@@ -372,14 +370,9 @@ tags: programming science
     };
   })();
 
-  // Get input for the mass and the spring constant from the user
-  var userInput = (function(){
-    function didClickButton() {
-      physics.updateFromUserInput(0);
-    }
-
-    function initMassSlider(onSliderChange) {
-      var slider = document.querySelector(".EarthOrbitSimulation-massSlider");
+  var sickSlider = (function(){
+    function init(sliderElementSelector, onSliderChange) {
+      var slider = document.querySelector(sliderElementSelector);
       var sliderHead = slider.querySelector(".SickSlider-head");
       var sliding = false;
       var previousSliderValue = -42.1;
@@ -433,7 +426,7 @@ tags: programming science
           pointerX = e.touches[0].pageX;
         }
 
-        var pointerX = pointerX - slider.offsetLeft;
+        pointerX = pointerX - slider.offsetLeft;
         var headLeft = (pointerX - 16);
         if (headLeft < 0) { headLeft = 0; }
 
@@ -460,11 +453,22 @@ tags: programming science
       }
     }
 
+    return {
+      init: init
+    };
+  })();
+
+  // Get input for the mass and the spring constant from the user
+  var userInput = (function(){
+    function didClickButton() {
+      physics.updateFromUserInput(0);
+    }
+
     function init() {
       var button = document.querySelector(".EarthOrbitSimulation-button");
       button.onclick = didClickButton;
 
-      initMassSlider(function(sliderValue){
+      sickSlider.init(".EarthOrbitSimulation-massSlider", function(sliderValue){
         debug.print(sliderValue);
       });
     }
