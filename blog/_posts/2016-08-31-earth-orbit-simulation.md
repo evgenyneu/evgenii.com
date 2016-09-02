@@ -1,7 +1,7 @@
 ---
 layout: blog_post
 comments: false
-title: "A simulation of the Earth orbiting the Sun written in JavaScript"
+title: "A simulation of the Earth orbiting the Sun"
 meta_description: "This is a simulation of the Earth orbiting the Sun."
 layout_class: theme-nightSky
 tags: programming science
@@ -18,16 +18,45 @@ tags: programming science
 
   .EarthOrbitSimulation-container {
     background-color: #000000;
+    position: relative;
   }
 
   .EarthOrbitSimulation-isTextCentered { text-align: center; }
+
+  .EarthOrbitSimulation-earth {
+    position: absolute;
+    width: 25px;
+    -webkit-animation:spin .1s linear infinite;
+    -moz-animation:spin .1s linear infinite;
+    animation:spin .1s linear infinite;
+  }
+
+  .EarthOrbitSimulation-sun {
+    position: absolute;
+    width: 75px;
+    top: 50%;
+    left: 50%;
+    margin-left: -37.5px;
+    margin-top: -37.5px;
+    -webkit-animation:spin .5s linear infinite;
+    -moz-animation:spin .5s linear infinite;
+    animation:spin .5s linear infinite;
+  }
+
+  @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+  @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+  @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+  .EarthOrbitSimulation-canvas { display: block; }
 </style>
 
 <!-- Message shown in old browsers. -->
 <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
 
-<div class="EarthOrbitSimulation-container EarthOrbitSimulation-isTextCentered">
-  <canvas class="EarthOrbitSimulation-canvas"></canvas>
+<div class="EarthOrbitSimulation-container isFullScreenWide">
+    <img src='/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
+    <img src='/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
+    <canvas class="EarthOrbitSimulation-canvas"></canvas>
 </div>
 
 <button class='EarthOrbitSimulation-button'>Change mass</button>
@@ -58,13 +87,17 @@ tags: programming science
     }
 
     // The length of one AU (Earth-Sun distance) in pixels.
-    var pixelsInOneEarthSunDistancePerPixel = 90;
+    var pixelsInOneEarthSunDistancePerPixel = 150;
 
     // A factor by which we scale the distance between the Sun and the Earth
     // in order to show it on screen
     var scaleFactor = constants.earthSunDistanceMeters / pixelsInOneEarthSunDistancePerPixel;
 
-    var deltaT = 3600 * 24; // The length of the time increment, in seconds.
+    // The number of calculations of orbital path done in one 16 millisecond frame.
+    // The higher the number, the more precise are the calculations.
+    var numberOfCalculationsPerFrame = 10000;
+
+    var deltaT = 3600 * 24 / numberOfCalculationsPerFrame; // The length of the time increment, in seconds.
 
     var initialConditions = {
       distance: {
@@ -125,6 +158,14 @@ tags: programming science
     // The main function that is called on every animation frame.
     // It calculates and updates the current positions of the bodies
     function updatePosition() {
+
+      for (i = 0; i < numberOfCalculationsPerFrame; i++) {
+        calculateNewPosition();
+      }
+
+    }
+
+    function calculateNewPosition() {
       // Calculate new distance
       var distanceAcceleration = calculateDistanceAcceleration(state);
       state.distance.speed = newValue(state.distance.speed, deltaT, distanceAcceleration);
@@ -163,33 +204,23 @@ tags: programming science
   var graphics = (function() {
     var canvas = null, // Canvas DOM element.
       context = null, // Canvas context for drawing.
-      canvasHeight = 200,
-      bodySizes = {
-        sun: 15,
-        earth: 5
-      },
+      canvasHeight = 400,
+      earthSize = 25,
       colors = {
-        sun: "#FFFFFF",
-        earth: "#2289FF",
-        orbitalPath: "#444444"
+        orbitalPath: "#777777"
       },
-      previousEarthPosition = null;
-
-    function drawTheSun() {
-      var middleX = Math.floor(canvas.width / 2);
-      var middleY = Math.floor(canvas.height / 2);
-
-      context.beginPath();
-      context.fillStyle = colors.sun;
-      context.arc(middleX, middleY, bodySizes.sun, 0, 2 * Math.PI);
-      context.fill();
-    }
+      previousEarthPosition = null,
+      earthElement;
 
     function drawTheEarth(earthPosition) {
-      context.beginPath();
-      context.fillStyle = colors.earth;
-      context.arc(earthPosition.x, earthPosition.y, bodySizes.earth, 0, 2 * Math.PI);
-      context.fill();
+      // context.beginPath();
+      // context.fillStyle = colors.earth;
+      // context.arc(earthPosition.x, earthPosition.y, bodySizes.earth, 0, 2 * Math.PI);
+      // context.fill();
+      var left = (earthPosition.x - earthSize/2) + "px";
+      var top = (earthPosition.y - earthSize/2) + "px";
+      earthElement.style.left = left;
+      earthElement.style.top = top;
     }
 
     function calculateEarthPosition(distance, angle) {
@@ -221,8 +252,6 @@ tags: programming science
 
     // Clears everything and draws the whole scene: the line, spring and the box.
     function drawScene(distance, angle) {
-      // context.clearRect(0, 0, canvas.width, canvas.height);
-      drawTheSun();
       var earthPosition = calculateEarthPosition(distance, angle)
       drawTheEarth(earthPosition);
       drawOrbitalLine(earthPosition);
@@ -234,7 +263,7 @@ tags: programming science
 
     // Resize canvas to will the width of container
     function fitToContainer(){
-      canvas.style.width='200px';
+      canvas.style.width='100%';
       canvas.style.height= canvasHeight + 'px';
       canvas.width  = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
@@ -258,6 +287,8 @@ tags: programming science
 
       // Update the size of the canvas
       fitToContainer();
+
+      earthElement = document.querySelector(".EarthOrbitSimulation-earth");
 
       // Execute success callback function
       success();
@@ -302,7 +333,7 @@ tags: programming science
   // Get input for the mass and the spring constant from the user
   var userInput = (function(){
     function didClickButton() {
-      physics.updateFromUserInput(2);
+      physics.updateFromUserInput(0);
     }
 
     function init() {
@@ -321,3 +352,7 @@ tags: programming science
 })();
 
 </script>
+
+## Photo sources
+
+1. **The Blue Marble**: NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans, [source](https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg).
