@@ -25,4 +25,5 @@ sitemap:
   exclude: ["/atom.xml", "/feed.xml", "/feed/index.xml", "/js/script.js", "/js/old_ie.js", "/css/main.scss", "/js/javascript-game-bundle.js",
   "/files/2016/04/harmonic_oscillator/the_complete_code.md",
   "/files/2016/08/card_experiment/index.md",
-  "/files/2016/08/card_experiment/the_complete_code.md"]
+  "/files/2016/08/card_experiment/the_complete_code.md",
+  "/files/2016/09/earth_orbit_simulation/the_complete_code.md"]

@@ -1,12 +1,16 @@
 ---
-layout: blog_post
+layout: default
+noindex: true
 comments: false
-title: "A simulation of the Earth orbiting the Sun"
-meta_description: "This is a simulation of the Earth orbiting the Sun."
-layout_class: theme-nightSky
-tags: programming science
+title: "The complete code for the earth orbit simulation."
 ---
 
+
+# The source code for the simulation of the Earth orbiting the Sun
+
+This is the complete source code for the [simulation of the Earth orbiting the Sun](/blog/earth-orbit-simulation/). Feel free to use it on any web site.
+
+```Html
 <!--  To embed this simulator into your web page copy this source code until "Simulator END" comment. -->
 
 <!--
@@ -671,16 +675,4 @@ tags: programming science
 </script>
 
 <!-- Simulator END -->
-
-
-## Photo credits
-
-1. **The Blue Marble**: NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans, [source](http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg), [source](https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg).
-
-1. **The Sun photographed at 304 angstroms**: NASA/SDO (AIA), [source](http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg), [source](https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg).
-
-## References
-
-* [The complete source code](/files/2016/09/earth_orbit_simulation/the_complete_code/) of the earth orbit simulation.
-
-* Susskind, L., &amp; Hrabovsky, G. (2013). The theoretical minimum: What you need to know to start doing physics. New York: Basic Boks.
+```
