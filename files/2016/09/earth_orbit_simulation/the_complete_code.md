@@ -68,7 +68,7 @@ This is the complete source code for the [simulation of the Earth orbiting the S
   }
 
   .EarthOrbitSimulation-earthEndMessage {
-    color: #FFFFFF;
+    color: #DDDDDD;
     font-size: 1.3em;
     position: relative;
     top: 50%;
@@ -78,11 +78,11 @@ This is the complete source code for the [simulation of the Earth orbiting the S
   }
 
   .EarthOrbitSimulation-earthEndButton {
-    color: #FFFFFF;
+    color: #ffb100;
     padding: 10px;
     text-decoration: none;
     border-radius: 10px;
-    border: 1px solid #FFFFFF;
+    border: 1px solid #ffb100;
   }
 
   .EarthOrbitSimulation-sun {
@@ -98,7 +98,7 @@ This is the complete source code for the [simulation of the Earth orbiting the S
   }
 
   .EarthOrbitSimulation-earthColor {
-    color: #2289FF;
+    color: #ff9400;
   }
 
   @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
@@ -134,8 +134,8 @@ This is the complete source code for the [simulation of the Earth orbiting the S
   .SickSlider-stripe {
     height: 5px;
     width: 100%;
-    background-color: #2289FF;
-    border: 1px solid #699DFE;
+    background-color: #ff9400;
+    border: 1px solid #ffb100;
     position: absolute;
     top: 28px;
     left: 0px;
@@ -147,7 +147,7 @@ This is the complete source code for the [simulation of the Earth orbiting the S
     left: 0;
     width: 30px;
     height: 40px;
-    background-color: #2289FF;
+    background-color: #ff9400;
     border: 1px solid #FFFFFF;
   }
 </style>
@@ -165,13 +165,13 @@ This is the complete source code for the [simulation of the Earth orbiting the S
         "My wonder button is being pushed all the time."
         <br><br>Carl Sagan
         <br><br><br>
-        <a class="EarthOrbitSimulation-earthEndButton" href="#">💥Wonder Button✨</a>
+        <a class="EarthOrbitSimulation-earthEndButton" href="#">💥 Wonder Button ✨</a>
       </div>
 
     </div>
 </div>
 
-<p class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-earthColor hasNoBottomMargin isUnselectable'>
+<p class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-earthCoslor hasNoBottomMargin isUnselectable'>
   Sun's mass: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
 </p>
 

@@ -1,6 +1,6 @@
 ---
 layout: blog_post
-comments: false
+comments: true
 title: "A simulation of the Earth orbiting the Sun"
 meta_description: "This is a simulation of the Earth orbiting the Sun."
 layout_class: theme-nightSky
@@ -64,7 +64,7 @@ tags: programming science
   }
 
   .EarthOrbitSimulation-earthEndMessage {
-    color: #FFFFFF;
+    color: #DDDDDD;
     font-size: 1.3em;
     position: relative;
     top: 50%;
@@ -74,11 +74,11 @@ tags: programming science
   }
 
   .EarthOrbitSimulation-earthEndButton {
-    color: #FFFFFF;
+    color: #ffb100;
     padding: 10px;
     text-decoration: none;
     border-radius: 10px;
-    border: 1px solid #FFFFFF;
+    border: 1px solid #ffb100;
   }
 
   .EarthOrbitSimulation-sun {
@@ -161,13 +161,13 @@ tags: programming science
         "My wonder button is being pushed all the time."
         <br><br>Carl Sagan
         <br><br><br>
-        <a class="EarthOrbitSimulation-earthEndButton" href="#">💥Wonder Button✨</a>
+        <a class="EarthOrbitSimulation-earthEndButton" href="#">💥 Wonder Button ✨</a>
       </div>
 
     </div>
 </div>
 
-<p class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-earthColor hasNoBottomMargin isUnselectable'>
+<p class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-earthCoslor hasNoBottomMargin isUnselectable'>
   Sun's mass: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
 </p>
 
