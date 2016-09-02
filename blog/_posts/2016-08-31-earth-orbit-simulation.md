@@ -43,9 +43,9 @@ tags: programming science
     animation:spin .5s linear infinite;
   }
 
-  @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-  @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-  @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+  @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
+  @-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
+  @keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
 
   .EarthOrbitSimulation-canvas { display: block; }
 </style>
@@ -95,7 +95,7 @@ tags: programming science
 
     // The number of calculations of orbital path done in one 16 millisecond frame.
     // The higher the number, the more precise are the calculations.
-    var numberOfCalculationsPerFrame = 10000;
+    var numberOfCalculationsPerFrame = 1000;
 
     var deltaT = 3600 * 24 / numberOfCalculationsPerFrame; // The length of the time increment, in seconds.
 
@@ -213,10 +213,6 @@ tags: programming science
       earthElement;
 
     function drawTheEarth(earthPosition) {
-      // context.beginPath();
-      // context.fillStyle = colors.earth;
-      // context.arc(earthPosition.x, earthPosition.y, bodySizes.earth, 0, 2 * Math.PI);
-      // context.fill();
       var left = (earthPosition.x - earthSize/2) + "px";
       var top = (earthPosition.y - earthSize/2) + "px";
       earthElement.style.left = left;
@@ -227,7 +223,7 @@ tags: programming science
       var middleX = Math.floor(canvas.width / 2);
       var middleY = Math.floor(canvas.height / 2);
       var centerX = Math.cos(angle) * distance + middleX;
-      var centerY = Math.sin(angle) * distance + middleY;
+      var centerY = Math.sin(-angle) * distance + middleY;
 
       return {
         x: centerX,
