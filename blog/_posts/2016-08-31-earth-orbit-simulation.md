@@ -3,6 +3,7 @@ layout: blog_post
 comments: false
 title: "A simulation of the Earth orbiting the Sun written in JavaScript"
 meta_description: "This is a simulation of the Earth orbiting the Sun."
+layout_class: theme-nightSky
 tags: programming science
 ---
 
@@ -14,12 +15,15 @@ tags: programming science
     background: #ffeeee;
     padding: 5px;
   }
+  .EarthOrbitSimulation-isTextCentered { text-align: center; }
 </style>
 
 <!-- Message shown in old browsers. -->
 <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
 
-<canvas class="EarthOrbitSimulation-canvas"></canvas>
+<div class="EarthOrbitSimulation-isTextCentered">
+  <canvas class="EarthOrbitSimulation-canvas"></canvas>
+</div>
 
 <p class='EarthOrbitSimulation-debugOutput'></p>
 
@@ -59,7 +63,7 @@ tags: programming science
     }
 
     // The length of one AU (Earth-Sun distance) in pixels.
-    var pixelsInOneEarthSunDistancePerPixel = 50;
+    var pixelsInOneEarthSunDistancePerPixel = 90;
 
     // A factor by which we scale the distance between the Sun and the Earth
     // in order to show it on screen
@@ -152,7 +156,7 @@ tags: programming science
         earth: 5
       },
       colors = {
-        sun: "#FF120D",
+        sun: "#FFFFFF",
         earth: "#2289FF"
       };
 
@@ -191,7 +195,7 @@ tags: programming science
 
     // Resize canvas to will the width of container
     function fitToContainer(){
-      canvas.style.width='100%';
+      canvas.style.width='200px';
       canvas.style.height= canvasHeight + 'px';
       canvas.width  = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
