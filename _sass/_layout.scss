@@ -1,3 +1,5 @@
+.layout-outer { overflow: hidden; }
+
 .layout-fixed {
   @media (min-width: $fixedBreakpoint) {
     width: $fixedBreakpoint;

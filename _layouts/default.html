@@ -31,28 +31,31 @@
     <![endif]-->
   </head>
   <body class='{{ page.layout_class }}'>
-    {% include google_analytics.html %}
 
-    <div class='layout-fixed layout-padding'>
-      <article class='Content'>
-        {{ content }}
-      </article>
+    <div class='layout-outer'>
+      {% include google_analytics.html %}
 
-      <br>
+      <div class='layout-fixed layout-padding'>
+        <article class='Content'>
+          {{ content }}
+        </article>
 
-      <script src="/js/script.js"></script>
+        <br>
 
-      <br>
-      <br>
-      <div class='isTextCentered isHiddenOnPrint'>
-        <a href='/' title="Wooooow!"><img src='/image/layout/curious_bug_2016_06_01.png' class='HomeImage' alt="Wooooow!"></a>
+        <script src="/js/script.js"></script>
+
+        <br>
+        <br>
+        <div class='isTextCentered isHiddenOnPrint'>
+          <a href='/' title="Wooooow!"><img src='/image/layout/curious_bug_2016_06_01.png' class='HomeImage' alt="Wooooow!"></a>
+        </div>
+
+        {% if page.comments %}
+          {% include comments.html %}
+        {% endif %}
+
+        <br>
       </div>
-
-      {% if page.comments %}
-        {% include comments.html %}
-      {% endif %}
-
-      <br>
     </div>
   </body>
 </html>

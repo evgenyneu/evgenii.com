@@ -43,6 +43,10 @@ tags: programming science
     animation:spin .5s linear infinite;
   }
 
+  .EarthOrbitSimulation-earthColor {
+    color: #2289FF;
+  }
+
   @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
   @-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
   @keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
@@ -95,16 +99,14 @@ tags: programming science
     <canvas class="EarthOrbitSimulation-canvas"></canvas>
 </div>
 
-<br>
+<p class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-earthColor hasBottomMarginSmall'>
+  Sun's mass: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
+</p>
 
 <div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
   <div class="SickSlider-stripe"></div>
   <div class="SickSlider-head"></div>
 </div>
-
-<br>
-
-<button class='EarthOrbitSimulation-button'>Change mass</button>
 
 <p class='EarthOrbitSimulation-debugOutput'></p>
 
@@ -502,16 +504,23 @@ tags: programming science
 
   // React to user input
   var userInput = (function(){
-    function didClickButton() {
-      physics.updateFromUserInput(0);
+    var sunsMassElement = document.querySelector(".EarthOrbitSimulation-sunsMass");
+
+    function updateSunsMass(sliderValue) {
+      var sunsMassValue = sliderValue * 2;
+
+      if (sunsMassValue > 1) {
+        sunsMassValue = Math.pow(5, sunsMassValue - 1);
+      }
+
+      var formattedMass = parseFloat(Math.round(sunsMassValue * 100) / 100).toFixed(2)
+      sunsMassElement.innerHTML = formattedMass;
+      physics.updateFromUserInput(sunsMassValue);
     }
 
     function init() {
-      var button = document.querySelector(".EarthOrbitSimulation-button");
-      button.onclick = didClickButton;
-
       var massSlider = SickSlider(".EarthOrbitSimulation-massSlider");
-      massSlider.onSliderChange = function(sliderValue){ debug.print(sliderValue); };
+      massSlider.onSliderChange = updateSunsMass;
       massSlider.changePosition(0.5);
     }
 
