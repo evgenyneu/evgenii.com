@@ -2,7 +2,7 @@
 layout: default
 noindex: true
 comments: false
-title: "The complete code for the earth orbit simulation."
+title: "The complete code for the Earth orbit simulation."
 ---
 
 
