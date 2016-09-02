@@ -378,10 +378,11 @@ tags: programming science
       physics.updateFromUserInput(0);
     }
 
-    function initMassSlider() {
+    function initMassSlider(onSliderChange) {
       var slider = document.querySelector(".EarthOrbitSimulation-massSlider");
-      var sliderHead = document.querySelector(".SickSlider-head");
+      var sliderHead = slider.querySelector(".SickSlider-head");
       var sliding = false;
+      var previousSliderValue = -42.1;
 
       // Start dragging lider
       // -----------------
@@ -401,17 +402,14 @@ tags: programming science
 
       document.addEventListener("mouseup", function(){
         sliding = false;
-        debug.print("mouseup");
       });
 
       document.addEventListener("dragend", function(){
         sliding = false;
-        debug.print("dragend");
       });
 
       document.addEventListener("touchend", function(e) {
         sliding = false;
-        debug.print("touchend");
       });
 
       // Drag slider
@@ -426,6 +424,7 @@ tags: programming science
         if (!sliding) { return; }
         updateHeadPosition(e);
       });
+
 
       function updateHeadPosition(e) {
         var pointerX = e.pageX;
@@ -443,6 +442,21 @@ tags: programming science
         }
 
         sliderHead.style.left = headLeft + "px";
+
+        if (onSliderChange) {
+          var sliderWidthWithoutHead = slider.offsetWidth - sliderHead.offsetWidth;
+          var sliderValue = 1;
+
+          if (sliderWidthWithoutHead !== 0) {
+            sliderValue = headLeft / sliderWidthWithoutHead;
+          }
+
+          if (previousSliderValue !== sliderValue) {
+            onSliderChange(sliderValue);
+          }
+
+          previousSliderValue = sliderValue;
+        }
       }
     }
 
@@ -450,7 +464,9 @@ tags: programming science
       var button = document.querySelector(".EarthOrbitSimulation-button");
       button.onclick = didClickButton;
 
-      initMassSlider()
+      initMassSlider(function(sliderValue){
+        debug.print(sliderValue);
+      });
     }
 
     return {
