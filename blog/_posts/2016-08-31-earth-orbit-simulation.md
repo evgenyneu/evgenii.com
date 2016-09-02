@@ -170,8 +170,10 @@ tags: programming science
       },
       colors = {
         sun: "#FFFFFF",
-        earth: "#2289FF"
-      };
+        earth: "#2289FF",
+        orbitalPath: "#444444"
+      },
+      previousEarthPosition = null;
 
     function drawTheSun() {
       var middleX = Math.floor(canvas.width / 2);
@@ -183,23 +185,47 @@ tags: programming science
       context.fill();
     }
 
-    function drawTheEarth(distance, angle) {
+    function drawTheEarth(earthPosition) {
+      context.beginPath();
+      context.fillStyle = colors.earth;
+      context.arc(earthPosition.x, earthPosition.y, bodySizes.earth, 0, 2 * Math.PI);
+      context.fill();
+    }
+
+    function calculateEarthPosition(distance, angle) {
       var middleX = Math.floor(canvas.width / 2);
       var middleY = Math.floor(canvas.height / 2);
       var centerX = Math.cos(angle) * distance + middleX;
       var centerY = Math.sin(angle) * distance + middleY;
 
+      return {
+        x: centerX,
+        y: centerY
+      }
+    }
+
+    function drawOrbitalLine(newEarthPosition) {
+      if (previousEarthPosition === null) {
+        previousEarthPosition = newEarthPosition;
+        return;
+      }
+
       context.beginPath();
-      context.fillStyle = colors.earth;
-      context.arc(centerX, centerY, bodySizes.earth, 0, 2 * Math.PI);
-      context.fill();
+      context.strokeStyle = colors.orbitalPath;
+      context.moveTo(previousEarthPosition.x, previousEarthPosition.y);
+      context.lineTo(newEarthPosition.x, newEarthPosition.y);
+      context.stroke();
+
+      previousEarthPosition = newEarthPosition;
     }
 
     // Clears everything and draws the whole scene: the line, spring and the box.
     function drawScene(distance, angle) {
-      context.clearRect(0, 0, canvas.width, canvas.height);
+      // context.clearRect(0, 0, canvas.width, canvas.height);
       drawTheSun();
-      drawTheEarth(distance, angle);
+      var earthPosition = calculateEarthPosition(distance, angle)
+      drawTheEarth(earthPosition);
+      drawOrbitalLine(earthPosition);
     }
 
     function hideCanvasNotSupportedMessage() {
