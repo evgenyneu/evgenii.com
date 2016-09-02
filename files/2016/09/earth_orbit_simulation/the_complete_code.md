@@ -85,6 +85,15 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
     border: 1px solid #ffb100;
   }
 
+  .EarthOrbitSimulation-reloadButton {
+    background-color: #ff9400;
+    color: #ffffff;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 1px solid #ffb100;
+  }
+
   .EarthOrbitSimulation-sun {
     position: absolute;
     width: 60px;
@@ -175,6 +184,10 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
   <div class="SickSlider-stripe"></div>
   <div class="SickSlider-head"></div>
 </div>
+
+<p class="EarthOrbitSimulation-isTextCentered">
+  <a class="EarthOrbitSimulation-reloadButton" href="#">Restart</a>
+</p>
 
 <p class='EarthOrbitSimulation-debugOutput'></p>
 
@@ -626,6 +639,7 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
   var userInput = (function(){
     var sunsMassElement = document.querySelector(".EarthOrbitSimulation-sunsMass");
     var restartButton = document.querySelector(".EarthOrbitSimulation-earthEndButton");
+    var restartButtonTwo = document.querySelector(".EarthOrbitSimulation-reloadButton");
     var massSlider;
 
     function updateSunsMass(sliderValue) {
@@ -656,6 +670,7 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
       massSlider.onSliderChange = updateSunsMass;
       massSlider.changePosition(0.5);
       restartButton.onclick = didClickRestart;
+      restartButtonTwo.onclick = didClickRestart;
     }
 
     return {

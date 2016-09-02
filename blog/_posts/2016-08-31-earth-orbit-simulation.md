@@ -81,6 +81,15 @@ tags: programming science
     border: 1px solid #ffb100;
   }
 
+  .EarthOrbitSimulation-reloadButton {
+    background-color: #ff9400;
+    color: #ffffff;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 1px solid #ffb100;
+  }
+
   .EarthOrbitSimulation-sun {
     position: absolute;
     width: 60px;
@@ -171,6 +180,10 @@ tags: programming science
   <div class="SickSlider-stripe"></div>
   <div class="SickSlider-head"></div>
 </div>
+
+<p class="EarthOrbitSimulation-isTextCentered">
+  <a class="EarthOrbitSimulation-reloadButton" href="#">Restart</a>
+</p>
 
 <p class='EarthOrbitSimulation-debugOutput'></p>
 
@@ -622,6 +635,7 @@ tags: programming science
   var userInput = (function(){
     var sunsMassElement = document.querySelector(".EarthOrbitSimulation-sunsMass");
     var restartButton = document.querySelector(".EarthOrbitSimulation-earthEndButton");
+    var restartButtonTwo = document.querySelector(".EarthOrbitSimulation-reloadButton");
     var massSlider;
 
     function updateSunsMass(sliderValue) {
@@ -652,6 +666,7 @@ tags: programming science
       massSlider.onSliderChange = updateSunsMass;
       massSlider.changePosition(0.5);
       restartButton.onclick = didClickRestart;
+      restartButtonTwo.onclick = didClickRestart;
     }
 
     return {
