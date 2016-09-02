@@ -94,7 +94,7 @@ tags: programming science
   }
 
   .EarthOrbitSimulation-earthColor {
-    color: #2289FF;
+    color: #ff9400;
   }
 
   @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
@@ -130,8 +130,8 @@ tags: programming science
   .SickSlider-stripe {
     height: 5px;
     width: 100%;
-    background-color: #2289FF;
-    border: 1px solid #699DFE;
+    background-color: #ff9400;
+    border: 1px solid #ffb100;
     position: absolute;
     top: 28px;
     left: 0px;
@@ -143,7 +143,7 @@ tags: programming science
     left: 0;
     width: 30px;
     height: 40px;
-    background-color: #2289FF;
+    background-color: #ff9400;
     border: 1px solid #FFFFFF;
   }
 </style>
