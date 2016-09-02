@@ -135,8 +135,8 @@ tags: programming science
   .SickSlider-stripe {
     height: 5px;
     width: 100%;
-    background-color: #ff9400;
-    border: 1px solid #ffb100;
+    background-color: #999999;
+    /*border: 1px solid #a66000;*/
     position: absolute;
     top: 28px;
     left: 0px;
