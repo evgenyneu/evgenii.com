@@ -48,6 +48,42 @@ tags: programming science
   @keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
 
   .EarthOrbitSimulation-canvas { display: block; }
+
+  .SickSlider--isUnselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    -o-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  }
+
+  .SickSlider {
+    position: relative;
+    height: 40px;
+    cursor: pointer;
+  }
+
+  .SickSlider-stripe {
+    height: 5px;
+    width: 100%;
+    background-color: #2289FF;
+    border: 1px solid #699DFE;
+    position: absolute;
+    top: 18px;
+    left: 0px;
+  }
+
+  .SickSlider-head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 40px;
+    background-color: #2289FF;
+    border: 1px solid #FFFFFF;
+  }
 </style>
 
 <!-- Message shown in old browsers. -->
@@ -58,6 +94,15 @@ tags: programming science
     <img src='/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
     <canvas class="EarthOrbitSimulation-canvas"></canvas>
 </div>
+
+<br>
+
+<div class="SickSlider EarthOrbitSimulation-massSlider SickSlider--isUnselectable" >
+  <div class="SickSlider-stripe"></div>
+  <div class="SickSlider-head"></div>
+</div>
+
+<br>
 
 <button class='EarthOrbitSimulation-button'>Change mass</button>
 
@@ -70,7 +115,8 @@ tags: programming science
     var debugOutput = document.querySelector(".EarthOrbitSimulation-debugOutput");
 
     function print(text) {
-      debugOutput.innerHTML = text;
+      var date = new Date();
+      debugOutput.innerHTML = text + " " + date.getMilliseconds();
     }
 
     return {
@@ -332,9 +378,60 @@ tags: programming science
       physics.updateFromUserInput(0);
     }
 
+    function initMassSlider() {
+      var slider = document.querySelector(".EarthOrbitSimulation-massSlider");
+      var sliderHead = document.querySelector(".SickSlider-head");
+      var sliding = false;
+
+      slider.onmousedown = function(e) {
+        sliding = true;
+        updateHeadPosition(e);
+      }
+
+      document.addEventListener("mouseup", function(){
+        sliding = false;
+      });
+
+
+      slider.addEventListener("touchstart", function(e) {
+        sliding = true;
+        updateHeadPosition(e);
+      });
+
+      slider.addEventListener("mousemove", function(e) {
+        if (!sliding) { return; }
+        updateHeadPosition(e);
+      });
+
+      slider.addEventListener("touchmove", function(e) {
+        if (!sliding) { return; }
+        updateHeadPosition(e);
+      });
+
+      function updateHeadPosition(e) {
+        var pointerX = e.pageX;
+
+        if (e.touches && e.touches.length > 0) {
+          pointerX = e.touches[0].pageX;
+        }
+
+        var pointerX = pointerX - slider.offsetLeft;
+        var headLeft = (pointerX - 16);
+        if (headLeft < 0) { headLeft = 0; }
+
+        if ((headLeft + sliderHead.offsetWidth) > slider.offsetWidth) {
+          headLeft = slider.offsetWidth - sliderHead.offsetWidth;
+        }
+
+        sliderHead.style.left = headLeft + "px";
+      }
+    }
+
     function init() {
       var button = document.querySelector(".EarthOrbitSimulation-button");
       button.onclick = didClickButton;
+
+      initMassSlider()
     }
 
     return {
@@ -351,4 +448,6 @@ tags: programming science
 
 ## Photo sources
 
-1. **The Blue Marble**: NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans, [source](https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg).
+1. **The Blue Marble**: NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans, [source](http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg), [source](https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg).
+
+1. **The Sun photographed at 304 angstroms**, NASA/SDO (AIA), [source](http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg), [source](https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg).
