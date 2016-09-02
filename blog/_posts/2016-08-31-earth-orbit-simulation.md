@@ -168,7 +168,7 @@ tags: programming science
 </div>
 
 <p class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-earthCoslor hasNoBottomMargin isUnselectable'>
-  Sun's mass: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
+  Mass of the Sun: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
 </p>
 
 <div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
