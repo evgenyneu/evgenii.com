@@ -112,44 +112,35 @@ tags: programming science
 
 (function(){
   // A Slider UI element
-  var sickSlider = (function(){
-    // Change the slider position
-    //
-    // Arguments:
-    //   sliderElementSelector: A CSS selector of the SickSlider element.
-    //   position: The slider position: a number between 0 and 1.
-    //
-    function updatePosition(sliderElementSelector, position) {
-      var slider = document.querySelector(sliderElementSelector);
-      var sliderHead = slider.querySelector(".SickSlider-head");
-
-      sliderHead.style.left = headLeft + "px";
-    }
+  function SickSlider(sliderElementSelector) {
+    var that = {
+      // A function that will be called when user changes the slider position.
+      // The function will be passed the slider position: a number between 0 and 1.
+      onSliderChange: null,
+      // Store the previous slider value in order to prevent calling onSliderChange function with the same argument
+      previousSliderValue: -42
+    };
 
     // Initializes the slider element
     //
     // Arguments:
     //   sliderElementSelector: A CSS selector of the SickSlider element.
-    //   onSliderChange: A function that will be called when user changes the slider position.
-    //      The function will be passed the slider position: a number between 0 and 1.
-    //
-    function init(sliderElementSelector, onSliderChange) {
-      var slider = document.querySelector(sliderElementSelector);
-      var sliderHead = slider.querySelector(".SickSlider-head");
+    that.init = function(sliderElementSelector) {
+      that.slider = document.querySelector(sliderElementSelector);
+      that.sliderHead = that.slider.querySelector(".SickSlider-head");
       var sliding = false;
-      var previousSliderValue = -42.1;
 
-      // Start dragging lider
+      // Start dragging slider
       // -----------------
 
-      slider.addEventListener("mousedown", function(e) {
+      that.slider.addEventListener("mousedown", function(e) {
         sliding = true;
-        updateHeadPosition(e, slider, sliderHead, onSliderChange);
+        that.updateHeadPositionOnTouch(e);
       });
 
-      slider.addEventListener("touchstart", function(e) {
+      that.slider.addEventListener("touchstart", function(e) {
         sliding = true;
-        updateHeadPosition(e, slider, sliderHead, onSliderChange);
+        that.updateHeadPositionOnTouch(e);
       });
 
       // End dragging slider
@@ -172,52 +163,82 @@ tags: programming science
 
       document.addEventListener("mousemove", function(e) {
         if (!sliding) { return; }
-        updateHeadPosition(e, slider, sliderHead, onSliderChange);
+        that.updateHeadPositionOnTouch(e);
       });
 
       document.addEventListener("touchmove", function(e) {
         if (!sliding) { return; }
-        updateHeadPosition(e, slider, sliderHead, onSliderChange);
+        that.updateHeadPositionOnTouch(e);
       });
     }
 
-    function updateHeadPosition(e, slider, sliderHead, onSliderChange) {
-        var pointerX = e.pageX;
+    // Returns the slider value (a number form 0 to 1) from the cursor position
+    //
+    // Arguments:
+    //
+    //   e: a touch event.
+    //
+    that.sliderValueFromCursor = function(e) {
+      var pointerX = e.pageX;
 
-        if (e.touches && e.touches.length > 0) {
-          pointerX = e.touches[0].pageX;
-        }
-
-        pointerX = pointerX - slider.offsetLeft;
-        var headLeft = (pointerX - 16);
-        if (headLeft < 0) { headLeft = 0; }
-
-        if ((headLeft + sliderHead.offsetWidth) > slider.offsetWidth) {
-          headLeft = slider.offsetWidth - sliderHead.offsetWidth;
-        }
-
-        sliderHead.style.left = headLeft + "px";
-
-        if (onSliderChange) {
-          var sliderWidthWithoutHead = slider.offsetWidth - sliderHead.offsetWidth;
-          var sliderValue = 1;
-
-          if (sliderWidthWithoutHead !== 0) {
-            sliderValue = headLeft / sliderWidthWithoutHead;
-          }
-
-          if (previousSliderValue !== sliderValue) {
-            onSliderChange(sliderValue);
-          }
-
-          previousSliderValue = sliderValue;
-        }
+      if (e.touches && e.touches.length > 0) {
+        pointerX = e.touches[0].pageX;
       }
 
-    return {
-      init: init
-    };
-  })();
+      pointerX = pointerX - that.slider.offsetLeft;
+      var headLeft = (pointerX - 16);
+      if (headLeft < 0) { headLeft = 0; }
+
+      if ((headLeft + that.sliderHead.offsetWidth) > that.slider.offsetWidth) {
+        headLeft = that.slider.offsetWidth - that.sliderHead.offsetWidth;
+      }
+
+      // Calculate slider value from head position
+      var sliderWidthWithoutHead = that.slider.offsetWidth - that.sliderHead.offsetWidth;
+      var sliderValue = 1;
+
+      if (sliderWidthWithoutHead !== 0) {
+        sliderValue = headLeft / sliderWidthWithoutHead;
+      }
+
+      return sliderValue;
+    }
+
+
+    // Changes the position of the slider
+    //
+    // Arguments:
+    //
+    //   sliderValue: a value between 0 and 1.
+    //
+    that.changePosition = function(sliderValue) {
+      var headLeft = (that.slider.offsetWidth - that.sliderHead.offsetWidth) * sliderValue
+      that.sliderHead.style.left = headLeft + "px";
+    }
+
+    // Update the slider position and call the callback function
+    //
+    // Arguments:
+    //
+    //   e: a touch event.
+    //
+    that.updateHeadPositionOnTouch = function(e) {
+      var sliderValue = that.sliderValueFromCursor(e);
+      that.changePosition(sliderValue);
+
+      if (that.onSliderChange) {
+        if (that.previousSliderValue !== sliderValue) {
+          that.onSliderChange(sliderValue);
+        }
+
+        that.previousSliderValue = sliderValue;
+      }
+    }
+
+    that.init(sliderElementSelector);
+
+    return that;
+  }
 
   var debug = (function(){
     var debugOutput = document.querySelector(".EarthOrbitSimulation-debugOutput");
@@ -489,11 +510,9 @@ tags: programming science
       var button = document.querySelector(".EarthOrbitSimulation-button");
       button.onclick = didClickButton;
 
-      sickSlider.init(".EarthOrbitSimulation-massSlider", function(sliderValue){
-        debug.print(sliderValue);
-      });
-
-      // sickSlider.updatePosition(".EarthOrbitSimulation-massSlider", 0.5);
+      var massSlider = SickSlider(".EarthOrbitSimulation-massSlider");
+      massSlider.onSliderChange = function(sliderValue){ debug.print(sliderValue); }
+      massSlider.changePosition(0.5);
     }
 
     return {
