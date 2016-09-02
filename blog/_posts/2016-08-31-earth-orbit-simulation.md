@@ -93,10 +93,6 @@ tags: programming science
     animation:spin .5s linear infinite;
   }
 
-  .EarthOrbitSimulation-earthColor {
-    color: #ff9400;
-  }
-
   @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
   @-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
   @keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
@@ -166,10 +162,10 @@ tags: programming science
 
     </div>
 </div>
-
-<p class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-earthCoslor hasNoBottomMargin isUnselectable'>
+<div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
+  <br>
   Mass of the Sun: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
-</p>
+</div>
 
 <div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
   <div class="SickSlider-stripe"></div>
