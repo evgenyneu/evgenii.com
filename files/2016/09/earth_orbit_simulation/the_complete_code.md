@@ -35,7 +35,7 @@ This is the complete source code for the [simulation of the Earth orbiting the S
   .EarthOrbitSimulation-container {
     background-color: #000000;
     position: relative;
-    background-image: url("/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
+    background-image: url("http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
     background-position: center bottom;
     background-repeat: repeat;
     background-size: 874px 260px;
@@ -61,7 +61,7 @@ This is the complete source code for the [simulation of the Earth orbiting the S
     width: 100%;
     height: 100%;
     z-index: 1001;
-    background-image: url("/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
+    background-image: url("http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
     background-position: left top;
     background-repeat: repeat;
     background-size: 674px 220px;
@@ -156,8 +156,8 @@ This is the complete source code for the [simulation of the Earth orbiting the S
 <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
 
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
-    <img src='/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
-    <img src='/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
+    <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
+    <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
     <canvas class="EarthOrbitSimulation-canvas"></canvas>
 
     <div class="EarthOrbitSimulation-earthEnd EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
