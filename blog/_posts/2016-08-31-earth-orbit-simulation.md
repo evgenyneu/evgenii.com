@@ -170,7 +170,7 @@ tags: programming science
         if (!sliding) { return; }
         that.updateHeadPositionOnTouch(e);
       });
-    }
+    };
 
     // Returns the slider value (a number form 0 to 1) from the cursor position
     //
@@ -202,7 +202,7 @@ tags: programming science
       }
 
       return sliderValue;
-    }
+    };
 
 
     // Changes the position of the slider
@@ -212,9 +212,9 @@ tags: programming science
     //   sliderValue: a value between 0 and 1.
     //
     that.changePosition = function(sliderValue) {
-      var headLeft = (that.slider.offsetWidth - that.sliderHead.offsetWidth) * sliderValue
+      var headLeft = (that.slider.offsetWidth - that.sliderHead.offsetWidth) * sliderValue;
       that.sliderHead.style.left = headLeft + "px";
-    }
+    };
 
     // Update the slider position and call the callback function
     //
@@ -233,7 +233,7 @@ tags: programming science
 
         that.previousSliderValue = sliderValue;
       }
-    }
+    };
 
     that.init(sliderElementSelector);
 
@@ -511,7 +511,7 @@ tags: programming science
       button.onclick = didClickButton;
 
       var massSlider = SickSlider(".EarthOrbitSimulation-massSlider");
-      massSlider.onSliderChange = function(sliderValue){ debug.print(sliderValue); }
+      massSlider.onSliderChange = function(sliderValue){ debug.print(sliderValue); };
       massSlider.changePosition(0.5);
     }
 
