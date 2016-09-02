@@ -7,6 +7,18 @@ layout_class: theme-nightSky
 tags: programming science
 ---
 
+<!--  To embed this simulator into your web page copy this source code until "Simulator END" comment. -->
+
+<!--
+
+  Earth Orbit Simulator
+
+  http://evgenii.com
+
+  License: Public Domain
+
+-->
+
 <!-- Styles -->
 <style>
   .EarthOrbitSimulation-alert {
@@ -20,7 +32,7 @@ tags: programming science
     background-color: #000000;
     position: relative;
     background-image: url("/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
-    background-position: right bottom;
+    background-position: center bottom;
     background-repeat: repeat;
     background-size: 874px 260px;
   }
@@ -201,6 +213,8 @@ tags: programming science
         that.updateHeadPositionOnTouch(e);
       });
 
+      that.slider.onselectstart = function () { return false; }
+
       // End dragging slider
       // -----------------
 
@@ -298,6 +312,7 @@ tags: programming science
     return that;
   }
 
+  // Show debug messages on screen
   var debug = (function(){
     var debugOutput = document.querySelector(".EarthOrbitSimulation-debugOutput");
 
@@ -309,7 +324,7 @@ tags: programming science
     return {
         print: print,
       };
-    })();
+  })();
 
   // Calculates the position of the Earth
   var physics = (function() {
@@ -331,8 +346,10 @@ tags: programming science
     // The higher the number, the more precise are the calculations and the slower the simulation.
     var numberOfCalculationsPerFrame = 1000;
 
-    var deltaT = 3600 * 24 / numberOfCalculationsPerFrame; // The length of the time increment, in seconds.
+    // The length of the time increment, in seconds.
+    var deltaT = 3600 * 24 / numberOfCalculationsPerFrame;
 
+    // Initial condition of the model
     var initialConditions = {
       distance: {
         value: constants.earthSunDistanceMeters,
@@ -399,6 +416,7 @@ tags: programming science
 
     }
 
+    // Calculates position of the Earth
     function calculateNewPosition() {
       // Calculate new distance
       var distanceAcceleration = calculateDistanceAcceleration(state);
@@ -410,16 +428,12 @@ tags: programming science
       state.angle.speed = newValue(state.angle.speed, deltaT, angleAcceleration);
       state.angle.value = newValue(state.angle.value, deltaT, state.angle.speed);
 
-      // debug.print("Scaled distance:<br>" + scaledDistance() + "<br>"
-      //   + "<br><b>Angle</b> <br> Acceleration: "
-      //   + angleAcceleration + "<br>Speed: " + state.angle.speed + "<br>Value: " + state.angle.value + "<br><br><b>Distance</b> <br> Acceleration: "
-      //   + distanceAcceleration + "<br>Speed: " + state.distance.speed + "<br>Value: " + state.distance.value);
-
       if (state.angle.value > 2 * Math.PI) {
         state.angle.value = state.angle.value % (2 * Math.PI);
       }
     }
 
+    // Updates the mass of the Sun
     function updateFromUserInput(solarMassMultiplier) {
       state.massOfTheSunKg = constants.massOfTheSunKg * solarMassMultiplier;
     }
@@ -563,7 +577,7 @@ tags: programming science
       success();
     }
 
-    function reset() {
+    function clearScene() {
       context.clearRect(0, 0, canvas.width, canvas.height);
       previousEarthPosition = null;
     }
@@ -573,7 +587,7 @@ tags: programming science
       drawScene: drawScene,
       updateSunSize: updateSunSize,
       showHideEarthEndMessage: showHideEarthEndMessage,
-      reset: reset,
+      clearScene: clearScene,
       init: init
     };
   })();
@@ -595,7 +609,7 @@ tags: programming science
         // Redraw the scene if page is resized
         window.addEventListener('resize', function(event){
           graphics.fitToContainer();
-          graphics.reset();
+          graphics.clearScene();
           graphics.drawScene(physics.scaledDistance(), physics.state.angle.value);
         });
 
@@ -630,7 +644,7 @@ tags: programming science
     function didClickRestart() {
       graphics.showHideEarthEndMessage(false);
       physics.resetStateToInitialConditions();
-      graphics.reset();
+      graphics.clearScene();
       updateSunsMass(0.5);
       massSlider.changePosition(0.5);
       physics.state.paused = false;
@@ -655,6 +669,9 @@ tags: programming science
 })();
 
 </script>
+
+<!-- Simulator END -->
+
 
 ## Photo credits
 

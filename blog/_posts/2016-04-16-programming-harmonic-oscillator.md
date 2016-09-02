@@ -14,7 +14,7 @@ tags: programming science
 
   http://evgenii.com
 
-  License: MIT
+  License: Public Domain
 
 -->
 
