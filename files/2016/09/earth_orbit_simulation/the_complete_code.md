@@ -8,7 +8,7 @@ title: "The complete code of the Earth orbit simulation."
 
 # The source code of the Earth orbit simulation
 
-This is the complete source code for the [simulation of the Earth orbiting the Sun](/blog/earth-orbit-simulation/). Feel free to use it on any web site.
+This is the complete source code of the [simulation of the Earth orbiting the Sun](/blog/earth-orbit-simulation/). Feel free to use it on any web site.
 
 ```Html
 <!--  To embed this simulator into your web page copy this source code until "Simulator END" comment. -->
