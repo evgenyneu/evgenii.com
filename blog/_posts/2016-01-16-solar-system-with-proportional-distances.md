@@ -3,12 +3,11 @@ layout: blog_post
 comments: true
 title: "A picture of the Solar System with proportional distances"
 meta_description: "This is a picture of Solar System that shows proportional distances between planets and other objects."
-layout_class: theme-nightSky
 tags: science
 ---
 
 
-<div class='isFullScreenWide isTextCentered hasBackgroundColorShade10 hasBorderBottomShade90'>
+<div class='isFullScreenWide isTextCentered hasBackgroundColorShade10'>
   <img src='/image/blog/2016-01-16-solar-system-with-proportional-distances/0010_solar_system_proportional_distances.png' alt='Zoomed out solar System with proportional distances' class='isMax500PxWide'>
   <br>
 </div>
@@ -29,7 +28,7 @@ Let me explain a bit more about those distances. The title of this post includes
 
 As you probably know the orbits of the planets are not usually circles but rather stretched circles called *ellipses*. This means that the distance from an object to the Sun changes over time as the object moves along its orbit. One of the standard ways to measure the orbit is to use the length of its *semi-major axis*. This simply means taking the half of the longest part of the orbit (see Figure 2). This is all the term *semi-major axis* means and I used it on Figures 1 and 3 to for the distances.
 
-<img src='/image/blog/2016-01-16-solar-system-with-proportional-distances/0020_semi_major_axis_and_planet_orbit.png' alt='Semi-mejor axis of elliptical orbit' class='isMax100PercentWide hasBorderBottomShade90 hasBorderTopShade90'>
+<img src='/image/blog/2016-01-16-solar-system-with-proportional-distances/0020_semi_major_axis_and_planet_orbit.png' alt='Semi-mejor axis of elliptical orbit' class='isMax100PercentWide'>
 
 <p class='isTextCentered'>Figure 2: Measuring the size of an orbit.</p>
 
@@ -139,7 +138,7 @@ Table 1 shows the distances from Solar System objects to the Sun. Each distance 
 
 The Figure 3 shown bellow is a zoomed-in picture of the Solar System that includes more objects than Figure 1.
 
-<div class='isFullScreenWide isTextCentered hasBackgroundColorShade10 hasBorderBottomShade90 hasBorderTopShade90'>
+<div class='isFullScreenWide isTextCentered hasBackgroundColorShade10'>
   <img src='/image/blog/2016-01-16-solar-system-with-proportional-distances/0030_detailed_solar_system_proportional_distances.png' alt='Solar System with proportional distances' class='isMax500PxWide'>
   <br>
 </div>
