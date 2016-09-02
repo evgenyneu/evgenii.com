@@ -15,15 +15,22 @@ tags: programming science
     background: #ffeeee;
     padding: 5px;
   }
+
+  .EarthOrbitSimulation-container {
+    background-color: #000000;
+  }
+
   .EarthOrbitSimulation-isTextCentered { text-align: center; }
 </style>
 
 <!-- Message shown in old browsers. -->
 <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
 
-<div class="EarthOrbitSimulation-isTextCentered">
+<div class="EarthOrbitSimulation-container EarthOrbitSimulation-isTextCentered">
   <canvas class="EarthOrbitSimulation-canvas"></canvas>
 </div>
+
+<button class='EarthOrbitSimulation-button'>Change mass</button>
 
 <p class='EarthOrbitSimulation-debugOutput'></p>
 
@@ -43,18 +50,6 @@ tags: programming science
     })();
 
   var physics = (function() {
-    function calculateDistanceAcceleration(state) {
-      // [acceleration of distance] = [distance][angular velocity]^2 - G * M / [distance]^2
-      return state.distance.value * Math.pow(state.angle.speed, 2) -
-        (constants.gravitationalConstant * constants.massOfTheSunKg)
-          / Math.pow(state.distance.value, 2);
-    }
-
-    function calculateAngleAcceleration(state) {
-      // [acceleration of angle] = - 2[speed][angular velocity] / [distance]
-      return -2.0 * state.distance.speed * state.angle.speed / state.distance.value;
-    }
-
     var constants = {
       gravitationalConstant: 6.67408 * Math.pow(10, -11),
       earthSunDistanceMeters: 1.496 * Math.pow(10, 11),
@@ -91,8 +86,21 @@ tags: programming science
       angle: {
         value: 0,
         speed: 0
-      }
+      },
+      massOfTheSunKg: constants.massOfTheSunKg
     };
+
+    function calculateDistanceAcceleration(state) {
+      // [acceleration of distance] = [distance][angular velocity]^2 - G * M / [distance]^2
+      return state.distance.value * Math.pow(state.angle.speed, 2) -
+        (constants.gravitationalConstant * state.massOfTheSunKg)
+          / Math.pow(state.distance.value, 2);
+    }
+
+    function calculateAngleAcceleration(state) {
+      // [acceleration of angle] = - 2[speed][angular velocity] / [distance]
+      return -2.0 * state.distance.speed * state.angle.speed / state.distance.value;
+    }
 
     // Calculates a new value based on the time change and its derivative
     // For example, it calculates the new distance based on the distance derivative (velocity)
@@ -127,14 +135,18 @@ tags: programming science
       state.angle.speed = newValue(state.angle.speed, deltaT, angleAcceleration);
       state.angle.value = newValue(state.angle.value, deltaT, state.angle.speed);
 
-      debug.print("Scaled distance:<br>" + scaledDistance() + "<br>"
-        + "<br><b>Angle</b> <br> Acceleration: "
-        + angleAcceleration + "<br>Speed: " + state.angle.speed + "<br>Value: " + state.angle.value + "<br><br><b>Distance</b> <br> Acceleration: "
-        + distanceAcceleration + "<br>Speed: " + state.distance.speed + "<br>Value: " + state.distance.value);
+      // debug.print("Scaled distance:<br>" + scaledDistance() + "<br>"
+      //   + "<br><b>Angle</b> <br> Acceleration: "
+      //   + angleAcceleration + "<br>Speed: " + state.angle.speed + "<br>Value: " + state.angle.value + "<br><br><b>Distance</b> <br> Acceleration: "
+      //   + distanceAcceleration + "<br>Speed: " + state.distance.speed + "<br>Value: " + state.distance.value);
 
       if (state.angle.value > 2 * Math.PI) {
         state.angle.value = state.angle.value % (2 * Math.PI);
       }
+    }
+
+    function updateFromUserInput(solarMassMultiplier) {
+      state.massOfTheSunKg = constants.massOfTheSunKg * solarMassMultiplier;
     }
 
     return {
@@ -142,7 +154,8 @@ tags: programming science
       resetStateToInitialConditions: resetStateToInitialConditions,
       updatePosition: updatePosition,
       initialConditions: initialConditions,
-      state: state,
+      updateFromUserInput: updateFromUserInput,
+      state: state
     };
   })();
 
@@ -259,6 +272,24 @@ tags: programming science
       start: start
     };
   })();
+
+  // Get input for the mass and the spring constant from the user
+  var userInput = (function(){
+    function didClickButton() {
+      physics.updateFromUserInput(2);
+    }
+
+    function init() {
+      var button = document.querySelector(".EarthOrbitSimulation-button");
+      button.onclick = didClickButton;
+    }
+
+    return {
+      init: init
+    };
+  })();
+
+  userInput.init();
 
   simulation.start();
 })();
