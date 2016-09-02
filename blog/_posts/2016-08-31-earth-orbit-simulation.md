@@ -111,6 +111,114 @@ tags: programming science
 <script>
 
 (function(){
+  // A Slider UI element
+  var sickSlider = (function(){
+    // Change the slider position
+    //
+    // Arguments:
+    //   sliderElementSelector: A CSS selector of the SickSlider element.
+    //   position: The slider position: a number between 0 and 1.
+    //
+    function updatePosition(sliderElementSelector, position) {
+      var slider = document.querySelector(sliderElementSelector);
+      var sliderHead = slider.querySelector(".SickSlider-head");
+
+      sliderHead.style.left = headLeft + "px";
+    }
+
+    // Initializes the slider element
+    //
+    // Arguments:
+    //   sliderElementSelector: A CSS selector of the SickSlider element.
+    //   onSliderChange: A function that will be called when user changes the slider position.
+    //      The function will be passed the slider position: a number between 0 and 1.
+    //
+    function init(sliderElementSelector, onSliderChange) {
+      var slider = document.querySelector(sliderElementSelector);
+      var sliderHead = slider.querySelector(".SickSlider-head");
+      var sliding = false;
+      var previousSliderValue = -42.1;
+
+      // Start dragging lider
+      // -----------------
+
+      slider.addEventListener("mousedown", function(e) {
+        sliding = true;
+        updateHeadPosition(e, slider, sliderHead, onSliderChange);
+      });
+
+      slider.addEventListener("touchstart", function(e) {
+        sliding = true;
+        updateHeadPosition(e, slider, sliderHead, onSliderChange);
+      });
+
+      // End dragging slider
+      // -----------------
+
+      document.addEventListener("mouseup", function(){
+        sliding = false;
+      });
+
+      document.addEventListener("dragend", function(){
+        sliding = false;
+      });
+
+      document.addEventListener("touchend", function(e) {
+        sliding = false;
+      });
+
+      // Drag slider
+      // -----------------
+
+      document.addEventListener("mousemove", function(e) {
+        if (!sliding) { return; }
+        updateHeadPosition(e, slider, sliderHead, onSliderChange);
+      });
+
+      document.addEventListener("touchmove", function(e) {
+        if (!sliding) { return; }
+        updateHeadPosition(e, slider, sliderHead, onSliderChange);
+      });
+    }
+
+    function updateHeadPosition(e, slider, sliderHead, onSliderChange) {
+        var pointerX = e.pageX;
+
+        if (e.touches && e.touches.length > 0) {
+          pointerX = e.touches[0].pageX;
+        }
+
+        pointerX = pointerX - slider.offsetLeft;
+        var headLeft = (pointerX - 16);
+        if (headLeft < 0) { headLeft = 0; }
+
+        if ((headLeft + sliderHead.offsetWidth) > slider.offsetWidth) {
+          headLeft = slider.offsetWidth - sliderHead.offsetWidth;
+        }
+
+        sliderHead.style.left = headLeft + "px";
+
+        if (onSliderChange) {
+          var sliderWidthWithoutHead = slider.offsetWidth - sliderHead.offsetWidth;
+          var sliderValue = 1;
+
+          if (sliderWidthWithoutHead !== 0) {
+            sliderValue = headLeft / sliderWidthWithoutHead;
+          }
+
+          if (previousSliderValue !== sliderValue) {
+            onSliderChange(sliderValue);
+          }
+
+          previousSliderValue = sliderValue;
+        }
+      }
+
+    return {
+      init: init
+    };
+  })();
+
   var debug = (function(){
     var debugOutput = document.querySelector(".EarthOrbitSimulation-debugOutput");
 
@@ -124,6 +232,7 @@ tags: programming science
       };
     })();
 
+  // Calculates the position of the Earth
   var physics = (function() {
     var constants = {
       gravitationalConstant: 6.67408 * Math.pow(10, -11),
@@ -290,7 +399,7 @@ tags: programming science
       previousEarthPosition = newEarthPosition;
     }
 
-    // Clears everything and draws the whole scene: the line, spring and the box.
+    // Draws the scene
     function drawScene(distance, angle) {
       var earthPosition = calculateEarthPosition(distance, angle);
       drawTheEarth(earthPosition);
@@ -370,95 +479,7 @@ tags: programming science
     };
   })();
 
-  var sickSlider = (function(){
-    function init(sliderElementSelector, onSliderChange) {
-      var slider = document.querySelector(sliderElementSelector);
-      var sliderHead = slider.querySelector(".SickSlider-head");
-      var sliding = false;
-      var previousSliderValue = -42.1;
-
-      // Start dragging lider
-      // -----------------
-
-      slider.addEventListener("mousedown", function(e) {
-        sliding = true;
-        updateHeadPosition(e);
-      });
-
-      slider.addEventListener("touchstart", function(e) {
-        sliding = true;
-        updateHeadPosition(e);
-      });
-
-      // End dragging lider
-      // -----------------
-
-      document.addEventListener("mouseup", function(){
-        sliding = false;
-      });
-
-      document.addEventListener("dragend", function(){
-        sliding = false;
-      });
-
-      document.addEventListener("touchend", function(e) {
-        sliding = false;
-      });
-
-      // Drag slider
-      // -----------------
-
-      document.addEventListener("mousemove", function(e) {
-        if (!sliding) { return; }
-        updateHeadPosition(e);
-      });
-
-      document.addEventListener("touchmove", function(e) {
-        if (!sliding) { return; }
-        updateHeadPosition(e);
-      });
-
-
-      function updateHeadPosition(e) {
-        var pointerX = e.pageX;
-
-        if (e.touches && e.touches.length > 0) {
-          pointerX = e.touches[0].pageX;
-        }
-
-        pointerX = pointerX - slider.offsetLeft;
-        var headLeft = (pointerX - 16);
-        if (headLeft < 0) { headLeft = 0; }
-
-        if ((headLeft + sliderHead.offsetWidth) > slider.offsetWidth) {
-          headLeft = slider.offsetWidth - sliderHead.offsetWidth;
-        }
-
-        sliderHead.style.left = headLeft + "px";
-
-        if (onSliderChange) {
-          var sliderWidthWithoutHead = slider.offsetWidth - sliderHead.offsetWidth;
-          var sliderValue = 1;
-
-          if (sliderWidthWithoutHead !== 0) {
-            sliderValue = headLeft / sliderWidthWithoutHead;
-          }
-
-          if (previousSliderValue !== sliderValue) {
-            onSliderChange(sliderValue);
-          }
-
-          previousSliderValue = sliderValue;
-        }
-      }
-    }
-
-    return {
-      init: init
-    };
-  })();
-
-  // Get input for the mass and the spring constant from the user
+  // React to user input
   var userInput = (function(){
     function didClickButton() {
       physics.updateFromUserInput(0);
@@ -471,6 +492,8 @@ tags: programming science
       sickSlider.init(".EarthOrbitSimulation-massSlider", function(sliderValue){
         debug.print(sliderValue);
       });
+
+      // sickSlider.updatePosition(".EarthOrbitSimulation-massSlider", 0.5);
     }
 
     return {
