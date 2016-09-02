@@ -49,7 +49,7 @@ tags: programming science
 
   .EarthOrbitSimulation-canvas { display: block; }
 
-  .SickSlider--isUnselectable {
+  .isUnselectable {
     -webkit-touch-callout: none;
     -webkit-user-select: none; /* Chrome/Safari */
     -moz-user-select: none; /* Firefox */
@@ -89,7 +89,7 @@ tags: programming science
 <!-- Message shown in old browsers. -->
 <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
 
-<div class="EarthOrbitSimulation-container isFullScreenWide">
+<div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
     <img src='/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
     <img src='/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
     <canvas class="EarthOrbitSimulation-canvas"></canvas>
@@ -97,7 +97,7 @@ tags: programming science
 
 <br>
 
-<div class="SickSlider EarthOrbitSimulation-massSlider SickSlider--isUnselectable" >
+<div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
   <div class="SickSlider-stripe"></div>
   <div class="SickSlider-head"></div>
 </div>
@@ -383,27 +383,46 @@ tags: programming science
       var sliderHead = document.querySelector(".SickSlider-head");
       var sliding = false;
 
-      slider.onmousedown = function(e) {
+      // Start dragging lider
+      // -----------------
+
+      slider.addEventListener("mousedown", function(e) {
         sliding = true;
         updateHeadPosition(e);
-      }
-
-      document.addEventListener("mouseup", function(){
-        sliding = false;
       });
-
 
       slider.addEventListener("touchstart", function(e) {
         sliding = true;
         updateHeadPosition(e);
       });
 
-      slider.addEventListener("mousemove", function(e) {
+      // End dragging lider
+      // -----------------
+
+      document.addEventListener("mouseup", function(){
+        sliding = false;
+        debug.print("mouseup");
+      });
+
+      document.addEventListener("dragend", function(){
+        sliding = false;
+        debug.print("dragend");
+      });
+
+      document.addEventListener("touchend", function(e) {
+        sliding = false;
+        debug.print("touchend");
+      });
+
+      // Drag slider
+      // -----------------
+
+      document.addEventListener("mousemove", function(e) {
         if (!sliding) { return; }
         updateHeadPosition(e);
       });
 
-      slider.addEventListener("touchmove", function(e) {
+      document.addEventListener("touchmove", function(e) {
         if (!sliding) { return; }
         updateHeadPosition(e);
       });
