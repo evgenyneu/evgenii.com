@@ -680,3 +680,5 @@ tags: programming science
 * [The complete source code](/files/2016/09/earth_orbit_simulation/the_complete_code/) of the earth orbit simulation.
 
 * Susskind, L., &amp; Hrabovsky, G. (2013). The theoretical minimum: What you need to know to start doing physics. New York: Basic Boks.
+
+* [Programming a harmonic oscillator](/blog/programming-harmonic-oscillator/).

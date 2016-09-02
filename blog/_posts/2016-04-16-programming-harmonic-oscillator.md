@@ -1031,7 +1031,7 @@ You will now be able to change the mass and the spring constant and update the s
 
 ## Modeling the universe
 
-We have learned how to create an HTML simulation of a physical process by using a numerical method of solving its equation of motion. It was convenient because we did not need to know the analytical solution to the equation, which may not even exist for more complex systems. This approach can be used to simulate all kinds of things from double pendulums to the motions of planets.
+We have learned how to create an HTML simulation of a physical process by using a numerical method of solving its equation of motion. It was convenient because we did not need to know the analytical solution to the equation, which may not even exist for more complex systems. This approach can be used to simulate all kinds of things from double pendulums to the [motions of planets](/blog/earth-orbit-simulation/).
 
 The simulation we created can be used on any web site. Fee free to leave a comment if you had any problems.
 
@@ -1040,6 +1040,8 @@ The simulation we created can be used on any web site. Fee free to leave a comme
 * [The complete source code](/files/2016/04/harmonic_oscillator/the_complete_code/) of the harmonic oscillator simulation.
 
 * Susskind, L., &amp; Hrabovsky, G. (2013). The theoretical minimum: What you need to know to start doing physics. New York: Basic Boks.
+
+* [A simulation of the Earth orbiting the Sun](/blog/earth-orbit-simulation/).
 
 * [Euler's method](https://www.khanacademy.org/math/differential-equations/first-order-differential-equations/eulers-method-tutorial/v/eulers-method) on Khan Academy.
 
