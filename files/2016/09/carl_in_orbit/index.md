@@ -111,9 +111,6 @@ title: "Carl in Orbit"
     left: 50%;
     margin-left: -50px;
     margin-top: -50px;
-    background-image: url("/image/blog/2016-09-03-big-sun-experiment/hibitable_zone.png");
-    background-repeat: no-repeat;
-    background-size:100%;
     z-index: 800;
     opacity: 0.15;
   }
@@ -122,7 +119,17 @@ title: "Carl in Orbit"
   @-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
   @keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
 
-  .EarthOrbitSimulation-canvas { display: block; }
+  .EarthOrbitSimulation-canvas,
+  .EarthOrbitSimulation-canvasHabitableZone { display: block; }
+
+  .EarthOrbitSimulation-canvasHabitableZone {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
 
   /* Prevent browser from showing selection when the element is touched */
   .isUnselectable {
@@ -173,10 +180,11 @@ title: "Carl in Orbit"
 <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
 
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
-  <div class='EarthOrbitSimulation-habitableZone'></div>
+  <img src='/image/blog/2016-09-03-big-sun-experiment/hibitable_zone.png' class='EarthOrbitSimulation-habitableZone' alt='Habitable zone'>
   <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
   <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
   <canvas class="EarthOrbitSimulation-canvas"></canvas>
+  <canvas class="EarthOrbitSimulation-canvasHabitableZone"></canvas>
 
   <div class="EarthOrbitSimulation-earthEnd EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
     <div class="EarthOrbitSimulation-earthEndMessage">
@@ -493,6 +501,8 @@ title: "Carl in Orbit"
   var graphics = (function() {
     var canvas = null, // Canvas DOM element.
       context = null, // Canvas context for drawing.
+      contextHabitableZone = null,
+      canvasHabitableZone = null,
       canvasHeight = 400,
       earthSize = 25,
       sunsSize = 60,
@@ -503,7 +513,6 @@ title: "Carl in Orbit"
       earthElement,
       sunElement,
       earthEndElement,
-      habitableZoneElement,
       currentSunsSize = sunsSize;
       middleX = 1,
       middleY = 1
@@ -542,11 +551,19 @@ title: "Carl in Orbit"
 
     function updateHabitableZoneSize(sunMass) {
       var size = physics.habitableZoneOuterDistancePixels(sunMass);
-      size *= 2; // Multiply by to to convert from radius to diameter
-      habitableZoneElement.style.width = size + "px";
-      habitableZoneElement.style.height = size + "px";
-      habitableZoneElement.style.marginLeft = -(size / 2.0) + "px"
-      habitableZoneElement.style.marginTop = -(size / 2.0) + "px"
+      // size *= 2; // Multiply by to to convert from radius to diameter
+      // habitableZoneElement.style.width = size + "px";
+      // habitableZoneElement.style.height = size + "px";
+      // habitableZoneElement.style.marginLeft = -(size / 2.0) + "px"
+      // habitableZoneElement.style.marginTop = -(size / 2.0) + "px"
+
+      middleX = Math.floor(canvas.width / 2);
+      middleY = Math.floor(canvas.height / 2);
+      contextHabitableZone.clearRect(0, 0, canvas.width, canvas.height);
+      contextHabitableZone.beginPath();
+      contextHabitableZone.strokeStyle = colors.orbitalPath;
+      contextHabitableZone.arc(middleX, middleY, size, 0, 2*Math.PI);
+      contextHabitableZone.stroke();
     }
 
     function drawOrbitalLine(newEarthPosition) {
@@ -599,6 +616,11 @@ title: "Carl in Orbit"
       canvas.style.height= canvasHeight + 'px';
       canvas.width  = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
+
+      canvasHabitableZone.style.width='100%';
+      canvasHabitableZone.style.height= canvasHeight + 'px';
+      canvasHabitableZone.width  = canvas.offsetWidth;
+      canvasHabitableZone.height = canvas.offsetHeight;
     }
 
     // Create canvas for drawing and call success argument
@@ -613,6 +635,12 @@ title: "Carl in Orbit"
       context = canvas.getContext("2d");
       if (!context) { return; } // Error, browser does not support canvas
 
+      canvasHabitableZone = document.querySelector(".EarthOrbitSimulation-canvasHabitableZone");
+      // Get canvas context for drawing
+      contextHabitableZone = canvasHabitableZone.getContext("2d");
+      if (!contextHabitableZone) { return; } // Error, browser does not support canvas
+
+
       // If we got to this point it means the browser can draw
       // Hide the old browser message
       hideCanvasNotSupportedMessage();
@@ -623,7 +651,6 @@ title: "Carl in Orbit"
       earthElement = document.querySelector(".EarthOrbitSimulation-earth");
       sunElement = document.querySelector(".EarthOrbitSimulation-sun");
       earthEndElement = document.querySelector(".EarthOrbitSimulation-earthEnd");
-      habitableZoneElement = document.querySelector(".EarthOrbitSimulation-habitableZone");
       updateHabitableZoneSize(1);
 
       // Execute success callback function
