@@ -5,6 +5,8 @@ comments: false
 title: "Carl in Orbit"
 ---
 
+# Carl in Orbit
+
 <!--  To embed this simulator into your web page copy this source code until "Simulator END" comment. -->
 
 <!--
@@ -671,11 +673,12 @@ title: "Carl in Orbit"
       massSlider.onSliderChange = updateSunsMass;
       massSlider.changePosition(0.5);
       restartButton.onclick = didClickRestart;
-      // restartButtonTwo.onclick = didClickRestart;
-      restartButtonTwo.onclick = function() {
-        graphics.saveAsImage();
-        return false; // Prevent default
-      };
+      restartButtonTwo.onclick = didClickRestart;
+
+      // restartButtonTwo.onclick = function() {
+      //   graphics.saveAsImage();
+      //   return false; // Prevent default
+      // };
     }
 
     return {
@@ -691,6 +694,16 @@ title: "Carl in Orbit"
 </script>
 
 <!-- Simulator END -->
+
+<br>
+
+Thursday night of 23 October 1997. Professor Carl Cox smashes a ripe strawberry lying on his laboratory desk with his broad forehead and shouts "It is wonderful!". He leans towards a brand new Pentium 2 computer and emails two words to his friend and colleague Neil Feynman: "No Volveré". Carl grins and and wipes red juice from his face with a manuscript of a finished paper that he was planning to send to the Astrobotanical Review journal. The paper is not important anymore. Only one thing is.
+
+What just happened today to professor, and, consequently, to everything else in the vicinity of the 100,000 galaxies within the Laniakea Supercluster, is quite remarkable and is worth explaining. Carl has just discovered a way of *increasing* the mass of the Sun by feeding it the dark energy from the area in space stretching billions and billions of light years. This trick, bizarrely, involves berries from the local grocery shop and works both ways: the Sun's mass can also be *reduced* by pumping it back into the the surrounding area of the Universe.
+
+The short-term implications of this experiment are obvious to any school student who attended an introductory astronomy class.
+
+
 
 
 ## Photo credits
