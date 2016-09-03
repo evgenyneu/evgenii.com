@@ -487,11 +487,17 @@ title: "Carl in Orbit"
       state.massOfTheSunKg = constants.massOfTheSunKg * solarMassMultiplier;
     }
 
+    // Returns the current mass of the Sun as a fraction of the normal mass.
+    function currentMassOfTheSunFraction() {
+      return state.massOfTheSunKg / constants.massOfTheSunKg;
+    }
+
     return {
       earthSunDistancePixels: earthSunDistancePixels,
       habitableZoneOuterDistancePixels: habitableZoneOuterDistancePixels,
       habitableZoneInnerDistancePixels: habitableZoneInnerDistancePixels,
       resetStateToInitialConditions: resetStateToInitialConditions,
+      currentMassOfTheSunFraction: currentMassOfTheSunFraction,
       updatePosition: updatePosition,
       initialConditions: initialConditions,
       updateFromUserInput: updateFromUserInput,
@@ -503,14 +509,14 @@ title: "Carl in Orbit"
   var graphics = (function() {
     var canvas = null, // Canvas DOM element.
       context = null, // Canvas context for drawing.
-      contextHabitableZone = null,
-      canvasHabitableZone = null,
+      canvasHabitableZone = null, // Habitable zone canvas DOM element
+      contextHabitableZone = null, // Habitable zone canvas context
       canvasHeight = 400,
       earthSize = 25,
       sunsSize = 60,
       colors = {
         orbitalPath: "#777777",
-        habitableZoneEdge: "#00F902"
+        habitableZoneFillColor: "#00FF00"
       },
       previousEarthPosition = null,
       earthElement,
@@ -552,7 +558,7 @@ title: "Carl in Orbit"
       sunElement.style.marginTop = -(currentSunsSize / 2.0) + "px"
     }
 
-    function updateHabitableZoneSize(sunMass) {
+    function redrawHabitableZone(sunMass) {
       var radiusOuter = physics.habitableZoneOuterDistancePixels(sunMass);
       var radiusInner= physics.habitableZoneInnerDistancePixels(sunMass);
 
@@ -560,10 +566,9 @@ title: "Carl in Orbit"
       middleY = Math.floor(canvas.height / 2);
 
       contextHabitableZone.clearRect(0, 0, canvas.width, canvas.height);
-
-      contextHabitableZone.beginPath();
-      contextHabitableZone.fillStyle="#00FF00";
+      contextHabitableZone.fillStyle = colors.habitableZoneFillColor;
       contextHabitableZone.globalAlpha = 0.15;
+      contextHabitableZone.beginPath();
       contextHabitableZone.arc(middleX, middleY, radiusInner, 0, 2*Math.PI, true);
       contextHabitableZone.arc(middleX, middleY, radiusOuter, 0, 2*Math.PI, false);
       contextHabitableZone.fill();
@@ -626,23 +631,34 @@ title: "Carl in Orbit"
       canvasHabitableZone.height = canvas.offsetHeight;
     }
 
-    // Create canvas for drawing and call success argument
-    function init(success) {
+    // Returns true on error and false on success
+    function initCanvas() {
       // Find the canvas HTML element
       canvas = document.querySelector(".EarthOrbitSimulation-canvas");
 
       // Check if the browser supports canvas drawing
-      if (!(window.requestAnimationFrame && canvas && canvas.getContext)) { return; }
+      if (!(window.requestAnimationFrame && canvas && canvas.getContext)) { return true; }
 
       // Get canvas context for drawing
       context = canvas.getContext("2d");
-      if (!context) { return; } // Error, browser does not support canvas
+      if (!context) { return true; } // Error, browser does not support canvas
+      return false;
+    }
 
+    // Returns true on error and false on success
+    function initHabitableZoneCanvas() {
       canvasHabitableZone = document.querySelector(".EarthOrbitSimulation-canvasHabitableZone");
+
       // Get canvas context for drawing
       contextHabitableZone = canvasHabitableZone.getContext("2d");
-      if (!contextHabitableZone) { return; } // Error, browser does not support canvas
+      if (!contextHabitableZone) { return true; } // Error, browser does not support canvas
+      return false;
+    }
 
+    // Create canvas for drawing and call success argument
+    function init(success) {
+      if (initCanvas()) { return; }
+      if (initHabitableZoneCanvas()) { return; }
 
       // If we got to this point it means the browser can draw
       // Hide the old browser message
@@ -654,7 +670,7 @@ title: "Carl in Orbit"
       earthElement = document.querySelector(".EarthOrbitSimulation-earth");
       sunElement = document.querySelector(".EarthOrbitSimulation-sun");
       earthEndElement = document.querySelector(".EarthOrbitSimulation-earthEnd");
-      updateHabitableZoneSize(1);
+      redrawHabitableZone(1);
 
       // Execute success callback function
       success();
@@ -675,7 +691,7 @@ title: "Carl in Orbit"
       fitToContainer: fitToContainer,
       drawScene: drawScene,
       updateSunSize: updateSunSize,
-      updateHabitableZoneSize: updateHabitableZoneSize,
+      redrawHabitableZone: redrawHabitableZone,
       showHideEarthEndMessage: showHideEarthEndMessage,
       clearScene: clearScene,
       saveAsImage: saveAsImage,
@@ -701,6 +717,8 @@ title: "Carl in Orbit"
         window.addEventListener('resize', function(event){
           graphics.fitToContainer();
           graphics.clearScene();
+          console.log(physics.state.massOfTheSunKg);
+          graphics.redrawHabitableZone(physics.currentMassOfTheSunFraction());
           graphics.drawScene(physics.earthSunDistancePixels(), physics.state.angle.value);
         });
 
@@ -731,7 +749,7 @@ title: "Carl in Orbit"
       sunsMassElement.innerHTML = formattedMass;
       physics.updateFromUserInput(sunsMassValue);
       graphics.updateSunSize(sunsMassValue);
-      graphics.updateHabitableZoneSize(sunsMassValue);
+      graphics.redrawHabitableZone(sunsMassValue);
     }
 
     function didClickRestart() {
