@@ -812,7 +812,7 @@ The short-term implications of this experiment are obvious to any student who at
 
 <div class='isTextCentered'>
   <img class='isMax300PxWide' src='/image/blog/2016-09-03-big-sun-experiment/massive_sun_smaller_earth_sun_distance.png' alt='Relationship between the mass of the Sun and the Sun-Earth distance'>
-  <p>Figure 1: Relationship between the Mass of the Sun and the Sun-Earth distance.</p>
+  <p>Figure 1: Mass of the Sun and the Sun-Earth distance.</p>
 </div>
 
 
@@ -825,15 +825,21 @@ It takes about 365 days for the Earth to complete one full circle around the Sun
 
 The increase in Sun's mass also affects its brightness, or luminosity. This happens because larger Sun creates bigger gravitational pressure in its core, which increases the rate of fusion reaction that creates more light. How much brighter the Sun becomes if Carl doubles its mass? It will be about eight times more bright, because the luminosity of a star similar to the Sun is roughly proportional to the cube of its mass [3] \(see Figure 2\).
 
-## Habitable zone
-
-
-
 <div class='isTextCentered'>
   <img class='isMax500PxWide' src='/image/blog/2016-09-03-big-sun-experiment/massive_sun_is_brighter.png' alt='More massive stars are much brighter'>
-  <p>Figure 2: Relationship between the luminosity of the Sun and its mass.</p>
+  <p>Figure 2: Star's luminosity and mass.</p>
 </div>
 
+## Habitable zone
+
+As we've shown, the planets receive more sunlight as the Sun's mass increases. As a result, if the Earth's distance to the Sun does not change, its average global temperature will increase. If it gets too hot, Earth's oceans will start to boil and that will mean the end of life. In astronomy, the range of distances from a star at which liquid water can exist on the surface of a planet is called the star's *habitable zone*. As Doctor Carl increases the mass of the Sun, its habitable zone moves *further away*.
+
+We can see from Figure 3 that the massive Sun would have more distant habitable zone. In this case, the Earth would be too close the Sun, and the water would boil and evaporate. Therefore, Carl Cox need to be very careful and not keep Sun's mass high for long periods of time. Otherwise, the heat will destroy all life on the planet.
+
+<div class='isTextCentered'>
+  <img class='isMax100PercentWide isTextCentered' src='/image/blog/2016-09-03-big-sun-experiment/star_habitable_zone.png' alt='More massive stars are much brighter'>
+  <p>Figure 3: Star's habitable zone and mass.</p>
+</div>
 
 
 ## Photo credits
