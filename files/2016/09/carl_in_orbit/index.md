@@ -101,6 +101,8 @@ title: "Carl in Orbit"
     -moz-animation:spin .5s linear infinite;
     animation:spin .5s linear infinite;
     z-index: 999;
+    /*filter: brightness(50%);*/
+    -webkit-filter: brightness(1.40);
   }
 
   @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
@@ -552,7 +554,7 @@ title: "Carl in Orbit"
     // Updates the size of the Sun based on its mass. The sunMass argument is a fraction of the real Sun's mass.
     function updateSunSize(sunMass) {
       var sunsDefaultWidth = sunsSize;
-      currentSunsSize = sunsDefaultWidth * Math.pow(sunMass, 1/5);
+      currentSunsSize = sunsDefaultWidth * Math.pow(sunMass, 1/3);
       sunElement.style.width = currentSunsSize + "px";
       sunElement.style.marginLeft = -(currentSunsSize / 2.0) + "px"
       sunElement.style.marginTop = -(currentSunsSize / 2.0) + "px"
@@ -797,7 +799,7 @@ Thursday noon of 23 October 1997. Doctor Carl Cox smashes a ripe strawberry lyin
 
 What just happened today to Carl, and, consequently, to everything else in the vicinity of the 100,000 galaxies within the Laniakea Supercluster, is quite remarkable and is worth explaining. Doctor Carl has just discovered a way of *increasing* the mass of the Sun by feeding it the dark energy from the area in space stretching billions and billions of light years. This trick, bizarrely, involves berries from the local grocery shop and works both ways: the Sun's mass can also be *reduced* by pumping it back into the surrounding area of the Universe.
 
-Carl approaches a big shiny metallic box with blinking buttons and pushes several of them. A big warning message box "Are you sure you want to execute the `big_bloody_sun` script?" appears on the computer screen of the apparatus. Without hesitation Carl presses the "Enter" button and returns to his desk with a satisfied grin on hist tired face. He wipes off berry juice from his forehead with a manuscript of a finished paper that was planned to be submitted to the Astrobotanical Review journal. This paper is not important anymore. Nothing really is.
+Carl approaches a big shiny metallic box with blinking buttons and pushes several of them. A big warning message box "Are you sure you want to execute the `big_bloody_sun` script?" appears on the computer screen of the apparatus. Without hesitation Carl presses the "Enter" button and returns to his desk with a satisfied grin on hist tired face. He wipes off berry juice from his forehead with a manuscript of a finished paper titled "Cross pollination of Honeysuckles in zero gravity by bumblebees" that was planned to be submitted to the Astrobotanical Review journal. This paper is not important anymore. Nothing really is.
 
 ## Orbital distance and Newton's Law of Universal Gravitation
 
@@ -815,8 +817,15 @@ The short-term implications of this experiment are obvious to any student who at
 It takes about 365 days for the Earth to complete one full circle around the Sun. This time duration is also called the *orbital period*. What happens to Earth's orbital period as it moves closer to the Sun? This question can be  answered by using Kepler third law [2, p. 27] that states that closer planets have smaller orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth. Consequently, the Earth will also move faster, because it will have less time to complete the shorter orbital path.
 
 
-## The Sun's luminosity and habitable zone
+## The Sun's luminosity
 
+The increase in Sun's mass also affects its brightness, or luminosity. This happens because larger Sun creates bigger gravitational pressure in its core, which increases the rate of fusion reaction that creates more light. How much brighter the Sun becomes if Carl doubles its mass? It will be about eight times more bright, because the luminosity of a star similar to the Sun is roughly proportional to the cube of its mass [3] \(see Figure 2\).
+
+
+<div class='isTextCentered'>
+  <img class='isMax500PxWide' src='/image/blog/2016-09-03-big-sun-experiment/massive_sun_is_brighter.png' alt='More massive stars are much brighter'>
+  <p>Figure 2: Relationship between the luminosity of the Sun and its mass.</p>
+</div>
 
 
 
@@ -831,6 +840,8 @@ It takes about 365 days for the Earth to complete one full circle around the Sun
 * [1]. J. Bennet, M. Donahue, N. Schneider , and M. Voit, *Cosmic perspective*. United Kingdom: Pearson Education Limited, 2014.
 
 * [2]. J. O. Bennett, G. S. Shostak, *Life in the Universe*, 4th ed. San Francisco, CA: Pearson, 2016.
+
+* [3]. "[Mass-luminosity relationship](http://hyperphysics.phy-astr.gsu.edu/hbase/Astro/herrus.html#c3)". Hyperphysics. Retrieved 2016-09-03.
 
 * [3]. [The complete source code](/files/2016/09/earth_orbit_simulation/the_complete_code/) of the Earth orbit simulation.
 
