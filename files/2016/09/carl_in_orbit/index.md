@@ -101,8 +101,6 @@ title: "Carl in Orbit"
     -moz-animation:spin .5s linear infinite;
     animation:spin .5s linear infinite;
     z-index: 999;
-    /*filter: brightness(50%);*/
-    -webkit-filter: brightness(1.40);
   }
 
   @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
@@ -552,12 +550,18 @@ title: "Carl in Orbit"
     }
 
     // Updates the size of the Sun based on its mass. The sunMass argument is a fraction of the real Sun's mass.
-    function updateSunSize(sunMass) {
+    function updateSunSizeAndBrightness(sunMass) {
+      // Change brightness
+      sunElement.setAttribute("style","filter:brightness(" + sunMass + "); "
+        + "-webkit-filter:brightness(" + sunMass + "); ");
+
       var sunsDefaultWidth = sunsSize;
       currentSunsSize = sunsDefaultWidth * Math.pow(sunMass, 1/3);
       sunElement.style.width = currentSunsSize + "px";
-      sunElement.style.marginLeft = -(currentSunsSize / 2.0) + "px"
-      sunElement.style.marginTop = -(currentSunsSize / 2.0) + "px"
+      sunElement.style.marginLeft = -(currentSunsSize / 2.0) + "px";
+      sunElement.style.marginTop = -(currentSunsSize / 2.0) + "px";
+
+
     }
 
     function redrawHabitableZone(sunMass) {
@@ -692,7 +696,7 @@ title: "Carl in Orbit"
     return {
       fitToContainer: fitToContainer,
       drawScene: drawScene,
-      updateSunSize: updateSunSize,
+      updateSunSizeAndBrightness: updateSunSizeAndBrightness,
       redrawHabitableZone: redrawHabitableZone,
       showHideEarthEndMessage: showHideEarthEndMessage,
       clearScene: clearScene,
@@ -750,7 +754,7 @@ title: "Carl in Orbit"
       var formattedMass = parseFloat(Math.round(sunsMassValue * 100) / 100).toFixed(2)
       sunsMassElement.innerHTML = formattedMass;
       physics.updateFromUserInput(sunsMassValue);
-      graphics.updateSunSize(sunsMassValue);
+      graphics.updateSunSizeAndBrightness(sunsMassValue);
       graphics.redrawHabitableZone(sunsMassValue);
     }
 
@@ -820,6 +824,9 @@ It takes about 365 days for the Earth to complete one full circle around the Sun
 ## The Sun's luminosity
 
 The increase in Sun's mass also affects its brightness, or luminosity. This happens because larger Sun creates bigger gravitational pressure in its core, which increases the rate of fusion reaction that creates more light. How much brighter the Sun becomes if Carl doubles its mass? It will be about eight times more bright, because the luminosity of a star similar to the Sun is roughly proportional to the cube of its mass [3] \(see Figure 2\).
+
+## Habitable zone
+
 
 
 <div class='isTextCentered'>
