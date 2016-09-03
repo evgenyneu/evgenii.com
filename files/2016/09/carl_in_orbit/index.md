@@ -695,14 +695,30 @@ title: "Carl in Orbit"
 
 <!-- Simulator END -->
 
-<br>
 
-Thursday night of 23 October 1997. Professor Carl Cox smashes a ripe strawberry lying on his laboratory desk with his broad forehead and shouts "It is wonderful!". He leans towards a brand new Pentium 2 computer and emails two words to his friend and colleague Neil Feynman: "No Volveré". Carl grins and and wipes red juice from his face with a manuscript of a finished paper that he was planning to send to the Astrobotanical Review journal. The paper is not important anymore. Only one thing is.
+## Carl's experiment
 
-What just happened today to professor, and, consequently, to everything else in the vicinity of the 100,000 galaxies within the Laniakea Supercluster, is quite remarkable and is worth explaining. Carl has just discovered a way of *increasing* the mass of the Sun by feeding it the dark energy from the area in space stretching billions and billions of light years. This trick, bizarrely, involves berries from the local grocery shop and works both ways: the Sun's mass can also be *reduced* by pumping it back into the the surrounding area of the Universe.
 
-The short-term implications of this experiment are obvious to any school student who attended an introductory astronomy class.
+Thursday noon of 23 October 1997. Doctor Carl Cox smashes a ripe strawberry lying on his laboratory desk with his broad forehead and shouts "It is wonderful!". He leans towards a brand new Pentium 2 computer and emails one word to his friend and colleague Neil Feynman: "Fragaria".
 
+What just happened today to Carl, and, consequently, to everything else in the vicinity of the 100,000 galaxies within the Laniakea Supercluster, is quite remarkable and is worth explaining. Doctor Carl has just discovered a way of *increasing* the mass of the Sun by feeding it the dark energy from the area in space stretching billions and billions of light years. This trick, bizarrely, involves berries from the local grocery shop and works both ways: the Sun's mass can also be *reduced* by pumping it back into the surrounding area of the Universe.
+
+Carl approaches a big shiny metallic box with blinking buttons and pushes several of them. A big warning message box "Are you sure you want to execute the `big_bloody_sun` script?" appears on the computer screen of the apparatus. Without hesitation Carl presses the "Enter" button and returns to his desk with a satisfied grin on hist tired face. He wipes red juice from his face with a manuscript of a finished paper that was planned to be submitted to the Astrobotanical Review journal. This paper is not important anymore. Nothing really is.
+
+## Orbital distance and Newton's Law of Universal Gravitation
+
+The short-term implications of this experiment are obvious to any student who attended an introductory astronomy class. What happens to the Earth if the mass of the Sun increases? One of the most fundamental laws, Newton's Law of Universal Gravitation, tells us that the force of attraction between two bodies is proportional to the product of their masses and inversely proportional to the square of the distance between them. This law implies, that if doctor increases the mass of the Sun, it will exert stronger gravitational force on the Earth. As a result, the Earth *moves closer* to the Sun (see Figure 1).
+
+
+<div class='isTextCentered'>
+  <img class='isMax300PxWide' src='/image/blog/2016-09-03-big-sun-experiment/massive_sun_smaller_earth_sun_distance.png' alt='Relationship between the mass of the Sun and the Sun-Earth distance'>
+  <p>Figure 1: Relationship between the Mass of the Sun and the Sun-Earth distance.</p>
+</div>
+
+
+## Orbital distance and Kepler's third law
+
+It takes about 365 days for the Earth to complete one full circle around the Sun. This time duration is also called the *orbital period*. What happens to Earth's orbital period as it moves closer to the Sun? This question can be  answered by using Kepler third law [1, p. 27] that states that closer planets have smaller orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth. Consequently, the Earth will also move faster, because it will have less time to complete the shorter orbital path.
 
 
 
@@ -714,8 +730,10 @@ The short-term implications of this experiment are obvious to any school student
 
 ## References
 
-* [The complete source code](/files/2016/09/earth_orbit_simulation/the_complete_code/) of the Earth orbit simulation.
+* [1]. J. O. Bennett, G. S. Shostak, Life in the Universe, 4th ed. San Francisco, CA: Pearson, 2016.
 
-* Susskind, L., &amp; Hrabovsky, G. (2013). The theoretical minimum: What you need to know to start doing physics. New York: Basic Boks.
+* [2]. [The complete source code](/files/2016/09/earth_orbit_simulation/the_complete_code/) of the Earth orbit simulation.
 
-* [Programming a harmonic oscillator](/blog/programming-harmonic-oscillator/).
+* [3]. Susskind, L., &amp; Hrabovsky, G. (2013). The theoretical minimum: What you need to know to start doing physics. New York: Basic Boks.
+
+* [4]. [Programming a harmonic oscillator](/blog/programming-harmonic-oscillator/).
