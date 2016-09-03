@@ -103,18 +103,6 @@ title: "Carl in Orbit"
     z-index: 999;
   }
 
-  .EarthOrbitSimulation-habitableZone {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    top: 50%;
-    left: 50%;
-    margin-left: -50px;
-    margin-top: -50px;
-    z-index: 800;
-    opacity: 0.15;
-  }
-
   @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
   @-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
   @keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
@@ -180,7 +168,6 @@ title: "Carl in Orbit"
 <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
 
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
-  <img src='/image/blog/2016-09-03-big-sun-experiment/hibitable_zone.png' class='EarthOrbitSimulation-habitableZone' alt='Habitable zone'>
   <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
   <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
   <canvas class="EarthOrbitSimulation-canvas"></canvas>
