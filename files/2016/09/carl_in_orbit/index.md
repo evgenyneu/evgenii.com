@@ -589,12 +589,19 @@ title: "Carl in Orbit"
       previousEarthPosition = null;
     }
 
+    function saveAsImage() {
+      var dataUrl = canvas.toDataURL("image/png");
+      var newWindow = window.open('about:blank','Carl in Orbit');
+      newWindow.document.write("<img src='" + dataUrl + "' alt='Carl in Orbit'/><p>Long tap or right-click on the image  to save it</p>");
+    }
+
     return {
       fitToContainer: fitToContainer,
       drawScene: drawScene,
       updateSunSize: updateSunSize,
       showHideEarthEndMessage: showHideEarthEndMessage,
       clearScene: clearScene,
+      saveAsImage: saveAsImage,
       init: init
     };
   })();
@@ -664,7 +671,11 @@ title: "Carl in Orbit"
       massSlider.onSliderChange = updateSunsMass;
       massSlider.changePosition(0.5);
       restartButton.onclick = didClickRestart;
-      restartButtonTwo.onclick = didClickRestart;
+      // restartButtonTwo.onclick = didClickRestart;
+      restartButtonTwo.onclick = function() {
+        graphics.saveAsImage();
+        return false; // Prevent default
+      };
     }
 
     return {
