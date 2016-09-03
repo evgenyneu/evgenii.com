@@ -100,19 +100,21 @@ title: "Carl in Orbit"
     -webkit-animation:spin .5s linear infinite;
     -moz-animation:spin .5s linear infinite;
     animation:spin .5s linear infinite;
+    z-index: 999;
   }
 
   .EarthOrbitSimulation-habitableZoneOuter {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 100px;
+    height: 100px;
     top: 50%;
     left: 50%;
-    margin-left: -150px;
-    margin-top: -150px;
+    margin-left: -50px;
+    margin-top: -50px;
     background-image: url("/image/blog/2016-09-03-big-sun-experiment/hibitable_zone_outer.png");
     background-repeat: no-repeat;
-    z-index: 999;
+    background-size:100%;
+    z-index: 800;
     opacity: 0.2;
   }
 
@@ -144,13 +146,13 @@ title: "Carl in Orbit"
     position: relative;
     height: 60px;
     cursor: pointer;
+    z-index: 900;
   }
 
   .SickSlider-stripe {
     height: 5px;
     width: 100%;
     background-color: #999999;
-    /*border: 1px solid #a66000;*/
     position: absolute;
     top: 28px;
     left: 0px;
@@ -356,7 +358,9 @@ title: "Carl in Orbit"
       gravitationalConstant: 6.67408 * Math.pow(10, -11),
       earthSunDistanceMeters: 1.496 * Math.pow(10, 11),
       earthAngularVelocityMetersPerSecond: 1.990986 *  Math.pow(10, -7),
-      massOfTheSunKg: 1.98855 * Math.pow(10, 30)
+      massOfTheSunKg: 1.98855 * Math.pow(10, 30),
+      habitableZoneInnerEdgeMultiplier: 0.84, // The distance in AUs of the inner edge of the habitable zone
+      habitableZoneOuterEdgeMultiplier: 1.7 // The distance in AUs of the outer edge of the habitable zone
     };
 
     // The length of one AU (Earth-Sun distance) in pixels.
@@ -426,8 +430,21 @@ title: "Carl in Orbit"
     }
 
     // The distance that is used for drawing on screen
-    function scaledDistance() {
+    function earthSunDistancePixels() {
       return state.distance.value / scaleFactor;
+    }
+
+    // Returns the distance of the outer edge of the habitable zone form the Sun in meters.
+    // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
+    function habitableZoneOuterDistanceMeters(massOfTheSun) {
+      var newSunLuminocity = Math.pow(massOfTheSun, 3);
+      return Math.sqrt(newSunLuminocity) * constants.habitableZoneOuterEdgeMultiplier * constants.earthSunDistanceMeters;
+    }
+
+    // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
+    // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
+    function habitableZoneOuterDistancePixels(massOfTheSun) {
+      return habitableZoneOuterDistanceMeters(massOfTheSun) / scaleFactor;
     }
 
     // The main function that is called on every animation frame.
@@ -463,7 +480,8 @@ title: "Carl in Orbit"
     }
 
     return {
-      scaledDistance: scaledDistance,
+      earthSunDistancePixels: earthSunDistancePixels,
+      habitableZoneOuterDistancePixels: habitableZoneOuterDistancePixels,
       resetStateToInitialConditions: resetStateToInitialConditions,
       updatePosition: updatePosition,
       initialConditions: initialConditions,
@@ -486,6 +504,7 @@ title: "Carl in Orbit"
       earthElement,
       sunElement,
       earthEndElement,
+      outerHabitableZoneElement,
       currentSunsSize = sunsSize;
       middleX = 1,
       middleY = 1
@@ -520,6 +539,15 @@ title: "Carl in Orbit"
       sunElement.style.width = currentSunsSize + "px";
       sunElement.style.marginLeft = -(currentSunsSize / 2.0) + "px"
       sunElement.style.marginTop = -(currentSunsSize / 2.0) + "px"
+    }
+
+    function updateOuterhabitableZoneSize(sunMass) {
+      var size = physics.habitableZoneOuterDistancePixels(sunMass);
+      console.log(size);
+      outerHabitableZoneElement.style.width = size + "px";
+      outerHabitableZoneElement.style.height = size + "px";
+      outerHabitableZoneElement.style.marginLeft = -(size / 2.0) + "px"
+      outerHabitableZoneElement.style.marginTop = -(size / 2.0) + "px"
     }
 
     function drawOrbitalLine(newEarthPosition) {
@@ -596,6 +624,8 @@ title: "Carl in Orbit"
       earthElement = document.querySelector(".EarthOrbitSimulation-earth");
       sunElement = document.querySelector(".EarthOrbitSimulation-sun");
       earthEndElement = document.querySelector(".EarthOrbitSimulation-earthEnd");
+      outerHabitableZoneElement = document.querySelector(".EarthOrbitSimulation-habitableZoneOuter");
+      updateOuterhabitableZoneSize(1);
 
       // Execute success callback function
       success();
@@ -616,6 +646,7 @@ title: "Carl in Orbit"
       fitToContainer: fitToContainer,
       drawScene: drawScene,
       updateSunSize: updateSunSize,
+      updateOuterhabitableZoneSize: updateOuterhabitableZoneSize,
       showHideEarthEndMessage: showHideEarthEndMessage,
       clearScene: clearScene,
       saveAsImage: saveAsImage,
@@ -628,7 +659,7 @@ title: "Carl in Orbit"
     // The method is called 60 times per second
     function animate() {
       physics.updatePosition();
-      graphics.drawScene(physics.scaledDistance(), physics.state.angle.value);
+      graphics.drawScene(physics.earthSunDistancePixels(), physics.state.angle.value);
       window.requestAnimationFrame(animate);
     }
 
@@ -641,7 +672,7 @@ title: "Carl in Orbit"
         window.addEventListener('resize', function(event){
           graphics.fitToContainer();
           graphics.clearScene();
-          graphics.drawScene(physics.scaledDistance(), physics.state.angle.value);
+          graphics.drawScene(physics.earthSunDistancePixels(), physics.state.angle.value);
         });
 
         animate();
@@ -671,6 +702,7 @@ title: "Carl in Orbit"
       sunsMassElement.innerHTML = formattedMass;
       physics.updateFromUserInput(sunsMassValue);
       graphics.updateSunSize(sunsMassValue);
+      graphics.updateOuterhabitableZoneSize(sunsMassValue);
     }
 
     function didClickRestart() {
