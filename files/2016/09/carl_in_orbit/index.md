@@ -707,7 +707,7 @@ Carl approaches a big shiny metallic box with blinking buttons and pushes severa
 
 ## Orbital distance and Newton's Law of Universal Gravitation
 
-The short-term implications of this experiment are obvious to any student who attended an introductory astronomy class. What happens to the Earth if the mass of the Sun increases? One of the most fundamental laws, Newton's Law of Universal Gravitation, tells us that the force of attraction between two bodies is proportional to the product of their masses and inversely proportional to the square of the distance between them. This law implies, that if doctor increases the mass of the Sun, it will exert stronger gravitational force on the Earth. As a result, the Earth *moves closer* to the Sun (see Figure 1).
+The short-term implications of this experiment are obvious to any student who attended an introductory astronomy class. What happens to the Earth if the mass of the Sun increases? One of the most fundamental laws, Newton's Law of Universal Gravitation, tells us that the force of attraction between two bodies is proportional to the product of their masses and inversely proportional to the square of the distance between them [1, p. 131]. This law implies, that if doctor increases the mass of the Sun, it will exert stronger gravitational force on the Earth. As a result, the Earth *moves closer* to the Sun (see Figure 1).
 
 
 <div class='isTextCentered'>
@@ -718,7 +718,7 @@ The short-term implications of this experiment are obvious to any student who at
 
 ## Orbital distance and Kepler's third law
 
-It takes about 365 days for the Earth to complete one full circle around the Sun. This time duration is also called the *orbital period*. What happens to Earth's orbital period as it moves closer to the Sun? This question can be  answered by using Kepler third law [1, p. 27] that states that closer planets have smaller orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth. Consequently, the Earth will also move faster, because it will have less time to complete the shorter orbital path.
+It takes about 365 days for the Earth to complete one full circle around the Sun. This time duration is also called the *orbital period*. What happens to Earth's orbital period as it moves closer to the Sun? This question can be  answered by using Kepler third law [2, p. 27] that states that closer planets have smaller orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth. Consequently, the Earth will also move faster, because it will have less time to complete the shorter orbital path.
 
 
 
@@ -730,10 +730,10 @@ It takes about 365 days for the Earth to complete one full circle around the Sun
 
 ## References
 
-* [1]. J. O. Bennett, G. S. Shostak, Life in the Universe, 4th ed. San Francisco, CA: Pearson, 2016.
+* [1]. J. Bennet, M. Donahue, N. Schneider , and M. Voit, *Cosmic perspective*. United Kingdom: Pearson Education Limited, 2014.
 
-* [2]. [The complete source code](/files/2016/09/earth_orbit_simulation/the_complete_code/) of the Earth orbit simulation.
+* [2]. J. O. Bennett, G. S. Shostak, *Life in the Universe*, 4th ed. San Francisco, CA: Pearson, 2016.
 
-* [3]. Susskind, L., &amp; Hrabovsky, G. (2013). The theoretical minimum: What you need to know to start doing physics. New York: Basic Boks.
+* [3]. [The complete source code](/files/2016/09/earth_orbit_simulation/the_complete_code/) of the Earth orbit simulation.
 
-* [4]. [Programming a harmonic oscillator](/blog/programming-harmonic-oscillator/).
+* [4]. Susskind, L., &amp; Hrabovsky, G. (2013). *The theoretical minimum: What you need to know to start doing physics*. New York: Basic Boks.
