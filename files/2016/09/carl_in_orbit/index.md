@@ -549,6 +549,7 @@ title: "Carl in Orbit"
       middleY = Math.floor(canvas.height / 2);
       contextHabitableZone.clearRect(0, 0, canvas.width, canvas.height);
       contextHabitableZone.beginPath();
+      contextHabitableZone.lineWidth=2;
       contextHabitableZone.strokeStyle = colors.habitableZoneEdge;
       contextHabitableZone.arc(middleX, middleY, size, 0, 2*Math.PI);
       contextHabitableZone.stroke();
