@@ -102,6 +102,20 @@ title: "Carl in Orbit"
     animation:spin .5s linear infinite;
   }
 
+  .EarthOrbitSimulation-habitableZoneOuter {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -150px;
+    background-image: url("/image/blog/2016-09-03-big-sun-experiment/hibitable_zone_outer.png");
+    background-repeat: no-repeat;
+    z-index: 999;
+    opacity: 0.2;
+  }
+
   @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
   @-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
   @keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
@@ -157,19 +171,20 @@ title: "Carl in Orbit"
 <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
 
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
-    <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
-    <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
-    <canvas class="EarthOrbitSimulation-canvas"></canvas>
+  <div class='EarthOrbitSimulation-habitableZoneOuter'></div>
+  <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
+  <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
+  <canvas class="EarthOrbitSimulation-canvas"></canvas>
 
-    <div class="EarthOrbitSimulation-earthEnd EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
-      <div class="EarthOrbitSimulation-earthEndMessage">
-        "My wonder button is being pushed all the time."
-        <br><br>Carl Sagan
-        <br><br><br>
-        <a class="EarthOrbitSimulation-earthEndButton" href="#">💥 Wonder Button ✨</a>
-      </div>
-
+  <div class="EarthOrbitSimulation-earthEnd EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
+    <div class="EarthOrbitSimulation-earthEndMessage">
+      "My wonder button is being pushed all the time."
+      <br><br>Carl Sagan
+      <br><br><br>
+      <a class="EarthOrbitSimulation-earthEndButton" href="#">💥 Wonder Button ✨</a>
     </div>
+
+  </div>
 </div>
 <div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
   <br>
