@@ -797,7 +797,7 @@ Thursday noon of 23 October 1997. Doctor Carl Cox smashes a ripe strawberry lyin
 
 What just happened today to Carl, and, consequently, to everything else in the vicinity of the 100,000 galaxies within the Laniakea Supercluster, is quite remarkable and is worth explaining. Doctor Carl has just discovered a way of *increasing* the mass of the Sun by feeding it the dark energy from the area in space stretching billions and billions of light years. This trick, bizarrely, involves berries from the local grocery shop and works both ways: the Sun's mass can also be *reduced* by pumping it back into the surrounding area of the Universe.
 
-Carl approaches a big shiny metallic box with blinking buttons and pushes several of them. A big warning message box "Are you sure you want to execute the `big_bloody_sun` script?" appears on the computer screen of the apparatus. Without hesitation Carl presses the "Enter" button and returns to his desk with a satisfied grin on hist tired face. He wipes red juice from his face with a manuscript of a finished paper that was planned to be submitted to the Astrobotanical Review journal. This paper is not important anymore. Nothing really is.
+Carl approaches a big shiny metallic box with blinking buttons and pushes several of them. A big warning message box "Are you sure you want to execute the `big_bloody_sun` script?" appears on the computer screen of the apparatus. Without hesitation Carl presses the "Enter" button and returns to his desk with a satisfied grin on hist tired face. He wipes off berry juice from his forehead with a manuscript of a finished paper that was planned to be submitted to the Astrobotanical Review journal. This paper is not important anymore. Nothing really is.
 
 ## Orbital distance and Newton's Law of Universal Gravitation
 
@@ -810,9 +810,13 @@ The short-term implications of this experiment are obvious to any student who at
 </div>
 
 
-## Orbital distance and Kepler's third law
+## Orbital period and Kepler's third law
 
 It takes about 365 days for the Earth to complete one full circle around the Sun. This time duration is also called the *orbital period*. What happens to Earth's orbital period as it moves closer to the Sun? This question can be  answered by using Kepler third law [2, p. 27] that states that closer planets have smaller orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth. Consequently, the Earth will also move faster, because it will have less time to complete the shorter orbital path.
+
+
+## The Sun's luminosity and habitable zone
+
 
 
 
