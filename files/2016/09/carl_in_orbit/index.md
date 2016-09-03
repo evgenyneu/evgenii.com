@@ -494,7 +494,8 @@ title: "Carl in Orbit"
       earthSize = 25,
       sunsSize = 60,
       colors = {
-        orbitalPath: "#777777"
+        orbitalPath: "#777777",
+        habitableZoneEdge: "#00F902"
       },
       previousEarthPosition = null,
       earthElement,
@@ -548,7 +549,7 @@ title: "Carl in Orbit"
       middleY = Math.floor(canvas.height / 2);
       contextHabitableZone.clearRect(0, 0, canvas.width, canvas.height);
       contextHabitableZone.beginPath();
-      contextHabitableZone.strokeStyle = colors.orbitalPath;
+      contextHabitableZone.strokeStyle = colors.habitableZoneEdge;
       contextHabitableZone.arc(middleX, middleY, size, 0, 2*Math.PI);
       contextHabitableZone.stroke();
     }
