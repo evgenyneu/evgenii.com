@@ -561,16 +561,12 @@ title: "Carl in Orbit"
 
       contextHabitableZone.clearRect(0, 0, canvas.width, canvas.height);
 
-      drawHabitableZoneBoundary(middleX, middleY, radiusInner);
-      drawHabitableZoneBoundary(middleX, middleY, radiusOuter);
-    }
-
-    function drawHabitableZoneBoundary(middleX, middleY, radius) {
       contextHabitableZone.beginPath();
-      contextHabitableZone.lineWidth=2;
-      contextHabitableZone.strokeStyle = colors.habitableZoneEdge;
-      contextHabitableZone.arc(middleX, middleY, radius, 0, 2*Math.PI);
-      contextHabitableZone.stroke();
+      contextHabitableZone.fillStyle="#00FF00";
+      contextHabitableZone.globalAlpha = 0.15;
+      contextHabitableZone.arc(middleX, middleY, radiusInner, 0, 2*Math.PI, true);
+      contextHabitableZone.arc(middleX, middleY, radiusOuter, 0, 2*Math.PI, false);
+      contextHabitableZone.fill();
     }
 
     function drawOrbitalLine(newEarthPosition) {
