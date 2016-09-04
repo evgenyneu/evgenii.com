@@ -1,0 +1,30 @@
+\documentclass[a4paper,twoside, 11pt]{article}
+
+% Packages
+% ---------------------
+
+\usepackage{amsmath} % Needed for command eqref
+
+% Page settings
+% ---------------------
+
+\usepackage[top=2cm, bottom=1.8cm,left=2.5cm,right=2.5cm]{geometry} %  Page margins
+\setlength{\parskip}{\baselineskip} % Add space between paragraphs
+\parindent=0cm % Remove the paragraph indent of the first line
+\addtolength{\jot}{2\jot} % Double the line between equations
+
+\begin{document}
+
+\begin{align*}
+    (e^x)' &= e^x\\
+    (a^x)' &= (\ln{a})a^x, \; a > 0\\
+    \sin'(x) &= \cos x\\
+    \cos'(x) &= -\sin x\\
+    \tan'(x) &= \frac{1}{\cos^2 x}\\
+    \ln'(x) &= \frac{1}{x}\\
+    \arcsin'(x) &= \frac{1}{\sqrt{1 - x^2}}\\
+    \arccos'(x) &= -\frac{1}{\sqrt{1 - x^2}}\\
+    \arctan'(x) &= \frac{1}{1 + x^2}\\
+\end{align*}
+
+\end{document}
