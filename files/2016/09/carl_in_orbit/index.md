@@ -343,8 +343,22 @@ title: "Carl in Orbit"
     }
 
     return {
-        print: print,
-      };
+      print: print
+    };
+  })();
+
+  // Calculates the average global temperature on Earth
+  var climate = (function() {
+    var initialTemperatureCelsius = 16,
+      currentTemperatureCelsius = initialTemperatureCelsius;
+
+    function update() {
+
+    }
+
+    return {
+      update: update
+    };
   })();
 
   // Calculates the position of the Earth
@@ -711,6 +725,7 @@ title: "Carl in Orbit"
     function animate() {
       physics.updatePosition();
       graphics.drawScene(physics.earthSunDistancePixels(), physics.state.angle.value);
+      climate.update();
       window.requestAnimationFrame(animate);
     }
 
@@ -807,7 +822,7 @@ Carl approaches a big shiny metallic box with blinking buttons and pushes severa
 
 ## Orbital distance and Newton's Law of Universal Gravitation
 
-The short-term implications of this experiment are obvious to any student who attended an introductory astronomy class. What happens to the Earth if the mass of the Sun increases? One of the most fundamental laws, Newton's Law of Universal Gravitation, tells us that the force of attraction between two bodies is proportional to the product of their masses and inversely proportional to the square of the distance between them [1, p. 131]. This law implies, that if doctor increases the mass of the Sun, it will exert stronger gravitational force on the Earth. As a result, the Earth *moves closer* to the Sun (see Figure 1).
+The short-term implications of this experiment are obvious to any student who attended an introductory astronomy class. What happens to the Earth if the mass of the Sun increases? One of the most fundamental laws, Newton's Law of Universal Gravitation, tells us that the force of attraction between two bodies is proportional to the product of their masses and inversely proportional to the square of the distance between them [1, p. 131]. This law implies, that if Carl increases the mass of the Sun, it exerts stronger gravitational force on the Earth. As a result, the Earth *moves closer* to the Sun (see Figure 1).
 
 
 <div class='isTextCentered'>
@@ -818,12 +833,12 @@ The short-term implications of this experiment are obvious to any student who at
 
 ## Orbital period and Kepler's third law
 
-It takes about 365 days for the Earth to complete one full circle around the Sun. This time duration is also called the *orbital period*. What happens to Earth's orbital period as it moves closer to the Sun? This question can be  answered by using Kepler third law [2, p. 27] that states that closer planets have smaller orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth. Consequently, the Earth will also move faster, because it will have less time to complete the shorter orbital path.
+It takes about 365 days for the Earth to complete one full circle around the Sun. This time is also called the *orbital period*. What happens to Earth's orbital period as it moves closer to the Sun? This question can be  answered by using Kepler third law [2, p. 27] that states that closer planets have smaller orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth.
 
 
 ## The Sun's luminosity
 
-The increase in Sun's mass also affects its brightness, or luminosity. This happens because larger Sun creates bigger gravitational pressure in its core, which increases the rate of fusion reaction that creates more light. How much brighter the Sun becomes if Carl doubles its mass? It will be about eight times more bright, because the luminosity of a star similar to the Sun is roughly proportional to the cube of its mass [3] \(see Figure 2\).
+The increase in Sun's mass also affects its brightness, or luminosity. This happens because larger mass creates bigger gravitational pressure in its core, which increases the rate of fusion reaction that creates more light. How much brighter the Sun becomes if Carl doubles its mass? It will be about eight times brighter, because the luminosity of a star similar to the Sun is roughly proportional to the cube of its mass \(see Figure 2\)[3].
 
 <div class='isTextCentered'>
   <img class='isMax500PxWide' src='/image/blog/2016-09-03-big-sun-experiment/massive_sun_is_brighter.png' alt='More massive stars are much brighter'>
@@ -832,9 +847,9 @@ The increase in Sun's mass also affects its brightness, or luminosity. This happ
 
 ## Habitable zone
 
-As we've shown, the planets receive more sunlight as the Sun's mass increases. As a result, if the Earth's distance to the Sun does not change, its average global temperature will increase. If it gets too hot, Earth's oceans will start to boil and that will mean the end of life. In astronomy, the range of distances from a star at which liquid water can exist on the surface of a planet is called the star's *habitable zone*. As Doctor Carl increases the mass of the Sun, its habitable zone moves *further away*.
+As we've shown, the planets receive more sunlight as the Sun's mass increases. As a result, if the Earth's distance to the Sun does not change, its average global temperature will increase. If it gets too hot, Earth's oceans will start to boil and that will probably be the death sentence to all the life on our planet. In astronomy, the range of distances from a star at which liquid water can exist on the surface of a planet is called the star's *habitable zone*. As Doctor Carl increases the mass of the Sun, its habitable zone moves *further away*.
 
-We can see from Figure 3 that the massive Sun would have more distant habitable zone. In this case, the Earth would be too close the Sun, and the water would boil and evaporate. Therefore, Carl Cox need to be very careful and not keep Sun's mass high for long periods of time. Otherwise, the heat will destroy all life on the planet.
+We can see from Figure 3 that massive Sun would have more distant habitable zone. In this case, the Earth would be too close the Sun, and the water would boil and evaporate. Therefore, Carl Cox needs to be very careful and try not to keep Sun's mass high for too long. Otherwise, the heat will destroy all life on the planet.
 
 <div class='isTextCentered'>
   <img class='isMax100PercentWide isTextCentered' src='/image/blog/2016-09-03-big-sun-experiment/star_habitable_zone.png' alt='More massive stars are much brighter'>
