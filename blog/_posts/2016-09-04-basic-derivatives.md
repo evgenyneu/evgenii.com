@@ -7,7 +7,7 @@ tags: science
 ---
 
 <div class='isTextCentered'>
-  <img src='/image/blog/2016-09-04-basic-derivatives/basic_derivatives.png' alt='List of basic derivatives' class='isMax400PxWide'>
+  <img src='/image/blog/2016-09-04-basic-derivatives/basic_derivatives.png' alt='List of basic derivatives' class='isMax300PxWide'>
 </div>
 
 
