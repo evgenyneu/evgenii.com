@@ -118,6 +118,13 @@ title: "Carl in Orbit"
     height: 100%;
   }
 
+  .EarthOrbitSimulation-temperature {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: white;
+  }
+
 
   /* Prevent browser from showing selection when the element is touched */
   .isUnselectable {
@@ -170,6 +177,8 @@ title: "Carl in Orbit"
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
   <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
   <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
+
+  <div class='EarthOrbitSimulation-temperature'>T: <span class='EarthOrbitSimulation-temperatureValue'></span></div>
   <canvas class="EarthOrbitSimulation-canvas"></canvas>
   <canvas class="EarthOrbitSimulation-canvasHabitableZone"></canvas>
 
@@ -183,14 +192,13 @@ title: "Carl in Orbit"
 
   </div>
 </div>
-<div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
-  <br>
-  Mass of the Sun: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
-</div>
 
 <div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
   <div class="SickSlider-stripe"></div>
   <div class="SickSlider-head"></div>
+</div>
+<div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
+  Mass of the Sun: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
 </div>
 
 <p class="EarthOrbitSimulation-isTextCentered">
@@ -350,13 +358,60 @@ title: "Carl in Orbit"
   // Calculates the average global temperature on Earth
   var climate = (function() {
     var initialTemperatureCelsius = 16,
+      currentTemperatureCelsius = initialTemperatureCelsius,
+      updateCycle = -1, // Used to limit the number of climate calculations, in order to improve performan e
+      previouslyDisplayedTemperature = 0, // Stores the previously display tempearature
+      temperatureElement = document.querySelector(".EarthOrbitSimulation-temperatureValue");
+
+    function update(earthSunDistanceMeters, habitableZoneInnerDistanceMeters, habitableZoneOuterDistanceMeters) {
+      updateCycle += 1;
+      if (updateCycle > 100) { updateCycle = 0; }
+      if (updateCycle !== 0) { return; } // Update climate only once in 100 cycles, to inprove performance
+
+      if (earthSunDistanceMeters < habitableZoneInnerDistanceMeters) {
+        // Earth is heating
+        var temperatureIncrease = Math.ceil(habitableZoneInnerDistanceMeters / earthSunDistanceMeters);
+        if (temperatureIncrease > 5) { temperatureIncrease = 5; }
+        if (temperatureIncrease === 0) { temperatureIncrease = 1; }
+        currentTemperatureCelsius += temperatureIncrease;
+      } else if (earthSunDistanceMeters > habitableZoneOuterDistanceMeters) {
+        // Earth is cooling
+        var distanceToOuterEdge = earthSunDistanceMeters - habitableZoneOuterDistanceMeters
+        var temperatureDecrease = Math.floor(3 * distanceToOuterEdge / habitableZoneOuterDistanceMeters);
+        if (temperatureDecrease > 3) { temperatureDecrease = 3; }
+        if (temperatureDecrease === 0) { temperatureDecrease = 1; }
+        currentTemperatureCelsius -= temperatureDecrease;
+      } else {
+        // Earth is in the habitable zone
+        if (currentTemperatureCelsius != initialTemperatureCelsius) {
+          // Restore the temperature
+          var restoreTemperature = Math.ceil((initialTemperatureCelsius - currentTemperatureCelsius) / 5);
+
+          if (restoreTemperature === 0) {
+            if (currentTemperatureCelsius > initialTemperatureCelsius) { restoreTemperature = -1; }
+            if (currentTemperatureCelsius < initialTemperatureCelsius) { restoreTemperature = 1; }
+          }
+
+          currentTemperatureCelsius += restoreTemperature;
+        }
+      }
+
+      displayCurrentTemperature();
+    }
+
+    function displayCurrentTemperature() {
+      if (currentTemperatureCelsius === previouslyDisplayedTemperature) { return; }
+      previouslyDisplayedTemperature = currentTemperatureCelsius;
+      temperatureElement.innerHTML = "" + currentTemperatureCelsius;
+    }
+
+    function reset() {
       currentTemperatureCelsius = initialTemperatureCelsius;
-
-    function update() {
-
+      updateCycle = -1;
     }
 
     return {
+      reset: reset,
       update: update
     };
   })();
@@ -743,7 +798,11 @@ title: "Carl in Orbit"
     function animate() {
       physics.updatePosition();
       graphics.drawScene(physics.earthSunDistancePixels(), physics.state.angle.value);
-      climate.update();
+
+      climate.update(physics.state.distance.value,
+        habitableZone.values.innerDistanceMeters,
+        habitableZone.values.outerDistanceMeters);
+
       window.requestAnimationFrame(animate);
     }
 
@@ -797,6 +856,7 @@ title: "Carl in Orbit"
       graphics.clearScene();
       updateSunsMass(0.5);
       massSlider.changePosition(0.5);
+      climate.reset();
       physics.state.paused = false;
       return false; // Prevent default
     }
