@@ -367,29 +367,17 @@ title: "Carl in Orbit"
       outerEdgeMultiplier = 1.7,   // The distance in AUs of the outer edge of the habitable zone
 
       values = {
-        innerDistancePixels: 1, // The distance from the Sun to the inner edge of the habitable zone, in pixels
-        outerDistancePixels: 1 // The distance from the Sun to the outer edge of the habitable zone, in pixels
+        innerDistanceMeters: 1, // The distance from the Sun to the inner edge of the habitable zone, in meters
+        outerDistanceMeters: 1 // The distance from the Sun to the outer edge of the habitable zone, in meters
       }
 
     // Update habitable zone based on the mass of the Sun.
     // `massOfTheSunRatio` is a proportion of normal mass of the Sun (default is 1).
     function update(massOfTheSunRatio) {
       var sunLuminocity = Math.pow(massOfTheSunRatio, 3);
-      values.innerDistancePixels = innerDistancePixels(sunLuminocity);
-      values.outerDistancePixels = outerDistancePixels(sunLuminocity);
-    }
 
-
-    // Returns the distance of the outer edge of the habitable zone form the Sun in meters.
-    // `sunLuminocityRatio` is a proportion of Sun luminocity (default is 1).
-    function outerDistanceMeters(sunLuminocityRatio) {
-      return Math.sqrt(sunLuminocityRatio) * outerEdgeMultiplier * physics.constants.earthSunDistanceMeters;
-    }
-
-    // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
-    // `sunLuminocityRatio` is a proportion of Sun luminocity (default is 1).
-    function outerDistancePixels(sunLuminocityRatio) {
-      return outerDistanceMeters(sunLuminocityRatio) / physics.constants.scaleFactor;
+      values.innerDistanceMeters = innerDistanceMeters(sunLuminocity);
+      values.outerDistanceMeters = outerDistanceMeters(sunLuminocity);
     }
 
     // Returns the distance of the inner edge of the habitable zone form the Sun in meters.
@@ -399,12 +387,24 @@ title: "Carl in Orbit"
     }
 
     // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
+    function innerDistancePixels() {
+      return values.innerDistanceMeters / physics.constants.scaleFactor;
+    }
+
+    // Returns the distance of the outer edge of the habitable zone form the Sun in meters.
     // `sunLuminocityRatio` is a proportion of Sun luminocity (default is 1).
-    function innerDistancePixels(sunLuminocityRatio) {
-      return innerDistanceMeters(sunLuminocityRatio) / physics.constants.scaleFactor;
+    function outerDistanceMeters(sunLuminocityRatio) {
+      return Math.sqrt(sunLuminocityRatio) * outerEdgeMultiplier * physics.constants.earthSunDistanceMeters;
+    }
+
+    // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
+    function outerDistancePixels() {
+      return values.outerDistanceMeters / physics.constants.scaleFactor;
     }
 
     return {
+      innerDistancePixels: innerDistancePixels,
+      outerDistancePixels: outerDistancePixels,
       update: update,
       values: values
     };
@@ -607,8 +607,8 @@ title: "Carl in Orbit"
       contextHabitableZone.fillStyle = colors.habitableZoneFillColor;
       contextHabitableZone.globalAlpha = 0.15;
       contextHabitableZone.beginPath();
-      contextHabitableZone.arc(middleX, middleY, habitableZone.values.innerDistancePixels, 0, 2*Math.PI, true);
-      contextHabitableZone.arc(middleX, middleY, habitableZone.values.outerDistancePixels, 0, 2*Math.PI, false);
+      contextHabitableZone.arc(middleX, middleY, habitableZone.innerDistancePixels(), 0, 2*Math.PI, true);
+      contextHabitableZone.arc(middleX, middleY, habitableZone.outerDistancePixels(), 0, 2*Math.PI, false);
       contextHabitableZone.fill();
     }
 
