@@ -364,37 +364,49 @@ title: "Carl in Orbit"
   // Calculates the location of the habitable zone
   var habitableZone = (function() {
     var innerEdgeMultiplier = 0.84, // The distance in AUs of the inner edge of the habitable zone
-      outerEdgeMultiplier = 1.7;   // The distance in AUs of the outer edge of the habitable zone
+      outerEdgeMultiplier = 1.7,   // The distance in AUs of the outer edge of the habitable zone
+
+      values = {
+        innerDistancePixels: 1, // The distance from the Sun to the inner edge of the habitable zone, in pixels
+        outerDistancePixels: 1 // The distance from the Sun to the outer edge of the habitable zone, in pixels
+      }
+
+    // Update habitable zone based on the mass of the Sun.
+    // `massOfTheSunRatio` is a proportion of normal mass of the Sun (default is 1).
+    function update(massOfTheSunRatio) {
+      var sunLuminocity = Math.pow(massOfTheSunRatio, 3);
+      values.innerDistancePixels = innerDistancePixels(sunLuminocity);
+      values.outerDistancePixels = outerDistancePixels(sunLuminocity);
+    }
+
 
     // Returns the distance of the outer edge of the habitable zone form the Sun in meters.
-    // `massOfTheSunRatio` is a proportion of normal mass of the Sun (default is 1).
-    function outerDistanceMeters(massOfTheSunRatio) {
-      var newSunLuminocity = Math.pow(massOfTheSunRatio, 3);
-      return Math.sqrt(newSunLuminocity) * outerEdgeMultiplier * physics.constants.earthSunDistanceMeters;
+    // `sunLuminocityRatio` is a proportion of Sun luminocity (default is 1).
+    function outerDistanceMeters(sunLuminocityRatio) {
+      return Math.sqrt(sunLuminocityRatio) * outerEdgeMultiplier * physics.constants.earthSunDistanceMeters;
     }
 
     // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
-    // `massOfTheSunRatio` is a proportion of normal mass of the Sun (default is 1).
-    function outerDistancePixels(massOfTheSunRatio) {
-      return outerDistanceMeters(massOfTheSunRatio) / physics.constants.scaleFactor;
+    // `sunLuminocityRatio` is a proportion of Sun luminocity (default is 1).
+    function outerDistancePixels(sunLuminocityRatio) {
+      return outerDistanceMeters(sunLuminocityRatio) / physics.constants.scaleFactor;
     }
 
     // Returns the distance of the inner edge of the habitable zone form the Sun in meters.
-    // `massOfTheSunRatio` is a proportion of normal mass of the Sun (default is 1).
-    function innerDistanceMeters(massOfTheSunRatio) {
-      var newSunLuminocity = Math.pow(massOfTheSunRatio, 3);
-      return Math.sqrt(newSunLuminocity) * innerEdgeMultiplier * physics.constants.earthSunDistanceMeters;
+    // `sunLuminocityRatio` is a proportion of Sun luminocity (default is 1).
+    function innerDistanceMeters(sunLuminocityRatio) {
+      return Math.sqrt(sunLuminocityRatio) * innerEdgeMultiplier * physics.constants.earthSunDistanceMeters;
     }
 
     // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
-    // `massOfTheSunRatio` is a proportion of normal mass of the Sun (default is 1).
-    function innerDistancePixels(massOfTheSunRatio) {
-      return innerDistanceMeters(massOfTheSunRatio) / physics.constants.scaleFactor;
+    // `sunLuminocityRatio` is a proportion of Sun luminocity (default is 1).
+    function innerDistancePixels(sunLuminocityRatio) {
+      return innerDistanceMeters(sunLuminocityRatio) / physics.constants.scaleFactor;
     }
 
     return {
-      outerDistancePixels: outerDistancePixels,
-      innerDistancePixels: innerDistancePixels
+      update: update,
+      values: values
     };
   })();
 
@@ -510,14 +522,14 @@ title: "Carl in Orbit"
     }
 
     // Returns the current mass of the Sun as a fraction of the normal mass.
-    function currentMassOfTheSunFraction() {
+    function currentSunMassRatio() {
       return state.massOfTheSunKg / constants.massOfTheSunKg;
     }
 
     return {
       earthSunDistancePixels: earthSunDistancePixels,
       resetStateToInitialConditions: resetStateToInitialConditions,
-      currentMassOfTheSunFraction: currentMassOfTheSunFraction,
+      currentSunMassRatio: currentSunMassRatio,
       updatePosition: updatePosition,
       initialConditions: initialConditions,
       updateFromUserInput: updateFromUserInput,
@@ -581,13 +593,12 @@ title: "Carl in Orbit"
       sunElement.style.width = currentSunsSize + "px";
       sunElement.style.marginLeft = -(currentSunsSize / 2.0) + "px";
       sunElement.style.marginTop = -(currentSunsSize / 2.0) + "px";
-
-
     }
 
-    function redrawHabitableZone(sunMass) {
-      var radiusInner= habitableZone.innerDistancePixels(sunMass);
-      var radiusOuter = habitableZone.outerDistancePixels(sunMass);
+    // Draw the habitable zone
+    // `sunMassRatio` is a proportion of normal mass of the Sun (default is 1).
+    function redrawHabitableZone(sunMassRatio) {
+      habitableZone.update(sunMassRatio);
 
       middleX = Math.floor(canvas.width / 2);
       middleY = Math.floor(canvas.height / 2);
@@ -596,8 +607,8 @@ title: "Carl in Orbit"
       contextHabitableZone.fillStyle = colors.habitableZoneFillColor;
       contextHabitableZone.globalAlpha = 0.15;
       contextHabitableZone.beginPath();
-      contextHabitableZone.arc(middleX, middleY, radiusInner, 0, 2*Math.PI, true);
-      contextHabitableZone.arc(middleX, middleY, radiusOuter, 0, 2*Math.PI, false);
+      contextHabitableZone.arc(middleX, middleY, habitableZone.values.innerDistancePixels, 0, 2*Math.PI, true);
+      contextHabitableZone.arc(middleX, middleY, habitableZone.values.outerDistancePixels, 0, 2*Math.PI, false);
       contextHabitableZone.fill();
     }
 
@@ -746,7 +757,7 @@ title: "Carl in Orbit"
           graphics.fitToContainer();
           graphics.clearScene();
           console.log(physics.state.massOfTheSunKg);
-          graphics.redrawHabitableZone(physics.currentMassOfTheSunFraction());
+          graphics.redrawHabitableZone(physics.currentSunMassRatio());
           graphics.drawScene(physics.earthSunDistancePixels(), physics.state.angle.value);
         });
 
