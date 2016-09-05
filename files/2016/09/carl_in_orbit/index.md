@@ -120,7 +120,7 @@ title: "Carl in Orbit"
 
   .EarthOrbitSimulation-temperature {
     position: absolute;
-    top: 5px;
+    bottom: 5px;
     left: 5px;
     color: white;
   }
