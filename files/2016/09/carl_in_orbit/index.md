@@ -361,6 +361,43 @@ title: "Carl in Orbit"
     };
   })();
 
+  // Calculates the boundaries of the habitable zone
+  // var habitableZone = (function() {
+  //   var innerEdgeMultiplier: 0.84, // The distance in AUs of the inner edge of the habitable zone
+  //     outerEdgeMultiplier: 1.7;   // The distance in AUs of the outer edge of the habitable zone
+
+  //     // Returns the distance of the outer edge of the habitable zone form the Sun in meters.
+  //   // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
+  //   function outerDistanceMeters(massOfTheSun) {
+  //     var newSunLuminocity = Math.pow(physics.constants.massOfTheSun, 3);
+  //     return Math.sqrt(newSunLuminocity) * constants.habitableZoneOuterEdgeMultiplier * constants.earthSunDistanceMeters;
+  //   }
+
+  //   // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
+  //   // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
+  //   function outerDistancePixels(massOfTheSun) {
+  //     return habitableZoneOuterDistanceMeters(physics.constants.massOfTheSun) / constants.scaleFactor;
+  //   }
+
+  //   // Returns the distance of the inner edge of the habitable zone form the Sun in meters.
+  //   // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
+  //   function innerDistanceMeters(massOfTheSun) {
+  //     var newSunLuminocity = Math.pow(physics.constants.massOfTheSun, 3);
+  //     return Math.sqrt(newSunLuminocity) * constants.habitableZoneInnerEdgeMultiplier * constants.earthSunDistanceMeters;
+  //   }
+
+  //   // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
+  //   // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
+  //   function innerDistancePixels(massOfTheSun) {
+  //     return habitableZoneInnerDistanceMeters(physics.constants.massOfTheSun) / constants.scaleFactor;
+  //   }
+
+  //   return {
+  //     outerDistancePixels: outerDistancePixels,
+  //     innerDistancePixels: innerDistancePixels
+  //   };
+  // })();
+
   // Calculates the position of the Earth
   var physics = (function() {
     var constants = {
@@ -369,22 +406,21 @@ title: "Carl in Orbit"
       earthAngularVelocityMetersPerSecond: 1.990986 *  Math.pow(10, -7),
       massOfTheSunKg: 1.98855 * Math.pow(10, 30),
       habitableZoneInnerEdgeMultiplier: 0.84, // The distance in AUs of the inner edge of the habitable zone
-      habitableZoneOuterEdgeMultiplier: 1.7   // The distance in AUs of the outer edge of the habitable zone
-    };
+      habitableZoneOuterEdgeMultiplier: 1.7,   // The distance in AUs of the outer edge of the habitable zone
+      pixelsInOneEarthSunDistance: 150, // The length of one AU (Earth-Sun distance) in pixels.
 
-    // The length of one AU (Earth-Sun distance) in pixels.
-    var pixelsInOneEarthSunDistance = 150;
+      // The number of calculations of orbital path done in one 16 millisecond frame.
+      // The higher the number, the more precise are the calculations and the slower the simulation.
+      numberOfCalculationsPerFrame: 1000
+    };
 
     // A factor by which we scale the distance between the Sun and the Earth
     // in order to show it on screen
-    var scaleFactor = constants.earthSunDistanceMeters / pixelsInOneEarthSunDistance;
-
-    // The number of calculations of orbital path done in one 16 millisecond frame.
-    // The higher the number, the more precise are the calculations and the slower the simulation.
-    var numberOfCalculationsPerFrame = 1000;
+    constants.scaleFactor = constants.earthSunDistanceMeters / constants.pixelsInOneEarthSunDistance;
 
     // The length of the time increment, in seconds.
-    var deltaT = 3600 * 24 / numberOfCalculationsPerFrame;
+    constants.deltaT = 3600 * 24 / constants.numberOfCalculationsPerFrame
+
 
     // Initial condition of the model
     var initialConditions = {
@@ -440,7 +476,7 @@ title: "Carl in Orbit"
 
     // The distance that is used for drawing on screen
     function earthSunDistancePixels() {
-      return state.distance.value / scaleFactor;
+      return state.distance.value / constants.scaleFactor;
     }
 
     // Returns the distance of the outer edge of the habitable zone form the Sun in meters.
@@ -453,7 +489,7 @@ title: "Carl in Orbit"
     // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
     // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
     function habitableZoneOuterDistancePixels(massOfTheSun) {
-      return habitableZoneOuterDistanceMeters(massOfTheSun) / scaleFactor;
+      return habitableZoneOuterDistanceMeters(massOfTheSun) / constants.scaleFactor;
     }
 
     // Returns the distance of the inner edge of the habitable zone form the Sun in meters.
@@ -466,14 +502,14 @@ title: "Carl in Orbit"
     // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
     // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
     function habitableZoneInnerDistancePixels(massOfTheSun) {
-      return habitableZoneInnerDistanceMeters(massOfTheSun) / scaleFactor;
+      return habitableZoneInnerDistanceMeters(massOfTheSun) / constants.scaleFactor;
     }
 
     // The main function that is called on every animation frame.
     // It calculates and updates the current positions of the bodies
     function updatePosition() {
       if (physics.state.paused) { return; }
-      for (var i = 0; i < numberOfCalculationsPerFrame; i++) {
+      for (var i = 0; i < constants.numberOfCalculationsPerFrame; i++) {
         calculateNewPosition();
       }
 
@@ -483,13 +519,13 @@ title: "Carl in Orbit"
     function calculateNewPosition() {
       // Calculate new distance
       var distanceAcceleration = calculateDistanceAcceleration(state);
-      state.distance.speed = newValue(state.distance.speed, deltaT, distanceAcceleration);
-      state.distance.value = newValue(state.distance.value, deltaT, state.distance.speed);
+      state.distance.speed = newValue(state.distance.speed, constants.deltaT, distanceAcceleration);
+      state.distance.value = newValue(state.distance.value, constants.deltaT, state.distance.speed);
 
       // Calculate new angle
       var angleAcceleration = calculateAngleAcceleration(state);
-      state.angle.speed = newValue(state.angle.speed, deltaT, angleAcceleration);
-      state.angle.value = newValue(state.angle.value, deltaT, state.angle.speed);
+      state.angle.speed = newValue(state.angle.speed, constants.deltaT, angleAcceleration);
+      state.angle.value = newValue(state.angle.value, constants.deltaT, state.angle.speed);
 
       if (state.angle.value > 2 * Math.PI) {
         state.angle.value = state.angle.value % (2 * Math.PI);
@@ -515,6 +551,7 @@ title: "Carl in Orbit"
       updatePosition: updatePosition,
       initialConditions: initialConditions,
       updateFromUserInput: updateFromUserInput,
+      constants: constants,
       state: state
     };
   })();
@@ -579,8 +616,8 @@ title: "Carl in Orbit"
     }
 
     function redrawHabitableZone(sunMass) {
-      var radiusOuter = physics.habitableZoneOuterDistancePixels(sunMass);
       var radiusInner= physics.habitableZoneInnerDistancePixels(sunMass);
+      var radiusOuter = physics.habitableZoneOuterDistancePixels(sunMass);
 
       middleX = Math.floor(canvas.width / 2);
       middleY = Math.floor(canvas.height / 2);
