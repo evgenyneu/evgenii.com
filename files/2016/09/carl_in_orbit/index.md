@@ -361,42 +361,42 @@ title: "Carl in Orbit"
     };
   })();
 
-  // Calculates the boundaries of the habitable zone
-  // var habitableZone = (function() {
-  //   var innerEdgeMultiplier: 0.84, // The distance in AUs of the inner edge of the habitable zone
-  //     outerEdgeMultiplier: 1.7;   // The distance in AUs of the outer edge of the habitable zone
+  // Calculates the location of the habitable zone
+  var habitableZone = (function() {
+    var innerEdgeMultiplier = 0.84, // The distance in AUs of the inner edge of the habitable zone
+      outerEdgeMultiplier = 1.7;   // The distance in AUs of the outer edge of the habitable zone
 
-  //     // Returns the distance of the outer edge of the habitable zone form the Sun in meters.
-  //   // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
-  //   function outerDistanceMeters(massOfTheSun) {
-  //     var newSunLuminocity = Math.pow(physics.constants.massOfTheSun, 3);
-  //     return Math.sqrt(newSunLuminocity) * constants.habitableZoneOuterEdgeMultiplier * constants.earthSunDistanceMeters;
-  //   }
+    // Returns the distance of the outer edge of the habitable zone form the Sun in meters.
+    // `massOfTheSunRatio` is a proportion of normal mass of the Sun (default is 1).
+    function outerDistanceMeters(massOfTheSunRatio) {
+      var newSunLuminocity = Math.pow(massOfTheSunRatio, 3);
+      return Math.sqrt(newSunLuminocity) * outerEdgeMultiplier * physics.constants.earthSunDistanceMeters;
+    }
 
-  //   // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
-  //   // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
-  //   function outerDistancePixels(massOfTheSun) {
-  //     return habitableZoneOuterDistanceMeters(physics.constants.massOfTheSun) / constants.scaleFactor;
-  //   }
+    // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
+    // `massOfTheSunRatio` is a proportion of normal mass of the Sun (default is 1).
+    function outerDistancePixels(massOfTheSunRatio) {
+      return outerDistanceMeters(massOfTheSunRatio) / physics.constants.scaleFactor;
+    }
 
-  //   // Returns the distance of the inner edge of the habitable zone form the Sun in meters.
-  //   // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
-  //   function innerDistanceMeters(massOfTheSun) {
-  //     var newSunLuminocity = Math.pow(physics.constants.massOfTheSun, 3);
-  //     return Math.sqrt(newSunLuminocity) * constants.habitableZoneInnerEdgeMultiplier * constants.earthSunDistanceMeters;
-  //   }
+    // Returns the distance of the inner edge of the habitable zone form the Sun in meters.
+    // `massOfTheSunRatio` is a proportion of normal mass of the Sun (default is 1).
+    function innerDistanceMeters(massOfTheSunRatio) {
+      var newSunLuminocity = Math.pow(massOfTheSunRatio, 3);
+      return Math.sqrt(newSunLuminocity) * innerEdgeMultiplier * physics.constants.earthSunDistanceMeters;
+    }
 
-  //   // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
-  //   // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
-  //   function innerDistancePixels(massOfTheSun) {
-  //     return habitableZoneInnerDistanceMeters(physics.constants.massOfTheSun) / constants.scaleFactor;
-  //   }
+    // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
+    // `massOfTheSunRatio` is a proportion of normal mass of the Sun (default is 1).
+    function innerDistancePixels(massOfTheSunRatio) {
+      return innerDistanceMeters(massOfTheSunRatio) / physics.constants.scaleFactor;
+    }
 
-  //   return {
-  //     outerDistancePixels: outerDistancePixels,
-  //     innerDistancePixels: innerDistancePixels
-  //   };
-  // })();
+    return {
+      outerDistancePixels: outerDistancePixels,
+      innerDistancePixels: innerDistancePixels
+    };
+  })();
 
   // Calculates the position of the Earth
   var physics = (function() {
@@ -405,8 +405,6 @@ title: "Carl in Orbit"
       earthSunDistanceMeters: 1.496 * Math.pow(10, 11),
       earthAngularVelocityMetersPerSecond: 1.990986 *  Math.pow(10, -7),
       massOfTheSunKg: 1.98855 * Math.pow(10, 30),
-      habitableZoneInnerEdgeMultiplier: 0.84, // The distance in AUs of the inner edge of the habitable zone
-      habitableZoneOuterEdgeMultiplier: 1.7,   // The distance in AUs of the outer edge of the habitable zone
       pixelsInOneEarthSunDistance: 150, // The length of one AU (Earth-Sun distance) in pixels.
 
       // The number of calculations of orbital path done in one 16 millisecond frame.
@@ -479,32 +477,6 @@ title: "Carl in Orbit"
       return state.distance.value / constants.scaleFactor;
     }
 
-    // Returns the distance of the outer edge of the habitable zone form the Sun in meters.
-    // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
-    function habitableZoneOuterDistanceMeters(massOfTheSun) {
-      var newSunLuminocity = Math.pow(massOfTheSun, 3);
-      return Math.sqrt(newSunLuminocity) * constants.habitableZoneOuterEdgeMultiplier * constants.earthSunDistanceMeters;
-    }
-
-    // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
-    // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
-    function habitableZoneOuterDistancePixels(massOfTheSun) {
-      return habitableZoneOuterDistanceMeters(massOfTheSun) / constants.scaleFactor;
-    }
-
-    // Returns the distance of the inner edge of the habitable zone form the Sun in meters.
-    // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
-    function habitableZoneInnerDistanceMeters(massOfTheSun) {
-      var newSunLuminocity = Math.pow(massOfTheSun, 3);
-      return Math.sqrt(newSunLuminocity) * constants.habitableZoneInnerEdgeMultiplier * constants.earthSunDistanceMeters;
-    }
-
-    // Returns the distance of the outer edge of the habitable zone form the Sun in pixels.
-    // `massOfTheSun` is a proportion of normal mass of the Sun (default is 1).
-    function habitableZoneInnerDistancePixels(massOfTheSun) {
-      return habitableZoneInnerDistanceMeters(massOfTheSun) / constants.scaleFactor;
-    }
-
     // The main function that is called on every animation frame.
     // It calculates and updates the current positions of the bodies
     function updatePosition() {
@@ -544,8 +516,6 @@ title: "Carl in Orbit"
 
     return {
       earthSunDistancePixels: earthSunDistancePixels,
-      habitableZoneOuterDistancePixels: habitableZoneOuterDistancePixels,
-      habitableZoneInnerDistancePixels: habitableZoneInnerDistancePixels,
       resetStateToInitialConditions: resetStateToInitialConditions,
       currentMassOfTheSunFraction: currentMassOfTheSunFraction,
       updatePosition: updatePosition,
@@ -616,8 +586,8 @@ title: "Carl in Orbit"
     }
 
     function redrawHabitableZone(sunMass) {
-      var radiusInner= physics.habitableZoneInnerDistancePixels(sunMass);
-      var radiusOuter = physics.habitableZoneOuterDistancePixels(sunMass);
+      var radiusInner= habitableZone.innerDistancePixels(sunMass);
+      var radiusOuter = habitableZone.outerDistancePixels(sunMass);
 
       middleX = Math.floor(canvas.width / 2);
       middleY = Math.floor(canvas.height / 2);
