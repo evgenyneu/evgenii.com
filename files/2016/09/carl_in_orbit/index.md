@@ -194,7 +194,7 @@ title: "Carl in Orbit"
   <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
   <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
 
-  <div class='EarthOrbitSimulation-temperature'>T: <span class='EarthOrbitSimulation-temperatureValue'></span> <span class='EarthOrbitSimulation-temperatureChange'></span></div>
+  <div class='EarthOrbitSimulation-temperature'>T: <span class='EarthOrbitSimulation-temperatureValue'></span> <span class='EarthOrbitSimulation-temperatureDescription'></span></div>
   <canvas class="EarthOrbitSimulation-canvas"></canvas>
   <canvas class="EarthOrbitSimulation-canvasHabitableZone"></canvas>
 
@@ -378,7 +378,7 @@ title: "Carl in Orbit"
       updateCycle = -1, // Used to limit the number of climate calculations, in order to improve performan e
       previouslyDisplayedTemperature = 0, // Stores the previously display tempearature
       temperatureElement = document.querySelector(".EarthOrbitSimulation-temperatureValue"),
-      temperatureChangeElement = document.querySelector(".EarthOrbitSimulation-temperatureChange");
+      temperatureDescriptionElement = document.querySelector(".EarthOrbitSimulation-temperatureDescription");
 
     function update(earthSunDistanceMeters, habitableZoneInnerDistanceMeters, habitableZoneOuterDistanceMeters) {
       updateCycle += 1;
@@ -411,41 +411,40 @@ title: "Carl in Orbit"
         }
       }
 
-      debug.print(tempChange);
       currentTemperatureCelsius += tempChange;
 
       displayCurrentTemperature(currentTemperatureCelsius);
-      displayTemperatureChange(tempChange);
+      displayTemperatureDescription();
     }
 
     function displayCurrentTemperature(currentTemperatureCelsius) {
       if (previouslyDisplayedTemperature === currentTemperatureCelsius) { return; }
       previouslyDisplayedTemperature = currentTemperatureCelsius;
-      // var text = "" + currentTemperatureCelsius;
-
-      // if (temperatureChange !== 0) {
-      //   text += " (";
-      //   text +=  temperatureChange > 0 ? "+" : "-";
-      //   text += temperatureChange + ")";
-      // }
-      // previouslyDisplayedTemperature = text;
-      // if (currentTemperatureCelsius === text) { return; }
       temperatureElement.innerHTML = currentTemperatureCelsius;
     }
 
-    function displayTemperatureChange(changeDegrees) {
-      var text = "";
+    function displayTemperatureDescription(changeDegrees) {
+      var description = "nice"
 
-      if (changeDegrees > 0) {
-        text = "+" + changeDegrees;
-      } else if (changeDegrees < 0) {
-        text = changeDegrees + "";
+      if (currentTemperatureCelsius  > initialTemperatureCelsius) {
+        if (currentTemperatureCelsius >= 40) {
+          description = "too hot"
+        } else if (currentTemperatureCelsius >= 30) {
+          description = "hot"
+        } else if (currentTemperatureCelsius >= 20) {
+          description = "warm"
+        }
       } else {
-
+        if (currentTemperatureCelsius <= 0) {
+          description = "freezing"
+        } else if (currentTemperatureCelsius <= 7) {
+          description = "cold"
+        } else if (currentTemperatureCelsius <= 12) {
+          description = "cool"
+        }
       }
 
-      text = "(" + text + ")";
-      temperatureChangeElement.innerHTML = text;
+      temperatureDescriptionElement.innerHTML = description;
     }
 
     function reset() {
