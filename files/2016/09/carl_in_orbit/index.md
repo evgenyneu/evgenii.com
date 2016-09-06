@@ -416,6 +416,23 @@ title: "Carl in Orbit"
     };
   })();
 
+  // Shows the current date on screen
+  var simulationTime = (function(){
+    var numberOfSimulatedSecondsSinceStart = 0;
+
+    // The function is called on each frame, which is 60 time per second
+    function update() {
+      numberOfSimulatedSecondsSinceStart += physics.constants.timeIncrementPerFrameInSeconds;
+      var daysSinceStart = numberOfSimulatedSecondsSinceStart / (3600 * 24);
+      var yearsSinceStart = daysSinceStart / 365;
+      debug.print(Math.floor(yearsSinceStart) + " years " + daysSinceStart + " days");
+    }
+
+    return {
+      update: update
+    };
+  })();
+
   // Calculates the average global temperature on Earth
   var climate = (function() {
     var initialTemperatureCelsius = 16,
@@ -619,8 +636,12 @@ title: "Carl in Orbit"
     // in order to show it on screen
     constants.scaleFactor = constants.earthSunDistanceMeters / constants.pixelsInOneEarthSunDistance;
 
+    // The number of seconds advanced by the animation in each frame.
+    // The frames are fired 60 times per second.
+    constants.timeIncrementPerFrameInSeconds = 3600 * 24;
+
     // The length of the time increment, in seconds.
-    constants.deltaT = 3600 * 24 / constants.numberOfCalculationsPerFrame
+    constants.deltaT = constants.timeIncrementPerFrameInSeconds / constants.numberOfCalculationsPerFrame
 
 
     // Initial condition of the model
@@ -946,6 +967,7 @@ title: "Carl in Orbit"
     // The method is called 60 times per second
     function animate() {
       physics.updatePosition();
+      simulationTime.update();
       graphics.drawScene(physics.earthSunDistancePixels(), physics.state.angle.value);
 
       climate.update(physics.state.distance.value,
