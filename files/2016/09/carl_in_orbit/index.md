@@ -121,7 +121,7 @@ title: "Carl in Orbit"
   .EarthOrbitSimulation-temperature {
     position: absolute;
     bottom: 5px;
-    left: 5px;
+    left: 15px;
     color: white;
   }
 
@@ -135,6 +135,22 @@ title: "Carl in Orbit"
     -o-user-select: none;
     user-select: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  }
+
+  /* Blinking */
+  .blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+  }
+  @keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+  @-webkit-keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
   }
 
   /*
@@ -178,7 +194,7 @@ title: "Carl in Orbit"
   <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
   <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
 
-  <div class='EarthOrbitSimulation-temperature'>T: <span class='EarthOrbitSimulation-temperatureValue'></span></div>
+  <div class='EarthOrbitSimulation-temperature'>T: <span class='EarthOrbitSimulation-temperatureValue'></span> <span class='EarthOrbitSimulation-temperatureChange'></span></div>
   <canvas class="EarthOrbitSimulation-canvas"></canvas>
   <canvas class="EarthOrbitSimulation-canvasHabitableZone"></canvas>
 
@@ -361,48 +377,75 @@ title: "Carl in Orbit"
       currentTemperatureCelsius = initialTemperatureCelsius,
       updateCycle = -1, // Used to limit the number of climate calculations, in order to improve performan e
       previouslyDisplayedTemperature = 0, // Stores the previously display tempearature
-      temperatureElement = document.querySelector(".EarthOrbitSimulation-temperatureValue");
+      temperatureElement = document.querySelector(".EarthOrbitSimulation-temperatureValue"),
+      temperatureChangeElement = document.querySelector(".EarthOrbitSimulation-temperatureChange");
 
     function update(earthSunDistanceMeters, habitableZoneInnerDistanceMeters, habitableZoneOuterDistanceMeters) {
       updateCycle += 1;
       if (updateCycle > 100) { updateCycle = 0; }
       if (updateCycle !== 0) { return; } // Update climate only once in 100 cycles, to inprove performance
 
+      var tempChange = 0; // Change in temperatuer degrees
+
       if (earthSunDistanceMeters < habitableZoneInnerDistanceMeters) {
         // Earth is heating
-        var temperatureIncrease = Math.ceil(habitableZoneInnerDistanceMeters / earthSunDistanceMeters);
-        if (temperatureIncrease > 5) { temperatureIncrease = 5; }
-        if (temperatureIncrease === 0) { temperatureIncrease = 1; }
-        currentTemperatureCelsius += temperatureIncrease;
+        var tempChange = Math.ceil(habitableZoneInnerDistanceMeters / earthSunDistanceMeters);
+        if (tempChange > 5) { tempChange = 5; }
+        if (tempChange === 0) { tempChange = 1; }
       } else if (earthSunDistanceMeters > habitableZoneOuterDistanceMeters) {
         // Earth is cooling
-        var distanceToOuterEdge = earthSunDistanceMeters - habitableZoneOuterDistanceMeters
-        var temperatureDecrease = Math.floor(3 * distanceToOuterEdge / habitableZoneOuterDistanceMeters);
-        if (temperatureDecrease > 3) { temperatureDecrease = 3; }
-        if (temperatureDecrease === 0) { temperatureDecrease = 1; }
-        currentTemperatureCelsius -= temperatureDecrease;
+        var distanceToOuterEdge = habitableZoneOuterDistanceMeters - earthSunDistanceMeters;
+        var tempChange = Math.floor(3 * distanceToOuterEdge / habitableZoneOuterDistanceMeters);
+        if (tempChange < -3) { tempChange = -3; }
+        if (tempChange === 0) { tempChange = -1; }
       } else {
         // Earth is in the habitable zone
         if (currentTemperatureCelsius != initialTemperatureCelsius) {
           // Restore the temperature
-          var restoreTemperature = Math.ceil((initialTemperatureCelsius - currentTemperatureCelsius) / 5);
+          var tempChange = Math.ceil((initialTemperatureCelsius - currentTemperatureCelsius) / 5);
 
-          if (restoreTemperature === 0) {
-            if (currentTemperatureCelsius > initialTemperatureCelsius) { restoreTemperature = -1; }
-            if (currentTemperatureCelsius < initialTemperatureCelsius) { restoreTemperature = 1; }
+          if (tempChange === 0) {
+            if (currentTemperatureCelsius > initialTemperatureCelsius) { tempChange = -1; }
+            if (currentTemperatureCelsius < initialTemperatureCelsius) { tempChange = 1; }
           }
-
-          currentTemperatureCelsius += restoreTemperature;
         }
       }
 
-      displayCurrentTemperature();
+      debug.print(tempChange);
+      currentTemperatureCelsius += tempChange;
+
+      displayCurrentTemperature(currentTemperatureCelsius);
+      displayTemperatureChange(tempChange);
     }
 
-    function displayCurrentTemperature() {
-      if (currentTemperatureCelsius === previouslyDisplayedTemperature) { return; }
+    function displayCurrentTemperature(currentTemperatureCelsius) {
+      if (previouslyDisplayedTemperature === currentTemperatureCelsius) { return; }
       previouslyDisplayedTemperature = currentTemperatureCelsius;
-      temperatureElement.innerHTML = "" + currentTemperatureCelsius;
+      // var text = "" + currentTemperatureCelsius;
+
+      // if (temperatureChange !== 0) {
+      //   text += " (";
+      //   text +=  temperatureChange > 0 ? "+" : "-";
+      //   text += temperatureChange + ")";
+      // }
+      // previouslyDisplayedTemperature = text;
+      // if (currentTemperatureCelsius === text) { return; }
+      temperatureElement.innerHTML = currentTemperatureCelsius;
+    }
+
+    function displayTemperatureChange(changeDegrees) {
+      var text = "";
+
+      if (changeDegrees > 0) {
+        text = "+" + changeDegrees;
+      } else if (changeDegrees < 0) {
+        text = changeDegrees + "";
+      } else {
+
+      }
+
+      text = "(" + text + ")";
+      temperatureChangeElement.innerHTML = text;
     }
 
     function reset() {
