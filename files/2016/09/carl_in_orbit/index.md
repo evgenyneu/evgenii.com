@@ -393,9 +393,23 @@ title: "Carl in Orbit"
       updateCycle = -1, // Used to limit the number of climate calculations, in order to improve performan e
       previouslyDisplayedTemperature = 0, // Stores the previously display tempearature
       temperatureElement = document.querySelector(".EarthOrbitSimulation-temperatureValue"),
-      temperatureDescriptionElement = document.querySelector(".EarthOrbitSimulation-temperatureDescription");
+      temperatureDescriptionElement = document.querySelector(".EarthOrbitSimulation-temperatureDescription"),
+
+      // The number of cycles for Earth to survive in extreme cold or hot conditions.
+      maxNumberOfExtremeCyclesToSurvive = 2,
+
+      // The  number of cycles that Earth has been under extreme cold or hot conditions.
+      cyclesUnderExtremeConditions = 0;
 
     function update(earthSunDistanceMeters, habitableZoneInnerDistanceMeters, habitableZoneOuterDistanceMeters) {
+      if (physics.state.paused) { return; }
+
+      if (isEarthDead()) {
+        physics.state.paused = true;
+        graphics.showHideEarthEndMessage(true);
+        return;
+      }
+
       updateCycle += 1;
       if (updateCycle > 100) { updateCycle = 0; }
       if (updateCycle !== 0) { return; } // Update climate only once in 100 cycles, to inprove performance
@@ -445,21 +459,33 @@ title: "Carl in Orbit"
 
       if (currentTemperatureCelsius  > initialTemperatureCelsius) {
         if (currentTemperatureCelsius >= 40) {
+          // Extremely hot
           showTooHotWarning = true;
           description = "too hot"
-        } else if (currentTemperatureCelsius >= 30) {
-          description = "hot"
-        } else if (currentTemperatureCelsius >= 20) {
-          description = "warm"
+          cyclesUnderExtremeConditions += 1;
+        } else {
+          cyclesUnderExtremeConditions = 0;
+
+          if (currentTemperatureCelsius >= 30) {
+            description = "hot"
+          } else if (currentTemperatureCelsius >= 20) {
+            description = "warm"
+          }
         }
       } else {
         if (currentTemperatureCelsius <= 0) {
+          // Extremely cold
           description = "freezing"
           showTooColdWarning = true;
-        } else if (currentTemperatureCelsius <= 7) {
-          description = "cold"
-        } else if (currentTemperatureCelsius <= 12) {
-          description = "cool"
+          cyclesUnderExtremeConditions += 1;
+        } else {
+          cyclesUnderExtremeConditions = 0;
+
+          if (currentTemperatureCelsius <= 7) {
+            description = "cold"
+          } else if (currentTemperatureCelsius <= 12) {
+            description = "cool"
+          }
         }
       }
 
@@ -477,9 +503,14 @@ title: "Carl in Orbit"
       temperatureDescriptionElement.className = descriptionElementClass;
     }
 
+    function isEarthDead() {
+      return cyclesUnderExtremeConditions > maxNumberOfExtremeCyclesToSurvive;
+    }
+
     function reset() {
       currentTemperatureCelsius = initialTemperatureCelsius;
       updateCycle = -1;
+      cyclesUnderExtremeConditions = 0;
     }
 
     return {
