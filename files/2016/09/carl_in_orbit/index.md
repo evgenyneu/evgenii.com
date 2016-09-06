@@ -137,11 +137,26 @@ title: "Carl in Orbit"
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
   }
 
-  /* Blinking */
-  .blink {
-    animation: blink-animation 1s steps(5, start) infinite;
-    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+  .EarthOrbitSimulation-hasTooHotWarning {
+    background-color: red;
+    color: white;
+    padding-left: 3px;
+    padding-right: 3px;
   }
+
+  .EarthOrbitSimulation-hasTooColdWarning {
+    background-color: #BEC7FF;
+    color: black;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+
+  /* Blinking */
+  .EarthOrbitSimulation-isBlinking {
+    animation: blink-animation 0.6s steps(2, start) infinite;
+    -webkit-animation: blink-animation 0.6s steps(2, start) infinite;
+  }
+
   @keyframes blink-animation {
     to {
       visibility: hidden;
@@ -425,9 +440,12 @@ title: "Carl in Orbit"
 
     function displayTemperatureDescription(changeDegrees) {
       var description = "nice"
+      var showTooHotWarning = false;
+      var showTooColdWarning = false;
 
       if (currentTemperatureCelsius  > initialTemperatureCelsius) {
         if (currentTemperatureCelsius >= 40) {
+          showTooHotWarning = true;
           description = "too hot"
         } else if (currentTemperatureCelsius >= 30) {
           description = "hot"
@@ -437,6 +455,7 @@ title: "Carl in Orbit"
       } else {
         if (currentTemperatureCelsius <= 0) {
           description = "freezing"
+          showTooColdWarning = true;
         } else if (currentTemperatureCelsius <= 7) {
           description = "cold"
         } else if (currentTemperatureCelsius <= 12) {
@@ -445,6 +464,17 @@ title: "Carl in Orbit"
       }
 
       temperatureDescriptionElement.innerHTML = description;
+
+      // Style the description warning with blinking and color if needed
+      var descriptionElementClass = ""
+
+      if (showTooHotWarning) {
+        descriptionElementClass = "EarthOrbitSimulation-isBlinking EarthOrbitSimulation-hasTooHotWarning";
+      } else if (showTooColdWarning) {
+        descriptionElementClass = "EarthOrbitSimulation-isBlinking EarthOrbitSimulation-hasTooColdWarning";
+      }
+
+      temperatureDescriptionElement.className = descriptionElementClass;
     }
 
     function reset() {
