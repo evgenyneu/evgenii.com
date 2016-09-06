@@ -71,6 +71,9 @@ title: "Carl in Orbit"
     padding-left: 10px;
     padding-right: 10px;
     top: 50%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -121,14 +124,6 @@ title: "Carl in Orbit"
     height: 100%;
   }
 
-  .EarthOrbitSimulation-temperature {
-    position: absolute;
-    bottom: 5px;
-    left: 15px;
-    color: white;
-  }
-
-
   /* Prevent browser from showing selection when the element is touched */
   .isUnselectable {
     -webkit-touch-callout: none;
@@ -138,6 +133,33 @@ title: "Carl in Orbit"
     -o-user-select: none;
     user-select: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  }
+
+  .EarthOrbitSimulation-hudContainer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+
+  .EarthOrbitSimulation-hudContainerChild {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /*
+    Climate
+    ---------
+  */
+
+  .EarthOrbitSimulation-temperature {
+    position: absolute;
+    bottom: 5px;
+    left: 15px;
+    color: #DDDDDD;
   }
 
   .EarthOrbitSimulation-hasTooHotWarning {
@@ -212,7 +234,13 @@ title: "Carl in Orbit"
   <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
   <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
 
-  <div class='EarthOrbitSimulation-temperature'>T: <span class='EarthOrbitSimulation-temperatureValue'></span> <span class='EarthOrbitSimulation-temperatureDescription'></span></div>
+
+  <div class='EarthOrbitSimulation-hudContainer'>
+    <div class='EarthOrbitSimulation-hudContainerChild'>
+      <div class='EarthOrbitSimulation-temperature'>T: <span class='EarthOrbitSimulation-temperatureValue'></span> <span class='EarthOrbitSimulation-temperatureDescription'></span></div>
+    </div>
+  </div>
+
   <canvas class="EarthOrbitSimulation-canvas"></canvas>
   <canvas class="EarthOrbitSimulation-canvasHabitableZone"></canvas>
 
@@ -220,7 +248,7 @@ title: "Carl in Orbit"
     <div class="EarthOrbitSimulation-gameoverMessage">
       <span class="EarthOrbitSimulation-gameoverMessageContent">My wonder button is being pushed all the time.</span>
       <br><br>
-      <a class="EarthOrbitSimulation-gameoverButton" href="#">💥 Restart ✨</a>
+      <a class="EarthOrbitSimulation-gameoverButton" href="#">💥 Try again ✨</a>
     </div>
 
   </div>
