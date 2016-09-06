@@ -49,7 +49,7 @@ title: "Carl in Orbit"
     z-index: 1000;
   }
 
-  .EarthOrbitSimulation-earthEnd {
+  .EarthOrbitSimulation-gameover {
     position: absolute;
     background-color: #443344;
     left: 0;
@@ -63,17 +63,20 @@ title: "Carl in Orbit"
     background-size: 674px 220px;
   }
 
-  .EarthOrbitSimulation-earthEndMessage {
+  .EarthOrbitSimulation-gameoverMessage {
     color: #DDDDDD;
-    font-size: 1.3em;
+    font-size: 1.2em;
+    line-height: 1.5;
     position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
     top: 50%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
 
-  .EarthOrbitSimulation-earthEndButton {
+  .EarthOrbitSimulation-gameoverButton {
     color: #ffb100;
     padding: 10px;
     text-decoration: none;
@@ -213,12 +216,11 @@ title: "Carl in Orbit"
   <canvas class="EarthOrbitSimulation-canvas"></canvas>
   <canvas class="EarthOrbitSimulation-canvasHabitableZone"></canvas>
 
-  <div class="EarthOrbitSimulation-earthEnd EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
-    <div class="EarthOrbitSimulation-earthEndMessage">
-      "My wonder button is being pushed all the time."
-      <br><br>Carl Sagan
-      <br><br><br>
-      <a class="EarthOrbitSimulation-earthEndButton" href="#">💥 Wonder Button ✨</a>
+  <div class="EarthOrbitSimulation-gameover EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
+    <div class="EarthOrbitSimulation-gameoverMessage">
+      <span class="EarthOrbitSimulation-gameoverMessageContent">My wonder button is being pushed all the time.</span>
+      <br><br>
+      <a class="EarthOrbitSimulation-gameoverButton" href="#">💥 Restart ✨</a>
     </div>
 
   </div>
@@ -406,7 +408,8 @@ title: "Carl in Orbit"
 
       if (isEarthDead()) {
         physics.state.paused = true;
-        graphics.showHideEarthEndMessage(true);
+        var message = currentTemperatureCelsius > 10 ? "All complex life on Earth has become extinct due to high global temperature that caused the water to evaporate and create a runaway greenhouse effect which increased the temperature further." : "All complex life on Earth has become extinct due to low global temperature that caused the shutdown of photosynthesis in plants.";
+        gameoverMessage.show(message);
         return;
       }
 
@@ -414,7 +417,7 @@ title: "Carl in Orbit"
       if (updateCycle > 100) { updateCycle = 0; }
       if (updateCycle !== 0) { return; } // Update climate only once in 100 cycles, to inprove performance
 
-      var tempChange = 0; // Change in temperatuer degrees
+      var tempChange = 0; // Change in temperature degrees
 
       if (earthSunDistanceMeters < habitableZoneInnerDistanceMeters) {
         // Earth is heating
@@ -492,6 +495,8 @@ title: "Carl in Orbit"
       temperatureDescriptionElement.innerHTML = description;
 
       // Style the description warning with blinking and color if needed
+      // -----------
+
       var descriptionElementClass = ""
 
       if (showTooHotWarning) {
@@ -696,6 +701,26 @@ title: "Carl in Orbit"
     };
   })();
 
+  // Show a full screen message when the game is lost
+  var gameoverMessage = (function(){
+    var gameoverElement = document.querySelector(".EarthOrbitSimulation-gameover");
+    var gameoverMessageContentElement = document.querySelector(".EarthOrbitSimulation-gameoverMessageContent");
+
+    function show(message) {
+      gameoverElement.style.display = 'block';
+      gameoverMessageContentElement.innerHTML = message;
+    }
+
+    function hide() {
+      gameoverElement.style.display = 'none';
+    }
+
+    return {
+      show: show,
+      hide: hide
+    };
+  })();
+
   // Draw the scene
   var graphics = (function() {
     var canvas = null, // Canvas DOM element.
@@ -712,14 +737,9 @@ title: "Carl in Orbit"
       previousEarthPosition = null,
       earthElement,
       sunElement,
-      earthEndElement,
       currentSunsSize = sunsSize;
       middleX = 1,
       middleY = 1
-
-    function showHideEarthEndMessage(show) {
-      earthEndElement.style.display = show ? 'block' : 'none';
-    }
 
     function drawTheEarth(earthPosition) {
       var left = (earthPosition.x - earthSize/2) + "px";
@@ -806,7 +826,7 @@ title: "Carl in Orbit"
 
       if (isEarthCollidedWithTheSun(earthPosition)) {
         physics.state.paused = true;
-        showHideEarthEndMessage(true);
+        gameoverMessage.show("The Earth has collided with the Sun and evaporated at temperature over 5,700 degrees. It was quick and almost painless death for all life.");
       }
     }
 
@@ -865,7 +885,6 @@ title: "Carl in Orbit"
 
       earthElement = document.querySelector(".EarthOrbitSimulation-earth");
       sunElement = document.querySelector(".EarthOrbitSimulation-sun");
-      earthEndElement = document.querySelector(".EarthOrbitSimulation-earthEnd");
       redrawHabitableZone(1);
 
       // Execute success callback function
@@ -888,7 +907,6 @@ title: "Carl in Orbit"
       drawScene: drawScene,
       updateSunSizeAndBrightness: updateSunSizeAndBrightness,
       redrawHabitableZone: redrawHabitableZone,
-      showHideEarthEndMessage: showHideEarthEndMessage,
       clearScene: clearScene,
       saveAsImage: saveAsImage,
       init: init
@@ -935,7 +953,7 @@ title: "Carl in Orbit"
   // React to user input
   var userInput = (function(){
     var sunsMassElement = document.querySelector(".EarthOrbitSimulation-sunsMass");
-    var restartButton = document.querySelector(".EarthOrbitSimulation-earthEndButton");
+    var restartButton = document.querySelector(".EarthOrbitSimulation-gameoverButton");
     var restartButtonTwo = document.querySelector(".EarthOrbitSimulation-reloadButton");
     var massSlider;
 
@@ -954,7 +972,7 @@ title: "Carl in Orbit"
     }
 
     function didClickRestart() {
-      graphics.showHideEarthEndMessage(false);
+      gameoverMessage.hide();
       physics.resetStateToInitialConditions();
       graphics.clearScene();
       updateSunsMass(0.5);
