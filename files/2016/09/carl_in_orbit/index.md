@@ -418,17 +418,33 @@ title: "Carl in Orbit"
 
   // Shows the current date on screen
   var simulationTime = (function(){
-    var numberOfSimulatedSecondsSinceStart = 0;
+    var numberOfSimulatedSecondsSinceStart = 0,
+      startYear = 1997,
+      updateCycle = -1; // Used to limit the number of climate calculations, in order to improve performance
+
+
 
     // The function is called on each frame, which is 60 time per second
     function update() {
       numberOfSimulatedSecondsSinceStart += physics.constants.timeIncrementPerFrameInSeconds;
+
+      updateCycle += 1;
+      if (updateCycle > 10) { updateCycle = 0; }
+      if (updateCycle !== 0) { return; } // Update climate only once in 10 cycles, to improve performance
+
       var daysSinceStart = numberOfSimulatedSecondsSinceStart / (3600 * 24);
-      var yearsSinceStart = daysSinceStart / 365;
-      debug.print(Math.floor(yearsSinceStart) + " years " + daysSinceStart + " days");
+      var yearsSinceStart = Math.floor(daysSinceStart / 365);
+      var year = startYear + yearsSinceStart;
+      var month = daysSinceStart / 30;
+      debug.print(year + " years " + month + " day of the year");
+    }
+
+    function reset() {
+      numberOfSimulatedSecondsSinceStart = 0;
     }
 
     return {
+      reset: reset,
       update: update
     };
   })();
@@ -437,7 +453,7 @@ title: "Carl in Orbit"
   var climate = (function() {
     var initialTemperatureCelsius = 16,
       currentTemperatureCelsius = initialTemperatureCelsius,
-      updateCycle = -1, // Used to limit the number of climate calculations, in order to improve performan e
+      updateCycle = -1, // Used to limit the number of climate calculations, in order to improve performance
       previouslyDisplayedTemperature = 0, // Stores the previously display tempearature
       temperatureElement = document.querySelector(".EarthOrbitSimulation-temperatureValue"),
       temperatureDescriptionElement = document.querySelector(".EarthOrbitSimulation-temperatureDescription"),
@@ -460,7 +476,7 @@ title: "Carl in Orbit"
 
       updateCycle += 1;
       if (updateCycle > 100) { updateCycle = 0; }
-      if (updateCycle !== 0) { return; } // Update climate only once in 100 cycles, to inprove performance
+      if (updateCycle !== 0) { return; } // Update climate only once in 100 cycles, to improve performance
 
       var tempChange = 0; // Change in temperature degrees
 
@@ -1029,7 +1045,8 @@ title: "Carl in Orbit"
       massSlider.changePosition(0.5);
       climate.reset();
       physics.state.paused = false;
-      return false; // Prevent default
+      simulationTime.reset();
+      return false; // Prevent default click
     }
 
     function init() {
