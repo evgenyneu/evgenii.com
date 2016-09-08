@@ -343,7 +343,7 @@ title: "Carl in Orbit"
         that.updateHeadPositionOnTouch(e);
       });
 
-      that.slider.onselectstart = function () { return false; }
+      that.slider.onselectstart = function () { return false; };
 
       // End dragging slider
       // -----------------
@@ -472,16 +472,16 @@ title: "Carl in Orbit"
   var simulationTime = (function(){
     var startYear = 1997,
       monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      secondsSinceStartYear = (31 /*jan*/
-      + 28 /*feb*/
-      + 31 /*mar*/
-      + 30 /*apr*/
-      + 31 /*may*/
-      + 30 /*jun*/
-      + 31 /*jul*/
-      + 31 /*aug*/
-      + 30 /*sep*/
-      + 23 /*oct*/) * 24 * 3600 +
+      secondsSinceStartYear = (31 /*jan*/ +
+        28 /*feb*/ +
+        31 /*mar*/ +
+        30 /*apr*/ +
+        31 /*may*/ +
+        30 /*jun*/ +
+        31 /*jul*/ +
+        31 /*aug*/ +
+        30 /*sep*/ +
+        23 /*oct*/) * 24 * 3600 +
       12 * 3600 /*noon*/,
       numberOfSimulatedSecondsSinceStart = secondsSinceStartYear, // Seconds since the start of the simulations,
       updateCycle = -1, // Used to limit the number of climate calculations, in order to improve performance
@@ -555,20 +555,20 @@ title: "Carl in Orbit"
 
       if (earthSunDistanceMeters < habitableZoneInnerDistanceMeters) {
         // Earth is heating
-        var tempChange = Math.ceil(habitableZoneInnerDistanceMeters / earthSunDistanceMeters);
+        tempChange = Math.ceil(habitableZoneInnerDistanceMeters / earthSunDistanceMeters);
         if (tempChange > 5) { tempChange = 5; }
         if (tempChange === 0) { tempChange = 1; }
       } else if (earthSunDistanceMeters > habitableZoneOuterDistanceMeters) {
         // Earth is cooling
         var distanceToOuterEdge = habitableZoneOuterDistanceMeters - earthSunDistanceMeters;
-        var tempChange = Math.floor(3 * distanceToOuterEdge / habitableZoneOuterDistanceMeters);
+        tempChange = Math.floor(3 * distanceToOuterEdge / habitableZoneOuterDistanceMeters);
         if (tempChange < -3) { tempChange = -3; }
         if (tempChange === 0) { tempChange = -1; }
       } else {
         // Earth is in the habitable zone
         if (currentTemperatureCelsius != initialTemperatureCelsius) {
           // Restore the temperature
-          var tempChange = Math.ceil((initialTemperatureCelsius - currentTemperatureCelsius) / 5);
+          tempChange = Math.ceil((initialTemperatureCelsius - currentTemperatureCelsius) / 5);
 
           if (tempChange === 0) {
             if (currentTemperatureCelsius > initialTemperatureCelsius) { tempChange = -1; }
@@ -590,38 +590,38 @@ title: "Carl in Orbit"
     }
 
     function displayTemperatureDescription(changeDegrees) {
-      var description = "nice"
-      var showTooHotWarning = false;
-      var showTooColdWarning = false;
+      var description = "nice",
+        showTooHotWarning = false,
+        showTooColdWarning = false;
 
       if (currentTemperatureCelsius  > initialTemperatureCelsius) {
         if (currentTemperatureCelsius >= 40) {
           // Extremely hot
           showTooHotWarning = true;
-          description = "too hot"
+          description = "too hot";
           cyclesUnderExtremeConditions += 1;
         } else {
           cyclesUnderExtremeConditions = 0;
 
           if (currentTemperatureCelsius >= 30) {
-            description = "hot"
+            description = "hot";
           } else if (currentTemperatureCelsius >= 20) {
-            description = "warm"
+            description = "warm";
           }
         }
       } else {
         if (currentTemperatureCelsius <= 0) {
           // Extremely cold
-          description = "freezing"
+          description = "freezing";
           showTooColdWarning = true;
           cyclesUnderExtremeConditions += 1;
         } else {
           cyclesUnderExtremeConditions = 0;
 
           if (currentTemperatureCelsius <= 7) {
-            description = "cold"
+            description = "cold";
           } else if (currentTemperatureCelsius <= 12) {
-            description = "cool"
+            description = "cool";
           }
         }
       }
@@ -631,7 +631,7 @@ title: "Carl in Orbit"
       // Style the description warning with blinking and color if needed
       // -----------
 
-      var descriptionElementClass = ""
+      var descriptionElementClass = "";
 
       if (showTooHotWarning) {
         descriptionElementClass = "EarthOrbitSimulation-isBlinking EarthOrbitSimulation-hasTooHotWarning";
@@ -666,7 +666,7 @@ title: "Carl in Orbit"
       values = {
         innerDistanceMeters: 1, // The distance from the Sun to the inner edge of the habitable zone, in meters
         outerDistanceMeters: 1 // The distance from the Sun to the outer edge of the habitable zone, in meters
-      }
+      };
 
     // Update habitable zone based on the mass of the Sun.
     // `massOfTheSunRatio` is a proportion of normal mass of the Sun (default is 1).
@@ -730,7 +730,7 @@ title: "Carl in Orbit"
     constants.timeIncrementPerFrameInSeconds = 3600 * 24;
 
     // The length of the time increment, in seconds.
-    constants.deltaT = constants.timeIncrementPerFrameInSeconds / constants.numberOfCalculationsPerFrame
+    constants.deltaT = constants.timeIncrementPerFrameInSeconds / constants.numberOfCalculationsPerFrame;
 
 
     // Initial condition of the model
@@ -875,9 +875,9 @@ title: "Carl in Orbit"
       previousEarthPosition = null,
       earthElement,
       sunElement,
-      currentSunsSize = sunsSize;
+      currentSunsSize = sunsSize,
       middleX = 1,
-      middleY = 1
+      middleY = 1;
 
     function drawTheEarth(earthPosition) {
       var left = (earthPosition.x - earthSize/2) + "px";
@@ -901,8 +901,8 @@ title: "Carl in Orbit"
     // Updates the size of the Sun based on its mass. The sunMass argument is a fraction of the real Sun's mass.
     function updateSunSizeAndBrightness(sunMass) {
       // Change brightness
-      sunElement.setAttribute("style","filter:brightness(" + sunMass + "); "
-        + "-webkit-filter:brightness(" + sunMass + "); ");
+      sunElement.setAttribute("style","filter:brightness(" + sunMass + "); " +
+        "-webkit-filter:brightness(" + sunMass + "); ");
 
       var sunsDefaultWidth = sunsSize;
       currentSunsSize = sunsDefaultWidth * Math.pow(sunMass, 1/3);
@@ -952,8 +952,8 @@ title: "Carl in Orbit"
       var sunTop = middleY - sunHalf;
       var sunBottom = middleY + sunHalf;
 
-      return (earthPosition.x >= sunLeft && earthPosition.x <= sunRight
-        && earthPosition.y >= sunTop && earthPosition.y <= sunBottom);
+      return (earthPosition.x >= sunLeft && earthPosition.x <= sunRight &&
+        earthPosition.y >= sunTop && earthPosition.y <= sunBottom);
     }
 
     // Draws the scene
@@ -1103,7 +1103,7 @@ title: "Carl in Orbit"
         sunsMassValue = Math.pow(5, sunsMassValue - 1);
       }
 
-      var formattedMass = parseFloat(Math.round(sunsMassValue * 100) / 100).toFixed(2)
+      var formattedMass = parseFloat(Math.round(sunsMassValue * 100) / 100).toFixed(2);
       sunsMassElement.innerHTML = formattedMass;
       physics.updateFromUserInput(sunsMassValue);
       graphics.updateSunSizeAndBrightness(sunsMassValue);
