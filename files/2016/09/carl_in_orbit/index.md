@@ -21,6 +21,10 @@ title: "Carl in Orbit"
 
 <!-- Styles -->
 <style>
+  .EarthOrbitSimulator-hasHont {
+    font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+  }
+
   .EarthOrbitSimulation-alert {
     color: red;
     border: 1px solid red;
@@ -122,6 +126,7 @@ title: "Carl in Orbit"
     top: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
   }
 
   /* Prevent browser from showing selection when the element is touched */
@@ -139,6 +144,7 @@ title: "Carl in Orbit"
     position: absolute;
     height: 100%;
     width: 100%;
+    z-index: 2;
   }
 
   .EarthOrbitSimulation-hudContainerChild {
@@ -174,6 +180,18 @@ title: "Carl in Orbit"
     color: black;
     padding-left: 3px;
     padding-right: 3px;
+  }
+
+  /*
+    Climate
+    ---------
+  */
+
+  .EarthOrbitSimulation-time {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    color: #DDDDDD;
   }
 
   /* Blinking */
@@ -228,45 +246,49 @@ title: "Carl in Orbit"
 </style>
 
 <!-- Message shown in old browsers. -->
-<p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
+<div class="EarthOrbitSimulation EarthOrbitSimulator-hasHont">
+  <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
 
-<div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
-  <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
-  <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
+  <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
+    <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
+    <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
 
 
-  <div class='EarthOrbitSimulation-hudContainer'>
-    <div class='EarthOrbitSimulation-hudContainerChild'>
-      <div class='EarthOrbitSimulation-temperature'>T: <span class='EarthOrbitSimulation-temperatureValue'></span> <span class='EarthOrbitSimulation-temperatureDescription'></span></div>
+    <div class='EarthOrbitSimulation-hudContainer'>
+      <div class='EarthOrbitSimulation-hudContainerChild'>
+        <div class='EarthOrbitSimulation-temperature'>T:<span class='EarthOrbitSimulation-temperatureValue'></span> <span class='EarthOrbitSimulation-temperatureDescription'></span></div>
+
+        <div class='EarthOrbitSimulation-time'></div>
+      </div>
+    </div>
+
+    <canvas class="EarthOrbitSimulation-canvas"></canvas>
+    <canvas class="EarthOrbitSimulation-canvasHabitableZone"></canvas>
+
+    <div class="EarthOrbitSimulation-gameover EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
+      <div class="EarthOrbitSimulation-gameoverMessage">
+        <span class="EarthOrbitSimulation-gameoverMessageContent">My wonder button is being pushed all the time.</span>
+        <br><br>
+        <a class="EarthOrbitSimulation-gameoverButton" href="#">💥 Try again ✨</a>
+      </div>
+
     </div>
   </div>
 
-  <canvas class="EarthOrbitSimulation-canvas"></canvas>
-  <canvas class="EarthOrbitSimulation-canvasHabitableZone"></canvas>
-
-  <div class="EarthOrbitSimulation-gameover EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
-    <div class="EarthOrbitSimulation-gameoverMessage">
-      <span class="EarthOrbitSimulation-gameoverMessageContent">My wonder button is being pushed all the time.</span>
-      <br><br>
-      <a class="EarthOrbitSimulation-gameoverButton" href="#">💥 Try again ✨</a>
-    </div>
-
+  <div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
+    <div class="SickSlider-stripe"></div>
+    <div class="SickSlider-head"></div>
   </div>
-</div>
+  <div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
+    Mass of the Sun: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
+  </div>
 
-<div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
-  <div class="SickSlider-stripe"></div>
-  <div class="SickSlider-head"></div>
-</div>
-<div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
-  Mass of the Sun: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
-</div>
+  <p class="EarthOrbitSimulation-isTextCentered">
+    <a class="EarthOrbitSimulation-reloadButton" href="#">Restart</a>
+  </p>
 
-<p class="EarthOrbitSimulation-isTextCentered">
-  <a class="EarthOrbitSimulation-reloadButton" href="#">Restart</a>
-</p>
-
-<p class='EarthOrbitSimulation-debugOutput'></p>
+  <p class='EarthOrbitSimulation-debugOutput'></p>
+</div>
 
 <script>
 
@@ -418,29 +440,50 @@ title: "Carl in Orbit"
 
   // Shows the current date on screen
   var simulationTime = (function(){
-    var numberOfSimulatedSecondsSinceStart = 0,
-      startYear = 1997,
-      updateCycle = -1; // Used to limit the number of climate calculations, in order to improve performance
-
-
+    var startYear = 1997,
+      monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      secondsSinceStartYear = (31 /*jan*/
+      + 28 /*feb*/
+      + 31 /*mar*/
+      + 30 /*apr*/
+      + 31 /*may*/
+      + 30 /*jun*/
+      + 31 /*jul*/
+      + 31 /*aug*/
+      + 30 /*sep*/
+      + 23 /*oct*/) * 24 * 3600 +
+      12 * 3600 /*noon*/,
+      numberOfSimulatedSecondsSinceStart = secondsSinceStartYear, // Seconds since the start of the simulations,
+      updateCycle = -1, // Used to limit the number of climate calculations, in order to improve performance
+      secondsInSiderealYear = 365.242189 * 24 * 3600, // The length of the sidereal year for the Earth, in seconds
+      timeElement = document.querySelector(".EarthOrbitSimulation-time"),
+      previousTime = "";
 
     // The function is called on each frame, which is 60 time per second
     function update() {
       numberOfSimulatedSecondsSinceStart += physics.constants.timeIncrementPerFrameInSeconds;
 
       updateCycle += 1;
-      if (updateCycle > 10) { updateCycle = 0; }
+      if (updateCycle > 5) { updateCycle = 0; }
       if (updateCycle !== 0) { return; } // Update climate only once in 10 cycles, to improve performance
 
-      var daysSinceStart = numberOfSimulatedSecondsSinceStart / (3600 * 24);
-      var yearsSinceStart = Math.floor(daysSinceStart / 365);
+      var yearsSinceStart = Math.floor(numberOfSimulatedSecondsSinceStart / secondsInSiderealYear);
       var year = startYear + yearsSinceStart;
-      var month = daysSinceStart / 30;
-      debug.print(year + " years " + month + " day of the year");
+      var secondsSinceYearStart = (numberOfSimulatedSecondsSinceStart % secondsInSiderealYear);
+      var monthId = Math.floor(secondsSinceYearStart / secondsInSiderealYear * 12);
+      var monthName = monthNames[monthId];
+      showTime(year, monthName);
+    }
+
+    function showTime(year, month) {
+      var text = month + " " + year;
+      if (text === previousTime) { return; }
+      timeElement.innerHTML = text;
+      previousTime = text;
     }
 
     function reset() {
-      numberOfSimulatedSecondsSinceStart = 0;
+      numberOfSimulatedSecondsSinceStart = secondsSinceStartYear;
     }
 
     return {
