@@ -456,6 +456,18 @@ title: "Carl in Orbit"
     };
   })();
 
+  // Handle the straberries
+  var straberry = (function(){
+    var straberry = document.querySelector(".EarthOrbitSimulation-straberry");
+
+    function hello() {
+    }
+
+    return {
+      hello: hello
+    };
+  })();
+
   // Shows the current date on screen
   var simulationTime = (function(){
     var startYear = 1997,
