@@ -21,6 +21,17 @@ title: "Carl in Orbit"
 
 <!-- Styles -->
 <style>
+  /* Prevent browser from showing selection when the element is touched */
+  .isUnselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    -o-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  }
+
   .EarthOrbitSimulator-hasHont {
     font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
   }
@@ -44,6 +55,19 @@ title: "Carl in Orbit"
   .EarthOrbitSimulation-isTextCentered { text-align: center; }
   .EarthOrbitSimulation-isHiddenBlock { display: none; }
 
+  .EarthOrbitSimulation-sun {
+    position: absolute;
+    width: 60px;
+    top: 50%;
+    left: 50%;
+    margin-left: -30px;
+    margin-top: -30px;
+    -webkit-animation:spin .5s linear infinite;
+    -moz-animation:spin .5s linear infinite;
+    animation:spin .5s linear infinite;
+    z-index: 999;
+  }
+
   .EarthOrbitSimulation-earth {
     position: absolute;
     width: 25px;
@@ -52,6 +76,43 @@ title: "Carl in Orbit"
     animation:spin .1s linear infinite;
     z-index: 1000;
   }
+
+  .EarthOrbitSimulation-straberry {
+    position: absolute;
+    width: 25px;
+    top: 30px;
+    left: 40px;
+  }
+
+  .EarthOrbitSimulation-reloadButton {
+    background-color: #ff9400;
+    color: #ffffff;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 1px solid #ffb100;
+  }
+
+  @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
+  @-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
+  @keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
+
+  .EarthOrbitSimulation-canvas,
+  .EarthOrbitSimulation-canvasHabitableZone { display: block; }
+
+  .EarthOrbitSimulation-canvasHabitableZone {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  /*
+    Gameover
+    ---------
+  */
 
   .EarthOrbitSimulation-gameover {
     position: absolute;
@@ -91,54 +152,10 @@ title: "Carl in Orbit"
     border: 1px solid #ffb100;
   }
 
-  .EarthOrbitSimulation-reloadButton {
-    background-color: #ff9400;
-    color: #ffffff;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 10px;
-    border: 1px solid #ffb100;
-  }
-
-  .EarthOrbitSimulation-sun {
-    position: absolute;
-    width: 60px;
-    top: 50%;
-    left: 50%;
-    margin-left: -30px;
-    margin-top: -30px;
-    -webkit-animation:spin .5s linear infinite;
-    -moz-animation:spin .5s linear infinite;
-    animation:spin .5s linear infinite;
-    z-index: 999;
-  }
-
-  @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
-  @-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
-  @keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
-
-  .EarthOrbitSimulation-canvas,
-  .EarthOrbitSimulation-canvasHabitableZone { display: block; }
-
-  .EarthOrbitSimulation-canvasHabitableZone {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-
-  /* Prevent browser from showing selection when the element is touched */
-  .isUnselectable {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none; /* Chrome/Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+ */
-    -o-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
-  }
+  /*
+    Hud display
+    ---------
+  */
 
   .EarthOrbitSimulation-hudContainer {
     position: absolute;
@@ -163,7 +180,7 @@ title: "Carl in Orbit"
 
   .EarthOrbitSimulation-temperature {
     position: absolute;
-    bottom: 5px;
+    bottom: 10px;
     left: 15px;
     color: #DDDDDD;
   }
@@ -189,7 +206,7 @@ title: "Carl in Orbit"
 
   .EarthOrbitSimulation-time {
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 15px;
     color: #DDDDDD;
   }
@@ -247,47 +264,48 @@ title: "Carl in Orbit"
 
 <!-- Message shown in old browsers. -->
 <div class="EarthOrbitSimulation EarthOrbitSimulator-hasHont">
-  <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
+<p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
 
-  <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
-    <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
-    <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
+<div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
+  <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
+  <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
 
 
-    <div class='EarthOrbitSimulation-hudContainer'>
-      <div class='EarthOrbitSimulation-hudContainerChild'>
-        <div class='EarthOrbitSimulation-temperature'>T:<span class='EarthOrbitSimulation-temperatureValue'></span> <span class='EarthOrbitSimulation-temperatureDescription'></span></div>
+  <div class='EarthOrbitSimulation-hudContainer'>
+    <div class='EarthOrbitSimulation-hudContainerChild'>
+      <div class='EarthOrbitSimulation-temperature'>T:<span class='EarthOrbitSimulation-temperatureValue'></span> <span class='EarthOrbitSimulation-temperatureDescription'></span></div>
 
-        <div class='EarthOrbitSimulation-time'></div>
-      </div>
-    </div>
-
-    <canvas class="EarthOrbitSimulation-canvas"></canvas>
-    <canvas class="EarthOrbitSimulation-canvasHabitableZone"></canvas>
-
-    <div class="EarthOrbitSimulation-gameover EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
-      <div class="EarthOrbitSimulation-gameoverMessage">
-        <span class="EarthOrbitSimulation-gameoverMessageContent">My wonder button is being pushed all the time.</span>
-        <br><br>
-        <a class="EarthOrbitSimulation-gameoverButton" href="#">💥 Try again ✨</a>
-      </div>
-
+      <div class='EarthOrbitSimulation-time'></div>
     </div>
   </div>
 
-  <div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
-    <div class="SickSlider-stripe"></div>
-    <div class="SickSlider-head"></div>
-  </div>
-  <div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
-    Mass of the Sun: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
+  <canvas class="EarthOrbitSimulation-canvas"></canvas>
+  <canvas class="EarthOrbitSimulation-canvasHabitableZone"></canvas>
+
+  <div class="EarthOrbitSimulation-gameover EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
+    <div class="EarthOrbitSimulation-gameoverMessage">
+      <span class="EarthOrbitSimulation-gameoverMessageContent">My wonder button is being pushed all the time.</span>
+      <br><br>
+      <a class="EarthOrbitSimulation-gameoverButton" href="#">💥 Try again ✨</a>
+    </div>
   </div>
 
-  <p class="EarthOrbitSimulation-isTextCentered">
-    <a class="EarthOrbitSimulation-reloadButton" href="#">Restart</a>
-  </p>
+  <img src='/image/blog/2016-09-03-big-sun-experiment/strawberry.png' alt='Straberry' class='EarthOrbitSimulation-straberry'>
+</div>
 
-  <p class='EarthOrbitSimulation-debugOutput'></p>
+<div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
+  <div class="SickSlider-stripe"></div>
+  <div class="SickSlider-head"></div>
+</div>
+<div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
+  Mass of the Sun: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
+</div>
+
+<p class="EarthOrbitSimulation-isTextCentered">
+  <a class="EarthOrbitSimulation-reloadButton" href="#">Restart</a>
+</p>
+
+<p class='EarthOrbitSimulation-debugOutput'></p>
 </div>
 
 <script>
