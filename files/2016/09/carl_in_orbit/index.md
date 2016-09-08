@@ -298,7 +298,7 @@ title: "Carl in Orbit"
   <div class="SickSlider-head"></div>
 </div>
 <div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
-  Mass of the Sun: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
+  Sun's mass: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
 </div>
 
 <p class="EarthOrbitSimulation-isTextCentered">
@@ -453,18 +453,6 @@ title: "Carl in Orbit"
 
     return {
       print: print
-    };
-  })();
-
-  // Handle the straberries
-  var straberry = (function(){
-    var straberry = document.querySelector(".EarthOrbitSimulation-straberry");
-
-    function hello() {
-    }
-
-    return {
-      hello: hello
     };
   })();
 
@@ -707,6 +695,7 @@ title: "Carl in Orbit"
     };
   })();
 
+
   // Calculates the position of the Earth
   var physics = (function() {
     var constants = {
@@ -859,6 +848,20 @@ title: "Carl in Orbit"
     };
   })();
 
+  // Handles the straberry business
+  var straberry = (function(){
+    var straberry = document.querySelector(".EarthOrbitSimulation-straberry"),
+      distanceFromTheSunMeters = physics.constants.earthSunDistanceMeters;
+      angle = -40;
+
+    function update() {
+    }
+
+    return {
+      update: update
+    };
+  })();
+
   // Draw the scene
   var graphics = (function() {
     var canvas = null, // Canvas DOM element.
@@ -876,8 +879,10 @@ title: "Carl in Orbit"
       earthElement,
       sunElement,
       currentSunsSize = sunsSize,
-      middleX = 1,
-      middleY = 1;
+      values = {
+        middleX: 1,
+        middleY: 1,
+      };
 
     function drawTheEarth(earthPosition) {
       var left = (earthPosition.x - earthSize/2) + "px";
@@ -887,10 +892,8 @@ title: "Carl in Orbit"
     }
 
     function calculateEarthPosition(distance, angle) {
-      middleX = Math.floor(canvas.width / 2);
-      middleY = Math.floor(canvas.height / 2);
-      var centerX = Math.cos(angle) * distance + middleX;
-      var centerY = Math.sin(-angle) * distance + middleY;
+      var centerX = Math.cos(angle) * distance + values.middleX;
+      var centerY = Math.sin(-angle) * distance + values.middleY;
 
       return {
         x: centerX,
@@ -915,16 +918,12 @@ title: "Carl in Orbit"
     // `sunMassRatio` is a proportion of normal mass of the Sun (default is 1).
     function redrawHabitableZone(sunMassRatio) {
       habitableZone.update(sunMassRatio);
-
-      middleX = Math.floor(canvas.width / 2);
-      middleY = Math.floor(canvas.height / 2);
-
       contextHabitableZone.clearRect(0, 0, canvas.width, canvas.height);
       contextHabitableZone.fillStyle = colors.habitableZoneFillColor;
       contextHabitableZone.globalAlpha = 0.15;
       contextHabitableZone.beginPath();
-      contextHabitableZone.arc(middleX, middleY, habitableZone.innerDistancePixels(), 0, 2*Math.PI, true);
-      contextHabitableZone.arc(middleX, middleY, habitableZone.outerDistancePixels(), 0, 2*Math.PI, false);
+      contextHabitableZone.arc(values.middleX, values.middleY, habitableZone.innerDistancePixels(), 0, 2*Math.PI, true);
+      contextHabitableZone.arc(values.middleX, values.middleY, habitableZone.outerDistancePixels(), 0, 2*Math.PI, false);
       contextHabitableZone.fill();
     }
 
@@ -947,10 +946,10 @@ title: "Carl in Orbit"
     function isEarthCollidedWithTheSun(earthPosition) {
       var correctedSunsSize = currentSunsSize - 20;
       var sunHalf = correctedSunsSize / 2;
-      var sunLeft = middleX - sunHalf;
-      var sunRight = middleX + sunHalf;
-      var sunTop = middleY - sunHalf;
-      var sunBottom = middleY + sunHalf;
+      var sunLeft = values.middleX - sunHalf;
+      var sunRight = values.middleX + sunHalf;
+      var sunTop = values.middleY - sunHalf;
+      var sunBottom = values.middleY + sunHalf;
 
       return (earthPosition.x >= sunLeft && earthPosition.x <= sunRight &&
         earthPosition.y >= sunTop && earthPosition.y <= sunBottom);
@@ -972,17 +971,26 @@ title: "Carl in Orbit"
       document.getElementById("EarthOrbitSimulation-notSupportedMessage").style.display ='none';
     }
 
+    function calculateScreenCenter() {
+      values.middleX = Math.floor(canvas.width / 2);
+      values.middleY = Math.floor(canvas.height / 2);
+    }
+
     // Resize canvas to will the width of container
     function fitToContainer(){
+      // Update main canvas
       canvas.style.width='100%';
       canvas.style.height= canvasHeight + 'px';
       canvas.width  = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
 
+      // Update habitable zone canvas
       canvasHabitableZone.style.width='100%';
       canvasHabitableZone.style.height= canvasHeight + 'px';
       canvasHabitableZone.width  = canvas.offsetWidth;
       canvasHabitableZone.height = canvas.offsetHeight;
+
+      calculateScreenCenter();
     }
 
     // Returns true on error and false on success
@@ -1047,6 +1055,7 @@ title: "Carl in Orbit"
       redrawHabitableZone: redrawHabitableZone,
       clearScene: clearScene,
       saveAsImage: saveAsImage,
+      values: values,
       init: init
     };
   })();
@@ -1058,6 +1067,7 @@ title: "Carl in Orbit"
       physics.updatePosition();
       simulationTime.update();
       graphics.drawScene(physics.earthSunDistancePixels(), physics.state.angle.value);
+      straberry.update();
 
       climate.update(physics.state.distance.value,
         habitableZone.values.innerDistanceMeters,
