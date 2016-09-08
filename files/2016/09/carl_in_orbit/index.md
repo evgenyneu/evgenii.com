@@ -978,19 +978,16 @@ title: "Carl in Orbit"
 
     // Resize canvas to will the width of container
     function fitToContainer(){
-      // Update main canvas
-      canvas.style.width='100%';
-      canvas.style.height= canvasHeight + 'px';
-      canvas.width  = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-
-      // Update habitable zone canvas
-      canvasHabitableZone.style.width='100%';
-      canvasHabitableZone.style.height= canvasHeight + 'px';
-      canvasHabitableZone.width  = canvas.offsetWidth;
-      canvasHabitableZone.height = canvas.offsetHeight;
-
+      layoutCanvas(canvas, canvasHeight);
+      layoutCanvas(canvasHabitableZone, canvasHeight);
       calculateScreenCenter();
+    }
+
+    function layoutCanvas(canvasElement, height) {
+      canvasElement.style.width = '100%';
+      canvasElement.style.height = height + 'px';
+      canvasElement.width = canvasElement.offsetWidth;
+      canvasElement.height = canvasElement.offsetHeight;
     }
 
     // Returns true on error and false on success
