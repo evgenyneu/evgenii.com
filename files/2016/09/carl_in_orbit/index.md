@@ -79,7 +79,7 @@ title: "Carl in Orbit"
 
   .EarthOrbitSimulation-straberry {
     position: absolute;
-    width: 25px;
+    width: 35px;
     top: 30px;
     left: 40px;
   }
@@ -848,13 +848,34 @@ title: "Carl in Orbit"
     };
   })();
 
-  // Handles the straberry business
-  var straberry = (function(){
-    var straberry = document.querySelector(".EarthOrbitSimulation-straberry"),
+  // Moves the strawberry and handles its collision with the Earth and the Sun.
+  var strawberry = (function(){
+    var straberryElement = document.querySelector(".EarthOrbitSimulation-straberry"),
       distanceFromTheSunMeters = physics.constants.earthSunDistanceMeters;
-      angle = -40;
+      angle = -0.2,
+      strawberrySizePixels = 35;
 
     function update() {
+      var distanceFromTheSunPixels = distanceFromTheSunMeters / physics.constants.scaleFactor;
+      var position = calculatePosition(distanceFromTheSunPixels, angle);
+      drawStraberry(position);
+    }
+
+    function drawStraberry(position) {
+      var left = (position.x - strawberrySizePixels/2) + "px";
+      var top = (position.y - strawberrySizePixels/2) + "px";
+      straberryElement.style.left = left;
+      straberryElement.style.top = top;
+    }
+
+    function calculatePosition(distance, angle) {
+      var centerX = Math.cos(angle) * distance + graphics.values.middleX;
+      var centerY = Math.sin(-angle) * distance + graphics.values.middleY;
+
+      return {
+        x: centerX,
+        y: centerY
+      };
     }
 
     return {
@@ -1064,7 +1085,7 @@ title: "Carl in Orbit"
       physics.updatePosition();
       simulationTime.update();
       graphics.drawScene(physics.earthSunDistancePixels(), physics.state.angle.value);
-      straberry.update();
+      strawberry.update();
 
       climate.update(physics.state.distance.value,
         habitableZone.values.innerDistanceMeters,
