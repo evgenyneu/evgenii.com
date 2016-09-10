@@ -533,7 +533,7 @@ title: "Carl in Orbit"
       temperatureDescriptionElement = document.querySelector(".EarthOrbitSimulation-temperatureDescription"),
 
       // The number of cycles for Earth to survive in extreme cold or hot conditions.
-      maxNumberOfExtremeCyclesToSurvive = 10,
+      maxNumberOfExtremeCyclesToSurvive = 5,
 
       // The  number of cycles that Earth has been under extreme cold or hot conditions.
       cyclesUnderExtremeConditions = 0;
@@ -563,7 +563,7 @@ title: "Carl in Orbit"
         // Earth is cooling
         var distanceToOuterEdge = habitableZoneOuterDistanceMeters - earthSunDistanceMeters;
         tempChange = Math.floor(5 * distanceToOuterEdge / habitableZoneOuterDistanceMeters);
-        if (tempChange < -3) { tempChange = -3; }
+        if (tempChange < -5) { tempChange = -5; }
         if (tempChange === 0) { tempChange = -1; }
       } else {
         // Earth is in the habitable zone
@@ -948,12 +948,12 @@ title: "Carl in Orbit"
       angle = 1,
       strawberrySizePixels = 35.0,
       sunIsRemoved = false,
-      // Count the number of frames since the Sun was remove to show a message
-      framesSinceSunWasRemoved = 0,
       // Interval in second after which the "Sun is removed" message is shown to the user
       showRemoveMessageAfterIntervalSeconds = 0.5,
       // Show the "Strawberry has landed" only once
-      shownStraberryHasLandedOnEarthMessage = false;
+      shownStraberryHasLandedOnEarthMessage = false,
+      // Show the "Sun has been removed" message only once
+      shownSunWasRemovedMessage = false;
 
     /*
      Updates the strawberry position and detects collision with the Sun or the Earth.
@@ -971,42 +971,44 @@ title: "Carl in Orbit"
       drawStraberry(straberryPosition);
 
 
-      // Show "Sun is removed message"
-      // ------------------
-
-      if (sunIsRemoved) {
-        framesSinceSunWasRemoved += 1;
-        if (framesSinceSunWasRemoved > showRemoveMessageAfterIntervalSeconds * graphics.values.framesPerSecond) {
-          physics.state.paused = true;
-          helper.hideBlockElement(straberryElement);
-
-          gameoverMessage.show("Greetings Earthlings! An unauthorized dark energy transfer has been detected in your stellar system. This transfer slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The department of intergalactic spacelords.");
-        }
-      }
-
       // Check if strawberry has collided with the Sun
       // ------------------
 
       if (isCollidedWithTheSun(straberryPosition) && !sunIsRemoved) {
-        sunIsRemoved = true;
         userInput.removeSun();
+        sunIsRemoved = true
+
+        if (shownSunWasRemovedMessage) {
+
+        } else {
+          physics.state.paused = true;
+          shownSunWasRemovedMessage = true;
+          // helper.hideBlockElement(straberryElement);
+
+          gameoverMessage.showWithContinueButton("Greetings Earthlings! An unauthorized dark energy transfer has been detected in your stellar system. This transfer slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The department of intergalactic spacelords.", didTapContinueButtonAfterSunHasBeenRemoved);
+        }
       }
 
       // Check if strawberry has collided with the Earth
       // ------------------
 
-      if (isCollidedWithTheEarth(straberryPosition) && !sunIsRemoved) {
+      if (isCollidedWithTheEarth(straberryPosition)) {
         if (shownStraberryHasLandedOnEarthMessage) {
           reset();
         } else {
           physics.state.paused = true;
           shownStraberryHasLandedOnEarthMessage = true;
 
-          gameoverMessage.showWithContinueButton("The giant strawberry has safely landed on the Earth and kept standing there without any signs of activity. On closer examination it appeared to be made of some kind of mineral similar to diamond. The landing site has soon become a popular tourist attraction where one can buy a smoothie or a strawberry-shaped souvenir.", didTapContinueButtonAfterCollisionWithEarth);
+          gameoverMessage.showWithContinueButton("The giant strawberry safely landed on the Earth and kept standing there without any signs of activity. On closer examination it appeared to be made of some kind of mineral similar to diamond. The landing site has soon become a popular tourist attraction where one can buy a smoothie or a strawberry-shaped souvenir.", didTapContinueButtonAfterCollisionWithEarth);
 
           helper.hideBlockElement(straberryElement);
         }
       }
+    }
+
+    function didTapContinueButtonAfterSunHasBeenRemoved() {
+      gameoverMessage.hide();
+      physics.state.paused = false;
     }
 
     function didTapContinueButtonAfterCollisionWithEarth() {
@@ -1055,7 +1057,6 @@ title: "Carl in Orbit"
       angle = initialAngle;
       sunIsRemoved = false;
       helper.showBlockElement(straberryElement);
-      framesSinceSunWasRemoved = 0;
     }
 
     return {
