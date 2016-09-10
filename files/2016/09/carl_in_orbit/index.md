@@ -82,7 +82,7 @@ title: "Carl in Orbit"
     width: 35px;
     top: 30px;
     left: 40px;
-    z-index: 1002;
+    z-index: 1000;
   }
 
   .EarthOrbitSimulation-reloadButton {
@@ -151,7 +151,7 @@ title: "Carl in Orbit"
     }
   }
 
-  .EarthOrbitSimulation-gameoverButton {
+  .EarthOrbitSimulation-button {
     color: #ffb100;
     padding: 10px;
     text-decoration: none;
@@ -293,7 +293,8 @@ title: "Carl in Orbit"
     <div class="EarthOrbitSimulation-gameoverMessage">
       <span class="EarthOrbitSimulation-gameoverMessageContent">My wonder button is being pushed all the time.</span>
       <br><br>
-      <a class="EarthOrbitSimulation-gameoverButton" href="#">💥 Try again ✨</a>
+      <a class="EarthOrbitSimulation-gameoverButton EarthOrbitSimulation-button" href="#">💥 Try again ✨</a>
+      <a class="EarthOrbitSimulation-continueButton EarthOrbitSimulation-button" href="#">💥 Continue ✨</a>
     </div>
   </div>
 
@@ -489,6 +490,8 @@ title: "Carl in Orbit"
 
     // The function is called on each frame, which is 60 time per second
     function update() {
+      if (physics.state.paused) { return; }
+
       numberOfSimulatedSecondsSinceStart += physics.constants.timeIncrementPerFrameInSeconds;
 
       updateCycle += 1;
@@ -723,9 +726,6 @@ title: "Carl in Orbit"
 
   // Checks if two objects are collided
   var collision = (function(){
-    var gameoverElement = document.querySelector(".EarthOrbitSimulation-gameover");
-    var gameoverMessageContentElement = document.querySelector(".EarthOrbitSimulation-gameoverMessageContent");
-
     // Return true if two object are collided
     function areCollided(objectOnePosition, objectTwoPosition, objectTwoSize) {
       var correctedObjectTwoSize = objectTwoSize * 0.8;
@@ -881,19 +881,39 @@ title: "Carl in Orbit"
   var gameoverMessage = (function(){
     var gameoverElement = document.querySelector(".EarthOrbitSimulation-gameover");
     var gameoverMessageContentElement = document.querySelector(".EarthOrbitSimulation-gameoverMessageContent");
+    var restartButton = document.querySelector(".EarthOrbitSimulation-gameoverButton");
+    var continueButton = document.querySelector(".EarthOrbitSimulation-continueButton");
 
     function show(message) {
       helper.showBlockElement(gameoverElement);
       gameoverMessageContentElement.innerHTML = message;
     }
 
+    function showWithContinueButton(message, didClickContinue) {
+      helper.showBlockElement(gameoverElement);
+      gameoverMessageContentElement.innerHTML = message;
+
+      continueButton.onclick = function() {
+        didClickContinue();
+        return false; // Prevent default click
+      };
+    }
+
     function hide() {
       helper.hideBlockElement(gameoverElement);
     }
 
+    function init() {
+      restartButton.onclick = userInput.didClickRestart;
+
+    }
+
     return {
       show: show,
-      hide: hide
+      showWithContinueButton: showWithContinueButton,
+      gameoverMessage: gameoverMessage,
+      hide: hide,
+      init: init
     };
   })();
 
@@ -902,47 +922,70 @@ title: "Carl in Orbit"
     var straberryElement = document.querySelector(".EarthOrbitSimulation-straberry"),
       initialDistanceFromTheSunMeters = 2.0 * physics.constants.earthSunDistanceMeters,
       distanceFromTheSunMeters = 1,
-      speedMetersPerSecond = 7000.0, // How fast the strawberry is moving
+      speedMetersPerSecond = 10000.0, // How fast the strawberry is moving
       initialAngle = -0.2,
       angle = 1,
       strawberrySizePixels = 35.0,
-      sunIsRemoved = false;
+      sunIsRemoved = false,
       // Count the number of frames since the Sun was remove to show a message
-      framesSinceSunWasRemoved = 0;
+      framesSinceSunWasRemoved = 0,
       // Interval in second after which the "Sun is removed" message is shown to the user
-      showRemoveMessageAfterIntervalSeconds = .5;
+      showRemoveMessageAfterIntervalSeconds = 0.5;
 
     /*
      Updates the strawberry position and detects collision with the Sun or the Earth.
      This function is called on every frame, 60 times per second.
     */
     function update() {
-      if (sunIsRemoved) {
-        framesSinceSunWasRemoved += 1;
+      if (physics.state.paused) { return; }
 
-        if (framesSinceSunWasRemoved > showRemoveMessageAfterIntervalSeconds * graphics.values.framesPerSecond) {
-          physics.state.paused = true;
-          gameoverMessage.show("Hello Earthlings, We detected unauthorized dark energy transfer in your stellar system that slowed the inflation rate of the Universe and triggered a cosmic real estate crisis. To restore our  profits we have removed your star. We apologize for any inconvenience. Have a good night. ~The department of intergalactic commerce.");
-        }
-      }
+      // Update strawberry position
+      // ------------------
 
       updatePosition();
       var distanceFromTheSunPixels = distanceFromTheSunMeters / physics.constants.scaleFactor;
       var straberryPosition = calculatePosition(distanceFromTheSunPixels, angle);
       drawStraberry(straberryPosition);
 
+
+      // Show "Sun is removed message"
+      // ------------------
+
+      if (sunIsRemoved) {
+        framesSinceSunWasRemoved += 1;
+        if (framesSinceSunWasRemoved > showRemoveMessageAfterIntervalSeconds * graphics.values.framesPerSecond) {
+          physics.state.paused = true;
+          helper.hideBlockElement(straberryElement);
+
+          gameoverMessage.show("Hello Earthlings, We detected unauthorized dark energy transfer in your stellar system that slowed the inflation rate of the Universe and triggered a cosmic real estate crisis. To restore our  profits we have removed your star. We apologize for any inconvenience. Have a good night. ~The department of intergalactic spacelords.");
+        }
+      }
+
+      // Check if strawberry has collided with the Sun
+      // ------------------
+
       if (isCollidedWithTheSun(straberryPosition) && !sunIsRemoved) {
         sunIsRemoved = true;
-        // helper.hideBlockElement(straberryElement);
         userInput.removeSun();
-        framesSinceSunWasRemoved;
-
       }
 
-      debug.print(isCollidedWithTheEarth(straberryPosition));
-      if (isCollidedWithTheEarth(straberryPosition)) {
+      // Check if strawberry has collided with the Earth
+      // ------------------
 
+      if (isCollidedWithTheEarth(straberryPosition) && !sunIsRemoved) {
+        physics.state.paused = true;
+
+        gameoverMessage.showWithContinueButton("The giant strawberry thing has safely landed on the Earth.",didTapContinueButtonAfterCollisionWithEarth);
+
+        helper.hideBlockElement(straberryElement);
       }
+    }
+
+    function didTapContinueButtonAfterCollisionWithEarth() {
+      gameoverMessage.hide();
+      reset();
+      physics.state.paused = false;
+      console.log(physics.state);
     }
 
      // Return true if the strawberry has collided with the Sun
@@ -954,7 +997,7 @@ title: "Carl in Orbit"
 
     // Return true if the strawberry has collided with the Earth
     function isCollidedWithTheEarth(straberryPosition) {
-      return collision.areCollided(straberryPosition, graphics.values.earthPosition, graphics.values.earthSize);
+      return collision.areCollided(straberryPosition, graphics.values.earthPosition, 2.0 * graphics.values.earthSize);
     }
 
     function updatePosition() {
@@ -989,7 +1032,7 @@ title: "Carl in Orbit"
     }
 
     return {
-      reset, reset,
+      reset: reset,
       update: update
     };
   })();
@@ -1212,6 +1255,7 @@ title: "Carl in Orbit"
         // Use the initial conditions for the simulation
         physics.resetStateToInitialConditions();
         strawberry.reset();
+        gameoverMessage.init();
 
         // Redraw the scene if page is resized
         window.addEventListener('resize', function(event){
@@ -1234,7 +1278,6 @@ title: "Carl in Orbit"
   // React to user input
   var userInput = (function(){
     var sunsMassElement = document.querySelector(".EarthOrbitSimulation-sunsMass");
-    var restartButton = document.querySelector(".EarthOrbitSimulation-gameoverButton");
     var restartButtonTwo = document.querySelector(".EarthOrbitSimulation-reloadButton");
     var massSlider;
 
@@ -1270,7 +1313,6 @@ title: "Carl in Orbit"
       massSlider = SickSlider(".EarthOrbitSimulation-massSlider");
       massSlider.onSliderChange = updateSunsMass;
       massSlider.changePosition(0.5);
-      restartButton.onclick = didClickRestart;
       restartButtonTwo.onclick = didClickRestart;
 
       // restartButtonTwo.onclick = function() {
@@ -1286,6 +1328,7 @@ title: "Carl in Orbit"
     }
 
     return {
+      didClickRestart: didClickRestart,
       removeSun: removeSun,
       init: init
     };
