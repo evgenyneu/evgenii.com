@@ -943,7 +943,7 @@ title: "Carl in Orbit"
     var straberryElement = document.querySelector(".EarthOrbitSimulation-straberry"),
       initialDistanceFromTheSunMeters = 2.0 * physics.constants.earthSunDistanceMeters,
       distanceFromTheSunMeters = 1,
-      speedMetersPerSecond = 10000.0, // How fast the strawberry is moving
+      speedMetersPerSecond = 5000.0, // How fast the strawberry is moving
       initialAngle = -0.2,
       angle = 1,
       strawberrySizePixels = 35.0,
@@ -951,7 +951,9 @@ title: "Carl in Orbit"
       // Count the number of frames since the Sun was remove to show a message
       framesSinceSunWasRemoved = 0,
       // Interval in second after which the "Sun is removed" message is shown to the user
-      showRemoveMessageAfterIntervalSeconds = 0.5;
+      showRemoveMessageAfterIntervalSeconds = 0.5,
+      // Show the "Strawberry has landed" only once
+      shownStraberryHasLandedOnEarthMessage = false;
 
     /*
      Updates the strawberry position and detects collision with the Sun or the Earth.
@@ -978,7 +980,7 @@ title: "Carl in Orbit"
           physics.state.paused = true;
           helper.hideBlockElement(straberryElement);
 
-          gameoverMessage.show("Hello Earthlings, We detected unauthorized dark energy transfer in your stellar system that slowed the inflation rate of the Universe and triggered a cosmic real estate crisis. To restore our  profits we have removed your star. We apologize for any inconvenience. Have a good night. ~The department of intergalactic spacelords.");
+          gameoverMessage.show("Greetings Earthlings! We detected an unauthorized dark energy transfer in your stellar system that slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our  profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The department of intergalactic spacelords.");
         }
       }
 
@@ -994,11 +996,16 @@ title: "Carl in Orbit"
       // ------------------
 
       if (isCollidedWithTheEarth(straberryPosition) && !sunIsRemoved) {
-        physics.state.paused = true;
+        if (shownStraberryHasLandedOnEarthMessage) {
+          reset();
+        } else {
+          physics.state.paused = true;
+          shownStraberryHasLandedOnEarthMessage = true;
 
-        gameoverMessage.showWithContinueButton("The giant strawberry thing has safely landed on the Earth.",didTapContinueButtonAfterCollisionWithEarth);
+          gameoverMessage.showWithContinueButton("The giant strawberry has safely landed on the Earth and kept standing there without any signs of activity. On closer examination it appeared to be made of some kind of mineral similar to diamond. The landing site has soon become a popular tourist attraction where one can buy a smoothie or a strawberry-shaped souvenir.", didTapContinueButtonAfterCollisionWithEarth);
 
-        helper.hideBlockElement(straberryElement);
+          helper.hideBlockElement(straberryElement);
+        }
       }
     }
 
