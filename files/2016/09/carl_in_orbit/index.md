@@ -102,7 +102,7 @@ title: "Carl in Orbit"
   }
 
   /*
-    Gameover
+    Game over
     ---------
   */
 
@@ -171,6 +171,11 @@ title: "Carl in Orbit"
     margin-right: auto;
   }
 
+  /*
+    Reload button
+    ---------
+  */
+
   .EarthOrbitSimulation-reload {
     position: absolute;
     display: block;
@@ -178,10 +183,38 @@ title: "Carl in Orbit"
     right: 15px;
     width: 40px;
     height: 40px;
+    outline: none;
   }
+
+  .EarthOrbitSimulation-reload:focus { outline: none; }
 
   .EarthOrbitSimulation-reloadIcon {
     width: 100%;
+    border : 0;
+  }
+
+  /*
+    Strawberry counter
+    ---------
+  */
+
+  .EarthOrbitSimulation-strawberryCounter {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    color: #DDDDDD;
+  }
+
+  .EarthOrbitSimulation-strawberryCounterImage {
+    width: 15px;
+    margin-right: 3px;
+  }
+
+  .EarthOrbitSimulation-strawberryCounter-isBlinking {
+    -webkit-animation: blink-animation 0.3s steps(2, start) infinite;
+    animation: blink-animation 0.3s steps(2, start) infinite;
+    -webkit-animation-iteration-count: 4; /* Chrome, Safari, Opera */
+    animation-iteration-count: 4;
   }
 
   /*
@@ -211,7 +244,7 @@ title: "Carl in Orbit"
   }
 
   /*
-    Climate
+    Time
     ---------
   */
 
@@ -224,20 +257,21 @@ title: "Carl in Orbit"
 
   /* Blinking */
   .EarthOrbitSimulation-isBlinking {
-    animation: blink-animation 0.6s steps(2, start) infinite;
     -webkit-animation: blink-animation 0.6s steps(2, start) infinite;
+    animation: blink-animation 0.6s steps(2, start) infinite;
   }
 
-  @keyframes blink-animation {
-    to {
-      visibility: hidden;
-    }
-  }
   @-webkit-keyframes blink-animation {
     to {
       visibility: hidden;
     }
   }
+  @keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+
 
   /*
 
@@ -279,11 +313,16 @@ title: "Carl in Orbit"
 
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
   <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
+
   <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
 
 
   <div class='EarthOrbitSimulation-hudContainer'>
     <div class='EarthOrbitSimulation-hudContainerChild'>
+      <div class='EarthOrbitSimulation-strawberryCounter'>
+        <img src='/image/blog/2016-09-03-big-sun-experiment/strawberry.png' alt='Straberry' class='EarthOrbitSimulation-strawberryCounterImage'><span class='EarthOrbitSimulation-strawberryCounterNumber'>0</span>
+      </div>
+
       <div class='EarthOrbitSimulation-temperature'>T:<span class='EarthOrbitSimulation-temperatureValue'></span> <span class='EarthOrbitSimulation-temperatureDescription'></span></div>
 
       <div class='EarthOrbitSimulation-time'></div>
@@ -941,6 +980,33 @@ title: "Carl in Orbit"
     };
   })();
 
+  // Displays the number of collected strawberries
+  var strawberryCounter = (function(){
+    var collectedNumber = 0;
+    var straberryCounterNumberElement = document.querySelector(".EarthOrbitSimulation-strawberryCounterNumber");
+    var straberryCounterElement = document.querySelector(".EarthOrbitSimulation-strawberryCounter");
+
+    function reset() {
+      collectedNumber = 0;
+      straberryCounterNumberElement.innerHTML = "0";
+    }
+
+    function increment() {
+      collectedNumber += 1;
+      straberryCounterNumberElement.innerHTML = "" + collectedNumber;
+
+      // Blink the counter
+      straberryCounterElement.className = 'EarthOrbitSimulation-strawberryCounter';
+      void straberryCounterElement.offsetWidth;
+      straberryCounterElement.className = 'EarthOrbitSimulation-strawberryCounter EarthOrbitSimulation-strawberryCounter-isBlinking';
+    }
+
+    return {
+      reset: reset,
+      increment: increment
+    };
+  })();
+
   // Moves the strawberry and handles its collision with the Earth and the Sun.
   var strawberry = (function(){
     var straberryElement = document.querySelector(".EarthOrbitSimulation-straberry"),
@@ -996,6 +1062,7 @@ title: "Carl in Orbit"
       // ------------------
 
       if (isCollidedWithTheEarth(straberryPosition)) {
+        strawberryCounter.increment();
         if (shownStraberryHasLandedOnEarthMessage) {
           reset();
         } else {
@@ -1337,6 +1404,7 @@ title: "Carl in Orbit"
       simulationTime.reset();
       strawberry.reset();
       massSlider.enabled = true;
+      strawberryCounter.reset();
       return false; // Prevent default click
     }
 
