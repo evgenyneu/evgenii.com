@@ -717,7 +717,17 @@ title: "Carl in Orbit"
       elemenent.style.display = 'none';
     }
 
+    function showInlineElement(elemenent) {
+      elemenent.style.display = 'inline';
+    }
+
+    function hideInlineElement(elemenent) {
+      elemenent.style.display = 'none';
+    }
+
     return {
+      showInlineElement: showInlineElement,
+      hideInlineElement: hideInlineElement,
       showBlockElement: showBlockElement,
       hideBlockElement: hideBlockElement
     };
@@ -885,11 +895,13 @@ title: "Carl in Orbit"
     var continueButton = document.querySelector(".EarthOrbitSimulation-continueButton");
 
     function show(message) {
+      toggleButtons(true);
       helper.showBlockElement(gameoverElement);
       gameoverMessageContentElement.innerHTML = message;
     }
 
     function showWithContinueButton(message, didClickContinue) {
+      toggleButtons(false);
       helper.showBlockElement(gameoverElement);
       gameoverMessageContentElement.innerHTML = message;
 
@@ -899,13 +911,22 @@ title: "Carl in Orbit"
       };
     }
 
+    function toggleButtons(showRestart) {
+      if (showRestart) {
+        helper.showInlineElement(restartButton);
+        helper.hideInlineElement(continueButton);
+      } else {
+        helper.showInlineElement(continueButton);
+        helper.hideInlineElement(restartButton);
+      }
+    }
+
     function hide() {
       helper.hideBlockElement(gameoverElement);
     }
 
     function init() {
       restartButton.onclick = userInput.didClickRestart;
-
     }
 
     return {
@@ -985,7 +1006,6 @@ title: "Carl in Orbit"
       gameoverMessage.hide();
       reset();
       physics.state.paused = false;
-      console.log(physics.state);
     }
 
      // Return true if the strawberry has collided with the Sun
