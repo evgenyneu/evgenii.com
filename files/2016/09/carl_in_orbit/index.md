@@ -980,7 +980,7 @@ title: "Carl in Orbit"
           physics.state.paused = true;
           helper.hideBlockElement(straberryElement);
 
-          gameoverMessage.show("Greetings Earthlings! We detected an unauthorized dark energy transfer in your stellar system that slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our  profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The department of intergalactic spacelords.");
+          gameoverMessage.show("Greetings Earthlings! An unauthorized dark energy transfer has been detected in your stellar system. This transfer slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The department of intergalactic spacelords.");
         }
       }
 
