@@ -85,15 +85,6 @@ title: "Carl in Orbit"
     z-index: 1000;
   }
 
-  .EarthOrbitSimulation-reloadButton {
-    background-color: #ff9400;
-    color: #ffffff;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 10px;
-    border: 1px solid #ffb100;
-  }
-
   @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
   @-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
   @keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
@@ -178,6 +169,19 @@ title: "Carl in Orbit"
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .EarthOrbitSimulation-reload {
+    position: absolute;
+    display: block;
+    bottom: 10px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .EarthOrbitSimulation-reloadIcon {
+    width: 100%;
   }
 
   /*
@@ -283,6 +287,8 @@ title: "Carl in Orbit"
       <div class='EarthOrbitSimulation-temperature'>T:<span class='EarthOrbitSimulation-temperatureValue'></span> <span class='EarthOrbitSimulation-temperatureDescription'></span></div>
 
       <div class='EarthOrbitSimulation-time'></div>
+
+      <a class='EarthOrbitSimulation-reload' href='#'><img src='/image/blog/2016-09-03-big-sun-experiment/reload_icon.png' alt='Restart' class='EarthOrbitSimulation-reloadIcon'></a>
     </div>
   </div>
 
@@ -305,13 +311,10 @@ title: "Carl in Orbit"
   <div class="SickSlider-stripe"></div>
   <div class="SickSlider-head"></div>
 </div>
+
 <div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
   Sun's mass: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
 </div>
-
-<p class="EarthOrbitSimulation-isTextCentered">
-  <a class="EarthOrbitSimulation-reloadButton" href="#">Restart</a>
-</p>
 
 <p class='EarthOrbitSimulation-debugOutput'></p>
 </div>
@@ -1306,7 +1309,7 @@ title: "Carl in Orbit"
   // React to user input
   var userInput = (function(){
     var sunsMassElement = document.querySelector(".EarthOrbitSimulation-sunsMass");
-    var restartButtonTwo = document.querySelector(".EarthOrbitSimulation-reloadButton");
+    var restartButton = document.querySelector(".EarthOrbitSimulation-reload");
     var massSlider;
 
     function updateSunsMass(sliderValue) {
@@ -1341,7 +1344,7 @@ title: "Carl in Orbit"
       massSlider = SickSlider(".EarthOrbitSimulation-massSlider");
       massSlider.onSliderChange = updateSunsMass;
       massSlider.changePosition(0.5);
-      restartButtonTwo.onclick = didClickRestart;
+      restartButton.onclick = didClickRestart;
 
       // restartButtonTwo.onclick = function() {
       //   graphics.saveAsImage();
