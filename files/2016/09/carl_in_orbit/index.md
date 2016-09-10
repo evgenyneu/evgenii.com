@@ -876,9 +876,11 @@ title: "Carl in Orbit"
   // Moves the strawberry and handles its collision with the Earth and the Sun.
   var strawberry = (function(){
     var straberryElement = document.querySelector(".EarthOrbitSimulation-straberry"),
-      distanceFromTheSunMeters = 2.0 * physics.constants.earthSunDistanceMeters,
-      speedMetersPerSecond = 5000.0, // How fast the strawberry is moving
-      angle = -0.2,
+      initialDistanceFromTheSunMeters = 2.0 * physics.constants.earthSunDistanceMeters,
+      distanceFromTheSunMeters = 1,
+      speedMetersPerSecond = 130000.0, // How fast the strawberry is moving
+      initialAngle = -0.2,
+      angle = 1,
       strawberrySizePixels = 35.0;
 
     /*
@@ -886,15 +888,21 @@ title: "Carl in Orbit"
      This function is called on every frame, 60 times per second.
     */
     function update() {
+      if (physics.state.paused) { return; }
       updatePosition();
       var distanceFromTheSunPixels = distanceFromTheSunMeters / physics.constants.scaleFactor;
       var position = calculatePosition(distanceFromTheSunPixels, angle);
       drawStraberry(position);
-      isEarthCollidedWithTheSun();
+
+      if (isCollidedWithTheSun(position)) {
+        physics.state.paused = true;
+        gameoverMessage.show("Hello Earthlings, We detected unauthorised dark energy transfer in your stellar system that slowed the inlation rate of the Universe and triggered a cosmic real estate crisis. To restore the  profits we have removed your star. All the best and have a good night. ~The department of intergallactic commerce.");
+      }
     }
 
-    function isEarthCollidedWithTheSun() {
-
+     // Return true if the strawberry has collided with the Sun
+    function isCollidedWithTheSun(position) {
+      return collision.areCollided(position, graphics.values.center, 1.2 * graphics.values.currentSunsSizePixels);
     }
 
     function updatePosition() {
@@ -903,8 +911,8 @@ title: "Carl in Orbit"
     }
 
     function drawStraberry(position) {
-      var left = (position.x - strawberrySizePixels/2) + "px";
-      var top = (position.y - strawberrySizePixels/2) + "px";
+      var left = (position.x - strawberrySizePixels / 2) + "px";
+      var top = (position.y - strawberrySizePixels / 2) + "px";
       straberryElement.style.left = left;
       straberryElement.style.top = top;
     }
@@ -920,7 +928,13 @@ title: "Carl in Orbit"
       };
     }
 
+    function reset() {
+      distanceFromTheSunMeters = initialDistanceFromTheSunMeters;
+      angle = initialAngle;
+    }
+
     return {
+      reset, reset,
       update: update
     };
   })();
@@ -941,12 +955,12 @@ title: "Carl in Orbit"
       previousEarthPosition = null,
       earthElement,
       sunElement,
-      currentSunsSize = sunsSize,
       values = {
         center: {
           x: 1,
           y: 1
-        }
+        },
+        currentSunsSizePixels: sunsSize
       };
 
     function drawTheEarth(earthPosition) {
@@ -973,10 +987,10 @@ title: "Carl in Orbit"
         "-webkit-filter:brightness(" + sunMass + "); ");
 
       var sunsDefaultWidth = sunsSize;
-      currentSunsSize = sunsDefaultWidth * Math.pow(sunMass, 1/3);
-      sunElement.style.width = currentSunsSize + "px";
-      sunElement.style.marginLeft = -(currentSunsSize / 2.0) + "px";
-      sunElement.style.marginTop = -(currentSunsSize / 2.0) + "px";
+      values.currentSunsSizePixels = sunsDefaultWidth * Math.pow(sunMass, 1/3);
+      sunElement.style.width = values.currentSunsSizePixels + "px";
+      sunElement.style.marginLeft = -(values.currentSunsSizePixels / 2.0) + "px";
+      sunElement.style.marginTop = -(values.currentSunsSizePixels / 2.0) + "px";
     }
 
     // Draw the habitable zone
@@ -1014,15 +1028,7 @@ title: "Carl in Orbit"
 
     // Return true if Earth has collided with the Sun
     function isEarthCollidedWithTheSun(earthPosition) {
-      var correctedSunsSize = currentSunsSize - 20;
-      var sunHalf = correctedSunsSize / 2;
-      var sunLeft = values.center.x - sunHalf;
-      var sunRight = values.center.x + sunHalf;
-      var sunTop = values.center.y - sunHalf;
-      var sunBottom = values.center.y + sunHalf;
-
-      return (earthPosition.x >= sunLeft && earthPosition.x <= sunRight &&
-        earthPosition.y >= sunTop && earthPosition.y <= sunBottom);
+      return collision.areCollided(earthPosition, values.center, values.currentSunsSizePixels);
     }
 
     // Draws the scene
@@ -1147,6 +1153,7 @@ title: "Carl in Orbit"
       graphics.init(function() {
         // Use the initial conditions for the simulation
         physics.resetStateToInitialConditions();
+        strawberry.reset();
 
         // Redraw the scene if page is resized
         window.addEventListener('resize', function(event){
@@ -1196,6 +1203,7 @@ title: "Carl in Orbit"
       climate.reset();
       physics.state.paused = false;
       simulationTime.reset();
+      strawberry.reset();
       return false; // Prevent default click
     }
 
