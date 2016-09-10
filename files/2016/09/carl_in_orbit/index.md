@@ -82,6 +82,7 @@ title: "Carl in Orbit"
     width: 35px;
     top: 30px;
     left: 40px;
+    z-index: 1000;
   }
 
   .EarthOrbitSimulation-reloadButton {
@@ -696,6 +697,30 @@ title: "Carl in Orbit"
   })();
 
 
+  // Checks if two objects are collided
+  var collision = (function(){
+    var gameoverElement = document.querySelector(".EarthOrbitSimulation-gameover");
+    var gameoverMessageContentElement = document.querySelector(".EarthOrbitSimulation-gameoverMessageContent");
+
+    // Return true if two object are collided
+    function areCollided(objectOnePosition, objectTwoPosition, objectTwoSize) {
+      var correctedObjectTwoSize = objectTwoSize - 20;
+      var objectTwoHalf = correctedObjectTwoSize / 2;
+      var objectTwoLeft = objectTwoPosition.x - objectTwoHalf;
+      var objectTwoRight = objectTwoPosition.x + objectTwoHalf;
+      var objectTwoRightTop = objectTwoPosition.y - objectTwoHalf;
+      var objectTwoBottom = objectTwoPosition.y + objectTwoHalf;
+
+      return (objectOnePosition.x >= objectTwoLeft && objectOnePosition.x <= objectTwoRight &&
+        objectOnePosition.y >= objectTwoRightTop && objectOnePosition.y <= objectTwoBottom);
+    }
+
+    return {
+      areCollided: areCollided
+    };
+  })();
+
+
   // Calculates the position of the Earth
   var physics = (function() {
     var constants = {
@@ -851,14 +876,30 @@ title: "Carl in Orbit"
   // Moves the strawberry and handles its collision with the Earth and the Sun.
   var strawberry = (function(){
     var straberryElement = document.querySelector(".EarthOrbitSimulation-straberry"),
-      distanceFromTheSunMeters = physics.constants.earthSunDistanceMeters;
+      distanceFromTheSunMeters = 2.0 * physics.constants.earthSunDistanceMeters,
+      speedMetersPerSecond = 5000.0, // How fast the strawberry is moving
       angle = -0.2,
-      strawberrySizePixels = 35;
+      strawberrySizePixels = 35.0;
 
+    /*
+     Updates the strawberry position and detects collision with the Sun or the Earth.
+     This function is called on every frame, 60 times per second.
+    */
     function update() {
+      updatePosition();
       var distanceFromTheSunPixels = distanceFromTheSunMeters / physics.constants.scaleFactor;
       var position = calculatePosition(distanceFromTheSunPixels, angle);
       drawStraberry(position);
+      isEarthCollidedWithTheSun();
+    }
+
+    function isEarthCollidedWithTheSun() {
+
+    }
+
+    function updatePosition() {
+      var distanceTravelledInOneFrame = speedMetersPerSecond * physics.constants.timeIncrementPerFrameInSeconds;
+      distanceFromTheSunMeters -= distanceTravelledInOneFrame;
     }
 
     function drawStraberry(position) {
@@ -869,8 +910,9 @@ title: "Carl in Orbit"
     }
 
     function calculatePosition(distance, angle) {
-      var centerX = Math.cos(angle) * distance + graphics.values.middleX;
-      var centerY = Math.sin(-angle) * distance + graphics.values.middleY;
+      var udatedAngle = -Math.sin(distance / 300) * 3 + angle;
+      var centerX = Math.cos(udatedAngle) * distance + graphics.values.center.x;
+      var centerY = Math.sin(-udatedAngle) * distance + graphics.values.center.y;
 
       return {
         x: centerX,
@@ -901,8 +943,10 @@ title: "Carl in Orbit"
       sunElement,
       currentSunsSize = sunsSize,
       values = {
-        middleX: 1,
-        middleY: 1,
+        center: {
+          x: 1,
+          y: 1
+        }
       };
 
     function drawTheEarth(earthPosition) {
@@ -913,8 +957,8 @@ title: "Carl in Orbit"
     }
 
     function calculateEarthPosition(distance, angle) {
-      var centerX = Math.cos(angle) * distance + values.middleX;
-      var centerY = Math.sin(-angle) * distance + values.middleY;
+      var centerX = Math.cos(angle) * distance + values.center.x;
+      var centerY = Math.sin(-angle) * distance + values.center.y;
 
       return {
         x: centerX,
@@ -943,8 +987,13 @@ title: "Carl in Orbit"
       contextHabitableZone.fillStyle = colors.habitableZoneFillColor;
       contextHabitableZone.globalAlpha = 0.15;
       contextHabitableZone.beginPath();
-      contextHabitableZone.arc(values.middleX, values.middleY, habitableZone.innerDistancePixels(), 0, 2*Math.PI, true);
-      contextHabitableZone.arc(values.middleX, values.middleY, habitableZone.outerDistancePixels(), 0, 2*Math.PI, false);
+
+      contextHabitableZone.arc(values.center.x, values.center.y, habitableZone.innerDistancePixels(),
+        0, 2*Math.PI, true);
+
+      contextHabitableZone.arc(values.center.x, values.center.y, habitableZone.outerDistancePixels(),
+        0, 2*Math.PI, false);
+
       contextHabitableZone.fill();
     }
 
@@ -967,10 +1016,10 @@ title: "Carl in Orbit"
     function isEarthCollidedWithTheSun(earthPosition) {
       var correctedSunsSize = currentSunsSize - 20;
       var sunHalf = correctedSunsSize / 2;
-      var sunLeft = values.middleX - sunHalf;
-      var sunRight = values.middleX + sunHalf;
-      var sunTop = values.middleY - sunHalf;
-      var sunBottom = values.middleY + sunHalf;
+      var sunLeft = values.center.x - sunHalf;
+      var sunRight = values.center.x + sunHalf;
+      var sunTop = values.center.y - sunHalf;
+      var sunBottom = values.center.y + sunHalf;
 
       return (earthPosition.x >= sunLeft && earthPosition.x <= sunRight &&
         earthPosition.y >= sunTop && earthPosition.y <= sunBottom);
@@ -993,8 +1042,8 @@ title: "Carl in Orbit"
     }
 
     function calculateScreenCenter() {
-      values.middleX = Math.floor(canvas.width / 2);
-      values.middleY = Math.floor(canvas.height / 2);
+      values.center.x = Math.floor(canvas.width / 2);
+      values.center.y = Math.floor(canvas.height / 2);
     }
 
     // Resize canvas to will the width of container
