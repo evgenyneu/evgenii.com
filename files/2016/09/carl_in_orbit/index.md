@@ -528,12 +528,12 @@ title: "Carl in Orbit"
     var initialTemperatureCelsius = 16,
       currentTemperatureCelsius = initialTemperatureCelsius,
       updateCycle = -1, // Used to limit the number of climate calculations, in order to improve performance
-      previouslyDisplayedTemperature = 0, // Stores the previously display tempearature
+      previouslyDisplayedTemperature = 0, // Stores the previously display temperature
       temperatureElement = document.querySelector(".EarthOrbitSimulation-temperatureValue"),
       temperatureDescriptionElement = document.querySelector(".EarthOrbitSimulation-temperatureDescription"),
 
       // The number of cycles for Earth to survive in extreme cold or hot conditions.
-      maxNumberOfExtremeCyclesToSurvive = 2,
+      maxNumberOfExtremeCyclesToSurvive = 10,
 
       // The  number of cycles that Earth has been under extreme cold or hot conditions.
       cyclesUnderExtremeConditions = 0;
@@ -549,20 +549,20 @@ title: "Carl in Orbit"
       }
 
       updateCycle += 1;
-      if (updateCycle > 100) { updateCycle = 0; }
+      if (updateCycle > 30) { updateCycle = 0; }
       if (updateCycle !== 0) { return; } // Update climate only once in 100 cycles, to improve performance
 
       var tempChange = 0; // Change in temperature degrees
 
       if (earthSunDistanceMeters < habitableZoneInnerDistanceMeters) {
         // Earth is heating
-        tempChange = Math.ceil(habitableZoneInnerDistanceMeters / earthSunDistanceMeters);
-        if (tempChange > 5) { tempChange = 5; }
+        tempChange = Math.ceil(habitableZoneInnerDistanceMeters / earthSunDistanceMeters) ;
+        if (tempChange > 3) { tempChange = 3; }
         if (tempChange === 0) { tempChange = 1; }
       } else if (earthSunDistanceMeters > habitableZoneOuterDistanceMeters) {
         // Earth is cooling
         var distanceToOuterEdge = habitableZoneOuterDistanceMeters - earthSunDistanceMeters;
-        tempChange = Math.floor(3 * distanceToOuterEdge / habitableZoneOuterDistanceMeters);
+        tempChange = Math.floor(5 * distanceToOuterEdge / habitableZoneOuterDistanceMeters);
         if (tempChange < -3) { tempChange = -3; }
         if (tempChange === 0) { tempChange = -1; }
       } else {
