@@ -131,11 +131,10 @@ title: "Carl in Orbit"
 
   .EarthOrbitSimulation-gameoverMessage {
     color: #DDDDDD;
-    font-size: 1.2em;
-    line-height: 1.5;
+    font-size: 1em;
+    line-height: 1.3;
     position: relative;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
     top: 50%;
     max-width: 800px;
     margin-left: auto;
@@ -143,6 +142,13 @@ title: "Carl in Orbit"
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+  }
+
+  @media (min-width: 600px) {
+    .EarthOrbitSimulation-gameoverMessage {
+      font-size: 1.2em;
+      line-height: 1.5;
+    }
   }
 
   .EarthOrbitSimulation-gameoverButton {
@@ -896,7 +902,7 @@ title: "Carl in Orbit"
 
       if (isCollidedWithTheSun(position)) {
         physics.state.paused = true;
-        gameoverMessage.show("Hello Earthlings, We detected unauthorised dark energy transfer in your stellar system that slowed the inlation rate of the Universe and triggered a cosmic real estate crisis. To restore the  profits we have removed your star. All the best and have a good night. ~The department of intergallactic commerce.");
+        gameoverMessage.show("Hello Earthlings, We detected unauthorized dark energy transfer in your stellar system that slowed the inflation rate of the Universe and triggered a cosmic real estate crisis. To restore the  profits we have removed your star. We apologize for any inconvenience. Have a good night. ~The department of intergalactic commerce.");
       }
     }
 
