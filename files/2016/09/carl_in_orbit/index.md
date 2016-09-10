@@ -762,7 +762,7 @@ title: "Carl in Orbit"
       earthSunDistanceMeters: 1.496 * Math.pow(10, 11),
       earthAngularVelocityMetersPerSecond: 1.990986 *  Math.pow(10, -7),
       massOfTheSunKg: 1.98855 * Math.pow(10, 30),
-      pixelsInOneEarthSunDistance: 150, // The length of one AU (Earth-Sun distance) in pixels.
+      pixelsInOneEarthSunDistance: 100, // The length of one AU (Earth-Sun distance) in pixels.
 
       // The number of calculations of orbital path done in one 16 millisecond frame.
       // The higher the number, the more precise are the calculations and the slower the simulation.
@@ -775,7 +775,7 @@ title: "Carl in Orbit"
 
     // The number of seconds advanced by the animation in each frame.
     // The frames are fired 60 times per second.
-    constants.timeIncrementPerFrameInSeconds = 3600 * 24;
+    constants.timeIncrementPerFrameInSeconds = 3600 * 24 * 2;
 
     // The length of the time increment, in seconds.
     constants.deltaT = constants.timeIncrementPerFrameInSeconds / constants.numberOfCalculationsPerFrame;
@@ -943,7 +943,7 @@ title: "Carl in Orbit"
     var straberryElement = document.querySelector(".EarthOrbitSimulation-straberry"),
       initialDistanceFromTheSunMeters = 2.0 * physics.constants.earthSunDistanceMeters,
       distanceFromTheSunMeters = 1,
-      speedMetersPerSecond = 5000.0, // How fast the strawberry is moving
+      speedMetersPerSecond = 3000.0, // How fast the strawberry is moving
       initialAngle = -0.2,
       angle = 1,
       strawberrySizePixels = 35.0,
