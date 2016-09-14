@@ -2,10 +2,10 @@
 layout: default
 noindex: true
 comments: false
-title: "Carl in Orbit"
+title: "Ridiculous strawberry picking"
 ---
 
-# Carl in Orbit
+# Ridiculous strawberry picking
 
 <!--  To embed this simulator into your web page copy this source code until "Simulator END" comment. -->
 
@@ -980,20 +980,51 @@ title: "Carl in Orbit"
     };
   })();
 
+  // Returns a random number, same numbers each time.
+  var seedableRandom = (function(){
+    var currentIndex = 1;
+
+    // Resets the generator, the nextValue function will start returning same numbers
+    function reset() {
+      currentIndex = 1;
+    }
+
+    // Returns a random number between 0 and 1, inclusive
+    function nextValue() {
+      var value =  Math.E * 1121 * (Math.sin(Math.E * currentIndex * 121) + 1);
+      value = (value > 1) ? (value % 1) : value; // always between 1 and zero
+      currentIndex++;
+      return value;
+    }
+
+    // Returns random boolean
+    function getBoolean() {
+      return nextValue() > 0.5;
+    }
+
+    return {
+      nextValue: nextValue,
+      getBoolean: getBoolean,
+      reset: reset
+    };
+  })();
+
   // Displays the number of collected strawberries
   var strawberryCounter = (function(){
-    var collectedNumber = 0;
-    var straberryCounterNumberElement = document.querySelector(".EarthOrbitSimulation-strawberryCounterNumber");
-    var straberryCounterElement = document.querySelector(".EarthOrbitSimulation-strawberryCounter");
+    var values = {
+        collectedNumber: 0 // number of strawberries picked
+      },
+      straberryCounterNumberElement = document.querySelector(".EarthOrbitSimulation-strawberryCounterNumber"),
+      straberryCounterElement = document.querySelector(".EarthOrbitSimulation-strawberryCounter");
 
     function reset() {
-      collectedNumber = 0;
+      values.collectedNumber = 0;
       straberryCounterNumberElement.innerHTML = "0";
     }
 
     function increment() {
-      collectedNumber += 1;
-      straberryCounterNumberElement.innerHTML = "" + collectedNumber;
+      values.collectedNumber += 1;
+      straberryCounterNumberElement.innerHTML = "" + values.collectedNumber;
 
       // Blink the counter
       straberryCounterElement.className = 'EarthOrbitSimulation-strawberryCounter';
@@ -1002,6 +1033,7 @@ title: "Carl in Orbit"
     }
 
     return {
+      values: values,
       reset: reset,
       increment: increment
     };
@@ -1013,13 +1045,14 @@ title: "Carl in Orbit"
       initialDistanceFromTheSunMeters = 2.0 * physics.constants.earthSunDistanceMeters,
       distanceFromTheSunMeters = 1,
       speedMetersPerSecond = 3000.0, // How fast the strawberry is moving
-      initialAngle = -0.2,
+      initialAngle = -.2,
       angle = 1,
       strawberrySizePixels = 35.0,
       // Show the "Strawberry has landed" only once
       shownStraberryHasLandedOnEarthMessage = false,
       // Show the "Sun has been removed" message only once
-      shownSunWasRemovedMessage = false;
+      shownSunWasRemovedMessage = false,
+      rotationClockwise = true; // When true, the straberry is rotating clockwise
 
     /*
      Updates the strawberry position and detects collision with the Sun or the Earth.
@@ -1058,7 +1091,7 @@ title: "Carl in Orbit"
         strawberryCounter.increment();
 
         if (shownStraberryHasLandedOnEarthMessage) {
-          reset();
+          showNewStrawberry();
         } else {
           physics.state.paused = true;
           shownStraberryHasLandedOnEarthMessage = true;
@@ -1077,7 +1110,7 @@ title: "Carl in Orbit"
 
     function didTapContinueButtonAfterCollisionWithEarth() {
       gameoverMessage.hide();
-      reset();
+      showNewStrawberry();
       physics.state.paused = false;
     }
 
@@ -1106,7 +1139,8 @@ title: "Carl in Orbit"
     }
 
     function calculatePosition(distance, angle) {
-      var udatedAngle = -Math.sin(distance / 300) * 3 + angle;
+      var rotationSign = rotationClockwise ? 1 : -1;
+      var udatedAngle = rotationSign * Math.sin(distance / 300) * 3 + angle;
       var centerX = Math.cos(udatedAngle) * distance + graphics.values.center.x;
       var centerY = Math.sin(-udatedAngle) * distance + graphics.values.center.y;
 
@@ -1116,10 +1150,20 @@ title: "Carl in Orbit"
       };
     }
 
-    function reset() {
+    function showNewStrawberry() {
       distanceFromTheSunMeters = initialDistanceFromTheSunMeters;
-      angle = initialAngle;
+      angle = calculateNewAngle(strawberryCounter.values.collectedNumber + 1);
+      rotationClockwise = seedableRandom.getBoolean();
       helper.showBlockElement(straberryElement);
+    }
+
+    function calculateNewAngle(number) {
+      return 2 * Math.PI * seedableRandom.nextValue();
+    }
+
+    function reset() {
+      seedableRandom.reset();
+      showNewStrawberry();
     }
 
     return {
