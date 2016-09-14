@@ -887,7 +887,6 @@ title: "Ridiculous strawberry picking"
       for (var i = 0; i < constants.numberOfCalculationsPerFrame; i++) {
         calculateNewPosition();
       }
-
     }
 
     // Calculates position of the Earth
@@ -1052,7 +1051,8 @@ title: "Ridiculous strawberry picking"
       shownStraberryHasLandedOnEarthMessage = false,
       // Show the "Sun has been removed" message only once
       shownSunWasRemovedMessage = false,
-      rotationClockwise = true; // When true, the straberry is rotating clockwise
+      rotationClockwise = true, // When true, the straberry is rotating clockwise
+      approachCurvature = 3; // A value between 0 and 5 defining the curvature of the straberry orbit. 0 is linear, 5 is cureved.
 
     /*
      Updates the strawberry position and detects collision with the Sun or the Earth.
@@ -1140,7 +1140,8 @@ title: "Ridiculous strawberry picking"
 
     function calculatePosition(distance, angle) {
       var rotationSign = rotationClockwise ? 1 : -1;
-      var udatedAngle = rotationSign * Math.sin(distance / 300) * 3 + angle;
+      var udatedAngle = rotationSign * Math.sin(distance / 300) * approachCurvature + angle;
+
       var centerX = Math.cos(udatedAngle) * distance + graphics.values.center.x;
       var centerY = Math.sin(-udatedAngle) * distance + graphics.values.center.y;
 
@@ -1152,13 +1153,24 @@ title: "Ridiculous strawberry picking"
 
     function showNewStrawberry() {
       distanceFromTheSunMeters = initialDistanceFromTheSunMeters;
-      angle = calculateNewAngle(strawberryCounter.values.collectedNumber + 1);
+      angle = calculateNewAngle();
+      approachCurvature = calculateNewCurvature();
+      speedMetersPerSecond = calculateNewSpeed();
       rotationClockwise = seedableRandom.getBoolean();
       helper.showBlockElement(straberryElement);
     }
 
-    function calculateNewAngle(number) {
+    function calculateNewCurvature() {
+      return 5 * seedableRandom.nextValue();
+    }
+
+    function calculateNewAngle() {
       return 2 * Math.PI * seedableRandom.nextValue();
+    }
+
+    function calculateNewSpeed() {
+      var speedDifficultyIncrease = 100 * strawberryCounter.values.collectedNumber;
+      return 2500 + (1000 * seedableRandom.nextValue()) + speedDifficultyIncrease;
     }
 
     function reset() {
