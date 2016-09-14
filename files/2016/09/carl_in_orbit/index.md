@@ -990,7 +990,7 @@ title: "Ridiculous strawberry picking"
 
     // Returns a random number between 0 and 1, inclusive
     function nextValue() {
-      var value =  Math.E * 1121 * (Math.sin(Math.E * currentIndex * 121) + 1);
+      var value =  Math.E * 7321 * (Math.sin(Math.E * currentIndex * 121) + 1);
       value = (value > 1) ? (value % 1) : value; // always between 1 and zero
       currentIndex++;
       return value;
@@ -1041,9 +1041,12 @@ title: "Ridiculous strawberry picking"
   // Moves the strawberry and handles its collision with the Earth and the Sun.
   var strawberry = (function(){
     var straberryElement = document.querySelector(".EarthOrbitSimulation-straberry"),
-      initialDistanceFromTheSunMeters = 2.0 * physics.constants.earthSunDistanceMeters,
+      initialDistanceFromTheSunMeters = 5.0 * physics.constants.earthSunDistanceMeters,
       distanceFromTheSunMeters = 1,
       speedMetersPerSecond = 3000.0, // How fast the strawberry is moving
+      // The distance from the Sun at which the straberry slows down form light speed to ordinary speed
+      distanceFromTheSunLightSpeedOffMeters = 2.0 * physics.constants.earthSunDistanceMeters,
+      lightSpeedMetersPerSecond = 200000.0 // How fast the strawberry is travelling at 'light speed'
       initialAngle = -.2,
       angle = 1,
       strawberrySizePixels = 35.0,
@@ -1052,7 +1055,7 @@ title: "Ridiculous strawberry picking"
       // Show the "Sun has been removed" message only once
       shownSunWasRemovedMessage = false,
       rotationClockwise = true, // When true, the straberry is rotating clockwise
-      approachCurvature = 3; // A value between 0 and 5 defining the curvature of the straberry orbit. 0 is linear, 5 is cureved.
+      approachCurvature = 3;
 
     /*
      Updates the strawberry position and detects collision with the Sun or the Earth.
@@ -1127,7 +1130,18 @@ title: "Ridiculous strawberry picking"
     }
 
     function updatePosition() {
-      var distanceTravelledInOneFrame = speedMetersPerSecond * physics.constants.timeIncrementPerFrameInSeconds;
+
+      var currentSpeed = 0;
+
+      if (distanceFromTheSunMeters > distanceFromTheSunLightSpeedOffMeters) {
+        // Use light speed, too far fro the Sun
+        currentSpeed = lightSpeedMetersPerSecond;
+      } else {
+        // Use normal speeed, close to the Sun
+        currentSpeed = speedMetersPerSecond;
+      }
+
+      var distanceTravelledInOneFrame = currentSpeed * physics.constants.timeIncrementPerFrameInSeconds;
       distanceFromTheSunMeters -= distanceTravelledInOneFrame;
     }
 
