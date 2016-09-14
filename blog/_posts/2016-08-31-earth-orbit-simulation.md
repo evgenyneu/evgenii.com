@@ -222,7 +222,7 @@ tags: programming science
         that.updateHeadPositionOnTouch(e);
       });
 
-      that.slider.onselectstart = function () { return false; }
+      that.slider.onselectstart = function () { return false; };
 
       // End dragging slider
       // -----------------

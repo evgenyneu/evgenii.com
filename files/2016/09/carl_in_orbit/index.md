@@ -1016,9 +1016,6 @@ title: "Carl in Orbit"
       initialAngle = -0.2,
       angle = 1,
       strawberrySizePixels = 35.0,
-      sunIsRemoved = false,
-      // Interval in second after which the "Sun is removed" message is shown to the user
-      showRemoveMessageAfterIntervalSeconds = 0.5,
       // Show the "Strawberry has landed" only once
       shownStraberryHasLandedOnEarthMessage = false,
       // Show the "Sun has been removed" message only once
@@ -1043,16 +1040,12 @@ title: "Carl in Orbit"
       // Check if strawberry has collided with the Sun
       // ------------------
 
-      if (isCollidedWithTheSun(straberryPosition) && !sunIsRemoved) {
+      if (isCollidedWithTheSun(straberryPosition)) {
         userInput.removeSun();
-        sunIsRemoved = true
 
-        if (shownSunWasRemovedMessage) {
-
-        } else {
+        if (!shownSunWasRemovedMessage) {
           physics.state.paused = true;
           shownSunWasRemovedMessage = true;
-          // helper.hideBlockElement(straberryElement);
 
           gameoverMessage.showWithContinueButton("Greetings Earthlings! An unauthorized dark energy transfer has been detected in your stellar system. This transfer slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The department of intergalactic spacelords.", didTapContinueButtonAfterSunHasBeenRemoved);
         }
@@ -1063,6 +1056,7 @@ title: "Carl in Orbit"
 
       if (isCollidedWithTheEarth(straberryPosition)) {
         strawberryCounter.increment();
+
         if (shownStraberryHasLandedOnEarthMessage) {
           reset();
         } else {
@@ -1125,7 +1119,6 @@ title: "Carl in Orbit"
     function reset() {
       distanceFromTheSunMeters = initialDistanceFromTheSunMeters;
       angle = initialAngle;
-      sunIsRemoved = false;
       helper.showBlockElement(straberryElement);
     }
 
