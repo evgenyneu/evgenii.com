@@ -767,7 +767,16 @@ title: "Ridiculous strawberry picking"
       elemenent.style.display = 'none';
     }
 
+    function rotateElement(element, deg) {
+      element.style.webkitTransform = 'rotate(' + deg + 'deg)';
+      element.style.mozTransform    = 'rotate(' + deg + 'deg)';
+      element.style.msTransform     = 'rotate(' + deg + 'deg)';
+      element.style.oTransform      = 'rotate(' + deg + 'deg)';
+      element.style.transform       = 'rotate(' + deg + 'deg)';
+    }
+
     return {
+      rotateElement: rotateElement,
       showInlineElement: showInlineElement,
       hideInlineElement: hideInlineElement,
       showBlockElement: showBlockElement,
@@ -1171,7 +1180,14 @@ title: "Ridiculous strawberry picking"
       approachCurvature = calculateNewCurvature();
       speedMetersPerSecond = calculateNewSpeed();
       rotationClockwise = seedableRandom.getBoolean();
+      var ratationAngle = calculateNewRotationAngle()
+      helper.rotateElement(straberryElement, ratationAngle);
       helper.showBlockElement(straberryElement);
+    }
+
+    function calculateNewRotationAngle() {
+      var correction = (rotationClockwise ? -0.6 : 0.6)
+      return ((((rotationClockwise ? -1 : 1) * angle) + correction) / Math.PI) * 180.0;
     }
 
     function calculateNewCurvature() {
