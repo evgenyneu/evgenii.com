@@ -777,7 +777,7 @@ title: "Ridiculous strawberry picking"
       var image = document.createElement('img');
       image.setAttribute('src', src);
       image.setAttribute('alt', alt);
-      return image
+      return image;
     }
 
     /**
@@ -1115,7 +1115,7 @@ title: "Ridiculous strawberry picking"
       var distanceFromTheSunPixels = that.distanceFromTheSunMeters / physics.constants.scaleFactor;
       that.position = that.calculatePosition(distanceFromTheSunPixels, that.angle);
       that.drawstrawberry(that.position);
-    }
+    };
 
     that.updatePosition = function() {
       var currentSpeed = 0;
@@ -1130,26 +1130,26 @@ title: "Ridiculous strawberry picking"
 
       var distanceTravelledInOneFrame = currentSpeed * physics.constants.timeIncrementPerFrameInSeconds;
       that.distanceFromTheSunMeters -= distanceTravelledInOneFrame;
-    }
+    };
 
      // Return true if the strawberry has collided with the Sun
     that.isCollidedWithTheSun = function() {
       var sizeOfTheSun = 1.2 * graphics.values.currentSunsSizePixels;
       if (sizeOfTheSun < 50) { sizeOfTheSun = 50; }
       return collision.areCollided(that.position, graphics.values.center, sizeOfTheSun);
-    }
+    };
 
     // Return true if the strawberry has collided with the Earth
     that.isCollidedWithTheEarth = function() {
       return collision.areCollided(that.position, graphics.values.earthPosition, 2.0 * graphics.values.earthSize);
-    }
+    };
 
     that.drawstrawberry = function(position) {
       var left = (position.x - that.strawberrySizePixels / 2) + "px";
       var top = (position.y - that.strawberrySizePixels / 2) + "px";
       that.element.style.left = left;
       that.element.style.top = top;
-    }
+    };
 
     that.calculatePosition = function(distance, angle) {
       var rotationSign = that.rotationClockwise ? 1 : -1;
@@ -1164,7 +1164,7 @@ title: "Ridiculous strawberry picking"
         x: centerX,
         y: centerY
       };
-    }
+    };
 
     that.createElement = function() {
       if (that.element !== null) { return; }
@@ -1174,7 +1174,7 @@ title: "Ridiculous strawberry picking"
 
       that.element.className = 'EarthOrbitSimulation-strawberry';
       that.container.appendChild(that.element);
-    }
+    };
 
     // Show strawberry on screen
     that.show = function() {
@@ -1184,10 +1184,10 @@ title: "Ridiculous strawberry picking"
       that.speedMetersPerSecond = that.calculateNewSpeed();
       that.rotationClockwise = seedableRandom.getBoolean();
 
-      var rotationAngle = that.calculateNewRotationAngle()
+      var rotationAngle = that.calculateNewRotationAngle();
       helper.rotateElement(that.element, rotationAngle);
       helper.showBlockElement(that.element);
-    }
+    };
 
     /*
       Calculates the rotation angle for the strawberry image in degrees.
@@ -1198,7 +1198,7 @@ title: "Ridiculous strawberry picking"
       var rotationAngle = that.angle / Math.PI * 180.0; // Convert to degrees
       rotationAngle = 90 - rotationAngle + correctionDegrees;
       return rotationAngle;
-    }
+    };
 
     /*
       Calculates a curvature multiplier for the strawberry path, a value between 0 and 5.
@@ -1206,7 +1206,7 @@ title: "Ridiculous strawberry picking"
     */
     that.calculateNewCurvature = function() {
       return 5 * seedableRandom.nextValue();
-    }
+    };
 
     /*
       Calcualtes an agle at which the strawberry approaches the sun, in radians.
@@ -1214,7 +1214,7 @@ title: "Ridiculous strawberry picking"
     */
     that.calculateNewAngle = function() {
       return 2 * Math.PI * seedableRandom.nextValue();
-    }
+    };
 
     /*
       Calcualtes the speed for the strawberry. The speed increases with the number of picked straberries
@@ -1223,23 +1223,23 @@ title: "Ridiculous strawberry picking"
     that.calculateNewSpeed = function() {
       var speedDifficultyIncrease = 100 * strawberryCounter.values.collectedNumber;
       return 2500 + (1000 * seedableRandom.nextValue()) + speedDifficultyIncrease;
-    }
+    };
 
     that.remove = function() {
       if (that.element === null) { return; }
       that.container.removeChild(that.element);
       that.element = null;
-    }
+    };
 
     that.init = function() {
       that.createElement();
-      that.show()
+      that.show();
     };
 
     that.init();
 
     return that;
-  };
+  }
 
   // Moves the strawberry and handles its collision with the Earth and the Sun.
   var strawberries = (function(){
@@ -1256,7 +1256,7 @@ title: "Ridiculous strawberry picking"
     function update() {
       if (physics.state.paused) { return; }
 
-      for (i = 0; i < allStrawberries.length; i++) {
+      for (var i = 0; i < allStrawberries.length; i++) {
         var strawberry = allStrawberries[i];
         strawberry.update();
 
@@ -1323,9 +1323,10 @@ title: "Ridiculous strawberry picking"
     }
 
     function removeAllStraberries() {
-      for (i = 0; i < allStrawberries.length; i++) {
-        var strawberry = allStrawberries[i].remove();
+      for (var i = 0; i < allStrawberries.length; i++) {
+        allStrawberries[i].remove();
       }
+
       allStrawberries = [];
     }
 
