@@ -780,7 +780,34 @@ title: "Ridiculous strawberry picking"
       return image
     }
 
+    /**
+     * Remove item from array
+     *
+     * Modifies the array “in place”, i.e. the array passed as an argument
+     * is modified as opposed to creating a new array. Also returns the modified
+     * array for your convenience.
+     *
+     * Source: http://stackoverflow.com/a/36540678/297131
+     */
+    function removeFromArray(array, item) {
+      var itemIndex;
+
+      // Look for the item (the item can have multiple indices)
+      itemIndex = array.indexOf(item);
+
+      while (itemIndex !== -1) {
+          // Remove the item, then return the modified array
+          array.splice(itemIndex, 1);
+
+          itemIndex = array.indexOf(item);
+      }
+
+      // Return the modified array
+      return array;
+    }
+
     return {
+      removeFromArray: removeFromArray,
       createImage: createImage,
       rotateElement: rotateElement,
       showInlineElement: showInlineElement,
@@ -1069,10 +1096,6 @@ title: "Ridiculous strawberry picking"
       initialAngle: -0.2,
       angle: 1,
       strawberrySizePixels: 35.0,
-      // Show the "Strawberry has landed" only once
-      shownstrawberryHasLandedOnEarthMessage: false,
-      // Show the "Sun has been removed" message only once
-      shownSunWasRemovedMessage: false,
       rotationClockwise: true, // When true, the strawberry is rotating clockwise
       approachCurvature: 3,
       position: {x: 1, y: 1} // CUrrent position
@@ -1092,55 +1115,9 @@ title: "Ridiculous strawberry picking"
       var distanceFromTheSunPixels = that.distanceFromTheSunMeters / physics.constants.scaleFactor;
       that.position = that.calculatePosition(distanceFromTheSunPixels, that.angle);
       that.drawstrawberry(that.position);
-
-
-      // // Check if strawberry has collided with the Sun
-      // // ------------------
-
-      // if (isCollidedWithTheSun(strawberryPosition)) {
-      //   userInput.removeSun();
-
-      //   if (!shownSunWasRemovedMessage) {
-      //     physics.state.paused = true;
-      //     shownSunWasRemovedMessage = true;
-
-      //     gameoverMessage.showWithContinueButton("Greetings Earthlings! An unauthorized dark energy transfer has been detected in your stellar system. This transfer slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The department of intergalactic spacelords.", didTapContinueButtonAfterSunHasBeenRemoved);
-      //   }
-      // }
-
-      // // Check if strawberry has collided with the Earth
-      // // ------------------
-
-      // if (isCollidedWithTheEarth(strawberryPosition)) {
-      //   strawberryCounter.increment();
-
-      //   if (shownstrawberryHasLandedOnEarthMessage) {
-      //     showNewStrawberry();
-      //   } else {
-      //     physics.state.paused = true;
-      //     shownstrawberryHasLandedOnEarthMessage = true;
-
-      //     gameoverMessage.showWithContinueButton("The giant strawberry safely landed on the Earth and kept standing there without any signs of activity. On closer examination it appeared to be made of some kind of mineral similar to diamond. The landing site has soon become a popular tourist attraction where one can buy a smoothie or a strawberry-shaped souvenir.", didTapContinueButtonAfterCollisionWithEarth);
-
-      //     helper.hideBlockElement(strawberryElement);
-      //   }
-      // }
-    }
-
-     // Return true if the strawberry has collided with the Sun
-    that.isCollidedWithTheSun = function() {
-      var sizeOfTheSun = 1.2 * graphics.values.currentSunsSizePixels;
-      if (sizeOfTheSun < 50) { sizeOfTheSun = 50; }
-      return collision.areCollided(that.position, graphics.values.center, sizeOfTheSun);
-    }
-
-    // Return true if the strawberry has collided with the Earth
-    that.isCollidedWithTheEarth = function(strawberryPosition) {
-      return collision.areCollided(strawberryPosition, graphics.values.earthPosition, 2.0 * graphics.values.earthSize);
     }
 
     that.updatePosition = function() {
-
       var currentSpeed = 0;
 
       if (that.distanceFromTheSunMeters > that.distanceFromTheSunLightSpeedOffMeters) {
@@ -1153,6 +1130,18 @@ title: "Ridiculous strawberry picking"
 
       var distanceTravelledInOneFrame = currentSpeed * physics.constants.timeIncrementPerFrameInSeconds;
       that.distanceFromTheSunMeters -= distanceTravelledInOneFrame;
+    }
+
+     // Return true if the strawberry has collided with the Sun
+    that.isCollidedWithTheSun = function() {
+      var sizeOfTheSun = 1.2 * graphics.values.currentSunsSizePixels;
+      if (sizeOfTheSun < 50) { sizeOfTheSun = 50; }
+      return collision.areCollided(that.position, graphics.values.center, sizeOfTheSun);
+    }
+
+    // Return true if the strawberry has collided with the Earth
+    that.isCollidedWithTheEarth = function() {
+      return collision.areCollided(that.position, graphics.values.earthPosition, 2.0 * graphics.values.earthSize);
     }
 
     that.drawstrawberry = function(position) {
@@ -1254,7 +1243,11 @@ title: "Ridiculous strawberry picking"
 
   // Moves the strawberry and handles its collision with the Earth and the Sun.
   var strawberries = (function(){
-    var allStrawberries = []; // Currently shown straberries
+    var allStrawberries = [], // Currently shown straberries
+      // Show the "Strawberry has landed" only once
+      shownstrawberryHasLandedOnEarthMessage = false,
+      // Show the "Sun has been removed" message only once
+      shownSunWasRemovedMessage = false;
 
     /*
      Updates the strawberry position and detects collision with the Sun or the Earth.
@@ -1270,6 +1263,9 @@ title: "Ridiculous strawberry picking"
         if (strawberry.isCollidedWithTheSun()) {
           userInput.removeSun();
 
+
+          // Check if strawberry has collided with the Sun
+          // ------------------
           if (!shownSunWasRemovedMessage) {
             physics.state.paused = true;
             shownSunWasRemovedMessage = true;
@@ -1277,48 +1273,24 @@ title: "Ridiculous strawberry picking"
             gameoverMessage.showWithContinueButton("Greetings Earthlings! An unauthorized dark energy transfer has been detected in your stellar system. This transfer slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The department of intergalactic spacelords.", didTapContinueButtonAfterSunHasBeenRemoved);
           }
         }
+
+        // Check if strawberry has collided with the Earth
+        // ------------------
+
+        if (strawberry.isCollidedWithTheEarth()) {
+          strawberryCounter.increment();
+          removeOneStrawberry(strawberry);
+
+          if (shownstrawberryHasLandedOnEarthMessage) {
+            addStrawberry();
+          } else {
+            physics.state.paused = true;
+            shownstrawberryHasLandedOnEarthMessage = true;
+
+            gameoverMessage.showWithContinueButton("The giant strawberry safely landed on the Earth and kept standing there without any signs of activity. On closer examination it appeared to be made of some kind of mineral similar to diamond. The landing site has soon become a popular tourist attraction where one can buy a smoothie or a strawberry-shaped souvenir.", didTapContinueButtonAfterCollisionWithEarth);
+          }
+        }
       }
-
-      // // Update strawberry position
-      // // ------------------
-
-      // updatePosition();
-      // var distanceFromTheSunPixels = distanceFromTheSunMeters / physics.constants.scaleFactor;
-      // var strawberryPosition = calculatePosition(distanceFromTheSunPixels, angle);
-      // drawstrawberry(strawberryPosition);
-
-
-      // // Check if strawberry has collided with the Sun
-      // // ------------------
-
-      // if (isCollidedWithTheSun(strawberryPosition)) {
-      //   userInput.removeSun();
-
-      //   if (!shownSunWasRemovedMessage) {
-      //     physics.state.paused = true;
-      //     shownSunWasRemovedMessage = true;
-
-      //     gameoverMessage.showWithContinueButton("Greetings Earthlings! An unauthorized dark energy transfer has been detected in your stellar system. This transfer slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The department of intergalactic spacelords.", didTapContinueButtonAfterSunHasBeenRemoved);
-      //   }
-      // }
-
-      // // Check if strawberry has collided with the Earth
-      // // ------------------
-
-      // if (isCollidedWithTheEarth(strawberryPosition)) {
-      //   strawberryCounter.increment();
-
-      //   if (shownstrawberryHasLandedOnEarthMessage) {
-      //     showNewStrawberry();
-      //   } else {
-      //     physics.state.paused = true;
-      //     shownstrawberryHasLandedOnEarthMessage = true;
-
-      //     gameoverMessage.showWithContinueButton("The giant strawberry safely landed on the Earth and kept standing there without any signs of activity. On closer examination it appeared to be made of some kind of mineral similar to diamond. The landing site has soon become a popular tourist attraction where one can buy a smoothie or a strawberry-shaped souvenir.", didTapContinueButtonAfterCollisionWithEarth);
-
-      //     helper.hideBlockElement(strawberryElement);
-      //   }
-      // }
     }
 
     function didTapContinueButtonAfterSunHasBeenRemoved() {
@@ -1328,118 +1300,22 @@ title: "Ridiculous strawberry picking"
 
     function didTapContinueButtonAfterCollisionWithEarth() {
       gameoverMessage.hide();
-      showNewStrawberry();
+      addStrawberry();
       physics.state.paused = false;
     }
-
-    //  // Return true if the strawberry has collided with the Sun
-    // function isCollidedWithTheSun(strawberryPosition) {
-    //   var sizeOfTheSun = 1.2 * graphics.values.currentSunsSizePixels;
-    //   if (sizeOfTheSun < 50) { sizeOfTheSun = 50; }
-    //   return collision.areCollided(strawberryPosition, graphics.values.center, sizeOfTheSun);
-    // }
-
-    // // Return true if the strawberry has collided with the Earth
-    // function isCollidedWithTheEarth(strawberryPosition) {
-    //   return collision.areCollided(strawberryPosition, graphics.values.earthPosition, 2.0 * graphics.values.earthSize);
-    // }
-
-    // function updatePosition() {
-
-    //   var currentSpeed = 0;
-
-    //   if (distanceFromTheSunMeters > distanceFromTheSunLightSpeedOffMeters) {
-    //     // Use light speed, too far fro the Sun
-    //     currentSpeed = lightSpeedMetersPerSecond;
-    //   } else {
-    //     // Use normal speeed, close to the Sun
-    //     currentSpeed = speedMetersPerSecond;
-    //   }
-
-    //   var distanceTravelledInOneFrame = currentSpeed * physics.constants.timeIncrementPerFrameInSeconds;
-    //   distanceFromTheSunMeters -= distanceTravelledInOneFrame;
-    // }
-
-    // function drawstrawberry(position) {
-    //   var left = (position.x - strawberrySizePixels / 2) + "px";
-    //   var top = (position.y - strawberrySizePixels / 2) + "px";
-    //   strawberryElement.style.left = left;
-    //   strawberryElement.style.top = top;
-    // }
-
-    // function calculatePosition(distance, angle) {
-    //   var rotationSign = rotationClockwise ? 1 : -1;
-    //   // Add some curvature to the motion
-    //   var curvature = rotationSign * Math.sin(distance / 300) * approachCurvature;
-    //   var udatedAngle = curvature + angle;
-
-    //   var centerX = Math.cos(udatedAngle) * distance + graphics.values.center.x;
-    //   var centerY = Math.sin(-udatedAngle) * distance + graphics.values.center.y;
-
-    //   return {
-    //     x: centerX,
-    //     y: centerY
-    //   };
-    // }
-
-    // function showNewStrawberry() {
-    //   distanceFromTheSunMeters = initialDistanceFromTheSunMeters;
-    //   angle = calculateNewAngle();
-    //   approachCurvature = calculateNewCurvature();
-    //   speedMetersPerSecond = calculateNewSpeed();
-    //   rotationClockwise = seedableRandom.getBoolean();
-    //   var rotationAngle = calculateNewRotationAngle()
-    //   helper.rotateElement(strawberryElement, rotationAngle);
-    //   helper.showBlockElement(strawberryElement);
-    // }
-
-    // /*
-    //   Calculates the rotation angle for the strawberry image in degrees.
-    //   Angle of 0 means the strawberry image is not rotatied.
-    // */
-    // function calculateNewRotationAngle() {
-    //   var correctionDegrees = -13; // correct for  the image rotation.
-    //   var rotationAngle = angle / Math.PI * 180.0; // Convert to degrees
-    //   rotationAngle = 90 - rotationAngle + correctionDegrees;
-    //   return rotationAngle;
-    // }
-
-
-    //   Calculates a curvature multiplier for the strawberry path, a value between 0 and 5.
-    //   0 means the path is linear, and 5 means the path is highly curved.
-
-    // function calculateNewCurvature() {
-    //   return 5 * seedableRandom.nextValue();
-    // }
-
-    // /*
-    //   Calcualtes an agle at which the strawberry approaches the sun, in radians.
-    //   Andgle of 0 means, the strawberry approaches the Sun from the right.
-    // */
-    // function calculateNewAngle() {
-    //   return 2 * Math.PI * seedableRandom.nextValue();
-    // }
-
-    // /*
-    //   Calcualtes the speed for the strawberry. The speed increases with the number of picked straberries
-    //   making the game harder. There is also a slight random variation in speed.
-    // */
-    // function calculateNewSpeed() {
-    //   var speedDifficultyIncrease = 100 * strawberryCounter.values.collectedNumber;
-    //   return 2500 + (1000 * seedableRandom.nextValue()) + speedDifficultyIncrease;
-    // }
 
     /*
       Start showing the first straberry.
     */
     function reset() {
+      seedableRandom.reset();
       removeAllStraberries();
+      addStrawberry();
+    }
+
+    function addStrawberry() {
       var straberry = OneStrawberry();
       allStrawberries.push(straberry);
-
-      // createElement();
-      seedableRandom.reset();
-      // showNewStrawberry();
     }
 
     function removeAllStraberries() {
@@ -1449,14 +1325,10 @@ title: "Ridiculous strawberry picking"
       allStrawberries = [];
     }
 
-    // function createElement() {
-    //   if (strawberryElement !== null) { return; }
-    //   strawberryElement = helper.createImage('/image/blog/2016-09-03-big-sun-experiment/strawberry.png',
-    //     'Cosmic strawberry');
-
-    //   strawberryElement.className = 'EarthOrbitSimulation-strawberry';
-    //   strawberryContainer.appendChild(strawberryElement);
-    // }
+    function removeOneStrawberry(strawberry) {
+      strawberry.remove();
+      helper.removeFromArray(allStrawberries, strawberry);
+    }
 
     return {
       reset: reset,
