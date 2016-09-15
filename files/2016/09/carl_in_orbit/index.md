@@ -1236,6 +1236,12 @@ title: "Ridiculous strawberry picking"
       return 2500 + (1000 * seedableRandom.nextValue()) + speedDifficultyIncrease;
     }
 
+    that.remove = function() {
+      if (that.element === null) { return; }
+      that.container.removeChild(that.element);
+      that.element = null;
+    }
+
     that.init = function() {
       that.createElement();
       that.show()
@@ -1248,24 +1254,7 @@ title: "Ridiculous strawberry picking"
 
   // Moves the strawberry and handles its collision with the Earth and the Sun.
   var strawberries = (function(){
-    var strawberryElement = null,
-      strawberryContainer = document.querySelector(".EarthOrbitSimulation-container"),
-      initialDistanceFromTheSunMeters = 5.0 * physics.constants.earthSunDistanceMeters,
-      distanceFromTheSunMeters = 1,
-      speedMetersPerSecond = 3000.0, // How fast the strawberry is moving
-      // The distance from the Sun at which the strawberry slows down form light speed to ordinary speed
-      distanceFromTheSunLightSpeedOffMeters = 2.0 * physics.constants.earthSunDistanceMeters,
-      lightSpeedMetersPerSecond = 200000.0 // How fast the strawberry is travelling at 'light speed'
-      initialAngle = -.2,
-      angle = 1,
-      strawberrySizePixels = 35.0,
-      // Show the "Strawberry has landed" only once
-      shownstrawberryHasLandedOnEarthMessage = false,
-      // Show the "Sun has been removed" message only once
-      shownSunWasRemovedMessage = false,
-      rotationClockwise = true, // When true, the strawberry is rotating clockwise
-      approachCurvature = 3,
-      allStrawberries = []; // Currently shown straberries
+    var allStrawberries = []; // Currently shown straberries
 
     /*
      Updates the strawberry position and detects collision with the Sun or the Earth.
@@ -1277,8 +1266,6 @@ title: "Ridiculous strawberry picking"
       for (i = 0; i < allStrawberries.length; i++) {
         var strawberry = allStrawberries[i];
         strawberry.update();
-
-        debug.print(strawberry.isCollidedWithTheSun());
 
         if (strawberry.isCollidedWithTheSun()) {
           userInput.removeSun();
@@ -1446,14 +1433,20 @@ title: "Ridiculous strawberry picking"
       Start showing the first straberry.
     */
     function reset() {
-      if (allStrawberries.length === 0) {
-        var straberry = OneStrawberry();
-        allStrawberries.push(straberry);
-      }
+      removeAllStraberries();
+      var straberry = OneStrawberry();
+      allStrawberries.push(straberry);
 
       // createElement();
       seedableRandom.reset();
       // showNewStrawberry();
+    }
+
+    function removeAllStraberries() {
+      for (i = 0; i < allStrawberries.length; i++) {
+        var strawberry = allStrawberries[i].remove();
+      }
+      allStrawberries = [];
     }
 
     // function createElement() {
