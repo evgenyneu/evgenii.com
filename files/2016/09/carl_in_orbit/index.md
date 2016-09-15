@@ -53,7 +53,6 @@ title: "Ridiculous strawberry picking"
   }
 
   .EarthOrbitSimulation-isTextCentered { text-align: center; }
-  .EarthOrbitSimulation-isHiddenBlock { display: none; }
 
   .EarthOrbitSimulation-sun {
     position: absolute;
@@ -108,15 +107,36 @@ title: "Ridiculous strawberry picking"
 
   .EarthOrbitSimulation-gameover {
     position: absolute;
-    background-color: #443344;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: url("http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
-    background-position: left top;
-    background-repeat: repeat;
-    background-size: 674px 220px;
+  }
+
+  .EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-gameover {
+    display: block;
+  }
+
+  .EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-earth {
+    display: none;
+  }
+
+  .EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-sun {
+    display: none;
+  }
+
+  .EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-canvasHabitableZone {
+    display: none;
+  }
+
+  .EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-reload {
+    display: none;
+  }
+
+  .EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-strawberry {
+    display: none;
   }
 
   .EarthOrbitSimulation-gameoverMessage {
@@ -332,7 +352,7 @@ title: "Ridiculous strawberry picking"
       <a class='EarthOrbitSimulation-reload' href='#'><img src='/image/blog/2016-09-03-big-sun-experiment/reload_icon.png' alt='Restart' class='EarthOrbitSimulation-reloadIcon'></a>
     </div>
 
-    <div class="EarthOrbitSimulation-gameover EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
+    <div class="EarthOrbitSimulation-gameover EarthOrbitSimulation-isTextCentered">
       <div class="EarthOrbitSimulation-gameoverMessage">
         <span class="EarthOrbitSimulation-gameoverMessageContent">My wonder button is being pushed all the time.</span>
         <br><br>
@@ -808,7 +828,28 @@ title: "Ridiculous strawberry picking"
       return array;
     }
 
+    // http://stackoverflow.com/a/5169076/297131
+    function addClass(element, clazz) {
+      if (!hasClass(element, clazz)) {
+        element.className += " " + clazz;
+      }
+    }
+
+    function removeClass(element, clazz) {
+      if (hasClass(element, clazz)) {
+        var reg = new RegExp('(\\s|^)' + clazz + '(\\s|$)');
+        element.className = element.className.replace(reg,' ');
+        element.className = element.className.trim();
+      }
+    }
+
+    function hasClass(elemement, clazz) {
+      return elemement.className.match(new RegExp('(\\s|^)' + clazz + '(\\s|$)'));
+    }
+
     return {
+      addClass: addClass,
+      removeClass: removeClass,
       removeFromArray: removeFromArray,
       createImage: createImage,
       rotateElement: rotateElement,
@@ -974,21 +1015,23 @@ title: "Ridiculous strawberry picking"
 
   // Show a full screen message when the game is lost
   var gameoverMessage = (function(){
-    var gameoverElement = document.querySelector(".EarthOrbitSimulation-gameover");
-    var gameoverMessageContentElement = document.querySelector(".EarthOrbitSimulation-gameoverMessageContent");
-    var restartButton = document.querySelector(".EarthOrbitSimulation-gameoverButton");
-    var continueButton = document.querySelector(".EarthOrbitSimulation-continueButton");
+    var containerElement = document.querySelector(".EarthOrbitSimulation"),
+      gameoverMessageContentElement = document.querySelector(".EarthOrbitSimulation-gameoverMessageContent"),
+      restartButton = document.querySelector(".EarthOrbitSimulation-gameoverButton"),
+      continueButton = document.querySelector(".EarthOrbitSimulation-continueButton"),
+      gameoverCssClass = 'EarthOrbitSimulation-hasGameoverMessage',
+      gameoverWithRestartButtonCssClass = 'EarthOrbitSimulation-hasGameoverMessage-hasRestartButton';
 
     function show(message) {
       toggleButtons(true);
-      helper.showBlockElement(gameoverElement);
+      showMessage(true);
       gameoverMessageContentElement.innerHTML = message;
     }
 
     function showWithContinueButton(message, didClickContinue) {
       toggleButtons(false);
-      helper.showBlockElement(gameoverElement);
       gameoverMessageContentElement.innerHTML = message;
+      showMessage(false);
 
       continueButton.onclick = function() {
         didClickContinue();
@@ -1006,8 +1049,17 @@ title: "Ridiculous strawberry picking"
       }
     }
 
+    function showMessage(hasRestartButton) {
+      helper.addClass(containerElement, gameoverCssClass);
+
+      if (hasRestartButton) {
+        helper.addClass(containerElement, gameoverWithRestartButtonCssClass);
+      }
+    }
+
     function hide() {
-      helper.hideBlockElement(gameoverElement);
+      helper.removeClass(containerElement, gameoverCssClass);
+      helper.removeClass(containerElement, gameoverWithRestartButtonCssClass);
     }
 
     function init() {
