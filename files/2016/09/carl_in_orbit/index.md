@@ -1279,7 +1279,7 @@ title: "Ridiculous strawberry picking"
       making the game harder. There is also a slight random variation in speed.
     */
     that.calculateNewSpeed = function() {
-      var speedDifficultyIncrease = 100 * strawberryCounter.values.collectedNumber;
+      var speedDifficultyIncrease = 50 * strawberryCounter.values.collectedNumber;
       return 2500 + (1000 * seedableRandom.nextValue()) + speedDifficultyIncrease;
     };
 
@@ -1376,9 +1376,24 @@ title: "Ridiculous strawberry picking"
     }
 
     function addStrawberries() {
-      var straberriesToAdd = Math.ceil((strawberryCounter.values.collectedNumber / 5) - allStrawberries.length);
+      // Show one more straberry when the number of picked straberries is devisiable by five
+      //
+      // For example:
+      //
+      //  0 picked: add 1
+      //  3 picked: add 1
+      //  5 picked: add 2
+      //  6 picked: add 1
+      //  9 picked: add 1
+      //  10 picked: add 3
+      //  11 picked: add 1
+      var straberriesToAdd = Math.floor(strawberryCounter.values.collectedNumber / 5) + 1;
+
+      if (strawberryCounter.values.collectedNumber % 5 !== 0) {
+        straberriesToAdd = 1;
+      }
+
       if (straberriesToAdd === 0) { straberriesToAdd = 1; }
-      console.log(straberriesToAdd);
 
       for (var i = 0; i < straberriesToAdd; i++) {
         addOneStrawberry();
