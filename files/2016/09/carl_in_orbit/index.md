@@ -1053,12 +1053,92 @@ title: "Ridiculous strawberry picking"
     };
   })();
 
+  /*
+    Represents a single juicy strawberry
+  */
   function OneStrawberry() {
     var that = {
+      container: document.querySelector(".EarthOrbitSimulation-container"),
+      element: null, // Contains the DOM element for the straberry,
+      initialDistanceFromTheSunMeters: 5.0 * physics.constants.earthSunDistanceMeters,
+      distanceFromTheSunMeters: 1,
+      speedMetersPerSecond: 3000.0, // How fast the strawberry is moving
+      // The distance from the Sun at which the strawberry slows down form light speed to ordinary speed
+      distanceFromTheSunLightSpeedOffMeters: 2.0 * physics.constants.earthSunDistanceMeters,
+      lightSpeedMetersPerSecond: 200000.0, // How fast the strawberry is travelling at 'light speed'
+      initialAngle: -0.2,
+      angle: 1,
+      strawberrySizePixels: 35.0,
+      // Show the "Strawberry has landed" only once
+      shownstrawberryHasLandedOnEarthMessage: false,
+      // Show the "Sun has been removed" message only once
+      shownSunWasRemovedMessage: false,
+      rotationClockwise: true, // When true, the strawberry is rotating clockwise
+      approachCurvature: 3,
     };
 
-    that.init = function() {
+    that.createElement = function() {
+      if (that.element !== null) { return; }
 
+      that.element = helper.createImage('/image/blog/2016-09-03-big-sun-experiment/strawberry.png',
+        'Cosmic strawberry');
+
+      that.element.className = 'EarthOrbitSimulation-strawberry';
+      that.container.appendChild(that.element);
+    }
+
+    // Show strawberry on screen
+    that.show = function() {
+      that.distanceFromTheSunMeters = that.initialDistanceFromTheSunMeters;
+      that.angle = that.calculateNewAngle();
+      that.approachCurvature = that.calculateNewCurvature();
+      that.speedMetersPerSecond = that.calculateNewSpeed();
+      that.rotationClockwise = seedableRandom.getBoolean();
+
+      var rotationAngle = that.calculateNewRotationAngle()
+      helper.rotateElement(that.element, rotationAngle);
+      helper.showBlockElement(that.element);
+    }
+
+    /*
+      Calculates the rotation angle for the strawberry image in degrees.
+      Angle of 0 means the strawberry image is not rotatied.
+    */
+    that.calculateNewRotationAngle = function() {
+      var correctionDegrees = -13; // correct for  the image rotation.
+      var rotationAngle = that.angle / Math.PI * 180.0; // Convert to degrees
+      rotationAngle = 90 - rotationAngle + correctionDegrees;
+      return rotationAngle;
+    }
+
+    /*
+      Calculates a curvature multiplier for the strawberry path, a value between 0 and 5.
+      0 means the path is linear, and 5 means the path is highly curved.
+    */
+    that.calculateNewCurvature = function() {
+      return 5 * seedableRandom.nextValue();
+    }
+
+    /*
+      Calcualtes an agle at which the strawberry approaches the sun, in radians.
+      Andgle of 0 means, the strawberry approaches the Sun from the right.
+    */
+    that.calculateNewAngle = function() {
+      return 2 * Math.PI * seedableRandom.nextValue();
+    }
+
+    /*
+      Calcualtes the speed for the strawberry. The speed increases with the number of picked straberries
+      making the game harder. There is also a slight random variation in speed.
+    */
+    that.calculateNewSpeed = function() {
+      var speedDifficultyIncrease = 100 * strawberryCounter.values.collectedNumber;
+      return 2500 + (1000 * seedableRandom.nextValue()) + speedDifficultyIncrease;
+    }
+
+    that.init = function() {
+      that.createElement();
+      that.show()
     };
 
     that.init();
@@ -1084,7 +1164,8 @@ title: "Ridiculous strawberry picking"
       // Show the "Sun has been removed" message only once
       shownSunWasRemovedMessage = false,
       rotationClockwise = true, // When true, the strawberry is rotating clockwise
-      approachCurvature = 3;
+      approachCurvature = 3,
+      allStraberries = []; // Currently shown straberries
 
     /*
      Updates the strawberry position and detects collision with the Sun or the Earth.
@@ -1247,6 +1328,11 @@ title: "Ridiculous strawberry picking"
       Start showing the first straberry.
     */
     function reset() {
+      if (allStraberries.length === 0) {
+        var straberry = OneStrawberry();
+        allStraberries.push(straberry);
+      }
+
       createElement();
       seedableRandom.reset();
       showNewStrawberry();
