@@ -108,7 +108,7 @@ title: "Ridiculous strawberry picking"
   .EarthOrbitSimulation-gameover {
     position: absolute;
     display: none;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.1);
     left: 0;
     top: 0;
     width: 100%;
@@ -136,6 +136,22 @@ title: "Ridiculous strawberry picking"
   }
 
   .EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-strawberry {
+    display: none;
+  }
+
+  .EarthOrbitSimulation-gameoverButton {
+    display: none;
+  }
+
+  .EarthOrbitSimulation-hasGameoverMessage-hasRestartButton .EarthOrbitSimulation-gameoverButton {
+    display: inline;
+  }
+
+  .EarthOrbitSimulation-continueButton {
+    display: inline;
+  }
+
+  .EarthOrbitSimulation-hasGameoverMessage-hasRestartButton .EarthOrbitSimulation-continueButton {
     display: none;
   }
 
@@ -1023,13 +1039,11 @@ title: "Ridiculous strawberry picking"
       gameoverWithRestartButtonCssClass = 'EarthOrbitSimulation-hasGameoverMessage-hasRestartButton';
 
     function show(message) {
-      toggleButtons(true);
       showMessage(true);
       gameoverMessageContentElement.innerHTML = message;
     }
 
     function showWithContinueButton(message, didClickContinue) {
-      toggleButtons(false);
       gameoverMessageContentElement.innerHTML = message;
       showMessage(false);
 
@@ -1039,27 +1053,18 @@ title: "Ridiculous strawberry picking"
       };
     }
 
-    function toggleButtons(showRestart) {
-      if (showRestart) {
-        helper.showInlineElement(restartButton);
-        helper.hideInlineElement(continueButton);
-      } else {
-        helper.showInlineElement(continueButton);
-        helper.hideInlineElement(restartButton);
-      }
-    }
-
     function showMessage(hasRestartButton) {
       helper.addClass(containerElement, gameoverCssClass);
 
       if (hasRestartButton) {
         helper.addClass(containerElement, gameoverWithRestartButtonCssClass);
+      } else {
+        helper.removeClass(containerElement, gameoverWithRestartButtonCssClass);
       }
     }
 
     function hide() {
       helper.removeClass(containerElement, gameoverCssClass);
-      helper.removeClass(containerElement, gameoverWithRestartButtonCssClass);
     }
 
     function init() {
@@ -1240,7 +1245,6 @@ title: "Ridiculous strawberry picking"
 
       var rotationAngle = that.calculateNewRotationAngle();
       helper.rotateElement(that.element, rotationAngle);
-      helper.showBlockElement(that.element);
     };
 
     /*
