@@ -77,7 +77,7 @@ title: "Ridiculous strawberry picking"
     z-index: 1000;
   }
 
-  .EarthOrbitSimulation-straberry {
+  .EarthOrbitSimulation-strawberry {
     position: absolute;
     width: 35px;
     top: 30px;
@@ -320,7 +320,7 @@ title: "Ridiculous strawberry picking"
   <div class='EarthOrbitSimulation-hudContainer'>
     <div class='EarthOrbitSimulation-hudContainerChild'>
       <div class='EarthOrbitSimulation-strawberryCounter'>
-        <img src='/image/blog/2016-09-03-big-sun-experiment/strawberry.png' alt='Straberry' class='EarthOrbitSimulation-strawberryCounterImage'><span class='EarthOrbitSimulation-strawberryCounterNumber'>0</span>
+        <img src='/image/blog/2016-09-03-big-sun-experiment/strawberry.png' alt='strawberry' class='EarthOrbitSimulation-strawberryCounterImage'><span class='EarthOrbitSimulation-strawberryCounterNumber'>0</span>
       </div>
 
       <div class='EarthOrbitSimulation-temperature'>T:<span class='EarthOrbitSimulation-temperatureValue'></span> <span class='EarthOrbitSimulation-temperatureDescription'></span></div>
@@ -343,7 +343,7 @@ title: "Ridiculous strawberry picking"
     </div>
   </div>
 
-  <img src='/image/blog/2016-09-03-big-sun-experiment/strawberry.png' alt='Straberry' class='EarthOrbitSimulation-straberry'>
+  <img src='/image/blog/2016-09-03-big-sun-experiment/strawberry.png' alt='strawberry' class='EarthOrbitSimulation-strawberry'>
 </div>
 
 <div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
@@ -1022,22 +1022,22 @@ title: "Ridiculous strawberry picking"
     var values = {
         collectedNumber: 0 // number of strawberries picked
       },
-      straberryCounterNumberElement = document.querySelector(".EarthOrbitSimulation-strawberryCounterNumber"),
-      straberryCounterElement = document.querySelector(".EarthOrbitSimulation-strawberryCounter");
+      strawberryCounterNumberElement = document.querySelector(".EarthOrbitSimulation-strawberryCounterNumber"),
+      strawberryCounterElement = document.querySelector(".EarthOrbitSimulation-strawberryCounter");
 
     function reset() {
       values.collectedNumber = 0;
-      straberryCounterNumberElement.innerHTML = "0";
+      strawberryCounterNumberElement.innerHTML = "0";
     }
 
     function increment() {
       values.collectedNumber += 1;
-      straberryCounterNumberElement.innerHTML = "" + values.collectedNumber;
+      strawberryCounterNumberElement.innerHTML = "" + values.collectedNumber;
 
       // Blink the counter
-      straberryCounterElement.className = 'EarthOrbitSimulation-strawberryCounter';
-      void straberryCounterElement.offsetWidth;
-      straberryCounterElement.className = 'EarthOrbitSimulation-strawberryCounter EarthOrbitSimulation-strawberryCounter-isBlinking';
+      strawberryCounterElement.className = 'EarthOrbitSimulation-strawberryCounter';
+      void strawberryCounterElement.offsetWidth;
+      strawberryCounterElement.className = 'EarthOrbitSimulation-strawberryCounter EarthOrbitSimulation-strawberryCounter-isBlinking';
     }
 
     return {
@@ -1049,21 +1049,21 @@ title: "Ridiculous strawberry picking"
 
   // Moves the strawberry and handles its collision with the Earth and the Sun.
   var strawberry = (function(){
-    var straberryElement = document.querySelector(".EarthOrbitSimulation-straberry"),
+    var strawberryElement = document.querySelector(".EarthOrbitSimulation-strawberry"),
       initialDistanceFromTheSunMeters = 5.0 * physics.constants.earthSunDistanceMeters,
       distanceFromTheSunMeters = 1,
       speedMetersPerSecond = 3000.0, // How fast the strawberry is moving
-      // The distance from the Sun at which the straberry slows down form light speed to ordinary speed
+      // The distance from the Sun at which the strawberry slows down form light speed to ordinary speed
       distanceFromTheSunLightSpeedOffMeters = 2.0 * physics.constants.earthSunDistanceMeters,
       lightSpeedMetersPerSecond = 200000.0 // How fast the strawberry is travelling at 'light speed'
       initialAngle = -.2,
       angle = 1,
       strawberrySizePixels = 35.0,
       // Show the "Strawberry has landed" only once
-      shownStraberryHasLandedOnEarthMessage = false,
+      shownstrawberryHasLandedOnEarthMessage = false,
       // Show the "Sun has been removed" message only once
       shownSunWasRemovedMessage = false,
-      rotationClockwise = true, // When true, the straberry is rotating clockwise
+      rotationClockwise = true, // When true, the strawberry is rotating clockwise
       approachCurvature = 3;
 
     /*
@@ -1078,14 +1078,14 @@ title: "Ridiculous strawberry picking"
 
       updatePosition();
       var distanceFromTheSunPixels = distanceFromTheSunMeters / physics.constants.scaleFactor;
-      var straberryPosition = calculatePosition(distanceFromTheSunPixels, angle);
-      drawStraberry(straberryPosition);
+      var strawberryPosition = calculatePosition(distanceFromTheSunPixels, angle);
+      drawstrawberry(strawberryPosition);
 
 
       // Check if strawberry has collided with the Sun
       // ------------------
 
-      if (isCollidedWithTheSun(straberryPosition)) {
+      if (isCollidedWithTheSun(strawberryPosition)) {
         userInput.removeSun();
 
         if (!shownSunWasRemovedMessage) {
@@ -1099,18 +1099,18 @@ title: "Ridiculous strawberry picking"
       // Check if strawberry has collided with the Earth
       // ------------------
 
-      if (isCollidedWithTheEarth(straberryPosition)) {
+      if (isCollidedWithTheEarth(strawberryPosition)) {
         strawberryCounter.increment();
 
-        if (shownStraberryHasLandedOnEarthMessage) {
+        if (shownstrawberryHasLandedOnEarthMessage) {
           showNewStrawberry();
         } else {
           physics.state.paused = true;
-          shownStraberryHasLandedOnEarthMessage = true;
+          shownstrawberryHasLandedOnEarthMessage = true;
 
           gameoverMessage.showWithContinueButton("The giant strawberry safely landed on the Earth and kept standing there without any signs of activity. On closer examination it appeared to be made of some kind of mineral similar to diamond. The landing site has soon become a popular tourist attraction where one can buy a smoothie or a strawberry-shaped souvenir.", didTapContinueButtonAfterCollisionWithEarth);
 
-          helper.hideBlockElement(straberryElement);
+          helper.hideBlockElement(strawberryElement);
         }
       }
     }
@@ -1127,15 +1127,15 @@ title: "Ridiculous strawberry picking"
     }
 
      // Return true if the strawberry has collided with the Sun
-    function isCollidedWithTheSun(straberryPosition) {
+    function isCollidedWithTheSun(strawberryPosition) {
       var sizeOfTheSun = 1.2 * graphics.values.currentSunsSizePixels;
       if (sizeOfTheSun < 50) { sizeOfTheSun = 50; }
-      return collision.areCollided(straberryPosition, graphics.values.center, sizeOfTheSun);
+      return collision.areCollided(strawberryPosition, graphics.values.center, sizeOfTheSun);
     }
 
     // Return true if the strawberry has collided with the Earth
-    function isCollidedWithTheEarth(straberryPosition) {
-      return collision.areCollided(straberryPosition, graphics.values.earthPosition, 2.0 * graphics.values.earthSize);
+    function isCollidedWithTheEarth(strawberryPosition) {
+      return collision.areCollided(strawberryPosition, graphics.values.earthPosition, 2.0 * graphics.values.earthSize);
     }
 
     function updatePosition() {
@@ -1154,11 +1154,11 @@ title: "Ridiculous strawberry picking"
       distanceFromTheSunMeters -= distanceTravelledInOneFrame;
     }
 
-    function drawStraberry(position) {
+    function drawstrawberry(position) {
       var left = (position.x - strawberrySizePixels / 2) + "px";
       var top = (position.y - strawberrySizePixels / 2) + "px";
-      straberryElement.style.left = left;
-      straberryElement.style.top = top;
+      strawberryElement.style.left = left;
+      strawberryElement.style.top = top;
     }
 
     function calculatePosition(distance, angle) {
@@ -1183,30 +1183,49 @@ title: "Ridiculous strawberry picking"
       speedMetersPerSecond = calculateNewSpeed();
       rotationClockwise = seedableRandom.getBoolean();
       var rotationAngle = calculateNewRotationAngle()
-      helper.rotateElement(straberryElement, rotationAngle);
-      helper.showBlockElement(straberryElement);
+      helper.rotateElement(strawberryElement, rotationAngle);
+      helper.showBlockElement(strawberryElement);
     }
 
+    /*
+      Calculates the rotation angle for the strawberry image in degrees.
+      Angle of 0 means the strawberry image is not rotatied.
+    */
     function calculateNewRotationAngle() {
-      var correctionDegress = -13; // correct for  the image rotation.
+      var correctionDegrees = -13; // correct for  the image rotation.
       var rotationAngle = angle / Math.PI * 180.0; // Convert to degrees
-      rotationAngle = 90 - rotationAngle + correctionDegress;
+      rotationAngle = 90 - rotationAngle + correctionDegrees;
       return rotationAngle;
     }
 
+    /*
+      Calculates a curvature multiplier for the strawberry path, a value between 0 and 5.
+      0 means the path is linear, and 5 means the path is highly curved.
+    */
     function calculateNewCurvature() {
       return 5 * seedableRandom.nextValue();
     }
 
+    /*
+      Calcualtes an agle at which the strawberry approaches the sun, in radians.
+      Andgle of 0 means, the strawberry approaches the Sun from the right.
+    */
     function calculateNewAngle() {
       return 2 * Math.PI * seedableRandom.nextValue();
     }
 
+    /*
+      Calcualtes the speed for the strawberry. The speed increases with the number of picked straberries
+      making the game harder. There is also a slight random variation in speed.
+    */
     function calculateNewSpeed() {
       var speedDifficultyIncrease = 100 * strawberryCounter.values.collectedNumber;
       return 2500 + (1000 * seedableRandom.nextValue()) + speedDifficultyIncrease;
     }
 
+    /*
+      Start showing the first straberry.
+    */
     function reset() {
       seedableRandom.reset();
       showNewStrawberry();
