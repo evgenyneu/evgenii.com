@@ -1134,7 +1134,7 @@ title: "Ridiculous strawberry picking"
 
      // Return true if the strawberry has collided with the Sun
     that.isCollidedWithTheSun = function() {
-      var sizeOfTheSun = 1.2 * graphics.values.currentSunsSizePixels;
+      var sizeOfTheSun = 1.4 * graphics.values.currentSunsSizePixels;
       if (sizeOfTheSun < 50) { sizeOfTheSun = 50; }
       return collision.areCollided(that.position, graphics.values.center, sizeOfTheSun);
     };
@@ -1288,7 +1288,7 @@ title: "Ridiculous strawberry picking"
       removeOneStrawberry(strawberry);
 
       if (shownstrawberryHasLandedOnEarthMessage) {
-        addStrawberry();
+        addStrawberries();
       } else {
         physics.state.paused = true;
         shownstrawberryHasLandedOnEarthMessage = true;
@@ -1304,7 +1304,7 @@ title: "Ridiculous strawberry picking"
 
     function didTapContinueButtonAfterCollisionWithEarth() {
       gameoverMessage.hide();
-      addStrawberry();
+      addStrawberries();
       physics.state.paused = false;
     }
 
@@ -1314,10 +1314,20 @@ title: "Ridiculous strawberry picking"
     function reset() {
       seedableRandom.reset();
       removeAllStraberries();
-      addStrawberry();
+      addStrawberries();
     }
 
-    function addStrawberry() {
+    function addStrawberries() {
+      var straberriesToAdd = Math.ceil((strawberryCounter.values.collectedNumber / 5) - allStrawberries.length);
+      if (straberriesToAdd === 0) { straberriesToAdd = 1; }
+      console.log(straberriesToAdd);
+
+      for (var i = 0; i < straberriesToAdd; i++) {
+        addOneStrawberry();
+      }
+    }
+
+    function addOneStrawberry() {
       var straberry = OneStrawberry();
       allStrawberries.push(straberry);
     }
@@ -1601,6 +1611,7 @@ title: "Ridiculous strawberry picking"
 
     function didClickRestart() {
       gameoverMessage.hide();
+      strawberryCounter.reset();
       physics.resetStateToInitialConditions();
       graphics.clearScene();
       updateSunsMass(0.5);
@@ -1610,7 +1621,6 @@ title: "Ridiculous strawberry picking"
       simulationTime.reset();
       strawberries.reset();
       massSlider.enabled = true;
-      strawberryCounter.reset();
       return false; // Prevent default click
     }
 
