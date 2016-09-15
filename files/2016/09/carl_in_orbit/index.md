@@ -342,8 +342,6 @@ title: "Ridiculous strawberry picking"
       <a class="EarthOrbitSimulation-continueButton EarthOrbitSimulation-button" href="#">💥 Continue ✨</a>
     </div>
   </div>
-
-  <!-- <img src='/image/blog/2016-09-03-big-sun-experiment/strawberry.png' alt='strawberry' class='EarthOrbitSimulation-strawberry'> -->
 </div>
 
 <div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
