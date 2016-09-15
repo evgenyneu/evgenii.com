@@ -1163,7 +1163,9 @@ title: "Ridiculous strawberry picking"
 
     function calculatePosition(distance, angle) {
       var rotationSign = rotationClockwise ? 1 : -1;
-      var udatedAngle = rotationSign * Math.sin(distance / 300) * approachCurvature + angle;
+      // Add some curvature to the motion
+      var curvature = rotationSign * Math.sin(distance / 300) * approachCurvature;
+      var udatedAngle = curvature + angle;
 
       var centerX = Math.cos(udatedAngle) * distance + graphics.values.center.x;
       var centerY = Math.sin(-udatedAngle) * distance + graphics.values.center.y;
@@ -1180,15 +1182,16 @@ title: "Ridiculous strawberry picking"
       approachCurvature = calculateNewCurvature();
       speedMetersPerSecond = calculateNewSpeed();
       rotationClockwise = seedableRandom.getBoolean();
-      var ratationAngle = calculateNewRotationAngle()
-      helper.rotateElement(straberryElement, ratationAngle);
+      var rotationAngle = calculateNewRotationAngle()
+      helper.rotateElement(straberryElement, rotationAngle);
       helper.showBlockElement(straberryElement);
     }
 
     function calculateNewRotationAngle() {
-      var correction = 0.6;
-      var orbitAngle = (rotationClockwise ? -1 : 1) * angle;
-      return ((orbitAngle + correction) / Math.PI) * 180.0;
+      var correctionDegress = -13; // correct for  the image rotation.
+      var rotationAngle = angle / Math.PI * 180.0; // Convert to degrees
+      rotationAngle = 90 - rotationAngle + correctionDegress;
+      return rotationAngle;
     }
 
     function calculateNewCurvature() {
