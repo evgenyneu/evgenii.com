@@ -1260,36 +1260,40 @@ title: "Ridiculous strawberry picking"
         var strawberry = allStrawberries[i];
         strawberry.update();
 
-        if (strawberry.isCollidedWithTheSun()) {
-          userInput.removeSun();
+        isCollidedWithSun(strawberry);
+        isCollidedWithEarth(strawberry);
+      }
+    }
 
+    // Check if strawberry has collided with the Sun
+    // ------------------]
+    function isCollidedWithSun(strawberry) {
+      if (!strawberry.isCollidedWithTheSun()) { return; }
+      userInput.removeSun();
 
-          // Check if strawberry has collided with the Sun
-          // ------------------
-          if (!shownSunWasRemovedMessage) {
-            physics.state.paused = true;
-            shownSunWasRemovedMessage = true;
+      if (!shownSunWasRemovedMessage) {
+        physics.state.paused = true;
+        shownSunWasRemovedMessage = true;
 
-            gameoverMessage.showWithContinueButton("Greetings Earthlings! An unauthorized dark energy transfer has been detected in your stellar system. This transfer slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The department of intergalactic spacelords.", didTapContinueButtonAfterSunHasBeenRemoved);
-          }
-        }
+        gameoverMessage.showWithContinueButton("Greetings Earthlings! An unauthorized dark energy transfer has been detected in your stellar system. This transfer slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The department of intergalactic spacelords.", didTapContinueButtonAfterSunHasBeenRemoved);
+      }
+    }
 
-        // Check if strawberry has collided with the Earth
-        // ------------------
+    // Check if strawberry has collided with the Earth
+    // ------------------
+    function isCollidedWithEarth(strawberry) {
+      if (!strawberry.isCollidedWithTheEarth()) { return; }
 
-        if (strawberry.isCollidedWithTheEarth()) {
-          strawberryCounter.increment();
-          removeOneStrawberry(strawberry);
+      strawberryCounter.increment();
+      removeOneStrawberry(strawberry);
 
-          if (shownstrawberryHasLandedOnEarthMessage) {
-            addStrawberry();
-          } else {
-            physics.state.paused = true;
-            shownstrawberryHasLandedOnEarthMessage = true;
+      if (shownstrawberryHasLandedOnEarthMessage) {
+        addStrawberry();
+      } else {
+        physics.state.paused = true;
+        shownstrawberryHasLandedOnEarthMessage = true;
 
-            gameoverMessage.showWithContinueButton("The giant strawberry safely landed on the Earth and kept standing there without any signs of activity. On closer examination it appeared to be made of some kind of mineral similar to diamond. The landing site has soon become a popular tourist attraction where one can buy a smoothie or a strawberry-shaped souvenir.", didTapContinueButtonAfterCollisionWithEarth);
-          }
-        }
+        gameoverMessage.showWithContinueButton("The giant strawberry safely landed on the Earth and kept standing there without any signs of activity. On closer examination it appeared to be made of some kind of mineral similar to diamond. The landing site has soon become a popular tourist attraction where one can buy a smoothie or a strawberry-shaped souvenir.", didTapContinueButtonAfterCollisionWithEarth);
       }
     }
 
