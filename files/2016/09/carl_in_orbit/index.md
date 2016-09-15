@@ -1067,7 +1067,7 @@ title: "Ridiculous strawberry picking"
   };
 
   // Moves the strawberry and handles its collision with the Earth and the Sun.
-  var strawberry = (function(){
+  var strawberries = (function(){
     var strawberryElement = null,
       strawberryContainer = document.querySelector(".EarthOrbitSimulation-container"),
       initialDistanceFromTheSunMeters = 5.0 * physics.constants.earthSunDistanceMeters,
@@ -1471,7 +1471,7 @@ title: "Ridiculous strawberry picking"
       physics.updatePosition();
       simulationTime.update();
       graphics.drawScene(physics.earthSunDistancePixels(), physics.state.angle.value);
-      strawberry.update();
+      strawberries.update();
 
       climate.update(physics.state.distance.value,
         habitableZone.values.innerDistanceMeters,
@@ -1484,7 +1484,7 @@ title: "Ridiculous strawberry picking"
       graphics.init(function() {
         // Use the initial conditions for the simulation
         physics.resetStateToInitialConditions();
-        strawberry.reset();
+        strawberries.reset();
         gameoverMessage.init();
 
         // Redraw the scene if page is resized
@@ -1534,7 +1534,7 @@ title: "Ridiculous strawberry picking"
       climate.reset();
       physics.state.paused = false;
       simulationTime.reset();
-      strawberry.reset();
+      strawberries.reset();
       massSlider.enabled = true;
       strawberryCounter.reset();
       return false; // Prevent default click
