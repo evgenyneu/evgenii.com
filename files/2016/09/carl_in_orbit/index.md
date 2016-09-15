@@ -1241,7 +1241,7 @@ title: "Ridiculous strawberry picking"
     return that;
   }
 
-  // Moves the strawberry and handles its collision with the Earth and the Sun.
+  // Shows the strawberries
   var strawberries = (function(){
     var allStrawberries = [], // Currently shown straberries
       // Show the "Strawberry has landed" only once
