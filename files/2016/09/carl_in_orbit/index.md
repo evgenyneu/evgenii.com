@@ -113,7 +113,6 @@ title: "Ridiculous strawberry picking"
     top: 0;
     width: 100%;
     height: 100%;
-    z-index: 1001;
     background-image: url("http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
     background-position: left top;
     background-repeat: repeat;
@@ -144,7 +143,7 @@ title: "Ridiculous strawberry picking"
 
   .EarthOrbitSimulation-button {
     color: #ffb100;
-    padding: 10px;
+    padding: 10px 15px;
     text-decoration: none;
     border-radius: 10px;
     border: 1px solid #ffb100;
@@ -159,7 +158,7 @@ title: "Ridiculous strawberry picking"
     position: absolute;
     height: 100%;
     width: 100%;
-    z-index: 2;
+    z-index: 1001;
   }
 
   .EarthOrbitSimulation-hudContainerChild {
@@ -203,6 +202,7 @@ title: "Ridiculous strawberry picking"
     top: 10px;
     left: 15px;
     color: #DDDDDD;
+    z-index: 1;
   }
 
   .EarthOrbitSimulation-strawberryCounterImage {
@@ -227,6 +227,7 @@ title: "Ridiculous strawberry picking"
     bottom: 10px;
     left: 15px;
     color: #DDDDDD;
+    z-index: 1;
   }
 
   .EarthOrbitSimulation-hasTooHotWarning {
@@ -253,6 +254,7 @@ title: "Ridiculous strawberry picking"
     top: 10px;
     right: 15px;
     color: #DDDDDD;
+    z-index: 1;
   }
 
   /* Blinking */
@@ -329,19 +331,19 @@ title: "Ridiculous strawberry picking"
 
       <a class='EarthOrbitSimulation-reload' href='#'><img src='/image/blog/2016-09-03-big-sun-experiment/reload_icon.png' alt='Restart' class='EarthOrbitSimulation-reloadIcon'></a>
     </div>
+
+    <div class="EarthOrbitSimulation-gameover EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
+      <div class="EarthOrbitSimulation-gameoverMessage">
+        <span class="EarthOrbitSimulation-gameoverMessageContent">My wonder button is being pushed all the time.</span>
+        <br><br>
+        <a class="EarthOrbitSimulation-gameoverButton EarthOrbitSimulation-button" href="#">Try again</a>
+        <a class="EarthOrbitSimulation-continueButton EarthOrbitSimulation-button" href="#">Continue</a>
+      </div>
+    </div>
   </div>
 
   <canvas class="EarthOrbitSimulation-canvas"></canvas>
   <canvas class="EarthOrbitSimulation-canvasHabitableZone"></canvas>
-
-  <div class="EarthOrbitSimulation-gameover EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
-    <div class="EarthOrbitSimulation-gameoverMessage">
-      <span class="EarthOrbitSimulation-gameoverMessageContent">My wonder button is being pushed all the time.</span>
-      <br><br>
-      <a class="EarthOrbitSimulation-gameoverButton EarthOrbitSimulation-button" href="#">💥 Try again ✨</a>
-      <a class="EarthOrbitSimulation-continueButton EarthOrbitSimulation-button" href="#">💥 Continue ✨</a>
-    </div>
-  </div>
 </div>
 
 <div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
@@ -583,7 +585,7 @@ title: "Ridiculous strawberry picking"
 
       if (isEarthDead()) {
         physics.state.paused = true;
-        var message = currentTemperatureCelsius > 10 ? "All complex life on Earth has become extinct due to high global temperature that caused the water to evaporate and create a runaway greenhouse effect which increased the temperature further." : "All complex life on Earth has become extinct due to low global temperature that caused the shutdown of photosynthesis in plants.";
+        var message = currentTemperatureCelsius > 10 ? "All surface animal species has become extinct due to high global temperature that caused the water to evaporate and create a runaway greenhouse effect which increased the temperature further." : "All surface animal species has become extinct due to low global temperature that caused the shutdown of photosynthesis in plants.";
         gameoverMessage.show(message);
         return;
       }
@@ -1275,7 +1277,7 @@ title: "Ridiculous strawberry picking"
         physics.state.paused = true;
         shownSunWasRemovedMessage = true;
 
-        gameoverMessage.showWithContinueButton("Greetings Earthlings! An unauthorized dark energy transfer has been detected in your stellar system. This transfer slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The department of intergalactic spacelords.", didTapContinueButtonAfterSunHasBeenRemoved);
+        gameoverMessage.showWithContinueButton("Greetings Earthlings! We detected an unauthorized dark energy transfer that slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The department of intergalactic spacelords.", didTapContinueButtonAfterSunHasBeenRemoved);
       }
     }
 
@@ -1293,7 +1295,7 @@ title: "Ridiculous strawberry picking"
         physics.state.paused = true;
         shownstrawberryHasLandedOnEarthMessage = true;
 
-        gameoverMessage.showWithContinueButton("The giant strawberry safely landed on the Earth and kept standing there without any signs of activity. On closer examination it appeared to be made of some kind of mineral similar to diamond. The landing site has soon become a popular tourist attraction where one can buy a smoothie or a strawberry-shaped souvenir.", didTapContinueButtonAfterCollisionWithEarth);
+        gameoverMessage.showWithContinueButton("The giant strawberry safely landed on the Earth. The landing site has soon become a popular tourist attraction where one can buy a smoothie or a strawberry-shaped souvenir.", didTapContinueButtonAfterCollisionWithEarth);
       }
     }
 
