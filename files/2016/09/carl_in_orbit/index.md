@@ -343,7 +343,7 @@ title: "Ridiculous strawberry picking"
     </div>
   </div>
 
-  <img src='/image/blog/2016-09-03-big-sun-experiment/strawberry.png' alt='strawberry' class='EarthOrbitSimulation-strawberry'>
+  <!-- <img src='/image/blog/2016-09-03-big-sun-experiment/strawberry.png' alt='strawberry' class='EarthOrbitSimulation-strawberry'> -->
 </div>
 
 <div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
@@ -775,7 +775,15 @@ title: "Ridiculous strawberry picking"
       element.style.transform       = 'rotate(' + deg + 'deg)';
     }
 
+    function createImage(src, alt) {
+      var image = document.createElement('img');
+      image.setAttribute('src', src);
+      image.setAttribute('alt', alt);
+      return image
+    }
+
     return {
+      createImage: createImage,
       rotateElement: rotateElement,
       showInlineElement: showInlineElement,
       hideInlineElement: hideInlineElement,
@@ -1049,7 +1057,8 @@ title: "Ridiculous strawberry picking"
 
   // Moves the strawberry and handles its collision with the Earth and the Sun.
   var strawberry = (function(){
-    var strawberryElement = document.querySelector(".EarthOrbitSimulation-strawberry"),
+    var strawberryElement = null,
+      strawberryContainer = document.querySelector(".EarthOrbitSimulation-container"),
       initialDistanceFromTheSunMeters = 5.0 * physics.constants.earthSunDistanceMeters,
       distanceFromTheSunMeters = 1,
       speedMetersPerSecond = 3000.0, // How fast the strawberry is moving
@@ -1227,8 +1236,18 @@ title: "Ridiculous strawberry picking"
       Start showing the first straberry.
     */
     function reset() {
+      createElement();
       seedableRandom.reset();
       showNewStrawberry();
+    }
+
+    function createElement() {
+      if (strawberryElement !== null) { return; }
+      strawberryElement = helper.createImage('/image/blog/2016-09-03-big-sun-experiment/strawberry.png',
+        'Cosmic strawberry');
+
+      strawberryElement.className = 'EarthOrbitSimulation-strawberry';
+      strawberryContainer.appendChild(strawberryElement);
     }
 
     return {
