@@ -1186,8 +1186,9 @@ title: "Ridiculous strawberry picking"
     }
 
     function calculateNewRotationAngle() {
-      var correction = (rotationClockwise ? -0.6 : 0.6)
-      return ((((rotationClockwise ? -1 : 1) * angle) + correction) / Math.PI) * 180.0;
+      var correction = 0.6;
+      var orbitAngle = (rotationClockwise ? -1 : 1) * angle;
+      return ((orbitAngle + correction) / Math.PI) * 180.0;
     }
 
     function calculateNewCurvature() {
