@@ -1053,6 +1053,19 @@ title: "Ridiculous strawberry picking"
     };
   })();
 
+  function OneStrawberry() {
+    var that = {
+    };
+
+    that.init = function() {
+
+    };
+
+    that.init();
+
+    return that;
+  };
+
   // Moves the strawberry and handles its collision with the Earth and the Sun.
   var strawberry = (function(){
     var strawberryElement = null,
