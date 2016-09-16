@@ -1432,9 +1432,13 @@ title: "Ridiculous strawberry picking"
       "77": -1, // total 3
       "80": 1,  // total 4
       "85": 1,  // total 5
-      "86": -1 // total 4
+      "86": -1  // total 4
     };
 
+    // Returns the increase in the number of strawberries on screen.
+    // 0 - same number
+    // 1 - one more strawberry is added
+    // -1 - the number of strawberries is reduced by one
     function strawberriesIncrease() {
       for (var numberProperty in dataStrawberriesToAdd) {
         if (dataStrawberriesToAdd.hasOwnProperty(numberProperty)) {
