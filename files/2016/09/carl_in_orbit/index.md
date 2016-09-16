@@ -62,18 +62,12 @@ title: "Ridiculous strawberry picking"
     left: 50%;
     margin-left: -30px;
     margin-top: -30px;
-    -webkit-animation:spin .5s linear infinite;
-    -moz-animation:spin .5s linear infinite;
-    animation:spin .5s linear infinite;
     z-index: 999;
   }
 
   .EarthOrbitSimulation-earth {
     position: absolute;
     width: 25px;
-    -webkit-animation:spin .1s linear infinite;
-    -moz-animation:spin .1s linear infinite;
-    animation:spin .1s linear infinite;
     z-index: 1000;
   }
 
@@ -84,10 +78,6 @@ title: "Ridiculous strawberry picking"
     left: 40px;
     z-index: 1000;
   }
-
-  @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
-  @-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
-  @keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
 
   .EarthOrbitSimulation-canvas,
   .EarthOrbitSimulation-canvasHabitableZone { display: block; }
@@ -424,7 +414,8 @@ title: "Ridiculous strawberry picking"
       // Store the previous slider value in order to prevent calling onSliderChange function with the same argument
       previousSliderValue: -42,
       // Does not react to user input when false
-      enabled: true
+      enabled: true,
+      didRequestUpdateOnNextFrame: false
     };
 
     // Initializes the slider element
@@ -539,18 +530,26 @@ title: "Ridiculous strawberry picking"
       if (!that.enabled) { return; }
       var sliderValue = that.sliderValueFromCursor(e);
 
+      // Handle the head change only if it changed significantly (more than 0.1%)
       if (Math.round(that.previousSliderValue * 1000) === Math.round(sliderValue * 1000)) { return; }
+      that.previousSliderValue = sliderValue;
 
-      that.changePosition(sliderValue);
-
-      if (that.onSliderChange) {
-        if (that.previousSliderValue !== sliderValue) {
-          that.onSliderChange(sliderValue);
-        }
-
-        that.previousSliderValue = sliderValue;
+      if (!that.didRequestUpdateOnNextFrame) {
+        // Update the slider on next redraw, to improve performance
+        that.didRequestUpdateOnNextFrame = true;
+        window.requestAnimationFrame(that.updateOnFrame);
       }
     };
+
+    that.updateOnFrame = function() {
+      that.changePosition(that.previousSliderValue);
+
+      if (that.onSliderChange) {
+        that.onSliderChange(that.previousSliderValue);
+      }
+
+      that.didRequestUpdateOnNextFrame = false;
+    }
 
     that.init(sliderElementSelector);
 
