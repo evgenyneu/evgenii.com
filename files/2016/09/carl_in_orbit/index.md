@@ -2,10 +2,10 @@
 layout: default
 noindex: true
 comments: false
-title: "Ridiculous strawberry picking"
+title: "Ridiculous strawberry picking in space"
 ---
 
-# Ridiculous strawberry picking
+# Ridiculous strawberry picking in space
 
 <!--  To embed this simulator into your web page copy this source code until "Simulator END" comment. -->
 
@@ -621,7 +621,7 @@ title: "Ridiculous strawberry picking"
 
       if (isEarthDead()) {
         physics.state.paused = true;
-        var message = currentTemperatureCelsius > 10 ? "All surface animal species has become extinct due to high global temperature that caused the water to evaporate and create a runaway greenhouse effect which increased the temperature further." : "All surface animal species has become extinct due to low global temperature that caused the shutdown of photosynthesis in plants.";
+        var message = currentTemperatureCelsius > 10 ? "All surface animal species have become extinct due to high global temperature that caused the water to evaporate and create a runaway greenhouse effect which increased the temperature further." : "All surface animal species have become extinct due to low global temperature that caused the shutdown of photosynthesis in plants.";
         gameoverMessage.show(message);
         return;
       }
@@ -1145,7 +1145,7 @@ title: "Ridiculous strawberry picking"
   function OneStrawberry() {
     var that = {
       container: document.querySelector(".EarthOrbitSimulation-container"),
-      element: null, // Contains the DOM element for the straberry,
+      element: null, // Contains the DOM element for the strawberry,
       initialDistanceFromTheSunMeters: 5.0 * physics.constants.earthSunDistanceMeters,
       distanceFromTheSunMeters: 1,
       speedMetersPerSecond: 3000.0, // How fast the strawberry is moving
@@ -1157,7 +1157,7 @@ title: "Ridiculous strawberry picking"
       strawberrySizePixels: 35.0,
       rotationClockwise: true, // When true, the strawberry is rotating clockwise
       approachCurvature: 3,
-      position: {x: 1, y: 1} // CUrrent position
+      position: {x: 1, y: 1} // Current position
     };
 
     /*
@@ -1275,11 +1275,11 @@ title: "Ridiculous strawberry picking"
     };
 
     /*
-      Calcualtes the speed for the strawberry. The speed increases with the number of picked straberries
+      Calculates the speed for the strawberry. The speed increases with the number of picked strawberries
       making the game harder. There is also a slight random variation in speed.
     */
     that.calculateNewSpeed = function() {
-      var speedDifficultyIncrease = 50 * strawberryCounter.values.collectedNumber;
+      var speedDifficultyIncrease = 25 * strawberryCounter.values.collectedNumber;
       return 2500 + (1000 * seedableRandom.nextValue()) + speedDifficultyIncrease;
     };
 
@@ -1301,7 +1301,7 @@ title: "Ridiculous strawberry picking"
 
   // Shows the strawberries
   var strawberries = (function(){
-    var allStrawberries = [], // Currently shown straberries
+    var allStrawberries = [], // Currently shown strawberries
       // Show the "Strawberry has landed" only once
       shownstrawberryHasLandedOnEarthMessage = false,
       // Show the "Sun has been removed" message only once
@@ -1367,45 +1367,103 @@ title: "Ridiculous strawberry picking"
     }
 
     /*
-      Start showing the first straberry.
+      Start showing the first strawberry.
     */
     function reset() {
       seedableRandom.reset();
-      removeAllStraberries();
+      currentStrawberriesToShow = 0;
+      removeAllStrawberries();
       addStrawberries();
     }
 
-    function addStrawberries() {
-      // Show one more straberry when the number of picked straberries is devisiable by five
-      //
-      // For example:
-      //
-      //  0 picked: add 1
-      //  3 picked: add 1
-      //  5 picked: add 2
-      //  6 picked: add 1
-      //  9 picked: add 1
-      //  10 picked: add 3
-      //  11 picked: add 1
-      var straberriesToAdd = Math.floor(strawberryCounter.values.collectedNumber / 5) + 1;
+    var currentStrawberriesToShow = 0;
 
-      if (strawberryCounter.values.collectedNumber % 5 !== 0) {
-        straberriesToAdd = 1;
+    /*
+
+      Contains the amount of strawberries to add to the screen when the given amount of picked strawberries is reached.
+
+      For example ("0": 1) means that we start by showing one strawberry.
+
+      When four strawberries are picked ("4": 1) we add another strawberry, now showing two in total.
+
+      When five strawberries are picked ("5": -1) we remove one strawberry, showing one in total.
+
+      When seven strawberries are picked ("7": 1) we add another strawberry again, showing two in total on screen.
+    */
+    var dataStrawberriesToAdd = {
+      "0": 1,   // total 1
+      "4": 1,   // total 2
+      "5": -1,  // total 1
+      "7": 1,   // total 2
+      "8": -1,  // total 1
+      "10": 1,  // total 2
+      "12": 1,  // total 3
+      "13": -1, // total 2
+      "14": -1, // total 1
+      "15": 1,  // total 2
+      "17": -1, // total 1
+      "20": 1,  // total 2
+      "25": 1,  // total 3
+      "26": -1, // total 2
+
+      "30": 1,  // total 3
+      "34": -1, // total 2
+      "37": 1,  // total 3
+      "38": -1, // total 2
+      "40": 1,  // total 3
+      "42": 1,  // total 4
+      "43": -1, // total 3
+      "44": -1, // total 2
+      "45": 1,  // total 3
+      "47": -1, // total 2
+      "50": 1,  // total 3
+      "55": 1,  // total 4
+      "56": -1, // total 3
+
+      "60": 1,  // total 4
+      "64": -1, // total 3
+      "67": 1,  // total 4
+      "68": -1, // total 3
+      "70": 1,  // total 4
+      "72": 1,  // total 5
+      "73": -1, // total 4
+      "74": -1, // total 3
+      "75": 1,  // total 4
+      "77": -1, // total 3
+      "80": 1,  // total 4
+      "85": 1,  // total 5
+      "86": -1 // total 4
+    };
+
+    function strawberriesIncrease() {
+      for (var numberProperty in dataStrawberriesToAdd) {
+        if (dataStrawberriesToAdd.hasOwnProperty(numberProperty)) {
+          var collectedNumber = parseInt(numberProperty, 10);
+          if (strawberryCounter.values.collectedNumber === collectedNumber) {
+            return dataStrawberriesToAdd[numberProperty];
+          }
+        }
       }
 
-      if (straberriesToAdd === 0) { straberriesToAdd = 1; }
+      return 0;
+    }
 
-      for (var i = 0; i < straberriesToAdd; i++) {
+    function addStrawberries() {
+      currentStrawberriesToShow += strawberriesIncrease();
+      var strawberriesToAdd = currentStrawberriesToShow - allStrawberries.length;
+      if (strawberriesToAdd == 0 && allStrawberries.length === 0) { strawberriesToAdd = 1; }
+
+      for (var i = 0; i < strawberriesToAdd; i++) {
         addOneStrawberry();
       }
     }
 
     function addOneStrawberry() {
-      var straberry = OneStrawberry();
-      allStrawberries.push(straberry);
+      var strawberry = OneStrawberry();
+      allStrawberries.push(strawberry);
     }
 
-    function removeAllStraberries() {
+    function removeAllStrawberries() {
       for (var i = 0; i < allStrawberries.length; i++) {
         allStrawberries[i].remove();
       }
