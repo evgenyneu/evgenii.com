@@ -1422,7 +1422,7 @@ title: "Ridiculous strawberry picking"
         physics.state.paused = true;
         shownstrawberryHasLandedOnEarthMessage = true;
 
-        gameoverMessage.showWithContinueButton("The giant strawberry safely landed on the Earth. The landing site has soon become a popular tourist attraction where one can buy a smoothie or a strawberry-shaped souvenir.", didTapContinueButtonAfterCollisionWithEarth);
+        gameoverMessage.showWithContinueButton("A giant strawberry-shaped object safely landed on the Earth. The landing site has soon become a popular tourist attraction where one can buy a smoothie or a strawberry-shaped souvenir.", didTapContinueButtonAfterCollisionWithEarth);
       }
     }
 
@@ -1735,19 +1735,12 @@ title: "Ridiculous strawberry picking"
       previousEarthPosition = null;
     }
 
-    function saveAsImage() {
-      var dataUrl = canvas.toDataURL("image/png");
-      var newWindow = window.open('about:blank','Carl in Orbit');
-      newWindow.document.write("<img src='" + dataUrl + "' alt='Carl in Orbit'/><p>Long tap or right-click on the image  to save it</p>");
-    }
-
     return {
       fitToContainer: fitToContainer,
       drawScene: drawScene,
       updateSunSizeAndBrightness: updateSunSizeAndBrightness,
       redrawHabitableZone: redrawHabitableZone,
       clearScene: clearScene,
-      saveAsImage: saveAsImage,
       values: values,
       init: init
     };
@@ -1834,11 +1827,6 @@ title: "Ridiculous strawberry picking"
       massSlider.onSliderChange = updateSunsMass;
       massSlider.changePosition(0.5);
       restartButton.onclick = didClickRestart;
-
-      // restartButtonTwo.onclick = function() {
-      //   graphics.saveAsImage();
-      //   return false; // Prevent default
-      // };
     }
 
     function removeSun() {
