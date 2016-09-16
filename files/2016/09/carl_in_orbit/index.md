@@ -53,6 +53,7 @@ title: "Ridiculous strawberry picking"
   }
 
   .EarthOrbitSimulation-isTextCentered { text-align: center; }
+  .EarthOrbitSimulation-isHidden { display: none; }
 
   .EarthOrbitSimulation-sun {
     position: absolute;
@@ -308,6 +309,11 @@ title: "Ridiculous strawberry picking"
     to {
       visibility: hidden;
     }
+  }
+
+  .EarthOrbitSimulation-massSlider {
+    max-width: 400px;
+    margin: 0 auto;
   }
 
 
@@ -1139,6 +1145,56 @@ title: "Ridiculous strawberry picking"
     };
   })();
 
+  // The pool of strawberry DOM elements.
+  // Adding and removing DOM elements is relatively slow operation and can be noticeable on mobile devices.
+  // We use this object for improving performance by keeping strawberry elements in the DOM
+  // instead of removing and adding them each time the number of strawberries is changed on screen.
+  var strawberryPool = (function() {
+    var container = document.querySelector(".EarthOrbitSimulation-container"),
+      cachedElements = []; // Contains existing but currently hidden strawberry elements.
+
+    /*
+      Hides the element and caches it for later use with 'getOne' function
+    */
+    function hideAndCache(element) {
+      helper.addClass(element, 'EarthOrbitSimulation-isHidden');
+      cachedElements.push(element);
+    }
+
+    /*
+      Returns a strawberry element
+    */
+    function getOne() {
+      var element = getOneFromCache();
+      if (element !== null) { return element; }
+
+      console.log('create element');
+      // The cache is empty - create a new element instead and add to the DOM
+      element = helper.createImage('/image/blog/2016-09-03-big-sun-experiment/strawberry.png',
+        'Cosmic strawberry');
+
+      element.className = 'EarthOrbitSimulation-strawberry';
+      container.appendChild(element);
+      return element;
+    }
+
+    // Returns a strawberry element from cache or null if the cache is empty.
+    function getOneFromCache() {
+      if (cachedElements.lenght === 0) { return null; }
+      var element = cachedElements.shift();
+      if (typeof element === 'undefined' || element === null) { return null; }
+      element.style.left = '100px';
+      element.style.top = '-100px';
+      helper.removeClass(element, 'EarthOrbitSimulation-isHidden');
+      return element;
+    }
+
+    return {
+      getOne: getOne,
+      hideAndCache: hideAndCache
+    };
+  })();
+
   /*
     Represents a single juicy strawberry
   */
@@ -1225,14 +1281,10 @@ title: "Ridiculous strawberry picking"
       };
     };
 
-    that.createElement = function() {
+    // Shows the strawberry element on screen
+    that.showElement = function() {
       if (that.element !== null) { return; }
-
-      that.element = helper.createImage('/image/blog/2016-09-03-big-sun-experiment/strawberry.png',
-        'Cosmic strawberry');
-
-      that.element.className = 'EarthOrbitSimulation-strawberry';
-      that.container.appendChild(that.element);
+      that.element = strawberryPool.getOne();
     };
 
     // Show strawberry on screen
@@ -1285,12 +1337,12 @@ title: "Ridiculous strawberry picking"
 
     that.remove = function() {
       if (that.element === null) { return; }
-      that.container.removeChild(that.element);
+      strawberryPool.hideAndCache(that.element);
       that.element = null;
     };
 
     that.init = function() {
-      that.createElement();
+      that.showElement();
       that.show();
     };
 
