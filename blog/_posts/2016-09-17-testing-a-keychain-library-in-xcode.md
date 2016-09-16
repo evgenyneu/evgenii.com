@@ -8,7 +8,7 @@ tags: programming
 
 The testing of Keychain code has never been harder than in Xcode 8 and iOS 10. A Keychain is a secure storage in Apple devices used for keeping small bits of information like passwords. This tutorial shows *thirteen easy steps* that I needed to go through to make the unit tests work in my [keychain library](https://github.com/marketplacer/keychain-swift).
 
-## 1. Enable keychain sharing in app target
+## 1. Turn on signing in the app target
 
 
 1. Open the *General* tab in your **app** target.
