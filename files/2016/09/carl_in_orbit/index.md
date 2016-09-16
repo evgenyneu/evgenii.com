@@ -539,7 +539,7 @@ title: "Ridiculous strawberry picking"
       if (!that.enabled) { return; }
       var sliderValue = that.sliderValueFromCursor(e);
 
-      if (Math.round(that.previousSliderValue * 100) === Math.round(sliderValue * 100)) { return; }
+      if (Math.round(that.previousSliderValue * 1000) === Math.round(sliderValue * 1000)) { return; }
 
       that.changePosition(sliderValue);
 
