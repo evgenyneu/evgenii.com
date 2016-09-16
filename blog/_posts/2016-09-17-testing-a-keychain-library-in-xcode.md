@@ -1,7 +1,7 @@
 ---
 layout: blog_post
 comments: true
-title: "How to test a keychain library in Xcode 8 and iOS 10"
+title: "How to setup testing of a keychain library in Xcode 8 and iOS 10"
 meta_description: "This articles shows how to setup Xcode 8 to allow testing a Keychain library."
 tags: programming
 ---
