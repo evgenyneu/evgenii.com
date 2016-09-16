@@ -175,7 +175,7 @@ title: "Ridiculous strawberry picking"
   }
 
   @media (min-width: 600px) {
-    .EarthOrbitSimulation-gameoverMessageContent {
+    .EarthOrbitSimulation-gameoverMessage {
       font-size: 1.2em;
       line-height: 1.5;
     }
