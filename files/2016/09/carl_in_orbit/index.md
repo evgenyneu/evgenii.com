@@ -1267,8 +1267,8 @@ title: "Ridiculous strawberry picking"
     };
 
     /*
-      Calcualtes an agle at which the strawberry approaches the sun, in radians.
-      Andgle of 0 means, the strawberry approaches the Sun from the right.
+      Calculates an angle at which the strawberry approaches the sun, in radians.
+      Angle of 0 means, the strawberry approaches the Sun from the right.
     */
     that.calculateNewAngle = function() {
       return 2 * Math.PI * seedableRandom.nextValue();
