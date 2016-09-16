@@ -129,7 +129,7 @@ title: "Ridiculous strawberry picking"
   }
 
   .EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-canvasHabitableZone {
-    display: none;
+    opacity: 0.01;
   }
 
   .EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-reload {
@@ -156,6 +156,19 @@ title: "Ridiculous strawberry picking"
     display: none;
   }
 
+  .EarthOrbitSimulation-gameoverMessageContent {
+    text-shadow:
+      0px 0px 2px #000000,
+      1px 1px 1px #000000,
+      -1px -1px 1px #000000,
+      1px -1px 1px #000000,
+      -1px 1px 1px #000000,
+      2px 2px 1px #000000,
+      -2px -2px 1px #000000,
+      2px -2px 1px #000000,
+      -2px 2px 1px #000000;
+  }
+
   .EarthOrbitSimulation-gameoverMessage {
     color: #DDDDDD;
     font-size: 1em;
@@ -172,7 +185,7 @@ title: "Ridiculous strawberry picking"
   }
 
   @media (min-width: 600px) {
-    .EarthOrbitSimulation-gameoverMessage {
+    .EarthOrbitSimulation-gameoverMessageContent {
       font-size: 1.2em;
       line-height: 1.5;
     }
@@ -465,6 +478,12 @@ title: "Ridiculous strawberry picking"
         if (!sliding) { return; }
         that.updateHeadPositionOnTouch(e);
       });
+
+      that.slider.addEventListener("touchmove", function(e) {
+        if (typeof e.preventDefault !== 'undefined' && e.preventDefault !== null) {
+          e.preventDefault(); // Prevent screen from sliding on touch devices when the element is dragged.
+        }
+      });
     };
 
     // Returns the slider value (a number form 0 to 1) from the cursor position
@@ -499,7 +518,6 @@ title: "Ridiculous strawberry picking"
       return sliderValue;
     };
 
-
     // Changes the position of the slider
     //
     // Arguments:
@@ -520,6 +538,9 @@ title: "Ridiculous strawberry picking"
     that.updateHeadPositionOnTouch = function(e) {
       if (!that.enabled) { return; }
       var sliderValue = that.sliderValueFromCursor(e);
+
+      if (Math.round(that.previousSliderValue * 100) === Math.round(sliderValue * 100)) { return; }
+
       that.changePosition(sliderValue);
 
       if (that.onSliderChange) {
@@ -914,7 +935,7 @@ title: "Ridiculous strawberry picking"
 
       // The number of calculations of orbital path done in one 16 millisecond frame.
       // The higher the number, the more precise are the calculations and the slower the simulation.
-      numberOfCalculationsPerFrame: 1000
+      numberOfCalculationsPerFrame: 100
     };
 
     // A factor by which we scale the distance between the Sun and the Earth
@@ -1183,7 +1204,7 @@ title: "Ridiculous strawberry picking"
       var element = cachedElements.shift();
       if (typeof element === 'undefined' || element === null) { return null; }
       element.style.left = '100px';
-      element.style.top = '-100px';
+      element.style.top = '-1000px';
       helper.removeClass(element, 'EarthOrbitSimulation-isHidden');
       return element;
     }
