@@ -316,7 +316,6 @@ title: "Ridiculous strawberry picking"
     margin: 0 auto;
   }
 
-
   /*
 
   Sick Slider
@@ -1507,7 +1506,7 @@ title: "Ridiculous strawberry picking"
     function addStrawberries() {
       currentStrawberriesToShow += strawberriesIncrease();
       var strawberriesToAdd = currentStrawberriesToShow - allStrawberries.length;
-      if (strawberriesToAdd == 0 && allStrawberries.length === 0) { strawberriesToAdd = 1; }
+      if (strawberriesToAdd === 0 && allStrawberries.length === 0) { strawberriesToAdd = 1; }
 
       for (var i = 0; i < strawberriesToAdd; i++) {
         addOneStrawberry();
