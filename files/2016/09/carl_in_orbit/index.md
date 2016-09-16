@@ -1384,7 +1384,7 @@ title: "Ridiculous strawberry picking"
         physics.state.paused = true;
         shownSunWasRemovedMessage = true;
 
-        gameoverMessage.showWithContinueButton("Greetings Earthlings! We detected an unauthorized dark energy transfer that slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The department of intergalactic spacelords.", didTapContinueButtonAfterSunHasBeenRemoved);
+        gameoverMessage.showWithContinueButton("Greetings Earthlings! We detected an unauthorized dark energy transfer that slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The association of intergalactic spacelords.", didTapContinueButtonAfterSunHasBeenRemoved);
       }
     }
 
