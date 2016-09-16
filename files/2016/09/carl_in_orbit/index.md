@@ -2,10 +2,10 @@
 layout: default
 noindex: true
 comments: false
-title: "Ridiculous strawberry picking in space"
+title: "Ridiculous strawberry picking"
 ---
 
-# Ridiculous strawberry picking in space
+# Ridiculous strawberry picking
 
 <!--  To embed this simulator into your web page copy this source code until "Simulator END" comment. -->
 
@@ -1501,7 +1501,6 @@ title: "Ridiculous strawberry picking in space"
           x: 1,
           y: 1
         },
-        framesPerSecond: 60,
         earthPosition: { x: 1, y: 1 },
         earthSize: 25,
         sunsSize: 60
