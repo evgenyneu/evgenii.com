@@ -1,12 +1,12 @@
 ---
 layout: blog_post
 comments: true
-title: "How to setup testing of a keychain library in Xcode 8 and iOS 10"
+title: "How to setup keychain library tests in Xcode 8 / iOS 10"
 meta_description: "This articles shows how to setup Xcode 8 to allow testing a Keychain library."
 tags: programming
 ---
 
-The testing of Keychain code has never been harder than in Xcode 8 and iOS 10. A Keychain is a secure storage in Apple devices used for keeping small bits of information like passwords. This tutorial shows *thirteen easy steps* that I needed to go through to make the unit tests work in my [keychain library](https://github.com/marketplacer/keychain-swift).
+A Keychain is a secure storage in Apple devices used for keeping small bits of information like passwords. The testing of Keychain code has never been harder than in Xcode 8 and iOS 10. This tutorial shows *thirteen easy steps* (sorry for the sarcasm) that I needed to go through to make the unit tests work in my [keychain library](https://github.com/marketplacer/keychain-swift).
 
 ## 1. Turn on signing in the app target
 
