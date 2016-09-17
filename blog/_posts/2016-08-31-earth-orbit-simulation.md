@@ -3,7 +3,6 @@ layout: blog_post
 comments: true
 title: "A simulation of the Earth orbiting the Sun"
 meta_description: "This is a simulation of the Earth orbiting the Sun."
-layout_class: theme-nightSky
 tags: programming science
 ---
 
