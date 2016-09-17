@@ -1863,7 +1863,7 @@ Carl approaches a big shiny metallic box with blinking buttons and pushes severa
 
 ## Orbital distance and Newton's Law of Universal Gravitation
 
-The short-term implications of this experiment are obvious to any student who attended an introductory astronomy class. What happens to the Earth if the mass of the Sun increases? One of the most fundamental laws, Newton's Law of Universal Gravitation, tells us that the force of attraction between two bodies is proportional to the product of their masses and inversely proportional to the square of the distance between them [1, p. 131]. This law implies, that if Carl increases the mass of the Sun, it exerts stronger gravitational force on the Earth. As a result, the Earth *moves closer* to the Sun (see Figure 1).
+The short-term implications of this experiment are obvious to any student who attended an introductory astronomy class. What happens to the Earth if the mass of the Sun increases? One of the most fundamental laws, Newton's Law of Universal Gravitation, tells us that the force of attraction between two bodies is proportional to the product of their masses and inversely proportional to the square of the distance between them [[1, p. 131]](#references). This law implies, that if Carl increases the mass of the Sun, it exerts stronger gravitational force on the Earth. As a result, the Earth *moves closer* to the Sun (see Figure 1).
 
 
 <div class='isTextCentered'>
@@ -1874,12 +1874,12 @@ The short-term implications of this experiment are obvious to any student who at
 
 ## Orbital period and Kepler's third law
 
-Everybody know that it takes about 365 days for the Earth to complete one full circle around the Sun. We call this time 'a year' and astronomers call it the Earth's *orbital period*. But what happens to Earth's orbital period as it moves closer to the Sun? This question can be  answered by using Kepler third law [2, p. 27] that states that closer planets have *smaller* orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth.
+Everybody know that it takes about 365 days for the Earth to complete one full circle around the Sun. We call this time 'a year' and astronomers call it the Earth's *orbital period*. But what happens to Earth's orbital period as it moves closer to the Sun? This question can be  answered by using Kepler third law [[2, p. 27]](#references) that states that closer planets have *smaller* orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth.
 
 
 ## The Sun's luminosity
 
-The increase in Sun's mass also affects its brightness, which is also called 'luminosity'. This happens because larger mass creates bigger gravitational pressure in its core, which increases the rate of fusion reaction that creates more light. How much brighter the Sun becomes if Carl doubles its mass? It will be about eight times brighter, because the luminosity of a star similar to the Sun is roughly proportional to the cube of its mass \(see Figure 2\)[3].
+The increase in Sun's mass also affects its brightness, which is also called 'luminosity'. This happens because larger mass creates bigger gravitational pressure in its core, which increases the rate of fusion reaction that creates more light. How much brighter the Sun becomes if Carl doubles its mass? Figure 2 demonstrates that the Sun will be about eight times brighter, because the luminosity of a star similar to the Sun is roughly proportional to the cube of its mass [[3]](#references).
 
 <div class='isTextCentered'>
   <img class='isMax500PxWide' src='/image/blog/2016-09-17-ridiculous-strawberry-picking/massive_sun_is_brighter.png' alt='More massive stars are much brighter'>
@@ -1899,7 +1899,7 @@ We can see from Figure 3 that massive Sun would have more distant habitable zone
 
 ## The dark energy and the expansion of the Universe
 
-The *dark energy* is a term astronomers use to explain the observed expansion of the Universe [2, p. 726]. At this point astrophysicists do not have a clue what this dark energy actually is, nor they were able to detect it. The idea is that there is a mysterious uniform substance that fills all of space in the Universe and pushes the Universe apart. As a result, the galaxies which are not close enough to have strong gravitational attraction are moving away from each other.
+The *dark energy* is a term astronomers use to explain the observed expansion of the Universe [[2, p. 726]](#references). At this point astrophysicists do not have a clue what this dark energy actually is, nor they were able to detect it. The idea is that there is a mysterious uniform substance that fills all of space in the Universe and pushes the Universe apart. As a result, the galaxies which are not close enough to have strong gravitational attraction are moving away from each other.
 
 <div class='isTextCentered'>
   <img class='isMax300PxWide isTextCentered' src='/image/blog/2016-09-17-ridiculous-strawberry-picking/expanstion_of_universe.png' alt='Dark energy pushes the space apart.'>
@@ -1916,12 +1916,12 @@ What would happen if Carl Cox took some of this dark energy and converted it int
 
 ## References
 
-* [1]. J. Bennet, M. Donahue, N. Schneider , and M. Voit, *Cosmic perspective*. United Kingdom: Pearson Education Limited, 2014.
+<ul id='references'>
+  <li>[1]. J. Bennet, M. Donahue, N. Schneider , and M. Voit, *Cosmic perspective*. United Kingdom: Pearson Education Limited, 2014.</li>
 
-* [2]. J. O. Bennett, G. S. Shostak, *Life in the Universe*, 4th ed. San Francisco, CA: Pearson, 2016.
+  <li>[2]. J. O. Bennett, G. S. Shostak, *Life in the Universe*, 4th ed. San Francisco, CA: Pearson, 2016.</li>
 
-* [3]. "[Mass-luminosity relationship](http://hyperphysics.phy-astr.gsu.edu/hbase/Astro/herrus.html#c3)". Hyperphysics. Retrieved 2016-09-03.
+  <li>[3]. "[Mass-luminosity relationship](http://hyperphysics.phy-astr.gsu.edu/hbase/Astro/herrus.html#c3)". Hyperphysics. Retrieved 2016-09-03.</li>
 
-* [3]. [The complete source code](/files/2016/09/ridiculous_strawberry_picking/the_complete_code/) of the game.
-
-* [4]. Susskind, L., &amp; Hrabovsky, G. (2013). *The theoretical minimum: What you need to know to start doing physics*. New York: Basic Boks.
+  <li>[4]. [The complete source code](/files/2016/09/ridiculous_strawberry_picking/the_complete_code/) of the game.</li>
+<ul>
