@@ -1,8 +1,8 @@
 ---
 layout: blog_post
 comments: true
-title: "A simulation of the Earth orbiting the Sun"
-meta_description: "This is a simulation of the Earth orbiting the Sun."
+title: "Programming a simulation of the Earth orbiting the Sun"
+meta_description: "This tutorial shows how to program a simulation of the Earth orbiting the Sun using JavaScript."
 tags: programming science
 ---
 
@@ -682,6 +682,145 @@ tags: programming science
 
 <!-- Simulator END -->
 
+<br>
+
+This tutorial shows how to program a simulation of the Earth orbiting the Sun with HTML/JavaScript. I went through the basics of creating an HTML simulation in the [harmonic oscillator tutorial](/blog/programming-harmonic-oscillator/), please refer to it in order to get started. This tutorial will not be as detailed as the previous one. Here I will only introduce the physics behind the orbital simulation and how the equations of motion are translated into the moving pictures on screen.
+
+This work is based largely on the concepts from the book by Leonard Susskind and George Hrabovsky *The theoretical minimum: What you need to know to start doing physics*. It an an excellent book that introduces classical mechanics and explains how to write the equations of motion of a system using the Lagrangian and Hamiltonian methods. There are also Susskind's [YouTube video lectures](https://youtu.be/ApUFtLCrU90) that cover the same material. Please refer to these resources if you want more information on the physics that I will be using here.
+
+## The coordinate system
+
+Since the Earth is doing circular motions around the Sun it makes sense to use polar coordinates shown on Figure 1. The coordinates will be: the angle 𝜃 and the distance *r* between the centers of the Sun and the Earth.
+
+<div class='isTextCentered'>
+  <img class='isMax300PxWide' src='/image/blog/2016-08-31-earth-orbit-simulation/0010_coordinate_system.png' alt='Coordinate system and variables'>
+  <p>Figure 1: The coordinate system and variables.</p>
+</div>
+
+## The kinetic and potential energy
+
+The equation for the kinetic energy of the Earth with mass *m* is
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax200PxWide' src='/image/blog/2016-08-31-earth-orbit-simulation/0020_kinetic_energy.png' alt='The equation for the kinetic energy of the Earth orbitin the Sun'>
+  </span>
+  <span>(1)</span>
+</div>
+
+The potential energy, which comes from the gravitational attraction between the Sun of mass *M* and the Earth, is described by the following equation
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax150PxWide' src='/image/blog/2016-08-31-earth-orbit-simulation/0030_potential_energy.png' alt='The equation for the potential energy of the Earth orbitin the Sun'>
+  </span>
+  <span>(2)</span>
+</div>
+
+Letter *G* in Equation 2 is the *gravitational constant*:
+
+<div class='isTextCentered'>
+  <img class='isMax300PxWide' src='/image/blog/2016-08-31-earth-orbit-simulation/0040_gravitational_constant.png' alt='The gravitational constant'>
+</div>
+
+
+## The Lagrangian
+
+We will find the equations of motions using the Lagrangian, which is the kinetic energy minus the potential energy of the system:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax300PxWide' src='/image/blog/2016-08-31-earth-orbit-simulation/0050_the_lagrangian_sun_earth.png' alt='The Lagrangian equation for the Sun-Earth system.'>
+  </span>
+  <span>(3)</span>
+</div>
+
+## The first equation of motion: the distance *r*
+
+Now we know the Lagrangian and can apply the Euler-Lagrange equation to get two equations of motion. The first one is found using the following formula, involving partial derivatives of the Lagrangian from Equation 3 with respect to distance *r* and its time derivative:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax150PxWide' src='/image/blog/2016-08-31-earth-orbit-simulation/0060_euler_lagrange_equation_one.png' alt='The Euler–Lagrange equation one.'>
+  </span>
+  <span>(4)</span>
+</div>
+
+After taking the derivatives we get the first equation of motion:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax150PxWide' src='/image/blog/2016-08-31-earth-orbit-simulation/0070_of_motion_for_distance.png' alt='Equation of motion for the distance between the Sun and the Earth.'>
+  </span>
+  <span>(5)</span>
+</div>
+
+We will use Equation 5 in our program as it allows to compute the distance *r* from its second derivative.
+
+## The second equation of motion: the angle 𝜃
+
+We use the Euler-Lagrange equation again, but this time we take derivatives of the Lagrangian from Equation 3 with respect to the angle 𝜃 and its time derivative:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax150PxWide' src='/image/blog/2016-08-31-earth-orbit-simulation/0080_euler_lagrange_equation_two.png' alt='The Euler–Lagrange equation two.'>
+  </span>
+  <span>(6)</span>
+</div>
+
+After differentiating and simplifying we get:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax150PxWide' src='/image/blog/2016-08-31-earth-orbit-simulation/0090_of_motion_for_angle_one.png' alt='Equation of motion for the angle.'>
+  </span>
+  <span>(7)</span>
+</div>
+
+We make the second time derivative of the angle 𝜃 the subject of the equation:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax120PxWide' src='/image/blog/2016-08-31-earth-orbit-simulation/0100_of_motion_for_angle_two.png' alt='Equation of motion for the angle, solving for the second derivative.'>
+  </span>
+  <span>(8)</span>
+</div>
+
+Equation 8 will be used in our program to compute the angle 𝜃 from its second derivative.
+
+## Solving equations of motions with Euler method
+
+We have done the hard part and found Equations 5 and 8, which describe the evolution of the Sun-Earth system over time. In order to draw the Earth we need to solve these equation and find the angle 𝜃 and distance *r*. We will not attempt to solve those differential equations algebraically, but instead use a numerical Euler's method.
+
+## Initial conditions
+
+When using the Euler's method we will need to set the initial conditions, both for the angle and the distance. We set the initial distance to be equal to the length of the *astronomical unit* (AU), which is the average distance between the Sun and the Earth. The first time derivative of the distance, or the speed of the Earth, will be zero. Note that this is the speed of the Earth in the direction of the Sun, not the speed in the direction of the orbit.
+
+```JavaScript
+// Initial condition of the model
+var initialConditions = {
+  distance: {
+    value: 1.496 * Math.pow(10, 11),
+    speed: 0.00
+  },
+  angle: {
+    value: Math.PI / 6,
+    speed: 1.990986 *  Math.pow(10, -7)
+  }
+};
+```
+
+Now we need to define the initial conditions of the angle 𝜃. We set an arbitrary value of 𝛑 over six radians, since it does not matter at which angle the simulation is started. The initial time derivative of the angle 𝜃, or the angular speed, can be obtained using simple calculations. The Earth makes the full circle in one year, therefore, we can find the angular speed by just dividing 2𝛑 over the number of seconds in the sidereal year.
+
+
 
 ## Photo credits
 
@@ -694,5 +833,7 @@ tags: programming science
 * [The complete source code](/files/2016/09/earth_orbit_simulation/the_complete_code/) of the Earth orbit simulation.
 
 * Susskind, L., &amp; Hrabovsky, G. (2013). The theoretical minimum: What you need to know to start doing physics. New York: Basic Boks.
+
+* [Classical mechanics lectures](https://youtu.be/ApUFtLCrU90) by Leonard Susskind on YouTube.
 
 * [Programming a harmonic oscillator](/blog/programming-harmonic-oscillator/).
