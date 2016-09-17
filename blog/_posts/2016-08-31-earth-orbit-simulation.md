@@ -684,18 +684,20 @@ tags: programming science
 
 <br>
 
-This tutorial shows how to program a simulation of the Earth orbiting the Sun with HTML/JavaScript. I went through the basics of creating an HTML simulation in the [harmonic oscillator tutorial](/blog/programming-harmonic-oscillator/), please refer to it in order to get started. This tutorial will not be as detailed as the previous one. Here I will only introduce the physics behind the orbital simulation and how the equations of motion are translated into the moving pictures on screen.
+This tutorial shows how to program a simulation of the Earth orbiting the Sun with HTML/JavaScript. I went through the basics of creating an HTML simulation in the [harmonic oscillator tutorial](/blog/programming-harmonic-oscillator/), please refer to it in order to get started. This tutorial will not be as detailed as the previous one. Here I will only introduce the physics and math behind the orbital simulation.
 
-This work is based largely on the concepts from the book by Leonard Susskind and George Hrabovsky *The theoretical minimum: What you need to know to start doing physics*. It an an excellent book that introduces classical mechanics and explains how to write the equations of motion of a system using the Lagrangian and Hamiltonian methods. There are also Susskind's [YouTube video lectures](https://youtu.be/ApUFtLCrU90) that cover the same material. Please refer to these resources if you want more information on the physics that I will be using here.
+This work is based largely on the concepts from the book by Leonard Susskind and George Hrabovsky *The theoretical minimum: What you need to know to start doing physics*. It an an excellent book that introduces classical mechanics and explains how to write the equations of motion of a system using the Lagrangian and Hamiltonian methods. There are also Susskind's [YouTube video lectures](https://youtu.be/ApUFtLCrU90) that cover the same material. Please refer to these resources if you want more information on the physics used here.
 
 ## The coordinate system
 
-Since the Earth is doing circular motions around the Sun it makes sense to use polar coordinates shown on Figure 1. The coordinates will be: the angle 𝜃 and the distance *r* between the centers of the Sun and the Earth.
+Since the Earth is rotating around the Sun it makes sense to use polar coordinate system shown on Figure 1. The coordinates will be: the angle 𝜃 and the distance *r* between the centers of the Sun and the Earth.
 
 <div class='isTextCentered'>
   <img class='isMax300PxWide' src='/image/blog/2016-08-31-earth-orbit-simulation/0010_coordinate_system.png' alt='Coordinate system and variables'>
   <p>Figure 1: The coordinate system and variables.</p>
 </div>
+
+The origin of this coordinate system is located at the center of the Sun. This is a simplification, since both the Earth and the Sun rotate around the joint center of mass. However, for the purpose of our simulation we assume that the Sun does not move.
 
 ## The kinetic and potential energy
 
@@ -760,7 +762,7 @@ After taking the derivatives we get the first equation of motion:
   <span>(5)</span>
 </div>
 
-We will use Equation 5 in our program as it allows to compute the distance *r* from its second derivative.
+We will use Equation 5 in our program and compute the distance *r* from its second derivative.
 
 ## The second equation of motion: the angle 𝜃
 
@@ -802,7 +804,7 @@ We have done the hard part and found Equations 5 and 8, which describe the evolu
 
 ## Initial conditions
 
-When using the Euler's method we will need to set the initial conditions, both for the angle and the distance. We set the initial distance to be equal to the length of the *astronomical unit* (AU), which is the average distance between the Sun and the Earth. The first time derivative of the distance, or the speed of the Earth, will be zero. Note that this is the speed of the Earth in the direction of the Sun, not the speed in the direction of the orbit.
+Before applying the Euler's method we will first need to set the initial conditions, both for the angle and the distance. We set the initial distance to be equal to the length of the *astronomical unit* (AU), which is the average distance between the Sun and the Earth. The first time derivative of the distance, or the speed of the Earth, will be zero. Note that this is the speed of the Earth in the direction of the Sun, not the speed in the direction of the orbit.
 
 ```JavaScript
 // Initial condition of the model
@@ -818,8 +820,97 @@ var initialConditions = {
 };
 ```
 
-Now we need to define the initial conditions of the angle 𝜃. We set an arbitrary value of 𝛑 over six radians, since it does not matter at which angle the simulation is started. The initial time derivative of the angle 𝜃, or the angular speed, can be obtained using simple calculations. The Earth makes the full circle in one year, therefore, we can find the angular speed by just dividing 2𝛑 over the number of seconds in the sidereal year.
+Now we need to define the initial conditions of the angle 𝜃. We set an arbitrary value of 𝛑 over six radians, since it does not matter at which angle the simulation is started. However, the initial time derivative of the angle 𝜃, or the angular speed, does matter and can be obtained using simple calculations. The Earth makes the full circle in one year, therefore, we can find the angular speed by just dividing 2𝛑 over the number of seconds in the sidereal year.
 
+## Storing the current state of the system
+
+The initial conditions describe the system at the start of the simulation. As time changes the Earth will move and the four parameters will change as well. Therefore, in our program we need store the current state of the system, which is represented by the same four values: position, angle and their time derivatives, or speeds.
+
+```JavaScript
+var state = {
+  distance: {
+    value: 0,
+    speed: 0
+  },
+  angle: {
+    value: 0,
+    speed: 0
+  }
+};
+```
+
+## Computing the acceleration of the distance *r*
+
+We have set the initial conditions for the distance *r* and we know how it evolves from Equation 5. Now we can simply write this equation in our program as a function `calculateDistanceAcceleration` that computes the second time derivative of the angle distance *r* given the current state.
+
+```JavaScript
+function calculateDistanceAcceleration(state) {
+  return state.distance.value * Math.pow(state.angle.speed, 2) -
+    (constants.gravitationalConstant * state.massOfTheSunKg) / Math.pow(state.distance.value, 2);
+}
+```
+
+## Computing the acceleration of the angle 𝜃
+
+Similarly, we write the second equation of motion (Equation 8) for the angle as a function `calculateAngleAcceleration`:
+
+```JavaScript
+function calculateAngleAcceleration(state) {
+  return -2.0 * state.distance.speed * state.angle.speed / state.distance.value;
+}
+```
+
+## Finding a value from its derivative with Euler's method
+
+The key feature of the Euler's method is its ability to compute the value of a physical property from its time derivative. For example, the method allows to compute the distance from speed. Similarly, it can give us the speed from the acceleration.
+
+Luckily, this is exactly what we need in our simulation. Equations 5 and 8 give as the accelerations for the distance and the angle respectively. We can then use Euler's method to find velocities from those accelerations. And by repeating the same trick again, we can find the distance and the angle from their speeds.
+
+To do this, we write a function called `newValue`. It computers the new value of a physical property by using its `derivative` and the time increment `deltaT`.
+
+```JavaScript
+function newValue(currentValue, deltaT, derivative) {
+  return currentValue + deltaT * derivative;
+}
+```
+
+In our program, the value `deltaT` will be a very small time increment, less than 0.001 second, which will allow us to approximate the motion of the Earth with reasonable precision.
+
+## Finding the distance *r*
+
+Now we are ready to bring all pieces together and write the code that computes the distance *r* from its second derivative. First, we use the function `calculateDistanceAcceleration` to calculate the acceleration *r*. Then we call `newValue` to find the speed by using the acceleration. And finally, we use the speed to find the distance *r* itself.
+
+```JavaScript
+var distanceAcceleration = calculateDistanceAcceleration(state);
+
+state.distance.speed = newValue(state.distance.speed,
+  deltaT, distanceAcceleration);
+
+state.distance.value = newValue(state.distance.value,
+  deltaT, state.distance.speed);
+```
+
+## Finding the distance 𝜃
+
+We use exactly the same procedure to find the angle 𝜃. First, we find its acceleration with the function `calculateAngleAcceleration`. Then, we use it to find the angular speed by calling the function `newValue`. And finally, we compute the angle 𝜃 from its angular speed.
+
+```JavaScript
+var angleAcceleration = calculateAngleAcceleration(state);
+
+state.angle.speed = newValue(state.angle.speed,
+  deltaT, angleAcceleration);
+
+state.angle.value = newValue(state.angle.value,
+  deltaT, state.angle.speed);
+```
+
+## Moving the planet
+
+We have learned how to compute both coordinates *r* and 𝜃 of the Earth. Now all that remains to be done is to run this code many times per second and the system will evolve before our eyes. Our program translates the polar coordinates into the actual coordinates of the Earth image on the computer screen and the simulation produces a very natural orbital motion.
+
+I personally find it almost magical that the simulation works at all. Remember that we started with just the Equations 1 and 2 for the kinetic and potential energies of the Sun-Earth system. Then we used those equations to write a Lagrangian equation 3 and find the equations of motions 5 and 8. And finally, we plugged those two equations into the computer that solved them using the Euler's method. This gave us the precise position of the Earth as the time changes.
+
+For me it is hard to believe that such complex thing as the motion of a planet around its star can be computed so easily from the energies of the system. And yet it moves.
 
 
 ## Photo credits
