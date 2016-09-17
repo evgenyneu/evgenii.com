@@ -148,4 +148,4 @@ What would happen if Carl Cox took some of this dark energy and converted it int
   <li>[3]. "[Mass-luminosity relationship](http://hyperphysics.phy-astr.gsu.edu/hbase/Astro/herrus.html#c3)". Hyperphysics. Retrieved 2016-09-03.</li>
 
   <li>[4]. [The complete source code](/files/2016/09/ridiculous_strawberry_picking/the_complete_code/) of the game.</li>
-<ul>
+</ul>
