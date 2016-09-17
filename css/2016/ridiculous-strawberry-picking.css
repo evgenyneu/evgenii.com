@@ -1,0 +1,351 @@
+/*
+
+Ridiculous strawberry picking game
+
+http://evgenii.com/blog/ridiculous-strawberry-picking/
+
+License: Public Domain
+
+Image credits
+=============
+
+1. "The Blue Marble" By  NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans. Sources: http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg, https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg
+
+2. "The Sun photographed at 304 angstroms" by NASA/SDO (AIA). Sources: http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg, https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg
+
+*/
+
+
+/* Prevent browser from showing selection when the element is touched */
+.isUnselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  -o-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+.EarthOrbitSimulator-hasHont {
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
+
+.EarthOrbitSimulation-alert {
+  color: red;
+  border: 1px solid red;
+  background: #ffeeee;
+  padding: 5px;
+}
+
+.EarthOrbitSimulation-container {
+  background-color: #000000;
+  position: relative;
+  height: 400px;
+  background-image: url("http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/starry_night.png");
+  background-position: center bottom;
+  background-repeat: repeat;
+  background-size: 874px 260px;
+}
+
+.EarthOrbitSimulation-isTextCentered { text-align: center; }
+.EarthOrbitSimulation-isHidden { display: none; }
+
+.EarthOrbitSimulation-sun {
+  position: absolute;
+  width: 60px;
+  top: 50%;
+  left: 50%;
+  margin-left: -30px;
+  margin-top: -30px;
+  z-index: 999;
+}
+
+.EarthOrbitSimulation-earth {
+  position: absolute;
+  width: 25px;
+  top: -1000px;
+  z-index: 1000;
+}
+
+.EarthOrbitSimulation-strawberry {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: 30px;
+  left: 40px;
+  z-index: 1000;
+}
+
+.EarthOrbitSimulation-canvas,
+.EarthOrbitSimulation-canvasHabitableZone { display: block; }
+
+.EarthOrbitSimulation-canvasHabitableZone {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/*
+  Game over
+  ---------
+*/
+
+.EarthOrbitSimulation-gameover {
+  position: absolute;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-gameover {
+  display: block;
+}
+
+.EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-earth {
+  opacity: 0.3;
+}
+
+.EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-sun {
+  opacity: 0.3;
+}
+
+.EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-canvasHabitableZone {
+  opacity: 0.01;
+}
+
+.EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-reload {
+  display: none;
+}
+
+.EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-strawberry {
+  opacity: 0.3;
+}
+
+.EarthOrbitSimulation-gameoverButton {
+  display: none;
+}
+
+.EarthOrbitSimulation-hasGameoverMessage-hasRestartButton .EarthOrbitSimulation-gameoverButton {
+  display: inline;
+}
+
+.EarthOrbitSimulation-continueButton {
+  display: inline;
+}
+
+.EarthOrbitSimulation-hasGameoverMessage-hasRestartButton .EarthOrbitSimulation-continueButton {
+  display: none;
+}
+
+.EarthOrbitSimulation-gameoverMessageContent {
+  text-shadow:
+    0px 0px 2px #000000,
+    1px 1px 1px #000000,
+    -1px -1px 1px #000000,
+    1px -1px 1px #000000,
+    -1px 1px 1px #000000,
+    2px 2px 1px #000000,
+    -2px -2px 1px #000000,
+    2px -2px 1px #000000,
+    -2px 2px 1px #000000;
+}
+
+.EarthOrbitSimulation-gameoverMessage {
+  color: #DDDDDD;
+  font-size: 1em;
+  line-height: 1.3;
+  position: relative;
+  padding: 10px;
+  top: 50%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@media (min-width: 600px) {
+  .EarthOrbitSimulation-gameoverMessage {
+    font-size: 1.2em;
+    line-height: 1.5;
+  }
+}
+
+.EarthOrbitSimulation-button {
+  color: #ffb100;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 10px;
+  border: 1px solid #ffb100;
+}
+
+/*
+  Hud display
+  ---------
+*/
+
+.EarthOrbitSimulation-hudContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1001;
+}
+
+.EarthOrbitSimulation-hudContainerChild {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+  Reload button
+  ---------
+*/
+
+.EarthOrbitSimulation-reload {
+  position: absolute;
+  display: block;
+  bottom: 10px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  outline: none;
+}
+
+.EarthOrbitSimulation-reload:focus { outline: none; }
+
+.EarthOrbitSimulation-reloadIcon {
+  width: 100%;
+  border : 0;
+}
+
+/*
+  Strawberry counter
+  ---------
+*/
+
+.EarthOrbitSimulation-strawberryCounter {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  color: #DDDDDD;
+  z-index: 1;
+}
+
+.EarthOrbitSimulation-strawberryCounterImage {
+  width: 15px;
+  margin-right: 3px;
+}
+
+.EarthOrbitSimulation-strawberryCounter-isBlinking {
+  -webkit-animation: blink-animation 0.3s steps(2, start) infinite;
+  animation: blink-animation 0.3s steps(2, start) infinite;
+  -webkit-animation-iteration-count: 4; /* Chrome, Safari, Opera */
+  animation-iteration-count: 4;
+}
+
+/*
+  Climate
+  ---------
+*/
+
+.EarthOrbitSimulation-temperature {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  color: #DDDDDD;
+  z-index: 1;
+}
+
+.EarthOrbitSimulation-hasTooHotWarning {
+  background-color: red;
+  color: white;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.EarthOrbitSimulation-hasTooColdWarning {
+  background-color: #BEC7FF;
+  color: black;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+/*
+  Time
+  ---------
+*/
+
+.EarthOrbitSimulation-time {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #DDDDDD;
+  z-index: 1;
+}
+
+/* Blinking */
+.EarthOrbitSimulation-isBlinking {
+  -webkit-animation: blink-animation 0.6s steps(2, start) infinite;
+  animation: blink-animation 0.6s steps(2, start) infinite;
+}
+
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+.EarthOrbitSimulation-massSlider {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/*
+
+Sick Slider
+--------------
+
+*/
+
+.SickSlider {
+  position: relative;
+  height: 60px;
+  cursor: pointer;
+  z-index: 900;
+}
+
+.SickSlider-stripe {
+  height: 5px;
+  width: 100%;
+  background-color: #999999;
+  position: absolute;
+  top: 28px;
+  left: 0px;
+}
+
+.SickSlider-head {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 30px;
+  height: 40px;
+  background-color: #ff9400;
+  border: 1px solid #FFFFFF;
+}
