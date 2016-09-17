@@ -142,7 +142,7 @@ What would happen if Carl Cox took some of this dark energy and converted it int
 
 * [1]. J. Bennet, M. Donahue, N. Schneider , and M. Voit, *Cosmic perspective*. United Kingdom: Pearson Education Limited, 2014.
 
-* [2]. J. O. Bennett, G. S. Shostak, *Life in the Universe*, 4th ed. San Francisco, CA: Pearson, 2016.
+* [2]. J. Bennett, G. Shostak, *Life in the Universe*, 4th ed. San Francisco, CA: Pearson, 2016.
 
 * [3]. "[Mass-luminosity relationship](http://hyperphysics.phy-astr.gsu.edu/hbase/Astro/herrus.html#c3)". Hyperphysics. Retrieved 2016-09-03.
 
