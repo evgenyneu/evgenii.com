@@ -1453,7 +1453,7 @@ var userInput = (function(){
   };
 })();
 
+simulation.start();
 userInput.init();
 
-simulation.start();
 })();
