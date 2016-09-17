@@ -11,15 +11,28 @@ title: "The complete code of the 'Ridiculous strawberry picking' game"
 This is the complete source code of the [Ridiculous strawberry picking game](/blog/ridiculous-strawberry-picking/). Feel free to use it on any web site.
 
 ```Html
-<!--  To embed this simulator into your web page copy this source code until "Simulator END" comment. -->
+<!--
+
+  To embed this game into your web page copy this source code until "Game END" comment.
+
+  Note that the code uses the images loaded from http://evgenii.com web site. You will need to host these images if you want to make sure the game always works and is not dependent on evgenii.com web site.
+
+ -->
 
 <!--
 
   Ridiculous strawberry picking game
 
-  http://evgenii.com
+  http://evgenii.com/blog/ridiculous-strawberry-picking/
 
   License: Public Domain
+
+  Image credits
+  =============
+
+  1. "The Blue Marble" By  NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans. Sources: http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg, https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg
+
+  2. "The Sun photographed at 304 angstroms" by NASA/SDO (AIA). Sources: http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg, https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg
 
 -->
 
@@ -50,7 +63,7 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
   .EarthOrbitSimulation-container {
     background-color: #000000;
     position: relative;
-    background-image: url("http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
+    background-image: url("http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/starry_night.png");
     background-position: center bottom;
     background-repeat: repeat;
     background-size: 874px 260px;
@@ -363,22 +376,22 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
 <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
 
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
-  <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
+  <img src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
 
-  <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
+  <img src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
 
 
   <div class='EarthOrbitSimulation-hudContainer'>
     <div class='EarthOrbitSimulation-hudContainerChild'>
       <div class='EarthOrbitSimulation-strawberryCounter'>
-        <img src='/image/blog/2016-09-03-big-sun-experiment/strawberry.png' alt='strawberry' class='EarthOrbitSimulation-strawberryCounterImage'><span class='EarthOrbitSimulation-strawberryCounterNumber'>0</span>
+        <img src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/strawberry.png' alt='strawberry' class='EarthOrbitSimulation-strawberryCounterImage'><span class='EarthOrbitSimulation-strawberryCounterNumber'>0</span>
       </div>
 
       <div class='EarthOrbitSimulation-temperature'>T:<span class='EarthOrbitSimulation-temperatureValue'></span> <span class='EarthOrbitSimulation-temperatureDescription'></span></div>
 
       <div class='EarthOrbitSimulation-time'></div>
 
-      <a class='EarthOrbitSimulation-reload' href='#'><img src='/image/blog/2016-09-03-big-sun-experiment/reload_icon.png' alt='Restart' class='EarthOrbitSimulation-reloadIcon'></a>
+      <a class='EarthOrbitSimulation-reload' href='#'><img src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/reload_icon.png' alt='Restart' class='EarthOrbitSimulation-reloadIcon'></a>
     </div>
 
     <div class="EarthOrbitSimulation-gameover EarthOrbitSimulation-isTextCentered">
@@ -1194,7 +1207,7 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
 
       console.log('create element');
       // The cache is empty - create a new element instead and add to the DOM
-      element = helper.createImage('/image/blog/2016-09-03-big-sun-experiment/strawberry.png',
+      element = helper.createImage('http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/strawberry.png',
         'Cosmic strawberry');
 
       element.className = 'EarthOrbitSimulation-strawberry';
@@ -1852,5 +1865,5 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
 
 </script>
 
-<!-- Simulator END -->
+<!-- Game END -->
 ```

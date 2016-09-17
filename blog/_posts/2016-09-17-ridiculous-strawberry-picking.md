@@ -8,7 +8,13 @@ tags: science
 
 # Ridiculous strawberry picking
 
-<!--  To embed this simulator into your web page copy this source code until "Simulator END" comment. -->
+<!--
+
+  To embed this game into your web page copy this source code until "Game END" comment.
+
+  Note that the code uses the images loaded from http://evgenii.com web site. You will need to host these images if you want to make sure the game always works and is not dependent on evgenii.com web site.
+
+ -->
 
 <!--
 
@@ -1856,7 +1862,7 @@ tags: science
 
 </script>
 
-<!-- Simulator END -->
+<!-- Game END -->
 
 
 ## Carl's experiment
