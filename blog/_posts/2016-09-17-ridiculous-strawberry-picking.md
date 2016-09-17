@@ -1,12 +1,12 @@
 ---
-layout: default
+layout: blog_post
 comments: true
 title: "Ridiculous strawberry picking"
 meta_description: "A game where you pick cosmic strawberries by altering the Earth orbit through modification of the Sun's mass"
 tags: science
 ---
 
-# Ridiculous strawberry picking
+## Ridiculous strawberry picking
 
 <!--
 

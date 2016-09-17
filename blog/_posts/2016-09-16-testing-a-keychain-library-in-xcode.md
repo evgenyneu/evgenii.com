@@ -10,7 +10,6 @@ A Keychain is a secure storage in Apple devices used for keeping small bits of i
 
 ## 1. Turn on signing in the app target
 
-
 1. Open the *General* tab in your **app** target.
 1. Turn on *Automatically Manage Signing* and select your team in the *Signing* section.
 
