@@ -63,6 +63,7 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
   .EarthOrbitSimulation-container {
     background-color: #000000;
     position: relative;
+    height: 400px;
     background-image: url("http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/starry_night.png");
     background-position: center bottom;
     background-repeat: repeat;
@@ -85,6 +86,7 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
   .EarthOrbitSimulation-earth {
     position: absolute;
     width: 25px;
+    top: -1000px;
     z-index: 1000;
   }
 
@@ -373,7 +375,7 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
 
 <!-- Message shown in old browsers. -->
 <div class="EarthOrbitSimulation EarthOrbitSimulator-hasHont">
-<p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
+<p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert EarthOrbitSimulation-isHidden">Please use a newer browser to see the simulation.</p>
 
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
   <img src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
@@ -1679,8 +1681,8 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
       }
     }
 
-    function hideCanvasNotSupportedMessage() {
-      document.getElementById("EarthOrbitSimulation-notSupportedMessage").style.display ='none';
+    function showCanvasNotSupportedMessage() {
+      document.getElementById("EarthOrbitSimulation-notSupportedMessage").style.display ='block';
     }
 
     function calculateScreenCenter() {
@@ -1728,12 +1730,17 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
 
     // Create canvas for drawing and call success argument
     function init(success) {
-      if (initCanvas()) { return; }
-      if (initHabitableZoneCanvas()) { return; }
+      if (initCanvas()) {
+        // The browser can not use canvas. Show a warning message.
+        showCanvasNotSupportedMessage();
+        return;
+      }
 
-      // If we got to this point it means the browser can draw
-      // Hide the old browser message
-      hideCanvasNotSupportedMessage();
+      if (initHabitableZoneCanvas()) {
+        // The browser can not use canvas. Show a warning message.
+        showCanvasNotSupportedMessage();
+        return;
+      }
 
       // Update the size of the canvas
       fitToContainer();

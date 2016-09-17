@@ -60,6 +60,7 @@ tags: science
   .EarthOrbitSimulation-container {
     background-color: #000000;
     position: relative;
+    height: 400px;
     background-image: url("http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/starry_night.png");
     background-position: center bottom;
     background-repeat: repeat;
@@ -82,6 +83,7 @@ tags: science
   .EarthOrbitSimulation-earth {
     position: absolute;
     width: 25px;
+    top: -1000px;
     z-index: 1000;
   }
 
@@ -370,7 +372,7 @@ tags: science
 
 <!-- Message shown in old browsers. -->
 <div class="EarthOrbitSimulation EarthOrbitSimulator-hasHont">
-<p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
+<p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert EarthOrbitSimulation-isHidden">Please use a newer browser to see the simulation.</p>
 
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
   <img src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
@@ -1676,8 +1678,8 @@ tags: science
       }
     }
 
-    function hideCanvasNotSupportedMessage() {
-      document.getElementById("EarthOrbitSimulation-notSupportedMessage").style.display ='none';
+    function showCanvasNotSupportedMessage() {
+      document.getElementById("EarthOrbitSimulation-notSupportedMessage").style.display ='block';
     }
 
     function calculateScreenCenter() {
@@ -1725,12 +1727,17 @@ tags: science
 
     // Create canvas for drawing and call success argument
     function init(success) {
-      if (initCanvas()) { return; }
-      if (initHabitableZoneCanvas()) { return; }
+      if (initCanvas()) {
+        // The browser can not use canvas. Show a warning message.
+        showCanvasNotSupportedMessage();
+        return;
+      }
 
-      // If we got to this point it means the browser can draw
-      // Hide the old browser message
-      hideCanvasNotSupportedMessage();
+      if (initHabitableZoneCanvas()) {
+        // The browser can not use canvas. Show a warning message.
+        showCanvasNotSupportedMessage();
+        return;
+      }
 
       // Update the size of the canvas
       fitToContainer();
@@ -1868,11 +1875,11 @@ tags: science
 ## Carl's experiment
 
 
-Thursday noon of 23 October 1997. Doctor Carl Cox smashes a ripe strawberry lying on his laboratory desk with his  forehead and shouts "It is wonderful!". He leans towards a brand new Pentium 2 computer and emails one word to his friend and colleague Neil Feynman: "Fragaria".
+Thursday noon of 23 October 1997. Doctor Carl Cox smashes a ripe strawberry lying on his laboratory desk with his  forehead and shouts "It is wonderful!".
 
 What just happened today to Carl, and, consequently, to everything else in the vicinity of the 100,000 galaxies within the Laniakea Supercluster, is quite remarkable and is worth explaining. Doctor Carl has just discovered a way of *increasing* the mass of the Sun by feeding it the dark energy from the area in space stretching billions and billions of light years. This trick, bizarrely, involves berries from the local grocery shop and works both ways: the Sun's mass can also be *reduced* by pumping it back into the surrounding area of the Universe.
 
-Carl approaches a big shiny metallic box with blinking buttons and pushes several of them. A big warning message box "Are you sure you want to execute the `big_sun` script?" appears on the computer screen of the apparatus. Without hesitation Carl presses the "Enter" button and returns to his desk with a satisfied grin on hist tired face. He wipes off berry juice from his forehead with a manuscript of a finished paper titled "Cross pollination of Honeysuckles in zero gravity by bumblebees" that was planned to be submitted to the Astrobotanical Review journal. This paper is not important anymore. Nothing really is.
+Carl approaches a big shiny metallic box with blinking buttons and pushes several of them. A big warning message box "Are you sure you want to execute the `big_sun` script?" appears on the computer screen of the apparatus. Without hesitation Carl presses the "Enter" button and returns to his desk with a satisfied grin. He wipes off berry juice from his forehead with a manuscript of a finished paper titled "Cross pollination of Honeysuckles in zero gravity by bumblebees" that was planned to be submitted to the Astrobotanical Review journal. This paper is not important anymore. Nothing really is.
 
 ## Orbital distance and Newton's Law of Universal Gravitation
 
