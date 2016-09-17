@@ -373,8 +373,8 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
   }
 </style>
 
-<!-- Message shown in old browsers. -->
 <div class="EarthOrbitSimulation EarthOrbitSimulator-hasHont">
+<!-- Message shown in old browsers. -->
 <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert EarthOrbitSimulation-isHidden">Please use a newer browser to see the simulation.</p>
 
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
