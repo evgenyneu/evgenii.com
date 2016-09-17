@@ -6,8 +6,6 @@ meta_description: "A game where you pick cosmic strawberries by altering the Ear
 tags: science
 ---
 
-## Ridiculous strawberry picking
-
 <!--
 
   Ridiculous strawberry picking game
