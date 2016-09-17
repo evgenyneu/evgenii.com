@@ -2,11 +2,15 @@
 layout: default
 noindex: true
 comments: false
-title: "Ridiculous strawberry picking"
+title: "The complete code of the 'Ridiculous strawberry picking' game"
 ---
 
-# Ridiculous strawberry picking
 
+# The source code of the 'Ridiculous strawberry picking' game
+
+This is the complete source code of the [Ridiculous strawberry picking game](/blog/ridiculous-strawberry-picking/). Feel free to use it on any web site.
+
+```Html
 <!--  To embed this simulator into your web page copy this source code until "Simulator END" comment. -->
 
 <!--
@@ -1849,78 +1853,4 @@ title: "Ridiculous strawberry picking"
 </script>
 
 <!-- Simulator END -->
-
-
-## Carl's experiment
-
-
-Thursday noon of 23 October 1997. Doctor Carl Cox smashes a ripe strawberry lying on his laboratory desk with his  forehead and shouts "It is wonderful!". He leans towards a brand new Pentium 2 computer and emails one word to his friend and colleague Neil Feynman: "Fragaria".
-
-What just happened today to Carl, and, consequently, to everything else in the vicinity of the 100,000 galaxies within the Laniakea Supercluster, is quite remarkable and is worth explaining. Doctor Carl has just discovered a way of *increasing* the mass of the Sun by feeding it the dark energy from the area in space stretching billions and billions of light years. This trick, bizarrely, involves berries from the local grocery shop and works both ways: the Sun's mass can also be *reduced* by pumping it back into the surrounding area of the Universe.
-
-Carl approaches a big shiny metallic box with blinking buttons and pushes several of them. A big warning message box "Are you sure you want to execute the `big_sun` script?" appears on the computer screen of the apparatus. Without hesitation Carl presses the "Enter" button and returns to his desk with a satisfied grin on hist tired face. He wipes off berry juice from his forehead with a manuscript of a finished paper titled "Cross pollination of Honeysuckles in zero gravity by bumblebees" that was planned to be submitted to the Astrobotanical Review journal. This paper is not important anymore. Nothing really is.
-
-## Orbital distance and Newton's Law of Universal Gravitation
-
-The short-term implications of this experiment are obvious to any student who attended an introductory astronomy class. What happens to the Earth if the mass of the Sun increases? One of the most fundamental laws, Newton's Law of Universal Gravitation, tells us that the force of attraction between two bodies is proportional to the product of their masses and inversely proportional to the square of the distance between them [1, p. 131]. This law implies, that if Carl increases the mass of the Sun, it exerts stronger gravitational force on the Earth. As a result, the Earth *moves closer* to the Sun (see Figure 1).
-
-
-<div class='isTextCentered'>
-  <img class='isMax300PxWide' src='/image/blog/2016-09-03-big-sun-experiment/massive_sun_smaller_earth_sun_distance.png' alt='Relationship between the mass of the Sun and the Sun-Earth distance'>
-  <p>Figure 1: The Earth is closer to the more massive Sun.</p>
-</div>
-
-
-## Orbital period and Kepler's third law
-
-Everybody know that it takes about 365 days for the Earth to complete one full circle around the Sun. We call this time 'a year' and astronomers call it the Earth's *orbital period*. But what happens to Earth's orbital period as it moves closer to the Sun? This question can be  answered by using Kepler third law [2, p. 27] that states that closer planets have *smaller* orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth.
-
-
-## The Sun's luminosity
-
-The increase in Sun's mass also affects its brightness, which is also called 'luminosity'. This happens because larger mass creates bigger gravitational pressure in its core, which increases the rate of fusion reaction that creates more light. How much brighter the Sun becomes if Carl doubles its mass? It will be about eight times brighter, because the luminosity of a star similar to the Sun is roughly proportional to the cube of its mass \(see Figure 2\)[3].
-
-<div class='isTextCentered'>
-  <img class='isMax500PxWide' src='/image/blog/2016-09-03-big-sun-experiment/massive_sun_is_brighter.png' alt='More massive stars are much brighter'>
-  <p>Figure 2: The bigger Sun is much brighter.</p>
-</div>
-
-## Habitable zone
-
-As we've shown, the planets receive more sunlight as the Sun's mass increases. As a result, if the Earth's distance to the Sun does not change, its average global temperature will increase. If it gets too hot, Earth's oceans will start to boil and that will probably be the death sentence to all the life on our planet. In astronomy, the range of distances from a star at which liquid water can exist on the surface of a planet is called the star's *habitable zone*. As Doctor Carl increases the mass of the Sun, its habitable zone moves *farther away*.
-
-We can see from Figure 3 that massive Sun would have more distant habitable zone. In this case, the Earth would be too close the Sun, and the water would boil and evaporate. Therefore, Carl Cox needs to be very careful and try not to keep Sun's mass high for too long. Otherwise, the heat will destroy all life on the planet.
-
-<div class='isTextCentered'>
-  <img class='isMax100PercentWide isTextCentered' src='/image/blog/2016-09-03-big-sun-experiment/star_habitable_zone.png' alt='More massive stars are much brighter'>
-  <p>Figure 3: The habitable zone of the bigger Sun is farther away.</p>
-</div>
-
-## The dark energy and the expansion of the Universe
-
-The *dark energy* is a term astronomers use to explain the observed expansion of the Universe [2, p. 726]. At this point astrophysicists do not have a clue what this dark energy actually is, nor they were able to detect it. The idea is that there is a mysterious uniform substance that fills all of space in the Universe and pushes the Universe apart. As a result, the galaxies which are not close enough to have strong gravitational attraction are moving away from each other.
-
-<div class='isTextCentered'>
-  <img class='isMax300PxWide isTextCentered' src='/image/blog/2016-09-03-big-sun-experiment/expanstion_of_universe.png' alt='Dark energy pushes the space apart.'>
-  <p>Figure 4: Dark energy makes space bigger.</p>
-</div>
-
-What would happen if Carl Cox took some of this dark energy and converted it into Sun's mass? If such a trick was possible, the space would stop inflating and start collapsing. This would, consequently, make the space smaller with time making the galaxies approach each other with increasing speeds. Would it be a good thing? If there is a space real estate market the contraction will make the available space smaller and drive the prices up. Possibly, alien space real estate agents and their customers will not be very happy about it after all.
-
-## Photo credits
-
-1. **The Blue Marble**: NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans, [source](http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg), [source](https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg).
-
-1. **The Sun photographed at 304 angstroms**: NASA/SDO (AIA), [source](http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg), [source](https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg).
-
-## References
-
-* [1]. J. Bennet, M. Donahue, N. Schneider , and M. Voit, *Cosmic perspective*. United Kingdom: Pearson Education Limited, 2014.
-
-* [2]. J. O. Bennett, G. S. Shostak, *Life in the Universe*, 4th ed. San Francisco, CA: Pearson, 2016.
-
-* [3]. "[Mass-luminosity relationship](http://hyperphysics.phy-astr.gsu.edu/hbase/Astro/herrus.html#c3)". Hyperphysics. Retrieved 2016-09-03.
-
-* [3]. [The complete source code](/files/2016/09/ridiculous_strawberry_picking/the_complete_code/) of the game.
-
-* [4]. Susskind, L., &amp; Hrabovsky, G. (2013). *The theoretical minimum: What you need to know to start doing physics*. New York: Basic Boks.
+```
