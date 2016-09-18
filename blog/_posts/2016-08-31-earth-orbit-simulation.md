@@ -777,7 +777,7 @@ The equation for the kinetic energy of the Earth with mass *m* is
   <span>(1)</span>
 </div>
 
-The potential energy, which comes from the gravitational attraction between the Sun of mass *M* and the Earth, is described by the following equation
+The potential energy, which comes from the gravitational attraction between the Sun of mass *M* and the Earth, is described by the following equation:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -866,7 +866,7 @@ Equation 8 will be used in our program to compute the angle 𝜃 from its second
 
 ## Solving equations of motions with Euler's method
 
-We have done the hard part and found Equations 5 and 8, which describe the evolution of the Sun-Earth system over time. In order to animate the Earth we need to solve these equation and find the angle 𝜃 and distance *r*. We will not attempt to solve those differential equations algebraically, but instead use a numerical Euler's method.
+We have done the hard part and found Equations 5 and 8, which describe the evolution of the Sun-Earth system over time. In order to animate the Earth we need to solve these equations and find the angle 𝜃 and distance *r*. We will not attempt to solve those differential equations algebraically, but instead use a numerical Euler's method.
 
 ## Initial conditions
 
@@ -890,7 +890,7 @@ Now we need to define the initial conditions of the angle 𝜃. We set an arbitr
 
 ## Storing the current state of the system
 
-The initial conditions describe the system at the start of the simulation. As time changes the Earth will move and the four parameters will change as well. Therefore, in our program we need store the current state of the system, which is represented by the same four values: position, angle and their time derivatives, or speeds.
+The initial conditions describe the system at the start of the simulation. As time changes the Earth will move and the four parameters will change as well. Therefore, in our program we need to store the current state of the system, which is represented by the same four values: position, angle and their time derivatives, or speeds.
 
 ```JavaScript
 var state = {
@@ -907,7 +907,7 @@ var state = {
 
 ## Computing the acceleration of the distance *r*
 
-We have set the initial conditions for the distance *r* and we know how it evolves from Equation 5. Now we can simply write this equation in our program as a function `calculateDistanceAcceleration` that computes the second time derivative of the distance *r* given the current state.
+We have set the initial conditions for the distance *r* and we know how it evolves from Equation 5. Now we can simply write this equation in our program as a function `calculateDistanceAcceleration` that computes the second time derivative of the distance *r* given the current state:
 
 ```JavaScript
 function calculateDistanceAcceleration(state) {
@@ -932,7 +932,7 @@ The key feature of the Euler's method is its ability to compute the value of a p
 
 Luckily, this is exactly what we need in our simulation. Equations 5 and 8 give as the accelerations for the distance and the angle respectively. We can then use Euler's method to find velocities from these accelerations. And by repeating the same trick again, we can find the distance and the angle from their speeds.
 
-To do this, we write a function called `newValue`. It computes the new value of a physical property by using its `derivative` and the time increment `deltaT`.
+To do this, we write a function called `newValue`. It computes the new value of a physical property by using its `derivative` and the time increment `deltaT`:
 
 ```JavaScript
 function newValue(currentValue, deltaT, derivative) {
@@ -940,11 +940,11 @@ function newValue(currentValue, deltaT, derivative) {
 }
 ```
 
-In our program, the value `deltaT` will be a very small time increment, less than 0.001 second, which will allow us to approximate the motion of the Earth with reasonable precision.
+In our program, the value `deltaT` will be a very small time increment, about 90 seconds, which will allow us to approximate the motion of the Earth with reasonable precision.
 
 ## Finding the distance *r*
 
-Now we are ready to bring all pieces together and write the code that computes the distance *r* from its second derivative. First, we use the function `calculateDistanceAcceleration` to calculate the acceleration *r*. Then we call `newValue` to find the speed by using the acceleration. And finally, we use the speed to find the distance *r* itself.
+Now we are ready to bring all pieces together and write the code that computes the distance *r* from its second derivative. First, we use the function `calculateDistanceAcceleration` to calculate the acceleration *r*. Then we call `newValue` to find the speed by using the acceleration. And finally, we use the speed to find the distance *r* itself:
 
 ```JavaScript
 var distanceAcceleration = calculateDistanceAcceleration(state);
@@ -958,7 +958,7 @@ state.distance.value = newValue(state.distance.value,
 
 ## Finding the distance 𝜃
 
-We use exactly the same procedure to find the angle 𝜃. First, we find its acceleration with the function `calculateAngleAcceleration`. Then, we use it to find the angular speed by calling the function `newValue`. And finally, we compute the angle 𝜃 from its angular speed.
+We use exactly the same procedure to find the angle 𝜃. First, we find its acceleration with the function `calculateAngleAcceleration`. Then, we use it to find the angular speed by calling the function `newValue`. And finally, we compute the angle 𝜃 from its angular speed:
 
 ```JavaScript
 var angleAcceleration = calculateAngleAcceleration(state);
@@ -974,9 +974,9 @@ state.angle.value = newValue(state.angle.value,
 
 We have learned how to compute both coordinates *r* and 𝜃 of the Earth. Now all that remains to be done is to run this code many times per second and the system will evolve before our eyes. Our program translates the polar coordinates into the actual coordinates of the Earth image on the computer screen and the simulation produces a very natural orbital motion.
 
-I personally find it almost magical that the simulation works at all. Remember that we started with just the Equations 1 and 2 for the kinetic and potential energies of the Sun-Earth system. Then we used those equations to write a Lagrangian equation 3 and find the equations of motions 5 and 8. And finally, we plugged those two equations into the computer that solved them using the Euler's method. This gave us the precise position of the Earth as the time changes.
+I personally find it almost magical that the simulation works at all. Remember that we started with just the Equations 1 and 2 for the kinetic and potential energies of the Sun-Earth system. Then we used those equations to write a Lagrangian equation 3 and find the equations of motions 5 and 8. And finally, we solved those two equations numerically using the Euler's method. This gave us the precise position of the Earth as the time changes.
 
-For me it is hard to believe that such complex thing as the motion of a planet around its star can be computed so easily from the energy of the system. And yet it moves.
+For me it is hard to believe that such complex thing as the motion of a planet around its star can be computed so easily from the energy of the system. And yet, it moves.
 
 
 ## Photo credits
