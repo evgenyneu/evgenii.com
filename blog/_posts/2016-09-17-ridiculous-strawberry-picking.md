@@ -81,7 +81,7 @@ Thursday noon of 23 October 1997. Doctor Carl Cox smashes a ripe strawberry lyin
 
 What just happened today to Carl &mdash; and, consequently, to everything else in the vicinity of the 100,000 galaxies within the Laniakea Supercluster &mdash; is quite remarkable and is worth explaining. Doctor Carl has just discovered a way of *increasing* the mass of the Sun by feeding it the dark energy from the area in space stretching billions and billions of light years. This trick, bizarrely, involves berries from the local grocery shop and works both ways: the Sun's mass can also be *reduced* by pumping it back into the surrounding area of the Universe.
 
-Carl approaches a big shiny metallic box with blinking buttons and pushes several of them. A big warning message box "Are you sure you want to execute the `big_sun` script?" appears on the screen of the apparatus. Without hesitation Carl presses the "Enter" button and returns to his desk with a satisfied grin. He wipes off berry juice from his forehead with a manuscript of a finished paper titled "Cross pollination of Honeysuckles in zero gravity by bumblebees" that was planned to be submitted to the Astrobotanical Review journal. This paper is not important anymore. Nothing really is.
+Carl approaches a big shiny metallic box with blinking buttons and pushes several of them. A warning message box "Are you sure you want to execute the `big_sun` script?" appears on the screen of the apparatus. Without hesitation Carl presses the "Enter" button and returns to his desk with a satisfied grin. He wipes off berry juice from his forehead with a manuscript of a finished paper titled "Cross pollination of Honeysuckles in zero gravity by bumblebees" that was planned to be submitted to the Astrobotanical Review journal. This paper is not important anymore. Nothing really is.
 
 ## Orbital distance and Newton's Law of Universal Gravitation
 
@@ -96,12 +96,12 @@ The short-term implications of this experiment are obvious to any student who at
 
 ## Orbital period and Kepler's third law
 
-Everybody know that it takes about 365 days for the Earth to complete one full circle around the Sun. We call this time 'a year' and astronomers call it the Earth's *orbital period*. But what happens to Earth's orbital period as it moves closer to the Sun? This question can be  answered by using Kepler's third law [[2, p. 27]](#references) that states &mdash; closer planets have *smaller* orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth.
+Everybody know that it takes about 365 days for the Earth to complete one full circle around the Sun. We call this time 'a year' and astronomers call it the Earth's *orbital period*. But what happens to Earth's orbital period as the planet moves closer to the Sun? This question can be  answered by using Kepler's third law [[2, p. 27]](#references) that states &mdash; closer planets have *smaller* orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth.
 
 
 ## The Sun's luminosity
 
-The increase in Sun's mass also affects its brightness, which is also called 'luminosity'. This happens because larger mass creates bigger gravitational pressure in its core, which increases the rate of fusion reaction that creates more light. How much brighter the Sun becomes if Carl doubles its mass? Figure 2 demonstrates that the Sun will be about eight times brighter, because the luminosity of a star similar to the Sun is roughly proportional to the cube of its mass [[3]](#references).
+The increase in Sun's mass also affects its brightness, which is also called 'luminosity'. This happens because larger mass creates bigger gravitational pressure in its core, which increases the rate of fusion reactions and creates more light. How much brighter the Sun becomes if Carl doubles its mass? Figure 2 demonstrates that the Sun will be about eight times brighter, because the luminosity of a star similar to the Sun is roughly proportional to the cube of its mass [[3]](#references).
 
 <div class='isTextCentered'>
   <img class='isMax500PxWide' src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/massive_sun_is_brighter.png' alt='More massive stars are much brighter'>
