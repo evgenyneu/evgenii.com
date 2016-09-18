@@ -85,7 +85,7 @@ Carl approaches a big shiny metallic box with blinking buttons and pushes severa
 
 ## Orbital distance and Newton's Law of Universal Gravitation
 
-The short-term implications of this experiment are obvious to any student who attended an introductory astronomy class. What happens to the Earth if the mass of the Sun increases? One of the most fundamental laws, Newton's Law of Universal Gravitation, tells us that the force of attraction between two bodies is proportional to the product of their masses and inversely proportional to the square of the distance between them [[1, p. 131]](#references). This law implies, that if Carl increases the mass of the Sun, it exerts stronger gravitational force on the Earth. As a result, the Earth *moves closer* to the Sun (see Figure 1).
+The short-term implications of this experiment are obvious to any student who attended an introductory astronomy class. What happens to the Earth if the mass of the Sun increases? One of the most fundamental laws, Newton's Law of Universal Gravitation, tells us that the force of attraction between two bodies is proportional to the product of their masses and inversely proportional to the square of the distance between them [[1, p. 131]](#references). This law implies, that if Carl increases the mass of the Sun, it will exert stronger gravitational force on the Earth. As a result, the Earth *moves closer* to the Sun (see Figure 1).
 
 
 <div class='isTextCentered'>
