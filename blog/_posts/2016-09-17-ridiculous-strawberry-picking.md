@@ -128,7 +128,7 @@ The *dark energy* is a term astronomers use to explain the observed expansion of
   <p>Figure 4: Dark energy makes space bigger.</p>
 </div>
 
-What would happen if Carl Cox took some of this dark energy and converted it into Sun's mass? If such a trick was possible, the space would stop inflating and start collapsing. This would, consequently, make the space smaller with time making the galaxies approach each other with increasing speeds. Would it be a good thing? Possibly, but if there is a space real estate market the contraction will make the available space smaller and drive the prices up. And that can make some alien real estate buyers very, very unhappy.
+What would happen if Carl Cox took some of this dark energy and converted it into Sun's mass? If such a trick was possible, the space would stop inflating and start collapsing. This would, consequently, make the space smaller with time making the galaxies approach each other with increasing speeds. Would it be a good thing? Possibly, but if there is a space real estate market &mdash; the contraction will make the available space smaller and drive the prices up. And that can make some alien real estate buyers very, very unhappy.
 
 ## Image credits
 
