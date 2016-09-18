@@ -43,6 +43,7 @@ tags: programming science
   .EarthOrbitSimulation-earth {
     position: absolute;
     width: 25px;
+    top: -1000px;
     -webkit-animation:spin .1s linear infinite;
     -moz-animation:spin .1s linear infinite;
     animation:spin .1s linear infinite;
