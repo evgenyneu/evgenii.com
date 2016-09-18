@@ -440,6 +440,22 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
 
 <script>
 
+/*
+
+Ridiculous strawberry picking game
+
+http://evgenii.com/blog/ridiculous-strawberry-picking/
+
+License: Public Domain
+
+Image credits
+=============
+
+1. "The Blue Marble" By  NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans. Sources: http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg, https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg
+
+2. "The Sun photographed at 304 angstroms" by NASA/SDO (AIA). Sources: http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg, https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg
+
+*/
 (function(){
 // A Slider UI element
 function SickSlider(sliderElementSelector) {
@@ -682,7 +698,7 @@ var climate = (function() {
 
     if (isEarthDead()) {
       physics.state.paused = true;
-      var message = currentTemperatureCelsius > 10 ? "All animal species living on the surface of the planet have become extinct due to high global temperature that caused some of the water to evaporate and create a runaway greenhouse effect which increased the temperature further." : "All animal species animal species living on the surface of the planet have become extinct due to low global temperature that caused the shutdown of photosynthesis in plants.";
+      var message = currentTemperatureCelsius > 10 ? "High global temperature caused some of the water to evaporate and create a runaway greenhouse effect. The temperature rose even higher, and all animal species living on the surface of the planet have become extinct." : "Low global temperature caused the shutdown of photosynthesis in plants. All animal species living on the surface of the planet have become extinct.";
       gameoverMessage.show(message);
       return;
     }
@@ -1438,7 +1454,7 @@ var strawberries = (function(){
       physics.state.paused = true;
       shownSunWasRemovedMessage = true;
 
-      gameoverMessage.showWithContinueButton("Greetings Earthlings! We detected an unauthorized dark energy transfer that slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The association of intergalactic spacelords.", didTapContinueButtonAfterSunHasBeenRemoved);
+      gameoverMessage.showWithContinueButton("Greetings Earthlings! We detected an unauthorized dark energy transfer that slowed down the inflation of the Universe and triggered a cosmic real estate crisis. To restore our profits we have removed your star. We apologize for any inconvenience and wish you a good night. ~The Intergalactic Realty Association of Neighbourly Temporal Spacelords.", didTapContinueButtonAfterSunHasBeenRemoved);
     }
   }
 
@@ -1455,7 +1471,7 @@ var strawberries = (function(){
       physics.state.paused = true;
       shownstrawberryHasLandedOnEarthMessage = true;
 
-      gameoverMessage.showWithContinueButton("A giant strawberry-shaped object safely landed on the Earth. The landing site has soon become a popular tourist attraction where one can buy a smoothie or a strawberry-shaped souvenir.", didTapContinueButtonAfterCollisionWithEarth);
+      gameoverMessage.showWithContinueButton("A giant strawberry-shaped object safely landed on the Earth. Its landing site became a thriving tourist attraction, where one can sip on a strawberry smoothie from a strawberry-shaped disposable cup, while perusing a vast selection of strawberry shaped key chains, baseball caps and spaceship fresheners.", didTapContinueButtonAfterCollisionWithEarth);
     }
   }
 
