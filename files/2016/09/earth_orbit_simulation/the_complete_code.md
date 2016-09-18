@@ -573,7 +573,7 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
       sunElement.setAttribute("style","filter:brightness(" + sunMass + "); " +
         "-webkit-filter:brightness(" + sunMass + "); ");
       var sunsDefaultWidth = sunsSize;
-      currentSunsSize = sunsDefaultWidth * Math.pow(sunMass, 1/5);
+      currentSunsSize = sunsDefaultWidth * Math.pow(sunMass, 1/3);
       sunElement.style.width = currentSunsSize + "px";
       sunElement.style.marginLeft = -(currentSunsSize / 2.0) + "px"
       sunElement.style.marginTop = -(currentSunsSize / 2.0) + "px"
