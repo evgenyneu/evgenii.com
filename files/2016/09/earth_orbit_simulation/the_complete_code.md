@@ -11,15 +11,28 @@ title: "The complete code of the Earth orbit simulation."
 This is the complete source code of the [simulation of the Earth orbiting the Sun](/blog/earth-orbit-simulation/). Feel free to use it on any web site.
 
 ```Html
-<!--  To embed this simulator into your web page copy this source code until "Simulator END" comment. -->
+<!--
+
+  To embed this simulator into your web page copy this source code until "Simulator END" comment.
+
+  Note that the code uses the images loaded from http://evgenii.com web site. You will need to host these images if you want to make sure the game always works and is not dependent on evgenii.com web site.
+
+-->
 
 <!--
 
   Earth Orbit Simulator
 
-  http://evgenii.com
+  http://evgenii.com/blog/earth-orbit-simulation
 
   License: Public Domain
+
+  Image credits
+  =============
+
+  1. "The Blue Marble" By  NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans. Sources: http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg, https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg
+
+  2. "The Sun photographed at 304 angstroms" by NASA/SDO (AIA). Sources: http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg, https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg
 
 -->
 
@@ -35,6 +48,7 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
   .EarthOrbitSimulation-container {
     background-color: #000000;
     position: relative;
+    height: 400px;
     background-image: url("http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
     background-position: center bottom;
     background-repeat: repeat;
@@ -47,6 +61,7 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
   .EarthOrbitSimulation-earth {
     position: absolute;
     width: 25px;
+    top: -1000px;
     -webkit-animation:spin .1s linear infinite;
     -moz-animation:spin .1s linear infinite;
     animation:spin .1s linear infinite;
@@ -77,23 +92,6 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
     transform: translateY(-50%);
   }
 
-  .EarthOrbitSimulation-earthEndButton {
-    color: #ffb100;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 10px;
-    border: 1px solid #ffb100;
-  }
-
-  .EarthOrbitSimulation-reloadButton {
-    background-color: #ff9400;
-    color: #ffffff;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 10px;
-    border: 1px solid #ffb100;
-  }
-
   .EarthOrbitSimulation-sun {
     position: absolute;
     width: 60px;
@@ -121,6 +119,56 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
     -o-user-select: none;
     user-select: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  }
+
+  /*
+    Hud display
+    ---------
+  */
+
+  .EarthOrbitSimulation-hudContainer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+  }
+
+  .EarthOrbitSimulation-hudContainerChild {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /*
+    Reload button
+    ---------
+  */
+
+  .EarthOrbitSimulation-reload {
+    position: absolute;
+    display: block;
+    bottom: 10px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    outline: none;
+  }
+
+  .EarthOrbitSimulation-reload:focus { outline: none; }
+
+  .EarthOrbitSimulation-reloadIcon {
+    width: 100%;
+    border : 0;
+  }
+
+  .EarthOrbitSimulation-massSlider {
+    max-width: 400px;
+    margin: 0 auto;
   }
 
   /*
@@ -169,15 +217,15 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
       <div class="EarthOrbitSimulation-earthEndMessage">
         "My wonder button is being pushed all the time."
         <br><br>Carl Sagan
-        <br><br><br>
-        <a class="EarthOrbitSimulation-earthEndButton" href="#">💥 Wonder Button ✨</a>
       </div>
 
     </div>
-</div>
-<div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
-  <br>
-  Mass of the Sun: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
+
+    <div class='EarthOrbitSimulation-hudContainer'>
+      <div class='EarthOrbitSimulation-hudContainerChild'>
+        <a class='EarthOrbitSimulation-reload' href='#'><img src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/reload_icon.png' alt='Restart' class='EarthOrbitSimulation-reloadIcon'></a>
+      </div>
+    </div>
 </div>
 
 <div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
@@ -185,9 +233,9 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
   <div class="SickSlider-head"></div>
 </div>
 
-<p class="EarthOrbitSimulation-isTextCentered">
-  <a class="EarthOrbitSimulation-reloadButton" href="#">Restart</a>
-</p>
+<div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
+  Mass of the Sun: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
+</div>
 
 <p class='EarthOrbitSimulation-debugOutput'></p>
 
@@ -201,7 +249,8 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
       // The function will be passed the slider position: a number between 0 and 1.
       onSliderChange: null,
       // Store the previous slider value in order to prevent calling onSliderChange function with the same argument
-      previousSliderValue: -42
+      previousSliderValue: -42,
+      didRequestUpdateOnNextFrame: false
     };
 
     // Initializes the slider element
@@ -226,7 +275,7 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
         that.updateHeadPositionOnTouch(e);
       });
 
-      that.slider.onselectstart = function () { return false; }
+      that.slider.onselectstart = function () { return false; };
 
       // End dragging slider
       // -----------------
@@ -254,6 +303,12 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
       document.addEventListener("touchmove", function(e) {
         if (!sliding) { return; }
         that.updateHeadPositionOnTouch(e);
+      });
+
+      that.slider.addEventListener("touchmove", function(e) {
+        if (typeof e.preventDefault !== 'undefined' && e.preventDefault !== null) {
+          e.preventDefault(); // Prevent screen from sliding on touch devices when the element is dragged.
+        }
       });
     };
 
@@ -309,15 +364,26 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
     //
     that.updateHeadPositionOnTouch = function(e) {
       var sliderValue = that.sliderValueFromCursor(e);
-      that.changePosition(sliderValue);
+
+      // Handle the head change only if it changed significantly (more than 0.1%)
+      if (Math.round(that.previousSliderValue * 1000) === Math.round(sliderValue * 1000)) { return; }
+      that.previousSliderValue = sliderValue;
+
+      if (!that.didRequestUpdateOnNextFrame) {
+        // Update the slider on next redraw, to improve performance
+        that.didRequestUpdateOnNextFrame = true;
+        window.requestAnimationFrame(that.updateOnFrame);
+      }
+    };
+
+    that.updateOnFrame = function() {
+      that.changePosition(that.previousSliderValue);
 
       if (that.onSliderChange) {
-        if (that.previousSliderValue !== sliderValue) {
-          that.onSliderChange(sliderValue);
-        }
-
-        that.previousSliderValue = sliderValue;
+        that.onSliderChange(that.previousSliderValue);
       }
+
+      that.didRequestUpdateOnNextFrame = false;
     };
 
     that.init(sliderElementSelector);
@@ -504,6 +570,8 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
 
     // Updates the size of the Sun based on its mass. The sunMass argument is a fraction of the real Sun's mass.
     function updateSunSize(sunMass) {
+      sunElement.setAttribute("style","filter:brightness(" + sunMass + "); " +
+        "-webkit-filter:brightness(" + sunMass + "); ");
       var sunsDefaultWidth = sunsSize;
       currentSunsSize = sunsDefaultWidth * Math.pow(sunMass, 1/5);
       sunElement.style.width = currentSunsSize + "px";
@@ -638,8 +706,7 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
   // React to user input
   var userInput = (function(){
     var sunsMassElement = document.querySelector(".EarthOrbitSimulation-sunsMass");
-    var restartButton = document.querySelector(".EarthOrbitSimulation-earthEndButton");
-    var restartButtonTwo = document.querySelector(".EarthOrbitSimulation-reloadButton");
+    var restartButton = document.querySelector(".EarthOrbitSimulation-reload");
     var massSlider;
 
     function updateSunsMass(sliderValue) {
@@ -670,7 +737,6 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
       massSlider.onSliderChange = updateSunsMass;
       massSlider.changePosition(0.5);
       restartButton.onclick = didClickRestart;
-      restartButtonTwo.onclick = didClickRestart;
     }
 
     return {
