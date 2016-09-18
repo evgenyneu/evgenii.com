@@ -77,11 +77,11 @@ tags: science
 ## Carl's experiment
 
 
-Thursday noon of 23 October 1997. Doctor Carl Cox smashes a ripe strawberry lying on his laboratory desk with his  forehead and shouts "It is wonderful!".
+Thursday noon of 23 October 1997. Doctor Carl Cox smashes a ripe strawberry lying on his laboratory desk with his  forehead and shouts "It is wonderful!"
 
-What just happened today to Carl, and, consequently, to everything else in the vicinity of the 100,000 galaxies within the Laniakea Supercluster, is quite remarkable and is worth explaining. Doctor Carl has just discovered a way of *increasing* the mass of the Sun by feeding it the dark energy from the area in space stretching billions and billions of light years. This trick, bizarrely, involves berries from the local grocery shop and works both ways: the Sun's mass can also be *reduced* by pumping it back into the surrounding area of the Universe.
+What just happened today to Carl &mdash; and, consequently, to everything else in the vicinity of the 100,000 galaxies within the Laniakea Supercluster &mdash; is quite remarkable and is worth explaining. Doctor Carl has just discovered a way of *increasing* the mass of the Sun by feeding it the dark energy from the area in space stretching billions and billions of light years. This trick, bizarrely, involves berries from the local grocery shop and works both ways: the Sun's mass can also be *reduced* by pumping it back into the surrounding area of the Universe.
 
-Carl approaches a big shiny metallic box with blinking buttons and pushes several of them. A big warning message box "Are you sure you want to execute the `big_sun` script?" appears on the computer screen of the apparatus. Without hesitation Carl presses the "Enter" button and returns to his desk with a satisfied grin. He wipes off berry juice from his forehead with a manuscript of a finished paper titled "Cross pollination of Honeysuckles in zero gravity by bumblebees" that was planned to be submitted to the Astrobotanical Review journal. This paper is not important anymore. Nothing really is.
+Carl approaches a big shiny metallic box with blinking buttons and pushes several of them. A big warning message box "Are you sure you want to execute the `big_sun` script?" appears on the screen of the apparatus. Without hesitation Carl presses the "Enter" button and returns to his desk with a satisfied grin. He wipes off berry juice from his forehead with a manuscript of a finished paper titled "Cross pollination of Honeysuckles in zero gravity by bumblebees" that was planned to be submitted to the Astrobotanical Review journal. This paper is not important anymore. Nothing really is.
 
 ## Orbital distance and Newton's Law of Universal Gravitation
 
@@ -96,7 +96,7 @@ The short-term implications of this experiment are obvious to any student who at
 
 ## Orbital period and Kepler's third law
 
-Everybody know that it takes about 365 days for the Earth to complete one full circle around the Sun. We call this time 'a year' and astronomers call it the Earth's *orbital period*. But what happens to Earth's orbital period as it moves closer to the Sun? This question can be  answered by using Kepler third law [[2, p. 27]](#references) that states that closer planets have *smaller* orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth.
+Everybody know that it takes about 365 days for the Earth to complete one full circle around the Sun. We call this time 'a year' and astronomers call it the Earth's *orbital period*. But what happens to Earth's orbital period as it moves closer to the Sun? This question can be  answered by using Kepler's third law [[2, p. 27]](#references) that states &mdash; closer planets have *smaller* orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth.
 
 
 ## The Sun's luminosity
@@ -112,7 +112,7 @@ The increase in Sun's mass also affects its brightness, which is also called 'lu
 
 As we've shown, the planets receive more sunlight as the Sun's mass increases. As a result, if the Earth's distance to the Sun does not change, its average global temperature will increase. If it gets too hot, Earth's oceans will start to boil and that will probably be the death sentence to all the life on our planet. In astronomy, the range of distances from a star at which liquid water can exist on the surface of a planet is called the star's *habitable zone*. As Doctor Carl increases the mass of the Sun, its habitable zone moves *farther away*.
 
-We can see from Figure 3 that massive Sun would have more distant habitable zone. In this case, the Earth would be too close the Sun, and the water would boil and evaporate. Therefore, Carl Cox needs to be very careful and try not to keep Sun's mass high for too long. Otherwise, the heat will destroy all life on the planet.
+We can see from Figure 3 that massive Sun would have more distant habitable zone. In this case, the Earth would be too close to the Sun, and the water would boil and evaporate. Therefore, Carl Cox needs to be very careful and try not to keep Sun's mass high for too long. Otherwise, the heat will destroy all life on the planet.
 
 <div class='isTextCentered'>
   <img class='isMax100PercentWide isTextCentered' src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/star_habitable_zone.png' alt='More massive stars are much brighter'>
