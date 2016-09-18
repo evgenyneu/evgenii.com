@@ -684,7 +684,7 @@ tags: programming science
 
 <br>
 
-This tutorial shows how to program a simulation of the Earth orbiting the Sun with HTML/JavaScript. I went through the basics of creating an HTML simulation in the [harmonic oscillator tutorial](/blog/programming-harmonic-oscillator/), please refer to it in order to get started. This tutorial will not be as detailed as the previous one. Here I will only introduce the physics and math behind the orbital simulation.
+This tutorial shows how to program a simulation of the Earth orbiting the Sun with HTML/JavaScript. We went through the basics of creating an HTML simulation in the [harmonic oscillator tutorial](/blog/programming-harmonic-oscillator/), please refer to it in order to get started. This tutorial will not be as detailed as the one about the harmonic oscillator. Here we will only discuss the physics and math behind the orbital simulation.
 
 This work is based largely on the concepts from the book by Leonard Susskind and George Hrabovsky *The theoretical minimum: What you need to know to start doing physics*. It an an excellent book that introduces classical mechanics and explains how to write the equations of motion of a system using the Lagrangian and Hamiltonian methods. There are also Susskind's [YouTube video lectures](https://youtu.be/ApUFtLCrU90) that cover the same material. Please refer to these resources if you want more information on the physics used here.
 
@@ -730,7 +730,7 @@ Letter *G* in Equation 2 is the *gravitational constant*:
 
 ## The Lagrangian
 
-We will find the equations of motions using the Lagrangian, which is the kinetic energy minus the potential energy of the system:
+We will find the equations of motions using the Lagrangian, which is the kinetic energy minus the potential energy of the Sun-Earth system:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -798,9 +798,9 @@ We make the second time derivative of the angle 𝜃 the subject of the equation
 
 Equation 8 will be used in our program to compute the angle 𝜃 from its second derivative.
 
-## Solving equations of motions with Euler method
+## Solving equations of motions with Euler's method
 
-We have done the hard part and found Equations 5 and 8, which describe the evolution of the Sun-Earth system over time. In order to draw the Earth we need to solve these equation and find the angle 𝜃 and distance *r*. We will not attempt to solve those differential equations algebraically, but instead use a numerical Euler's method.
+We have done the hard part and found Equations 5 and 8, which describe the evolution of the Sun-Earth system over time. In order to animate the Earth we need to solve these equation and find the angle 𝜃 and distance *r*. We will not attempt to solve those differential equations algebraically, but instead use a numerical Euler's method.
 
 ## Initial conditions
 
@@ -820,7 +820,7 @@ var initialConditions = {
 };
 ```
 
-Now we need to define the initial conditions of the angle 𝜃. We set an arbitrary value of 𝛑 over six radians, since it does not matter at which angle the simulation is started. However, the initial time derivative of the angle 𝜃, or the angular speed, does matter and can be obtained using simple calculations. The Earth makes the full circle in one year, therefore, we can find the angular speed by just dividing 2𝛑 over the number of seconds in the sidereal year.
+Now we need to define the initial conditions of the angle 𝜃. We set an arbitrary value of 𝛑/6 radians, since it does not matter at which angle the simulation is started. The value of initial time derivative of the angle 𝜃, or the angular speed, does matter and can be obtained using a simple calculation. The Earth makes the full circle in one year, therefore, we can approximate its angular speed by dividing 2𝛑 by the number of seconds in the sidereal year.
 
 ## Storing the current state of the system
 
@@ -841,7 +841,7 @@ var state = {
 
 ## Computing the acceleration of the distance *r*
 
-We have set the initial conditions for the distance *r* and we know how it evolves from Equation 5. Now we can simply write this equation in our program as a function `calculateDistanceAcceleration` that computes the second time derivative of the angle distance *r* given the current state.
+We have set the initial conditions for the distance *r* and we know how it evolves from Equation 5. Now we can simply write this equation in our program as a function `calculateDistanceAcceleration` that computes the second time derivative of the distance *r* given the current state.
 
 ```JavaScript
 function calculateDistanceAcceleration(state) {
@@ -862,11 +862,11 @@ function calculateAngleAcceleration(state) {
 
 ## Finding a value from its derivative with Euler's method
 
-The key feature of the Euler's method is its ability to compute the value of a physical property from its time derivative. For example, the method allows to compute the distance from speed. Similarly, it can give us the speed from the acceleration.
+The key feature of the Euler's method is its ability to compute the value of a physical property from its derivative. For example, the method allows to compute the distance from speed. Similarly, it can give us the speed from the acceleration.
 
-Luckily, this is exactly what we need in our simulation. Equations 5 and 8 give as the accelerations for the distance and the angle respectively. We can then use Euler's method to find velocities from those accelerations. And by repeating the same trick again, we can find the distance and the angle from their speeds.
+Luckily, this is exactly what we need in our simulation. Equations 5 and 8 give as the accelerations for the distance and the angle respectively. We can then use Euler's method to find velocities from these accelerations. And by repeating the same trick again, we can find the distance and the angle from their speeds.
 
-To do this, we write a function called `newValue`. It computers the new value of a physical property by using its `derivative` and the time increment `deltaT`.
+To do this, we write a function called `newValue`. It computes the new value of a physical property by using its `derivative` and the time increment `deltaT`.
 
 ```JavaScript
 function newValue(currentValue, deltaT, derivative) {
