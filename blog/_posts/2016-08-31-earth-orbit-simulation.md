@@ -972,7 +972,7 @@ state.angle.value = newValue(state.angle.value,
 
 ## Moving the planet
 
-We have learned how to compute both coordinates *r* and 𝜃 of the Earth. Now all that remains to be done is to run this code many times per second and the system will evolve before our eyes. Our program translates the polar coordinates into the actual coordinates of the Earth image on the computer screen and the simulation produces a very natural orbital motion.
+We have learned how to compute both coordinates *r* and 𝜃 of the Earth. Now all that remains to be done is to run this code repeatedly in a loop and the system will evolve before our eyes. Our program translates the polar coordinates into the actual coordinates of the Earth image on the computer screen and the simulation produces a very natural orbital motion.
 
 I personally find it almost magical that the simulation works at all. Remember that we started with just the Equations 1 and 2 for the kinetic and potential energies of the Sun-Earth system. Then we used those equations to write a Lagrangian equation 3 and find the equations of motions 5 and 8. And finally, we solved those two equations numerically using the Euler's method. This gave us the precise position of the Earth as the time changes.
 
