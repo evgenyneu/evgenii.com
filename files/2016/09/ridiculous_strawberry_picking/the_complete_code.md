@@ -81,6 +81,9 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
     margin-left: -30px;
     margin-top: -30px;
     z-index: 999;
+    -webkit-animation:spin .5s linear infinite;
+    -moz-animation:spin .5s linear infinite;
+    animation:spin .5s linear infinite;
   }
 
   .EarthOrbitSimulation-earth {
@@ -88,7 +91,14 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
     width: 25px;
     top: -1000px;
     z-index: 1000;
+    -webkit-animation:spin .1s linear infinite;
+    -moz-animation:spin .1s linear infinite;
+    animation:spin .1s linear infinite;
   }
+
+  @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
+  @-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
+  @keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
 
   .EarthOrbitSimulation-strawberry {
     position: absolute;
@@ -132,10 +142,16 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
 
   .EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-earth {
     opacity: 0.3;
+    -webkit-animation: none;
+    -moz-animation: none;
+    animation: none;
   }
 
   .EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-sun {
     opacity: 0.3;
+    -webkit-animation: none;
+    -moz-animation: none;
+    animation: none;
   }
 
   .EarthOrbitSimulation-hasGameoverMessage .EarthOrbitSimulation-canvasHabitableZone {
