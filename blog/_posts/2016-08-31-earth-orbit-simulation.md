@@ -73,14 +73,6 @@ tags: programming science
     transform: translateY(-50%);
   }
 
-  .EarthOrbitSimulation-earthEndButton {
-    color: #ffb100;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 10px;
-    border: 1px solid #ffb100;
-  }
-
   .EarthOrbitSimulation-sun {
     position: absolute;
     width: 60px;
@@ -155,6 +147,11 @@ tags: programming science
     border : 0;
   }
 
+  .EarthOrbitSimulation-massSlider {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
   /*
 
   Sick Slider
@@ -201,8 +198,6 @@ tags: programming science
       <div class="EarthOrbitSimulation-earthEndMessage">
         "My wonder button is being pushed all the time."
         <br><br>Carl Sagan
-        <br><br><br>
-        <a class="EarthOrbitSimulation-earthEndButton" href="#">💥 Wonder Button ✨</a>
       </div>
 
     </div>
@@ -235,7 +230,8 @@ tags: programming science
       // The function will be passed the slider position: a number between 0 and 1.
       onSliderChange: null,
       // Store the previous slider value in order to prevent calling onSliderChange function with the same argument
-      previousSliderValue: -42
+      previousSliderValue: -42,
+      didRequestUpdateOnNextFrame: false
     };
 
     // Initializes the slider element
@@ -288,6 +284,12 @@ tags: programming science
       document.addEventListener("touchmove", function(e) {
         if (!sliding) { return; }
         that.updateHeadPositionOnTouch(e);
+      });
+
+      that.slider.addEventListener("touchmove", function(e) {
+        if (typeof e.preventDefault !== 'undefined' && e.preventDefault !== null) {
+          e.preventDefault(); // Prevent screen from sliding on touch devices when the element is dragged.
+        }
       });
     };
 
@@ -343,15 +345,26 @@ tags: programming science
     //
     that.updateHeadPositionOnTouch = function(e) {
       var sliderValue = that.sliderValueFromCursor(e);
-      that.changePosition(sliderValue);
+
+      // Handle the head change only if it changed significantly (more than 0.1%)
+      if (Math.round(that.previousSliderValue * 1000) === Math.round(sliderValue * 1000)) { return; }
+      that.previousSliderValue = sliderValue;
+
+      if (!that.didRequestUpdateOnNextFrame) {
+        // Update the slider on next redraw, to improve performance
+        that.didRequestUpdateOnNextFrame = true;
+        window.requestAnimationFrame(that.updateOnFrame);
+      }
+    };
+
+    that.updateOnFrame = function() {
+      that.changePosition(that.previousSliderValue);
 
       if (that.onSliderChange) {
-        if (that.previousSliderValue !== sliderValue) {
-          that.onSliderChange(sliderValue);
-        }
-
-        that.previousSliderValue = sliderValue;
+        that.onSliderChange(that.previousSliderValue);
       }
+
+      that.didRequestUpdateOnNextFrame = false;
     };
 
     that.init(sliderElementSelector);
@@ -674,8 +687,7 @@ tags: programming science
   // React to user input
   var userInput = (function(){
     var sunsMassElement = document.querySelector(".EarthOrbitSimulation-sunsMass");
-    var restartButton = document.querySelector(".EarthOrbitSimulation-earthEndButton");
-    var restartButtonTwo = document.querySelector(".EarthOrbitSimulation-reload");
+    var restartButton = document.querySelector(".EarthOrbitSimulation-reload");
     var massSlider;
 
     function updateSunsMass(sliderValue) {
@@ -706,7 +718,6 @@ tags: programming science
       massSlider.onSliderChange = updateSunsMass;
       massSlider.changePosition(0.5);
       restartButton.onclick = didClickRestart;
-      restartButtonTwo.onclick = didClickRestart;
     }
 
     return {
