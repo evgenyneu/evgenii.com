@@ -752,7 +752,7 @@ tags: programming science
 
 This tutorial shows how to program a simulation of the Earth orbiting the Sun with HTML/JavaScript. The complete source code of the simulation can be viewed [here](/files/2016/09/earth_orbit_simulation/the_complete_code/). We went through the basics of creating an HTML simulation in the [harmonic oscillator tutorial](/blog/programming-harmonic-oscillator/), please refer to it in order to get started. This tutorial will not be as detailed as the one about the harmonic oscillator. Here we will only discuss the physics and math behind the orbital simulation.
 
-This work is based largely on the concepts from the book by Leonard Susskind and George Hrabovsky *"The theoretical minimum: What you need to know to start doing physics"*. It an excellent book that introduces classical mechanics and explains how to write the equations of motion of a system using the Lagrangian and Hamiltonian methods. There are also Susskind's [YouTube video lectures](https://youtu.be/ApUFtLCrU90) that cover the same material. Please refer to these resources if you want more information on the physics used here.
+This work is based largely on the concepts from the book by Leonard Susskind and George Hrabovsky *"The theoretical minimum: What you need to know to start doing physics"*. It is an excellent book that introduces classical mechanics and explains how to write the equations of motion of a system using the Lagrangian and Hamiltonian methods. There are also Susskind's [YouTube video lectures](https://youtu.be/ApUFtLCrU90) that cover the same material. Please refer to these resources if you want more information on the physics used here.
 
 ## The coordinate system
 
@@ -979,7 +979,9 @@ I personally find it almost magical that the simulation works at all. Remember t
 For me it is hard to believe that such complex thing as the motion of a planet around its star can be computed so easily from the energy of the system. And yet, it moves.
 
 
-## Photo credits
+## Credits
+
+1. **Editor in chief**: Emily Saaen.
 
 1. **The Blue Marble**: NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans, [source](http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg), [source](https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg).
 
