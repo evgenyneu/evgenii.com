@@ -750,7 +750,7 @@ tags: programming science
 
 <br>
 
-This tutorial shows how to program a simulation of the Earth orbiting the Sun with HTML/JavaScript. The complete source code of the simulation can be viewed here [here]](/files/2016/09/earth_orbit_simulation/the_complete_code/). We went through the basics of creating an HTML simulation in the [harmonic oscillator tutorial](/blog/programming-harmonic-oscillator/), please refer to it in order to get started. This tutorial will not be as detailed as the one about the harmonic oscillator. Here we will only discuss the physics and math behind the orbital simulation.
+This tutorial shows how to program a simulation of the Earth orbiting the Sun with HTML/JavaScript. The complete source code of the simulation can be viewed [here](/files/2016/09/earth_orbit_simulation/the_complete_code/). We went through the basics of creating an HTML simulation in the [harmonic oscillator tutorial](/blog/programming-harmonic-oscillator/), please refer to it in order to get started. This tutorial will not be as detailed as the one about the harmonic oscillator. Here we will only discuss the physics and math behind the orbital simulation.
 
 This work is based largely on the concepts from the book by Leonard Susskind and George Hrabovsky *The theoretical minimum: What you need to know to start doing physics*. It an an excellent book that introduces classical mechanics and explains how to write the equations of motion of a system using the Lagrangian and Hamiltonian methods. There are also Susskind's [YouTube video lectures](https://youtu.be/ApUFtLCrU90) that cover the same material. Please refer to these resources if you want more information on the physics used here.
 
@@ -976,7 +976,7 @@ We have learned how to compute both coordinates *r* and 𝜃 of the Earth. Now a
 
 I personally find it almost magical that the simulation works at all. Remember that we started with just the Equations 1 and 2 for the kinetic and potential energies of the Sun-Earth system. Then we used those equations to write a Lagrangian equation 3 and find the equations of motions 5 and 8. And finally, we plugged those two equations into the computer that solved them using the Euler's method. This gave us the precise position of the Earth as the time changes.
 
-For me it is hard to believe that such complex thing as the motion of a planet around its star can be computed so easily from the energies of the system. And yet it moves.
+For me it is hard to believe that such complex thing as the motion of a planet around its star can be computed so easily from the energy of the system. And yet it moves.
 
 
 ## Photo credits
