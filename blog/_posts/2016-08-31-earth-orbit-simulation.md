@@ -30,6 +30,7 @@ tags: programming science
   .EarthOrbitSimulation-container {
     background-color: #000000;
     position: relative;
+    height: 400px;
     background-image: url("http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
     background-position: center bottom;
     background-repeat: repeat;
@@ -80,15 +81,6 @@ tags: programming science
     border: 1px solid #ffb100;
   }
 
-  .EarthOrbitSimulation-reloadButton {
-    background-color: #ff9400;
-    color: #ffffff;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 10px;
-    border: 1px solid #ffb100;
-  }
-
   .EarthOrbitSimulation-sun {
     position: absolute;
     width: 60px;
@@ -116,6 +108,51 @@ tags: programming science
     -o-user-select: none;
     user-select: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  }
+
+  /*
+    Hud display
+    ---------
+  */
+
+  .EarthOrbitSimulation-hudContainer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+  }
+
+  .EarthOrbitSimulation-hudContainerChild {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /*
+    Reload button
+    ---------
+  */
+
+  .EarthOrbitSimulation-reload {
+    position: absolute;
+    display: block;
+    bottom: 10px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    outline: none;
+  }
+
+  .EarthOrbitSimulation-reload:focus { outline: none; }
+
+  .EarthOrbitSimulation-reloadIcon {
+    width: 100%;
+    border : 0;
   }
 
   /*
@@ -169,10 +206,12 @@ tags: programming science
       </div>
 
     </div>
-</div>
-<div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
-  <br>
-  Mass of the Sun: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
+
+    <div class='EarthOrbitSimulation-hudContainer'>
+      <div class='EarthOrbitSimulation-hudContainerChild'>
+        <a class='EarthOrbitSimulation-reload' href='#'><img src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/reload_icon.png' alt='Restart' class='EarthOrbitSimulation-reloadIcon'></a>
+      </div>
+    </div>
 </div>
 
 <div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
@@ -180,9 +219,9 @@ tags: programming science
   <div class="SickSlider-head"></div>
 </div>
 
-<p class="EarthOrbitSimulation-isTextCentered">
-  <a class="EarthOrbitSimulation-reloadButton" href="#">Restart</a>
-</p>
+<div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
+  Mass of the Sun: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
+</div>
 
 <p class='EarthOrbitSimulation-debugOutput'></p>
 
@@ -499,6 +538,8 @@ tags: programming science
 
     // Updates the size of the Sun based on its mass. The sunMass argument is a fraction of the real Sun's mass.
     function updateSunSize(sunMass) {
+      sunElement.setAttribute("style","filter:brightness(" + sunMass + "); " +
+        "-webkit-filter:brightness(" + sunMass + "); ");
       var sunsDefaultWidth = sunsSize;
       currentSunsSize = sunsDefaultWidth * Math.pow(sunMass, 1/5);
       sunElement.style.width = currentSunsSize + "px";
@@ -634,7 +675,7 @@ tags: programming science
   var userInput = (function(){
     var sunsMassElement = document.querySelector(".EarthOrbitSimulation-sunsMass");
     var restartButton = document.querySelector(".EarthOrbitSimulation-earthEndButton");
-    var restartButtonTwo = document.querySelector(".EarthOrbitSimulation-reloadButton");
+    var restartButtonTwo = document.querySelector(".EarthOrbitSimulation-reload");
     var massSlider;
 
     function updateSunsMass(sliderValue) {
