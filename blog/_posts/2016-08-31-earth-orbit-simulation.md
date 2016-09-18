@@ -994,3 +994,5 @@ For me it is hard to believe that such complex thing as the motion of a planet a
 * [Classical mechanics lectures](https://youtu.be/ApUFtLCrU90) by Leonard Susskind on YouTube.
 
 * [Programming a harmonic oscillator](/blog/programming-harmonic-oscillator/).
+
+* [Sources of the formulas in LaTex format](/files/2016/09/earth_orbit_simulation/earth_orbit_simulation.tex).

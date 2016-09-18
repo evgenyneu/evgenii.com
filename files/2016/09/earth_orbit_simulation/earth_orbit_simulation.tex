@@ -1,0 +1,69 @@
+\documentclass[a4paper,twoside, 11pt]{article}
+
+% Packages
+% ---------------------
+
+\usepackage{amsmath} % Needed for command eqref
+\usepackage{amssymb} % For math symbols like R \mathbb{R}
+\usepackage{siunitx} % Physical numbers and units
+\usepackage{mathtools}
+
+% Page settings
+% ---------------------
+
+\usepackage[top=2cm, bottom=1.8cm,left=2.5cm,right=2.5cm]{geometry} %  Page margins
+\setlength{\parskip}{\baselineskip} % Add space between paragraphs
+\parindent=0cm % Remove the paragraph indent of the first line
+\addtolength{\jot}{2\jot} % Double the line between equations
+
+
+
+\begin{document}
+
+% ------------------
+%
+% Formulas for "Programming a simulation of the Earth orbiting the Sun" blog post
+% http://evgenii.com/blog/earth-orbit-simulation/
+%
+% Images are made from Skim PDF viewer at 7th magnification.
+%
+% ------------------
+
+
+\[
+    T = \frac{m}{2} \Big(  \dot{r}^2 + r^2 \dot{\theta}^2 \Big)
+\]
+
+\[
+    V = -\frac{GMm}{r}
+\]
+
+\[
+    G = \SI{6.674E-11}{\meter^{3} \kg^{-1} \second^{-2}}
+\]
+
+\[
+    L = \frac{m}{2} \Big(  \dot{r}^2 + r^2 \dot{\theta}^2 \Big) + \frac{GMm}{r}
+\]
+
+\[
+    \frac{d}{dt} \Big( \frac{\partial L}{\partial \dot{r}} \Big) = \frac{\partial L}{\partial r}
+\]
+
+\[
+    \ddot{r} = r \dot{\theta}^2 - \frac{GM}{r^2}
+\]
+
+\[
+    \frac{d}{dt} \Big( \frac{\partial L}{\partial \dot{\theta}} \Big) = \frac{\partial L}{\partial \theta}
+\]
+
+\[
+    2 \dot{r} \dot{ \theta } + r \ddot{\theta} = 0
+\]
+
+\[
+    \ddot{\theta} = - \frac{2 \dot{r} \dot{ \theta }}{r}
+\]
+
+\end{document}
