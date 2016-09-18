@@ -1471,7 +1471,7 @@ var strawberries = (function(){
       physics.state.paused = true;
       shownstrawberryHasLandedOnEarthMessage = true;
 
-      gameoverMessage.showWithContinueButton("A giant strawberry-shaped object safely landed on the Earth. Its landing site became a thriving tourist attraction, where one can sip on a strawberry smoothie from a strawberry-shaped disposable cup, while perusing a vast selection of strawberry shaped key chains, baseball caps and spaceship fresheners.", didTapContinueButtonAfterCollisionWithEarth);
+      gameoverMessage.showWithContinueButton("A giant strawberry-shaped object safely landed on the Earth. Its landing site became a thriving tourist attraction, where one can sip on a strawberry smoothie from a strawberry-shaped disposable cup, while perusing a vast selection of strawberry-shaped key chains, baseball caps and spaceship fresheners.", didTapContinueButtonAfterCollisionWithEarth);
     }
   }
 
