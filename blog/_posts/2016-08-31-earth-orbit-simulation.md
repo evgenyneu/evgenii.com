@@ -756,7 +756,7 @@ This work is based largely on the concepts from the book by Leonard Susskind and
 
 ## The coordinate system
 
-Since the Earth is rotating around the Sun it makes sense to use polar coordinate system shown on Figure 1. The coordinates will be: the angle 𝜃 and the distance *r* between the centers of the Sun and the Earth.
+Since the Earth is rotating around the Sun it makes sense to use polar coordinate system shown on Figure 1. The coordinates will be: the angle &theta; and the distance *r* between the centers of the Sun and the Earth.
 
 <div class='isTextCentered'>
   <img class='isMax300PxWide' src='/image/blog/2016-08-31-earth-orbit-simulation/0010_coordinate_system.png' alt='Coordinate system and variables'>
@@ -830,9 +830,9 @@ After taking the derivatives we get the first equation of motion:
 
 We will use Equation 5 in our program and compute the distance *r* from its second derivative.
 
-## The second equation of motion: the angle 𝜃
+## The second equation of motion: the angle &theta;
 
-We use the Euler-Lagrange equation again, but this time we take derivatives of the Lagrangian from Equation 3 with respect to the angle 𝜃 and its time derivative:
+We use the Euler-Lagrange equation again, but this time we take derivatives of the Lagrangian from Equation 3 with respect to the angle &theta; and its time derivative:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -852,7 +852,7 @@ After differentiating and simplifying we get:
   <span>(7)</span>
 </div>
 
-We make the second time derivative of the angle 𝜃 the subject of the equation:
+We make the second time derivative of the angle &theta; the subject of the equation:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -862,11 +862,11 @@ We make the second time derivative of the angle 𝜃 the subject of the equation
   <span>(8)</span>
 </div>
 
-Equation 8 will be used in our program to compute the angle 𝜃 from its second derivative.
+Equation 8 will be used in our program to compute the angle &theta; from its second derivative.
 
 ## Solving equations of motions with Euler's method
 
-We have done the hard part and found Equations 5 and 8, which describe the evolution of the Sun-Earth system over time. In order to animate the Earth we need to solve these equations and find the angle 𝜃 and distance *r*. We will not attempt to solve those differential equations algebraically, but instead use a numerical Euler's method.
+We have done the hard part and found Equations 5 and 8, which describe the evolution of the Sun-Earth system over time. In order to animate the Earth we need to solve these equations and find the angle &theta; and distance *r*. We will not attempt to solve those differential equations algebraically, but instead use a numerical Euler's method.
 
 ## Initial conditions
 
@@ -886,7 +886,7 @@ var initialConditions = {
 };
 ```
 
-Now we need to define the initial conditions of the angle 𝜃. We set an arbitrary value of 𝛑/6 radians, since it does not matter at which angle the simulation is started. The value of initial time derivative of the angle 𝜃, or the angular speed, does matter and can be obtained using a simple calculation. The Earth makes the full circle in one year, therefore, we can approximate its angular speed by dividing 2𝛑 by the number of seconds in the sidereal year.
+Now we need to define the initial conditions of the angle &theta;. We set an arbitrary value of &pi;/6 radians, since it does not matter at which angle the simulation is started. The value of initial time derivative of the angle &theta;, or the angular speed, does matter and can be obtained using the following calculation. The Earth makes the full circle in one year, therefore, we can approximate its angular speed by dividing 2&pi; by the number of seconds in the sidereal year.
 
 ## Storing the current state of the system
 
@@ -916,7 +916,7 @@ function calculateDistanceAcceleration(state) {
 }
 ```
 
-## Computing the acceleration of the angle 𝜃
+## Computing the acceleration of the angle &theta;
 
 Similarly, we write the second equation of motion (Equation 8) for the angle as a function `calculateAngleAcceleration`:
 
@@ -956,9 +956,9 @@ state.distance.value = newValue(state.distance.value,
   deltaT, state.distance.speed);
 ```
 
-## Finding the distance 𝜃
+## Finding the distance &theta;
 
-We use exactly the same procedure to find the angle 𝜃. First, we find its acceleration with the function `calculateAngleAcceleration`. Then, we use it to find the angular speed by calling the function `newValue`. And finally, we compute the angle 𝜃 from its angular speed:
+We use exactly the same procedure to find the angle &theta;. First, we find its acceleration with the function `calculateAngleAcceleration`. Then, we use it to find the angular speed by calling the function `newValue`. And finally, we compute the angle &theta; from its angular speed:
 
 ```JavaScript
 var angleAcceleration = calculateAngleAcceleration(state);
@@ -972,7 +972,7 @@ state.angle.value = newValue(state.angle.value,
 
 ## Moving the planet
 
-We have learned how to compute both coordinates *r* and 𝜃 of the Earth. Now all that remains to be done is to run this code repeatedly in a loop and the system will evolve before our eyes. Our program translates the polar coordinates into the actual coordinates of the Earth image on the computer screen and the simulation produces a very natural orbital motion.
+We have learned how to compute both coordinates *r* and &theta; of the Earth. Now all that remains to be done is to run this code repeatedly in a loop and the system will evolve before our eyes. Our program translates the polar coordinates into the actual coordinates of the Earth image on the computer screen and the simulation produces a very natural orbital motion.
 
 I personally find it almost magical that the simulation works at all. Remember that we started with just the Equations 1 and 2 for the kinetic and potential energies of the Sun-Earth system. Then we used those equations to write a Lagrangian equation 3 and find the equations of motions 5 and 8. And finally, we solved those two equations numerically using the Euler's method. This gave us the precise position of the Earth as the time changes.
 
