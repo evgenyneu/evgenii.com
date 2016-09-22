@@ -96,7 +96,7 @@ The short-term implications of this experiment are obvious to any student who at
 
 ## Orbital period and Kepler's third law
 
-Everybody know that it takes about 365 days for the Earth to complete one full circle around the Sun. We call this time 'a year' and astronomers call it the Earth's *orbital period*. But what happens to Earth's orbital period as the planet moves closer to the Sun? This question can be  answered by using Kepler's third law [[2, p. 27]](#references) that states &mdash; closer planets have *smaller* orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth.
+Everybody knows that it takes about 365 days for the Earth to complete one full circle around the Sun. We call this time 'a year' and astronomers call it the Earth's *orbital period*. But what happens to Earth's orbital period as the planet moves closer to the Sun? This question can be  answered by using Kepler's third law [[2, p. 27]](#references) that states &mdash; closer planets have *smaller* orbital periods. Therefore, the increase in Sun's mass will result in shorter year on the Earth.
 
 
 ## The Sun's luminosity
@@ -110,7 +110,7 @@ The increase in Sun's mass also affects its brightness, which is also called 'lu
 
 ## Habitable zone
 
-As we've shown, the planets receive more sunlight as the Sun's mass increases. As a result, if the Earth's distance to the Sun does not change, its average global temperature will increase. If it gets too hot, Earth's oceans will start to boil and that will probably be the death sentence to all the life on our planet. In astronomy, the range of distances from a star at which liquid water can exist on the surface of a planet is called the star's *habitable zone*. As Doctor Carl increases the mass of the Sun, its habitable zone moves *farther away*.
+As we've shown, the planets receive more sunlight as the Sun's mass increases. As a result, if the Earth's distance to the Sun does not change, its average global temperature will increase. If it gets too hot, Earth's oceans will start to boil and that will probably be the death sentence to all life on the surface of our planet. In astronomy, the range of distances from a star at which liquid water can exist on the surface of a planet is called the star's *habitable zone*. As Doctor Carl increases the mass of the Sun, its habitable zone moves *farther away*.
 
 We can see from Figure 3 that massive Sun would have more distant habitable zone. In this case, the Earth would be too close to the Sun, and the water would boil and evaporate. Therefore, Carl Cox needs to be very careful and try not to keep Sun's mass high for too long. Otherwise, the heat will destroy all life on the planet.
 
