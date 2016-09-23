@@ -32,3 +32,7 @@ A Keychain is a secure storage in Apple devices used for keeping small bits of i
 
 <img src='/image/blog/2016-09-17-testing-a-keychain-library-in-xcode/03_running_tests_keychain_xcode_8.png' alt='Enable keychain testing in Xcode' class='isMax100PercentWide hasBorderShade90'>
 
+## Is there an easier way?
+
+Please feel free to share in the comments if you know an easier way to make keychain unit test work in Xcode 8. It would be also interesting to know why Apple introduced this change.
+
