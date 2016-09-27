@@ -16,8 +16,16 @@ title: Resume of Evgenii Neumerzhitckii
 
 ## Objective
 
-I am looking for part-time/freelance work as an iOS or Android programmer. I can work for 10 hours a week and particularly interested in projects connected with science and education.
+I am looking for work as an iOS or Android programmer.
 
+
+## My working schedule 2016 - 2017
+
+I am a full-time student at Monash university Clayton campus and can work the following hours during 2016 - 2017 period.
+
+* **Full time**: 40 hrs/week, 4 months per year: Nov 11 - Feb 18 2016, 22 Jun - 15 Jul 2017.
+* **Part time**: 10 hrs/week, 6.5 months per year: 27 Feb - 4 Jun, 16 Jul - 29 Oct.
+* **Exams**: no work, 1.5 months per year: 4 - 22 Jun, 29 Oct - 16 Nov.
 
 
 ## Summary of Qualifications
@@ -122,9 +130,9 @@ Senior .NET/C# developer, independent contractor
 
 ## Education
 
-Monash University, Melbourne, Australia
+Monash University, Clayton, Australia
 
-* Currently studying astrophysics.
+* Full-time student, learning astronomy.
 
 South Ural State University, Chelyabinsk, Russia.
 
