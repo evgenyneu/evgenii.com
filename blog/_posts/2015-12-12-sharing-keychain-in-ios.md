@@ -72,11 +72,11 @@ let keychainAccessGroupName = "AB123CDE45.myKeychainGroup1"
 
 let queryDelete: [String: AnyObject] = [
   kSecClass as String: kSecClassGenericPassword,
-  kSecAttrAccount as String: itemKey,
-  kSecAttrAccessGroup as String: keychainAccessGroupName
+  kSecAttrAccount as String: itemKey as AnyObject,
+  kSecAttrAccessGroup as String: keychainAccessGroupName as AnyObject
 ]
 
-let resultCodeDelete = SecItemDelete(queryDelete as CFDictionaryRef)
+let resultCodeDelete = SecItemDelete(queryDelete as CFDictionary)
 
 if resultCodeDelete != noErr {
   print("Error deleting from Keychain: \(resultCodeDelete)")
@@ -86,20 +86,20 @@ if resultCodeDelete != noErr {
 ### Add a shared Keychain item
 
 ```Swift
-guard let valueData = itemValue.dataUsingEncoding(NSUTF8StringEncoding) else {
+guard let valueData = itemValue.data(using: String.Encoding.utf8) else {
   print("Error saving text to Keychain")
   return
 }
 
 let queryAdd: [String: AnyObject] = [
   kSecClass as String: kSecClassGenericPassword,
-  kSecAttrAccount as String: itemKey,
-  kSecValueData as String: valueData,
+  kSecAttrAccount as String: itemKey as AnyObject,
+  kSecValueData as String: valueData as AnyObject,
   kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlocked,
-  kSecAttrAccessGroup as String: keychainAccessGroupName
+  kSecAttrAccessGroup as String: keychainAccessGroupName as AnyObject
 ]
 
-let resultCode = SecItemAdd(queryAdd as CFDictionaryRef, nil)
+let resultCode = SecItemAdd(queryAdd as CFDictionary, nil)
 
 if resultCode != noErr {
   print("Error saving to Keychain: \(resultCode)")
@@ -111,22 +111,22 @@ if resultCode != noErr {
 ```Swift
 let queryLoad: [String: AnyObject] = [
   kSecClass as String: kSecClassGenericPassword,
-  kSecAttrAccount as String: itemKey,
+  kSecAttrAccount as String: itemKey as AnyObject,
   kSecReturnData as String: kCFBooleanTrue,
   kSecMatchLimit as String: kSecMatchLimitOne,
-  kSecAttrAccessGroup as String: keychainAccessGroupName
+  kSecAttrAccessGroup as String: keychainAccessGroupName as AnyObject
 ]
 
 var result: AnyObject?
 
-let resultCodeLoad = withUnsafeMutablePointer(&result) {
-  SecItemCopyMatching(queryLoad, UnsafeMutablePointer($0))
+let resultCodeLoad = withUnsafeMutablePointer(to: &result) {
+  SecItemCopyMatching(queryLoad as CFDictionary, UnsafeMutablePointer($0))
 }
 
 if resultCodeLoad == noErr {
   if let result = result as? NSData,
-    keyValue = NSString(data: result,
-      encoding: NSUTF8StringEncoding) as? String {
+    let keyValue = NSString(data: result as Data,
+                        encoding: String.Encoding.utf8.rawValue) as? String {
 
     // Found successfully
     print(keyValue)
