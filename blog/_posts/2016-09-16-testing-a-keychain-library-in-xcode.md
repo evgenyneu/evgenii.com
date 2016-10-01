@@ -40,5 +40,5 @@ Please feel free to share in the comments if you know an easier way to make keyc
 
 * A [thread](https://forums.developer.apple.com/message/179846) on Apple Developer Forums.
 
-* An [answer](http://stackoverflow.com/questions/38456471/secitemadd-always-returns-error-34018-in-xcode-8-in-ios-10-simulator) on Stack Overflow.
+* An [answer](http://stackoverflow.com/a/38543243/297131) on Stack Overflow.
 
