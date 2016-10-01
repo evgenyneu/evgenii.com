@@ -34,7 +34,7 @@ A Keychain is a secure storage in Apple devices used for keeping small bits of i
 
 ## Is there an easier way?
 
-Please feel free to share in the comments if you know an easier way to make keychain unit test work in Xcode 8. It would be also interesting to know why Apple introduced this change.
+Please feel free to share in the comments if you know an easier way to make keychain unit test work in Xcode 8. It would be also interesting to know why Apple introduced this change or if it is merely a bug.
 
 ## References
 
