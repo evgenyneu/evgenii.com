@@ -36,3 +36,9 @@ A Keychain is a secure storage in Apple devices used for keeping small bits of i
 
 Please feel free to share in the comments if you know an easier way to make keychain unit test work in Xcode 8. It would be also interesting to know why Apple introduced this change.
 
+## References
+
+* A [thread](https://forums.developer.apple.com/message/179846) on Apple Developer Forums.
+
+* An [answer](http://stackoverflow.com/questions/38456471/secitemadd-always-returns-error-34018-in-xcode-8-in-ios-10-simulator) on Stack Overflow.
+
