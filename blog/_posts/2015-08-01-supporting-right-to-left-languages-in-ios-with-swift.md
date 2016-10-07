@@ -15,8 +15,8 @@ Here is the list of techniques I use to make my iOS apps compatible with [right-
 1. And finally, here is how to check if the view is currently displayed in the left-to-right mode:
 
 ```Swift
-let isLeftToRight = UIView.userInterfaceLayoutDirectionForSemanticContentAttribute(
-myView.semanticContentAttribute) == .LeftToRight
+let isLeftToRight = UIView.userInterfaceLayoutDirection(
+      for: view.semanticContentAttribute) == .leftToRight
 ```
 
 

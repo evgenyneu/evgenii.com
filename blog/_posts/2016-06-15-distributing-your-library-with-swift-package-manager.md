@@ -142,7 +142,21 @@ cd MyApp
 touch Package.swift
 ```
 
-#### 3) Write Swift program code
+#### 3) Add package description
+
+Add the following text to the **Package.swift** file.
+
+
+```Swift
+import PackageDescription
+
+let package = Package(
+    name: "MyApp",
+    targets: []
+)
+```
+
+#### 4) Write Swift program code
 
 Next we create the **Sources** directory and add the `main.swift` file that prints "Hello World" message.
 
@@ -152,7 +166,7 @@ echo 'print("Hello world!")' > Sources/main.swift
 ```
 
 
-#### 4) Build and run
+#### 5) Build and run
 
 Now we build
 
@@ -168,9 +182,9 @@ and run the app.
 
 If everything went well you will see "Hello world!" message in the terminal.
 
-#### 5) Include Swift library in the Package.swift file
+#### 6) Include Swift library in the Package.swift file
 
-Now it is time to use our library. Add the following text to the **Package.swift** file.
+Now it is time to use our library. Replace the content of the **Package.swift** file with following text.
 
 ```Swift
 import PackageDescription
@@ -189,7 +203,7 @@ The code above includes a sample project that I created. Your app, of course, wi
 
 You may want to show the contents of the Package.swift file in your library's README file as a setup instruction for the users. In this example your users will download the most recent library version that starts with 1. For example, it will use *1.3.6* or *1.0.0* version but not *2.0.1*.
 
-#### 6) Build Swift library
+#### 7) Build Swift library
 
 Run the `swift build` command. It will download and build the library into the *Packages* directory.
 
@@ -198,7 +212,7 @@ swift build
 ```
 
 
-#### 7) Use Swift library
+#### 8) Use Swift library
 
 Finally, we can test the library by using it in the `Source/main.swift` file of the app:
 
