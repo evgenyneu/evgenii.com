@@ -23,19 +23,19 @@ String.localizedStringWithFormat("%i", 12_345)
 ### Currencies
 
 ```Swift
-let currencyFormatter = NSNumberFormatter()
-currencyFormatter.numberStyle = .CurrencyStyle
-currencyFormatter.stringFromNumber(99.95)
+let currencyFormatter = NumberFormatter()
+currencyFormatter.numberStyle = .currency
+currencyFormatter.string(from: 99.95)
 // $99.95
 ```
 
 ### Date and time
 
 ```Swift
-let dateFormatter = NSDateFormatter()
-dateFormatter.dateStyle = .ShortStyle
-dateFormatter.timeStyle = .ShortStyle
-dateFormatter.stringFromDate(NSDate())
+let dateFormatter = DateFormatter()
+dateFormatter.dateStyle = .short
+dateFormatter.timeStyle = .short
+dateFormatter.string(from: Date())
 // 8/1/15, 6:12 PM
 ```
 
@@ -44,41 +44,41 @@ dateFormatter.stringFromDate(NSDate())
 This technique can be used if you need to have more control on date and time formatting.
 
 ```Swift
-let dateFormatterTemplate = NSDateFormatter()
+let dateFormatterTemplate = DateFormatter()
 dateFormatterTemplate.setLocalizedDateFormatFromTemplate("yyyyMMMMdjjmmss")
-dateFormatterTemplate.stringFromDate(NSDate())
+dateFormatterTemplate.string(from: Date())
 // August 1, 2015, 6:12:05 PM
 ```
 
 ### Mass
 
 ```Swift
-let massFormatter = NSMassFormatter()
-massFormatter.unitStyle = .Long
-massFormatter.stringFromKilograms(1.5)
+let massFormatter = MassFormatter()
+massFormatter.unitStyle = .long
+massFormatter.string(fromKilograms: 1.5)
 // 1.5 kilograms
 ```
 
 ### Distance
 
 ```Swift
-let lengthFormatter = NSLengthFormatter()
-lengthFormatter.unitStyle = .Long
-lengthFormatter.stringFromMeters(900)
+let lengthFormatter = LengthFormatter()
+lengthFormatter.unitStyle = .long
+lengthFormatter.string(fromValue: 100, unit: .meter)
 // 900 meters
 ```
 
 ### Personal names
 
 ```Swift
-let nameComponents = NSPersonNameComponents()
+var nameComponents = PersonNameComponents()
 nameComponents.givenName = "Brian"
 nameComponents.middleName = "Edward"
 nameComponents.familyName = "Cox"
 
-let nameFormatter = NSPersonNameComponentsFormatter()
-nameFormatter.style = .Medium
-nameFormatter.stringFromPersonNameComponents(nameComponents)
+let nameFormatter = PersonNameComponentsFormatter()
+nameFormatter.style = .medium
+nameFormatter.string(from: nameComponents)
 // Brian Cox
 ```
 
