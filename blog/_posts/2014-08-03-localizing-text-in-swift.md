@@ -82,13 +82,13 @@ Translator can change the order in which the populated arguments are copied into
 Here is how to change the case of a string according to local rules.
 
 ```Swift
-"istanbul".localizedCapitalizedString
+"istanbul".localizedCapitalized
 // In Turkish: "İstanbul"
 
-"İstanbul".localizedLowercaseString
+"İstanbul".localizedLowercase
 // In Turkish: "istanbul"
 
-"istanbul".localizedUppercaseString
+"istanbul".localizedUppercase
 // In Turkish: "İSTANBUL"
 ```
 
