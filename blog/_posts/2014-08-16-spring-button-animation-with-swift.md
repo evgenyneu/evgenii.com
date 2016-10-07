@@ -16,19 +16,20 @@ This kind of animation is easy to create with just a few lines of code.
 First, I made the button smaller by applying scale transformation:
 
 ```Swift
-button.transform = CGAffineTransformMakeScale(0.1, 0.1)
+button.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
 ```
 Then I used spring style animation that resets the button to its initial state.
 
 ```Swift
-UIView.animateWithDuration(2.0,
+UIView.animate(withDuration: 2.0,
   delay: 0,
   usingSpringWithDamping: 0.2,
   initialSpringVelocity: 6.0,
-  options: UIViewAnimationOptions.AllowUserInteraction,
-  animations: {
-    self.button.transform = CGAffineTransformIdentity
-  }, completion: nil)
+  options: .allowUserInteraction,
+  animations: { [weak self] in
+    self?.button.transform = .identity
+  },
+  completion: nil)
 ```
 
 ## Animation parameters
