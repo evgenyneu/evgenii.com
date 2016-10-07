@@ -124,9 +124,9 @@ let resultCodeLoad = withUnsafeMutablePointer(to: &result) {
 }
 
 if resultCodeLoad == noErr {
-  if let result = result as? NSData,
-    let keyValue = NSString(data: result as Data,
-                        encoding: String.Encoding.utf8.rawValue) as? String {
+  if let result = result as? Data,
+    let keyValue = NSString(data: result,
+                            encoding: String.Encoding.utf8.rawValue) as? String {
 
     // Found successfully
     print(keyValue)
