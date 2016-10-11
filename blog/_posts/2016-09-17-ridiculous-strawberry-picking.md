@@ -112,7 +112,7 @@ The increase in Sun's mass also affects its brightness, which is also called 'lu
 
 As we've shown, the planets receive more sunlight as the Sun's mass increases. As a result, if the Earth's distance to the Sun does not change, its average global temperature will increase. If it gets too hot, Earth's oceans will start to boil and that will probably be the death sentence to all animal life on the surface of our planet. In astronomy, the range of distances from a star at which liquid water can exist on the surface of a planet is called the star's *habitable zone*. As Doctor Carl increases the mass of the Sun, its habitable zone moves *farther away*.
 
-We can see from Figure 3 that massive Sun would have more distant habitable zone. In this case, the Earth would be too close to the Sun, and the water would boil and evaporate. Therefore, Carl Cox needs to be very careful and try not to keep Sun's mass high for too long. Otherwise, the water vapor in the atmosphere can create a runaway greenhouse effect that will eventually destroy all animals on the surface on the planet.
+We can see from Figure 3 that massive Sun would have more distant habitable zone. In this case, the Earth would be too close to the Sun, and the water would boil and evaporate. Therefore, Carl Cox needs to be very careful and try not to keep Sun's mass high for too long.
 
 <div class='isTextCentered'>
   <img class='isMax100PercentWide isTextCentered' src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/star_habitable_zone.png' alt='More massive stars are much brighter'>
