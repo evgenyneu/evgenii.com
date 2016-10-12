@@ -256,7 +256,17 @@ var climate = (function() {
 
     if (isEarthDead()) {
       physics.state.paused = true;
-      var message = currentTemperatureCelsius > 10 ? "High global temperature caused some of the water to evaporate and create a runaway greenhouse effect. The temperature rose even higher, and all animal species living on the surface of the planet have become extinct." : "Low global temperature caused the shutdown of photosynthesis in plants. All animal species living on the surface of the planet have become extinct.";
+
+      var message =  "High global temperature caused some of the water to evaporate and create a runaway greenhouse effect. The temperature rose even higher, and all animal species living on the surface of the planet have become extinct.";
+
+      if (currentTemperatureCelsius < 10) {
+        if (physics.currentSunMassRatio() === 0) { // Sun has been removed
+          message = "The absence of the Sun caused the shutdown of photosynthesis in plants and other organisms. All animal species living on the surface of the planet have become extinct.";
+        } else {
+          message = "Low global temperature caused the shutdown of photosynthesis in plants and other organisms. All animal species living on the surface of the planet have become extinct.";
+        }
+      }
+
       gameoverMessage.show(message);
       return;
     }

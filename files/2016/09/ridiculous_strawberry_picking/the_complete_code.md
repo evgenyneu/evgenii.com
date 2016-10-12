@@ -456,6 +456,23 @@ Image credits
 2. "The Sun photographed at 304 angstroms" by NASA/SDO (AIA). Sources: http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg, https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg
 
 */
+
+/*
+
+Ridiculous strawberry picking game
+
+http://evgenii.com/blog/ridiculous-strawberry-picking/
+
+License: Public Domain
+
+Image credits
+=============
+
+1. "The Blue Marble" By  NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans. Sources: http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg, https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg
+
+2. "The Sun photographed at 304 angstroms" by NASA/SDO (AIA). Sources: http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg, https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg
+
+*/
 (function(){
 // A Slider UI element
 function SickSlider(sliderElementSelector) {
@@ -698,7 +715,17 @@ var climate = (function() {
 
     if (isEarthDead()) {
       physics.state.paused = true;
-      var message = currentTemperatureCelsius > 10 ? "High global temperature caused some of the water to evaporate and create a runaway greenhouse effect. The temperature rose even higher, and all animal species living on the surface of the planet have become extinct." : "Low global temperature caused the shutdown of photosynthesis in plants. All animal species living on the surface of the planet have become extinct.";
+
+      var message =  "High global temperature caused some of the water to evaporate and create a runaway greenhouse effect. The temperature rose even higher, and all animal species living on the surface of the planet have become extinct.";
+
+      if (currentTemperatureCelsius < 10) {
+        if (physics.currentSunMassRatio() === 0) { // Sun has been removed
+          message = "The absence of the Sun caused the shutdown of photosynthesis in plants and other organisms. All animal species living on the surface of the planet have become extinct.";
+        } else {
+          message = "Low global temperature caused the shutdown of photosynthesis in plants and other organisms. All animal species living on the surface of the planet have become extinct.";
+        }
+      }
+
       gameoverMessage.show(message);
       return;
     }
