@@ -21,7 +21,7 @@ I am looking for work as an iOS or Android programmer.
 
 ## My working schedule 2016 - 2017
 
-I am a full-time student at Monash university Clayton campus and can work the following hours during 2016 - 2017 period.
+I am an AU permanent resident and a full-time student at Monash university Clayton campus. I can work the following hours during 2016 - 2017 period.
 
 * **Full time**: 40 hrs/week, 4 months per year: Nov 11 - Feb 18 2016, 22 Jun - 15 Jul 2017.
 * **Part time**: 10 hrs/week, 6.5 months per year: 27 Feb - 4 Jun, 16 Jul - 29 Oct.
