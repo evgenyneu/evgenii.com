@@ -541,9 +541,9 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
       earthElement,
       sunElement,
       earthEndElement,
-      currentSunsSize = sunsSize;
+      currentSunsSize = sunsSize,
       middleX = 1,
-      middleY = 1
+      middleY = 1;
 
     function showHideEarthEndMessage(show) {
       earthEndElement.style.display = show ? 'block' : 'none';
@@ -575,8 +575,8 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
       var sunsDefaultWidth = sunsSize;
       currentSunsSize = sunsDefaultWidth * Math.pow(sunMass, 1/3);
       sunElement.style.width = currentSunsSize + "px";
-      sunElement.style.marginLeft = -(currentSunsSize / 2.0) + "px"
-      sunElement.style.marginTop = -(currentSunsSize / 2.0) + "px"
+      sunElement.style.marginLeft = -(currentSunsSize / 2.0) + "px";
+      sunElement.style.marginTop = -(currentSunsSize / 2.0) + "px";
     }
 
     function drawOrbitalLine(newEarthPosition) {
@@ -603,8 +603,8 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
       var sunTop = middleY - sunHalf;
       var sunBottom = middleY + sunHalf;
 
-      return (earthPosition.x >= sunLeft && earthPosition.x <= sunRight
-        && earthPosition.y >= sunTop && earthPosition.y <= sunBottom);
+      return (earthPosition.x >= sunLeft && earthPosition.x <= sunRight &&
+        earthPosition.y >= sunTop && earthPosition.y <= sunBottom);
     }
 
     // Draws the scene
@@ -716,7 +716,7 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
         sunsMassValue = Math.pow(5, sunsMassValue - 1);
       }
 
-      var formattedMass = parseFloat(Math.round(sunsMassValue * 100) / 100).toFixed(2)
+      var formattedMass = parseFloat(Math.round(sunsMassValue * 100) / 100).toFixed(2);
       sunsMassElement.innerHTML = formattedMass;
       physics.updateFromUserInput(sunsMassValue);
       graphics.updateSunSize(sunsMassValue);
