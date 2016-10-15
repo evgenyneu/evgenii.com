@@ -17,17 +17,23 @@ I will show how I found the answers. I did not want to be compared with Rita Ske
 
 ## The cover of the book
 
-Let's first look at the current (not final) cover of the book.
+Let's first look at the cover of the book.
 
-<img src='/image/blog/2016-02-13-cursed-child-is-not-written-by-jk-rowling/harry_potter_and_cursed_child_covert_not_final.jpg' class='isMax300PxWide' alt='Not final cover of the book Harry Potter and the Cursed Child'>
+<div class='isTextCentered'>
+
+  <img src='/image/blog/2016-02-13-cursed-child-is-not-written-by-jk-rowling/harry_potter_and_cursed_child_cover.jpg' class='isMax300PxWide' alt='Cover of the book Harry Potter and the Cursed Child'>
+
+  <p><em>The cover of the book. Source: amazon.com</em></p>
+
+</div>
 
 Among other things the cover says:
 
-> The eighth story. Based on an *original new story* by J.K. Rowling, Jack Thorne & John Tiffany.
+> Based on an *original new story* by J.K. Rowling, John Tiffany & Jack Thorne.
 
 Notice the use of the word "story" which is followed by the name "J.K. Rowling". The word "story" does not always mean a *written* story. This is a very smart cover design from the marketing perspective because it tricked me to believe that J.K. Rowling was one of the authors.
 
-If we spend more time examining the cover we can reveal more ingenious marketing traps in the choice of the font sizes. For example, the words "Based on an *original new story* by" are written in the smallest font while the words "Eighth Story", "Harry Potter" and "J.K. Rowling" dominate the cover. I was amused to notice that the text "J.K. Rowling" was printed with slightly larger size than "Jack Thorne & John Tiffany" and the words "a new play by Jack Thorne" were smaller still.
+If we spend more time examining the cover we can reveal more ingenious marketing traps in the choice of the font sizes. For example, the words "Based on an *original new story* by" are written in the smallest font while the words "Harry Potter" and "J.K. Rowling" dominate the cover. I was amused to notice that the text "J.K. Rowling" was printed with slightly larger size than "John Tiffany & Jack Thorne" and the words "a new play by Jack Thorne" were smaller still.
 
 ## The pottermore.com
 
