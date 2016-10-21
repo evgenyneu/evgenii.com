@@ -252,7 +252,7 @@ state.distance.value = newValue(state.distance.value,
   deltaT, state.distance.speed);
 ```
 
-## Finding the distance &theta;
+## Finding the angle &theta;
 
 We use exactly the same procedure to find the angle &theta;. First, we find its acceleration with the function `calculateAngleAcceleration`. Then, we use it to find the angular speed by calling the function `newValue`. And finally, we compute the angle &theta; from its angular speed:
 
