@@ -10,7 +10,7 @@ tags: programming
   <img width='144' class='isTextCentered' src='/image/blog/2016-05-30-spring-button-animation-on-android/005-spring-button-animation.gif' alt='Spring style button animation on Android'>
 </div>
 
-This tutorial shows how to animate a button with bounce effect on Android using Android Studio version 2.1.
+This tutorial shows how to animate a button with bounce effect on Android using Android Studio version 2.2.
 
 I assume that you know how to create an app in Android Studio. If you don't have this experience yet then I would recommend reading the excellent [Building Your First App](https://developer.android.com/training/basics/firstapp/index.html) tutorial from Google first.
 
@@ -104,15 +104,15 @@ If you run the app and tap the button it will animate smoothly from smaller to b
 
 Next, we write the code that adds the bounce effect to the scale animation.
 
-* Create a new *Java Class* file in your app module and name it **BounceInterpolator**.
+* Create a new *Java Class* file in your app module and name it **MyBounceInterpolator**.
 * Open the Java file that was created and replace the class code with the following.
 
 ```Java
-class BounceInterpolator implements android.view.animation.Interpolator {
+class MyBounceInterpolator implements android.view.animation.Interpolator {
     double mAmplitude = 1;
     double mFrequency = 10;
 
-    BounceInterpolator(double amplitude, double frequency) {
+    MyBounceInterpolator(double amplitude, double frequency) {
         mAmplitude = amplitude;
         mFrequency = frequency;
     }
@@ -136,14 +136,14 @@ public void didTapButton(View view) {
     final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
 
     // Use bounce interpolator with amplitude 0.2 and frequency 20
-    BounceInterpolator interpolator = new BounceInterpolator(0.2, 20);
+    MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
     myAnim.setInterpolator(interpolator);
 
     button.startAnimation(myAnim);
 }
 ```
 
-Here we added the `BounceInterpolator` to the animation with `setInterpolator` method. If you run the app and tap the button it will animate with the spring effect.
+Here we added the `MyBounceInterpolator` to the animation with `setInterpolator` method. If you run the app and tap the button it will animate with the spring effect.
 
 <div class='isTextCentered'>
   <img width='100' src='/image/blog/2016-05-30-spring-button-animation-on-android/030-bounce-button-animation-android.gif' alt='Animating a button with abounce effect on Android'>
@@ -151,10 +151,10 @@ Here we added the `BounceInterpolator` to the animation with `setInterpolator` m
 
 ## How the bounce animation interpolator works
 
-We initialized the `BounceInterpolator` object with two arguments.
+We initialized the `MyBounceInterpolator` object with two arguments.
 
 ```Java
-BounceInterpolator interpolator = new BounceInterpolator(0.2, 20);
+MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
 ```
 
 1. The first value `0.2` is the bounce **amplitude**. The higher value produces more pronounced bounces.
