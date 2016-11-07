@@ -44,16 +44,17 @@ I am an Australian permanent resident and a full-time student at Monash universi
 ## Personal Projects
 
 
-* Walk to Circle for [Android](https://play.google.com/store/apps/details?id=com.evgenii.walktocircle) and [iOS](https://itunes.apple.com/us/app/walk-to-circle/id955310614).
-* Water Footprint for [Android](https://play.google.com/store/apps/details?id=com.evgenii.waterfootprint), [iOS](https://itunes.apple.com/us/app/water-footprint/id1044041294) and [Web](http://evgenii.com/water-footprint/en/).
-* AES Crypto for [Android](http://evgenii.com/projects/aes-crypto-for-android/), [iOS](http://evgenii.com/projects/aes_crypto_for_ios/) and [Web](http://evgenii.com/projects/aes-crypto-for-web/).
+* Walk to Circle for Android and iOS: [walktocircle.com](http://walktocircle.com)
+* Water Footprint for Android, iOS and Web: <br>[evgenii.com/water-footprint/en/help/](http://evgenii.com/water-footprint/en/help/)
+* AES Crypto for Android, iOS and Web: [aescrypto.com/help/](http://aescrypto.com/help/)
 
 
 ## Open Source Projects
 
-* [Moa](https://github.com/evgenyneu/moa/)
-* [Cosmos](https://github.com/marketplacer/Cosmos)
-* [js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
+* Moa: [github.com/evgenyneu/moa/](https://github.com/evgenyneu/moa/)
+* SigmaSwiftStatistics: [github.com/evgenyneu/SigmaSwiftStatistics](https://github.com/evgenyneu/SigmaSwiftStatistics)
+* Cosmos: [github.com/marketplacer/Cosmos](https://github.com/marketplacer/Cosmos)
+* JavaScrtipt evaluator for Android: <br>[github.com/evgenyneu/js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
 
 
 ## Professional Experience
