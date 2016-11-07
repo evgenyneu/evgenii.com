@@ -54,7 +54,7 @@ I am an Australian permanent resident and a full-time student at Monash universi
 * Moa: [github.com/evgenyneu/moa/](https://github.com/evgenyneu/moa/)
 * SigmaSwiftStatistics: [github.com/evgenyneu/SigmaSwiftStatistics](https://github.com/evgenyneu/SigmaSwiftStatistics)
 * Cosmos: [github.com/marketplacer/Cosmos](https://github.com/marketplacer/Cosmos)
-* JavaScrtipt evaluator for Android: <br>[github.com/evgenyneu/js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
+* JavaScript evaluator for Android: <br>[github.com/evgenyneu/js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
 
 
 ## Professional Experience
