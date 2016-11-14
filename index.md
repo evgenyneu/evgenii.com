@@ -13,7 +13,7 @@ meta_description: "Personal site of Evgenii Neumerzhitckii: blog and projects."
 
 I am Evgenii, an astronomy student.
 
-I hope that we get organized and fix the environmental issues. I enjoy science and Harry Potter books, [programming](/projects/), [drawing](/drawings/) and [blogging](/blog/).
+I care about our planet, enjoy science and Harry Potter books, [programming](/projects/), [drawing](/drawings/) and [blogging](/blog/).
 
 ### Want to keep in touch?
 
