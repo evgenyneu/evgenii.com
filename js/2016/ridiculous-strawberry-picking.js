@@ -970,6 +970,16 @@ function OneStrawberry() {
   */
   that.calculateNewSpeed = function() {
     var speedDifficultyIncrease = 25 * strawberryCounter.values.collectedNumber;
+
+    // Make every third strawberry come faster in the beginning
+    // to prevent players from using an easy strategy of using the inner habitable zone orbit.
+    if (strawberryCounter.values.collectedNumber < 10 &&
+        strawberryCounter.values.collectedNumber !== 0 &&
+        strawberryCounter.values.collectedNumber % 3 === 0) {
+
+      speedDifficultyIncrease = 1000;
+    }
+
     return 2500 + (1000 * seedableRandom.nextValue()) + speedDifficultyIncrease;
   };
 
