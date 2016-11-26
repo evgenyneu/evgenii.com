@@ -52,7 +52,7 @@ The App ID Prefix (also called Team ID) is a unique text identifier associated w
 
 <img src='/image/blog/2015-12-12-sharing-keychain-between-ios-osx-tvos-apps/0050_determine_app_id_prefix_developer_account.png' alt='Determine App ID Prefix' class='isMax100PercentWide hasBorderShade90'>
 
-Now that you know your App ID prefix the full Keychain access group name that you will use in the code will look something like this:
+Now you know your App ID prefix and the full Keychain access group name will look like this:
 
 ```
 AB123CDE45.myKeychainGroup1
