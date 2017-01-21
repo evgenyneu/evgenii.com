@@ -6,6 +6,8 @@ meta_description: "This articles shows how to setup Xcode 8 to allow testing a K
 tags: programming
 ---
 
+**Update**: The Keychin bug was fixed in Xcode 8.2. Now the unit tests work if *Host Application* is selected in your test target (see Step 3 below).
+
 A Keychain is a secure storage in Apple devices used for keeping small bits of information like passwords. The testing of Keychain code has never been harder than in Xcode 8 and iOS 10. This tutorial shows *thirteen easy steps* (sorry for the sarcasm) that I needed to go through to make the unit tests work in the [Keychain Swift](https://github.com/marketplacer/keychain-swift) library.
 
 ## 1. Turn on signing in the app target
