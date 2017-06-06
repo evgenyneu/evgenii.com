@@ -6,7 +6,7 @@ meta_description: "This quick tutorial shows how to disable Swift 3 @obj inferen
 tags: programming
 ---
 
-Today I installed Xcode 9 and converted my projects to Swift 4.0. Surprisingly, very few changes were necessary to make my code compatible with the new Swift. However, one Dependency Analysis warning showed up after the build:
+Today I installed Xcode 9 and converted my projects to Swift 4.0. Surprisingly, very few changes were necessary to make my code compatible with the new Swift. However, one warning showed up after the build:
 
 > The use of Swift 3 @objc inference in Swift 4 mode is deprecated. Please address deprecated @objc inference warnings, test your code with “Use of deprecated Swift 3 @objc inference” logging enabled, and disable Swift 3 @objc inference.
 
@@ -24,7 +24,7 @@ Here is how I got rid of that warning:
 
 Before Swift 4, the compiler made some Swift declarations automatically available to Objective-C. For example, if one subclassed from NSObject, the compiler created Objective-C entry points for all methods in such classes. The mechanism is called *@objc inference*.
 
-In Swift 4, such automatic @objc inference is deprecated because it is costly to generate all those Objective-C entry points. When "Swift 3 @objc Inference" setting is set to "On", it allows the old code to work. However, it will show deprecation warnings that need to be addressed. It is recommended to "fix" these warnings and set the setting to "Off", which is the default for new Swift projects.
+In Swift 4, such automatic @objc inference is deprecated because it is costly to generate all those Objective-C entry points. When "Swift 3 @objc Inference" setting is set to "On", it allows the old code to work. However, it will show deprecation warnings that need to be addressed. It is recommended to "fix" these warnings and switch the setting to "Off", which is the default for new Swift projects.
 
 
 ## Example 1: before Swift 4
@@ -88,7 +88,7 @@ class MyClass : NSObject {
 
 ## References
 
-* [Limiting @objc inference](https://github.com/apple/swift-evolution/blob/master/proposals/0160-objc-inference.md) Swift proposal
+* [Limiting @objc inference](https://github.com/apple/swift-evolution/blob/master/proposals/0160-objc-inference.md) Swift proposal.
 
 * An [answer](https://stackoverflow.com/a/44380886/297131) on Stack Overflow.
 
