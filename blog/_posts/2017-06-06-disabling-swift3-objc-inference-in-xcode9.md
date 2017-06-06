@@ -6,7 +6,7 @@ meta_description: "This quick tutorial shows how to disable Swift 3 @obj inferen
 tags: programming
 ---
 
-Today I installed Xcode 9 and converted my projects to Swift 4.0. Surprisingly, there was not much I needed to change in my code to make it compatible with the new Swift. However, one Dependency Analysis warning showed up after the build:
+Today I installed Xcode 9 and converted my projects to Swift 4.0. Surprisingly, very few changes were necessary to make my code compatible with the new Swift. However, one Dependency Analysis warning showed up after the build:
 
 > The use of Swift 3 @objc inference in Swift 4 mode is deprecated. Please address deprecated @objc inference warnings, test your code with “Use of deprecated Swift 3 @objc inference” logging enabled, and disable Swift 3 @objc inference.
 
