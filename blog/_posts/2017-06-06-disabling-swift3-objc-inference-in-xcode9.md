@@ -1,8 +1,8 @@
 ---
 layout: blog_post
 comments: true
-title: "Disabling Swift 3 @obj inference in Xcode 9"
-meta_description: "This quick tutorial shows how to disable Swift 3 @obj inference in Xcode 9 and prevent build warnings from showing up."
+title: "Disabling Swift 3 @objc inference in Xcode 9"
+meta_description: "This quick tutorial shows how to disable Swift 3 @objc inference in Xcode 9 and prevent build warnings from showing up."
 tags: programming
 ---
 
