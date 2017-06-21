@@ -51,16 +51,18 @@ I am looking for work as an iOS or Android programmer.
 
 ## My working schedule 2016 - 2017
 
-I am an Australian permanent resident and a full-time student at Monash university Clayton campus. I can work the following hours during 2016 - 2017 period.
+I am an Australian permanent resident and a full-time student at Monash university Clayton campus. I can work full time 4 months per year during the breaks between semesters:
 
-* **Full time**: 40 hrs/week, 4 months per year: Nov 11 - Feb 18 2016, 22 Jun - 15 Jul 2017.
-* **Part time**: 10 hrs/week, 6.5 months per year: 27 Feb - 4 Jun, 16 Jul - 29 Oct.
-* **Exams**: no work, 1.5 months per year: 4 - 22 Jun, 29 Oct - 16 Nov.
+* 22 Jun - 24 Jul 2017
+* 17 Nov 2017 - 26 Feb 2018
+* 22 Jun 2018 - 23 Jul 2018
+* 16 Nov 2018 - 4 Mar 2019
+
 
 
 ## Professional Experience
 
-### December 2016 - Present
+### December 2016 - April 2017
 
 [GoFetch](http://www.go-fetch.com.au) – delivery app for iOS and Web, Melbourne, Australia
 
