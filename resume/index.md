@@ -50,7 +50,7 @@ I am looking for work as an iOS or Android programmer.
 * JavaScript evaluator for Android: <br>[github.com/evgenyneu/js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
 
 
-## My working schedule 2016 - 2017
+## My working schedule
 
 I am an Australian permanent resident and a full-time student at Monash university Clayton campus. I can work full time 4 months per year during the breaks between semesters:
 
