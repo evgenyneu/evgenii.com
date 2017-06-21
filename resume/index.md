@@ -45,7 +45,8 @@ I am looking for work as an iOS or Android programmer.
 
 * Moa: [github.com/evgenyneu/moa/](https://github.com/evgenyneu/moa/)
 * SigmaSwiftStatistics: [github.com/evgenyneu/SigmaSwiftStatistics](https://github.com/evgenyneu/SigmaSwiftStatistics)
-* Cosmos: [github.com/marketplacer/Cosmos](https://github.com/marketplacer/Cosmos)
+* Cosmos: [github.com/evgenyneu/Cosmos](https://github.com/evgenyneu/Cosmos)
+* KeychainSwift: [github.com/evgenyneu/keychain-swift](https://github.com/evgenyneu/keychain-swift)
 * JavaScript evaluator for Android: <br>[github.com/evgenyneu/js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
 
 
