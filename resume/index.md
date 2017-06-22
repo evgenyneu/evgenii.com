@@ -52,7 +52,7 @@ I am looking for work as an iOS or Android programmer.
 
 ## My working schedule
 
-I am an Australian permanent resident and a full-time student at Monash university Clayton campus. I can work full time 4 months per year during the breaks between semesters:
+I am an Australian permanent resident and a full-time student at Monash university Clayton campus. I can work full-time 4 months per year during the breaks between semesters:
 
 * 22 Jun - 24 Jul 2017
 * 17 Nov 2017 - 26 Feb 2018
