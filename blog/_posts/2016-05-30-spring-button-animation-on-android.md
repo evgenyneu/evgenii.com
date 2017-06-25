@@ -10,7 +10,7 @@ tags: programming
   <img width='144' class='isTextCentered' src='/image/blog/2016-05-30-spring-button-animation-on-android/005-spring-button-animation.gif' alt='Spring style button animation on Android'>
 </div>
 
-This tutorial shows how to animate a button with bounce effect on Android using Android Studio version 2.2.
+This tutorial shows how to animate a button with bounce effect on Android using Android Studio version 2.3.
 
 I assume that you know how to create an app in Android Studio. If you don't have this experience yet then I would recommend reading the excellent [Building Your First App](https://developer.android.com/training/basics/firstapp/index.html) tutorial from Google first.
 
@@ -21,25 +21,25 @@ We begin by placing a button in the activity layout file **res/layout/activity_m
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.mycompany.bubblebutton.MainActivity">
+    tools:context="com.evgenii.sixbouncingbuttons.MainActivity">
 
     <Button
         android:id="@+id/button"
         android:layout_width="92dp"
         android:layout_height="92dp"
         android:onClick="didTapButton"
-        android:layout_centerHorizontal="true"
-        android:background="#FFA400" />
+        android:background="#FFA400"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
 ```
 
 ## 2) Create a scale animation
@@ -109,8 +109,8 @@ Next, we write the code that adds the bounce effect to the scale animation.
 
 ```Java
 class MyBounceInterpolator implements android.view.animation.Interpolator {
-    double mAmplitude = 1;
-    double mFrequency = 10;
+    private double mAmplitude = 1;
+    private double mFrequency = 10;
 
     MyBounceInterpolator(double amplitude, double frequency) {
         mAmplitude = amplitude;
