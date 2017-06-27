@@ -9,7 +9,7 @@ tags: science
 The following is a list of things each of us can do to reduce our energy consumption. It's based mostly on excellent lectures [The Science of Energy: Resources and Power Explained](http://www.thegreatcourses.com/courses/the-science-of-energy-resources-and-power-explained.html) by Professor Michael E. Wysession and  The Great Courses.
 
 
-## Consumption
+## In general
 
 * Recycle. It takes less energy to reuse materials than to make them from scratch.
 * Avoid disposable items and low quality products that don’t last long.
@@ -32,7 +32,7 @@ Heating water requires enormous amount of energy.
 * Use electricity provider that gets energy from renewable sources.
 * In summer, stick reflective film to your windows. Blinds and curtains don't prevent heat from getting into your house.
 * Use thermally efficient windows with vacuum between multiple glass panes.
-* Generate your own energy with solar panels and store extra in batteries.
+* Generate your own energy with solar panels and store extra energy in batteries.
 * Improve insulation of your house: windows, doors, walls.
 * Plant trees around your house. Trees cool your house during summer and prevent winds from stealing away the heat in winter.
 
@@ -74,7 +74,7 @@ Heating water requires enormous amount of energy.
 
 ## I did not know that…
 
-* Flying in an airplane is one of the most energy intensive thing we do. Boeing 747 consumes 140 megawatts, which is equal to the energy consumed by a hundred thousand (100 000) US homes. During a 12-hour flight you will consume as much energy one US household consumes over one year (in electricity).
+* Flying in an airplane is one of the most energy intensive thing we do. Boeing 747 consumes 140 megawatts, which is equal to the energy consumed by a hundred thousand (100 000) US homes. During a 12-hour flight you will consume as much energy one US household uses over one year (in electricity).
 * The total distance humans drive in two years is about the same as the distance to the nearest star, Proxima Centauri.
 * Electric cars are four to six times more efficient than gas-powered cars.
 * Bicycling is one of the most energy efficient ways of traveling.
