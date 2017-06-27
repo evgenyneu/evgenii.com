@@ -14,7 +14,7 @@ The following is a list of things each of us can do to reduce our energy consump
 * Recycle. It takes less energy to reuse materials than to make them from scratch.
 * Avoid disposable items and low quality products that don’t last long.
 * Purchase local food/products. Local products require less energy for transportation.
-* Eat less packaged food. Making packaging requires energy.
+* Eat less packaged food. It takes energy to make packaging.
 * Reduce amount of food you throw away. 40% of food is lost in the US during different stages from production to consumption.
 * Turn off electronic devices *completely* when they are not in use instead of leaving them in standby or sleep mode. 75% of electricity from electronics is consumed when they are not on.
 * Buy energy efficient house appliances (fridge, washing machine).
