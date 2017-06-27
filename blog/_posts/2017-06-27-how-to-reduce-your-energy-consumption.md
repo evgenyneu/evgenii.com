@@ -30,7 +30,7 @@ Heating water requires enormous amount of energy.
 ## House
 
 * Use electricity provider that gets energy from renewable sources.
-* In summer, stick reflective film to your windows. Blinds don't prevent heat from getting into your house.
+* In summer, stick reflective film to your windows. Blinds and curtains don't prevent heat from getting into your house.
 * Use thermally efficient windows with vacuum between multiple glass panes.
 * Generate your own energy with solar panels and store extra in batteries.
 * Improve insulation of your house: windows, doors, walls.
@@ -49,7 +49,7 @@ Heating water requires enormous amount of energy.
 
 * Use heat pump technology for both heating and cooling instead of electrical/gas heating.
 * Set thermostat to lower temperature in winter and higher temperature in summer.
-* Consider putting on warmer clothes instead of cooling/heating the whole room.
+* Consider putting on warmer clothes instead of cooling/heating entire room.
 * Keep doors/windows shut when cooling/heating is on.
 * Change air filters of cooling/heating equipment regularly.
 
@@ -82,9 +82,9 @@ Heating water requires enormous amount of energy.
 
 ## Ideas for the future
 
-* Install electricity meter that displays the cost of your current energy use in the center of your house where everyone can see it.
-* Using virtual reality equipment for teleconferencing can make business meeting more realistic and can make commute/flying unnecessary.
+* Install electricity meter that displays the cost of your current energy use and place the meter somewhere in your house where everyone can see it.
 * Show the cost of current fuel consumption in your car.
+* Using virtual reality equipment for teleconferencing can make business meeting more realistic and can make commute/flying unnecessary.
 * Design new homes with energy savings in mind: insulation, air flow, orientation, tilt of windows, solar panels on rooftops.
 
 
