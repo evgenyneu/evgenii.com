@@ -6,7 +6,7 @@ meta_description: "Here is what each of us can do to reduce the amount of energy
 tags: science
 ---
 
-The following is a list of things each of us can do to reduce our energy consumption. It's based mostly on excellent The Great Courses lectures [The Science of Energy: Resources and Power Explained](http://www.thegreatcourses.com/courses/the-science-of-energy-resources-and-power-explained.html) by Professor Michael E. Wysession.
+The following is a list of things each of us can do to reduce our energy consumption. It's based mostly on excellent lectures [The Science of Energy: Resources and Power Explained](http://www.thegreatcourses.com/courses/the-science-of-energy-resources-and-power-explained.html) by Professor Michael E. Wysession and  The Great Courses.
 
 
 ## Consumption
