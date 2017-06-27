@@ -49,7 +49,7 @@ Heating water requires enormous amount of energy.
 
 * Use heat pump technology for both heating and cooling instead of electrical/gas heating.
 * Set thermostat to lower temperature in winter and higher temperature in summer.
-* Consider putting on warmer clothes instead of cooling/heating entire room.
+* Consider putting on warmer clothes instead of heating entire room.
 * Keep doors/windows shut when cooling/heating is on.
 * Change air filters of cooling/heating equipment regularly.
 
