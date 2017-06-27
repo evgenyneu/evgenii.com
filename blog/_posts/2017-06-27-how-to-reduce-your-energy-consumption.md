@@ -6,7 +6,7 @@ meta_description: "Here is what each of us can do to reduce the amount of energy
 tags: science
 ---
 
-The following is a list of things each of us can do to reduce our energy consumption. It's based mostly on the The Great Courses lectures [The Science of Energy: Resources and Power Explained](http://www.thegreatcourses.com/courses/the-science-of-energy-resources-and-power-explained.html) by Professor Michael E. Wysession.
+The following is a list of things each of us can do to reduce our energy consumption. It's based mostly on excellent The Great Courses lectures [The Science of Energy: Resources and Power Explained](http://www.thegreatcourses.com/courses/the-science-of-energy-resources-and-power-explained.html) by Professor Michael E. Wysession.
 
 
 ## Consumption
@@ -23,8 +23,8 @@ The following is a list of things each of us can do to reduce our energy consump
 
 Heating water requires enormous amount of energy.
 
-* Heat just enough water to fill your cup when making a hot drink. Heating extra water wastes a lot of energy.
-* Use lower temperature setting in your washing machine.
+* Heat just enough water to fill your cup when making a hot drink. Heating extra water is wasteful.
+* Use lower temperature setting in your washing machine. Your clothes will also last longer.
 * Reduce time spent in the shower.
 
 ## House
@@ -51,7 +51,7 @@ Heating water requires enormous amount of energy.
 * Set thermostat to lower temperature in winter and higher temperature in summer.
 * Consider putting on warmer clothes instead of cooling/heating the whole room.
 * Keep doors/windows shut when cooling/heating is on.
-* Change air filters regularly on cooling/heating equipment.
+* Change air filters of cooling/heating equipment regularly.
 
 
 
