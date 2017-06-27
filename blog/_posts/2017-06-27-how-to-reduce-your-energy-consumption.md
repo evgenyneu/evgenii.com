@@ -23,7 +23,7 @@ The following is a list of things each of us can do to reduce our energy consump
 
 Heating water requires enormous amount of energy.
 
-* Heat just enough water to fill your cup when making a hot drink. Heating extra water waster a lot of energy.
+* Heat just enough water to fill your cup when making a hot drink. Heating extra water wastes a lot of energy.
 * Use lower temperature setting in your washing machine.
 * Reduce time spent in the shower.
 
