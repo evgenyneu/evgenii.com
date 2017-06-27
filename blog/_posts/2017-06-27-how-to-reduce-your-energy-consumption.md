@@ -74,7 +74,7 @@ Heating water requires enormous amount of energy.
 
 ## I did not know that…
 
-* Flying in an airplane is one of the most energy intensive things you can do. Boeing 747 consumes 140 megawatts, which is equal to the energy consumed by a hundred thousand (100 000) US homes. During a 12-hour flight you will consume as much energy one US household uses over one year (in electricity).
+* Flying in an airplane is one of the most energy intensive things you can do. Boeing 747 consumes 140 megawatts, which is equal to the power input of one hundred thousand (100 000) US homes. During a 12-hour flight you will consume as much energy one US household uses over one year (in electricity).
 * The total distance humans drive in two years is about the same as the distance to the nearest star, Proxima Centauri.
 * Electric cars are four to six times more efficient than gas-powered cars.
 * Bicycling is one of the most energy efficient ways of traveling.
