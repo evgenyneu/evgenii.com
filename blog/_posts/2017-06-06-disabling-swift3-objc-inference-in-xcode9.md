@@ -16,15 +16,15 @@ Here is how I got rid of that warning:
 1. Select your target.
 1. Click *Build Settings*.
 1. In the search bar type "inference" to quickly find the settings.
-1. Finally, change the "Swift 3 @objc Inference" settings to "Off" and rebuild the project.
+1. Finally, change the "Swift 3 @objc Inference" settings to "Default" and rebuild the project.
 
-<img src='/image/blog/2017-06-06-disabling-swift3-objc-inference-in-xcode9/disable-swift-3-objc-inference-xcode9.png' alt='Disabling Swift 3 @objc inrefence in Xcode 9' class='isMax100PercentWide hasBorderShade90'>
+<img src='/image/blog/2017-06-06-disabling-swift3-objc-inference-in-xcode9/disable-swift-3-objc-inference-xcode9-default.png' alt='Disabling Swift 3 @objc inrefence in Xcode 9' class='isMax100PercentWide hasBorderShade90'>
 
 ## What does "Swift 3 @objc Inference" setting do?
 
 Before Swift 4, the compiler made some Swift declarations automatically available to Objective-C. For example, if one subclassed from NSObject, the compiler created Objective-C entry points for all methods in such classes. The mechanism is called *@objc inference*.
 
-In Swift 4, such automatic @objc inference is deprecated because it is costly to generate all those Objective-C entry points. When "Swift 3 @objc Inference" setting is set to "On", it allows the old code to work. However, it will show deprecation warnings that need to be addressed. It is recommended to "fix" these warnings and switch the setting to "Off", which is the default for new Swift projects.
+In Swift 4, such automatic @objc inference is deprecated because it is costly to generate all those Objective-C entry points. When "Swift 3 @objc Inference" setting is set to "On", it allows the old code to work. However, it will show deprecation warnings that need to be addressed. It is recommended to "fix" these warnings and switch the setting to "Default", which is the default for new Swift projects.
 
 
 ## Example 1: before Swift 4
