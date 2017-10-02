@@ -1,11 +1,11 @@
 ---
 layout: music
 title: Music I enjoyed
-layout_class: isTextCentered
+layout_class: isTextCentered hasNoHorizontalPadding
 ---
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLqC2on1piRdF2S4MkQjE4NxUwkXI7q-d0" frameborder="0" allowfullscreen></iframe>
+<div class='embed-container'><iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLqC2on1piRdF2S4MkQjE4NxUwkXI7q-d0" frameborder="0" allowfullscreen></iframe>
 
 <br>
 

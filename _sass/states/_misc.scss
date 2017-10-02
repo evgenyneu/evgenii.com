@@ -54,6 +54,15 @@
 .hasTopMarginSmall { margin-top: $iiMarginSmall; }
 .hasNoBottomMargin { margin-bottom: 0; }
 
+.hasNoHorizontalPadding {
+  margin-right:0;
+  margin-left:0;
+  .layout-padding {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 
 // Border
 // -----------------
