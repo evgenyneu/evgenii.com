@@ -1,6 +1,6 @@
 ---
 layout: music
-title: Pleasant but somewhat provocative music
+title: Pleasant yet somewhat provocative music
 layout_class: isTextCentered hasNoHorizontalPadding
 comments: true
 ---
