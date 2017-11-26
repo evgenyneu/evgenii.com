@@ -104,7 +104,7 @@ window.randomExercise = function(){
       var chapter = userSettings.chaptersToShow[i];
 
 
-      for(var j=0; j< chapterArray.length; i++)
+      for(var j=0; j< chapterArray.length; j++)
       {
         var checkbox = chapterArray[j];
         if (checkbox.getAttribute('data-chapter') == chapter) {

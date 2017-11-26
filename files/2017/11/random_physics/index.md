@@ -7,6 +7,8 @@ title: "Random physics problem"
 
 # Random physics problem
 
+From Physics for Scientists and Engineers 3rd ed. by Knight.
+
 <p>
   <button class="RandomExercise-runButton Button">Get random problem</button>
 </p>

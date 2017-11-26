@@ -40,10 +40,6 @@ From Calculus, 8th ed. by Stewart.
   <button class="RandomExercise-clearChapters Button">Set/clear all</button>
 </div>
 
-<h3>About</h3>
-
-<p>Return a random odd-numbered problem from Knight's Physics for Scientists and Engineers 3rd edition textbook.</p>
-
 <script src="/js/2017/random_exercise.js"></script>
 
 <script>
