@@ -26,7 +26,7 @@ window.randomExercise = function(){
     for(var i=0; i< data.chapters.length; i++)
     {
       var chapter = data.chapters[i];
-      html = html + '<label><input type="checkbox" name="chapter[]" value="' + chapter.chapter + '" onchange="randomExercise.saveUserSetting(this)"> ' + chapter.chapter + '. ' + chapter.title + '</label><br>';
+      html = html + '<label><input type="checkbox" name="chapter[]" data-chapter="' + chapter.chapter + '" onchange="randomExercise.saveUserSetting(this)"> ' + chapter.chapter + '. ' + chapter.title + '</label><br>';
     }
 
     chaptersContainter.innerHTML = html;
@@ -77,7 +77,7 @@ window.randomExercise = function(){
     for(var i=0; i< chapterArray.length; i++)
     {
       var checkbox = chapterArray[i];
-      if (checkbox.checked) { chapters.push(checkbox.value); }
+      if (checkbox.checked) { chapters.push(checkbox.getAttribute('data-chapter')); }
     }
 
     return chapters;
@@ -102,8 +102,16 @@ window.randomExercise = function(){
     for(var i=0; i< userSettings.chaptersToShow.length; i++)
     {
       var chapter = userSettings.chaptersToShow[i];
-      var checkbox = chapterArray[chapter-1];
-      checkbox.checked = true;
+
+
+      for(var j=0; j< chapterArray.length; i++)
+      {
+        var checkbox = chapterArray[j];
+        if (checkbox.getAttribute('data-chapter') == chapter) {
+          checkbox.checked = true;
+          break;
+        }
+      }
     }
   }
 
@@ -114,26 +122,30 @@ window.randomExercise = function(){
     // User last chapter
     var useLastChapterElement = document.querySelector(".RandomExercise-useLastChapter");
     var localStorageUseLastChapter = localStorage.getItem(localStoragePrefixedKey("useLastChapter"));
-    if (localStorageUseLastChapter !== undefined) {
+    if (localStorageUseLastChapter) {
       userSettings.useLastChapter = localStorageUseLastChapter === 'true';
     }
     useLastChapterElement.checked = userSettings.useLastChapter;
 
     // Include exercises
     var includeExercisesElement = document.querySelector(".RandomExercise-includeExercises");
-    var localStorageIncludeExercises = localStorage.getItem(localStoragePrefixedKey("includeExercises"));
-    if (localStorageIncludeExercises !== undefined) {
-      userSettings.includeExercises = localStorageIncludeExercises === 'true';
+      if (includeExercisesElement) {
+      var localStorageIncludeExercises = localStorage.getItem(localStoragePrefixedKey("includeExercises"));
+      if (localStorageIncludeExercises) {
+        userSettings.includeExercises = localStorageIncludeExercises === 'true';
+      }
+      includeExercisesElement.checked = userSettings.includeExercises;
     }
-    includeExercisesElement.checked = userSettings.includeExercises;
 
     // Include challenges
     var includeChallengesElement = document.querySelector(".RandomExercise-includeChallenges");
-    var localStorageIncludeChallenge = localStorage.getItem(localStoragePrefixedKey("includeChallenges"));
-    if (localStorageIncludeChallenge !== undefined) {
-      userSettings.includeChallenges = localStorageIncludeChallenge === 'true';
+      if (includeChallengesElement) {
+      var localStorageIncludeChallenge = localStorage.getItem(localStoragePrefixedKey("includeChallenges"));
+      if (localStorageIncludeChallenge) {
+        userSettings.includeChallenges = localStorageIncludeChallenge === 'true';
+      }
+      includeChallengesElement.checked = userSettings.includeChallenges;
     }
-    includeChallengesElement.checked = userSettings.includeChallenges;
   }
 
   function localStoragePrefixedKey(name) {
@@ -149,12 +161,16 @@ window.randomExercise = function(){
     localStorage.setItem(localStoragePrefixedKey("useLastChapter"), userSettings.useLastChapter);
 
     var includeExercisesElement = document.querySelector(".RandomExercise-includeExercises");
-    userSettings.includeExercises = includeExercisesElement.checked;
-    localStorage.setItem(localStoragePrefixedKey("includeExercises"), userSettings.includeExercises);
+    if (includeExercisesElement) {
+      userSettings.includeExercises = includeExercisesElement.checked;
+      localStorage.setItem(localStoragePrefixedKey("includeExercises"), userSettings.includeExercises);
+    }
 
     var includeChallengesElement = document.querySelector(".RandomExercise-includeChallenges");
-    userSettings.includeChallenges = includeChallengesElement.checked;
-    localStorage.setItem(localStoragePrefixedKey("includeChallenges"), userSettings.includeChallenges);
+    if (includeChallengesElement) {
+      userSettings.includeChallenges = includeChallengesElement.checked;
+      localStorage.setItem(localStoragePrefixedKey("includeChallenges"), userSettings.includeChallenges);
+    }
   }
 
   /**
@@ -182,7 +198,7 @@ window.randomExercise = function(){
         var lastProblem = item.last;
 
         if (!userSettings.includeChallenges && item.challengeStart !== undefined) { lastProblem = item.challengeStart - 1; }
-        if (!userSettings.includeExercises) { firstProblem = item.problemsStart; }
+        if (!userSettings.includeExercises  && item.includeExercises !== undefined) { firstProblem = item.problemsStart; }
 
         problem = Math.floor(Math.random() * lastProblem) + firstProblem;
         if (problem % 2 === 0) { // An even problem, we need only odd ones
