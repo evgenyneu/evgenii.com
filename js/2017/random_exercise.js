@@ -16,6 +16,11 @@ window.randomExercise = function(){
   var toggleChaptersButton = document.querySelector(".RandomExercise-clearChapters");
   var lastChapter = 0;
 
+  function showBookTitle(title) {
+    var titleElement = document.querySelector(".RandomExercise-bookTitle");
+    titleElement.innerHTML = title;
+  }
+
   /**
    * Show the chapter checkboxes.
    */
@@ -26,7 +31,7 @@ window.randomExercise = function(){
     for(var i=0; i< data.chapters.length; i++)
     {
       var chapter = data.chapters[i];
-      html = html + '<label><input type="checkbox" name="chapter[]" data-chapter="' + chapter.chapter + '" onchange="randomExercise.saveUserSetting(this)"> ' + chapter.chapter + '. ' + chapter.title + '</label><br>';
+      html = html + '<label><input type="checkbox" name="chapter[]" data-chapterId="' + i + '" onchange="randomExercise.saveUserSetting(this)"> ' + chapter.title + '</label><br>';
     }
 
     chaptersContainter.innerHTML = html;
@@ -35,10 +40,7 @@ window.randomExercise = function(){
   /**
    * Shows the chapter, problem and page number to the user.
    */
-  function showProblemNumber(title, chapter, problem, page, answer_page) {
-    var chapterElement = document.querySelector(".RandomExercise-chapterNumber");
-    chapterElement.innerHTML = chapter + ".";
-
+  function showProblemNumber(title, problem, page, answer_page) {
     var titleElement = document.querySelector(".RandomExercise-chapterTitle");
     titleElement.innerHTML = title;
 
@@ -46,7 +48,10 @@ window.randomExercise = function(){
     problemElement.innerHTML = "Problem: " + problem;
 
     var pageElement = document.querySelector(".RandomExercise-pageNumber");
-    pageElement.innerHTML = "Page: " + page + ", answer: " + answer_page;
+    pageElement.innerHTML = "Page: " + page;
+
+    var answerPageElement = document.querySelector(".RandomExercise-answerPageNumber");
+    answerPageElement.innerHTML = "Answer page: " + answer_page;
   }
 
   /**
@@ -58,7 +63,7 @@ window.randomExercise = function(){
 
     if (chapterToShowFromLocalStorage) {
       if (chapterToShowFromLocalStorage !== "") {
-        chaptersToShow = chapterToShowFromLocalStorage.split(",").map(function(x) { return x; });
+        chaptersToShow = chapterToShowFromLocalStorage.split(",").map(function(x) { return Number(x); });
       }
     } else {
       chaptersToShow = includedChaptersFromHtml();
@@ -77,7 +82,7 @@ window.randomExercise = function(){
     for(var i=0; i< chapterArray.length; i++)
     {
       var checkbox = chapterArray[i];
-      if (checkbox.checked) { chapters.push(checkbox.getAttribute('data-chapter')); }
+      if (checkbox.checked) { chapters.push(Number(checkbox.getAttribute('data-chapterId'))); }
     }
 
     return chapters;
@@ -103,11 +108,10 @@ window.randomExercise = function(){
     {
       var chapter = userSettings.chaptersToShow[i];
 
-
       for(var j=0; j< chapterArray.length; j++)
       {
         var checkbox = chapterArray[j];
-        if (checkbox.getAttribute('data-chapter') == chapter) {
+        if (Number(checkbox.getAttribute('data-chapterId')) === chapter) {
           checkbox.checked = true;
           break;
         }
@@ -192,30 +196,27 @@ window.randomExercise = function(){
       lastChapter = chapter;
     }
 
-    data.chapters.map( function(item) {
-      if (item.chapter === chapter) {
-        var firstProblem = 1;
-        var lastProblem = item.last;
+    var item = data.chapters[chapter];
+    var firstProblem = 1;
+    var lastProblem = item.last;
 
-        if (!userSettings.includeChallenges && item.challengeStart !== undefined) { lastProblem = item.challengeStart - 1; }
-        if (!userSettings.includeExercises  && item.includeExercises !== undefined) { firstProblem = item.problemsStart; }
+    if (!userSettings.includeChallenges && item.challengeStart !== undefined) { lastProblem = item.challengeStart - 1; }
+    if (!userSettings.includeExercises  && item.includeExercises !== undefined) { firstProblem = item.problemsStart; }
 
-        problem = Math.floor(Math.random() * lastProblem) + firstProblem;
-        if (problem % 2 === 0) { // An even problem, we need only odd ones
-          if (problem === firstProblem) {
-            problem = problem + 1;
-          } else {
-            problem = problem - 1;
-          }
-        }
-
-        page = item.page;
-        answer_page = item.answer_page;
-        title = item.title;
+    problem = Math.floor(Math.random() * lastProblem) + firstProblem;
+    if (problem % 2 === 0) { // An even problem, we need only odd ones
+      if (problem === firstProblem) {
+        problem = problem + 1;
+      } else {
+        problem = problem - 1;
       }
-    });
+    }
 
-    showProblemNumber(title, chapter, problem, page, answer_page);
+    page = item.page;
+    answer_page = item.answer_page;
+    title = item.title;
+
+    showProblemNumber(title, problem, page, answer_page);
   }
 
   /**
@@ -223,12 +224,13 @@ window.randomExercise = function(){
       name: unique name of the exercises used for saving user checkbox choises in HTMl storage. Ex: "stewart_calculus".
       chapters: the chapter data for the textbook.
   */
-  function init(name, chapters) {
+  function init(name, chapters, title) {
     data.name = name;
     data.chapters = chapters;
     button.onclick = pickRandomProblem;
     toggleChaptersButton.onclick = toggleChapters;
 
+    showBookTitle(title);
     showChapters();
     loadUserSetting();
   }
