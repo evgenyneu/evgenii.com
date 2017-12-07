@@ -8,7 +8,7 @@ window.randomExercise = function(){
   };
 
   var data = {
-    name: null, // Unique name for the exercise, used for storing user setings in local storage. Ex: "stewart_calculus".
+    bookTitle: null, // Unique title for the exercise, used for storing user setings in local storage. Ex: "Calculus Stewart 3ed".
     chapters: null // Contain chapter information supplied by the user.
   };
 
@@ -22,25 +22,99 @@ window.randomExercise = function(){
   }
 
   /**
+    Massage exercises for further use.
+  */
+  function massageExercises() {
+    for(var i=0; i < data.chapters.length; i++)
+    {
+      var chapter = data.chapters[i];
+
+      if (chapter.exercises !== undefined) {
+        for(var j=0; j < chapter.exercises.length; j++)
+        {
+          var exercise = chapter.exercises[j];
+          exercise.chapterId = i;
+          exercise.chapterTitle = chapter.title;
+        }
+      } else {
+        // There are no exercises, create one
+        var newExercise = {
+          type: "Default",
+          page: chapter.page,
+          answerPage: chapter.answerPage,
+          first: chapter.first,
+          last: chapter.last,
+          chapterId: i,
+          chapterTitle: chapter.title
+        };
+
+        chapter.exercises = [newExercise];
+      }
+    }
+  }
+
+  /**
+   * Show exercise types.
+   */
+  function showExerciseTypes() {
+    var types = getExerciseTypes();
+    var html = "";
+
+    for(var i=0; i < types.length; i++)
+    {
+      var type = types[i];
+      html = html + '<label><input type="checkbox" name="exercise[]" data-type="' + type + '" onchange="randomExercise.saveUserSetting(this)" checked> ' + type + '</label><br>';
+    }
+
+    var containter = document.querySelector(".RandomExercise-execriceTypes");
+    if (containter === null) { return; }
+    containter.innerHTML = html;
+  }
+
+  /**
+    Returns a list of exercise types supplied by the user.
+  */
+  function getExerciseTypes() {
+    var types = [];
+
+    for(var i=0; i < data.chapters.length; i++)
+    {
+      var chapter = data.chapters[i];
+      if (chapter.exercises === undefined) { continue; }
+
+      for(var j=0; j < chapter.exercises.length; j++)
+      {
+        var type = chapter.exercises[j].type;
+
+        if (types.indexOf(type) === -1) {
+          types.push(type);
+        }
+      }
+    }
+
+    return types;
+  }
+
+  /**
    * Show the chapter checkboxes.
    */
   function showChapters() {
-    var chaptersContainter = document.querySelector(".RandomExercise-chapters");
     var html = "";
 
-    for(var i=0; i< data.chapters.length; i++)
+    for(var i=0; i < data.chapters.length; i++)
     {
       var chapter = data.chapters[i];
-      html = html + '<label><input type="checkbox" name="chapter[]" data-chapterId="' + i + '" onchange="randomExercise.saveUserSetting(this)"> ' + chapter.title + '</label><br>';
+      html = html + '<label><input type="checkbox" name="chapter[]" data-chapterId="' + i + '" onchange="randomExercise.saveUserSetting(this)" checked> ' + chapter.title + '</label><br>';
     }
 
+    var chaptersContainter = document.querySelector(".RandomExercise-chapters");
     chaptersContainter.innerHTML = html;
   }
 
   /**
    * Shows the chapter, problem and page number to the user.
    */
-  function showProblemNumber(title, problem, page, answer_page) {
+  function showProblemNumber(title, problem, page, answerPage) {
     var titleElement = document.querySelector(".RandomExercise-chapterTitle");
     titleElement.innerHTML = title;
 
@@ -51,7 +125,7 @@ window.randomExercise = function(){
     pageElement.innerHTML = "Page: " + page;
 
     var answerPageElement = document.querySelector(".RandomExercise-answerPageNumber");
-    answerPageElement.innerHTML = "Answer page: " + answer_page;
+    answerPageElement.innerHTML = "Answer page: " + answerPage;
   }
 
   /**
@@ -61,7 +135,7 @@ window.randomExercise = function(){
     var chapterToShowFromLocalStorage = localStorage.getItem(localStoragePrefixedKey("includedChapters"));
     var chaptersToShow = [];
 
-    if (chapterToShowFromLocalStorage) {
+    if (chapterToShowFromLocalStorage !== null) {
       if (chapterToShowFromLocalStorage !== "") {
         chaptersToShow = chapterToShowFromLocalStorage.split(",").map(function(x) { return Number(x); });
       }
@@ -102,6 +176,7 @@ window.randomExercise = function(){
   }
 
   function updateIncludedChaptersCheckboxes() {
+    clearCheckboxes("chapter[]");
     var chapterArray =  document.getElementsByName("chapter[]");
 
     for(var i=0; i< userSettings.chaptersToShow.length; i++)
@@ -119,37 +194,48 @@ window.randomExercise = function(){
     }
   }
 
+  function clearCheckboxes(name) {
+    var checkboxes =  document.getElementsByName(name);
+
+    for(var j=0; j< checkboxes.length; j++)
+    {
+      checkboxes[j].checked = false;
+    }
+  }
+
+  function updateIncludedExerciseTypesCheckboxes() {
+    clearCheckboxes("exercise[]");
+    var checkboxes =  document.getElementsByName("exercise[]");
+
+    for(var i=0; i< userSettings.includedExerciseTypes.length; i++)
+    {
+      var type = userSettings.includedExerciseTypes[i];
+
+      for(var j=0; j< checkboxes.length; j++)
+      {
+        var checkbox = checkboxes[j];
+        if (checkbox.getAttribute('data-type') === type) {
+          checkbox.checked = true;
+          break;
+        }
+      }
+    }
+  }
+
   function loadUserSetting() {
     userSettings.chaptersToShow = includedChapters();
     updateIncludedChaptersCheckboxes();
 
-    // User last chapter
+    userSettings.includedExerciseTypes = includedExerciseTypes();
+    updateIncludedExerciseTypesCheckboxes();
+
+    // Use last chapter
     var useLastChapterElement = document.querySelector(".RandomExercise-useLastChapter");
     var localStorageUseLastChapter = localStorage.getItem(localStoragePrefixedKey("useLastChapter"));
     if (localStorageUseLastChapter) {
       userSettings.useLastChapter = localStorageUseLastChapter === 'true';
     }
     useLastChapterElement.checked = userSettings.useLastChapter;
-
-    // Include exercises
-    var includeExercisesElement = document.querySelector(".RandomExercise-includeExercises");
-      if (includeExercisesElement) {
-      var localStorageIncludeExercises = localStorage.getItem(localStoragePrefixedKey("includeExercises"));
-      if (localStorageIncludeExercises) {
-        userSettings.includeExercises = localStorageIncludeExercises === 'true';
-      }
-      includeExercisesElement.checked = userSettings.includeExercises;
-    }
-
-    // Include challenges
-    var includeChallengesElement = document.querySelector(".RandomExercise-includeChallenges");
-      if (includeChallengesElement) {
-      var localStorageIncludeChallenge = localStorage.getItem(localStoragePrefixedKey("includeChallenges"));
-      if (localStorageIncludeChallenge) {
-        userSettings.includeChallenges = localStorageIncludeChallenge === 'true';
-      }
-      includeChallengesElement.checked = userSettings.includeChallenges;
-    }
   }
 
   function localStoragePrefixedKey(name) {
@@ -164,17 +250,74 @@ window.randomExercise = function(){
     userSettings.useLastChapter = useLastChapterElement.checked;
     localStorage.setItem(localStoragePrefixedKey("useLastChapter"), userSettings.useLastChapter);
 
-    var includeExercisesElement = document.querySelector(".RandomExercise-includeExercises");
-    if (includeExercisesElement) {
-      userSettings.includeExercises = includeExercisesElement.checked;
-      localStorage.setItem(localStoragePrefixedKey("includeExercises"), userSettings.includeExercises);
+    userSettings.includedExerciseTypes = includedExerciseTypesFromHtml();
+    localStorage.setItem(localStoragePrefixedKey("includedExerciseTypes"), userSettings.includedExerciseTypes);
+  }
+
+  /**
+   * Returns the list of exercise types to work with.
+   */
+  function includedExerciseTypes() {
+    var execriceTypesToShowFromLocalStorage = localStorage.getItem(localStoragePrefixedKey("includedExerciseTypes"));
+    var typesToShow = [];
+
+    if (execriceTypesToShowFromLocalStorage !== null) {
+      if (execriceTypesToShowFromLocalStorage !== "") {
+        typesToShow = execriceTypesToShowFromLocalStorage.split(",").map(function(x) { return x; });
+      }
+    } else {
+      typesToShow = includedExerciseTypesFromHtml();
     }
 
-    var includeChallengesElement = document.querySelector(".RandomExercise-includeChallenges");
-    if (includeChallengesElement) {
-      userSettings.includeChallenges = includeChallengesElement.checked;
-      localStorage.setItem(localStoragePrefixedKey("includeChallenges"), userSettings.includeChallenges);
+    return typesToShow;
+  }
+
+  /**
+   * Returns the list of selected exercise types.
+   */
+  function includedExerciseTypesFromHtml() {
+    var typesArray =  document.getElementsByName("exercise[]");
+    var types = [];
+
+    if (typesArray.length === 0) {
+      // No exercise boxes are show, always select default exercises.
+      return ["Default"];
     }
+
+    for(var i=0; i< typesArray.length; i++)
+    {
+      var checkbox = typesArray[i];
+      if (checkbox.checked) { types.push(checkbox.getAttribute('data-type')); }
+    }
+
+    return types;
+  }
+
+  /**
+    Returns a list of exercises that will be used to select a random exercise from.
+  */
+  function getExercisesToShow() {
+    var chaptersToShow = userSettings.chaptersToShow;
+    if (userSettings.useLastChapter && lastChapter > 0) { chaptersToShow = [lastChapter]; }
+    var selectedTypes = userSettings.includedExerciseTypes;
+    var exercises = [];
+
+    for(var i=0; i < chaptersToShow.length; i++)
+    {
+      var chapter = data.chapters[chaptersToShow[i]];
+
+      for(var j=0; j < chapter.exercises.length; j++)
+      {
+        var exercise = chapter.exercises[j];
+        var type = exercise.type;
+
+        if (selectedTypes.indexOf(type) !== -1) {
+          exercises.push(exercise);
+        }
+      }
+    }
+
+    return exercises;
   }
 
   /**
@@ -182,55 +325,50 @@ window.randomExercise = function(){
    */
   function pickRandomProblem() {
     var title = "Please select chapters",
-      chapter = 0,
       problem = 0,
       page = 0,
-      answer_page = 0;
+      answerPage = 0;
 
-    var chaptersToShow = userSettings.chaptersToShow;
+    var exercisesToShow = getExercisesToShow();
 
-    if (chaptersToShow.length > 0) {
-      var chapterIndex = Math.floor(Math.random() * chaptersToShow.length);
-      chapter = chaptersToShow[chapterIndex];
-      if (userSettings.useLastChapter && lastChapter > 0) { chapter = lastChapter; }
-      lastChapter = chapter;
-    }
+    if (exercisesToShow.length > 0) {
+      // Pick a random exercise
+      var exerciseIndex = Math.floor(Math.random() * exercisesToShow.length);
+      var exercise = exercisesToShow[exerciseIndex];
 
-    var item = data.chapters[chapter];
-    var firstProblem = 1;
-    var lastProblem = item.last;
+      // Pick a random exercise number
+      problem = Math.floor(Math.random() * (exercise.last - exercise.first + 1)) + exercise.first;
 
-    if (!userSettings.includeChallenges && item.challengeStart !== undefined) { lastProblem = item.challengeStart - 1; }
-    if (!userSettings.includeExercises  && item.includeExercises !== undefined) { firstProblem = item.problemsStart; }
-
-    problem = Math.floor(Math.random() * lastProblem) + firstProblem;
-    if (problem % 2 === 0) { // An even problem, we need only odd ones
-      if (problem === firstProblem) {
-        problem = problem + 1;
-      } else {
-        problem = problem - 1;
+      if (problem % 2 === 0) { // An even problem, we need only odd ones
+        if (problem === exercise.first) {
+          problem = problem + 1;
+        } else {
+          problem = problem - 1;
+        }
       }
+
+      lastChapter = exercise.chapterId;
+      page = exercise.page;
+      answerPage = exercise.answerPage;
+      title = exercise.chapterTitle;
     }
 
-    page = item.page;
-    answer_page = item.answer_page;
-    title = item.title;
-
-    showProblemNumber(title, problem, page, answer_page);
+    showProblemNumber(title, problem, page, answerPage);
   }
 
   /**
     Initializes the exercises.
-      name: unique name of the exercises used for saving user checkbox choises in HTMl storage. Ex: "stewart_calculus".
-      chapters: the chapter data for the textbook.
   */
-  function init(name, chapters, title) {
-    data.name = name;
-    data.chapters = chapters;
+  function init(dataIn) {
+    data = dataIn;
+    data.name = data.bookTitle;
+    data.chapters = data.chapters;
     button.onclick = pickRandomProblem;
     toggleChaptersButton.onclick = toggleChapters;
 
-    showBookTitle(title);
+    showBookTitle(data.bookTitle);
+    massageExercises();
+    showExerciseTypes();
     showChapters();
     loadUserSetting();
   }

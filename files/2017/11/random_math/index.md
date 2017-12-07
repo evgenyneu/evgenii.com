@@ -10,6 +10,7 @@ title: "Random math problem"
 <p>
   <button class="RandomExercise-runButton Button">Get random problem</button>
 </p>
+
 <p>
     <label><input type="checkbox" class="RandomExercise-useLastChapter" name="sameChapter" value="1"
       onchange="randomExercise.saveUserSetting()"> Show same chapter</label>
@@ -21,6 +22,13 @@ title: "Random math problem"
   <span class="RandomExercise-answerPageNumber"></span><br>
   <span class="RandomExercise-problemNumber"></span>
 </p>
+
+<h3>Exercise types</h3>
+
+<div>
+  <p class='RandomExercise-execriceTypes'>
+  </p>
+</div>
 
 <h3>Chapters</h3>
 
@@ -38,18 +46,12 @@ title: "Random math problem"
 
 <script>
 
-var chapters = [
-  { title: "14. Partial Derivatives: Concept check", page: 1053, answer_page: 1449, first: 1, last: 19 },
-  { title: "14. Partial Derivatives: True-false quiz", page: 1054, answer_page: 1375, first: 1, last: 12 },
-  { title: "14. Partial Derivatives: Exercises", page: 1054, answer_page: 1375, first: 1, last: 65 },
-  { title: "15. Multiple Integrals: Concept check", page: 1133, answer_page: 1449, first: 1, last: 10 },
-  { title: "15. Multiple Integrals: True-false quiz", page: 1133, answer_page: 1378, first: 1, last: 9 },
-  { title: "15. Multiple Integrals: Exercises",  page: 1134, answer_page: 1378, first: 1, last: 60 },
-  { title: "16. Vector Calculus: Concept check", page: 1220, answer_page: 1453, first: 1, last: 16 },
-  { title: "16. Vector Calculus: True-false quiz", page: 1220, answer_page: 1381, first: 1, last: 13 },
-  { title: "16. Vector Calculus: Exercises", page: 1221, answer_page: 1381, first: 1, last: 41 }
-];
+// The data is stored in the spreadsheet
+// https://docs.google.com/spreadsheets/d/1UTDs-HvaSevMtZl4CBGut9_Jg-jGsiYaHQlxzhX8S6Y/edit?usp=sharing
+// To generate JSON, click Random Problem/Generate Data menu
 
-randomExercise.init("calculus_stewart", chapters, "Calculus, Early Transcendentals, 8E by James Stewart");
+var data = {"bookTitle":"Calculus, Early Transcendentals, 8E by James Stewart","chapters":[{"title":"14. Partial Derivatives","exercises":[{"type":"Concept check","page":1053,"answerPage":1449,"first":1,"last":19},{"type":"True-false quiz","page":1054,"answerPage":1375,"first":1,"last":12},{"type":"Exercises","page":1054,"answerPage":1375,"first":1,"last":65}]},{"title":"15. Multiple Integrals","exercises":[{"type":"Concept check","page":1133,"answerPage":1449,"first":1,"last":10},{"type":"True-false quiz","page":1133,"answerPage":1378,"first":1,"last":60},{"type":"Exercises","page":1134,"answerPage":1378,"first":1,"last":60}]},{"title":"16. Vector Calculus","exercises":[{"type":"Concept check","page":1220,"answerPage":1453,"first":1,"last":16},{"type":"True-false quiz","page":1220,"answerPage":1381,"first":1,"last":13},{"type":"Exercises","page":1221,"answerPage":1381,"first":1,"last":41}]}]}
+
+randomExercise.init(data);
 
 </script>

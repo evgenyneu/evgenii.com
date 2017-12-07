@@ -5,36 +5,28 @@ comments: false
 title: "Random physics problem"
 ---
 
-# Random physics problem
-
-From Physics for Scientists and Engineers 3rd ed. by Knight.
+<h1 class="RandomExercise-bookTitle"></h1>
 
 <p>
   <button class="RandomExercise-runButton Button">Get random problem</button>
 </p>
 
 <p>
-  <span class="RandomExercise-chapterNumber"></span> <span class="RandomExercise-chapterTitle"></span><br>
-  <span></span> <span class="RandomExercise-pageNumber"></span><br>
-  <span></span> <span class="RandomExercise-problemNumber"></span>
+    <label><input type="checkbox" class="RandomExercise-useLastChapter" name="sameChapter" value="1"
+      onchange="randomExercise.saveUserSetting()"> Show same chapter</label>
 </p>
 
-<h3>Settings</h3>
+<p>
+  <span class="RandomExercise-chapterTitle"></span><br>
+  <span class="RandomExercise-pageNumber"></span><br>
+  <span class="RandomExercise-answerPageNumber"></span><br>
+  <span class="RandomExercise-problemNumber"></span>
+</p>
+
+<h3>Exercise types</h3>
 
 <div>
-  <p>
-    <label><input type="checkbox" class="RandomExercise-useLastChapter" name="sameChapter" value="1"
-      onchange="randomExercise.saveUserSetting()"> Same chapter</label>
-  </p>
-
-  <p>
-    <label><input type="checkbox" class="RandomExercise-includeExercises" name="includeExercises" value="1"
-      onchange="randomExercise.saveUserSetting()"> Include exercises</label>
-  </p>
-
-  <p>
-    <label><input type="checkbox" class="RandomExercise-includeChallenges" name="includeChappanges" value="1"
-      onchange="randomExercise.saveUserSetting()"> Include challenges</label>
+  <p class='RandomExercise-execriceTypes'>
   </p>
 </div>
 
@@ -50,60 +42,18 @@ From Physics for Scientists and Engineers 3rd ed. by Knight.
   <button class="RandomExercise-clearChapters Button">Set/clear all</button>
 </div>
 
-<h3>About</h3>
-
-<p>Return a random odd-numbered problem from Knight's Physics for Scientists and Engineers 3rd edition textbook.</p>
 
 <script src="/js/2017/random_exercise.js"></script>
 
 <script>
 
-var chapters = [
-  { chapter: "1",   page: 66, answer_page: 1325,    problemsStart: 35,                        last: 57,  title: "Concepts of Motion" },
-  { chapter: "2",   page: 98, answer_page: 1327,    problemsStart: 27,   challengeStart: 76,  last: 83,  title: "Kinematics in One Dimension" },
-  { chapter: "3",   page: 116, answer_page: 1328,    problemsStart: 19,                        last: 44,  title: "Vectors and Coordinate Systems" },
-  { chapter: "4",   page: 146, answer_page: 1329,    problemsStart: 36,   challengeStart: 77,  last: 86,  title: "Kinematics in Two Dimensions" },
-  { chapter: "5",   page: 168, answer_page: 1330,    problemsStart: 28,   challengeStart: 54,  last: 57,  title: "Force and Motion" },
-  { chapter: "6",   page: 198, answer_page: 1331,    problemsStart: 26,   challengeStart: 72,  last: 77,  title: "Dynamics I: Motion Along a Line" },
-  { chapter: "7",   page: 222, answer_page: 1331,    problemsStart: 19,   challengeStart: 53,  last: 57,  title: "Newton’s Third Law" },
-  { chapter: "8",   page: 246, answer_page: 1332,    problemsStart: 21,   challengeStart: 59,  last: 67,  title: "Dynamics II: Motion in a Plane" },
-  { chapter: "9",   page: 274, answer_page: 1333,    problemsStart: 26,   challengeStart: 70,  last: 75,  title: "Impulse and Momentum" },
-  { chapter: "10",  page: 306, answer_page: 1333,    problemsStart: 33,   challengeStart: 67,  last: 76,  title: "Energy" },
-  { chapter: "11",  page: 338, answer_page: 1333,    problemsStart: 37,   challengeStart: 72,  last: 75,  title: "Work" },
-  { chapter: "12",  page: 384, answer_page: 1334,    problemsStart: 49,   challengeStart: 83,  last: 88,  title: "Rotation of a Rigid Body" },
-  { chapter: "13",  page: 406, answer_page: 1334,    problemsStart: 25,   challengeStart: 62,  last: 70,  title: "Newton’s Theory of Gravity" },
-  { chapter: "14",  page: 436, answer_page: 1335,    problemsStart: 30,   challengeStart: 75,  last: 80,  title: "Oscillations" },
-  { chapter: "15",  page: 470, answer_page: 1335,    problemsStart: 31,   challengeStart: 70,  last: 74,  title: "Fluids and Elasticity" },
-  { chapter: "16",  page: 500, answer_page: 1336,    problemsStart: 33,   challengeStart: 69,  last: 74,  title: "A Macroscopic Description of Matter" },
-  { chapter: "17",  page: 531, answer_page: 1336,    problemsStart: 31,   challengeStart: 77,  last: 82,  title: "Work, Heat, and the First Law of Thermodynamics" },
-  { chapter: "18",  page: 556, answer_page: 1337,    problemsStart: 37,   challengeStart: 63,  last: 65,  title: "The Micro/Macro Connection" },
-  { chapter: "19",  page: 584, answer_page: 1338,    problemsStart: 31,   challengeStart: 69,  last: 72,  title: "Heat Engines and Refrigerators" },
-  { chapter: "20",  page: 620, answer_page: 1338,    problemsStart: 40,   challengeStart: 77,  last: 82,  title: "Traveling Waves" },
-  { chapter: "21",  page: 656, answer_page: 1339,    problemsStart: 30,   challengeStart: 74,  last: 80,  title: "Superposition" },
-  { chapter: "22",  page: 683, answer_page: 1340,    problemsStart: 30,   challengeStart: 69,  last: 75,  title: "Wave Optics" },
-  { chapter: "23",  page: 724, answer_page: 1341,    problemsStart: 38,   challengeStart: 78,  last: 82,  title: "Ray Optics" },
-  { chapter: "24",  page: 748, answer_page: 1341,    problemsStart: 23,   challengeStart: 42,  last: 46,  title: "Optical Instruments" },
-  { chapter: "25",  page: 780, answer_page: 1341,    problemsStart: 28,   challengeStart: 72,  last: 76,  title: "Electric Charges and Forces" },
-  { chapter: "26",  page: 810, answer_page: 1342,    problemsStart: 28,   challengeStart: 63,  last: 71,  title: "The Electric Field" },
-  { chapter: "27",  page: 840, answer_page: 1342,    problemsStart: 29,   challengeStart: 55,  last: 59,  title: "Gauss’s Law" },
-  { chapter: "28",  page: 868, answer_page: 1343,    problemsStart: 31,   challengeStart: 74,  last: 82,  title: "The Electric Potential" },
-  { chapter: "29",  page: 898, answer_page: 1343,    problemsStart: 33,   challengeStart: 76,  last: 82,  title: "Potential and Field" },
-  { chapter: "30",  page: 922, answer_page: 1344,    problemsStart: 38,   challengeStart: 68,  last: 73,  title: "Current and Resistance" },
-  { chapter: "31",  page: 950, answer_page: 1345,    problemsStart: 34,   challengeStart: 75,  last: 81,  title: "Fundamentals of Circuits" },
-  { chapter: "32",  page: 992, answer_page: 1346,    problemsStart: 40,   challengeStart: 76,  last: 82,  title: "The Magnetic Field" },
-  { chapter: "33",  page: 1032, answer_page: 1346,    problemsStart: 27,   challengeStart: 79,  last: 85,  title: "Electromagnetic Induction" },
-  { chapter: "34",  page: 1064, answer_page: 1347,    problemsStart: 28,   challengeStart: 59,  last: 64,  title: "Electromagnetic Fields and Waves" },
-  { chapter: "35",  page: 1087, answer_page: 1347,    problemsStart: 35,   challengeStart: 65,  last: 71,  title: "AC Circuits" },
-  { chapter: "36",  page: 1133, answer_page: 1348,    problemsStart: 43,   challengeStart: 73,  last: 76,  title: "Relativity" },
-  { chapter: "37",  page: 1156, answer_page: 1348,    problemsStart: 25,   challengeStart: 45,  last: 48,  title: "The Foundations of Modern Physics" },
-  { chapter: "38",  page: 1187, answer_page: 1348,    problemsStart: 36,   challengeStart: 66,  last: 70,  title: "Quantization" },
-  { chapter: "39",  page: 1210, answer_page: 1349,    problemsStart: 26,   challengeStart: 47,  last: 51,  title: "Wave Functions and Uncertainty" },
-  { chapter: "40",  page: 1248, answer_page: 1350,    problemsStart: 22,   challengeStart: 41,  last: 46,  title: "One-Dimensional Quantum Mechanics" },
-  { chapter: "41",  page: 1280, answer_page: 1351,    problemsStart: 24,   challengeStart: 51,  last: 57,  title: "Atomic Physics" },
-  { chapter: "42",  page: 1309, answer_page: 1352,    problemsStart: 37,   challengeStart: 58,  last: 63,  title: "Nuclear Physics" }
-];
+// The data is stored in the spreadsheet
+// https://docs.google.com/spreadsheets/d/1M86Y-F5aAxi07ULqfAtCAh4NGSL6tXBa1N8Fvd6jf3E/edit?usp=sharing
+// To generate JSON, click Random Problem/Generate Data menu
 
-randomExercise.init("physics_knight_4ed", chapters);
+var data = {"bookTitle":"Physics for Scientists and Engineers 3rd ed. by Knight","chapters":[{"title":"1. Concepts of Motion","exercises":[{"type":"Exercises","page":63,"answerPage":1325,"first":1,"last":33},{"type":"Problems","page":65,"answerPage":1325,"first":34,"last":57}]},{"title":"2. Kinematics in One Dimension","exercises":[{"type":"Exercises","page":97,"answerPage":1327,"first":1,"last":25},{"type":"Problems","page":98,"answerPage":1327,"first":26,"last":75},{"type":"Challenges","page":102,"answerPage":1327,"first":76,"last":83}]},{"title":"3. Vectors and Coordinate Systems","exercises":[{"type":"Exercises","page":116,"answerPage":1328,"first":1,"last":18},{"type":"Problems","page":117,"answerPage":1328,"first":19,"last":44}]},{"title":"4. Kinematics in Two Dimensions","exercises":[{"type":"Exercises","page":144,"answerPage":1328,"first":1,"last":35},{"type":"Problems","page":146,"answerPage":1329,"first":36,"last":76},{"type":"Challenges","page":148,"answerPage":1329,"first":77,"last":86}]},{"title":"5. Force and Motion","exercises":[{"type":"Exercises","page":168,"answerPage":1329,"first":1,"last":27},{"type":"Problems","page":169,"answerPage":1330,"first":28,"last":53},{"type":"Challenges","page":171,"answerPage":1330,"first":54,"last":57}]},{"title":"6. Dynamics I: Motion Along a Line","exercises":[{"type":"Exercises","page":195,"answerPage":1331,"first":1,"last":25},{"type":"Problems","page":196,"answerPage":1331,"first":26,"last":71},{"type":"Challenges","page":199,"answerPage":1331,"first":72,"last":77}]},{"title":"7. Newton’s Third Law","exercises":[{"type":"Exercises","page":220,"answerPage":1331,"first":1,"last":18},{"type":"Problems","page":221,"answerPage":1332,"first":19,"last":51},{"type":"Challenges","page":223,"answerPage":1332,"first":53,"last":57}]},{"title":"8. Dynamics II: Motion in a Plane","exercises":[{"type":"Exercises","page":244,"answerPage":1332,"first":1,"last":20},{"type":"Problems","page":245,"answerPage":1332,"first":21,"last":58},{"type":"Challenges","page":248,"answerPage":1332,"first":59,"last":67}]},{"title":"9. Impulse and Momentum","exercises":[{"type":"Exercises","page":273,"answerPage":1333,"first":1,"last":25},{"type":"Problems","page":275,"answerPage":1333,"first":26,"last":69},{"type":"Challenges","page":277,"answerPage":1333,"first":70,"last":75}]},{"title":"10. Energy","exercises":[{"type":"Exercises","page":305,"answerPage":1333,"first":1,"last":32},{"type":"Problems","page":307,"answerPage":1333,"first":33,"last":66},{"type":"Challenges","page":310,"answerPage":1333,"first":67,"last":76}]},{"title":"11. Work","exercises":[{"type":"Exercises","page":336,"answerPage":1333,"first":1,"last":36},{"type":"Problems","page":338,"answerPage":1334,"first":37,"last":71},{"type":"Challenges","page":341,"answerPage":1334,"first":72,"last":75}]},{"title":"12. Rotation of a Rigid Body","exercises":[{"type":"Exercises","page":382,"answerPage":1334,"first":1,"last":48},{"type":"Problems","page":384,"answerPage":1334,"first":49,"last":82},{"type":"Challenges","page":387,"answerPage":1334,"first":83,"last":88}]},{"title":"13. Newton’s Theory of Gravity","exercises":[{"type":"Exercises","page":406,"answerPage":1334,"first":1,"last":24},{"type":"Problems","page":407,"answerPage":1335,"first":25,"last":61},{"type":"Challenges","page":409,"answerPage":1335,"first":62,"last":70}]},{"title":"14. Oscillations","exercises":[{"type":"Exercises","page":436,"answerPage":1335,"first":1,"last":29},{"type":"Problems","page":437,"answerPage":1335,"first":30,"last":74},{"type":"Challenges","page":440,"answerPage":1335,"first":75,"last":80}]},{"title":"15. Fluids and Elasticity","exercises":[{"type":"Exercises","page":469,"answerPage":1335,"first":1,"last":30},{"type":"Problems","page":470,"answerPage":1335,"first":31,"last":69},{"type":"Challenges","page":473,"answerPage":1335,"first":70,"last":74}]},{"title":"16. A Macroscopic Description of Matter","exercises":[{"type":"Exercises","page":498,"answerPage":1336,"first":1,"last":32},{"type":"Problems","page":499,"answerPage":1336,"first":33,"last":68},{"type":"Challenges","page":501,"answerPage":1336,"first":69,"last":74}]},{"title":"17. Work, Heat, and the First Law of Thermodynamics","exercises":[{"type":"Exercises","page":531,"answerPage":1337,"first":1,"last":30},{"type":"Problems","page":532,"answerPage":1337,"first":31,"last":76},{"type":"Challenges","page":535,"answerPage":1337,"first":77,"last":82}]},{"title":"18. The Micro/Macro Connection","exercises":[{"type":"Exercises","page":556,"answerPage":1337,"first":1,"last":36},{"type":"Problems","page":557,"answerPage":1337,"first":37,"last":62},{"type":"Challenges","page":559,"answerPage":1338,"first":63,"last":65}]},{"title":"19. Heat Engines and Refrigerators","exercises":[{"type":"Exercises","page":583,"answerPage":1338,"first":1,"last":30},{"type":"Problems","page":585,"answerPage":1338,"first":31,"last":68},{"type":"Challenges","page":588,"answerPage":1338,"first":69,"last":72}]},{"title":"20. Traveling Waves","exercises":[{"type":"Exercises","page":620,"answerPage":1338,"first":1,"last":39},{"type":"Problems","page":621,"answerPage":1339,"first":40,"last":76},{"type":"Challenges","page":624,"answerPage":1339,"first":77,"last":82}]},{"title":"21. Superposition","exercises":[{"type":"Exercises","page":654,"answerPage":1339,"first":1,"last":29},{"type":"Problems","page":656,"answerPage":1340,"first":30,"last":73},{"type":"Challenges","page":659,"answerPage":1340,"first":74,"last":80}]},{"title":"22. Wave Optics","exercises":[{"type":"Exercises","page":683,"answerPage":1340,"first":1,"last":29},{"type":"Problems","page":684,"answerPage":1340,"first":30,"last":68},{"type":"Challenges","page":686,"answerPage":1340,"first":69,"last":75}]},{"title":"23. Ray Optics","exercises":[{"type":"Exercises","page":723,"answerPage":1341,"first":1,"last":37},{"type":"Problems","page":724,"answerPage":1341,"first":38,"last":77},{"type":"Challenges","page":727,"answerPage":1341,"first":78,"last":82}]},{"title":"24. Optical Instruments","exercises":[{"type":"Exercises","page":746,"answerPage":1341,"first":1,"last":22},{"type":"Problems","page":747,"answerPage":1341,"first":23,"last":41},{"type":"Challenges","page":749,"answerPage":1341,"first":42,"last":46}]},{"title":"25. Electric Charges and Forces","exercises":[{"type":"Exercises","page":779,"answerPage":1341,"first":1,"last":27},{"type":"Problems","page":780,"answerPage":1341,"first":28,"last":71},{"type":"Challenges","page":783,"answerPage":1341,"first":72,"last":76}]},{"title":"26. The Electric Field","exercises":[{"type":"Exercises","page":809,"answerPage":1342,"first":1,"last":27},{"type":"Problems","page":810,"answerPage":1342,"first":28,"last":62},{"type":"Challenges","page":812,"answerPage":1342,"first":63,"last":71}]},{"title":"27. Gauss’s Law","exercises":[{"type":"Exercises","page":839,"answerPage":1342,"first":1,"last":28},{"type":"Problems","page":841,"answerPage":1342,"first":29,"last":54},{"type":"Challenges","page":843,"answerPage":1343,"first":55,"last":59}]},{"title":"28. The Electric Potential","exercises":[{"type":"Exercises","page":867,"answerPage":1343,"first":1,"last":30},{"type":"Problems","page":868,"answerPage":1343,"first":31,"last":73},{"type":"Challenges","page":871,"answerPage":1343,"first":74,"last":82}]},{"title":"29. Potential and Field","exercises":[{"type":"Exercises","page":896,"answerPage":1343,"first":1,"last":32},{"type":"Problems","page":897,"answerPage":1344,"first":33,"last":75},{"type":"Challenges","page":900,"answerPage":1344,"first":76,"last":82}]},{"title":"30. Current and Resistance","exercises":[{"type":"Exercises","page":921,"answerPage":1344,"first":1,"last":37},{"type":"Problems","page":922,"answerPage":1344,"first":38,"last":67},{"type":"Challenges","page":924,"answerPage":1345,"first":68,"last":73}]},{"title":"31. Fundamentals of Circuits","exercises":[{"type":"Exercises","page":949,"answerPage":1345,"first":1,"last":33},{"type":"Problems","page":950,"answerPage":1345,"first":34,"last":74},{"type":"Challenges","page":953,"answerPage":1345,"first":75,"last":81}]},{"title":"32. The Magnetic Field","exercises":[{"type":"Exercises","page":990,"answerPage":1346,"first":1,"last":39},{"type":"Problems","page":992,"answerPage":1346,"first":40,"last":76},{"type":"Challenges","page":995,"answerPage":1346,"first":77,"last":82}]},{"title":"33. Electromagnetic Induction","exercises":[{"type":"Exercises","page":1030,"answerPage":1346,"first":1,"last":26},{"type":"Problems","page":1032,"answerPage":1346,"first":27,"last":78},{"type":"Challenges","page":1036,"answerPage":1346,"first":79,"last":85}]},{"title":"34. Electromagnetic Fields and Waves","exercises":[{"type":"Exercises","page":1063,"answerPage":1347,"first":1,"last":27},{"type":"Problems","page":1064,"answerPage":1347,"first":28,"last":58},{"type":"Challenges","page":1066,"answerPage":1347,"first":59,"last":64}]},{"title":"35. AC Circuits","exercises":[{"type":"Exercises","page":1085,"answerPage":1347,"first":1,"last":34},{"type":"Problems","page":1087,"answerPage":1347,"first":35,"last":64},{"type":"Challenges","page":1089,"answerPage":1347,"first":65,"last":71}]},{"title":"36. Relativity","exercises":[{"type":"Exercises","page":1132,"answerPage":1348,"first":1,"last":42},{"type":"Problems","page":1133,"answerPage":1348,"first":43,"last":72},{"type":"Challenges","page":1135,"answerPage":1348,"first":73,"last":76}]},{"title":"37. The Foundations of Modern Physics","exercises":[{"type":"Exercises","page":1155,"answerPage":1348,"first":1,"last":24},{"type":"Problems","page":1156,"answerPage":1348,"first":25,"last":44},{"type":"Challenges","page":1157,"answerPage":1348,"first":45,"last":48}]},{"title":"38. Quantization","exercises":[{"type":"Exercises","page":1186,"answerPage":1348,"first":1,"last":35},{"type":"Problems","page":1187,"answerPage":1348,"first":36,"last":65},{"type":"Challenges","page":1188,"answerPage":1349,"first":66,"last":70}]},{"title":"39. Wave Functions and Uncertainty","exercises":[{"type":"Exercises","page":1208,"answerPage":1349,"first":1,"last":25},{"type":"Problems","page":1210,"answerPage":1349,"first":26,"last":46},{"type":"Challenges","page":1212,"answerPage":1350,"first":47,"last":51}]},{"title":"40. One-Dimensional Quantum Mechanics","exercises":[{"type":"Exercises","page":1246,"answerPage":1350,"first":1,"last":21},{"type":"Problems","page":1247,"answerPage":1350,"first":22,"last":40},{"type":"Challenges","page":1248,"answerPage":1350,"first":41,"last":46}]},{"title":"41. Atomic Physics","exercises":[{"type":"Exercises","page":1278,"answerPage":1351,"first":1,"last":23},{"type":"Problems","page":1279,"answerPage":1351,"first":24,"last":50},{"type":"Challenges","page":1281,"answerPage":1351,"first":51,"last":57}]},{"title":"42. Nuclear Physics","exercises":[{"type":"Exercises","page":1308,"answerPage":1352,"first":1,"last":36},{"type":"Problems","page":1309,"answerPage":1352,"first":37,"last":57},{"type":"Challenges","page":1310,"answerPage":1352,"first":58,"last":63}]}]}
+
+randomExercise.init(data);
 
 
 </script>
