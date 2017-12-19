@@ -39,7 +39,7 @@ window.randomExercise = function(){
       } else {
         // There are no exercises, create one
         var newExercise = {
-          type: "Default",
+          type: "Normal",
           page: chapter.page,
           answerPage: chapter.answerPage,
           first: chapter.first,
@@ -114,7 +114,7 @@ window.randomExercise = function(){
   /**
    * Shows the chapter, problem and page number to the user.
    */
-  function showProblemNumber(title, problem, page, answerPage) {
+  function showProblem(title, problem, type, page, answerPage) {
     var titleElement = document.querySelector(".RandomExercise-chapterTitle");
     titleElement.innerHTML = title;
 
@@ -126,6 +126,10 @@ window.randomExercise = function(){
 
     var answerPageElement = document.querySelector(".RandomExercise-answerPageNumber");
     answerPageElement.innerHTML = "Answer page: " + answerPage;
+
+    if (type !== "" && type !== "Normal") {
+      problemElement.innerHTML += " (" + type + ")";
+    }
   }
 
   /**
@@ -281,7 +285,7 @@ window.randomExercise = function(){
 
     if (typesArray.length === 0) {
       // No exercise boxes are show, always select default exercises.
-      return ["Default"];
+      return ["Normal"];
     }
 
     for(var i=0; i< typesArray.length; i++)
@@ -327,7 +331,8 @@ window.randomExercise = function(){
     var title = "Please select chapters",
       problem = 0,
       page = 0,
-      answerPage = 0;
+      answerPage = 0,
+      type = "";
 
     var exercisesToShow = getExercisesToShow();
 
@@ -351,9 +356,10 @@ window.randomExercise = function(){
       page = exercise.page;
       answerPage = exercise.answerPage;
       title = exercise.chapterTitle;
+      type = exercise.type;
     }
 
-    showProblemNumber(title, problem, page, answerPage);
+    showProblem(title, problem, type, page, answerPage);
   }
 
   /**
