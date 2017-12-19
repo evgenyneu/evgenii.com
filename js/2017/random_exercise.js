@@ -344,11 +344,14 @@ window.randomExercise = function(){
       // Pick a random exercise number
       problem = Math.floor(Math.random() * (exercise.last - exercise.first + 1)) + exercise.first;
 
-      if (problem % 2 === 0) { // An even problem, we need only odd ones
-        if (problem === exercise.first) {
-          problem = problem + 1;
-        } else {
-          problem = problem - 1;
+      if (exercise.showEvenProblems !== true) {
+        // Only show odd problems
+        if (problem % 2 === 0) { // An even problem, we need only odd ones
+          if (problem === exercise.first) {
+            problem = problem + 1;
+          } else {
+            problem = problem - 1;
+          }
         }
       }
 
