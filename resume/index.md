@@ -172,4 +172,4 @@ South Ural State University, Chelyabinsk, Russia.
 
 * Information Systems in Economy, Economist.
 * Graduated in 2003.
-* Bachelor's Degree equivalent (5.5 year course).
+* Bachelor's Degree equivalent, studied for 5.5 years full-time.
