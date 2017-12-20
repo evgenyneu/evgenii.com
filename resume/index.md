@@ -140,11 +140,33 @@ Senior .NET/C# developer, independent contractor
 * Developed a Windows Forms application (C#) to remotely manage catalog of digital sheet music products.
 
 
+## Honor & Award
+
+### Highest Academic Performance (semester 1 of 2016)
+
+Monash University, Clayton, Australia, [see certificate](/image/resume/awards/2016/highest_performance_award_semester1_2016.jpg).
+
+Achieved the highest mark of all students enrolled in the following units taken in semester 1 of 2016:
+
+* [ASP1010](http://www.monash.edu/pubs/2017handbooks/units/ASP1010.html) - Earth to Cosmos, introductory astronomy.
+* [MTH1010](http://www.monash.edu/pubs/2017handbooks/units/MTH1010.html) - Functions and their applications.
+
+
+### Highest Academic Performance (semester 2 of 2016)
+
+Monash University, Clayton, Australia, [see certificate](/image/resume/awards/2016/highest_performance_award_semester2_2016.jpg).
+
+Achieved the highest mark of all students enrolled in the following units taken in semester 2 of 2016:
+
+* [ASP1022](http://www.monash.edu/pubs/2018handbooks/units/ASP1022.html) - Life in the universe, astrobiology.
+* [MTH1020](http://www.monash.edu/pubs/2018handbooks/units/MTH1020.html) - Analysis of change.
+* [STA1010](http://www.monash.edu/pubs/2018handbooks/units/STA1010.html) - Statistical methods for science.
+
 ## Education
 
 Monash University, Clayton, Australia
 
-* Full-time student, learning astronomy.
+* Full-time student, learning astrophysics.
 
 South Ural State University, Chelyabinsk, Russia.
 
