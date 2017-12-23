@@ -324,6 +324,16 @@ window.randomExercise = function(){
     return exercises;
   }
 
+
+  function findRandomSection(exercise, problem) {
+    if (exercise.sections === null || exercise.sections === undefined) { return null; }
+
+    var sections = exercise.sections[problem+""];
+    if (sections === null || sections === undefined) { return null; }
+
+    return sections[Math.floor(Math.random()*sections.length)];
+  }
+
   /**
    * Shows a random problem.
    */
@@ -353,6 +363,12 @@ window.randomExercise = function(){
             problem = problem - 1;
           }
         }
+      }
+
+      var section = findRandomSection(exercise, problem);
+
+      if (section !== null) {
+        problem = problem + "" + section;
       }
 
       lastChapter = exercise.chapterId;
