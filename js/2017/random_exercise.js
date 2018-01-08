@@ -96,6 +96,17 @@ window.randomExercise = function(){
   }
 
   /**
+  * Returns true if text is a blank string or not a string
+  */
+  function isBlank(text) {
+    if (text === null) return true;
+    if (text === undefined) return true;
+    text = "" + text;
+    if (text.trim().length === 0) return true;
+    return false;
+  }
+
+  /**
    * Show the chapter checkboxes.
    */
   function showChapters() {
@@ -104,7 +115,14 @@ window.randomExercise = function(){
     for(var i=0; i < data.chapters.length; i++)
     {
       var chapter = data.chapters[i];
-      html = html + '<label><input type="checkbox" name="chapter[]" data-chapterId="' + i + '" onchange="randomExercise.saveUserSetting(this)" checked> ' + chapter.title + '</label><br>';
+      var chapterText = chapter.title;
+
+      if (!isBlank(chapter.page)) {
+        chapterText += ' p. ' + chapter.page;
+      }
+
+
+      html = html + '<label><input type="checkbox" name="chapter[]" data-chapterId="' + i + '" onchange="randomExercise.saveUserSetting(this)" checked> ' + chapterText + '</label><br>';
     }
 
     var chaptersContainter = document.querySelector(".RandomExercise-chapters");
