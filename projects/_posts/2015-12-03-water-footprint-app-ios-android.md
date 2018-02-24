@@ -15,7 +15,7 @@ The app shows how many litres of water are needed to produce one kilogram of dif
 
 <a href='https://itunes.apple.com/us/app/water-footprint/id1044041294' title='Download on App Store'><img src='/image/logos/appstore_badge.png' alt='Download on App Store' class='isMax200PxWide'></a>
 
-<h4><a href='http://evgenii.com/water-footprint/en/'>Water Footprint for Web<a></h4>
+<h4><a href='https://evgenii.com/water-footprint/en/'>Water Footprint for Web<a></h4>
 
 
 ## Attribution

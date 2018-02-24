@@ -2,7 +2,7 @@
 
 Ridiculous strawberry picking game
 
-http://evgenii.com/blog/ridiculous-strawberry-picking/
+https://evgenii.com/blog/ridiculous-strawberry-picking/
 
 License: Public Domain
 

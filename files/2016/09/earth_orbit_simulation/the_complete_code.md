@@ -15,7 +15,7 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
 
   To embed this simulator into your web page copy this source code until "Simulator END" comment.
 
-  Note that the code uses the images loaded from http://evgenii.com web site. You will need to host these images if you want to make sure the game always works and is not dependent on evgenii.com web site.
+  Note that the code uses the images loaded from https://evgenii.com web site. You will need to host these images if you want to make sure the game always works and is not dependent on evgenii.com web site.
 
 -->
 
@@ -23,7 +23,7 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
 
   Earth Orbit Simulator
 
-  http://evgenii.com/blog/earth-orbit-simulation
+  https://evgenii.com/blog/earth-orbit-simulation
 
   License: Public Domain
 
@@ -49,7 +49,7 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
     background-color: #000000;
     position: relative;
     height: 400px;
-    background-image: url("http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
+    background-image: url("https://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
     background-position: center bottom;
     background-repeat: repeat;
     background-size: 874px 260px;
@@ -76,7 +76,7 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
     width: 100%;
     height: 100%;
     z-index: 1001;
-    background-image: url("http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
+    background-image: url("https://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
     background-position: left top;
     background-repeat: repeat;
     background-size: 674px 220px;
@@ -209,8 +209,8 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
 <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
 
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
-    <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
-    <img src='http://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
+    <img src='https://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
+    <img src='https://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
     <canvas class="EarthOrbitSimulation-canvas"></canvas>
 
     <div class="EarthOrbitSimulation-earthEnd EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
@@ -223,7 +223,7 @@ This is the complete source code of the [simulation of the Earth orbiting the Su
 
     <div class='EarthOrbitSimulation-hudContainer'>
       <div class='EarthOrbitSimulation-hudContainerChild'>
-        <a class='EarthOrbitSimulation-reload' href='#'><img src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/reload_icon.png' alt='Restart' class='EarthOrbitSimulation-reloadIcon'></a>
+        <a class='EarthOrbitSimulation-reload' href='#'><img src='https://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/reload_icon.png' alt='Restart' class='EarthOrbitSimulation-reloadIcon'></a>
       </div>
     </div>
 </div>

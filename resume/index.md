@@ -11,7 +11,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 **Phone**: +61 403 574 406
 
-**Web site**: [evgenii.com](http://evgenii.com)
+**Web site**: [evgenii.com](https://evgenii.com)
 
 
 ## Objective
@@ -37,7 +37,7 @@ I am looking for work as an iOS or Android programmer.
 
 
 * Walk to Circle for Android and iOS: [walktocircle.com](http://walktocircle.com)
-* Water Footprint for Android, iOS and Web: <br>[evgenii.com/water-footprint/en/help/](http://evgenii.com/water-footprint/en/help/)
+* Water Footprint for Android, iOS and Web: <br>[evgenii.com/water-footprint/en/help/](https://evgenii.com/water-footprint/en/help/)
 * AES Crypto for Android, iOS and Web: [aescrypto.com/help/](http://aescrypto.com/help/)
 
 

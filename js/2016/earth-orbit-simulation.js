@@ -2,7 +2,7 @@
 
 Earth Orbit Simulator
 
-http://evgenii.com/blog/earth-orbit-simulation
+https://evgenii.com/blog/earth-orbit-simulation
 
 License: Public Domain
 

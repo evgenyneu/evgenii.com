@@ -17,7 +17,7 @@ This is the complete source code for the [harmonic oscilaltor simulation](/blog/
 
   Harmonic Oscillator Simulator
 
-  http://evgenii.com/blog/programming-harmonic-oscillator
+  https://evgenii.com/blog/programming-harmonic-oscillator
 
   License: MIT
 

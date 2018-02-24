@@ -12,7 +12,7 @@ tags: programming science
 
   Harmonic Oscillator Simulator
 
-  http://evgenii.com
+  https://evgenii.com
 
   License: Public Domain
 
