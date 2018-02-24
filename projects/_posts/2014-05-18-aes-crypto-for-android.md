@@ -5,7 +5,7 @@ title:  "AES Crypto Android app"
 layout_class: isTextCentered
 ---
 
-<div class='embed-container'><iframe src='http://www.youtube.com/embed/QIJm3mY9hEY?rel=0' frameborder='0' allowfullscreen></iframe></div>
+<div class='embed-container'><iframe src='https://www.youtube.com/embed/QIJm3mY9hEY?rel=0' frameborder='0' allowfullscreen></iframe></div>
 
 Android app that encrypts text message with Advanced Encryption Standard. AES Crypto is open source.
 

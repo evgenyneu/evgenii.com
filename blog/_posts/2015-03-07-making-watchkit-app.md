@@ -6,7 +6,7 @@ meta_description: "This tutorial shows how to create an Apple Watch app in Xcode
 tags: programming
 ---
 
-<div class='embed-container'><iframe src='http://www.youtube.com/embed/vTuy7pi1Q54?rel=0' frameborder='0' allowfullscreen></iframe></div>
+<div class='embed-container'><iframe src='https://www.youtube.com/embed/vTuy7pi1Q54?rel=0' frameborder='0' allowfullscreen></iframe></div>
 
 <br>
 

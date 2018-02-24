@@ -5,7 +5,7 @@ title:  "AES Crypto iOS app"
 layout_class: isTextCentered
 ---
 
-<div class='embed-container'><iframe src='http://www.youtube.com/embed/kD9XBEwzU1s?rel=0' frameborder='0' allowfullscreen></iframe></div>
+<div class='embed-container'><iframe src='https://www.youtube.com/embed/kD9XBEwzU1s?rel=0' frameborder='0' allowfullscreen></iframe></div>
 
 iOS app for encrypting text messages. Uses Advanced Encryption Standard with a 256-bit key.
 

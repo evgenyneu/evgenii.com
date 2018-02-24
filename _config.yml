@@ -2,7 +2,7 @@
 name: evgenii
 description: Home of Evgenii
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://evgenii.com" # the base hostname & protocol for your site
+url: "https://evgenii.com" # the base hostname & protocol for your site
 
 author:
   name: Evgenii Neumerzhitckii
