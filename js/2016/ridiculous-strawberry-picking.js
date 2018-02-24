@@ -808,7 +808,7 @@ var strawberryPool = (function() {
     if (element !== null) { return element; }
 
     // The cache is empty - create a new element instead and add to the DOM
-    element = helper.createImage('http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/strawberry.png',
+    element = helper.createImage('https://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/strawberry.png',
       'Cosmic strawberry');
 
     element.className = 'EarthOrbitSimulation-strawberry';

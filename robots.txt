@@ -9,5 +9,5 @@ Disallow: /files/2016/09/earth_orbit_simulation/
 Disallow: /files/2016/09/carl_in_orbit/
 Disallow: /files/2016/09/ridiculous_strawberry_picking/
 
-Sitemap: http://evgenii.com/sitemap.xml
+Sitemap: https://evgenii.com/sitemap.xml
 

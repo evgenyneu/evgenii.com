@@ -10,16 +10,16 @@ tags: science
 
   Ridiculous strawberry picking game
 
-  http://evgenii.com/blog/ridiculous-strawberry-picking/
+  https://evgenii.com/blog/ridiculous-strawberry-picking/
 
   License: Public Domain
 
   Image credits
   =============
 
-  1. "The Blue Marble" By  NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans. Sources: http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg, https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg
+  1. "The Blue Marble" By  NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans. Sources: https://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg, https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg
 
-  2. "The Sun photographed at 304 angstroms" by NASA/SDO (AIA). Sources: http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg, https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg
+  2. "The Sun photographed at 304 angstroms" by NASA/SDO (AIA). Sources: https://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg, https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg
 
 -->
 
@@ -30,22 +30,22 @@ tags: science
   <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert EarthOrbitSimulation-isHidden">Please use a newer browser to see the simulation.</p>
 
   <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
-    <img src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
+    <img src='https://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
 
-    <img src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
+    <img src='https://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
 
 
     <div class='EarthOrbitSimulation-hudContainer'>
       <div class='EarthOrbitSimulation-hudContainerChild'>
         <div class='EarthOrbitSimulation-strawberryCounter'>
-          <img src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/strawberry.png' alt='strawberry' class='EarthOrbitSimulation-strawberryCounterImage'><span class='EarthOrbitSimulation-strawberryCounterNumber'>0</span>
+          <img src='https://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/strawberry.png' alt='strawberry' class='EarthOrbitSimulation-strawberryCounterImage'><span class='EarthOrbitSimulation-strawberryCounterNumber'>0</span>
         </div>
 
         <div class='EarthOrbitSimulation-temperature'>T:<span class='EarthOrbitSimulation-temperatureValue'></span> <span class='EarthOrbitSimulation-temperatureDescription'></span></div>
 
         <div class='EarthOrbitSimulation-time'></div>
 
-        <a class='EarthOrbitSimulation-reload' href='#'><img src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/reload_icon.png' alt='Restart' class='EarthOrbitSimulation-reloadIcon'></a>
+        <a class='EarthOrbitSimulation-reload' href='#'><img src='https://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/reload_icon.png' alt='Restart' class='EarthOrbitSimulation-reloadIcon'></a>
       </div>
 
       <div class="EarthOrbitSimulation-gameover EarthOrbitSimulation-isTextCentered">
@@ -89,7 +89,7 @@ The short-term implications of this experiment are obvious to any student who at
 
 
 <div class='isTextCentered'>
-  <img class='isMax300PxWide' src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/massive_sun_smaller_earth_sun_distance.png' alt='Relationship between the mass of the Sun and the Sun-Earth distance'>
+  <img class='isMax300PxWide' src='https://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/massive_sun_smaller_earth_sun_distance.png' alt='Relationship between the mass of the Sun and the Sun-Earth distance'>
   <p>Figure 1: The Earth is closer to the more massive Sun.</p>
 </div>
 
@@ -104,7 +104,7 @@ Everybody knows that it takes about 365 days for the Earth to complete one full 
 The increase in Sun's mass also affects its brightness, which is also called 'luminosity'. This happens because larger mass creates bigger gravitational pressure in its core, which increases the rate of fusion reactions and creates more light. How much brighter the Sun becomes if Carl doubles its mass? Figure 2 demonstrates that the Sun will be about eight times brighter, because the luminosity of a star similar to the Sun is roughly proportional to the cube of its mass [[3]](#references).
 
 <div class='isTextCentered'>
-  <img class='isMax500PxWide' src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/massive_sun_is_brighter.png' alt='More massive stars are much brighter'>
+  <img class='isMax500PxWide' src='https://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/massive_sun_is_brighter.png' alt='More massive stars are much brighter'>
   <p>Figure 2: The bigger Sun is much brighter.</p>
 </div>
 
@@ -115,7 +115,7 @@ As we've shown, the planets receive more sunlight as the Sun's mass increases. A
 We can see from Figure 3 that massive Sun would have more distant habitable zone. In this case, the Earth would be too close to the Sun, and the water would boil and evaporate. Therefore, Carl Cox needs to be very careful and try not to keep Sun's mass high for too long.
 
 <div class='isTextCentered'>
-  <img class='isMax100PercentWide isTextCentered' src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/star_habitable_zone.png' alt='More massive stars are much brighter'>
+  <img class='isMax100PercentWide isTextCentered' src='https://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/star_habitable_zone.png' alt='More massive stars are much brighter'>
   <p>Figure 3: The habitable zone of the bigger Sun is farther away.</p>
 </div>
 
@@ -124,7 +124,7 @@ We can see from Figure 3 that massive Sun would have more distant habitable zone
 The *dark energy* is a term astronomers use to explain the observed expansion of the Universe [[2, p. 726]](#references). At this point astrophysicists do not have a clue what this dark energy actually is, nor they were able to detect it. The idea is that there is a mysterious uniform substance that fills all of space in the Universe and pushes the Universe apart. As a result, the galaxies which are not close enough to have strong gravitational attraction are moving away from each other.
 
 <div class='isTextCentered'>
-  <img class='isMax300PxWide isTextCentered' src='http://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/expanstion_of_universe.png' alt='Dark energy pushes the space apart.'>
+  <img class='isMax300PxWide isTextCentered' src='https://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/expanstion_of_universe.png' alt='Dark energy pushes the space apart.'>
   <p>Figure 4: Dark energy makes space bigger.</p>
 </div>
 
@@ -134,9 +134,9 @@ What would happen if Carl Cox took some of this dark energy and converted it int
 
 1. **Editor in chief**: Emily Saaen.
 
-1. **"The Blue Marble"** image: NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans, [source](http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg), [source](https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg).
+1. **"The Blue Marble"** image: NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans, [source](https://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg), [source](https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg).
 
-1. **"The Sun photographed at 304 angstroms"** image: NASA/SDO (AIA), [source](http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg), [source](https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg).
+1. **"The Sun photographed at 304 angstroms"** image: NASA/SDO (AIA), [source](https://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg), [source](https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg).
 
 <div id='references'>&nbsp;</div>
 
@@ -146,7 +146,7 @@ What would happen if Carl Cox took some of this dark energy and converted it int
 
 * [2]. J. Bennett, G. Shostak, *Life in the Universe*, 4th ed. San Francisco, CA: Pearson, 2016.
 
-* [3]. "[Mass-luminosity relationship](http://hyperphysics.phy-astr.gsu.edu/hbase/Astro/herrus.html#c3)". Hyperphysics. Retrieved 2016-09-03.
+* [3]. "Mass-luminosity relationship". Hyperphysics.
 
 * [4]. [The complete source code](/files/2016/09/ridiculous_strawberry_picking/the_complete_code/) of the game.
 
