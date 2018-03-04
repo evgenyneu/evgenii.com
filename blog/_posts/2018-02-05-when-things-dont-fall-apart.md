@@ -15,6 +15,6 @@ There are infinitely more ways for bad things to happen than for good things. In
 
 From this perspective, there is no cause of poverty. Or rather, there is no simple or single cause of poverty. Instead, there are infinitely many interacting factors that are much more likely to result in poverty than in prosperity. Poverty is just a natural state of equilibrium, because things normally fall apart.
 
-What is surprising is when things don't fall apart. What is remarkable is that we sometimes see good stuff: prosperity, decline in violence and mortality, improvements in health, income, human rights, animal rights etc.
+What is surprising is when things don't fall apart. What is remarkable is that we sometimes see good stuff: prosperity, decline in violence and mortality, improvements in health, human rights, animal rights and so on.
 
 And if we go out and look around we may find many good things happening *right now*.
