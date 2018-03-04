@@ -11,9 +11,9 @@ When we see a poor person or some other bad stuff happening, we sometimes tend t
 
 But in most cases the explanation for bad stuff is just bad luck. Or in other words, it is the 2nd law of thermodynamics. It is all about probability.
 
-There are infinitely more ways for bad things to happen then for good things. In other words, a probability of a bad outcome is much larger then of a good one.
+There are infinitely more ways for bad things to happen than for good things. In other words, a probability of a bad outcome is much larger than of a good one.
 
-From this perspective, there is no cause of poverty. Or rather, there is no simple or single cause of poverty. Instead, there are infinitely many interacting factors that are much more likely to result in poverty then in prosperity. Poverty is just a natural state of equilibrium, because things normally fall apart.
+From this perspective, there is no cause of poverty. Or rather, there is no simple or single cause of poverty. Instead, there are infinitely many interacting factors that are much more likely to result in poverty than in prosperity. Poverty is just a natural state of equilibrium, because things normally fall apart.
 
 What is surprising is when things don't fall apart. What is remarkable is that we sometimes see good stuff: prosperity, decline in violence, mortality, increase in health, income, human rights, animal rights etc.
 
