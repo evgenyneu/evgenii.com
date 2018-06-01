@@ -140,7 +140,13 @@ Senior .NET/C# developer, independent contractor
 * Developed a Windows Forms application (C#) to remotely manage catalog of digital sheet music products.
 
 
-## Honor & Award
+## Honors & Awards
+
+
+### Monash Scholarship for Excellence (2018)
+
+Monash University, Clayton, Australia, [see certificate](/image/resume/awards/2018/2018_monash_scholarship_for_excellence_evgenii_neumerhitckii.jpg).
+
 
 ### Highest Academic Performance (semester 1 of 2016)
 
