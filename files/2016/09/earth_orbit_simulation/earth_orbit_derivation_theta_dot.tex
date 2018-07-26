@@ -1,0 +1,77 @@
+\documentclass[a4paper,twoside,12pt,hidelinks]{article}
+
+% Packages
+% ---------------------
+
+\usepackage{amsmath} % Needed for command eqref
+\usepackage{amsthm} % Used to show the proof box
+\usepackage{fancyhdr} % Head and foot options
+\usepackage{hyperref} % Uses automatic references \autoref
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath} % Font
+
+% Page settings
+% ---------------------
+
+\usepackage[top=2cm, bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry} %  Page margins
+\setlength{\parskip}{\baselineskip} % Add space between paragraphs
+\setlength{\intextsep}{20pt plus 2.0pt minus 2.0pt} % Add vertical space before and after tables and figures (http://tex.stackexchange.com/a/26522/101976)
+\parindent=0cm % Remove the paragraph indent of the first line
+\addtolength{\jot}{2\jot} % Double the line between equations
+\raggedbottom % Prevents spreading the page content vetically for non-full pages.
+
+% Set vertical space around equations.
+\AtBeginDocument{%
+ \abovedisplayskip=15pt plus 5pt minus 5pt
+ \abovedisplayshortskip=12pt plus 3pt
+ \belowdisplayskip=15pt plus 5pt minus 5pt
+ \belowdisplayshortskip=12pt plus 3pt minus 4pt
+}
+
+
+\begin{document}
+
+\section*{Derivation of equation of motion for the angle $\theta$}
+
+The derivation is used in the article \href{https://evgenii.com/blog/earth-orbit-simulation/}{https://evgenii.com/blog/earth-orbit-simulation}.
+
+We have the Lagrangian
+\begin{equation*}
+  L = \frac{m}{2} (\dot{r}^2 + r^2 \dot{\theta}^2) + \frac{G M m}{r}.
+\end{equation*}
+We need to calculate
+\begin{equation}
+  \frac{d}{dt} \Big( \frac{\partial L}{\partial \dot{\theta}} \Big) = \frac{\partial L}{\partial \theta}.
+  \label{eq_main_deribative}
+\end{equation}
+Since $L$ does not depend on $\theta$,
+\[
+  \frac{\partial L}{\partial \theta} = 0.
+\]
+Furthermore,
+\begin{align*}
+   \frac{\partial L}{\partial \dot{\theta}} &= \frac{\partial }{\partial \dot{\theta}} \Big( \frac{m}{2} r^2 \dot{\theta}^2 \Big) \\
+    &= \frac{m}{2} r^2 (2) \dot{\theta} = m r^2 \dot{\theta}.
+\end{align*}
+Next, we take the time derivative:
+\begin{align*}
+   \frac{d}{dt} \Big( \frac{\partial L}{\partial \dot{\theta}} \Big) &= \frac{d}{dt} \Big( m r^2 \dot{\theta} \Big) \\
+    &= m \frac{d}{dt} \Big( r^2 \dot{\theta} \Big) \\
+    &= m (2 r \dot{r} \dot{\theta} + r^2 \ddot{\theta}). \tag{Product rule}
+\end{align*}
+Substituting into \autoref{eq_main_deribative} gives
+\[
+  m ( 2 r \dot{r} \dot{\theta} + r^2 \ddot{\theta} ) = 0.
+\]
+Simplify:
+\[
+  2 \dot{r} \dot{\theta} + r \ddot{\theta} = 0.
+\]
+Finally, we solve for $\ddot{\theta}$:
+\[
+  \ddot{\theta} = - \frac{2 \dot{r} \dot{\theta}}{r}.
+\]
+
+
+\end{document}

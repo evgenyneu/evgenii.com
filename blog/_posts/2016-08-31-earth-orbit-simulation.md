@@ -138,7 +138,7 @@ We use the Euler-Lagrange equation again, but this time we take derivatives of t
   <span>(6)</span>
 </div>
 
-After differentiating and simplifying we get:
+After differentiating and simplifying we get ([derivation](/files/2016/09/earth_orbit_simulation/earth_orbit_derivation_theta_dot.pdf)):
 
 <div class='Equation isTextCentered'>
   <span></span>
