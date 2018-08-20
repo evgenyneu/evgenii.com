@@ -1,19 +1,254 @@
-/*
+---
+layout: default
+noindex: true
+comments: false
+title: "The complete code of the two-body problem simulation."
+---
 
-Two-body problem simulation
 
-https://evgenii.com/blog/two-body-problem-simulation
+# The source code of the two-body problem simulation
+
+This is the complete source code of the [two-body problem simulator](/blog/two-body-problem-simulator/). Feel free to use it on any web site.
+
+```Html
+
+<!--
+
+  Note that the code uses the images loaded from https://evgenii.com web site. You will need to host these images if you want to make sure the game always works and is not dependent on evgenii.com web site.
+
+-->
+
+<!--
+
+Two-body problem simulator
+
+https://evgenii.com/blog/two-body-problem-simulator/
 
 License: Public Domain
 
-Image credits
+Credits
 =============
 
-1. "The Blue Marble" By  NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans. Sources: http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg, https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg
+1. This work is based on code and lectures by Rosemary Mardling from Monash University.
 
-2. "The Sun photographed at 304 angstroms" by NASA/SDO (AIA). Sources: http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg, https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg
+2. "The Blue Marble" By  NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans. Sources: http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg, https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg
+
+3. "The Sun photographed at 304 angstroms" by NASA/SDO (AIA). Sources: http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg, https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg
+
+-->
+
+<style>
+
+/*
+  Layout
+  --------
+*/
+
+.EarthOrbitSimulation-hasTopMarginNormal {
+  margin-top: 15px;
+}
+
+.EarthOrbitSimulation-hasNegativeBottomMarginNormal {
+  margin-bottom: -10px;
+}
+
+/*
+  Elements
+  --------
+*/
+
+.EarthOrbitSimulation-alert {
+  color: red;
+  border: 1px solid red;
+  background: #ffeeee;
+  padding: 5px;
+}
+
+.EarthOrbitSimulation-container {
+  background-color: #000000;
+  position: relative;
+  height: 400px;
+  background-image: url("https://evgenii.com/image/blog/2018-08-17-two-body-problem-simulator/starry_night.png");
+  background-position: center bottom;
+  background-repeat: repeat;
+  background-size: 874px 260px;
+}
+
+.EarthOrbitSimulation-isTextCentered { text-align: center; }
+.EarthOrbitSimulation-isHiddenBlock { display: none; }
+
+
+.EarthOrbitSimulation-centerOfMass {
+  position: absolute;
+  width: 11px;
+  top: 50%;
+  left: 50%;
+  margin-left: -5px;
+  margin-top: -5px;
+  z-index: 998;
+}
+
+.EarthOrbitSimulation-earth {
+  position: absolute;
+  width: 60px;
+  top: -1000px;
+  -webkit-animation:spin .1s linear infinite;
+  -moz-animation:spin .1s linear infinite;
+  animation:spin .10s linear infinite;
+  z-index: 1000;
+}
+
+.EarthOrbitSimulation-sun {
+  position: absolute;
+  width: 60px;
+  top: -1000px;
+  -webkit-animation:spin .5s linear infinite;
+  -moz-animation:spin .5s linear infinite;
+  animation:spin .5s linear infinite;
+  z-index: 1001;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
+
+.EarthOrbitSimulation-canvas { display: block; }
+
+/* Prevent browser from showing selection when the element is touched */
+.isUnselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  -o-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+/*
+  Hud display
+  ---------
+*/
+
+.EarthOrbitSimulation-hudContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+}
+
+.EarthOrbitSimulation-hudContainerChild {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+  Reload button
+  ---------
+*/
+
+.EarthOrbitSimulation-reload {
+  position: absolute;
+  display: block;
+  bottom: 10px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  outline: none;
+}
+
+.EarthOrbitSimulation-reload:focus { outline: none; }
+
+.EarthOrbitSimulation-reloadIcon {
+  width: 100%;
+  border : 0;
+}
+
+.EarthOrbitSimulation-massSlider,
+.EarthOrbitSimulation-eccentricitySlider {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/*
+
+Sick Slider
+--------------
 
 */
+
+.SickSlider {
+  position: relative;
+  height: 60px;
+  cursor: pointer;
+}
+
+.SickSlider-stripe {
+  height: 5px;
+  width: 100%;
+  background-color: #999999;
+  /*border: 1px solid #a66000;*/
+  position: absolute;
+  top: 28px;
+  left: 0px;
+}
+
+.SickSlider-head {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 30px;
+  height: 40px;
+  background-color: #ff9400;
+  border: 1px solid #FFFFFF;
+}
+
+</style>
+
+<!-- Message shown in old browsers. -->
+  <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert EarthOrbitSimulation-isHiddenBlock">Please use a newer browser to see the simulation.</p>
+
+<div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
+    <img src='http://127.0.0.1:4000/image/blog/2018-08-17-two-body-problem-simulator/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
+    <img src='http://127.0.0.1:4000/image/blog/2018-08-17-two-body-problem-simulator/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
+    <img src='http://127.0.0.1:4000/image/blog/2018-08-17-two-body-problem-simulator/center_of_mass.png' alt='Earth' class='EarthOrbitSimulation-centerOfMass'>
+
+    <canvas class="EarthOrbitSimulation-canvas"></canvas>
+
+    <div class='EarthOrbitSimulation-hudContainer'>
+      <div class='EarthOrbitSimulation-hudContainerChild'>
+        <a class='EarthOrbitSimulation-reload' href='#'><img src='https://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/reload_icon.png' alt='Restart' class='EarthOrbitSimulation-reloadIcon'></a>
+      </div>
+    </div>
+</div>
+
+<div class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-hasTopMarginNormal EarthOrbitSimulation-hasNegativeBottomMarginNormal isUnselectable'>
+  Mass ratio: <span class='EarthOrbitSimulation-sunsMass'>0.10</span>
+</div>
+
+<div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
+  <div class="SickSlider-stripe"></div>
+  <div class="SickSlider-head"></div>
+</div>
+
+<div class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-hasTopMarginNormal EarthOrbitSimulation-hasNegativeBottomMarginNormal isUnselectable'>
+  Eccentricity: <span class='EarthOrbitSimulation-eccentricity'>0.10</span>
+</div>
+
+<div class="SickSlider EarthOrbitSimulation-eccentricitySlider isUnselectable" >
+  <div class="SickSlider-stripe"></div>
+  <div class="SickSlider-head"></div>
+</div>
+
+<p class='EarthOrbitSimulation-debugOutput'></p>
+
+<script>
 
 (function(){
   // A Slider UI element
@@ -243,7 +478,7 @@ Image credits
 
     // Initial condition of the model
     var initialConditions = {
-      eccentricity: 0.70, // Eccentricity of the orbit
+      eccentricity: 0.7, // Eccentricity of the orbit
       q: 0.5, // Mass ratio m2 / m1
       position: {
         x: 1,
@@ -584,3 +819,6 @@ Image credits
 
   simulation.start();
 })();
+
+</script>
+```

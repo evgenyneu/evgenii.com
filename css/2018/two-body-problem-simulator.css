@@ -1,17 +1,19 @@
 /*
 
-Earth Orbit Simulator
+Two-body problem simulator
 
-https://evgenii.com/blog/earth-orbit-simulation
+https://evgenii.com/blog/two-body-problem-simulator/
 
 License: Public Domain
 
-Image credits
+Credits
 =============
 
-1. "The Blue Marble" By  NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans. Sources: http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg, https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg
+1. This work is based on code and lectures by Rosemary Mardling from Monash University.
 
-2. "The Sun photographed at 304 angstroms" by NASA/SDO (AIA). Sources: http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg, https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg
+2. "The Blue Marble" By  NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans. Sources: http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg, https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg
+
+3. "The Sun photographed at 304 angstroms" by NASA/SDO (AIA). Sources: http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg, https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg
 
 */
 
@@ -44,7 +46,7 @@ Image credits
   background-color: #000000;
   position: relative;
   height: 400px;
-  background-image: url("https://evgenii.com/image/blog/2018-08-17-two-body-problem-simulation/starry_night.png");
+  background-image: url("https://evgenii.com/image/blog/2018-08-17-two-body-problem-simulator/starry_night.png");
   background-position: center bottom;
   background-repeat: repeat;
   background-size: 874px 260px;
@@ -52,6 +54,17 @@ Image credits
 
 .EarthOrbitSimulation-isTextCentered { text-align: center; }
 .EarthOrbitSimulation-isHiddenBlock { display: none; }
+
+
+.EarthOrbitSimulation-centerOfMass {
+  position: absolute;
+  width: 11px;
+  top: 50%;
+  left: 50%;
+  margin-left: -5px;
+  margin-top: -5px;
+  z-index: 998;
+}
 
 .EarthOrbitSimulation-earth {
   position: absolute;
