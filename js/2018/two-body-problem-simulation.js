@@ -243,7 +243,7 @@ Image credits
 
     // Initial condition of the model
     var initialConditions = {
-      eccentricity: 0.1, // Eccentricity of the orbit
+      eccentricity: 0.70, // Eccentricity of the orbit
       q: 0.5, // Mass ratio m2 / m1
       position: {
         x: 1,
@@ -268,7 +268,7 @@ Image credits
       state.u[3] = initialVelocity(state.masses.q, state.eccentricity);
     }
 
-    function resetStateToinitialConditions() {
+    function resetStateToInitialConditions() {
       state.masses.q = initialConditions.q
       state.eccentricity = initialConditions.eccentricity
 
@@ -295,7 +295,7 @@ Image credits
     // The main function that is called on every animation frame.
     // It calculates and updates the current positions of the bodies
     function updatePosition() {
-      var timestep = 0.07;
+      var timestep = 0.15;
       rungeKutta.calculate(timestep, state.u, derivative);
       calculateNewPosition();
     }
@@ -328,7 +328,7 @@ Image credits
     }
 
     return {
-      resetStateToinitialConditions: resetStateToinitialConditions,
+      resetStateToInitialConditions: resetStateToInitialConditions,
       updatePosition: updatePosition,
       initialConditions: initialConditions,
       updateMassRatioFromUserInput: updateMassRatioFromUserInput,
@@ -343,7 +343,7 @@ Image credits
     var canvas = null, // Canvas DOM element.
       context = null, // Canvas context for drawing.
       canvasHeight = 400,
-      defaultBodySize = 60,
+      defaultBodySize = 80,
       colors = {
         orbitalPath: "#5555FF"
       },
@@ -491,7 +491,7 @@ Image credits
     function start() {
       graphics.init(function() {
         // Use the initial conditions for the simulation
-        physics.resetStateToinitialConditions();
+        physics.resetStateToInitialConditions();
         graphics.updateObjectSizes(physics.initialConditions.q, physics.separationBetweenObjects());
 
         // Redraw the scene if page is resized
@@ -520,7 +520,7 @@ Image credits
     function didUpdateMassSlider(sliderValue) {
       if (sliderValue === 0) { sliderValue = 0.005; }
       var oldEccentricity = physics.state.eccentricity;
-      physics.resetStateToinitialConditions();
+      physics.resetStateToInitialConditions();
       graphics.clearScene();
       physics.updateMassRatioFromUserInput(sliderValue);
       physics.updateEccentricityFromUserInput(oldEccentricity);
@@ -535,7 +535,7 @@ Image credits
 
     function didUpdateEccentricitySlider(sliderValue) {
       var oldMassRatio = physics.state.masses.q;
-      physics.resetStateToinitialConditions();
+      physics.resetStateToInitialConditions();
       graphics.clearScene();
       physics.updateMassRatioFromUserInput(oldMassRatio);
       physics.updateEccentricityFromUserInput(sliderValue);
@@ -550,7 +550,6 @@ Image credits
 
     function didClickRestart() {
       physics.resetStateToInitialConditions();
-      physics.resetStateToinitialConditions();
       graphics.clearScene();
       showMassRatio(physics.initialConditions.q);
       showEccentricity(physics.initialConditions.eccentricity);
