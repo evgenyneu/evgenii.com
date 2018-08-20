@@ -432,7 +432,11 @@ Image credits
       colors = {
         orbitalPath: "#777777"
       },
-      previousEarthPosition = null,
+      // Previously drawn positions of the two bodies. Used to draw orbital line.
+      previousBodyPositions = [
+        {x: null, y: null},
+        {x: null, y: null}
+      ],
       earthElement,
       sunElement,
       earthEndElement,
@@ -449,6 +453,13 @@ Image credits
       var top = (earthPosition.y - earthSize/2) + "px";
       earthElement.style.left = left;
       earthElement.style.top = top;
+    }
+
+    function drawBody(position, size, bodyElement) {
+      var left = (position.x - size/2) + "px";
+      var top = (position.y - size/2) + "px";
+      bodyElement.style.left = left;
+      bodyElement.style.top = top;
     }
 
     function calculateEarthPosition(distance, angle) {
@@ -470,23 +481,25 @@ Image credits
       var sunsDefaultWidth = sunsSize;
       currentSunsSize = sunsDefaultWidth * Math.pow(sunMass, 1/3);
       sunElement.style.width = currentSunsSize + "px";
-      sunElement.style.marginLeft = -(currentSunsSize / 2.0) + "px";
-      sunElement.style.marginTop = -(currentSunsSize / 2.0) + "px";
+      // sunElement.style.marginLeft = -(currentSunsSize / 2.0) + "px";
+      // sunElement.style.marginTop = -(currentSunsSize / 2.0) + "px";
     }
 
-    function drawOrbitalLine(newEarthPosition) {
-      if (previousEarthPosition === null) {
-        previousEarthPosition = newEarthPosition;
+    function drawOrbitalLine(newPosition, previousPosition) {
+      if (previousPosition.x === null) {
+        previousPosition.x = newPosition.x;
+        previousPosition.y = newPosition.y;
         return;
       }
 
       context.beginPath();
       context.strokeStyle = colors.orbitalPath;
-      context.moveTo(previousEarthPosition.x, previousEarthPosition.y);
-      context.lineTo(newEarthPosition.x, newEarthPosition.y);
+      context.moveTo(previousPosition.x, previousPosition.y);
+      context.lineTo(newPosition.x, newPosition.y);
       context.stroke();
 
-      previousEarthPosition = newEarthPosition;
+      previousPosition.x = newPosition.x;
+      previousPosition.y = newPosition.y;
     }
 
     // Return true if Earth has collided with the Sun
@@ -502,12 +515,12 @@ Image credits
         earthPosition.y >= sunTop && earthPosition.y <= sunBottom);
     }
 
-    function calculateEarthPosition2(positions) {
+    function calculatePosition(position) {
       middleX = Math.floor(canvas.width / 2);
       middleY = Math.floor(canvas.height / 2);
       var scale = 50;
-      var centerX = positions[0].x * scale + middleX;
-      var centerY = positions[0].y * scale + middleY;
+      var centerX = position.x * scale + middleX;
+      var centerY = position.y * scale + middleY;
 
       return {
         x: centerX,
@@ -517,16 +530,20 @@ Image credits
 
     // Draws the scene
     function drawScene2(positions) {
-      var earthPosition = calculateEarthPosition2(positions);
-      drawTheEarth(earthPosition);
-      drawOrbitalLine(earthPosition);
+      var body1Position = calculatePosition(positions[0]);
+      drawBody(body1Position, earthSize, earthElement);
+      drawOrbitalLine(body1Position, previousBodyPositions[0]);
+
+      var body2Position = calculatePosition(positions[1]);
+      drawBody(body2Position, sunsSize, sunElement);
+      drawOrbitalLine(body2Position, previousBodyPositions[1]);
     }
 
     // Draws the scene
     function drawScene(distance, angle) {
-      var earthPosition = calculateEarthPosition(distance, angle);
-      drawTheEarth(earthPosition);
-      drawOrbitalLine(earthPosition);
+      // var earthPosition = calculateEarthPosition(distance, angle);
+      // drawTheEarth(earthPosition);
+      // drawOrbitalLine(earthPosition);
 
       if (isEarthCollidedWithTheSun(earthPosition)) {
         physics.state.paused = true;

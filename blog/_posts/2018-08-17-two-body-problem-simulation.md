@@ -6,7 +6,7 @@ meta_description: "Here we program a two body problem in JavaScript showing two 
 tags: programming science
 ---
 
-<link rel="stylesheet" href="/css/2016/earth-orbit-simulation.css">
+<link rel="stylesheet" href="/css/2018/two-body-problem-simulation.css">
 
 <!-- Message shown in old browsers. -->
 <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
