@@ -267,7 +267,7 @@ Image credits
     // Current state of the system
     var state2 = {
       masses: {
-        q: 0.1, // Mass ratio m2 / m1,
+        q: 0, // Mass ratio m2 / m1,
         m1: 1,
         m2: 0, // Will be set to q
         m12: 0 // Will be set to m1 + m2
@@ -289,6 +289,7 @@ Image credits
 
     // Initial condition of the model
     var initialConditions2 = {
+      q: 0.1, // Mass ratio m2 / m1
       position: {
         x: 1,
         y: 0
@@ -326,6 +327,7 @@ Image credits
     }
 
     function resetStateToInitialConditions2() {
+      state2.masses.q = initialConditions2.q
       state2.masses.m2 = state2.masses.q;
       state2.masses.m12 = state2.masses.m1 + state2.masses.m2;
       state2.u[0] = initialConditions2.position.x;
@@ -406,7 +408,8 @@ Image credits
 
     // Updates the mass of the Sun
     function updateFromUserInput(solarMassMultiplier) {
-      state.massOfTheSunKg = constants.massOfTheSunKg * solarMassMultiplier;
+      // state.massOfTheSunKg = constants.massOfTheSunKg * solarMassMultiplier;
+      state2.masses.q = solarMassMultiplier;
     }
 
     return {
@@ -545,10 +548,10 @@ Image credits
       // drawTheEarth(earthPosition);
       // drawOrbitalLine(earthPosition);
 
-      if (isEarthCollidedWithTheSun(earthPosition)) {
-        physics.state.paused = true;
-        showHideEarthEndMessage(true);
-      }
+      // if (isEarthCollidedWithTheSun(earthPosition)) {
+      //   physics.state.paused = true;
+      //   showHideEarthEndMessage(true);
+      // }
     }
 
     function hideCanvasNotSupportedMessage() {
@@ -592,7 +595,10 @@ Image credits
 
     function clearScene() {
       context.clearRect(0, 0, canvas.width, canvas.height);
-      previousEarthPosition = null;
+      previousBodyPositions = [
+        {x: null, y: null},
+        {x: null, y: null}
+      ];
     }
 
     return {
@@ -645,33 +651,39 @@ Image credits
     var restartButton = document.querySelector(".EarthOrbitSimulation-reload");
     var massSlider;
 
-    function updateSunsMass(sliderValue) {
-      var sunsMassValue = sliderValue * 2;
+    function updateBodyMassRatio(sliderValue) {
+      physics.updateFromUserInput(sliderValue);
+      var formattedRatio = parseFloat(Math.round(sliderValue * 100) / 100).toFixed(2);
+      sunsMassElement.innerHTML = formattedRatio;
+      physics.updateFromUserInput(sliderValue);
 
-      if (sunsMassValue > 1) {
-        sunsMassValue = Math.pow(5, sunsMassValue - 1);
-      }
+      // var sunsMassValue = sliderValue * 2;
+      // if (sunsMassValue > 1) {
+      //   sunsMassValue = Math.pow(5, sunsMassValue - 1);
+      // }
 
-      var formattedMass = parseFloat(Math.round(sunsMassValue * 100) / 100).toFixed(2);
-      sunsMassElement.innerHTML = formattedMass;
-      physics.updateFromUserInput(sunsMassValue);
-      graphics.updateSunSize(sunsMassValue);
+      // var formattedMass = parseFloat(Math.round(sunsMassValue * 100) / 100).toFixed(2);
+      // sunsMassElement.innerHTML = formattedMass;
+      // physics.updateFromUserInput(sunsMassValue);
+      // graphics.updateSunSize(sunsMassValue);
     }
 
     function didClickRestart() {
       graphics.showHideEarthEndMessage(false);
       physics.resetStateToInitialConditions();
+      physics.resetStateToInitialConditions2();
       graphics.clearScene();
-      updateSunsMass(0.5);
-      massSlider.changePosition(0.5);
+      updateBodyMassRatio(0.1);
+      massSlider.changePosition(0.1);
       physics.state.paused = false;
       return false; // Prevent default
     }
 
     function init() {
       massSlider = SickSlider(".EarthOrbitSimulation-massSlider");
-      massSlider.onSliderChange = updateSunsMass;
-      massSlider.changePosition(0.5);
+      massSlider.onSliderChange = updateBodyMassRatio;
+      updateBodyMassRatio(0.1);
+      massSlider.changePosition(0.1);
       restartButton.onclick = didClickRestart;
     }
 

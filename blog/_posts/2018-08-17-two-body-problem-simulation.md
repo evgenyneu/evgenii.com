@@ -37,7 +37,7 @@ tags: programming science
 </div>
 
 <div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
-  Mass of the Sun: <span class='EarthOrbitSimulation-sunsMass'>1.00</span>
+  Mass ratio: <span class='EarthOrbitSimulation-sunsMass'>0.10</span>
 </div>
 
 <p class='EarthOrbitSimulation-debugOutput'></p>
