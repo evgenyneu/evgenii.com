@@ -15,6 +15,24 @@ Image credits
 
 */
 
+/*
+  Layout
+  --------
+*/
+
+.EarthOrbitSimulation-hasTopMarginNormal {
+  margin-top: 15px;
+}
+
+.EarthOrbitSimulation-hasNegativeBottomMarginNormal {
+  margin-bottom: -10px;
+}
+
+/*
+  Elements
+  --------
+*/
+
 .EarthOrbitSimulation-alert {
   color: red;
   border: 1px solid red;
@@ -140,7 +158,8 @@ Image credits
   border : 0;
 }
 
-.EarthOrbitSimulation-massSlider {
+.EarthOrbitSimulation-massSlider,
+.EarthOrbitSimulation-eccentricitySlider {
   max-width: 400px;
   margin: 0 auto;
 }

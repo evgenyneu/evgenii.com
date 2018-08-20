@@ -31,13 +31,22 @@ tags: programming science
     </div>
 </div>
 
+<div class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-hasTopMarginNormal EarthOrbitSimulation-hasNegativeBottomMarginNormal isUnselectable'>
+  Mass ratio: <span class='EarthOrbitSimulation-sunsMass'>0.10</span>
+</div>
+
 <div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
   <div class="SickSlider-stripe"></div>
   <div class="SickSlider-head"></div>
 </div>
 
-<div class='EarthOrbitSimulation-isTextCentered isUnselectable'>
-  Mass ratio: <span class='EarthOrbitSimulation-sunsMass'>0.10</span>
+<div class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-hasTopMarginNormal EarthOrbitSimulation-hasNegativeBottomMarginNormal isUnselectable'>
+  Eccentricity: <span class='EarthOrbitSimulation-eccentricity'>0.10</span>
+</div>
+
+<div class="SickSlider EarthOrbitSimulation-eccentricitySlider isUnselectable" >
+  <div class="SickSlider-stripe"></div>
+  <div class="SickSlider-head"></div>
 </div>
 
 <p class='EarthOrbitSimulation-debugOutput'></p>

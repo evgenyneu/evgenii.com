@@ -267,11 +267,12 @@ Image credits
     // Current state of the system
     var state2 = {
       masses: {
-        q: 0, // Mass ratio m2 / m1,
+        q: 0, // Current mass ratio m2 / m1
         m1: 1,
         m2: 0, // Will be set to q
         m12: 0 // Will be set to m1 + m2
       },
+      eccentricity: 0, // Current eccentricity of the orbit
       // Current positions of the two bodies
       positions: [
         {
@@ -289,14 +290,14 @@ Image credits
 
     // Initial condition of the model
     var initialConditions2 = {
-      q: 0.01, // Mass ratio m2 / m1
+      eccentricity: 0.1, // Eccentricity of the orbit
+      q: 0.5, // Mass ratio m2 / m1
       position: {
         x: 1,
         y: 0
       },
       velocity: {
-        u: 0,
-        v: 1.2
+        u: 0
       }
     };
 
@@ -326,14 +327,26 @@ Image credits
       state.angle.speed = initialConditions.angle.speed;
     }
 
-    function resetStateToInitialConditions2() {
-      state2.masses.q = initialConditions2.q
+    function initialVelocity(q, eccentricity) {
+      return Math.sqrt( (1 + q) * (1 + eccentricity) );
+    }
+
+    // Update parameters that depend on mass ratio and eccentricity
+    function updateParametersDependentOnUserInput() {
       state2.masses.m2 = state2.masses.q;
       state2.masses.m12 = state2.masses.m1 + state2.masses.m2;
+      state2.u[3] = initialVelocity(state2.masses.q, state2.eccentricity);
+    }
+
+    function resetStateToInitialConditions2() {
+      state2.masses.q = initialConditions2.q
+      state2.eccentricity = initialConditions2.eccentricity
+
       state2.u[0] = initialConditions2.position.x;
       state2.u[1] = initialConditions2.position.y;
       state2.u[2] = initialConditions2.velocity.u;
-      state2.u[3] = initialConditions2.velocity.v;
+
+      updateParametersDependentOnUserInput()
     }
 
     // The distance that is used for drawing on screen
@@ -372,11 +385,7 @@ Image credits
     }
 
     function calculateNewPosition2() {
-      state2.masses.m2 = state2.masses.q;
-      state2.masses.m12 = state2.masses.m1 + state2.masses.m2;
-
-      var e = initialConditions2.velocity.v**2 / (1 + state2.masses.q) - 1;
-      var a = initialConditions2.position.x / (1 - e);
+      var a = initialConditions2.position.x / (1 - state2.eccentricity);
       var a1 = (state2.masses.m2 / state2.masses.m12) * a;
       var a2 = (state2.masses.m1 / state2.masses.m12) * a;
 
@@ -404,10 +413,14 @@ Image credits
       }
     }
 
-    // Updates the mass of the Sun
-    function updateFromUserInput(solarMassMultiplier) {
-      // state.massOfTheSunKg = constants.massOfTheSunKg * solarMassMultiplier;
-      state2.masses.q = solarMassMultiplier;
+    function updateMassRatioFromUserInput(massRatio) {
+      state2.masses.q = massRatio;
+      updateParametersDependentOnUserInput();
+    }
+
+    function updateEccentricityFromUserInput(eccentricity) {
+      state2.eccentricity = eccentricity;
+      updateParametersDependentOnUserInput();
     }
 
     return {
@@ -418,7 +431,8 @@ Image credits
       updatePosition2: updatePosition2,
       initialConditions: initialConditions,
       initialConditions2: initialConditions2,
-      updateFromUserInput: updateFromUserInput,
+      updateMassRatioFromUserInput: updateMassRatioFromUserInput,
+      updateEccentricityFromUserInput: updateEccentricityFromUserInput,
       state: state,
       state2: state2
     };
@@ -647,13 +661,14 @@ Image credits
   // React to user input
   var userInput = (function(){
     var sunsMassElement = document.querySelector(".EarthOrbitSimulation-sunsMass");
+    var eccentricityElement = document.querySelector(".EarthOrbitSimulation-eccentricity");
     var restartButton = document.querySelector(".EarthOrbitSimulation-reload");
-    var massSlider;
+    var massSlider, eccentricitySlider;
 
-    function didUpdateSlider(sliderValue) {
+    function didUpdateMassSlider(sliderValue) {
       physics.resetStateToInitialConditions2();
       graphics.clearScene();
-      physics.updateFromUserInput(sliderValue);
+      physics.updateMassRatioFromUserInput(sliderValue);
       showMassRatio(sliderValue);
 
       // var sunsMassValue = sliderValue * 2;
@@ -670,7 +685,18 @@ Image credits
     function showMassRatio(ratio) {
       var formattedRatio = parseFloat(Math.round(ratio * 100) / 100).toFixed(2);
       sunsMassElement.innerHTML = formattedRatio;
-      physics.updateFromUserInput(ratio);
+    }
+
+    function didUpdateEccentricitySlider(sliderValue) {
+      physics.resetStateToInitialConditions2();
+      graphics.clearScene();
+      physics.updateEccentricityFromUserInput(sliderValue);
+      showEccentricity(sliderValue);
+    }
+
+    function showEccentricity(ratio) {
+      var formattedRatio = parseFloat(Math.round(ratio * 100) / 100).toFixed(2);
+      eccentricityElement.innerHTML = formattedRatio;
     }
 
     function didClickRestart() {
@@ -679,16 +705,25 @@ Image credits
       physics.resetStateToInitialConditions2();
       graphics.clearScene();
       showMassRatio(physics.initialConditions2.q);
+      showEccentricity(physics.initialConditions2.eccentricity);
       massSlider.changePosition(physics.initialConditions2.q);
       physics.state.paused = false;
       return false; // Prevent default
     }
 
     function init() {
+      // Mass slider
       massSlider = SickSlider(".EarthOrbitSimulation-massSlider");
-      massSlider.onSliderChange = didUpdateSlider;
+      massSlider.onSliderChange = didUpdateMassSlider;
       showMassRatio(physics.initialConditions2.q);
       massSlider.changePosition(physics.initialConditions2.q);
+
+      // Eccentricity slider
+      eccentricitySlider = SickSlider(".EarthOrbitSimulation-eccentricitySlider");
+      eccentricitySlider.onSliderChange = didUpdateEccentricitySlider;
+      showEccentricity(physics.initialConditions2.eccentricity);
+      eccentricitySlider.changePosition(physics.initialConditions2.eccentricity);
+
       restartButton.onclick = didClickRestart;
     }
 
