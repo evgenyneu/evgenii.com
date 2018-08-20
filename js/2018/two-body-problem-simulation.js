@@ -254,23 +254,6 @@ Image credits
       }
     };
 
-    function calculateDistanceAcceleration(state) {
-      // [acceleration of distance] = [distance][angular velocity]^2 - G * M / [distance]^2
-      return state.distance.value * Math.pow(state.angle.speed, 2) -
-        (constants.gravitationalConstant * state.massOfTheSunKg) / Math.pow(state.distance.value, 2);
-    }
-
-    function calculateAngleAcceleration(state) {
-      // [acceleration of angle] = - 2[speed][angular velocity] / [distance]
-      return -2.0 * state.distance.speed * state.angle.speed / state.distance.value;
-    }
-
-    // Calculates a new value based on the time change and its derivative
-    // For example, it calculates the new distance based on the distance derivative (velocity)
-    // and the elapsed time interval.
-    function newValue(currentValue, deltaT, derivative) {
-      return currentValue + deltaT * derivative;
-    }
 
     // Calculate the initial velocity of the seconf body
     // in vertical direction based on mass ratio q and eccentricity
@@ -296,11 +279,6 @@ Image credits
       updateParametersDependentOnUserInput()
     }
 
-    // The distance that is used for drawing on screen
-    function scaledDistance() {
-      return state.distance.value / scaleFactor;
-    }
-
     function derivative() {
       var du = new Array(state2.u.length);
       var r = state2.u.slice(0,2);
@@ -317,7 +295,8 @@ Image credits
     // The main function that is called on every animation frame.
     // It calculates and updates the current positions of the bodies
     function updatePosition2() {
-      rungeKutta.calculate(0.07, state2.u, derivative);
+      var timestep = 0.07;
+      rungeKutta.calculate(timestep, state2.u, derivative);
       calculateNewPosition2();
     }
 
@@ -338,23 +317,6 @@ Image credits
       return initialConditions2.position.x / (1 - state2.eccentricity);
     }
 
-    // Calculates position of the Earth
-    function calculateNewPosition() {
-      // Calculate new distance
-      var distanceAcceleration = calculateDistanceAcceleration(state);
-      state.distance.speed = newValue(state.distance.speed, deltaT, distanceAcceleration);
-      state.distance.value = newValue(state.distance.value, deltaT, state.distance.speed);
-
-      // Calculate new angle
-      var angleAcceleration = calculateAngleAcceleration(state);
-      state.angle.speed = newValue(state.angle.speed, deltaT, angleAcceleration);
-      state.angle.value = newValue(state.angle.value, deltaT, state.angle.speed);
-
-      if (state.angle.value > 2 * Math.PI) {
-        state.angle.value = state.angle.value % (2 * Math.PI);
-      }
-    }
-
     function updateMassRatioFromUserInput(massRatio) {
       state2.masses.q = massRatio;
       updateParametersDependentOnUserInput();
@@ -366,7 +328,6 @@ Image credits
     }
 
     return {
-      scaledDistance: scaledDistance,
       resetStateToInitialConditions2: resetStateToInitialConditions2,
       updatePosition2: updatePosition2,
       initialConditions2: initialConditions2,
@@ -585,7 +546,6 @@ Image credits
     function animate() {
       physics.updatePosition2();
       graphics.drawScene2(physics.state2.positions);
-      // graphics.drawScene(physics.scaledDistance(), physics.state.angle.value);
       window.requestAnimationFrame(animate);
     }
 
@@ -599,7 +559,7 @@ Image credits
         window.addEventListener('resize', function(event){
           graphics.fitToContainer();
           graphics.clearScene();
-          graphics.drawScene(physics.scaledDistance(), physics.state.angle.value);
+          graphics.drawScene2(physics.state2.positions);
         });
 
         animate();
