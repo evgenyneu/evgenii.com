@@ -327,6 +327,8 @@ Image credits
       state.angle.speed = initialConditions.angle.speed;
     }
 
+    // Calculate the initial velocity of the seconf body
+    // in vertical direction based on mass ratio q and eccentricity
     function initialVelocity(q, eccentricity) {
       return Math.sqrt( (1 + q) * (1 + eccentricity) );
     }
@@ -707,6 +709,7 @@ Image credits
       showMassRatio(physics.initialConditions2.q);
       showEccentricity(physics.initialConditions2.eccentricity);
       massSlider.changePosition(physics.initialConditions2.q);
+      eccentricitySlider.changePosition(physics.initialConditions2.eccentricity);
       physics.state.paused = false;
       return false; // Prevent default
     }
