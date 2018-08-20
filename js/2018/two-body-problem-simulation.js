@@ -690,6 +690,7 @@ Image credits
     var massSlider, eccentricitySlider;
 
     function didUpdateMassSlider(sliderValue) {
+      if (sliderValue === 0) { sliderValue = 0.005; }
       var oldEccentricity = physics.state2.eccentricity;
       physics.resetStateToInitialConditions2();
       graphics.clearScene();
