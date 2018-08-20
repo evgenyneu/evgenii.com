@@ -73,30 +73,6 @@ Image credits
   z-index: 1001;
 }
 
-.EarthOrbitSimulation-earthEnd {
-  position: absolute;
-  background-color: #443344;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1001;
-  background-image: url("https://evgenii.com/image/blog/2018-08-17-two-body-problem-simulation/starry_night.png");
-  background-position: left top;
-  background-repeat: repeat;
-  background-size: 674px 220px;
-}
-
-.EarthOrbitSimulation-earthEndMessage {
-  color: #DDDDDD;
-  font-size: 1.3em;
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
 @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }

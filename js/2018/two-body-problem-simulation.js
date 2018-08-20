@@ -343,8 +343,6 @@ Image credits
     var canvas = null, // Canvas DOM element.
       context = null, // Canvas context for drawing.
       canvasHeight = 400,
-      earthSize = 25,
-      sunsSize = 60,
       defaultBodySize = 60,
       colors = {
         orbitalPath: "#777777"
@@ -356,24 +354,11 @@ Image credits
       ],
       earthElement,
       sunElement,
-      earthEndElement,
-      currentSunsSize = sunsSize,
       currentBodySizes = [
         defaultBodySize, defaultBodySize
       ],
       middleX = 1,
       middleY = 1;
-
-    function showHideEarthEndMessage(show) {
-      earthEndElement.style.display = show ? 'block' : 'none';
-    }
-
-    function drawTheEarth(earthPosition) {
-      var left = (earthPosition.x - earthSize/2) + "px";
-      var top = (earthPosition.y - earthSize/2) + "px";
-      earthElement.style.left = left;
-      earthElement.style.top = top;
-    }
 
     function drawBody(position, size, bodyElement) {
       var left = (position.x - size/2) + "px";
@@ -392,17 +377,6 @@ Image credits
         x: centerX,
         y: centerY
       };
-    }
-
-    // Updates the size of the Sun based on its mass. The sunMass argument is a fraction of the real Sun's mass.
-    function updateSunSize(sunMass) {
-      sunElement.setAttribute("style","filter:brightness(" + sunMass + "); " +
-        "-webkit-filter:brightness(" + sunMass + "); ");
-      var sunsDefaultWidth = sunsSize;
-      currentSunsSize = sunsDefaultWidth * Math.pow(sunMass, 1/3);
-      sunElement.style.width = currentSunsSize + "px";
-      // sunElement.style.marginLeft = -(currentSunsSize / 2.0) + "px";
-      // sunElement.style.marginTop = -(currentSunsSize / 2.0) + "px";
     }
 
     // Updates the sizes of the two object based on the mass ratio (value from 0 to 1)
@@ -432,19 +406,6 @@ Image credits
       previousPosition.y = newPosition.y;
     }
 
-    // Return true if Earth has collided with the Sun
-    function isEarthCollidedWithTheSun(earthPosition) {
-      var correctedSunsSize = currentSunsSize - 20;
-      var sunHalf = correctedSunsSize / 2;
-      var sunLeft = middleX - sunHalf;
-      var sunRight = middleX + sunHalf;
-      var sunTop = middleY - sunHalf;
-      var sunBottom = middleY + sunHalf;
-
-      return (earthPosition.x >= sunLeft && earthPosition.x <= sunRight &&
-        earthPosition.y >= sunTop && earthPosition.y <= sunBottom);
-    }
-
     function calculatePosition(position) {
       middleX = Math.floor(canvas.width / 2);
       middleY = Math.floor(canvas.height / 2);
@@ -467,18 +428,6 @@ Image credits
       var body2Position = calculatePosition(positions[1]);
       drawBody(body2Position, currentBodySizes[1], sunElement);
       drawOrbitalLine(body2Position, previousBodyPositions[1]);
-    }
-
-    // Draws the scene
-    function drawScene(distance, angle) {
-      // var earthPosition = calculateEarthPosition(distance, angle);
-      // drawTheEarth(earthPosition);
-      // drawOrbitalLine(earthPosition);
-
-      // if (isEarthCollidedWithTheSun(earthPosition)) {
-      //   physics.state.paused = true;
-      //   showHideEarthEndMessage(true);
-      // }
     }
 
     function hideCanvasNotSupportedMessage() {
@@ -514,7 +463,6 @@ Image credits
 
       earthElement = document.querySelector(".EarthOrbitSimulation-earth");
       sunElement = document.querySelector(".EarthOrbitSimulation-sun");
-      earthEndElement = document.querySelector(".EarthOrbitSimulation-earthEnd");
 
       // Execute success callback function
       success();
@@ -530,11 +478,8 @@ Image credits
 
     return {
       fitToContainer: fitToContainer,
-      drawScene: drawScene,
       drawScene2: drawScene2,
-      updateSunSize: updateSunSize,
       updateObjectSizes: updateObjectSizes,
-      showHideEarthEndMessage: showHideEarthEndMessage,
       clearScene: clearScene,
       init: init
     };
@@ -610,7 +555,6 @@ Image credits
     }
 
     function didClickRestart() {
-      graphics.showHideEarthEndMessage(false);
       physics.resetStateToInitialConditions();
       physics.resetStateToInitialConditions2();
       graphics.clearScene();

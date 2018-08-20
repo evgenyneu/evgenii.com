@@ -16,14 +16,6 @@ tags: programming science
     <img src='http://127.0.0.1:4000/image/blog/2018-08-17-two-body-problem-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
     <canvas class="EarthOrbitSimulation-canvas"></canvas>
 
-    <div class="EarthOrbitSimulation-earthEnd EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
-      <div class="EarthOrbitSimulation-earthEndMessage">
-        "My wonder button is being pushed all the time."
-        <br><br>Carl Sagan
-      </div>
-
-    </div>
-
     <div class='EarthOrbitSimulation-hudContainer'>
       <div class='EarthOrbitSimulation-hudContainerChild'>
         <a class='EarthOrbitSimulation-reload' href='#'><img src='https://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/reload_icon.png' alt='Restart' class='EarthOrbitSimulation-reloadIcon'></a>
