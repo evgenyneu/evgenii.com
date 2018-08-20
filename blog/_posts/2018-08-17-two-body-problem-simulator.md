@@ -1,6 +1,6 @@
 ---
 layout: blog_post
-comments: false
+comments: true
 title: "Two-body problem simulator"
 meta_description: "Here we program a two-body problem in JavaScript showing two bodies rotationg about the common center of mass."
 tags: programming science
