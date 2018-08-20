@@ -1,8 +1,8 @@
 /*
 
-Earth Orbit Simulator
+Two-body problem simulation
 
-https://evgenii.com/blog/earth-orbit-simulation
+https://evgenii.com/blog/two-body-problem-simulation
 
 License: Public Domain
 
@@ -217,53 +217,6 @@ Image credits
 
   // Calculates the position of the Earth
   var physics = (function() {
-    var constants = {
-      gravitationalConstant: 6.67408 * Math.pow(10, -11),
-      earthSunDistanceMeters: 1.496 * Math.pow(10, 11),
-      earthAngularVelocityMetersPerSecond: 1.990986 *  Math.pow(10, -7),
-      massOfTheSunKg: 1.98855 * Math.pow(10, 30)
-    };
-
-    // The length of one AU (Earth-Sun distance) in pixels.
-    var pixelsInOneEarthSunDistancePerPixel = 150;
-
-    // A factor by which we scale the distance between the Sun and the Earth
-    // in order to show it on screen
-    var scaleFactor = constants.earthSunDistanceMeters / pixelsInOneEarthSunDistancePerPixel;
-
-    // The number of calculations of orbital path done in one 16 millisecond frame.
-    // The higher the number, the more precise are the calculations and the slower the simulation.
-    var numberOfCalculationsPerFrame = 1000;
-
-    // The length of the time increment, in seconds.
-    var deltaT = 3600 * 24 / numberOfCalculationsPerFrame;
-
-    // Initial condition of the model
-    var initialConditions = {
-      distance: {
-        value: constants.earthSunDistanceMeters,
-        speed: 0.00
-      },
-      angle: {
-        value: Math.PI / 6,
-        speed: constants.earthAngularVelocityMetersPerSecond
-      }
-    };
-
-    // Current state of the system
-    var state = {
-      distance: {
-        value: 0,
-        speed: 0
-      },
-      angle: {
-        value: 0,
-        speed: 0
-      },
-      massOfTheSunKg: constants.massOfTheSunKg,
-      paused: false
-    };
-
     // Current state of the system
     var state2 = {
       masses: {
@@ -319,14 +272,6 @@ Image credits
       return currentValue + deltaT * derivative;
     }
 
-    function resetStateToInitialConditions() {
-      state.distance.value = initialConditions.distance.value;
-      state.distance.speed = initialConditions.distance.speed;
-
-      state.angle.value = initialConditions.angle.value;
-      state.angle.speed = initialConditions.angle.speed;
-    }
-
     // Calculate the initial velocity of the seconf body
     // in vertical direction based on mass ratio q and eccentricity
     function initialVelocity(q, eccentricity) {
@@ -356,15 +301,6 @@ Image credits
       return state.distance.value / scaleFactor;
     }
 
-    // The main function that is called on every animation frame.
-    // It calculates and updates the current positions of the bodies
-    function updatePosition() {
-      if (physics.state.paused) { return; }
-      for (var i = 0; i < numberOfCalculationsPerFrame; i++) {
-        calculateNewPosition();
-      }
-    }
-
     function derivative() {
       var du = new Array(state2.u.length);
       var r = state2.u.slice(0,2);
@@ -381,7 +317,6 @@ Image credits
     // The main function that is called on every animation frame.
     // It calculates and updates the current positions of the bodies
     function updatePosition2() {
-      if (physics.state.paused) { return; }
       rungeKutta.calculate(0.07, state2.u, derivative);
       calculateNewPosition2();
     }
@@ -432,15 +367,11 @@ Image credits
 
     return {
       scaledDistance: scaledDistance,
-      resetStateToInitialConditions: resetStateToInitialConditions,
       resetStateToInitialConditions2: resetStateToInitialConditions2,
-      updatePosition: updatePosition,
       updatePosition2: updatePosition2,
-      initialConditions: initialConditions,
       initialConditions2: initialConditions2,
       updateMassRatioFromUserInput: updateMassRatioFromUserInput,
       updateEccentricityFromUserInput: updateEccentricityFromUserInput,
-      state: state,
       state2: state2,
       separationBetweenObjects: separationBetweenObjects
     };
@@ -652,7 +583,6 @@ Image credits
   var simulation = (function() {
     // The method is called 60 times per second
     function animate() {
-      physics.updatePosition();
       physics.updatePosition2();
       graphics.drawScene2(physics.state2.positions);
       // graphics.drawScene(physics.scaledDistance(), physics.state.angle.value);
@@ -662,7 +592,6 @@ Image credits
     function start() {
       graphics.init(function() {
         // Use the initial conditions for the simulation
-        physics.resetStateToInitialConditions();
         physics.resetStateToInitialConditions2();
         graphics.updateObjectSizes(physics.initialConditions2.q, physics.separationBetweenObjects());
 
@@ -730,7 +659,6 @@ Image credits
       massSlider.changePosition(physics.initialConditions2.q);
       eccentricitySlider.changePosition(physics.initialConditions2.eccentricity);
       graphics.updateObjectSizes(physics.initialConditions2.q, physics.separationBetweenObjects());
-      physics.state.paused = false;
       return false; // Prevent default
     }
 
