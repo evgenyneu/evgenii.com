@@ -218,7 +218,7 @@ Image credits
   // Calculates the position of the Earth
   var physics = (function() {
     // Current state of the system
-    var state2 = {
+    var state = {
       masses: {
         q: 0, // Current mass ratio m2 / m1
         m1: 1,
@@ -242,7 +242,7 @@ Image credits
     };
 
     // Initial condition of the model
-    var initialConditions2 = {
+    var initialConditions = {
       eccentricity: 0.1, // Eccentricity of the orbit
       q: 0.5, // Mass ratio m2 / m1
       position: {
@@ -263,30 +263,30 @@ Image credits
 
     // Update parameters that depend on mass ratio and eccentricity
     function updateParametersDependentOnUserInput() {
-      state2.masses.m2 = state2.masses.q;
-      state2.masses.m12 = state2.masses.m1 + state2.masses.m2;
-      state2.u[3] = initialVelocity(state2.masses.q, state2.eccentricity);
+      state.masses.m2 = state.masses.q;
+      state.masses.m12 = state.masses.m1 + state.masses.m2;
+      state.u[3] = initialVelocity(state.masses.q, state.eccentricity);
     }
 
-    function resetStateToInitialConditions2() {
-      state2.masses.q = initialConditions2.q
-      state2.eccentricity = initialConditions2.eccentricity
+    function resetStateToinitialConditions() {
+      state.masses.q = initialConditions.q
+      state.eccentricity = initialConditions.eccentricity
 
-      state2.u[0] = initialConditions2.position.x;
-      state2.u[1] = initialConditions2.position.y;
-      state2.u[2] = initialConditions2.velocity.u;
+      state.u[0] = initialConditions.position.x;
+      state.u[1] = initialConditions.position.y;
+      state.u[2] = initialConditions.velocity.u;
 
       updateParametersDependentOnUserInput()
     }
 
     function derivative() {
-      var du = new Array(state2.u.length);
-      var r = state2.u.slice(0,2);
+      var du = new Array(state.u.length);
+      var r = state.u.slice(0,2);
       var rr = Math.sqrt( r[0]**2 + r[1]**2 );
 
       for (var i = 0; i < 2; i++) {
-        du[i] = state2.u[i + 2];
-        du[i + 2] = -(1 + state2.masses.q) * r[i] / (rr**3);
+        du[i] = state.u[i + 2];
+        du[i + 2] = -(1 + state.masses.q) * r[i] / (rr**3);
       }
 
       return du;
@@ -294,46 +294,46 @@ Image credits
 
     // The main function that is called on every animation frame.
     // It calculates and updates the current positions of the bodies
-    function updatePosition2() {
+    function updatePosition() {
       var timestep = 0.07;
-      rungeKutta.calculate(timestep, state2.u, derivative);
-      calculateNewPosition2();
+      rungeKutta.calculate(timestep, state.u, derivative);
+      calculateNewPosition();
     }
 
-    function calculateNewPosition2() {
-      var a1 = (state2.masses.m2 / state2.masses.m12);
-      var a2 = (state2.masses.m1 / state2.masses.m12);
+    function calculateNewPosition() {
+      var a1 = (state.masses.m2 / state.masses.m12);
+      var a2 = (state.masses.m1 / state.masses.m12);
 
-      state2.positions[0].x = -a2 * state2.u[0]
-      state2.positions[0].y = -a2 * state2.u[1]
+      state.positions[0].x = -a2 * state.u[0]
+      state.positions[0].y = -a2 * state.u[1]
 
-      state2.positions[1].x = a1 * state2.u[0]
-      state2.positions[1].y = a1 * state2.u[1]
+      state.positions[1].x = a1 * state.u[0]
+      state.positions[1].y = a1 * state.u[1]
     }
 
     // Returns the separatation between two objects
     // This is a value from 1 and larger
     function separationBetweenObjects() {
-      return initialConditions2.position.x / (1 - state2.eccentricity);
+      return initialConditions.position.x / (1 - state.eccentricity);
     }
 
     function updateMassRatioFromUserInput(massRatio) {
-      state2.masses.q = massRatio;
+      state.masses.q = massRatio;
       updateParametersDependentOnUserInput();
     }
 
     function updateEccentricityFromUserInput(eccentricity) {
-      state2.eccentricity = eccentricity;
+      state.eccentricity = eccentricity;
       updateParametersDependentOnUserInput();
     }
 
     return {
-      resetStateToInitialConditions2: resetStateToInitialConditions2,
-      updatePosition2: updatePosition2,
-      initialConditions2: initialConditions2,
+      resetStateToinitialConditions: resetStateToinitialConditions,
+      updatePosition: updatePosition,
+      initialConditions: initialConditions,
       updateMassRatioFromUserInput: updateMassRatioFromUserInput,
       updateEccentricityFromUserInput: updateEccentricityFromUserInput,
-      state2: state2,
+      state: state,
       separationBetweenObjects: separationBetweenObjects
     };
   })();
@@ -408,7 +408,7 @@ Image credits
     }
 
     // Draws the scene
-    function drawScene2(positions) {
+    function drawScene(positions) {
       var body1Position = calculatePosition(positions[0]);
       drawBody(body1Position, currentBodySizes[0], earthElement);
       drawOrbitalLine(body1Position, previousBodyPositions[0]);
@@ -466,7 +466,7 @@ Image credits
 
     return {
       fitToContainer: fitToContainer,
-      drawScene2: drawScene2,
+      drawScene: drawScene,
       updateObjectSizes: updateObjectSizes,
       clearScene: clearScene,
       init: init
@@ -477,22 +477,22 @@ Image credits
   var simulation = (function() {
     // The method is called 60 times per second
     function animate() {
-      physics.updatePosition2();
-      graphics.drawScene2(physics.state2.positions);
+      physics.updatePosition();
+      graphics.drawScene(physics.state.positions);
       window.requestAnimationFrame(animate);
     }
 
     function start() {
       graphics.init(function() {
         // Use the initial conditions for the simulation
-        physics.resetStateToInitialConditions2();
-        graphics.updateObjectSizes(physics.initialConditions2.q, physics.separationBetweenObjects());
+        physics.resetStateToinitialConditions();
+        graphics.updateObjectSizes(physics.initialConditions.q, physics.separationBetweenObjects());
 
         // Redraw the scene if page is resized
         window.addEventListener('resize', function(event){
           graphics.fitToContainer();
           graphics.clearScene();
-          graphics.drawScene2(physics.state2.positions);
+          graphics.drawScene(physics.state.positions);
         });
 
         animate();
@@ -513,12 +513,12 @@ Image credits
 
     function didUpdateMassSlider(sliderValue) {
       if (sliderValue === 0) { sliderValue = 0.005; }
-      var oldEccentricity = physics.state2.eccentricity;
-      physics.resetStateToInitialConditions2();
+      var oldEccentricity = physics.state.eccentricity;
+      physics.resetStateToinitialConditions();
       graphics.clearScene();
       physics.updateMassRatioFromUserInput(sliderValue);
       physics.updateEccentricityFromUserInput(oldEccentricity);
-      graphics.updateObjectSizes(physics.state2.masses.q, physics.separationBetweenObjects());
+      graphics.updateObjectSizes(physics.state.masses.q, physics.separationBetweenObjects());
       showMassRatio(sliderValue);
     }
 
@@ -528,13 +528,13 @@ Image credits
     }
 
     function didUpdateEccentricitySlider(sliderValue) {
-      var oldMassRatio = physics.state2.masses.q;
-      physics.resetStateToInitialConditions2();
+      var oldMassRatio = physics.state.masses.q;
+      physics.resetStateToinitialConditions();
       graphics.clearScene();
       physics.updateMassRatioFromUserInput(oldMassRatio);
       physics.updateEccentricityFromUserInput(sliderValue);
       showEccentricity(sliderValue);
-      graphics.updateObjectSizes(physics.state2.masses.q, physics.separationBetweenObjects());
+      graphics.updateObjectSizes(physics.state.masses.q, physics.separationBetweenObjects());
     }
 
     function showEccentricity(ratio) {
@@ -544,13 +544,13 @@ Image credits
 
     function didClickRestart() {
       physics.resetStateToInitialConditions();
-      physics.resetStateToInitialConditions2();
+      physics.resetStateToinitialConditions();
       graphics.clearScene();
-      showMassRatio(physics.initialConditions2.q);
-      showEccentricity(physics.initialConditions2.eccentricity);
-      massSlider.changePosition(physics.initialConditions2.q);
-      eccentricitySlider.changePosition(physics.initialConditions2.eccentricity);
-      graphics.updateObjectSizes(physics.initialConditions2.q, physics.separationBetweenObjects());
+      showMassRatio(physics.initialConditions.q);
+      showEccentricity(physics.initialConditions.eccentricity);
+      massSlider.changePosition(physics.initialConditions.q);
+      eccentricitySlider.changePosition(physics.initialConditions.eccentricity);
+      graphics.updateObjectSizes(physics.initialConditions.q, physics.separationBetweenObjects());
       return false; // Prevent default
     }
 
@@ -558,14 +558,14 @@ Image credits
       // Mass slider
       massSlider = SickSlider(".EarthOrbitSimulation-massSlider");
       massSlider.onSliderChange = didUpdateMassSlider;
-      showMassRatio(physics.initialConditions2.q);
-      massSlider.changePosition(physics.initialConditions2.q);
+      showMassRatio(physics.initialConditions.q);
+      massSlider.changePosition(physics.initialConditions.q);
 
       // Eccentricity slider
       eccentricitySlider = SickSlider(".EarthOrbitSimulation-eccentricitySlider");
       eccentricitySlider.onSliderChange = didUpdateEccentricitySlider;
-      showEccentricity(physics.initialConditions2.eccentricity);
-      eccentricitySlider.changePosition(physics.initialConditions2.eccentricity);
+      showEccentricity(physics.initialConditions.eccentricity);
+      eccentricitySlider.changePosition(physics.initialConditions.eccentricity);
 
       restartButton.onclick = didClickRestart;
     }
