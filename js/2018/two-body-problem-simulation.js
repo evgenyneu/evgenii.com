@@ -181,6 +181,9 @@ Image credits
 
   // Runge-Kutta numerical integration
   var rungeKutta = (function() {
+    // h: timestep
+    // u: variables
+    // derivative: function that calculates the derivatives
     function calculate(h, u, derivative) {
       var a = [h/2, h/2, h, 0];
       var b = [h/6, h/3, h/3, h/6];
@@ -267,8 +270,9 @@ Image credits
         q: 0.1, // Mass ratio m2 / m1,
         m1: 1,
         m2: 0, // Will be set to q
-        m12: 0 // ,1 + m2
+        m12: 0 // Will be set to m1 + m2
       },
+      // Current positions of the two bodies
       positions: [
         {
           x: 0,
@@ -279,8 +283,8 @@ Image credits
           y: 0
         }
       ],
-      u: [0, 0, 0, 0], // Four variables in the ODE
-      iteration: 0
+      u: [0, 0, 0, 0], // Four variables used in the differential equations
+      iteration: 0 // Temporary REMOVE THIS!!!
     };
 
     // Initial condition of the model
@@ -413,7 +417,8 @@ Image credits
       updatePosition2: updatePosition2,
       initialConditions: initialConditions,
       updateFromUserInput: updateFromUserInput,
-      state: state
+      state: state,
+      state2: state2
     };
   })();
 
@@ -497,6 +502,26 @@ Image credits
         earthPosition.y >= sunTop && earthPosition.y <= sunBottom);
     }
 
+    function calculateEarthPosition2(positions) {
+      middleX = Math.floor(canvas.width / 2);
+      middleY = Math.floor(canvas.height / 2);
+      var scale = 50;
+      var centerX = positions[0].x * scale + middleX;
+      var centerY = positions[0].y * scale + middleY;
+
+      return {
+        x: centerX,
+        y: centerY
+      };
+    }
+
+    // Draws the scene
+    function drawScene2(positions) {
+      var earthPosition = calculateEarthPosition2(positions);
+      drawTheEarth(earthPosition);
+      drawOrbitalLine(earthPosition);
+    }
+
     // Draws the scene
     function drawScene(distance, angle) {
       var earthPosition = calculateEarthPosition(distance, angle);
@@ -556,6 +581,7 @@ Image credits
     return {
       fitToContainer: fitToContainer,
       drawScene: drawScene,
+      drawScene2: drawScene2,
       updateSunSize: updateSunSize,
       showHideEarthEndMessage: showHideEarthEndMessage,
       clearScene: clearScene,
@@ -569,7 +595,8 @@ Image credits
     function animate() {
       physics.updatePosition();
       physics.updatePosition2();
-      graphics.drawScene(physics.scaledDistance(), physics.state.angle.value);
+      graphics.drawScene2(physics.state2.positions);
+      // graphics.drawScene(physics.scaledDistance(), physics.state.angle.value);
       window.requestAnimationFrame(animate);
     }
 
