@@ -289,7 +289,7 @@ Image credits
 
     // Initial condition of the model
     var initialConditions2 = {
-      q: 0.1, // Mass ratio m2 / m1
+      q: 0.01, // Mass ratio m2 / m1
       position: {
         x: 1,
         y: 0
@@ -369,15 +369,13 @@ Image credits
       if (physics.state.paused) { return; }
       rungeKutta.calculate(0.07, state2.u, derivative);
       calculateNewPosition2();
-
-      if (state2.iteration < 10) {
-        console.log(state2.positions[0], state2.positions[1]);
-        state2.iteration += 1;
-      }
     }
 
     function calculateNewPosition2() {
-      var e = initialConditions2.velocity.v**2 / (1 +state2.masses.q) - 1;
+      state2.masses.m2 = state2.masses.q;
+      state2.masses.m12 = state2.masses.m1 + state2.masses.m2;
+
+      var e = initialConditions2.velocity.v**2 / (1 + state2.masses.q) - 1;
       var a = initialConditions2.position.x / (1 - e);
       var a1 = (state2.masses.m2 / state2.masses.m12) * a;
       var a2 = (state2.masses.m1 / state2.masses.m12) * a;
@@ -419,6 +417,7 @@ Image credits
       updatePosition: updatePosition,
       updatePosition2: updatePosition2,
       initialConditions: initialConditions,
+      initialConditions2: initialConditions2,
       updateFromUserInput: updateFromUserInput,
       state: state,
       state2: state2
@@ -651,11 +650,11 @@ Image credits
     var restartButton = document.querySelector(".EarthOrbitSimulation-reload");
     var massSlider;
 
-    function updateBodyMassRatio(sliderValue) {
+    function didUpdateSlider(sliderValue) {
+      physics.resetStateToInitialConditions2();
+      graphics.clearScene();
       physics.updateFromUserInput(sliderValue);
-      var formattedRatio = parseFloat(Math.round(sliderValue * 100) / 100).toFixed(2);
-      sunsMassElement.innerHTML = formattedRatio;
-      physics.updateFromUserInput(sliderValue);
+      showMassRatio(sliderValue);
 
       // var sunsMassValue = sliderValue * 2;
       // if (sunsMassValue > 1) {
@@ -668,22 +667,28 @@ Image credits
       // graphics.updateSunSize(sunsMassValue);
     }
 
+    function showMassRatio(ratio) {
+      var formattedRatio = parseFloat(Math.round(ratio * 100) / 100).toFixed(2);
+      sunsMassElement.innerHTML = formattedRatio;
+      physics.updateFromUserInput(ratio);
+    }
+
     function didClickRestart() {
       graphics.showHideEarthEndMessage(false);
       physics.resetStateToInitialConditions();
       physics.resetStateToInitialConditions2();
       graphics.clearScene();
-      updateBodyMassRatio(0.1);
-      massSlider.changePosition(0.1);
+      showMassRatio(physics.initialConditions2.q);
+      massSlider.changePosition(physics.initialConditions2.q);
       physics.state.paused = false;
       return false; // Prevent default
     }
 
     function init() {
       massSlider = SickSlider(".EarthOrbitSimulation-massSlider");
-      massSlider.onSliderChange = updateBodyMassRatio;
-      updateBodyMassRatio(0.1);
-      massSlider.changePosition(0.1);
+      massSlider.onSliderChange = didUpdateSlider;
+      showMassRatio(physics.initialConditions2.q);
+      massSlider.changePosition(physics.initialConditions2.q);
       restartButton.onclick = didClickRestart;
     }
 
