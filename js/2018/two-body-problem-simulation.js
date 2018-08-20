@@ -181,7 +181,7 @@ Image credits
 
   // Runge-Kutta numerical integration
   var rungeKutta = (function() {
-    function calculate(h, u, du, derivative) {
+    function calculate(h, u, derivative) {
       var a = [h/2, h/2, h, 0];
       var b = [h/6, h/3, h/3, h/6];
       var u0 = [];
@@ -194,7 +194,7 @@ Image credits
       }
 
       for (var j = 0; j < 4; j++) {
-        derivative();
+        var du = derivative();
 
         for (var i = 0; i < dimension; i++) {
           u[i] = u0[i] + a[j]*du[i];
@@ -269,8 +269,17 @@ Image credits
         m2: 0, // Will be set to q
         m12: 0 // ,1 + m2
       },
+      positions: [
+        {
+          x: 0,
+          y: 0
+        },
+        {
+          x: 0,
+          y: 0
+        }
+      ],
       u: [0, 0, 0, 0], // Four variables in the ODE
-      du: [0, 0, 0, 0], // Four variables in the ODE,
       iteration: 0
     };
 
@@ -336,24 +345,42 @@ Image credits
     }
 
     function derivative() {
+      var du = new Array(state2.u.length);
       var r = state2.u.slice(0,2);
       var rr = Math.sqrt( r[0]**2 + r[1]**2 );
 
       for (var i = 0; i < 2; i++) {
-        state2.du[i] = state2.u[i + 2];
-        state2.du[i + 2] = -(1 + state2.masses.q) * r[i] / (rr**3);
+        du[i] = state2.u[i + 2];
+        du[i + 2] = -(1 + state2.masses.q) * r[i] / (rr**3);
       }
+
+      return du;
     }
 
     // The main function that is called on every animation frame.
     // It calculates and updates the current positions of the bodies
     function updatePosition2() {
       if (physics.state.paused) { return; }
-      rungeKutta.calculate(0.07, state2.u, state2.du, derivative);
+      rungeKutta.calculate(0.07, state2.u, derivative);
+      calculateNewPosition2();
+
       if (state2.iteration < 10) {
-        console.log('u=' + state2.u + ' du=' + state2.du);
+        console.log(state2.positions[0], state2.positions[1]);
         state2.iteration += 1;
       }
+    }
+
+    function calculateNewPosition2() {
+      var e = initialConditions2.velocity.v**2 / (1 +state2.masses.q) - 1;
+      var a = initialConditions2.position.x / (1 - e);
+      var a1 = (state2.masses.m2 / state2.masses.m12) * a;
+      var a2 = (state2.masses.m1 / state2.masses.m12) * a;
+
+      state2.positions[0].x = -a2 * state2.u[0]
+      state2.positions[0].y = -a2 * state2.u[1]
+
+      state2.positions[1].x = a1 * state2.u[0]
+      state2.positions[1].y = a1 * state2.u[1]
     }
 
     // Calculates position of the Earth
