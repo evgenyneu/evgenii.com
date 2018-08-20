@@ -608,6 +608,8 @@ Sick Slider
       currentBodySizes[1] = defaultBodySize / scaleFactor;
       sunElement.style.width = currentBodySizes[1] + "px";
 
+      // Assuming same density of two bodies, mass ratio is proportional to the cube of radii ratio
+      massRatio = Math.pow(massRatio, 1/3);
       currentBodySizes[0] = defaultBodySize * massRatio / scaleFactor;
       earthElement.style.width = currentBodySizes[0] + "px";
     }
