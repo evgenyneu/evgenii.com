@@ -9,7 +9,7 @@ tags: programming science
 <link rel="stylesheet" href="/css/2018/two-body-problem-simulation.css">
 
 <!-- Message shown in old browsers. -->
-<p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
+  <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert EarthOrbitSimulation-isHiddenBlock">Please use a newer browser to see the simulation.</p>
 
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
     <img src='http://127.0.0.1:4000/image/blog/2018-08-17-two-body-problem-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
