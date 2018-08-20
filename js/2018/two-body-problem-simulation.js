@@ -387,7 +387,8 @@ Image credits
     }
 
     function calculateNewPosition2() {
-      var a = initialConditions2.position.x / (1 - state2.eccentricity);
+      // var a = initialConditions2.position.x / (1 - state2.eccentricity);
+      a = 1;
       var a1 = (state2.masses.m2 / state2.masses.m12) * a;
       var a2 = (state2.masses.m1 / state2.masses.m12) * a;
 
@@ -447,6 +448,7 @@ Image credits
       canvasHeight = 400,
       earthSize = 25,
       sunsSize = 60,
+      defaultBodySize = 60,
       colors = {
         orbitalPath: "#777777"
       },
@@ -459,6 +461,9 @@ Image credits
       sunElement,
       earthEndElement,
       currentSunsSize = sunsSize,
+      currentBodySizes = [
+        defaultBodySize, defaultBodySize
+      ],
       middleX = 1,
       middleY = 1;
 
@@ -503,6 +508,14 @@ Image credits
       // sunElement.style.marginTop = -(currentSunsSize / 2.0) + "px";
     }
 
+    function updateObjectSizes(massRatio) {
+      currentBodySizes[1] = defaultBodySize;
+      sunElement.style.width = currentBodySizes[1] + "px";
+
+      currentBodySizes[0] = defaultBodySize * massRatio;
+      earthElement.style.width = currentBodySizes[0] + "px";
+    }
+
     function drawOrbitalLine(newPosition, previousPosition) {
       if (previousPosition.x === null) {
         previousPosition.x = newPosition.x;
@@ -536,7 +549,7 @@ Image credits
     function calculatePosition(position) {
       middleX = Math.floor(canvas.width / 2);
       middleY = Math.floor(canvas.height / 2);
-      var scale = 50;
+      var scale = 100;
       var centerX = position.x * scale + middleX;
       var centerY = position.y * scale + middleY;
 
@@ -549,11 +562,11 @@ Image credits
     // Draws the scene
     function drawScene2(positions) {
       var body1Position = calculatePosition(positions[0]);
-      drawBody(body1Position, earthSize, earthElement);
+      drawBody(body1Position, currentBodySizes[0], earthElement);
       drawOrbitalLine(body1Position, previousBodyPositions[0]);
 
       var body2Position = calculatePosition(positions[1]);
-      drawBody(body2Position, sunsSize, sunElement);
+      drawBody(body2Position, currentBodySizes[1], sunElement);
       drawOrbitalLine(body2Position, previousBodyPositions[1]);
     }
 
@@ -621,6 +634,7 @@ Image credits
       drawScene: drawScene,
       drawScene2: drawScene2,
       updateSunSize: updateSunSize,
+      updateObjectSizes: updateObjectSizes,
       showHideEarthEndMessage: showHideEarthEndMessage,
       clearScene: clearScene,
       init: init
@@ -643,6 +657,7 @@ Image credits
         // Use the initial conditions for the simulation
         physics.resetStateToInitialConditions();
         physics.resetStateToInitialConditions2();
+        graphics.updateObjectSizes(physics.initialConditions2.q);
 
         // Redraw the scene if page is resized
         window.addEventListener('resize', function(event){
@@ -672,6 +687,7 @@ Image credits
       graphics.clearScene();
       physics.updateMassRatioFromUserInput(sliderValue);
       showMassRatio(sliderValue);
+      graphics.updateObjectSizes(sliderValue);
 
       // var sunsMassValue = sliderValue * 2;
       // if (sunsMassValue > 1) {
@@ -710,6 +726,7 @@ Image credits
       showEccentricity(physics.initialConditions2.eccentricity);
       massSlider.changePosition(physics.initialConditions2.q);
       eccentricitySlider.changePosition(physics.initialConditions2.eccentricity);
+      graphics.updateObjectSizes(physics.initialConditions2.q);
       physics.state.paused = false;
       return false; // Prevent default
     }

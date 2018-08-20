@@ -44,7 +44,7 @@ Image credits
   background-color: #000000;
   position: relative;
   height: 400px;
-  background-image: url("https://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
+  background-image: url("https://evgenii.com/image/blog/2018-08-17-two-body-problem-simulation/starry_night.png");
   background-position: center bottom;
   background-repeat: repeat;
   background-size: 874px 260px;
@@ -55,11 +55,11 @@ Image credits
 
 .EarthOrbitSimulation-earth {
   position: absolute;
-  width: 25px;
+  width: 60px;
   top: -1000px;
   -webkit-animation:spin .1s linear infinite;
   -moz-animation:spin .1s linear infinite;
-  animation:spin .1s linear infinite;
+  animation:spin .10s linear infinite;
   z-index: 1000;
 }
 
@@ -70,6 +70,7 @@ Image credits
   -webkit-animation:spin .5s linear infinite;
   -moz-animation:spin .5s linear infinite;
   animation:spin .5s linear infinite;
+  z-index: 1001;
 }
 
 .EarthOrbitSimulation-earthEnd {
@@ -80,7 +81,7 @@ Image credits
   width: 100%;
   height: 100%;
   z-index: 1001;
-  background-image: url("https://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/starry_night.png");
+  background-image: url("https://evgenii.com/image/blog/2018-08-17-two-body-problem-simulation/starry_night.png");
   background-position: left top;
   background-repeat: repeat;
   background-size: 674px 220px;

@@ -12,8 +12,8 @@ tags: programming science
 <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert">Please use a newer browser to see the simulation.</p>
 
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
-    <img src='https://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
-    <img src='https://evgenii.com/image/blog/2016-08-31-earth-orbit-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
+    <img src='http://127.0.0.1:4000/image/blog/2018-08-17-two-body-problem-simulation/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
+    <img src='http://127.0.0.1:4000/image/blog/2018-08-17-two-body-problem-simulation/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
     <canvas class="EarthOrbitSimulation-canvas"></canvas>
 
     <div class="EarthOrbitSimulation-earthEnd EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-isHiddenBlock">
