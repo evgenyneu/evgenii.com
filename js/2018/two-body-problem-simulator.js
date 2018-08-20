@@ -201,13 +201,13 @@ Credits
       for (var j = 0; j < 4; j++) {
         var du = derivative();
 
-        for (var i = 0; i < dimension; i++) {
+        for (i = 0; i < dimension; i++) {
           u[i] = u0[i] + a[j]*du[i];
           ut[i] = ut[i] + b[j]*du[i];
         }
       }
 
-      for (var i = 0; i < dimension; i++) {
+      for (i = 0; i < dimension; i++) {
         u[i] = u0[i] + ut[i];
       }
     }
@@ -271,24 +271,24 @@ Credits
     }
 
     function resetStateToInitialConditions() {
-      state.masses.q = initialConditions.q
-      state.eccentricity = initialConditions.eccentricity
+      state.masses.q = initialConditions.q;
+      state.eccentricity = initialConditions.eccentricity;
 
       state.u[0] = initialConditions.position.x;
       state.u[1] = initialConditions.position.y;
       state.u[2] = initialConditions.velocity.u;
 
-      updateParametersDependentOnUserInput()
+      updateParametersDependentOnUserInput();
     }
 
     function derivative() {
       var du = new Array(state.u.length);
       var r = state.u.slice(0,2);
-      var rr = Math.sqrt( r[0]**2 + r[1]**2 );
+      var rr = Math.sqrt( Math.pow(r[0],2) + Math.pow(r[1],2) );
 
       for (var i = 0; i < 2; i++) {
         du[i] = state.u[i + 2];
-        du[i + 2] = -(1 + state.masses.q) * r[i] / (rr**3);
+        du[i + 2] = -(1 + state.masses.q) * r[i] / (Math.pow(rr,3));
       }
 
       return du;
@@ -306,11 +306,11 @@ Credits
       var a1 = (state.masses.m2 / state.masses.m12);
       var a2 = (state.masses.m1 / state.masses.m12);
 
-      state.positions[0].x = -a2 * state.u[0]
-      state.positions[0].y = -a2 * state.u[1]
+      state.positions[0].x = -a2 * state.u[0];
+      state.positions[0].y = -a2 * state.u[1];
 
-      state.positions[1].x = a1 * state.u[0]
-      state.positions[1].y = a1 * state.u[1]
+      state.positions[1].x = a1 * state.u[0];
+      state.positions[1].y = a1 * state.u[1];
     }
 
     // Returns the separatation between two objects
