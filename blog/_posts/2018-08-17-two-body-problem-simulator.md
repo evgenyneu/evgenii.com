@@ -13,7 +13,7 @@ tags: programming science
 
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
     <img src='https://evgenii.com/image/blog/2018-08-17-two-body-problem-simulator/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
-    <img src='https://1evgenii.com/image/blog/2018-08-17-two-body-problem-simulator/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
+    <img src='https://evgenii.com/image/blog/2018-08-17-two-body-problem-simulator/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
     <img src='https://evgenii.com/image/blog/2018-08-17-two-body-problem-simulator/center_of_mass.png' alt='Earth' class='EarthOrbitSimulation-centerOfMass'>
 
     <canvas class="EarthOrbitSimulation-canvas"></canvas>
