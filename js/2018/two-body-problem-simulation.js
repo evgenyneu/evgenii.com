@@ -345,7 +345,7 @@ Image credits
       canvasHeight = 400,
       defaultBodySize = 60,
       colors = {
-        orbitalPath: "#777777"
+        orbitalPath: "#5555FF"
       },
       // Previously drawn positions of the two bodies. Used to draw orbital line.
       previousBodyPositions = [
@@ -365,18 +365,6 @@ Image credits
       var top = (position.y - size/2) + "px";
       bodyElement.style.left = left;
       bodyElement.style.top = top;
-    }
-
-    function calculateEarthPosition(distance, angle) {
-      middleX = Math.floor(canvas.width / 2);
-      middleY = Math.floor(canvas.height / 2);
-      var centerX = Math.cos(angle) * distance + middleX;
-      var centerY = Math.sin(-angle) * distance + middleY;
-
-      return {
-        x: centerX,
-        y: centerY
-      };
     }
 
     // Updates the sizes of the two object based on the mass ratio (value from 0 to 1)
