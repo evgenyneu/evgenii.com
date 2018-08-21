@@ -92,7 +92,7 @@ After a series of algebraic manipulations and removing dimensions, we can turn E
 The variable **q** in Eq. 2 is the mass ratio of the bodies (i.e. mass of the Earth divided by Sun's mass). The two dots above vector **r** mean the second time derivative.
 
 
-## Equation of motion for x and y
+## Equations of motion for x and y
 
 Next, we write Eq. 2 in terms of x and y coordinates, which gives a system of two second-order non-linear differential equations:
 
