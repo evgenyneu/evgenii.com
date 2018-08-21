@@ -178,7 +178,7 @@ We are almost done. We have found the vector **r**, which describes the position
 
 <div class='isTextCentered'>
   <img class='isMax400PxWide' src='/image/blog/2018-08-17-two-body-problem-simulator/0070_mass_distance_relation.jpg' alt='Mass-distance between two bodies'>
-  <p>Figure 2: Relations between masses of two bodies and distances to the common center of mass.</p>
+  <p>Figure 2: A relation between masses of two bodies and distances to the common center of mass.</p>
 </div>
 
 With this knowledge, we can finally calculate the positions of the two bodies. The positions are saved in the `state.positions` array and then used to show the two bodies on screen.
