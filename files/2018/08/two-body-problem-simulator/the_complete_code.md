@@ -11,10 +11,9 @@ title: "The complete code of the two-body problem simulation."
 This is the complete source code of the [two-body problem simulator](/blog/two-body-problem-simulator/). Feel free to use it on any web site.
 
 ```Html
-
 <!--
 
-  Note that the code uses the images loaded from https://evgenii.com web site. You will need to host these images if you want to make sure the game always works and is not dependent on evgenii.com web site.
+  Note that the code uses the images loaded from https://evgenii.com web site. You will need to host these images if you want to make sure the simulation always works and is not dependent on evgenii.com web site.
 
 -->
 
@@ -454,6 +453,9 @@ Sick Slider
   var physics = (function() {
     // Current state of the system
     var state = {
+      // Four variables used in the differential equations
+      // First two elements are x and y positions, and second two are x and y components of velocity
+      u: [0, 0, 0, 0],
       masses: {
         q: 0, // Current mass ratio m2 / m1
         m1: 1,
@@ -472,7 +474,6 @@ Sick Slider
           y: 0
         }
       ],
-      u: [0, 0, 0, 0], // Four variables used in the differential equations
       iteration: 0 // Temporary REMOVE THIS!!!
     };
 
@@ -514,9 +515,14 @@ Sick Slider
       updateParametersDependentOnUserInput();
     }
 
+    // Calculate the derivatives of the system of ODEs that describe equation of motion of two bodies
     function derivative() {
       var du = new Array(state.u.length);
+
+      // x and y coordinates
       var r = state.u.slice(0,2);
+
+      // Distance between bodies
       var rr = Math.sqrt( Math.pow(r[0],2) + Math.pow(r[1],2) );
 
       for (var i = 0; i < 2; i++) {
@@ -536,8 +542,10 @@ Sick Slider
     }
 
     function calculateNewPosition() {
-      var a1 = (state.masses.m2 / state.masses.m12);
-      var a2 = (state.masses.m1 / state.masses.m12);
+      r = 1; // Distance between two bodies
+      // m12 is the sum of two massses
+      var a1 = (state.masses.m2 / state.masses.m12) * r;
+      var a2 = (state.masses.m1 / state.masses.m12) * r;
 
       state.positions[0].x = -a2 * state.u[0];
       state.positions[0].y = -a2 * state.u[1];
