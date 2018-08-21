@@ -89,12 +89,12 @@ After a series of algebraic manipulations and removing dimensions, we can turn E
   <span>(2)</span>
 </div>
 
-The variable **q** in Eq. 2 is the mass ratio of the first body (mass of the Sun divided by that of the Earth). The two dots above vector **r** denote the second time derivative.
+The variable **q** in Eq. 2 is the mass ratio of the bodies (i.e. mass of the Earth divided by Sun's mass). The two dots above vector **r** mean the second time derivative.
 
 
 ## Equation of motion for x and y
 
-Next, we write Eq. 1 in terms of x and y coordinates, which gives a system of two second-order non-linear differential equations:
+Next, we write Eq. 2 in terms of x and y coordinates, which gives a system of two second-order non-linear differential equations:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -136,7 +136,7 @@ Using the new variables we can now translate two second-order differential equat
   <span>(5)</span>
 </div>
 
-We can now write a function that returns the derivatives of the four variables based on Eq. 5:
+We can now write a function that returns the derivatives of the four variables:
 
 ```JavaScript
 // Calculate the derivatives of the system of ODEs that describe equation of motion of two bodies
@@ -167,7 +167,7 @@ var timestep = 0.15;
 rungeKutta.calculate(timestep, state.u, derivative);
 ```
 
-We will run this code at each of the frame of the animation and it will save the new values of positions and velocities in `state.u`. The first two elements of this array are the x and y positions of the **r** vector from Fig. 1.
+We will run this code at each frame of the animation and it will save the new values of positions and velocities in `state.u`. The first two elements of this array are the x and y positions of the **r** vector from Fig. 1.
 
 
 
