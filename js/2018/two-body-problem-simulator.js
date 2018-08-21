@@ -310,8 +310,10 @@ Credits
     }
 
     function calculateNewPosition() {
-      var a1 = (state.masses.m2 / state.masses.m12);
-      var a2 = (state.masses.m1 / state.masses.m12);
+      r = 1; // Distance between two bodies
+      // m12 is the sum of two massses
+      var a1 = (state.masses.m2 / state.masses.m12) * r;
+      var a2 = (state.masses.m1 / state.masses.m12) * r;
 
       state.positions[0].x = -a2 * state.u[0];
       state.positions[0].y = -a2 * state.u[1];

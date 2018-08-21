@@ -181,18 +181,20 @@ We are almost done. We have found the vector **r**, which describes the position
   <p>Figure 2: Relations between masses of two bodies and distances to the common center of mass.</p>
 </div>
 
-With this knowledge, we can finally calculate the positions of the two bodies and draw them on screen. The positions are saves in the `state.positions` array.
+With this knowledge, we can finally calculate the positions of the two bodies. The positions are saved in the `state.positions` array and then used to show the two bodies on screen.
 
 ```JavaScript
 function calculateNewPosition() {
-  var a1 = (state.masses.m2 / state.masses.m12);
-  var a2 = (state.masses.m1 / state.masses.m12);
+    r = 1; // Distance between two bodies
+    // m12 is the sum of two massses
+    var a1 = (state.masses.m2 / state.masses.m12) * r;
+    var a2 = (state.masses.m1 / state.masses.m12) * r;
 
-  state.positions[0].x = -a2 * state.u[0];
-  state.positions[0].y = -a2 * state.u[1];
+    state.positions[0].x = -a2 * state.u[0];
+    state.positions[0].y = -a2 * state.u[1];
 
-  state.positions[1].x = a1 * state.u[0];
-  state.positions[1].y = a1 * state.u[1];
+    state.positions[1].x = a1 * state.u[0];
+    state.positions[1].y = a1 * state.u[1];
 }
 ```
 
