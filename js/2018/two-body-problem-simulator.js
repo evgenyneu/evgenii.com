@@ -281,6 +281,7 @@ Credits
       updateParametersDependentOnUserInput();
     }
 
+    // Calculate the derivatives of the system of ODEs that describe equation of motion of two bodies
     function derivative() {
       var du = new Array(state.u.length);
       var r = state.u.slice(0,2);

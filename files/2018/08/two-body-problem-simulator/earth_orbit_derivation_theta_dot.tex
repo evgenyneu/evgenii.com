@@ -1,0 +1,72 @@
+\documentclass[a4paper,twoside,12pt,hidelinks]{article}
+
+% Packages
+% ---------------------
+
+\usepackage{amsmath} % Needed for command eqref
+\usepackage{amsthm} % Used to show the proof box
+\usepackage{fancyhdr} % Head and foot options
+\usepackage{hyperref} % Uses automatic references \autoref
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath} % Font
+
+% Page settings
+% ---------------------
+
+\usepackage[top=2cm, bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry} %  Page margins
+\setlength{\parskip}{\baselineskip} % Add space between paragraphs
+\setlength{\intextsep}{20pt plus 2.0pt minus 2.0pt} % Add vertical space before and after tables and figures (http://tex.stackexchange.com/a/26522/101976)
+\parindent=0cm % Remove the paragraph indent of the first line
+\addtolength{\jot}{2\jot} % Double the line between equations
+\raggedbottom % Prevents spreading the page content vetically for non-full pages.
+
+% Set vertical space around equations.
+\AtBeginDocument{%
+ \abovedisplayskip=15pt plus 5pt minus 5pt
+ \abovedisplayshortskip=12pt plus 3pt
+ \belowdisplayskip=15pt plus 5pt minus 5pt
+ \belowdisplayshortskip=12pt plus 3pt minus 4pt
+}
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{equation*}
+  F = \frac{G m_1 m_2}{r^2}
+\end{equation*}
+
+
+\begin{equation*}
+  \ddot{\vec{r}} = - \frac{G (m_1 + m_2)}{r^2} \hat{r}
+\end{equation*}
+
+\begin{equation*}
+  \ddot{\vec{r}} = - \frac{1 + q}{r^2} \hat{r}
+\end{equation*}
+
+\begin{align*}
+  \ddot{x} &= - \frac{1 + q}{r^3} x \\
+  \ddot{y} &= - \frac{1 + q}{r^3} y
+\end{align*}
+
+
+\begin{align*}
+  u_1 &= x \\
+  u_2 &= y \\
+  u_3 &= \dot{x} \\
+  u_4 &= \dot{y}
+\end{align*}
+
+
+\begin{align*}
+  \dot{u}_1 &= u_3 \\
+  \dot{u}_2 &= u_4 \\
+  \dot{u}_3 &= - \frac{1 + q}{r^3} u_1 \\
+  \dot{u}_4 &= - \frac{1 + q}{r^3} u_2
+\end{align*}
+
+
+\end{document}
