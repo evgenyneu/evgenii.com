@@ -221,6 +221,9 @@ Credits
   var physics = (function() {
     // Current state of the system
     var state = {
+      // Four variables used in the differential equations
+      // First two elements are x and y positions, and second two are x and y components of velocity
+      u: [0, 0, 0, 0],
       masses: {
         q: 0, // Current mass ratio m2 / m1
         m1: 1,
@@ -239,7 +242,6 @@ Credits
           y: 0
         }
       ],
-      u: [0, 0, 0, 0], // Four variables used in the differential equations
       iteration: 0 // Temporary REMOVE THIS!!!
     };
 
@@ -284,7 +286,11 @@ Credits
     // Calculate the derivatives of the system of ODEs that describe equation of motion of two bodies
     function derivative() {
       var du = new Array(state.u.length);
+
+      // x and y coordinates
       var r = state.u.slice(0,2);
+
+      // Distance between bodies
       var rr = Math.sqrt( Math.pow(r[0],2) + Math.pow(r[1],2) );
 
       for (var i = 0; i < 2; i++) {

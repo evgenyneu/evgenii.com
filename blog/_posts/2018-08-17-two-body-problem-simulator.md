@@ -54,7 +54,7 @@ In this tutorial we will program a simulation of motion of two celestial bodies 
 
 ## Our approach
 
-We have already done a simulation of motion of two bodies in the [Earth orbit simulator](blog/earth-orbit-simulation/) tutorial. There we derived equations of motion from the Lagrangian and used them to move the planet around the Sun. For simplicity, we choose the center of mass of two bodies to be at the center of the Sun, which stayed stationary at the origin of our coordinate system. Here we will use a different approach and allow two bodies to move around a common center of mass.
+We have already done a simulation of motion of two bodies in the [Earth orbit simulator](/blog/earth-orbit-simulation/) tutorial. There we derived equations of motion from the Lagrangian and used them to move the planet around the Sun. For simplicity, we choose the center of mass of two bodies to be at the center of the Sun, which stayed stationary at the origin of our coordinate system. Here we will use a different approach and allow two bodies to move around a common center of mass.
 
 ## Our coordinate system
 
@@ -65,7 +65,7 @@ A surprising fact about the motion of two bodies is that their common center of 
   <p>Figure 1: A coordinate system with the origin at the common center of mass of the two bodies.</p>
 </div>
 
-## Newtons law of gravitation
+## Newton's law of gravitation
 
 The main equation used in our simulation is the Newton's law of universal gravitation (Eq. 1). It says that the force of gravitational attraction between two bodies is proportional to the product of their masses and inversely proportional to the square of the distance between them.
 
@@ -113,24 +113,88 @@ We will be solve Eq. 3 numerically. In order to do this, we need to translate it
   <span>
     <img class='isMax80PxWide' src='/image/blog/2018-08-17-two-body-problem-simulator/0050_substitutions_ode_reducing_order.png' alt='Substitutions for reducing the order of the ODEs'>
   </span>
-  <span>(3)</span>
+  <span>(4)</span>
 </div>
 
-The substitutions allows us to translate two second-order differential equations into four first-order ones:
+We will store the values of these four variables in the `state.u` array of the `physics` object:
+
+```JavaScript
+var state = {
+  // Four variables used in the differential equations
+  // First two elements are x and y positions, and second two are x and y components of velocity
+  u: [0, 0, 0, 0]
+}
+```
+
+Using the new variables we can now translate two second-order differential equations (Eq. 4) into four first-order ones:
 
 <div class='Equation isTextCentered'>
   <span></span>
   <span>
     <img class='isMax150PxWide' src='/image/blog/2018-08-17-two-body-problem-simulator/0060_syste_of_odes.png' alt='System of first-order differential equations'>
   </span>
-  <span>(4)</span>
+  <span>(5)</span>
 </div>
 
+We can now write a function that returns the derivatives of the four variables based on Eq. 5:
 
-## To be continued...
+```JavaScript
+// Calculate the derivatives of the system of ODEs that describe equation of motion of two bodies
+function derivative() {
+  var du = new Array(state.u.length);
+
+  // x and y coordinates
+  var r = state.u.slice(0,2);
+
+  // Distance between bodies
+  var rr = Math.sqrt( Math.pow(r[0],2) + Math.pow(r[1],2) );
+
+  for (var i = 0; i < 2; i++) {
+    du[i] = state.u[i + 2];
+    du[i + 2] = -(1 + state.masses.q) * r[i] / (Math.pow(rr,3));
+  }
+
+  return du;
+}
+```
+
+## Solve ODEs numerically
+
+Now we can use a numerical method to solve the ODEs. In [Earth orbit simulator](/blog/earth-orbit-simulation/) we used Euler's method, but here we will try another popular method called Runge-Kutta:
+
+```JavaScript
+var timestep = 0.15;
+rungeKutta.calculate(timestep, state.u, derivative);
+```
+
+We will run this code at each of the frame of the animation and it will save the new values of positions and velocities in `state.u`. The first two elements of this array are the x and y positions of the **r** vector from Fig. 1.
 
 
 
+## Drawing two bodies on the screen
+
+We are almost done. We have found the vector **r**, which describes the position of Earth *relative* to the Sun. We will now use this vector to calculate the positions of two bodies on screen. The trick here is to use the mass-distance relation shown in Fig. 2.
+
+
+<div class='isTextCentered'>
+  <img class='isMax400PxWide' src='/image/blog/2018-08-17-two-body-problem-simulator/0070_mass_distance_relation.jpg' alt='Mass-distance between two bodies'>
+  <p>Figure 2: Relations between masses of two bodies and distances to the common center of mass.</p>
+</div>
+
+With this knowledge, we can finally calculate the positions of the two bodies and draw them on screen. The positions are saves in the `state.positions` array.
+
+```JavaScript
+function calculateNewPosition() {
+  var a1 = (state.masses.m2 / state.masses.m12);
+  var a2 = (state.masses.m1 / state.masses.m12);
+
+  state.positions[0].x = -a2 * state.u[0];
+  state.positions[0].y = -a2 * state.u[1];
+
+  state.positions[1].x = a1 * state.u[0];
+  state.positions[1].y = a1 * state.u[1];
+}
+```
 
 
 
