@@ -9,7 +9,7 @@ License: Public Domain
 Credits
 =============
 
-1. This work is based on code and lectures by Rosemary Mardling from Monash University.
+1. This work is based on code and lectures by Dr Rosemary Mardling from Monash University.
 
 2. "The Blue Marble" By  NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans. Sources: http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg, https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg
 

@@ -49,7 +49,7 @@ tags: programming science
 
 <br>
 
-In this tutorial we will program a simulation of motion of two celestial bodies in HTML/JavaScript, which. This work is largely based on what I learned from Dr Rosemary Mardling, who is an astrophysicist at Monash University. In addition, this code uses techniques we developed in [harmonic oscillator tutorial](/blog/programming-harmonic-oscillator/), which would be a good place to start for those who are new to this topic. Please feel free to use the full [source code](/files/2018/08/two-body-problem-simulator/the_complete_code/) of this simulation for any purpose.
+In this tutorial we will program a simulation of motion of two celestial bodies in HTML/JavaScript, which. This work is largely based on what I learned from Dr Rosemary Mardling, who is an astrophysicist at Monash University. In addition, this code uses techniques we developed in [harmonic oscillator tutorial](/blog/programming-harmonic-oscillator/), which would be a good starting place for those who are new to this topic. Please feel free to use the full [source code](/files/2018/08/two-body-problem-simulator/the_complete_code/) of this simulation for any purpose.
 
 
 ## Our approach
@@ -106,7 +106,7 @@ Next, we write Eq. 2 in terms of x and y coordinates, which gives a system of tw
 
 ## Reducing the order of ODEs
 
-We will be solve Eq. 3 numerically. In order to do this, we need to translate it into a system of first-order ODEs by making the following substitutions:
+We will solve Eq. 3 numerically. In order to do this, we need to translate it into a system of first-order ODEs by making the following substitutions:
 
 <div class='Equation isTextCentered'>
   <span></span>
