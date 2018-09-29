@@ -26,6 +26,14 @@ tags: programming science
     </div>
 </div>
 
+<div class="EarthOrbitSimulation-preset" data-name="SunEarthJupiter" >
+ 
+</div>
+
+<div class="EarthOrbitSimulation-preset" data-name="AnotherOne" >
+
+</div>
+
 <div class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-hasTopMarginNormal EarthOrbitSimulation-hasNegativeBottomMarginNormal isUnselectable'>
   Mass ratio: <span class='EarthOrbitSimulation-sunsMass'>0.10</span>
 </div>

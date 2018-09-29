@@ -254,43 +254,10 @@ Credits
     };
 
     // Initial condition of the model
+    // The
     var initialConditions = {
       bodies: 3, // Number of bodies
       eccentricity: 0.7, // Eccentricity of the orbit
-      // Masses of the bodies in kilograms
-      masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 27)],
-      // The number of seconds advanced by the model in one second of the animation
-      // Used to speed up things, so user does not wait for one year for the model
-      // of the Earth go around the Sun
-      timeScaleFactor: 3600 * 24 * 200,
-      positions: [ // in Polar coordinates, r is in meters
-        {
-          r: 0,
-          theta: 0
-        },
-        {
-          r: constants.earthSunDistanceMeters,
-          theta: 0
-        },
-        {
-          r: 7.78 * Math.pow(10, 11),
-          theta: 0
-        }
-      ],
-      velocities: [ // in Polar coordinates, r is in m/s
-        {
-          r: 1 * Math.pow(10, 3),
-          theta: Math.PI/2
-        },
-        {
-          r: 30 * Math.pow(10, 3),
-          theta: Math.PI/2
-        },
-        {
-          r: 13.1 * Math.pow(10, 3),
-          theta: Math.PI/2
-        }
-      ]
     };
 
     // Calculate the radius of the body (in meters) based on its mass.
@@ -341,10 +308,30 @@ Credits
       return centerOfMassVelocity;
     }
 
-    function resetStateToInitialConditions() {
+    function calculateCenterOfMass(){
+      var centerOfMass = {x: 0, y: 0};
+      var sumOfMasses = 0;
+
       // Loop through the bodies
       for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
         var bodyStart = iBody * 4; // Starting index for current body in the u array
+        centerOfMass.x += initialConditions.masses[iBody] * state.u[bodyStart + 0];
+        centerOfMass.y += initialConditions.masses[iBody] * state.u[bodyStart + 1];
+        sumOfMasses += initialConditions.masses[iBody];
+      }
+
+      centerOfMass.x /= sumOfMasses;
+      centerOfMass.y /= sumOfMasses;
+
+      return centerOfMass;
+    }
+
+    function resetStateToInitialConditions() {
+      var iBody, bodyStart;
+
+      // Loop through the bodies
+      for (iBody = 0; iBody < initialConditions.bodies; iBody++) {
+        bodyStart = iBody * 4; // Starting index for current body in the u array
 
         var position = initialConditions.positions[iBody];
         state.u[bodyStart + 0] = position.r * Math.cos(position.theta); // x
@@ -355,13 +342,18 @@ Credits
         state.u[bodyStart + 3] = velocity.r * Math.sin(velocity.theta); // velocity y
       }
 
-      centerOfMassVelocity = calculateCenterOfMassVelocity();
+      var centerOfMassVelocity = calculateCenterOfMassVelocity();
+      var centerOfMass = calculateCenterOfMass();
 
-      // Loop through the bodies
-      for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
-        state.u[bodyStart + 2] -= centerOfMassVelocity.x
+      // Correct the velocities and positions of the bodies
+      // to make the center of mass motionless at the middle of the screen
+      for (iBody = 0; iBody < initialConditions.bodies; iBody++) {
+        bodyStart = iBody * 4; // Starting index for current body in the u array
+        state.u[bodyStart + 0] += centerOfMass.x;
+        state.u[bodyStart + 1] += centerOfMass.y;
+        state.u[bodyStart + 2] -= centerOfMassVelocity.x;
+        state.u[bodyStart + 3] -= centerOfMassVelocity.y;
       }
-      window.console.log(centerOfMassVelocity);
     }
 
     // Returns the acceleration of the body 'iFromBody' due to the other bodies.
@@ -447,6 +439,13 @@ Credits
       return result;
     }
 
+    function changeInitialConditions(conditions) {
+      initialConditions.masses = conditions.masses;
+      initialConditions.positions = conditions.positions;
+      initialConditions.velocities = conditions.velocities;
+      initialConditions.timeScaleFactor = conditions.timeScaleFactor;
+    }
+
     return {
       resetStateToInitialConditions: resetStateToInitialConditions,
       updatePosition: updatePosition,
@@ -456,7 +455,8 @@ Credits
       updateEccentricityFromUserInput: updateEccentricityFromUserInput,
       state: state,
       calculateDiameters: calculateDiameters,
-      largestDistanceMeters: largestDistanceMeters
+      largestDistanceMeters: largestDistanceMeters,
+      changeInitialConditions: changeInitialConditions
     };
   })();
 
@@ -657,7 +657,8 @@ Credits
 
     function start() {
       graphics.init(function() {
-        // Use the initial conditions for the simulation
+        var initialConditions = simulations.init();
+        physics.changeInitialConditions(initialConditions);
         physics.resetStateToInitialConditions();
         graphics.clearScene(physics.largestDistanceMeters());
         graphics.updateObjectSizes(physics.calculateDiameters());
@@ -675,6 +676,142 @@ Credits
 
     return {
       start: start
+    };
+  })();
+
+  // The presets for different simulations
+  var simulations = (function(){
+    var content = {
+      didChangeModel: null // function handler that is called when user changes a model
+    }
+
+    // The list of simulations.
+    //    masses: Masses of the bodies in kilograms
+    //    timeScaleFactor:
+    //        The number of seconds advanced by the model in one second of the animation
+    //        Used to speed up things, so user does not wait for one year for the model
+    //        of the Earth go around the Sun
+    //    positions: Positions of the bodies in Polar coordinates, r is in meters
+    //    velocities: Velocities of the bodies in Polar coordinates, r is in m/s
+    var allPresets = {
+      "SunEarthJupiter": {
+        title: "Sun, Earth and Jupiter",
+        masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 27)],
+        // The number of seconds advanced by the model in one second of the animation
+        // Used to speed up things, so user does not wait for one year for the model
+        // of the Earth go around the Sun
+        timeScaleFactor: 3600 * 24 * 2000,
+        positions: [ // in Polar coordinates, r is in meters
+          {
+            r: 0,
+            theta: 0
+          },
+          {
+            r: 1.496 * Math.pow(10, 11),
+            theta: 0
+          },
+          {
+            r: 7.78 * Math.pow(10, 11),
+            theta: 0
+          }
+        ],
+        velocities: [ // in Polar coordinates, r is in m/s
+          {
+            r: 1 * Math.pow(10, 3),
+            theta: Math.PI/2
+          },
+          {
+            r: 30 * Math.pow(10, 3),
+            theta: Math.PI/2
+          },
+          {
+            r: 13.6 * Math.pow(10, 3),
+            theta: Math.PI/2
+          }
+        ]
+      },
+      "AnotherOne": {
+        title: "A test",
+        masses: [1.98855 * Math.pow(10, 32), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 27)],
+        // The number of seconds advanced by the model in one second of the animation
+        // Used to speed up things, so user does not wait for one year for the model
+        // of the Earth go around the Sun
+        timeScaleFactor: 3600 * 24 * 2000,
+        positions: [ // in Polar coordinates, r is in meters
+          {
+            r: 0,
+            theta: 0
+          },
+          {
+            r: 1.496 * Math.pow(10, 11),
+            theta: 0
+          },
+          {
+            r: 7.78 * Math.pow(10, 11),
+            theta: 0
+          }
+        ],
+        velocities: [ // in Polar coordinates, r is in m/s
+          {
+            r: 1 * Math.pow(10, 3),
+            theta: Math.PI/2
+          },
+          {
+            r: 30 * Math.pow(10, 3),
+            theta: Math.PI/2
+          },
+          {
+            r: 13.6 * Math.pow(10, 3),
+            theta: Math.PI/2
+          }
+        ]
+      }
+    };
+
+    function hasClass(element, className) {
+      return (' ' + element.className + ' ').indexOf(' ' + className+ ' ') > -1;
+    }
+
+    function didClickElement(element) {
+      if (!hasClass(element, "EarthOrbitSimulation-preset")) {
+        didClickElement(element.parentElement);
+        return;
+      }
+
+      var name = element.getAttribute("data-name");
+      var preset = allPresets[name];
+
+      if (content.didChangeModel !== null) {
+        content.didChangeModel(preset);
+      }
+    }
+
+    function didClick(e) {
+      if (!e) { e = window.event; }
+      didClickElement(e.target);
+    }
+
+    function init() {
+      var presetElements = document.querySelectorAll(".EarthOrbitSimulation-preset");
+
+      // Loop through the presets
+      for (var iPreset = 0; iPreset < presetElements.length; iPreset++) {
+        var presetElement = presetElements[iPreset];
+        var name = presetElement.getAttribute("data-name");
+        var preset = allPresets[name];
+        var titleElement = document.createElement('div');
+        presetElement.onclick = didClick;
+
+        presetElement.appendChild(titleElement);
+        titleElement.innerText = preset.title;
+      }
+
+      return allPresets.SunEarthJupiter;
+    }
+
+    return {
+      init: init,
+      content: content
     };
   })();
 
@@ -727,7 +864,14 @@ Credits
       return false; // Prevent default
     }
 
+    function didChangeModel(model) {
+      physics.changeInitialConditions(model);
+      didClickRestart();
+    }
+
     function init() {
+      simulations.content.didChangeModel = didChangeModel;
+
       // Mass slider
       massSlider = SickSlider(".EarthOrbitSimulation-massSlider");
       massSlider.onSliderChange = didUpdateMassSlider;
