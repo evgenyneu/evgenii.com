@@ -18,6 +18,7 @@ Credits
 */
 
 (function(){
+  "use strict";
   // A Slider UI element
   function SickSlider(sliderElementSelector) {
     var that = {
@@ -310,7 +311,7 @@ Credits
     }
 
     function calculateNewPosition() {
-      r = 1; // Distance between two bodies
+      var r = 1; // Distance between two bodies
       // m12 is the sum of two massses
       var a1 = (state.masses.m2 / state.masses.m12) * r;
       var a2 = (state.masses.m1 / state.masses.m12) * r;
