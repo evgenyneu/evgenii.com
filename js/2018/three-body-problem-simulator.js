@@ -406,7 +406,7 @@ Credits
       canvasHeight = 400,
       defaultBodySize = 60,
       colors = {
-        orbitalPath: "#5555FF"
+        orbitalPaths: ["#6c81ff","#ff8b22","#4ccd7a"]
       },
       // Previously drawn positions of the two bodies. Used to draw orbital line.
       previousBodyPositions = [
@@ -438,7 +438,7 @@ Credits
       }
     }
 
-    function drawOrbitalLine(newPosition, previousPosition) {
+    function drawOrbitalLine(newPosition, previousPosition, color) {
       if (previousPosition.x === null) {
         previousPosition.x = newPosition.x;
         previousPosition.y = newPosition.y;
@@ -446,7 +446,7 @@ Credits
       }
 
       context.beginPath();
-      context.strokeStyle = colors.orbitalPath;
+      context.strokeStyle = color;
       context.moveTo(previousPosition.x, previousPosition.y);
       context.lineTo(newPosition.x, newPosition.y);
       context.stroke();
@@ -474,7 +474,7 @@ Credits
       for (var iBody = 0; iBody < positions.length; iBody++) {
         var bodyPosition = calculatePosition(positions[iBody]);
         drawBody(bodyPosition, currentBodySizes[iBody], bodyElemenets[iBody]);
-        drawOrbitalLine(bodyPosition, previousBodyPositions[iBody]);
+        drawOrbitalLine(bodyPosition, previousBodyPositions[iBody], colors.orbitalPaths[iBody]);
       }
 
       // window.console.log(positions[0].y);
@@ -552,13 +552,13 @@ Credits
   var simulation = (function() {
     // The method is called 60 times per second
     function animate() {
-      // Higher number produce better calculations (maybe) at the cost of CPU time.
+      // High number of calculations per frame are more accurate but require more CPU juice.
       var calculationsPerFrame = 1000;
 
       var timestep = 0.15 / calculationsPerFrame;
 
-      // Maximum number of times to draw the scene per frame.
-      // To improve performance, we do not need to draw after each calculation.
+      // Maximum number of times the scene is drawn per frame.
+      // To improve performance, we do not draw after each calculation, since drawing is slow.
       var drawTimesPerFrame = 20;
 
       // Used to decide if we need to draw at calculations
@@ -567,7 +567,7 @@ Credits
       for (var i = 0; i < calculationsPerFrame; i++) {
         physics.updatePosition(timestep);
 
-        // Decide if we need to draw at this calculation
+        // Decide if we need to draw
         if (i % drawIndex === 0) {
           physics.calculateNewPosition();
           graphics.drawScene(physics.state.positions);
