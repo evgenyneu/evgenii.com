@@ -346,13 +346,13 @@ Credits
 
       // Correct the velocities and positions of the bodies
       // to make the center of mass motionless at the middle of the screen
-      // for (iBody = 0; iBody < initialConditions.bodies; iBody++) {
-      //   bodyStart = iBody * 4; // Starting index for current body in the u array
-      //   state.u[bodyStart + 0] += centerOfMass.x;
-      //   state.u[bodyStart + 1] += centerOfMass.y;
-      //   state.u[bodyStart + 2] -= centerOfMassVelocity.x;
-      //   state.u[bodyStart + 3] -= centerOfMassVelocity.y;
-      // }
+      for (iBody = 0; iBody < initialConditions.bodies; iBody++) {
+        bodyStart = iBody * 4; // Starting index for current body in the u array
+        state.u[bodyStart + 0] += centerOfMass.x;
+        state.u[bodyStart + 1] += centerOfMass.y;
+        state.u[bodyStart + 2] -= centerOfMassVelocity.x;
+        state.u[bodyStart + 3] -= centerOfMassVelocity.y;
+      }
     }
 
     // Returns the acceleration of the body 'iFromBody' due to the other bodies.
@@ -371,8 +371,13 @@ Credits
         var distanceX = state.u[iToBodyStart + 0] - state.u[iFromBodyStart + 0];
         var distanceY = state.u[iToBodyStart + 1] - state.u[iFromBodyStart + 1];
         var distance = Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2));
+        var gravitationalConstant = 1
 
-        result += constants.gravitationalConstant * initialConditions.masses[iToBody] *
+        if (initialConditions.dimensionless !== true) {
+          gravitationalConstant = constants.gravitationalConstant;
+        }
+
+        result += gravitationalConstant * initialConditions.masses[iToBody] *
           (state.u[iToBodyStart + coordinate] - state.u[iFromBodyStart + coordinate]) /
           (Math.pow(distance, 3));
       }
@@ -503,6 +508,10 @@ Credits
 
         if (currentBodySizes[iBody] < minimumSizePixels) {
           currentBodySizes[iBody] = minimumSizePixels;
+        }
+
+        if (currentBodySizes[iBody] > 50) {
+          currentBodySizes[iBody] = 50;
         }
 
         bodyElemenets[iBody].style.width = currentBodySizes[iBody] + "px";
@@ -706,7 +715,7 @@ Credits
       didChangeModel: null // function handler that is called when user changes a model
     };
 
-    var vigure8Position = {x:0.97000436, y:-0.24308753};
+    var vigure8Position = {x: 0.97000436, y: -0.24308753};
     var vigure8Velocity = {x: -0.93240737, y: -0.86473146};
 
     function polarFromCartesian(coordinates) {
@@ -726,6 +735,7 @@ Credits
 
 
     // The list of simulations.
+    //    dimensionless: false if masses are given in kilograms, true if masses are close to 1.
     //    masses: Masses of the bodies in kilograms
     //    timeScaleFactor:
     //        The number of seconds advanced by the model in one second of the animation
@@ -735,14 +745,8 @@ Credits
     //    velocities: Velocities of the bodies in Polar coordinates, r is in m/s
     var allPresets = {
       "FigureEight": {
-        masses: [
-          1/physics.constants.gravitationalConstant,
-          1/physics.constants.gravitationalConstant,
-          1/physics.constants.gravitationalConstant
-        ],
-        // The number of seconds advanced by the model in one second of the animation
-        // Used to speed up things, so user does not wait for one year for the model
-        // of the Earth go around the Sun
+        dimensionless: true,
+        masses: [1, 1, 1],
         timeScaleFactor: 1,
         positions: [ // in Polar coordinates, r is in meters
           polarFromCartesian(vigure8Position),
@@ -750,17 +754,14 @@ Credits
           polarFromCartesian({x: 0, y: 0})
         ],
         velocities: [ // in Polar coordinates, r is in m/s
-          polarFromCartesian(vigure8Velocity),
-          polarFromCartesian({x: -vigure8Position.x / 2, y: -vigure8Position.y/2}),
-          polarFromCartesian({x: -vigure8Position.x / 2, y: -vigure8Position.y/2})
+          polarFromCartesian({x: -vigure8Velocity.x / 2, y: -vigure8Velocity.y/2}),
+          polarFromCartesian({x: -vigure8Velocity.x / 2, y: -vigure8Velocity.y/2}),
+          polarFromCartesian(vigure8Velocity)
         ]
       },
       "SunEarthJupiter": {
         masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 27)],
-        // The number of seconds advanced by the model in one second of the animation
-        // Used to speed up things, so user does not wait for one year for the model
-        // of the Earth go around the Sun
-        timeScaleFactor: 3600 * 24 * 2000,
+        timeScaleFactor: 3600 * 24 * 500,
         positions: [ // in Polar coordinates, r is in meters
           {
             r: 0,
@@ -777,42 +778,7 @@ Credits
         ],
         velocities: [ // in Polar coordinates, r is in m/s
           {
-            r: 1 * Math.pow(10, 3),
-            theta: Math.PI/2
-          },
-          {
-            r: 30 * Math.pow(10, 3),
-            theta: Math.PI/2
-          },
-          {
-            r: 13.6 * Math.pow(10, 3),
-            theta: Math.PI/2
-          }
-        ]
-      },
-      "AnotherOne": {
-        masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 27)],
-        // The number of seconds advanced by the model in one second of the animation
-        // Used to speed up things, so user does not wait for one year for the model
-        // of the Earth go around the Sun
-        timeScaleFactor: 3600 * 24 * 200,
-        positions: [ // in Polar coordinates, r is in meters
-          {
             r: 0,
-            theta: 0
-          },
-          {
-            r: 1.496 * Math.pow(10, 11),
-            theta: 0
-          },
-          {
-            r: 7.78 * Math.pow(10, 11),
-            theta: 0
-          }
-        ],
-        velocities: [ // in Polar coordinates, r is in m/s
-          {
-            r: 1 * Math.pow(10, 3),
             theta: Math.PI/2
           },
           {
@@ -820,7 +786,7 @@ Credits
             theta: Math.PI/2
           },
           {
-            r: 13.6 * Math.pow(10, 3),
+            r: 13.1 * Math.pow(10, 3),
             theta: Math.PI/2
           }
         ]

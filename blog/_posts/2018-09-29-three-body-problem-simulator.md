@@ -12,9 +12,9 @@ tags: programming science
   <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert EarthOrbitSimulation-isHiddenBlock">Please use a newer browser to see the simulation.</p>
 
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
-    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
-    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
-    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/jupiter_juno.png' alt='Jupiter' class='EarthOrbitSimulation-jupiter'>
+    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/sun.png' alt='Earth' class='EarthOrbitSimulation-sun EarthOrbitSimulation-spin'>
+    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/earth.png' alt='Earth' class='EarthOrbitSimulation-earth EarthOrbitSimulation-spin'>
+    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/jupiter_juno.png' alt='Jupiter' class='EarthOrbitSimulation-jupiter EarthOrbitSimulation-spin'>
     <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/center_of_mass.png' alt='Earth' class='EarthOrbitSimulation-centerOfMass'>
 
     <canvas class="EarthOrbitSimulation-canvas"></canvas>
@@ -26,12 +26,8 @@ tags: programming science
     </div>
 </div>
 
-<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button EarthOrbitSimulation-button--isSelected" data-name="FigureEight">Figure eight</button>
-<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="AnotherOne">Another one</button>
+<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button EarthOrbitSimulation-button--isSelected" data-name="FigureEight">Figure eight </button>
 <button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="SunEarthJupiter">Sun, Earth and Jupiter</button>
-<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="AnotherOne">Another one</button>
-<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="SunEarthJupiter">Sun, Earth and Jupiter</button>
-<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="AnotherOne">Another one</button>
 
 <div class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-hasTopMarginNormal EarthOrbitSimulation-hasNegativeBottomMarginNormal isUnselectable'>
   Mass ratio: <span class='EarthOrbitSimulation-sunsMass'>0.10</span>
@@ -217,6 +213,8 @@ function calculateNewPosition() {
 1. **"The Sun photographed at 304 angstroms"** image: NASA/SDO (AIA), [source](http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg), [source](https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg).
 
 1. **"Jupiter's South Pole"** image: NASA/JPL-Caltech/SwRI/MSSS/Betsy Asher Hall/Gervasio Robles, [source](https://www.nasa.gov/image-feature/jupiters-south-pole).
+
+1. **Figure eight orbit**: C. Moore, Braids in Classical Dynamics, Phys. Rev. Lett. 70, 3675 – 3679, 1993.
 
 ## References
 
