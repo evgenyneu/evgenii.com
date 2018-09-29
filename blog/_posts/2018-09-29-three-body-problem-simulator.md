@@ -12,9 +12,10 @@ tags: programming science
   <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert EarthOrbitSimulation-isHiddenBlock">Please use a newer browser to see the simulation.</p>
 
 <div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
-    <img src='https://evgenii.com/image/blog/2018-08-17-two-body-problem-simulator/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
-    <img src='https://evgenii.com/image/blog/2018-08-17-two-body-problem-simulator/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
-    <img src='https://evgenii.com/image/blog/2018-08-17-two-body-problem-simulator/center_of_mass.png' alt='Earth' class='EarthOrbitSimulation-centerOfMass'>
+    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/sun.png' alt='Earth' class='EarthOrbitSimulation-sun'>
+    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/earth.png' alt='Earth' class='EarthOrbitSimulation-earth'>
+    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/jupiter_juno.png' alt='Jupiter' class='EarthOrbitSimulation-jupiter'>
+    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/center_of_mass.png' alt='Earth' class='EarthOrbitSimulation-centerOfMass'>
 
     <canvas class="EarthOrbitSimulation-canvas"></canvas>
 
