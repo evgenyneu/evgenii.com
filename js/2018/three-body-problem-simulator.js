@@ -271,15 +271,15 @@ Credits
       ],
       velocities: [ // in Polar coordinates
         {
-          r: 0.7,
+          r: 0.8,
           theta: Math.PI/2
         },
         {
-          r: 0.7,
+          r: 0.8,
           theta: 2*Math.PI/3 + Math.PI/2
         },
         {
-          r: 0.7,
+          r: 0.8,
           theta: 4*Math.PI/3 + Math.PI/2
         }
       ]
