@@ -258,7 +258,11 @@ Credits
       bodies: 3, // Number of bodies
       eccentricity: 0.7, // Eccentricity of the orbit
       // Masses of the bodies in kilograms
-      masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 7.34767309 * Math.pow(10, 22)],
+      masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 27)],
+      // The number of seconds advanced by the model in one second of the animation
+      // Used to speed up things, so user does not wait for one year for the model
+      // of the Earth go around the Sun
+      timeScaleFactor: 3600 * 24 * 200,
       positions: [ // in Polar coordinates, r is in meters
         {
           r: 0,
@@ -269,21 +273,21 @@ Credits
           theta: 0
         },
         {
-          r: constants.earthSunDistanceMeters + constants.earthMoonDistanceMeters,
+          r: 7.78 * Math.pow(10, 11),
           theta: 0
         }
       ],
       velocities: [ // in Polar coordinates, r is in m/s
         {
-          r: 0,
-          theta: 0
-        },
-        {
-          r: 30000,
+          r: 1 * Math.pow(10, 3),
           theta: Math.PI/2
         },
         {
-          r: 31000,
+          r: 30 * Math.pow(10, 3),
+          theta: Math.PI/2
+        },
+        {
+          r: 13.1 * Math.pow(10, 3),
           theta: Math.PI/2
         }
       ]
@@ -319,19 +323,45 @@ Credits
       // state.u[3] = initialVelocity(state.masses.q, state.eccentricity);
     }
 
+    function calculateCenterOfMassVelocity(){
+      var centerOfMassVelocity = {x: 0, y: 0};
+      var sumOfMasses = 0;
+
+      // Loop through the bodies
+      for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
+        var bodyStart = iBody * 4; // Starting index for current body in the u array
+        centerOfMassVelocity.x += initialConditions.masses[iBody] * state.u[bodyStart + 2];
+        centerOfMassVelocity.y += initialConditions.masses[iBody] * state.u[bodyStart + 3];
+        sumOfMasses += initialConditions.masses[iBody];
+      }
+
+      centerOfMassVelocity.x /= sumOfMasses;
+      centerOfMassVelocity.y /= sumOfMasses;
+
+      return centerOfMassVelocity;
+    }
+
     function resetStateToInitialConditions() {
       // Loop through the bodies
       for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
         var bodyStart = iBody * 4; // Starting index for current body in the u array
 
         var position = initialConditions.positions[iBody];
-        state.u[bodyStart + 0] = position.r * Math.cos(position.theta);
-        state.u[bodyStart + 1] = position.r * Math.sin(position.theta);
+        state.u[bodyStart + 0] = position.r * Math.cos(position.theta); // x
+        state.u[bodyStart + 1] = position.r * Math.sin(position.theta); //y
 
         var velocity = initialConditions.velocities[iBody];
-        state.u[bodyStart + 2] = velocity.r * Math.cos(velocity.theta);
-        state.u[bodyStart + 3] = velocity.r * Math.sin(velocity.theta);
+        state.u[bodyStart + 2] = velocity.r * Math.cos(velocity.theta); // velocity x
+        state.u[bodyStart + 3] = velocity.r * Math.sin(velocity.theta); // velocity y
       }
+
+      centerOfMassVelocity = calculateCenterOfMassVelocity();
+
+      // Loop through the bodies
+      for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
+        state.u[bodyStart + 2] -= centerOfMassVelocity.x
+      }
+      window.console.log(centerOfMassVelocity);
     }
 
     // Returns the acceleration of the body 'iFromBody' due to the other bodies.
@@ -600,13 +630,8 @@ Credits
 
     var framesPerSecond = 60; // Number of frames per second
 
-    // The number of seconds advanced by the model in one second of the animation
-    // Used to speed up things, so user does not wait for one year for the model
-    // of the Earth go around the Sun
-    var timeScaleFactor = 3600 * 24 * 50;
-
     // The timestep in seconds used in simulation
-    var timestep = timeScaleFactor / framesPerSecond / calculationsPerFrame;
+    var timestep = physics.initialConditions.timeScaleFactor / framesPerSecond / calculationsPerFrame;
 
     // Maximum number of times the scene is drawn per frame.
     // To improve performance, we do not draw after each calculation, since drawing can be slow.
@@ -614,7 +639,6 @@ Credits
 
     // Used to decide if we need to draw at calculations
     var drawIndex =  Math.ceil(calculationsPerFrame / drawTimesPerFrame);
-
 
     // The method is called 60 times per second
     function animate() {
