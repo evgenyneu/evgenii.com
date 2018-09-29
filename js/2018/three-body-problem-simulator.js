@@ -220,20 +220,23 @@ Credits
 
   // Calculates the position of the Earth
   var physics = (function() {
+    var constants = {
+      gravitationalConstant: 6.67408 * Math.pow(10, -11),
+      earthSunDistanceMeters: 1.496 * Math.pow(10, 11),
+      earthMoonDistanceMeters: 3.844 * Math.pow(10, 8),
+      massOfTheSunKg: 1.98855 * Math.pow(10, 30),
+      // Average density of the body (kg/m^3). Used for calculating body's radius form its mass
+      averageDensity: 1410
+    };
+
     // Current state of the system
     var state = {
       // State variables used in the differential equations
       // First two elements are x and y positions, and second two are x and y components of velocity
       // repeated for three bodies.
       u: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      masses: {
-        q: 0, // Current mass ratio m2 / m1
-        m1: 1,
-        m2: 0, // Will be set to q
-        m12: 0 // Will be set to m1 + m2
-      },
       eccentricity: 0, // Current eccentricity of the orbit
-      // Current positions of the bodies
+      // Current positions of the bodies, in meters
       positions: [
         {
           x: 0,
@@ -254,37 +257,54 @@ Credits
     var initialConditions = {
       bodies: 3, // Number of bodies
       eccentricity: 0.7, // Eccentricity of the orbit
-      q: 0.5, // Mass ratio m2 / m1
-      positions: [ // in Polar coordinates
+      // Masses of the bodies in kilograms
+      masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 7.34767309 * Math.pow(10, 22)],
+      positions: [ // in Polar coordinates, r is in meters
         {
-          r: 1,
+          r: 0,
           theta: 0
         },
         {
-          r: 1,
-          theta: 2*Math.PI/3
+          r: constants.earthSunDistanceMeters,
+          theta: 0
         },
         {
-          r: 1,
-          theta: 4*Math.PI/3
+          r: constants.earthSunDistanceMeters + constants.earthMoonDistanceMeters,
+          theta: 0
         }
       ],
-      velocities: [ // in Polar coordinates
+      velocities: [ // in Polar coordinates, r is in m/s
         {
-          r: 0.8,
+          r: 0,
+          theta: 0
+        },
+        {
+          r: 30000,
           theta: Math.PI/2
         },
         {
-          r: 0.8,
-          theta: 2*Math.PI/3 + Math.PI/2
-        },
-        {
-          r: 0.8,
-          theta: 4*Math.PI/3 + Math.PI/2
+          r: 31000,
+          theta: Math.PI/2
         }
       ]
     };
 
+    // Calculate the radius of the body (in meters) based on its mass.
+    function calculateRadiusFromMass(mass) {
+      return Math.pow(3/4 * mass / ( Math.PI * constants.averageDensity), 1/3);
+    }
+
+    // Returns the diameters of three bodies
+    function calculateDiameters() {
+      var diameters = [];
+
+      // Loop through the bodies
+      for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
+        diameters.push(2 * calculateRadiusFromMass(initialConditions.masses[iBody]));
+      }
+
+      return diameters;
+    }
 
     // Calculate the initial velocity of the second body
     // in vertical direction based on mass ratio q and eccentricity
@@ -331,8 +351,9 @@ Credits
         var distanceY = state.u[iToBodyStart + 1] - state.u[iFromBodyStart + 1];
         var distance = Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2));
 
-        result += (state.u[iToBodyStart + coordinate] - state.u[iFromBodyStart + coordinate]) /
-          (Math.pow(distance,3));
+        result += constants.gravitationalConstant * initialConditions.masses[iToBody] *
+          (state.u[iToBodyStart + coordinate] - state.u[iFromBodyStart + coordinate]) /
+          (Math.pow(distance, 3));
       }
 
       return result;
@@ -371,12 +392,6 @@ Credits
       }
     }
 
-    // Returns the separation between two objects
-    // This is a value from 1 and larger
-    function separationBetweenObjects() {
-      return 1;
-    }
-
     function updateMassRatioFromUserInput(massRatio) {
       state.masses.q = massRatio;
       updateParametersDependentOnUserInput();
@@ -387,6 +402,21 @@ Credits
       updateParametersDependentOnUserInput();
     }
 
+    // Returns the largest distance of an object from the center based on initial considitions
+    function largestDistanceMeters() {
+      var result = 0;
+
+      // Loop through the bodies
+      for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
+        var position = initialConditions.positions[iBody];
+        if (result < position.r) {
+          result = position.r;
+        }
+      }
+
+      return result;
+    }
+
     return {
       resetStateToInitialConditions: resetStateToInitialConditions,
       updatePosition: updatePosition,
@@ -395,7 +425,8 @@ Credits
       updateMassRatioFromUserInput: updateMassRatioFromUserInput,
       updateEccentricityFromUserInput: updateEccentricityFromUserInput,
       state: state,
-      separationBetweenObjects: separationBetweenObjects
+      calculateDiameters: calculateDiameters,
+      largestDistanceMeters: largestDistanceMeters
     };
   })();
 
@@ -404,9 +435,12 @@ Credits
     var canvas = null, // Canvas DOM element.
       context = null, // Canvas context for drawing.
       canvasHeight = 800,
-      defaultBodySize = 60,
+      // The scaling factor used to draw distances between the objects and their sizes
+      // Updated automatically on first draw
+      metersPerPixel = 100,
+      minimumSizePixels=8, // Minimum size of an object in pixels.
       colors = {
-        orbitalPaths: ["#6c81ff","#ff8b22","#4ccd7a"]
+        orbitalPaths: ["#ff8b22","#6c81ff","#4ccd7a"]
       },
       // Previously drawn positions of the two bodies. Used to draw orbital line.
       previousBodyPositions = [
@@ -416,8 +450,9 @@ Credits
       ],
       // Contains the DOM elements of the bodies
       bodyElemenets = [],
+      // Body sizes in pixels
       currentBodySizes = [
-        defaultBodySize, defaultBodySize, defaultBodySize
+        10, 10, 10
       ],
       middleX = 1,
       middleY = 1;
@@ -429,11 +464,17 @@ Credits
       bodyElement.style.top = top;
     }
 
-    // Updates the sizes of the objects based on the mass ratio (value from 0 to 1)
-    // and the scale factor (value from 1 and larger).
-    function updateObjectSizes(massRatio, scaleFactor) {
+    // Updates the sizes of the objects
+    //    sizes: the sizes of objects in meters
+    function updateObjectSizes(sizes) {
       // Loop through the bodies
-      for (var iBody = 0; iBody < bodyElemenets.bodies; iBody++) {
+      for (var iBody = 0; iBody < sizes.length; iBody++) {
+        currentBodySizes[iBody] =  sizes[iBody] / metersPerPixel;
+
+        if (currentBodySizes[iBody] < minimumSizePixels) {
+          currentBodySizes[iBody] = minimumSizePixels;
+        }
+
         bodyElemenets[iBody].style.width = currentBodySizes[iBody] + "px";
       }
     }
@@ -455,12 +496,13 @@ Credits
       previousPosition.y = newPosition.y;
     }
 
+    // Returns the x and y positions a body on screen in pixels.
+    //    position: x and y position in meters from the center of the screen.
     function calculatePosition(position) {
       middleX = Math.floor(canvas.width / 2);
       middleY = Math.floor(canvas.height / 2);
-      var scale = 100;
-      var centerX = position.x * scale + middleX;
-      var centerY = -position.y * scale + middleY;
+      var centerX = position.x / metersPerPixel + middleX;
+      var centerY = -position.y / metersPerPixel + middleY;
 
       return {
         x: centerX,
@@ -476,8 +518,6 @@ Credits
         drawBody(bodyPosition, currentBodySizes[iBody], bodyElemenets[iBody]);
         drawOrbitalLine(bodyPosition, previousBodyPositions[iBody], colors.orbitalPaths[iBody]);
       }
-
-      // window.console.log(positions[0].y);
     }
 
     function showCanvasNotSupportedMessage() {
@@ -523,21 +563,24 @@ Credits
       var jupiterElement = document.querySelector(".EarthOrbitSimulation-jupiter");
 
       bodyElemenets = [];
-      bodyElemenets.push(earthElement);
       bodyElemenets.push(sunElement);
+      bodyElemenets.push(earthElement);
       bodyElemenets.push(jupiterElement);
 
       // Execute success callback function
       success();
     }
 
-    function clearScene() {
+    function clearScene(largestDistanceMeters) {
       context.clearRect(0, 0, canvas.width, canvas.height);
       previousBodyPositions = [
         {x: null, y: null},
         {x: null, y: null},
         {x: null, y: null}
       ];
+
+      // Update the scaling
+      metersPerPixel = 2.3 * largestDistanceMeters / Math.min(canvas.offsetWidth, canvas.offsetHeight, window.innerHeight);
     }
 
     return {
@@ -551,20 +594,30 @@ Credits
 
   // Start the simulation
   var simulation = (function() {
+    // The number of calculations done in one 16 millisecond frame.
+    // The higher the number, the more precise are the calculations and the slower the simulation.
+    var calculationsPerFrame = 1000;
+
+    var framesPerSecond = 60; // Number of frames per second
+
+    // The number of seconds advanced by the model in one second of the animation
+    // Used to speed up things, so user does not wait for one year for the model
+    // of the Earth go around the Sun
+    var timeScaleFactor = 3600 * 24 * 50;
+
+    // The timestep in seconds used in simulation
+    var timestep = timeScaleFactor / framesPerSecond / calculationsPerFrame;
+
+    // Maximum number of times the scene is drawn per frame.
+    // To improve performance, we do not draw after each calculation, since drawing can be slow.
+    var drawTimesPerFrame = 20;
+
+    // Used to decide if we need to draw at calculations
+    var drawIndex =  Math.ceil(calculationsPerFrame / drawTimesPerFrame);
+
+
     // The method is called 60 times per second
     function animate() {
-      // High number of calculations per frame are more accurate but require more CPU juice.
-      var calculationsPerFrame = 1000;
-
-      var timestep = 0.15 / calculationsPerFrame;
-
-      // Maximum number of times the scene is drawn per frame.
-      // To improve performance, we do not draw after each calculation, since drawing is slow.
-      var drawTimesPerFrame = 20;
-
-      // Used to decide if we need to draw at calculations
-      var drawIndex =  Math.ceil(calculationsPerFrame / drawTimesPerFrame);
-
       for (var i = 0; i < calculationsPerFrame; i++) {
         physics.updatePosition(timestep);
 
@@ -582,12 +635,13 @@ Credits
       graphics.init(function() {
         // Use the initial conditions for the simulation
         physics.resetStateToInitialConditions();
-        graphics.updateObjectSizes(physics.initialConditions.q, physics.separationBetweenObjects());
+        graphics.clearScene(physics.largestDistanceMeters());
+        graphics.updateObjectSizes(physics.calculateDiameters());
 
         // Redraw the scene if page is resized
         window.addEventListener('resize', function(event){
           graphics.fitToContainer();
-          graphics.clearScene();
+          graphics.clearScene(physics.largestDistanceMeters());
           graphics.drawScene(physics.state.positions);
         });
 
@@ -611,10 +665,10 @@ Credits
       if (sliderValue === 0) { sliderValue = 0.005; }
       var oldEccentricity = physics.state.eccentricity;
       physics.resetStateToInitialConditions();
-      graphics.clearScene();
+      graphics.clearScene(physics.largestDistanceMeters());
       physics.updateMassRatioFromUserInput(sliderValue);
       physics.updateEccentricityFromUserInput(oldEccentricity);
-      graphics.updateObjectSizes(physics.state.masses.q, physics.separationBetweenObjects());
+      graphics.updateObjectSizes(physics.calculateDiameters());
       showMassRatio(sliderValue);
     }
 
@@ -626,11 +680,11 @@ Credits
     function didUpdateEccentricitySlider(sliderValue) {
       var oldMassRatio = physics.state.masses.q;
       physics.resetStateToInitialConditions();
-      graphics.clearScene();
+      graphics.clearScene(physics.largestDistanceMeters());
       physics.updateMassRatioFromUserInput(oldMassRatio);
       physics.updateEccentricityFromUserInput(sliderValue);
       showEccentricity(sliderValue);
-      graphics.updateObjectSizes(physics.state.masses.q, physics.separationBetweenObjects());
+      graphics.updateObjectSizes(physics.calculateDiameters());
     }
 
     function showEccentricity(ratio) {
@@ -640,12 +694,12 @@ Credits
 
     function didClickRestart() {
       physics.resetStateToInitialConditions();
-      graphics.clearScene();
+      graphics.clearScene(physics.largestDistanceMeters());
       showMassRatio(physics.initialConditions.q);
       showEccentricity(physics.initialConditions.eccentricity);
       massSlider.changePosition(physics.initialConditions.q);
       eccentricitySlider.changePosition(physics.initialConditions.eccentricity);
-      graphics.updateObjectSizes(physics.initialConditions.q, physics.separationBetweenObjects());
+      graphics.updateObjectSizes(physics.calculateDiameters());
       return false; // Prevent default
     }
 
