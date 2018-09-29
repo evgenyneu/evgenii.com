@@ -403,7 +403,7 @@ Credits
   var graphics = (function() {
     var canvas = null, // Canvas DOM element.
       context = null, // Canvas context for drawing.
-      canvasHeight = 400,
+      canvasHeight = 800,
       defaultBodySize = 60,
       colors = {
         orbitalPaths: ["#6c81ff","#ff8b22","#4ccd7a"]
@@ -522,6 +522,7 @@ Credits
       var sunElement = document.querySelector(".EarthOrbitSimulation-sun");
       var jupiterElement = document.querySelector(".EarthOrbitSimulation-jupiter");
 
+      bodyElemenets = [];
       bodyElemenets.push(earthElement);
       bodyElemenets.push(sunElement);
       bodyElemenets.push(jupiterElement);
