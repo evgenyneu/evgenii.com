@@ -143,7 +143,7 @@ Credits
       var sliderValue = that.sliderValueFromCursor(e);
 
       // Handle the head change only if it changed significantly (more than 0.1%)
-      if (Math.round(that.previousSliderValue * 1000) === Math.round(sliderValue * 1000)) { return; }
+      if (Math.round(that.previousSliderValue * 10000) === Math.round(sliderValue * 10000)) { return; }
       that.previousSliderValue = sliderValue;
 
       if (!that.didRequestUpdateOnNextFrame) {
@@ -264,7 +264,7 @@ Credits
       return Math.pow(3/4 * mass / ( Math.PI * constants.averageDensity), 1/3);
     }
 
-    // Returns the diameters of three bodies
+    // Returns the diameters of three bodies in meters
     function calculateDiameters() {
       var diameters = [];
 
@@ -280,13 +280,6 @@ Credits
     // in vertical direction based on mass ratio q and eccentricity
     function initialVelocity(q, eccentricity) {
       return Math.sqrt( (1 + q) * (1 + eccentricity) );
-    }
-
-    // Update parameters that depend on mass ratio and eccentricity
-    function updateParametersDependentOnUserInput() {
-      // state.masses.m2 = state.masses.q;
-      // state.masses.m12 = state.masses.m1 + state.masses.m2;
-      // state.u[3] = initialVelocity(state.masses.q, state.eccentricity);
     }
 
     function calculateCenterOfMassVelocity(){
@@ -371,7 +364,7 @@ Credits
         var distanceX = state.u[iToBodyStart + 0] - state.u[iFromBodyStart + 0];
         var distanceY = state.u[iToBodyStart + 1] - state.u[iFromBodyStart + 1];
         var distance = Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2));
-        var gravitationalConstant = 1
+        var gravitationalConstant = 1;
 
         if (initialConditions.dimensionless !== true) {
           gravitationalConstant = constants.gravitationalConstant;
@@ -418,16 +411,6 @@ Credits
       }
     }
 
-    function updateMassRatioFromUserInput(massRatio) {
-      state.masses.q = massRatio;
-      updateParametersDependentOnUserInput();
-    }
-
-    function updateEccentricityFromUserInput(eccentricity) {
-      state.eccentricity = eccentricity;
-      updateParametersDependentOnUserInput();
-    }
-
     // Returns the largest distance of an object from the center based on initial considitions
     function largestDistanceMeters() {
       var result = 0;
@@ -444,10 +427,13 @@ Credits
     }
 
     function changeInitialConditions(conditions) {
-      initialConditions.masses = conditions.masses;
+      initialConditions.dimensionless = conditions.dimensionless;
+      initialConditions.masses = conditions.masses.slice();
       initialConditions.positions = conditions.positions;
       initialConditions.velocities = conditions.velocities;
       initialConditions.timeScaleFactor = conditions.timeScaleFactor;
+      initialConditions.maxMass = conditions.maxMass;
+      initialConditions.minMass = conditions.minMass;
     }
 
     return {
@@ -455,8 +441,6 @@ Credits
       updatePosition: updatePosition,
       calculateNewPosition: calculateNewPosition,
       initialConditions: initialConditions,
-      updateMassRatioFromUserInput: updateMassRatioFromUserInput,
-      updateEccentricityFromUserInput: updateEccentricityFromUserInput,
       state: state,
       calculateDiameters: calculateDiameters,
       largestDistanceMeters: largestDistanceMeters,
@@ -469,7 +453,7 @@ Credits
   var graphics = (function() {
     var canvas = null, // Canvas DOM element.
       context = null, // Canvas context for drawing.
-      canvasHeight = 800,
+      canvasHeight = 600,
       // The scaling factor used to draw distances between the objects and their sizes
       // Updated automatically on first draw
       metersPerPixel = 100,
@@ -508,10 +492,6 @@ Credits
 
         if (currentBodySizes[iBody] < minimumSizePixels) {
           currentBodySizes[iBody] = minimumSizePixels;
-        }
-
-        if (currentBodySizes[iBody] > 50) {
-          currentBodySizes[iBody] = 50;
         }
 
         bodyElemenets[iBody].style.width = currentBodySizes[iBody] + "px";
@@ -743,9 +723,12 @@ Credits
     //        of the Earth go around the Sun
     //    positions: Positions of the bodies in Polar coordinates, r is in meters
     //    velocities: Velocities of the bodies in Polar coordinates, r is in m/s
+    //    maxMass: the maximum mass user can set with a slider
     var allPresets = {
       "FigureEight": {
         dimensionless: true,
+        maxMass: 2,
+        minMass: 0,
         masses: [1, 1, 1],
         timeScaleFactor: 1,
         positions: [ // in Polar coordinates, r is in meters
@@ -761,6 +744,8 @@ Credits
       },
       "SunEarthJupiter": {
         masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 27)],
+        maxMass: 3 * Math.pow(10, 30),
+        minMass: 1 * Math.pow(10, 30),
         timeScaleFactor: 3600 * 24 * 500,
         positions: [ // in Polar coordinates, r is in meters
           {
@@ -850,26 +835,33 @@ Credits
     var massSlider, eccentricitySlider;
 
     function didUpdateMassSlider(sliderValue) {
-      if (sliderValue === 0) { sliderValue = 0.005; }
-      var oldEccentricity = physics.state.eccentricity;
-      physics.resetStateToInitialConditions();
-      graphics.clearScene(physics.largestDistanceMeters());
-      physics.updateMassRatioFromUserInput(sliderValue);
-      physics.updateEccentricityFromUserInput(oldEccentricity);
+      var newMass = physics.initialConditions.minMass +
+        (physics.initialConditions.maxMass - physics.initialConditions.minMass) * sliderValue;
+
+      physics.initialConditions.masses[0] = newMass;
       graphics.updateObjectSizes(physics.calculateDiameters());
-      showMassRatio(sliderValue);
+      showMass(newMass);
     }
 
-    function showMassRatio(ratio) {
-      var formattedRatio = parseFloat(Math.round(ratio * 100) / 100).toFixed(2);
-      sunsMassElement.innerHTML = formattedRatio;
+    function showMass(mass) {
+      var formatted = parseFloat(Math.round(mass * 1000) / 1000).toFixed(3);
+
+      if (mass > 10000) {
+        formatted = mass.toExponential(2);
+      }
+
+      sunsMassElement.innerHTML = formatted;
+
+      if (physics.initialConditions.dimensionless !== true) {
+        sunsMassElement.innerHTML += " kg";
+      }
     }
 
     function didUpdateEccentricitySlider(sliderValue) {
       var oldMassRatio = physics.state.masses.q;
       physics.resetStateToInitialConditions();
       graphics.clearScene(physics.largestDistanceMeters());
-      physics.updateMassRatioFromUserInput(oldMassRatio);
+      physics.updateMassFromUserInput(oldMassRatio);
       physics.updateEccentricityFromUserInput(sliderValue);
       showEccentricity(sliderValue);
       graphics.updateObjectSizes(physics.calculateDiameters());
@@ -883,18 +875,21 @@ Credits
     function didClickRestart() {
       physics.resetStateToInitialConditions();
       graphics.clearScene(physics.largestDistanceMeters());
-      showMassRatio(physics.initialConditions.q);
-      showEccentricity(physics.initialConditions.eccentricity);
-      massSlider.changePosition(physics.initialConditions.q);
-      eccentricitySlider.changePosition(physics.initialConditions.eccentricity);
       graphics.updateObjectSizes(physics.calculateDiameters());
       return false; // Prevent default
     }
 
+    function resetMassSlider() {
+      showMass(physics.initialConditions.masses[0]);
+
+      massSlider.changePosition((physics.initialConditions.masses[0] - physics.initialConditions.minMass)/
+          (physics.initialConditions.maxMass - physics.initialConditions.minMass));
+    }
+
     function didChangeModel(model) {
       physics.changeInitialConditions(model);
-      window.console.log(model);
       didClickRestart();
+      resetMassSlider();
     }
 
     function init() {
@@ -905,8 +900,7 @@ Credits
       // Mass slider
       massSlider = SickSlider(".EarthOrbitSimulation-massSlider");
       massSlider.onSliderChange = didUpdateMassSlider;
-      showMassRatio(physics.initialConditions.q);
-      massSlider.changePosition(physics.initialConditions.q);
+      resetMassSlider();
 
       // Eccentricity slider
       eccentricitySlider = SickSlider(".EarthOrbitSimulation-eccentricitySlider");

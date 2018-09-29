@@ -45,7 +45,7 @@ Credits
 .EarthOrbitSimulation-container {
   background-color: #000000;
   position: relative;
-  height: 800px;
+  height: 600px;
   background-image: url("http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/starry_night.png");
   background-position: center bottom;
   background-repeat: repeat;
@@ -145,7 +145,7 @@ Credits
 
 .EarthOrbitSimulation-massSlider,
 .EarthOrbitSimulation-eccentricitySlider {
-  max-width: 400px;
+  /*max-width: 400px;*/
   margin: 0 auto;
 }
 

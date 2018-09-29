@@ -30,7 +30,7 @@ tags: programming science
 <button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="SunEarthJupiter">Sun, Earth and Jupiter</button>
 
 <div class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-hasTopMarginNormal EarthOrbitSimulation-hasNegativeBottomMarginNormal isUnselectable'>
-  Mass ratio: <span class='EarthOrbitSimulation-sunsMass'>0.10</span>
+  Mass: <span class='EarthOrbitSimulation-sunsMass'>0.10</span>
 </div>
 
 <div class="SickSlider EarthOrbitSimulation-massSlider isUnselectable" >
