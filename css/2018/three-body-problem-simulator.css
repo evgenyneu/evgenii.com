@@ -67,24 +67,18 @@ Credits
 }
 
 .EarthOrbitSimulation-earth,
-.EarthOrbitSimulation-jupiter {
-  position: absolute;
-  width: 60px;
-  top: -1000px;
-  -webkit-animation:spin .8s linear infinite;
-  -moz-animation:spin .8s linear infinite;
-  animation:spin .8s linear infinite;
-  z-index: 1000;
-}
-
+.EarthOrbitSimulation-jupiter,
 .EarthOrbitSimulation-sun {
   position: absolute;
   width: 60px;
   top: -1000px;
+  z-index: 1000;
+}
+
+.EarthOrbitSimulation-spin {
   -webkit-animation:spin .5s linear infinite;
   -moz-animation:spin .5s linear infinite;
   animation:spin .5s linear infinite;
-  z-index: 1001;
 }
 
 @-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
@@ -153,6 +147,28 @@ Credits
 .EarthOrbitSimulation-eccentricitySlider {
   max-width: 400px;
   margin: 0 auto;
+}
+
+/*
+
+Button
+--------------
+
+*/
+
+.EarthOrbitSimulation-button {
+  margin: 5px;
+  padding: 5px 10px 3px 10px;
+  display: inline-block;
+  background-color: #ff6c00;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30% 10%/80%;
+  border: none;
+}
+
+.EarthOrbitSimulation-button--isSelected {
+  background-color: #a66000;
 }
 
 /*

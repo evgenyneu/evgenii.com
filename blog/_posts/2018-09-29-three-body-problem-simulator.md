@@ -26,13 +26,12 @@ tags: programming science
     </div>
 </div>
 
-<div class="EarthOrbitSimulation-preset" data-name="SunEarthJupiter" >
- 
-</div>
-
-<div class="EarthOrbitSimulation-preset" data-name="AnotherOne" >
-
-</div>
+<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button EarthOrbitSimulation-button--isSelected" data-name="FigureEight">Figure eight</button>
+<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="AnotherOne">Another one</button>
+<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="SunEarthJupiter">Sun, Earth and Jupiter</button>
+<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="AnotherOne">Another one</button>
+<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="SunEarthJupiter">Sun, Earth and Jupiter</button>
+<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="AnotherOne">Another one</button>
 
 <div class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-hasTopMarginNormal EarthOrbitSimulation-hasNegativeBottomMarginNormal isUnselectable'>
   Mass ratio: <span class='EarthOrbitSimulation-sunsMass'>0.10</span>

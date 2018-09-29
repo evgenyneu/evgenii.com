@@ -254,10 +254,9 @@ Credits
     };
 
     // Initial condition of the model
-    // The
     var initialConditions = {
       bodies: 3, // Number of bodies
-      eccentricity: 0.7, // Eccentricity of the orbit
+      eccentricity: 0.7 // Eccentricity of the orbit
     };
 
     // Calculate the radius of the body (in meters) based on its mass.
@@ -347,13 +346,13 @@ Credits
 
       // Correct the velocities and positions of the bodies
       // to make the center of mass motionless at the middle of the screen
-      for (iBody = 0; iBody < initialConditions.bodies; iBody++) {
-        bodyStart = iBody * 4; // Starting index for current body in the u array
-        state.u[bodyStart + 0] += centerOfMass.x;
-        state.u[bodyStart + 1] += centerOfMass.y;
-        state.u[bodyStart + 2] -= centerOfMassVelocity.x;
-        state.u[bodyStart + 3] -= centerOfMassVelocity.y;
-      }
+      // for (iBody = 0; iBody < initialConditions.bodies; iBody++) {
+      //   bodyStart = iBody * 4; // Starting index for current body in the u array
+      //   state.u[bodyStart + 0] += centerOfMass.x;
+      //   state.u[bodyStart + 1] += centerOfMass.y;
+      //   state.u[bodyStart + 2] -= centerOfMassVelocity.x;
+      //   state.u[bodyStart + 3] -= centerOfMassVelocity.y;
+      // }
     }
 
     // Returns the acceleration of the body 'iFromBody' due to the other bodies.
@@ -456,7 +455,8 @@ Credits
       state: state,
       calculateDiameters: calculateDiameters,
       largestDistanceMeters: largestDistanceMeters,
-      changeInitialConditions: changeInitialConditions
+      changeInitialConditions: changeInitialConditions,
+      constants: constants
     };
   })();
 
@@ -630,9 +630,6 @@ Credits
 
     var framesPerSecond = 60; // Number of frames per second
 
-    // The timestep in seconds used in simulation
-    var timestep = physics.initialConditions.timeScaleFactor / framesPerSecond / calculationsPerFrame;
-
     // Maximum number of times the scene is drawn per frame.
     // To improve performance, we do not draw after each calculation, since drawing can be slow.
     var drawTimesPerFrame = 20;
@@ -642,6 +639,9 @@ Credits
 
     // The method is called 60 times per second
     function animate() {
+      // The time step in seconds used in simulation
+      var timestep = physics.initialConditions.timeScaleFactor / framesPerSecond / calculationsPerFrame;
+
       for (var i = 0; i < calculationsPerFrame; i++) {
         physics.updatePosition(timestep);
 
@@ -657,8 +657,6 @@ Credits
 
     function start() {
       graphics.init(function() {
-        var initialConditions = simulations.init();
-        physics.changeInitialConditions(initialConditions);
         physics.resetStateToInitialConditions();
         graphics.clearScene(physics.largestDistanceMeters());
         graphics.updateObjectSizes(physics.calculateDiameters());
@@ -679,11 +677,53 @@ Credits
     };
   })();
 
+  // Helper function to deal with CSS
+  var cssHelper = (function(){
+    function hasClass(element, className) {
+      return (' ' + element.className + ' ').indexOf(' ' + className+ ' ') > -1;
+    }
+
+    function removeClass(element, className) {
+      element.className = element.className
+            .replace(new RegExp('(?:^|\\s)'+ className + '(?:\\s|$)'), ' ');
+    }
+
+    function addClass(element, className) {
+      if (hasClass(element, className)) return;
+      element.className += " " + className;
+    }
+
+    return {
+        hasClass: hasClass,
+        removeClass: removeClass,
+        addClass: addClass
+      };
+  })();
+
   // The presets for different simulations
   var simulations = (function(){
     var content = {
       didChangeModel: null // function handler that is called when user changes a model
+    };
+
+    var vigure8Position = {x:0.97000436, y:-0.24308753};
+    var vigure8Velocity = {x: -0.93240737, y: -0.86473146};
+
+    function polarFromCartesian(coordinates) {
+      var angle;
+
+      if (coordinates.x === 0) {
+        angle = 0;
+      } else {
+        angle = Math.atan2(coordinates.y, coordinates.x);
+      }
+
+      return {
+        r: Math.sqrt(Math.pow(coordinates.x, 2) + Math.pow(coordinates.y, 2)),
+        theta: angle
+      };
     }
+
 
     // The list of simulations.
     //    masses: Masses of the bodies in kilograms
@@ -694,8 +734,28 @@ Credits
     //    positions: Positions of the bodies in Polar coordinates, r is in meters
     //    velocities: Velocities of the bodies in Polar coordinates, r is in m/s
     var allPresets = {
+      "FigureEight": {
+        masses: [
+          1/physics.constants.gravitationalConstant,
+          1/physics.constants.gravitationalConstant,
+          1/physics.constants.gravitationalConstant
+        ],
+        // The number of seconds advanced by the model in one second of the animation
+        // Used to speed up things, so user does not wait for one year for the model
+        // of the Earth go around the Sun
+        timeScaleFactor: 1,
+        positions: [ // in Polar coordinates, r is in meters
+          polarFromCartesian(vigure8Position),
+          polarFromCartesian({x: -vigure8Position.x, y: -vigure8Position.y}),
+          polarFromCartesian({x: 0, y: 0})
+        ],
+        velocities: [ // in Polar coordinates, r is in m/s
+          polarFromCartesian(vigure8Velocity),
+          polarFromCartesian({x: -vigure8Position.x / 2, y: -vigure8Position.y/2}),
+          polarFromCartesian({x: -vigure8Position.x / 2, y: -vigure8Position.y/2})
+        ]
+      },
       "SunEarthJupiter": {
-        title: "Sun, Earth and Jupiter",
         masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 27)],
         // The number of seconds advanced by the model in one second of the animation
         // Used to speed up things, so user does not wait for one year for the model
@@ -731,12 +791,11 @@ Credits
         ]
       },
       "AnotherOne": {
-        title: "A test",
-        masses: [1.98855 * Math.pow(10, 32), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 27)],
+        masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 27)],
         // The number of seconds advanced by the model in one second of the animation
         // Used to speed up things, so user does not wait for one year for the model
         // of the Earth go around the Sun
-        timeScaleFactor: 3600 * 24 * 2000,
+        timeScaleFactor: 3600 * 24 * 200,
         positions: [ // in Polar coordinates, r is in meters
           {
             r: 0,
@@ -768,12 +827,8 @@ Credits
       }
     };
 
-    function hasClass(element, className) {
-      return (' ' + element.className + ' ').indexOf(' ' + className+ ' ') > -1;
-    }
-
     function didClickElement(element) {
-      if (!hasClass(element, "EarthOrbitSimulation-preset")) {
+      if (!cssHelper.hasClass(element, "EarthOrbitSimulation-preset")) {
         didClickElement(element.parentElement);
         return;
       }
@@ -784,6 +839,18 @@ Credits
       if (content.didChangeModel !== null) {
         content.didChangeModel(preset);
       }
+
+      // Mark the current element as selected
+      // -----------
+
+      var presetElements = document.querySelectorAll(".EarthOrbitSimulation-preset");
+
+      // Loop through the presets
+      for (var iPreset = 0; iPreset < presetElements.length; iPreset++) {
+        var presetElement = presetElements[iPreset];
+        cssHelper.removeClass(presetElement, 'EarthOrbitSimulation-button--isSelected');
+      }
+      cssHelper.addClass(element, "EarthOrbitSimulation-button--isSelected");
     }
 
     function didClick(e) {
@@ -797,16 +864,10 @@ Credits
       // Loop through the presets
       for (var iPreset = 0; iPreset < presetElements.length; iPreset++) {
         var presetElement = presetElements[iPreset];
-        var name = presetElement.getAttribute("data-name");
-        var preset = allPresets[name];
-        var titleElement = document.createElement('div');
         presetElement.onclick = didClick;
-
-        presetElement.appendChild(titleElement);
-        titleElement.innerText = preset.title;
       }
 
-      return allPresets.SunEarthJupiter;
+      return allPresets.FigureEight;
     }
 
     return {
@@ -866,10 +927,13 @@ Credits
 
     function didChangeModel(model) {
       physics.changeInitialConditions(model);
+      window.console.log(model);
       didClickRestart();
     }
 
     function init() {
+      var initialConditions = simulations.init();
+      physics.changeInitialConditions(initialConditions);
       simulations.content.didChangeModel = didChangeModel;
 
       // Mass slider
