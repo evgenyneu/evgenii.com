@@ -311,7 +311,7 @@ Credits
 
     function calculateNewPosition() {
       r = 1; // Distance between two bodies
-      // m12 is the sum of two massses
+      // m12 is the sum of two masses
       var a1 = (state.masses.m2 / state.masses.m12) * r;
       var a2 = (state.masses.m1 / state.masses.m12) * r;
 
@@ -322,7 +322,7 @@ Credits
       state.positions[1].y = a1 * state.u[1];
     }
 
-    // Returns the separatation between two objects
+    // Returns the separation between two objects
     // This is a value from 1 and larger
     function separationBetweenObjects() {
       return initialConditions.position.x / (1 - state.eccentricity);

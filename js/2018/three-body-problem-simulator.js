@@ -222,9 +222,10 @@ Credits
   var physics = (function() {
     // Current state of the system
     var state = {
-      // Four variables used in the differential equations
+      // State variables used in the differential equations
       // First two elements are x and y positions, and second two are x and y components of velocity
-      u: [0, 0, 0, 0],
+      // repeated for three bodies.
+      u: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       masses: {
         q: 0, // Current mass ratio m2 / m1
         m1: 1,
@@ -232,7 +233,7 @@ Credits
         m12: 0 // Will be set to m1 + m2
       },
       eccentricity: 0, // Current eccentricity of the orbit
-      // Current positions of the two bodies
+      // Current positions of the bodies
       positions: [
         {
           x: 0,
@@ -241,26 +242,51 @@ Credits
         {
           x: 0,
           y: 0
+        },
+        {
+          x: 0,
+          y: 0
         }
-      ],
-      iteration: 0 // Temporary REMOVE THIS!!!
+      ]
     };
 
     // Initial condition of the model
     var initialConditions = {
+      bodies: 3, // Number of bodies
       eccentricity: 0.7, // Eccentricity of the orbit
       q: 0.5, // Mass ratio m2 / m1
-      position: {
-        x: 1,
-        y: 0
-      },
-      velocity: {
-        u: 0
-      }
+      positions: [ // in Polar coordinates
+        {
+          r: 1,
+          theta: 0
+        },
+        {
+          r: 1,
+          theta: 2*Math.PI/3
+        },
+        {
+          r: 1,
+          theta: 4*Math.PI/3
+        }
+      ],
+      velocities: [ // in Polar coordinates
+        {
+          r: 0.7,
+          theta: Math.PI/2
+        },
+        {
+          r: 0.7,
+          theta: 2*Math.PI/3 + Math.PI/2
+        },
+        {
+          r: 0.7,
+          theta: 4*Math.PI/3 + Math.PI/2
+        }
+      ]
     };
 
 
-    // Calculate the initial velocity of the seconf body
+    // Calculate the initial velocity of the second body
     // in vertical direction based on mass ratio q and eccentricity
     function initialVelocity(q, eccentricity) {
       return Math.sqrt( (1 + q) * (1 + eccentricity) );
@@ -268,35 +294,62 @@ Credits
 
     // Update parameters that depend on mass ratio and eccentricity
     function updateParametersDependentOnUserInput() {
-      state.masses.m2 = state.masses.q;
-      state.masses.m12 = state.masses.m1 + state.masses.m2;
-      state.u[3] = initialVelocity(state.masses.q, state.eccentricity);
+      // state.masses.m2 = state.masses.q;
+      // state.masses.m12 = state.masses.m1 + state.masses.m2;
+      // state.u[3] = initialVelocity(state.masses.q, state.eccentricity);
     }
 
     function resetStateToInitialConditions() {
-      state.masses.q = initialConditions.q;
-      state.eccentricity = initialConditions.eccentricity;
+      // Loop through the bodies
+      for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
+        var bodyStart = iBody * 4; // Starting index for current body in the u array
 
-      state.u[0] = initialConditions.position.x;
-      state.u[1] = initialConditions.position.y;
-      state.u[2] = initialConditions.velocity.u;
+        var position = initialConditions.positions[iBody];
+        state.u[bodyStart + 0] = position.r * Math.cos(position.theta);
+        state.u[bodyStart + 1] = position.r * Math.sin(position.theta);
 
-      updateParametersDependentOnUserInput();
+        var velocity = initialConditions.velocities[iBody];
+        state.u[bodyStart + 2] = velocity.r * Math.cos(velocity.theta);
+        state.u[bodyStart + 3] = velocity.r * Math.sin(velocity.theta);
+      }
     }
 
-    // Calculate the derivatives of the system of ODEs that describe equation of motion of two bodies
+    // Returns the acceleration of the body 'iFromBody' due to the other bodies.
+    //   iFromBody: the index of body: 0 is first body, 1 is second body etc.
+    //   coordinate: 0 for x coordinate, 1 for y coordinate
+    function acceleration(iFromBody, coordinate) {
+      var result = 0;
+      var iFromBodyStart = iFromBody * 4; // Starting index for the body in the u array
+
+      // Loop through the bodies
+      for (var iToBody = 0; iToBody < initialConditions.bodies; iToBody++) {
+        if (iFromBody === iToBody) { continue; }
+        var iToBodyStart = iToBody * 4; // Starting index for the body in the u array
+
+        // Distance between the two bodies
+        var distanceX = state.u[iToBodyStart + 0] - state.u[iFromBodyStart + 0];
+        var distanceY = state.u[iToBodyStart + 1] - state.u[iFromBodyStart + 1];
+        var distance = Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2));
+
+        result += (state.u[iToBodyStart + coordinate] - state.u[iFromBodyStart + coordinate]) /
+          (Math.pow(distance,3));
+      }
+
+      return result;
+    }
+
+    // Calculate the derivatives of the system of ODEs that describe equation of motion of the bodies
     function derivative() {
-      var du = new Array(state.u.length);
+      var du = new Array(initialConditions.bodies * 4);
 
-      // x and y coordinates
-      var r = state.u.slice(0,2);
+      // Loop through the bodies
+      for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
+        var bodyStart = iBody * 4; // Starting index for current body in the u array
 
-      // Distance between bodies
-      var rr = Math.sqrt( Math.pow(r[0],2) + Math.pow(r[1],2) );
-
-      for (var i = 0; i < 2; i++) {
-        du[i] = state.u[i + 2];
-        du[i + 2] = -(1 + state.masses.q) * r[i] / (Math.pow(rr,3));
+        du[bodyStart + 0] = state.u[bodyStart + 0 + 2]; // Velocity x
+        du[bodyStart + 1] = state.u[bodyStart + 0 + 3]; // Velocity y
+        du[bodyStart + 2] = acceleration(iBody, 0); // Acceleration x
+        du[bodyStart + 3] = acceleration(iBody, 1); // Acceleration y
       }
 
       return du;
@@ -304,29 +357,24 @@ Credits
 
     // The main function that is called on every animation frame.
     // It calculates and updates the current positions of the bodies
-    function updatePosition() {
-      var timestep = 0.15;
+    function updatePosition(timestep) {
       rungeKutta.calculate(timestep, state.u, derivative);
-      calculateNewPosition();
     }
 
     function calculateNewPosition() {
-      var r = 1; // Distance between two bodies
-      // m12 is the sum of two massses
-      var a1 = (state.masses.m2 / state.masses.m12) * r;
-      var a2 = (state.masses.m1 / state.masses.m12) * r;
+      // Loop through the bodies
+      for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
+        var bodyStart = iBody * 4; // Starting index for current body in the u array
 
-      state.positions[0].x = -a2 * state.u[0];
-      state.positions[0].y = -a2 * state.u[1];
-
-      state.positions[1].x = a1 * state.u[0];
-      state.positions[1].y = a1 * state.u[1];
+        state.positions[iBody].x = state.u[bodyStart + 0];
+        state.positions[iBody].y = state.u[bodyStart + 1];
+      }
     }
 
-    // Returns the separatation between two objects
+    // Returns the separation between two objects
     // This is a value from 1 and larger
     function separationBetweenObjects() {
-      return initialConditions.position.x / (1 - state.eccentricity);
+      return 1;
     }
 
     function updateMassRatioFromUserInput(massRatio) {
@@ -342,6 +390,7 @@ Credits
     return {
       resetStateToInitialConditions: resetStateToInitialConditions,
       updatePosition: updatePosition,
+      calculateNewPosition: calculateNewPosition,
       initialConditions: initialConditions,
       updateMassRatioFromUserInput: updateMassRatioFromUserInput,
       updateEccentricityFromUserInput: updateEccentricityFromUserInput,
@@ -355,19 +404,20 @@ Credits
     var canvas = null, // Canvas DOM element.
       context = null, // Canvas context for drawing.
       canvasHeight = 400,
-      defaultBodySize = 80,
+      defaultBodySize = 60,
       colors = {
         orbitalPath: "#5555FF"
       },
       // Previously drawn positions of the two bodies. Used to draw orbital line.
       previousBodyPositions = [
         {x: null, y: null},
+        {x: null, y: null},
         {x: null, y: null}
       ],
-      earthElement,
-      sunElement,
+      // Contains the DOM elements of the bodies
+      bodyElemenets = [],
       currentBodySizes = [
-        defaultBodySize, defaultBodySize
+        defaultBodySize, defaultBodySize, defaultBodySize
       ],
       middleX = 1,
       middleY = 1;
@@ -379,16 +429,13 @@ Credits
       bodyElement.style.top = top;
     }
 
-    // Updates the sizes of the two object based on the mass ratio (value from 0 to 1)
+    // Updates the sizes of the objects based on the mass ratio (value from 0 to 1)
     // and the scale factor (value from 1 and larger).
     function updateObjectSizes(massRatio, scaleFactor) {
-      currentBodySizes[1] = defaultBodySize / scaleFactor;
-      sunElement.style.width = currentBodySizes[1] + "px";
-
-      // Assuming same density of two bodies, mass ratio is proportional to the cube of radii ratio
-      massRatio = Math.pow(massRatio, 1/3);
-      currentBodySizes[0] = defaultBodySize * massRatio / scaleFactor;
-      earthElement.style.width = currentBodySizes[0] + "px";
+      // Loop through the bodies
+      for (var iBody = 0; iBody < bodyElemenets.bodies; iBody++) {
+        bodyElemenets[iBody].style.width = currentBodySizes[iBody] + "px";
+      }
     }
 
     function drawOrbitalLine(newPosition, previousPosition) {
@@ -413,7 +460,7 @@ Credits
       middleY = Math.floor(canvas.height / 2);
       var scale = 100;
       var centerX = position.x * scale + middleX;
-      var centerY = position.y * scale + middleY;
+      var centerY = -position.y * scale + middleY;
 
       return {
         x: centerX,
@@ -423,13 +470,14 @@ Credits
 
     // Draws the scene
     function drawScene(positions) {
-      var body1Position = calculatePosition(positions[0]);
-      drawBody(body1Position, currentBodySizes[0], earthElement);
-      drawOrbitalLine(body1Position, previousBodyPositions[0]);
+      // Loop through the bodies
+      for (var iBody = 0; iBody < positions.length; iBody++) {
+        var bodyPosition = calculatePosition(positions[iBody]);
+        drawBody(bodyPosition, currentBodySizes[iBody], bodyElemenets[iBody]);
+        drawOrbitalLine(bodyPosition, previousBodyPositions[iBody]);
+      }
 
-      var body2Position = calculatePosition(positions[1]);
-      drawBody(body2Position, currentBodySizes[1], sunElement);
-      drawOrbitalLine(body2Position, previousBodyPositions[1]);
+      // window.console.log(positions[0].y);
     }
 
     function showCanvasNotSupportedMessage() {
@@ -469,8 +517,14 @@ Credits
       // Update the size of the canvas
       fitToContainer();
 
-      earthElement = document.querySelector(".EarthOrbitSimulation-earth");
-      sunElement = document.querySelector(".EarthOrbitSimulation-sun");
+
+      var earthElement = document.querySelector(".EarthOrbitSimulation-earth");
+      var sunElement = document.querySelector(".EarthOrbitSimulation-sun");
+      var jupiterElement = document.querySelector(".EarthOrbitSimulation-jupiter");
+
+      bodyElemenets.push(earthElement);
+      bodyElemenets.push(sunElement);
+      bodyElemenets.push(jupiterElement);
 
       // Execute success callback function
       success();
@@ -479,6 +533,7 @@ Credits
     function clearScene() {
       context.clearRect(0, 0, canvas.width, canvas.height);
       previousBodyPositions = [
+        {x: null, y: null},
         {x: null, y: null},
         {x: null, y: null}
       ];
@@ -497,8 +552,28 @@ Credits
   var simulation = (function() {
     // The method is called 60 times per second
     function animate() {
-      physics.updatePosition();
-      graphics.drawScene(physics.state.positions);
+      // Higher number produce better calculations (maybe) at the cost of CPU time.
+      var calculationsPerFrame = 1000;
+
+      var timestep = 0.15 / calculationsPerFrame;
+
+      // Maximum number of times to draw the scene per frame.
+      // To improve performance, we do not need to draw after each calculation.
+      var drawTimesPerFrame = 20;
+
+      // Used to decide if we need to draw at calculations
+      var drawIndex =  Math.ceil(calculationsPerFrame / drawTimesPerFrame);
+
+      for (var i = 0; i < calculationsPerFrame; i++) {
+        physics.updatePosition(timestep);
+
+        // Decide if we need to draw at this calculation
+        if (i % drawIndex === 0) {
+          physics.calculateNewPosition();
+          graphics.drawScene(physics.state.positions);
+        }
+      }
+
       window.requestAnimationFrame(animate);
     }
 

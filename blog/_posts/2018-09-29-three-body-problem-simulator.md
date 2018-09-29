@@ -209,6 +209,8 @@ function calculateNewPosition() {
 
 1. **"The Sun photographed at 304 angstroms"** image: NASA/SDO (AIA), [source](http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg), [source](https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg).
 
+1. **"Jupiter's South Pole"** image: NASA/JPL-Caltech/SwRI/MSSS/Betsy Asher Hall/Gervasio Robles, [source](https://www.nasa.gov/image-feature/jupiters-south-pole).
+
 ## References
 
 * [The complete source code](/files/2018/08/two-body-problem-simulator/the_complete_code/) of the two-body problem simulation.
