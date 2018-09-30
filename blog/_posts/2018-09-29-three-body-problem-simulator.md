@@ -1,6 +1,6 @@
 ---
 layout: blog_post
-comments: false
+comments: true
 title: "Programming a three-body problem in JavaScript"
 meta_description: "Here we program a three-body problem in JavaScript showing three bodies rotationg about the common center of mass."
 tags: programming science
