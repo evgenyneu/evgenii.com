@@ -72,7 +72,7 @@ The main equation used in our simulation is the Newton's law of universal gravit
 <div class='Equation isTextCentered'>
   <span></span>
   <span>
-    <img class='isMax150PxWide' src='/image/blog/2018-08-17-two-body-problem-simulator/0020_newtons_law_of_gravitation.png' alt='The equation for the kinetic energy of the Earth orbitin the Sun'>
+    <img class='isMax150PxWide' src='/image/blog/2018-08-17-two-body-problem-simulator/0020_newtons_law_of_gravitation.png' alt="Newton's law of universal gravitation">
   </span>
   <span>(1)</span>
 </div>

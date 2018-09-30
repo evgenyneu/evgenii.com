@@ -49,12 +49,11 @@ tags: programming science
   <div class="SickSlider-head"></div>
 </div>
 
-<button class="ThreeBodyProblem-preset ThreeBodyProblem-button ThreeBodyProblem-button--isSelected" data-name="FigureEight">Figure eight </button>
+<button class="ThreeBodyProblem-preset ThreeBodyProblem-button ThreeBodyProblem-button--isSelected" data-name="FigureEight">Figure eight</button>
 <button class="ThreeBodyProblem-preset ThreeBodyProblem-button" data-name="SunEarthJupiter">Sun, Earth and Jupiter</button>
 <button class="ThreeBodyProblem-preset ThreeBodyProblem-button" data-name="LagrangePoint5">Lagrange point L5</button>
 <button class="ThreeBodyProblem-preset ThreeBodyProblem-button" data-name="Kepler16">Kepler-16</button>
 <button class="ThreeBodyProblem-preset ThreeBodyProblem-button" data-name="Chaotic">Chaotic</button>
-
 
 <p class='ThreeBodyProblem-debugOutput'></p>
 
@@ -62,154 +61,101 @@ tags: programming science
 
 <br>
 
-In this tutorial we will program a simulation of motion of two celestial bodies in HTML/JavaScript. This work is mostly based on what I learned from Dr Rosemary Mardling, who is an astrophysicist at Monash University. In addition, this code uses techniques we developed in [harmonic oscillator tutorial](/blog/programming-harmonic-oscillator/), which would be a good starting place for those who are new to this topic. Please feel free to use the full [source code](/files/2018/08/two-body-problem-simulator/the_complete_code/) of this simulation for any purpose.
+In this tutorial we will program motion of three bodies in HTML and JavaScript. This work is built upon the [two-body simulation code](/blog/two-body-problem-simulator/). I want to say huge thanks to Dr Rosemary Mardling, who taught me astrophysics in Monash University. This work is based on Rosmary's ideas and code. As always, feel free to check the full [source code](/files/2018/09/three-body-problem-simulator/the_complete_code/), and use it for any purpose.
 
 
-## Our approach
+## Three-body simulations
 
-We have already done a simulation of motion of two bodies in the [Earth orbit simulator](/blog/earth-orbit-simulation/) tutorial. There we derived equations of motion from the Lagrangian and used them to move the planet around the Sun. For simplicity, we choose the center of mass of two bodies to be at the center of the Sun, which stayed stationary at the origin of our coordinate system. Here we will use a different approach and allow two bodies to move around a common center of mass.
+The little buttons under the slider are used the run the following simulations. 
 
-## Our coordinate system
+### Figure eight
 
-A surprising fact about the motion of two bodies is that their common center of mass remains still (or moves at constant velocity). We can take advantage of this fact and place the origin of the coordinate system at the center of mass (Fig. 1).
+This is a stable three-body system discovered by Cris Moore [5]. The system remains stable even if we change the masses off all bodies a little bit, to 0.99 for example. Just for fun, try increasing the speed of this animation. At certain speeds you will see weird stroboscopic effects. Be careful, this can make you dizzy.
+
+### Sun, Earth and Jupiter
+
+This simulation uses true masses, velocities and distances of the Sun, Earth and Jupiter. We can measure one period of the Earth's orbit in the simulation, which is around one second (may depend on computer speed and refresh rate of the monitor). We can see that the simulation is working correctly, because its it run at speed of one year per second.
+
+### Lagrange point L5
+
+Here the Earth is located near the Sun-Jupiter L5 Lagrange point. Notice that the radius of the Earth's orbit is smaller than that of Jupiter initially. If Jupiter's was not as massive, the Earth would overtake Jupiter. We can check this by decreasing Jupiter's mass and clicking Reload button. However, the combined gravity from Jupiter and the Sun traps the Earth, and it is destined to remain at L5 point behind Jupiter.
+
+### Kepler-16
+
+This is a simulation of a binary star system that also has a planet with a mass of 1/3 of Jupiter. Both binary stars are smaller than the Sun. This orbital plane of the planet is located edge-on, such that it blocks some light form the stars. This allowed scientists to measure periodic dips in the light from the stars, and this is how the planet was discovered [6]. The system appears to be stable, at least in the short term.
+
+
+### Chaotic
+
+This is an example of how an orderly and symmetrical system can quickly become unstable. Even small changes in the masses or the speed of the simulation produce different outcomes. The simulation even looks different when it is run in different browsers. This demonstrates sensitivity of a chaotic system to small variations.
+
+
+
+## The coordinate system
+
+We will be using a coordinate system with its origin located at the center of mass of the three bodies, as shown in Fig. 1.
 
 <div class='isTextCentered'>
-  <img class='isMax400PxWide' src='/image/blog/2018-08-17-two-body-problem-simulator/0010_coordinate_system.jpg' alt='Coordinate system for a two-body problem'>
+  <img class='isMax400PxWide' src='/image/blog/2018-09-27-three-body-problem-simulator/010_coordinate_system.png' alt='Coordinate system for a two-body problem'>
   <p>Figure 1: A coordinate system with the origin at the common center of mass of the two bodies.</p>
 </div>
 
-## Newton's law of gravitation
 
-The main equation used in our simulation is the Newton's law of universal gravitation (Eq. 1). It says that the force of gravitational attraction between two bodies is proportional to the product of their masses and inversely proportional to the square of the distance between them.
+## The equations of motion
+
+The main equation for this simulation is the Newton's equation of universal gravitation:
 
 <div class='Equation isTextCentered'>
   <span></span>
   <span>
-    <img class='isMax150PxWide' src='/image/blog/2018-08-17-two-body-problem-simulator/0020_newtons_law_of_gravitation.png' alt='The equation for the kinetic energy of the Earth orbitin the Sun'>
+    <img class='isMax120PxWide' src='/image/blog/2018-09-27-three-body-problem-simulator/0020_newtons_law_of_gravitation.png' alt="Newton's law of universal gravitation">
   </span>
   <span>(1)</span>
 </div>
 
-## Equation of motion
-
-After a series of algebraic manipulations and removing dimensions, we can turn Eq. 1 into an equation of motion of two bodies shown in Eq. 2. Here vector **r** describes the position of second body *relative to* the first one. This vector is shown as blue arrow on Fig. 1.
+Combining this with the Newton's second law `F = m a`, we can derive three equations of motion:
 
 <div class='Equation isTextCentered'>
   <span></span>
   <span>
-    <img class='isMax150PxWide' src='/image/blog/2018-08-17-two-body-problem-simulator/0030_equation_of_motion_of_two_bodies.png' alt='The equation of motion of two bodies'>
+    <img class='isMax300PxWide' src='/image/blog/2018-09-27-three-body-problem-simulator/0030_equations_of_motion.png' alt='Equations of motion for three bodies'>
   </span>
   <span>(2)</span>
 </div>
 
-The variable **q** in Eq. 2 is the mass ratio of the bodies (i.e. mass of the Earth divided by Sun's mass). The two dots above vector **r** mean the second time derivative.
-
-
-## Equations of motion for x and y
-
-Next, we write Eq. 2 in terms of x and y coordinates, which gives a system of two second-order non-linear differential equations:
+The double dot means the second time derivative. Vector
 
 <div class='Equation isTextCentered'>
   <span></span>
   <span>
-    <img class='isMax150PxWide' src='/image/blog/2018-08-17-two-body-problem-simulator/0040_equation_of_motion_for_x_and_y.png' alt='Equation of motion for x and y'>
+    <img class='isMax120PxWide' src='/image/blog/2018-09-27-three-body-problem-simulator/0040_vector_r12.png' alt='Vector v12'>
   </span>
   <span>(3)</span>
 </div>
 
-## Reducing the order of ODEs
-
-We will solve Eq. 3 numerically. In order to do this, we need to translate it into a system of first-order ODEs by making the following substitutions:
+points from the Sun to the Earth. Equation 2 also includes the magnitudes of the vectors, which can be calculated as follows, for the case of vector pointing form the Sun to the Earth:
 
 <div class='Equation isTextCentered'>
   <span></span>
   <span>
-    <img class='isMax80PxWide' src='/image/blog/2018-08-17-two-body-problem-simulator/0050_substitutions_ode_reducing_order.png' alt='Substitutions for reducing the order of the ODEs'>
+    <img class='isMax300PxWide' src='/image/blog/2018-09-27-three-body-problem-simulator/0050_length_of_vector_r12.png' alt='The length of vector v12'>
   </span>
   <span>(4)</span>
 </div>
 
-We will store the values of these four variables in the `state.u` array of the `physics` object:
+Here `x1, y1` and `x2, y2` are the coordinates of the Earth and the Sun respectively.
 
-```JavaScript
-var state = {
-  // Four variables used in the differential equations
-  // First two elements are x and y positions, and second two are x and y components of velocity
-  u: [0, 0, 0, 0]
-}
-```
+## Writing equations of motions in `x` and `y`
 
-Using the new variables we can now translate two second-order differential equations (Eq. 4) into four first-order ones:
+Equation 2 contains three equations of motion. In order to use the equations in our program we need to write each equation in terms of `x` and `y` coordinates. This gives six equations
 
 <div class='Equation isTextCentered'>
   <span></span>
   <span>
-    <img class='isMax150PxWide' src='/image/blog/2018-08-17-two-body-problem-simulator/0060_syste_of_odes.png' alt='System of first-order differential equations'>
+    <img class='isMax350PxWide' src='/image/blog/2018-09-27-three-body-problem-simulator/0060_equations_of_motions_with_coordinates_x_and_y.png' alt='Equations of motions of three bodies in terms of coordinates x and y'>
   </span>
   <span>(5)</span>
 </div>
-
-We can now write a function that returns the derivatives of the four variables:
-
-```JavaScript
-// Calculate the derivatives of the system of ODEs that describe equation of motion of two bodies
-function derivative() {
-  var du = new Array(state.u.length);
-
-  // x and y coordinates
-  var r = state.u.slice(0,2);
-
-  // Distance between bodies
-  var rr = Math.sqrt( Math.pow(r[0],2) + Math.pow(r[1],2) );
-
-  for (var i = 0; i < 2; i++) {
-    du[i] = state.u[i + 2];
-    du[i + 2] = -(1 + state.masses.q) * r[i] / (Math.pow(rr,3));
-  }
-
-  return du;
-}
-```
-
-## Solve ODEs numerically
-
-Now we can use a numerical method to solve the ODEs. In [Earth orbit simulator](/blog/earth-orbit-simulation/) we used Euler's method, but here we will try another popular method called Runge-Kutta:
-
-```JavaScript
-var timestep = 0.15;
-rungeKutta.calculate(timestep, state.u, derivative);
-```
-
-We will run this code at each frame of the animation and it will save the new values of positions and velocities in `state.u`. The first two elements of this array are the x and y positions of the **r** vector from Fig. 1.
-
-
-
-## Drawing two bodies on the screen
-
-We are almost done. We have found the vector **r**, which describes the position of Earth *relative* to the Sun. We will now use this vector to calculate the positions of two bodies on screen. The trick here is to use the mass-distance relation shown in Fig. 2.
-
-
-<div class='isTextCentered'>
-  <img class='isMax400PxWide' src='/image/blog/2018-08-17-two-body-problem-simulator/0070_mass_distance_relation.jpg' alt='Mass-distance between two bodies'>
-  <p>Figure 2: A relation between masses of two bodies and distances to the common center of mass.</p>
-</div>
-
-With this knowledge, we can finally calculate the positions of the two bodies. The positions are saved in the `state.positions` array and then used to show the two bodies on screen.
-
-```JavaScript
-function calculateNewPosition() {
-    r = 1; // Distance between two bodies
-    // m12 is the sum of two massses
-    var a1 = (state.masses.m2 / state.masses.m12) * r;
-    var a2 = (state.masses.m1 / state.masses.m12) * r;
-
-    state.positions[0].x = -a2 * state.u[0];
-    state.positions[0].y = -a2 * state.u[1];
-
-    state.positions[1].x = a1 * state.u[0];
-    state.positions[1].y = a1 * state.u[1];
-}
-```
 
 
 
@@ -230,4 +176,4 @@ function calculateNewPosition() {
 
 ## References
 
-* [The complete source code](/files/2018/08/two-body-problem-simulator/the_complete_code/) of the two-body problem simulation.
+* [The complete source code](/files/2018/09/three-body-problem-simulator/the_complete_code/) of the three-body problem simulation.
