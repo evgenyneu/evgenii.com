@@ -449,7 +449,7 @@ Credits
       // The scaling factor used to draw distances between the objects and their sizes
       // Updated automatically on first draw
       metersPerPixel = 100,
-      minimumSizePixels=8, // Minimum size of an object in pixels.
+      minimumSizePixels=10, // Minimum size of an object in pixels.
       colors = {
         orbitalPaths: ["#ff8b22","#6c81ff","#4ccd7a"]
       },
@@ -749,14 +749,15 @@ Credits
       "SunEarthJupiter": {
         masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 27)],
         massSlider: {
-          min: 1 * Math.pow(10, 30),
-          max: 3 * Math.pow(10, 30)
+          min: 3 * Math.pow(10, 10),
+          max: 3 * Math.pow(10, 31),
+          power: 5
         },
-        timeScaleFactor: 3600 * 24 * 500,
+        timeScaleFactor: 3600 * 24 * 365,
         timeScaleFactorSlider: {
-          min: 3600 * 24 * 500 * 10,
-          max: 3600 * 24 * 1,
-          power: 3
+          min: 0,
+          max: 3600 * 24 * 500 * 30000,
+          power: 5
         },
         positions: [ // in Polar coordinates, r is in meters
           {
@@ -903,6 +904,7 @@ Credits
       var sliderText;
       var sliderSettings = getCurrentSliderSettings();
 
+
       if (sliderSettings.power !== undefined) {
 
         if (sliderSettings.power % 2 === 1) { // Odd power
@@ -914,6 +916,7 @@ Credits
       }
 
       var newValue = sliderSettings.min + (sliderSettings.max - sliderSettings.min) * sliderValue;
+      newValue = roundSliderValue(newValue);
 
       if (currentSlider === "mass") {
         physics.initialConditions.masses[currentMassSliderIndex] = newValue;
@@ -939,8 +942,12 @@ Credits
       return sliderSettings;
     }
 
+    function roundSliderValue(value) {
+      return parseFloat(Math.round(value * 10000) / 10000).toFixed(4);
+    }
+
     function formatMassForSlider(mass) {
-      var formatted = parseFloat(Math.round(mass * 10000) / 10000).toFixed(4);
+      var formatted = roundSliderValue(mass);
 
       if (mass > 10000) {
         formatted = mass.toExponential(4);
@@ -957,7 +964,7 @@ Credits
 
     function formatTimescaleForSlider(value) {
       var timeHumanized = timeHumanReadable(value);
-      var formatted = parseFloat(Math.round(timeHumanized.value * 10000) / 10000).toFixed(4);
+      var formatted = roundSliderValue(timeHumanized.value);
 
       if (timeHumanized.value > 10000) {
         formatted = timeHumanized.value.toExponential(4);
@@ -1001,6 +1008,13 @@ Credits
 
       result.value /= 365;
       result.unit = 'year';
+
+      if (result.value < 100) {
+        return result;
+      }
+
+      result.value /= 100;
+      result.unit = 'century';
 
       return result;
     }
