@@ -1411,6 +1411,17 @@ Sick Slider
       return parseFloat(Math.round(value * 10000) / 10000).toFixed(4);
     }
 
+    function bodyNameFromIndex(index) {
+      switch(index) {
+        case 0:
+            return "the Sun";
+        case 1:
+            return "the Earth";
+        default:
+            return "Jupiter";
+      }
+    }
+
     function formatMassForSlider(mass) {
       var formatted = roundSliderValueText(mass);
 
@@ -1418,7 +1429,7 @@ Sick Slider
         formatted = mass.toExponential(4);
       }
 
-      formatted = "Mass " + (currentMassSliderIndex + 1) + " : " + formatted;
+      formatted = "Mass of " + bodyNameFromIndex(currentMassSliderIndex) + " : " + formatted;
 
       if (physics.initialConditions.dimensionless !== true) {
         formatted += " kg";

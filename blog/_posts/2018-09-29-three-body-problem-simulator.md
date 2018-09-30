@@ -66,11 +66,11 @@ In this tutorial we will program motion of three bodies in HTML and JavaScript. 
 
 ## Three-body simulations
 
-The little buttons under the slider are used the run the following simulations. 
+The little buttons under the slider run the following simulations.
 
 ### Figure eight
 
-This is a stable three-body system discovered by Cris Moore [5]. The system remains stable even if we change the masses off all bodies a little bit, to 0.99 for example. Just for fun, try increasing the speed of this animation by clicking on the click icon and moving the slider. At certain speeds you will see weird stroboscopic effects. Be careful, this can make you dizzy.
+This is a stable three-body system discovered by Cris Moore [5]. The system remains stable even if we change the masses off all bodies a little bit, to 0.99 for example. Just for fun, try increasing the speed of this animation by clicking the clock icon and moving the slider. At certain speeds you will see weird stroboscopic effects. Be careful, this can make you dizzy.
 
 ### Sun, Earth and Jupiter
 
@@ -78,7 +78,7 @@ This simulation uses true masses, velocities and distances of the Sun, Earth and
 
 ### Lagrange point L5
 
-Here the Earth is located near a special point in space called the Sun-Jupiter L5 Lagrange point. Notice that the radius of the Earth's orbit is smaller than that of Jupiter initially. Planets that are closed to the Sun have shorter orbital periods. Therefore, normally, the Earth would overtake Jupiter. We can check this by decreasing Jupiter's mass and clicking the Reload button on the bottom right of the simulation screen. However, the combined gravity from Jupiter and the Sun traps the Earth, and it is destined to remain at L5 point behind Jupiter.
+Here the Earth is located near a special point in space called the Sun-Jupiter L5 Lagrange point. Notice that the radius of the Earth's orbit is smaller than that of Jupiter initially. Planets that are closer to the Sun have shorter orbital periods. Therefore, normally, the Earth would overtake Jupiter. We can check this by decreasing Jupiter's mass and clicking the Reload button on the bottom right of the simulation screen. However, the combined gravity from Jupiter and the Sun traps the Earth, and it is destined to remain at L5 point behind Jupiter.
 
 ### Kepler-16
 
@@ -87,7 +87,7 @@ This is a simulation of a binary star system that also has a planet with a mass 
 
 ### Chaotic
 
-This is an example of how an orderly and symmetrical system can quickly become unstable. When the simulation is running on the computer, small calculation and rounding errors accumulate over time and drive the system away from stability. The simulation is so sensitive to small changes that it even looks different when you run it with the same settings but in different browsers.
+This is an example of how an orderly and symmetrical system can quickly become unstable. When the simulation is running on the computer, small calculation and rounding errors accumulate over time and drive the system away from stability. The simulation is so sensitive to small changes that it may even looks different when you run it with the same settings but in different browsers.
 
 
 
@@ -128,12 +128,12 @@ Here the double dots above the variables mean second time derivatives. The vecto
 <div class='Equation isTextCentered'>
   <span></span>
   <span>
-    <img class='isMax120PxWide' src='/image/blog/2018-09-27-three-body-problem-simulator/0040_vector_r12.png' alt='Vector v12'>
+    <img class='isMax120PxWide' src='/image/blog/2018-09-27-three-body-problem-simulator/0040_vector_r12.png' alt='Vector r12'>
   </span>
   <span>(3)</span>
 </div>
 
-points from the Sun to the Earth. Equation 2 also includes the magnitudes of the vectors, which can be calculated as follows, for the case of the vector pointing form the Sun to the Earth:
+points from the Sun to the Earth. Equation 2 also includes the magnitudes of the vectors, which can be calculated as follows, for the case of the vector `r12`:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -158,7 +158,7 @@ Equation 2 contains three equations of motion. In order to use the equations in 
   <span>(5)</span>
 </div>
 
-Note the we got rid of the masses on the left-hand sides by dividing both sides by them. The equations look intimidating. However, these are not meant to be used by humans. It is much easier to write those equations in code, since they contain a lot of repetitions. But before we do this, we need to convert the equation into a computer readable form.
+Note the we got rid of the masses on the left-hand sides by dividing both sides by them. The equations look intimidating. However, these are not meant to be used by humans. It is much easier to write these equations in code, since they contain a lot of repetitions. But before we do this, we need to convert the equation into a computer readable form.
 
 
 ## Converting the equations to first order
@@ -224,7 +224,7 @@ function derivative() {
   return du;
 }
 ```
-This function `derivative` calculates the derivatives of the twelve `u` variables using Equation 7. For simplicity, the right-hand sides of equation that calculate accelerations, are coded as a separate function:
+The function `derivative` calculates the derivatives of the twelve `u` variables using Equation 7. For simplicity, the right-hand sides of equation that calculate accelerations, are coded as a separate function:
 
 ```JavaScript
 // Returns the acceleration of the body 'iFromBody'
@@ -281,7 +281,7 @@ function updatePosition(timestep) {
 }
 ```
 
-Before the first run, we need to choose some initial positions and velocities of the Sun, Earth and Jupiter and store them in the `u` array.
+Before the first run, however, we need to choose some initial positions and velocities of the Sun, Earth and Jupiter and store them in the `u` array.
 
 
 ## Drawing the bodies on screen
