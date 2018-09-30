@@ -70,30 +70,30 @@ The little buttons under the slider are used the run the following simulations.
 
 ### Figure eight
 
-This is a stable three-body system discovered by Cris Moore [5]. The system remains stable even if we change the masses off all bodies a little bit, to 0.99 for example. Just for fun, try increasing the speed of this animation. At certain speeds you will see weird stroboscopic effects. Be careful, this can make you dizzy.
+This is a stable three-body system discovered by Cris Moore [5]. The system remains stable even if we change the masses off all bodies a little bit, to 0.99 for example. Just for fun, try increasing the speed of this animation by clicking on the click icon and moving the slider. At certain speeds you will see weird stroboscopic effects. Be careful, this can make you dizzy.
 
 ### Sun, Earth and Jupiter
 
-This simulation uses true masses, velocities and distances of the Sun, Earth and Jupiter. We can measure one period of the Earth's orbit in the simulation, which is around one second (may depend on computer speed and refresh rate of the monitor). We can see that the simulation is working correctly, because its it run at speed of one year per second.
+This simulation uses true masses, velocities and distances of the Sun, Earth and Jupiter. We can measure one period of the Earth's orbit in the simulation to be around one second (may depend on computer speed and refresh rate of the monitor). This means that the simulation is working correctly, because it is run at one year per second.
 
 ### Lagrange point L5
 
-Here the Earth is located near the Sun-Jupiter L5 Lagrange point. Notice that the radius of the Earth's orbit is smaller than that of Jupiter initially. If Jupiter's was not as massive, the Earth would overtake Jupiter. We can check this by decreasing Jupiter's mass and clicking Reload button. However, the combined gravity from Jupiter and the Sun traps the Earth, and it is destined to remain at L5 point behind Jupiter.
+Here the Earth is located near a special point in space called the Sun-Jupiter L5 Lagrange point. Notice that the radius of the Earth's orbit is smaller than that of Jupiter initially. Planets that are closed to the Sun have shorter orbital periods. Therefore, normally, the Earth would overtake Jupiter. We can check this by decreasing Jupiter's mass and clicking the Reload button on the bottom right of the simulation screen. However, the combined gravity from Jupiter and the Sun traps the Earth, and it is destined to remain at L5 point behind Jupiter.
 
 ### Kepler-16
 
-This is a simulation of a binary star system that also has a planet with a mass of 1/3 of Jupiter. Both binary stars are smaller than the Sun. This orbital plane of the planet is located edge-on, such that it blocks some light form the stars. This allowed scientists to measure periodic dips in the light from the stars, and this is how the planet was discovered [6]. The system appears to be stable, at least in the short term.
+This is a simulation of a binary star system that also has a planet with a mass of 1/3 of Jupiter's. Both binary stars are smaller than the Sun. The orbital plane of the planet is located edge-on to us. Consequently, when the planet moves in front of the stars, it blocks some of their light. This is precisely how this planet was discovered [6]. The simulation tells us that the system appears to be stable, at least in the short term.
 
 
 ### Chaotic
 
-This is an example of how an orderly and symmetrical system can quickly become unstable. Even small changes in the masses or the speed of the simulation produce different outcomes. The simulation even looks different when it is run in different browsers. This demonstrates sensitivity of a chaotic system to small variations.
+This is an example of how an orderly and symmetrical system can quickly become unstable. When the simulation is running on the computer, small calculation and rounding errors accumulate over time and drive the system away from stability. The simulation is so sensitive to small changes that it even looks different when you run it with the same settings but in different browsers.
 
 
 
 ## The coordinate system
 
-We will be using a coordinate system with its origin located at the center of mass of the three bodies, as shown in Fig. 1.
+Let's begin implementing our simulation. We will be using a coordinate system with its origin located at the center of mass of the three bodies, as shown in Fig. 1.
 
 <div class='isTextCentered'>
   <img class='isMax400PxWide' src='/image/blog/2018-09-27-three-body-problem-simulator/010_coordinate_system.png' alt='Coordinate system for a two-body problem'>
@@ -113,7 +113,7 @@ The main equation for this simulation is the Newton's equation of universal grav
   <span>(1)</span>
 </div>
 
-Combining this with the Newton's second law `F = m a`, we can derive three equations of motion:
+Combining this equation with Newton's second law `F = m a`, we can derive three equations of motion:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -123,7 +123,7 @@ Combining this with the Newton's second law `F = m a`, we can derive three equat
   <span>(2)</span>
 </div>
 
-The double dot means the second time derivative. Vector
+Here the double dots above the variables mean second time derivatives. The vector
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -133,7 +133,7 @@ The double dot means the second time derivative. Vector
   <span>(3)</span>
 </div>
 
-points from the Sun to the Earth. Equation 2 also includes the magnitudes of the vectors, which can be calculated as follows, for the case of vector pointing form the Sun to the Earth:
+points from the Sun to the Earth. Equation 2 also includes the magnitudes of the vectors, which can be calculated as follows, for the case of the vector pointing form the Sun to the Earth:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -161,7 +161,7 @@ Equation 2 contains three equations of motion. In order to use the equations in 
 Note the we got rid of the masses on the left-hand sides by dividing both sides by them. The equations look intimidating. However, these are not meant to be used by humans. It is much easier to write those equations in code, since they contain a lot of repetitions. But before we do this, we need to convert the equation into a computer readable form.
 
 
-## Converting the equation to first order
+## Converting the equations to first order
 
 Equation 5 is a system of six second order differential equations. In order to be solved numerically, we need to convert the equations into twelve first order ones. This reduction of order is done by first introducing twelve new variables `u`:
 
@@ -190,13 +190,14 @@ Again, this looks horrific, but in the program this turns into a nice loop that 
 
 ## Programming the equations of motion
 
-We are finally done with algebra and will turn our equation into code. The first thing we need to do is to declare an array that will store that values of those twelve `u` variables:
+We are finally done with algebra and will turn our equations into code. The first thing we need to do is to declare an array that will store that values of those twelve `u` variables:
 
 ```JavaScript
 // Current state of the system
 var state = {
   // State variables used in the differential equations
-  // First two elements are x and y positions, and second two are x and y components of velocity
+  // First two elements are x and y positions,
+  // and second two are x and y components of velocity
   // repeated for three bodies.
   u: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 }
@@ -223,7 +224,7 @@ function derivative() {
   return du;
 }
 ```
-This function `derivative` calculates the derivatives of the twelve `u` variables using Equation 7. To simplicity, the right-hand sides of equation that calculate accelerations are coded as a separate function:
+This function `derivative` calculates the derivatives of the twelve `u` variables using Equation 7. For simplicity, the right-hand sides of equation that calculate accelerations, are coded as a separate function:
 
 ```JavaScript
 // Returns the acceleration of the body 'iFromBody'
@@ -265,7 +266,7 @@ function acceleration(iFromBody, coordinate) {
 }
 ```
 
-There are a lot arrays and indices in this function, and I've made a lot of mistakes when I first coded this. But eventually, all bugs were found, removed and carefully released into the wild.
+There are a lot of arrays and indices in this function, and I've made a lot of mistakes when I first coded this. But eventually, all bugs were found, removed and carefully released into the wild.
 
 
 ## Solving the equations of motion numerically
@@ -280,12 +281,12 @@ function updatePosition(timestep) {
 }
 ```
 
-Before the first run, we need to supply pick some initial positions and velocities of the Sun, Earth and Jupiter and store them in the `u` array.
+Before the first run, we need to choose some initial positions and velocities of the Sun, Earth and Jupiter and store them in the `u` array.
 
 
 ## Drawing the bodies on screen
 
-At each frame of the animation, we will get new positions of the three bodies in the `u` array, which we use to position the Sun, Earth and Jupiter on screen. Here we use the drawing techniques we discussed in the [harmonic oscillator tutorial](/blog/programming-harmonic-oscillator/).
+At each frame of the animation, we calculate new positions of the three bodies in the `u` array. These position are turned into coordinates of the bodies on computer screen. Here we use the same drawing techniques that we discussed in the [harmonic oscillator tutorial](/blog/programming-harmonic-oscillator/).
 
 
 

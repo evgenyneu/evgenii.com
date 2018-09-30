@@ -874,7 +874,7 @@ Credits
         timeScaleFactor: 3600 * 24 * 41,
         timeScaleFactorSlider: {
           min: 0,
-          max: 3600 * 24 * 500 * 30000,
+          max: 3600 * 24 * 500 * 300,
           power: 5
         },
         positions: [ // in Polar coordinates, r is in meters
