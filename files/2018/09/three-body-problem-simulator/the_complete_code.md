@@ -73,7 +73,7 @@ Credits
   background-color: #000000;
   position: relative;
   height: 600px;
-  background-image: url("http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/starry_night.png");
+  background-image: url("https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/starry_night.png");
   background-position: center bottom;
   background-repeat: repeat;
   background-size: 874px 780px;
@@ -167,7 +167,6 @@ Credits
   display: block;
   height: 100%;
   float: left;
-  cursor: pointer;
 }
 
 .ThreeBodyProblem-leftBottomImage {
@@ -277,10 +276,10 @@ Sick Slider
   <p id="ThreeBodyProblem-notSupportedMessage" class="ThreeBodyProblem-alert ThreeBodyProblem-isHiddenBlock">Please use a newer browser to see the simulation.</p>
 
 <div class="ThreeBodyProblem-container isFullScreenWide isUnselectable">
-    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/sun.png' alt='Sun' class='ThreeBodyProblem-sun ThreeBodyProblem-spin'>
-    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/earth.png' alt='Earth' class='ThreeBodyProblem-earth ThreeBodyProblem-spin'>
-    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/jupiter_juno.png' alt='Jupiter' class='ThreeBodyProblem-jupiter ThreeBodyProblem-spin'>
-    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/center_of_mass.png' alt='Center of mass' class='ThreeBodyProblem-centerOfMass'>
+    <img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/sun.png' alt='Sun' class='ThreeBodyProblem-sun ThreeBodyProblem-spin'>
+    <img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/earth.png' alt='Earth' class='ThreeBodyProblem-earth ThreeBodyProblem-spin'>
+    <img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/jupiter_juno.png' alt='Jupiter' class='ThreeBodyProblem-jupiter ThreeBodyProblem-spin'>
+    <img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/center_of_mass.png' alt='Center of mass' class='ThreeBodyProblem-centerOfMass'>
 
     <canvas class="ThreeBodyProblem-canvas"></canvas>
 
@@ -288,16 +287,16 @@ Sick Slider
       <div class='ThreeBodyProblem-hudContainerChild'>
         <div class='ThreeBodyProblem-leftBottomButtonCantainer'>
           <a class='ThreeBodyProblem-leftBottomButton ThreeBodyProblem-mass1Button' href='#' title='Mass 1'>
-            <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/mass_one_icon.png' alt='Mass 1' class='ThreeBodyProblem-leftBottomImage'>
+            <img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/mass_one_icon.png' alt='Mass 1' class='ThreeBodyProblem-leftBottomImage'>
           </a>
           <a class='ThreeBodyProblem-leftBottomButton ThreeBodyProblem-mass2Button' href='#' title='Mass 2'>
-            <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/mass_two_icon.png' alt='Mass 2' class='ThreeBodyProblem-leftBottomImage'>
+            <img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/mass_two_icon.png' alt='Mass 2' class='ThreeBodyProblem-leftBottomImage'>
           </a>
           <a class='ThreeBodyProblem-leftBottomButton ThreeBodyProblem-mass3Button' href='#' title='Mass 3'>
-            <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/mass_three_icon.png' alt='Mass 3' class='ThreeBodyProblem-leftBottomImage'>
+            <img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/mass_three_icon.png' alt='Mass 3' class='ThreeBodyProblem-leftBottomImage'>
           </a>
           <a class='ThreeBodyProblem-leftBottomButton ThreeBodyProblem-speedButton' href='#' title='Speed'>
-            <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/clock_icon.png' alt='Speed' class='ThreeBodyProblem-leftBottomImage'>
+            <img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/clock_icon.png' alt='Speed' class='ThreeBodyProblem-leftBottomImage'>
           </a>
         </div>
         <a class='ThreeBodyProblem-reload' href='#' title='Reload'><img src='https://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/reload_icon.png' alt='Restart' class='ThreeBodyProblem-reloadIcon'></a>
