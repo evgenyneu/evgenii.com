@@ -649,8 +649,9 @@ Sick Slider
       }
     }
 
-    // Returns the acceleration of the body 'iFromBody' due to the other bodies.
-    //   iFromBody: the index of body: 0 is first body, 1 is second body etc.
+    // Returns the acceleration of the body 'iFromBody'
+    // due to the other bodies.
+    //   iFromBody: the index of body: 0 is first body, 1 is second body.
     //   coordinate: 0 for x coordinate, 1 for y coordinate
     function acceleration(iFromBody, coordinate) {
       var result = 0;
@@ -662,8 +663,12 @@ Sick Slider
         var iToBodyStart = iToBody * 4; // Starting index for the body in the u array
 
         // Distance between the two bodies
-        var distanceX = state.u[iToBodyStart + 0] - state.u[iFromBodyStart + 0];
-        var distanceY = state.u[iToBodyStart + 1] - state.u[iFromBodyStart + 1];
+        var distanceX = state.u[iToBodyStart + 0]
+          - state.u[iFromBodyStart + 0];
+
+        var distanceY = state.u[iToBodyStart + 1]
+          - state.u[iFromBodyStart + 1];
+
         var distance = Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2));
         var gravitationalConstant = 1;
 
@@ -671,7 +676,8 @@ Sick Slider
           gravitationalConstant = constants.gravitationalConstant;
         }
 
-        result += gravitationalConstant * initialConditions.masses[iToBody] *
+        result += gravitationalConstant *
+          initialConditions.masses[iToBody] *
           (state.u[iToBodyStart + coordinate] - state.u[iFromBodyStart + coordinate]) /
           (Math.pow(distance, 3));
       }
@@ -685,7 +691,8 @@ Sick Slider
 
       // Loop through the bodies
       for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
-        var bodyStart = iBody * 4; // Starting index for current body in the u array
+        // Starting index for current body in the u array
+        var bodyStart = iBody * 4; 
 
         du[bodyStart + 0] = state.u[bodyStart + 0 + 2]; // Velocity x
         du[bodyStart + 1] = state.u[bodyStart + 0 + 3]; // Velocity y
@@ -1167,7 +1174,7 @@ Sick Slider
         timeScaleFactor: 3600 * 24 * 41,
         timeScaleFactorSlider: {
           min: 0,
-          max: 3600 * 24 * 500 * 30000,
+          max: 3600 * 24 * 500 * 300,
           power: 5
         },
         positions: [ // in Polar coordinates, r is in meters
@@ -1314,7 +1321,8 @@ Sick Slider
       var a = calcualteA(defaultOutput, power);
       if (a === 0) { a = 1; }
       var l = calcualteL(defaultOutput, power);
-      return (Math.pow(output - defaultOutput, 1 / power) - l) / a;
+      var sign = (output - defaultOutput) < 0 ? -1 : 1;
+      return (sign * Math.pow(Math.abs(output - defaultOutput), 1 / power) - l) / a;
     }
 
     // Return the slider output value based on the input and default output values
@@ -1322,7 +1330,6 @@ Sick Slider
       if (power === 0) return 1;
       var a = calcualteA(defaultOutput, power);
       var l = calcualteL(defaultOutput, power);
-
 
       return Math.pow(a * intput + l, power) + defaultOutput;
     }
@@ -1371,7 +1378,6 @@ Sick Slider
 
       var newValue = sliderSettings.min + (sliderSettings.max - sliderSettings.min) * sliderValue;
       newValue = roundSliderValue(newValue);
-      window.console.log(newValue);
 
       if (currentSlider === "mass") {
         physics.initialConditions.masses[currentMassSliderIndex] = newValue;
