@@ -775,7 +775,7 @@ Credits
           },
           {
             r: 7.78 * Math.pow(10, 11),
-            theta: Math.PI/2
+            theta: 0
           }
         ],
         velocities: [ // in Polar coordinates, r is in m/s
@@ -789,7 +789,50 @@ Credits
           },
           {
             r: 13.1 * Math.pow(10, 3),
-            theta: Math.PI
+            theta: Math.PI/2
+          }
+        ]
+      },
+      "LagrangePoint5": {
+        masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 28)],
+        density: 0.001,
+        massSlider: {
+          min: 3 * Math.pow(10, 10),
+          max: 3 * Math.pow(10, 31),
+          power: 5
+        },
+        timeScaleFactor: 3600 * 24 * 1000,
+        timeScaleFactorSlider: {
+          min: 0,
+          max: 3600 * 24 * 500 * 30000,
+          power: 5
+        },
+        positions: [ // in Polar coordinates, r is in meters
+          {
+            r: 0,
+            theta: 0
+          },
+          {
+            r: 7.5 * Math.pow(10, 11),
+            theta: -Math.PI/3 - Math.PI/10
+          },
+          {
+            r: 7.78 * Math.pow(10, 11),
+            theta: 0
+          }
+        ],
+        velocities: [ // in Polar coordinates, r is in m/s
+          {
+            r: 0,
+            theta: Math.PI/2
+          },
+          {
+            r: 13.3 * Math.pow(10, 3),
+            theta: Math.PI/6 - Math.PI/10
+          },
+          {
+            r: 13.1 * Math.pow(10, 3),
+            theta: Math.PI/2
           }
         ]
       }
