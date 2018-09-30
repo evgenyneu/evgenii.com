@@ -145,6 +145,7 @@ points from the Sun to the Earth. Equation 2 also includes the magnitudes of the
 
 Here `x1, y1` and `x2, y2` are the coordinates of the Earth and the Sun respectively.
 
+
 ## Writing equations of motions in `x` and `y`
 
 Equation 2 contains three equations of motion. In order to use the equations in our program we need to write each equation in terms of `x` and `y` coordinates. This gives six equations
@@ -156,6 +157,135 @@ Equation 2 contains three equations of motion. In order to use the equations in 
   </span>
   <span>(5)</span>
 </div>
+
+Note the we got rid of the masses on the left-hand sides by dividing both sides by them. The equations look intimidating. However, these are not meant to be used by humans. It is much easier to write those equations in code, since they contain a lot of repetitions. But before we do this, we need to convert the equation into a computer readable form.
+
+
+## Converting the equation to first order
+
+Equation 5 is a system of six second order differential equations. In order to be solved numerically, we need to convert the equations into twelve first order ones. This reduction of order is done by first introducing twelve new variables `u`:
+
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax400PxWide' src='/image/blog/2018-09-27-three-body-problem-simulator/0070_reduction_of_order_variables.png' alt='Twelve variables needed to reduce the order of equations.'>
+  </span>
+  <span>(6)</span>
+</div>
+
+Now we can use the new variables and turn Equation 5 into the following system of first-order differential equations that describe the motion of the three bodies:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax350PxWide' src='/image/blog/2018-09-27-three-body-problem-simulator/0080_system_of_first_order_differential_equation.png' alt='Twelve first order equations of motions.'>
+  </span>
+  <span>(7)</span>
+</div>
+
+Again, this looks horrific, but in the program this turns into a nice loop that takes care of repetitions.
+
+
+
+## Programming the equations of motion
+
+We are finally done with algebra and will turn our equation into code. The first thing we need to do is to declare an array that will store that values of those twelve `u` variables:
+
+```JavaScript
+// Current state of the system
+var state = {
+  // State variables used in the differential equations
+  // First two elements are x and y positions, and second two are x and y components of velocity
+  // repeated for three bodies.
+  u: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+```
+
+Next, as promised, we turn the long Equation 7 into a much shorter code:
+
+```JavaScript
+// Calculate the derivatives of the system of ODEs that describe equation of motion of the bodies
+function derivative() {
+  var du = new Array(initialConditions.bodies * 4);
+
+  // Loop through the bodies
+  for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
+    // Starting index for current body in the u array
+    var bodyStart = iBody * 4;
+
+    du[bodyStart + 0] = state.u[bodyStart + 0 + 2]; // Velocity x
+    du[bodyStart + 1] = state.u[bodyStart + 0 + 3]; // Velocity y
+    du[bodyStart + 2] = acceleration(iBody, 0); // Acceleration x
+    du[bodyStart + 3] = acceleration(iBody, 1); // Acceleration y
+  }
+
+  return du;
+}
+```
+This function `derivative` calculates the derivatives of the twelve `u` variables using Equation 7. To simplicity, the right-hand sides of equation that calculate accelerations are coded as a separate function:
+
+```JavaScript
+// Returns the acceleration of the body 'iFromBody'
+// due to the other bodies.
+//   iFromBody: the index of body: 0 is first body, 1 is second body.
+//   coordinate: 0 for x coordinate, 1 for y coordinate
+function acceleration(iFromBody, coordinate) {
+  var result = 0;
+  // Starting index for the body in the u array
+  var iFromBodyStart = iFromBody * 4;
+
+  // Loop through the bodies
+  for (var iToBody = 0; iToBody < initialConditions.bodies; iToBody++) {
+    if (iFromBody === iToBody) { continue; }
+    // Starting index for the body in the u array
+    var iToBodyStart = iToBody * 4;
+
+    // Distance between the two bodies
+    var distanceX = state.u[iToBodyStart + 0]
+      - state.u[iFromBodyStart + 0];
+
+    var distanceY = state.u[iToBodyStart + 1]
+      - state.u[iFromBodyStart + 1];
+
+    var distance = Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2));
+    var gravitationalConstant = 1;
+
+    if (initialConditions.dimensionless !== true) {
+      gravitationalConstant = constants.gravitationalConstant;
+    }
+
+    result += gravitationalConstant *
+      initialConditions.masses[iToBody] *
+      (state.u[iToBodyStart + coordinate] - state.u[iFromBodyStart + coordinate]) /
+      (Math.pow(distance, 3));
+  }
+
+  return result;
+}
+```
+
+There are a lot arrays and indices in this function, and I've made a lot of mistakes when I first coded this. But eventually, all bugs were found, removed and carefully released into the wild.
+
+
+## Solving the equations of motion numerically
+
+Next, we need to solve the Equation 7 numerically. In order to do this, we use a popular numerical method called Runge-Kutta. At each frame of our animation, we call the `rungeKutta.calculate` function and it updates our variables `u` with new positions and velocities of the three bodies.
+
+```JavaScript
+// The main function that is called on every animation frame.
+// It calculates and updates the current positions of the bodies
+function updatePosition(timestep) {
+  rungeKutta.calculate(timestep, state.u, derivative);
+}
+```
+
+Before the first run, we need to supply pick some initial positions and velocities of the Sun, Earth and Jupiter and store them in the `u` array.
+
+
+## Drawing the bodies on screen
+
+At each frame of the animation, we will get new positions of the three bodies in the `u` array, which we use to position the Sun, Earth and Jupiter on screen. Here we use the drawing techniques we discussed in the [harmonic oscillator tutorial](/blog/programming-harmonic-oscillator/).
 
 
 

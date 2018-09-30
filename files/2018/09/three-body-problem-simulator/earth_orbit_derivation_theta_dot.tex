@@ -59,6 +59,30 @@
 \end{align*}
 
 
+\begin{align*}
+  & & & & u_1 & = x_1       &  u_5 & = x_2         &  u_9 & = x_3 & & & & \\
+  & & & & u_2 & = y_1       &  u_6 & = y_2         &  u_{10} & = y_3 & & & & \\
+  & & & & u_3 & = \dot{x}_1 &  u_7 & = \dot{x}_2   &  u_{11} & = \dot{x}_3 & & & & \\
+  & & & & u_3 & = \dot{y}_1 &  u_8 & = \dot{y}_2   &  u_{12} & = \dot{y}_3 & & & &
+\end{align*}
+
+
+\begin{align*}
+  \dot{u}_1 &= u_3 \\
+  \dot{u}_2 &= u_4 \\
+  \dot{u}_3 &= \frac{G m_2}{r^3_{12}} (u_5 - u_1)  + \frac{G m_3}{r^3_{13}} (u_9 - u_1) \\
+  \dot{u}_4 &= \frac{G m_2}{r^3_{12}} (u_6 - u_2)  + \frac{G m_3}{r^3_{13}} (u_{10} - u_2) \\
+  \dot{u}_5 &= u_7 \\
+  \dot{u}_6 &= u_8 \\
+  \dot{u}_7 &= \frac{G m_1}{r^3_{12}} (u_1 - u_5)  + \frac{G m_3}{r^3_{23}} (u_9 - u_5) \\
+  \dot{u}_8 &= \frac{G m_1}{r^3_{12}} (u_2 - u_6)  + \frac{G m_3}{r^3_{23}} (u_{10} - u_6) \\
+  \dot{u}_9 &= u_{11} \\
+  \dot{u}_{10} &= u_{12} \\
+  \dot{u}_{11} &= \frac{G m_1}{r^3_{13}} (u_1 - u_9)  + \frac{G m_2}{r^3_{23}} (u_5 - u_9) \\
+  \dot{u}_{12} &= \frac{G m_1}{r^3_{13}} (u_2 - u_{10})  + \frac{G m_2}{r^3_{23}} (u_6 - u_{10})
+\end{align*}
+
+
 
 \begin{equation*}
   F = \frac{G m_1 m_2}{r^2}

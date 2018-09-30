@@ -349,8 +349,9 @@ Credits
       }
     }
 
-    // Returns the acceleration of the body 'iFromBody' due to the other bodies.
-    //   iFromBody: the index of body: 0 is first body, 1 is second body etc.
+    // Returns the acceleration of the body 'iFromBody'
+    // due to the other bodies.
+    //   iFromBody: the index of body: 0 is first body, 1 is second body.
     //   coordinate: 0 for x coordinate, 1 for y coordinate
     function acceleration(iFromBody, coordinate) {
       var result = 0;
@@ -362,8 +363,12 @@ Credits
         var iToBodyStart = iToBody * 4; // Starting index for the body in the u array
 
         // Distance between the two bodies
-        var distanceX = state.u[iToBodyStart + 0] - state.u[iFromBodyStart + 0];
-        var distanceY = state.u[iToBodyStart + 1] - state.u[iFromBodyStart + 1];
+        var distanceX = state.u[iToBodyStart + 0]
+          - state.u[iFromBodyStart + 0];
+
+        var distanceY = state.u[iToBodyStart + 1]
+          - state.u[iFromBodyStart + 1];
+
         var distance = Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2));
         var gravitationalConstant = 1;
 
@@ -371,7 +376,8 @@ Credits
           gravitationalConstant = constants.gravitationalConstant;
         }
 
-        result += gravitationalConstant * initialConditions.masses[iToBody] *
+        result += gravitationalConstant *
+          initialConditions.masses[iToBody] *
           (state.u[iToBodyStart + coordinate] - state.u[iFromBodyStart + coordinate]) /
           (Math.pow(distance, 3));
       }
@@ -385,7 +391,8 @@ Credits
 
       // Loop through the bodies
       for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
-        var bodyStart = iBody * 4; // Starting index for current body in the u array
+        // Starting index for current body in the u array
+        var bodyStart = iBody * 4; 
 
         du[bodyStart + 0] = state.u[bodyStart + 0 + 2]; // Velocity x
         du[bodyStart + 1] = state.u[bodyStart + 0 + 3]; // Velocity y
