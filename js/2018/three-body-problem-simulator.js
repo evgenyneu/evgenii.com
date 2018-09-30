@@ -733,7 +733,7 @@ Credits
         timeScaleFactorSlider: {
           min: 0.00,
           max: 20000,
-          power: 3
+          power: 5
         },
         positions: [ // in Polar coordinates, r is in meters
           polarFromCartesian(vigure8Position),
@@ -956,15 +956,53 @@ Credits
     }
 
     function formatTimescaleForSlider(value) {
-      var formatted = parseFloat(Math.round(value * 10000) / 10000).toFixed(4);
+      var timeHumanized = timeHumanReadable(value);
+      var formatted = parseFloat(Math.round(timeHumanized.value * 10000) / 10000).toFixed(4);
 
-      if (value > 10000) {
-        formatted = value.toExponential(4);
+      if (timeHumanized.value > 10000) {
+        formatted = timeHumanized.value.toExponential(4);
       }
 
-      formatted = "Simulation speed: " + formatted + " seconds per second";
+      formatted = "Simulation speed: " + formatted + " " + timeHumanized.unit + " per second";
 
       return formatted;
+    }
+
+    function timeHumanReadable(time) {
+      var result = {
+        unit: 'second',
+        value: time
+      };
+
+      if (result.value < 60) {
+        return result;
+      }
+
+      result.value /= 60;
+      result.unit = 'minute';
+
+      if (result.value < 60) {
+        return result;
+      }
+
+      result.value /= 60;
+      result.unit = 'hour';
+
+      if (result.value < 24) {
+        return result;
+      }
+
+      result.value /= 24;
+      result.unit = 'day';
+
+      if (result.value < 365) {
+        return result;
+      }
+
+      result.value /= 365;
+      result.unit = 'year';
+
+      return result;
     }
 
     function didClickRestart() {
