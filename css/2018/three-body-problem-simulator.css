@@ -28,11 +28,11 @@ Credits
   --------
 */
 
-.EarthOrbitSimulation-hasTopMarginSmall {
+.ThreeBodyProblem-hasTopMarginSmall {
   margin-top: 5px;
 }
 
-.EarthOrbitSimulation-hasNegativeBottomMarginNormal {
+.ThreeBodyProblem-hasNegativeBottomMarginNormal {
   margin-bottom: -10px;
 }
 
@@ -41,14 +41,14 @@ Credits
   --------
 */
 
-.EarthOrbitSimulation-alert {
+.ThreeBodyProblem-alert {
   color: red;
   border: 1px solid red;
   background: #ffeeee;
   padding: 5px;
 }
 
-.EarthOrbitSimulation-container {
+.ThreeBodyProblem-container {
   background-color: #000000;
   position: relative;
   height: 600px;
@@ -58,11 +58,11 @@ Credits
   background-size: 874px 780px;
 }
 
-.EarthOrbitSimulation-isTextCentered { text-align: center; }
-.EarthOrbitSimulation-isHiddenBlock { display: none; }
+.ThreeBodyProblem-isTextCentered { text-align: center; }
+.ThreeBodyProblem-isHiddenBlock { display: none; }
 
 
-.EarthOrbitSimulation-centerOfMass {
+.ThreeBodyProblem-centerOfMass {
   position: absolute;
   width: 11px;
   top: 50%;
@@ -72,16 +72,16 @@ Credits
   z-index: 998;
 }
 
-.EarthOrbitSimulation-earth,
-.EarthOrbitSimulation-jupiter,
-.EarthOrbitSimulation-sun {
+.ThreeBodyProblem-earth,
+.ThreeBodyProblem-jupiter,
+.ThreeBodyProblem-sun {
   position: absolute;
   width: 60px;
   top: -1000px;
   z-index: 1000;
 }
 
-.EarthOrbitSimulation-spin {
+.ThreeBodyProblem-spin {
   -webkit-animation:spin .5s linear infinite;
   -moz-animation:spin .5s linear infinite;
   animation:spin .5s linear infinite;
@@ -91,7 +91,7 @@ Credits
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
 
-.EarthOrbitSimulation-canvas { display: block; }
+.ThreeBodyProblem-canvas { display: block; }
 
 /* Prevent browser from showing selection when the element is touched */
 .isUnselectable {
@@ -109,7 +109,7 @@ Credits
   ---------
 */
 
-.EarthOrbitSimulation-hudContainer {
+.ThreeBodyProblem-hudContainer {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -118,7 +118,7 @@ Credits
   top: 0;
 }
 
-.EarthOrbitSimulation-hudContainerChild {
+.ThreeBodyProblem-hudContainerChild {
   position: relative;
   width: 100%;
   height: 100%;
@@ -133,7 +133,7 @@ Credits
 */
 
 
-.EarthOrbitSimulation-leftBottomButtonCantainer {
+.ThreeBodyProblem-leftBottomButtonCantainer {
   position: absolute;
   display: block;
   left: 15px;
@@ -142,13 +142,13 @@ Credits
   height: 40px;
 }
 
-.EarthOrbitSimulation-leftBottomButton {
+.ThreeBodyProblem-leftBottomButton {
   display: block;
   height: 100%;
   float: left;
 }
 
-.EarthOrbitSimulation-leftBottomImage {
+.ThreeBodyProblem-leftBottomImage {
   height: 100%;
   border : 0;
 }
@@ -158,7 +158,7 @@ Credits
   ---------
 */
 
-.EarthOrbitSimulation-reload {
+.ThreeBodyProblem-reload {
   position: absolute;
   display: block;
   bottom: 10px;
@@ -167,7 +167,7 @@ Credits
   height: 40px;
 }
 
-.EarthOrbitSimulation-reloadIcon {
+.ThreeBodyProblem-reloadIcon {
   width: 100%;
   border : 0;
 }
@@ -177,19 +177,19 @@ Credits
   ---------
 */
 
-.EarthOrbitSimulation-slider{
+.ThreeBodyProblem-slider{
   margin: 0 auto;
 }
 
-.EarthOrbitSimulation-sliderSun .SickSlider-head {
+.ThreeBodyProblem-sliderSun .SickSlider-head {
   background-color: #ff9400;
 }
 
-.EarthOrbitSimulation-sliderEarth .SickSlider-head {
+.ThreeBodyProblem-sliderEarth .SickSlider-head {
   background-color: #6780FF;
 }
 
-.EarthOrbitSimulation-sliderJupiter .SickSlider-head {
+.ThreeBodyProblem-sliderJupiter .SickSlider-head {
   background-color: #4BCF79;
 }
 
@@ -200,7 +200,7 @@ Button
 
 */
 
-.EarthOrbitSimulation-button {
+.ThreeBodyProblem-button {
   margin: 5px;
   padding: 5px 10px 3px 10px;
   display: inline-block;
@@ -211,7 +211,7 @@ Button
   border: none;
 }
 
-.EarthOrbitSimulation-button--isSelected {
+.ThreeBodyProblem-button--isSelected {
   background-color: #a66000;
 }
 

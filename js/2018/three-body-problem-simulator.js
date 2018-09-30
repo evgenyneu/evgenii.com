@@ -2,7 +2,7 @@
 
 Three-body problem simulation
 
-https://evgenii.com/blog/two-body-problem-simulator/
+https://evgenii.com/blog/three-body-problem-simulator/
 
 License: Public Domain
 
@@ -14,6 +14,12 @@ Credits
 2. "The Blue Marble" By  NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans. Sources: http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg, https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg
 
 3. "The Sun photographed at 304 angstroms" by NASA/SDO (AIA). Sources: http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg, https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg
+
+4. **"Jupiter's South Pole"** image: NASA/JPL-Caltech/SwRI/MSSS/Betsy Asher Hall/Gervasio Robles, [source](https://www.nasa.gov/image-feature/jupiters-south-pole).
+
+5. **Figure eight orbit**: Moore, C. 1993, Phys. Rev. Lett., 70, 3675.
+
+6. **Kepler-16 system**: Doyle, L. R., Carter, J. A., Fabrycky, D. C., et al. 2011, Science, 333, 1602.
 
 */
 
@@ -170,7 +176,7 @@ Credits
 
   // Show debug messages on screen
   var debug = (function(){
-    var debugOutput = document.querySelector(".EarthOrbitSimulation-debugOutput");
+    var debugOutput = document.querySelector(".ThreeBodyProblem-debugOutput");
 
     function print(text) {
       var date = new Date();
@@ -218,13 +224,10 @@ Credits
     };
   })();
 
-  // Calculates the position of the Earth
+  // Calculates the simulation of the three bodies
   var physics = (function() {
     var constants = {
       gravitationalConstant: 6.67408 * Math.pow(10, -11),
-      earthSunDistanceMeters: 1.496 * Math.pow(10, 11),
-      earthMoonDistanceMeters: 3.844 * Math.pow(10, 8),
-      massOfTheSunKg: 1.98855 * Math.pow(10, 30),
       // Average density of the body (kg/m^3). Used for calculating body's radius form its mass
       averageDensity: 1410
     };
@@ -252,7 +255,7 @@ Credits
       ]
     };
 
-    // Initial condition of the model
+    // Initial condition of the model. The conditions are loaded from the currently selected simulation.
     var initialConditions = {
       bodies: 3, // Number of bodies
     };
@@ -547,7 +550,7 @@ Credits
     }
 
     function showCanvasNotSupportedMessage() {
-      document.getElementById("EarthOrbitSimulation-notSupportedMessage").style.display ='block';
+      document.getElementById("ThreeBodyProblem-notSupportedMessage").style.display ='block';
     }
 
     // Resize canvas to will the width of container
@@ -555,7 +558,7 @@ Credits
 
       // Adjust the canvas to the size of the screen
       canvasHeight = Math.min(window.innerHeight, window.innerWidth) - 100;
-      document.querySelector(".EarthOrbitSimulation-container").style.height = canvasHeight + 'px';
+      document.querySelector(".ThreeBodyProblem-container").style.height = canvasHeight + 'px';
 
       canvas.style.width='100%';
       canvas.style.height= canvasHeight + 'px';
@@ -566,7 +569,7 @@ Credits
     // Returns true on error and false on success
     function initCanvas() {
       // Find the canvas HTML element
-      canvas = document.querySelector(".EarthOrbitSimulation-canvas");
+      canvas = document.querySelector(".ThreeBodyProblem-canvas");
 
       // Check if the browser supports canvas drawing
       if (!(window.requestAnimationFrame && canvas && canvas.getContext)) { return true; }
@@ -588,10 +591,9 @@ Credits
       // Update the size of the canvas
       fitToContainer();
 
-
-      var earthElement = document.querySelector(".EarthOrbitSimulation-earth");
-      var sunElement = document.querySelector(".EarthOrbitSimulation-sun");
-      var jupiterElement = document.querySelector(".EarthOrbitSimulation-jupiter");
+      var earthElement = document.querySelector(".ThreeBodyProblem-earth");
+      var sunElement = document.querySelector(".ThreeBodyProblem-sun");
+      var jupiterElement = document.querySelector(".ThreeBodyProblem-jupiter");
 
       bodyElemenets = [];
       bodyElemenets.push(sunElement);
@@ -678,7 +680,7 @@ Credits
     };
   })();
 
-  // Helper function to deal with CSS
+  // Helper functions for dealing with CSS
   var cssHelper = (function(){
     function hasClass(element, className) {
       return (' ' + element.className + ' ').indexOf(' ' + className+ ' ') > -1;
@@ -726,7 +728,9 @@ Credits
     }
 
 
-    // The list of simulations.
+    // The list of simulations shown to the user.
+    // -------------------------
+    //
     //    dimensionless: false if masses are given in kilograms, true if masses are close to 1.
     //    masses: Masses of the bodies in kilograms
     //    timeScaleFactor:
@@ -739,6 +743,7 @@ Credits
     //                used for estimating the radius of an object from its mass.
     //                If not supplied, an average Sun's density is used.
     //    paleOrbitalPaths: If true then the orbital path is paler than usual.
+    //
     var allPresets = {
       "FigureEight": {
         dimensionless: true,
@@ -940,7 +945,7 @@ Credits
     };
 
     function didClickElement(element) {
-      if (!cssHelper.hasClass(element, "EarthOrbitSimulation-preset")) {
+      if (!cssHelper.hasClass(element, "ThreeBodyProblem-preset")) {
         didClickElement(element.parentElement);
         return;
       }
@@ -955,14 +960,14 @@ Credits
       // Mark the current element as selected
       // -----------
 
-      var presetElements = document.querySelectorAll(".EarthOrbitSimulation-preset");
+      var presetElements = document.querySelectorAll(".ThreeBodyProblem-preset");
 
       // Loop through the presets
       for (var iPreset = 0; iPreset < presetElements.length; iPreset++) {
         var presetElement = presetElements[iPreset];
-        cssHelper.removeClass(presetElement, 'EarthOrbitSimulation-button--isSelected');
+        cssHelper.removeClass(presetElement, 'ThreeBodyProblem-button--isSelected');
       }
-      cssHelper.addClass(element, "EarthOrbitSimulation-button--isSelected");
+      cssHelper.addClass(element, "ThreeBodyProblem-button--isSelected");
     }
 
     function didClick(e) {
@@ -971,7 +976,7 @@ Credits
     }
 
     function init() {
-      var presetElements = document.querySelectorAll(".EarthOrbitSimulation-preset");
+      var presetElements = document.querySelectorAll(".ThreeBodyProblem-preset");
 
       // Loop through the presets
       for (var iPreset = 0; iPreset < presetElements.length; iPreset++) {
@@ -1030,13 +1035,13 @@ Credits
 
   // React to user input
   var userInput = (function(){
-    var sliderLabelElement = document.querySelector(".EarthOrbitSimulation-sliderLabel");
-    var restartButton = document.querySelector(".EarthOrbitSimulation-reload");
-    var mass1Button = document.querySelector(".EarthOrbitSimulation-mass1Button");
-    var mass2Button = document.querySelector(".EarthOrbitSimulation-mass2Button");
-    var mass3Button = document.querySelector(".EarthOrbitSimulation-mass3Button");
-    var speedButton = document.querySelector(".EarthOrbitSimulation-speedButton");
-    var sliderElement = document.querySelector(".EarthOrbitSimulation-slider");
+    var sliderLabelElement = document.querySelector(".ThreeBodyProblem-sliderLabel");
+    var restartButton = document.querySelector(".ThreeBodyProblem-reload");
+    var mass1Button = document.querySelector(".ThreeBodyProblem-mass1Button");
+    var mass2Button = document.querySelector(".ThreeBodyProblem-mass2Button");
+    var mass3Button = document.querySelector(".ThreeBodyProblem-mass3Button");
+    var speedButton = document.querySelector(".ThreeBodyProblem-speedButton");
+    var sliderElement = document.querySelector(".ThreeBodyProblem-slider");
     var slider;
     var currentSlider = "mass";
     var currentMassSliderIndex = 0;
@@ -1191,9 +1196,9 @@ Credits
     }
 
     function resetSlider() {
-      cssHelper.removeClass(sliderElement, "EarthOrbitSimulation-sliderSun");
-      cssHelper.removeClass(sliderElement, "EarthOrbitSimulation-sliderEarth");
-      cssHelper.removeClass(sliderElement, "EarthOrbitSimulation-sliderJupiter");
+      cssHelper.removeClass(sliderElement, "ThreeBodyProblem-sliderSun");
+      cssHelper.removeClass(sliderElement, "ThreeBodyProblem-sliderEarth");
+      cssHelper.removeClass(sliderElement, "ThreeBodyProblem-sliderJupiter");
 
       var sliderSettings = getCurrentSliderSettings();
       var simulationValue = getCurrentSimulationValue(physics.initialConditions);
@@ -1204,13 +1209,13 @@ Credits
 
         switch(currentMassSliderIndex) {
             case 0:
-                cssHelper.addClass(sliderElement, "EarthOrbitSimulation-sliderSun");
+                cssHelper.addClass(sliderElement, "ThreeBodyProblem-sliderSun");
                 break;
             case 1:
-                cssHelper.addClass(sliderElement, "EarthOrbitSimulation-sliderEarth");
+                cssHelper.addClass(sliderElement, "ThreeBodyProblem-sliderEarth");
                 break;
             default:
-                cssHelper.addClass(sliderElement, "EarthOrbitSimulation-sliderJupiter");
+                cssHelper.addClass(sliderElement, "ThreeBodyProblem-sliderJupiter");
         }
       } else {
         sliderText = formatTimescaleForSlider(physics.initialConditions.timeScaleFactor);
@@ -1272,7 +1277,7 @@ Credits
       simulations.content.didChangeModel = didChangeModel;
 
       // Slider
-      slider = SickSlider(".EarthOrbitSimulation-slider");
+      slider = SickSlider(".ThreeBodyProblem-slider");
       slider.onSliderChange = didUpdateSlider;
       resetSlider();
 

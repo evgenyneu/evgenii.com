@@ -9,54 +9,54 @@ tags: programming science
 <link rel="stylesheet" href="/css/2018/three-body-problem-simulator.css">
 
 <!-- Message shown in old browsers. -->
-  <p id="EarthOrbitSimulation-notSupportedMessage" class="EarthOrbitSimulation-alert EarthOrbitSimulation-isHiddenBlock">Please use a newer browser to see the simulation.</p>
+  <p id="ThreeBodyProblem-notSupportedMessage" class="ThreeBodyProblem-alert ThreeBodyProblem-isHiddenBlock">Please use a newer browser to see the simulation.</p>
 
-<div class="EarthOrbitSimulation-container isFullScreenWide isUnselectable">
-    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/sun.png' alt='Earth' class='EarthOrbitSimulation-sun EarthOrbitSimulation-spin'>
-    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/earth.png' alt='Earth' class='EarthOrbitSimulation-earth EarthOrbitSimulation-spin'>
-    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/jupiter_juno.png' alt='Jupiter' class='EarthOrbitSimulation-jupiter EarthOrbitSimulation-spin'>
-    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/center_of_mass.png' alt='Earth' class='EarthOrbitSimulation-centerOfMass'>
+<div class="ThreeBodyProblem-container isFullScreenWide isUnselectable">
+    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/sun.png' alt='Sun' class='ThreeBodyProblem-sun ThreeBodyProblem-spin'>
+    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/earth.png' alt='Earth' class='ThreeBodyProblem-earth ThreeBodyProblem-spin'>
+    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/jupiter_juno.png' alt='Jupiter' class='ThreeBodyProblem-jupiter ThreeBodyProblem-spin'>
+    <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/center_of_mass.png' alt='Center of mass' class='ThreeBodyProblem-centerOfMass'>
 
-    <canvas class="EarthOrbitSimulation-canvas"></canvas>
+    <canvas class="ThreeBodyProblem-canvas"></canvas>
 
-    <div class='EarthOrbitSimulation-hudContainer'>
-      <div class='EarthOrbitSimulation-hudContainerChild'>
-        <div class='EarthOrbitSimulation-leftBottomButtonCantainer'>
-          <a class='EarthOrbitSimulation-leftBottomButton EarthOrbitSimulation-mass1Button' href='#' title='Mass 1'>
-            <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/mass_one_icon.png' alt='Mass 1' class='EarthOrbitSimulation-leftBottomImage'>
+    <div class='ThreeBodyProblem-hudContainer'>
+      <div class='ThreeBodyProblem-hudContainerChild'>
+        <div class='ThreeBodyProblem-leftBottomButtonCantainer'>
+          <a class='ThreeBodyProblem-leftBottomButton ThreeBodyProblem-mass1Button' href='#' title='Mass 1'>
+            <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/mass_one_icon.png' alt='Mass 1' class='ThreeBodyProblem-leftBottomImage'>
           </a>
-          <a class='EarthOrbitSimulation-leftBottomButton EarthOrbitSimulation-mass2Button' href='#' title='Mass 2'>
-            <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/mass_two_icon.png' alt='Mass 2' class='EarthOrbitSimulation-leftBottomImage'>
+          <a class='ThreeBodyProblem-leftBottomButton ThreeBodyProblem-mass2Button' href='#' title='Mass 2'>
+            <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/mass_two_icon.png' alt='Mass 2' class='ThreeBodyProblem-leftBottomImage'>
           </a>
-          <a class='EarthOrbitSimulation-leftBottomButton EarthOrbitSimulation-mass3Button' href='#' title='Mass 3'>
-            <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/mass_three_icon.png' alt='Mass 3' class='EarthOrbitSimulation-leftBottomImage'>
+          <a class='ThreeBodyProblem-leftBottomButton ThreeBodyProblem-mass3Button' href='#' title='Mass 3'>
+            <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/mass_three_icon.png' alt='Mass 3' class='ThreeBodyProblem-leftBottomImage'>
           </a>
-          <a class='EarthOrbitSimulation-leftBottomButton EarthOrbitSimulation-speedButton' href='#' title='Speed'>
-            <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/clock_icon.png' alt='Speed' class='EarthOrbitSimulation-leftBottomImage'>
+          <a class='ThreeBodyProblem-leftBottomButton ThreeBodyProblem-speedButton' href='#' title='Speed'>
+            <img src='http://127.0.0.1:4000/image/blog/2018-09-27-three-body-problem-simulator/clock_icon.png' alt='Speed' class='ThreeBodyProblem-leftBottomImage'>
           </a>
         </div>
-        <a class='EarthOrbitSimulation-reload' href='#' title='Reload'><img src='https://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/reload_icon.png' alt='Restart' class='EarthOrbitSimulation-reloadIcon'></a>
+        <a class='ThreeBodyProblem-reload' href='#' title='Reload'><img src='https://evgenii.com/image/blog/2016-09-17-ridiculous-strawberry-picking/reload_icon.png' alt='Restart' class='ThreeBodyProblem-reloadIcon'></a>
       </div>
     </div>
 </div>
 
-<div class='EarthOrbitSimulation-isTextCentered EarthOrbitSimulation-hasTopMarginSmall EarthOrbitSimulation-hasNegativeBottomMarginNormal isUnselectable'>
-  <span class='EarthOrbitSimulation-sliderLabel'>0.10</span>
+<div class='ThreeBodyProblem-isTextCentered ThreeBodyProblem-hasTopMarginSmall ThreeBodyProblem-hasNegativeBottomMarginNormal isUnselectable'>
+  <span class='ThreeBodyProblem-sliderLabel'>0.10</span>
 </div>
 
-<div class="SickSlider EarthOrbitSimulation-slider isUnselectable" >
+<div class="SickSlider ThreeBodyProblem-slider isUnselectable" >
   <div class="SickSlider-stripe"></div>
   <div class="SickSlider-head"></div>
 </div>
 
-<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button EarthOrbitSimulation-button--isSelected" data-name="FigureEight">Figure eight </button>
-<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="SunEarthJupiter">Sun, Earth and Jupiter</button>
-<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="LagrangePoint5">Lagrange point L5</button>
-<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="Kepler16">Kepler-16</button>
-<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="Chaotic">Chaotic</button>
+<button class="ThreeBodyProblem-preset ThreeBodyProblem-button ThreeBodyProblem-button--isSelected" data-name="FigureEight">Figure eight </button>
+<button class="ThreeBodyProblem-preset ThreeBodyProblem-button" data-name="SunEarthJupiter">Sun, Earth and Jupiter</button>
+<button class="ThreeBodyProblem-preset ThreeBodyProblem-button" data-name="LagrangePoint5">Lagrange point L5</button>
+<button class="ThreeBodyProblem-preset ThreeBodyProblem-button" data-name="Kepler16">Kepler-16</button>
+<button class="ThreeBodyProblem-preset ThreeBodyProblem-button" data-name="Chaotic">Chaotic</button>
 
 
-<p class='EarthOrbitSimulation-debugOutput'></p>
+<p class='ThreeBodyProblem-debugOutput'></p>
 
 <script src="/js/2018/three-body-problem-simulator.js"></script>
 
