@@ -53,6 +53,7 @@ tags: programming science
 <button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="SunEarthJupiter">Sun, Earth and Jupiter</button>
 <button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="LagrangePoint5">Lagrange point L5</button>
 <button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="Kepler16">Kepler-16</button>
+<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="Chaotic">Chaotic</button>
 
 
 <p class='EarthOrbitSimulation-debugOutput'></p>
@@ -222,7 +223,10 @@ function calculateNewPosition() {
 
 1. **"Jupiter's South Pole"** image: NASA/JPL-Caltech/SwRI/MSSS/Betsy Asher Hall/Gervasio Robles, [source](https://www.nasa.gov/image-feature/jupiters-south-pole).
 
-1. **Figure eight orbit**: C. Moore, Braids in Classical Dynamics, Phys. Rev. Lett. 70, 3675 – 3679, 1993.
+1. **Figure eight orbit**: Moore, C. 1993, Phys. Rev. Lett., 70, 3675.
+
+1. **Kepler-16 system**: Doyle, L. R., Carter, J. A., Fabrycky, D. C., et al. 2011, Science, 333, 1602.
+
 
 ## References
 

@@ -893,7 +893,50 @@ Credits
             theta: Math.PI/2
           }
         ]
-      }
+      },
+      "Chaotic": {
+        dimensionless: true,
+        masses: [1, 1, 1],
+        massSlider: {
+          min: 0.1,
+          max: 10,
+          power: 3
+        },
+        timeScaleFactor: 3.7475,
+        timeScaleFactorSlider: {
+          min: 0.00,
+          max: 100,
+          power: 3
+        },
+        positions: [ // in Polar coordinates, r is in meters
+          {
+            r: 1,
+            theta: 0
+          },
+          {
+            r: 1,
+            theta: 2*Math.PI/3
+          },
+          {
+            r: 1,
+            theta: 4*Math.PI/3
+          }
+        ],
+        velocities: [ // in Polar coordinates, r is in m/s
+          {
+            r: .55,
+            theta: Math.PI/2
+          },
+          {
+            r: .55,
+            theta: 2*Math.PI/3 + Math.PI/2
+          },
+          {
+            r: .55,
+            theta: 4*Math.PI/3 + Math.PI/2
+          }
+        ]
+      },
     };
 
     function didClickElement(element) {
@@ -936,7 +979,7 @@ Credits
         presetElement.onclick = didClick;
       }
 
-      return allPresets.Kepler16;
+      return allPresets.FigureEight;
     }
 
     return {
@@ -1023,6 +1066,7 @@ Credits
 
       var newValue = sliderSettings.min + (sliderSettings.max - sliderSettings.min) * sliderValue;
       newValue = roundSliderValue(newValue);
+      window.console.log(newValue);
 
       if (currentSlider === "mass") {
         physics.initialConditions.masses[currentMassSliderIndex] = newValue;
