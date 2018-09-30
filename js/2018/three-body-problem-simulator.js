@@ -258,8 +258,9 @@ Credits
     };
 
     // Calculate the radius of the body (in meters) based on its mass.
-    function calculateRadiusFromMass(mass) {
-      return Math.pow(3/4 * mass / ( Math.PI * constants.averageDensity), 1/3);
+    function calculateRadiusFromMass(mass, density) {
+      if (density === undefined) { density = constants.averageDensity; }
+      return Math.pow(3/4 * mass / ( Math.PI * density), 1/3);
     }
 
     // Returns the diameters of three bodies in meters
@@ -268,7 +269,7 @@ Credits
 
       // Loop through the bodies
       for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
-        diameters.push(2 * calculateRadiusFromMass(initialConditions.masses[iBody]));
+        diameters.push(2 * calculateRadiusFromMass(initialConditions.masses[iBody], initialConditions.density));
       }
 
       return diameters;
@@ -333,8 +334,8 @@ Credits
       // to make the center of mass motionless at the middle of the screen
       for (iBody = 0; iBody < initialConditions.bodies; iBody++) {
         bodyStart = iBody * 4; // Starting index for current body in the u array
-        state.u[bodyStart + 0] += centerOfMass.x;
-        state.u[bodyStart + 1] += centerOfMass.y;
+        state.u[bodyStart + 0] -= centerOfMass.x;
+        state.u[bodyStart + 1] -= centerOfMass.y;
         state.u[bodyStart + 2] -= centerOfMassVelocity.x;
         state.u[bodyStart + 3] -= centerOfMassVelocity.y;
       }
@@ -426,6 +427,7 @@ Credits
       initialConditions.timeScaleFactor = conditions.timeScaleFactor;
       initialConditions.massSlider = conditions.massSlider;
       initialConditions.timeScaleFactorSlider = conditions.timeScaleFactorSlider;
+      initialConditions.density = conditions.density;
     }
 
     return {
@@ -720,6 +722,8 @@ Credits
     //        of the Earth go around the Sun
     //    positions: Positions of the bodies in Polar coordinates, r is in meters
     //    velocities: Velocities of the bodies in Polar coordinates, r is in m/s
+    //    density: Optional density (kg/m^3). Used for estimating the radius of an object from its mass.
+    //             if not supplied, an average Sun's density is used.
     var allPresets = {
       "FigureEight": {
         dimensionless: true,
@@ -748,6 +752,7 @@ Credits
       },
       "SunEarthJupiter": {
         masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 27)],
+        density: 0.01,
         massSlider: {
           min: 3 * Math.pow(10, 10),
           max: 3 * Math.pow(10, 31),
@@ -770,7 +775,7 @@ Credits
           },
           {
             r: 7.78 * Math.pow(10, 11),
-            theta: 0
+            theta: Math.PI/2
           }
         ],
         velocities: [ // in Polar coordinates, r is in m/s
@@ -784,7 +789,7 @@ Credits
           },
           {
             r: 13.1 * Math.pow(10, 3),
-            theta: Math.PI/2
+            theta: Math.PI
           }
         ]
       }
@@ -943,11 +948,15 @@ Credits
     }
 
     function roundSliderValue(value) {
+      return Math.round(value * 10000) / 10000;
+    }
+
+    function roundSliderValueText(value) {
       return parseFloat(Math.round(value * 10000) / 10000).toFixed(4);
     }
 
     function formatMassForSlider(mass) {
-      var formatted = roundSliderValue(mass);
+      var formatted = roundSliderValueText(mass);
 
       if (mass > 10000) {
         formatted = mass.toExponential(4);
@@ -964,7 +973,7 @@ Credits
 
     function formatTimescaleForSlider(value) {
       var timeHumanized = timeHumanReadable(value);
-      var formatted = roundSliderValue(timeHumanized.value);
+      var formatted = roundSliderValueText(timeHumanized.value);
 
       if (timeHumanized.value > 10000) {
         formatted = timeHumanized.value.toExponential(4);
