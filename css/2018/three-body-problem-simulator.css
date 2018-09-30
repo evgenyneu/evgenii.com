@@ -22,8 +22,8 @@ Credits
   --------
 */
 
-.EarthOrbitSimulation-hasTopMarginNormal {
-  margin-top: 15px;
+.EarthOrbitSimulation-hasTopMarginSmall {
+  margin-top: 5px;
 }
 
 .EarthOrbitSimulation-hasNegativeBottomMarginNormal {
@@ -122,6 +122,32 @@ Credits
 }
 
 /*
+  Left buttons
+  ---------
+*/
+
+
+.EarthOrbitSimulation-leftBottomButtonCantainer {
+  position: absolute;
+  display: block;
+  left: 15px;
+  right: 15px;
+  bottom: 10px;
+  height: 40px;
+}
+
+.EarthOrbitSimulation-leftBottomButton {
+  display: block;
+  height: 100%;
+  float: left;
+}
+
+.EarthOrbitSimulation-leftBottomImage {
+  height: 100%;
+  border : 0;
+}
+
+/*
   Reload button
   ---------
 */
@@ -133,20 +159,32 @@ Credits
   right: 15px;
   width: 40px;
   height: 40px;
-  outline: none;
 }
-
-.EarthOrbitSimulation-reload:focus { outline: none; }
 
 .EarthOrbitSimulation-reloadIcon {
   width: 100%;
   border : 0;
 }
 
-.EarthOrbitSimulation-massSlider,
-.EarthOrbitSimulation-eccentricitySlider {
-  /*max-width: 400px;*/
+/*
+  Slider
+  ---------
+*/
+
+.EarthOrbitSimulation-slider{
   margin: 0 auto;
+}
+
+.EarthOrbitSimulation-sliderSun .SickSlider-head {
+  background-color: #ff9400;
+}
+
+.EarthOrbitSimulation-sliderEarth .SickSlider-head {
+  background-color: #6780FF;
+}
+
+.EarthOrbitSimulation-sliderJupiter .SickSlider-head {
+  background-color: #4BCF79;
 }
 
 /*
@@ -200,6 +238,6 @@ Sick Slider
   left: 0;
   width: 30px;
   height: 40px;
-  background-color: #ff9400;
+  background-color: #999999;
   border: 1px solid #FFFFFF;
 }

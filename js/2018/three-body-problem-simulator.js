@@ -235,7 +235,6 @@ Credits
       // First two elements are x and y positions, and second two are x and y components of velocity
       // repeated for three bodies.
       u: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      eccentricity: 0, // Current eccentricity of the orbit
       // Current positions of the bodies, in meters
       positions: [
         {
@@ -256,7 +255,6 @@ Credits
     // Initial condition of the model
     var initialConditions = {
       bodies: 3, // Number of bodies
-      eccentricity: 0.7 // Eccentricity of the orbit
     };
 
     // Calculate the radius of the body (in meters) based on its mass.
@@ -274,12 +272,6 @@ Credits
       }
 
       return diameters;
-    }
-
-    // Calculate the initial velocity of the second body
-    // in vertical direction based on mass ratio q and eccentricity
-    function initialVelocity(q, eccentricity) {
-      return Math.sqrt( (1 + q) * (1 + eccentricity) );
     }
 
     function calculateCenterOfMassVelocity(){
@@ -432,8 +424,8 @@ Credits
       initialConditions.positions = conditions.positions;
       initialConditions.velocities = conditions.velocities;
       initialConditions.timeScaleFactor = conditions.timeScaleFactor;
-      initialConditions.maxMass = conditions.maxMass;
-      initialConditions.minMass = conditions.minMass;
+      initialConditions.massSlider = conditions.massSlider;
+      initialConditions.timeScaleFactorSlider = conditions.timeScaleFactorSlider;
     }
 
     return {
@@ -545,6 +537,11 @@ Credits
 
     // Resize canvas to will the width of container
     function fitToContainer(){
+
+      // Adjust the canvas to the size of the screen
+      canvasHeight = Math.min(window.innerHeight, window.innerWidth) - 100;
+      document.querySelector(".EarthOrbitSimulation-container").style.height = canvasHeight + 'px';
+
       canvas.style.width='100%';
       canvas.style.height= canvasHeight + 'px';
       canvas.width  = canvas.offsetWidth;
@@ -723,14 +720,21 @@ Credits
     //        of the Earth go around the Sun
     //    positions: Positions of the bodies in Polar coordinates, r is in meters
     //    velocities: Velocities of the bodies in Polar coordinates, r is in m/s
-    //    maxMass: the maximum mass user can set with a slider
     var allPresets = {
       "FigureEight": {
         dimensionless: true,
-        maxMass: 2,
-        minMass: 0,
         masses: [1, 1, 1],
+        massSlider: {
+          min: 0.1,
+          max: 5,
+          power: 3
+        },
         timeScaleFactor: 1,
+        timeScaleFactorSlider: {
+          min: 0.00,
+          max: 20000,
+          power: 3
+        },
         positions: [ // in Polar coordinates, r is in meters
           polarFromCartesian(vigure8Position),
           polarFromCartesian({x: -vigure8Position.x, y: -vigure8Position.y}),
@@ -744,9 +748,16 @@ Credits
       },
       "SunEarthJupiter": {
         masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 27)],
-        maxMass: 3 * Math.pow(10, 30),
-        minMass: 1 * Math.pow(10, 30),
+        massSlider: {
+          min: 1 * Math.pow(10, 30),
+          max: 3 * Math.pow(10, 30)
+        },
         timeScaleFactor: 3600 * 24 * 500,
+        timeScaleFactorSlider: {
+          min: 3600 * 24 * 500 * 10,
+          max: 3600 * 24 * 1,
+          power: 3
+        },
         positions: [ // in Polar coordinates, r is in meters
           {
             r: 0,
@@ -827,49 +838,133 @@ Credits
     };
   })();
 
+  // A slider maps an input to output values, both between 0 and 1 using an odd power function.
+  // The function is constructed such that is not very sensitive at the default output value
+  // (for example, the starting value for the mass of an object)
+  // but rapidly changes as when the slider is moved far away form it.
+  var oddPowerCurve = (function(){
+    function calcualteL(defaultOutput, power) {
+      if (power === 0) return 1;
+      return -Math.pow(defaultOutput, 1 / power);
+    }
+
+    function calcualteA(defaultOutput, power) {
+      if (power === 0) return 1;
+      return Math.pow(1 - defaultOutput, 1 / power) - calcualteL(defaultOutput, power);
+    }
+
+    // Return the slider input value based on the output and default output values
+    function sliderInputValue(defaultOutput, output, power) {
+      if (power === 0) return 1;
+      var a = calcualteA(defaultOutput, power);
+      if (a === 0) { a = 1; }
+      var l = calcualteL(defaultOutput, power);
+      return (Math.pow(output - defaultOutput, 1 / power) - l) / a;
+    }
+
+    // Return the slider output value based on the input and default output values
+    function sliderOutputValue(defaultOutput, intput, power) {
+      if (power === 0) return 1;
+      var a = calcualteA(defaultOutput, power);
+      var l = calcualteL(defaultOutput, power);
+
+
+      return Math.pow(a * intput + l, power) + defaultOutput;
+    }
+
+    return {
+        sliderInputValue: sliderInputValue,
+        sliderOutputValue: sliderOutputValue
+      };
+  })();
+
   // React to user input
   var userInput = (function(){
-    var sunsMassElement = document.querySelector(".EarthOrbitSimulation-sunsMass");
-    var eccentricityElement = document.querySelector(".EarthOrbitSimulation-eccentricity");
+    var sliderLabelElement = document.querySelector(".EarthOrbitSimulation-sliderLabel");
     var restartButton = document.querySelector(".EarthOrbitSimulation-reload");
-    var massSlider, eccentricitySlider;
+    var mass1Button = document.querySelector(".EarthOrbitSimulation-mass1Button");
+    var mass2Button = document.querySelector(".EarthOrbitSimulation-mass2Button");
+    var mass3Button = document.querySelector(".EarthOrbitSimulation-mass3Button");
+    var speedButton = document.querySelector(".EarthOrbitSimulation-speedButton");
+    var sliderElement = document.querySelector(".EarthOrbitSimulation-slider");
+    var slider;
+    var currentSlider = "mass";
+    var currentMassSliderIndex = 0;
+    var currentModel; // Currently selected model
 
-    function didUpdateMassSlider(sliderValue) {
-      var newMass = physics.initialConditions.minMass +
-        (physics.initialConditions.maxMass - physics.initialConditions.minMass) * sliderValue;
-
-      physics.initialConditions.masses[0] = newMass;
-      graphics.updateObjectSizes(physics.calculateDiameters());
-      showMass(newMass);
+    // Returns the output value of the slider between 0 to 1 corresponding to the
+    // default value of the variable (such as default mass for an object)
+    function calculateDefaultSliderOutput(sliderSettings) {
+      var defaultValue = getCurrentSimulationValue(currentModel);
+      return (defaultValue - sliderSettings.min) / (sliderSettings.max - sliderSettings.min);
     }
 
-    function showMass(mass) {
-      var formatted = parseFloat(Math.round(mass * 1000) / 1000).toFixed(3);
+    function didUpdateSlider(sliderValue) {
+      var sliderText;
+      var sliderSettings = getCurrentSliderSettings();
+
+      if (sliderSettings.power !== undefined) {
+
+        if (sliderSettings.power % 2 === 1) { // Odd power
+          var defaultOutput = calculateDefaultSliderOutput(sliderSettings);
+          sliderValue = oddPowerCurve.sliderOutputValue(defaultOutput, sliderValue, sliderSettings.power);
+        } else {
+          sliderValue = Math.pow(sliderValue, sliderSettings.power);
+        }
+      }
+
+      var newValue = sliderSettings.min + (sliderSettings.max - sliderSettings.min) * sliderValue;
+
+      if (currentSlider === "mass") {
+        physics.initialConditions.masses[currentMassSliderIndex] = newValue;
+        graphics.updateObjectSizes(physics.calculateDiameters());
+        sliderText = formatMassForSlider(newValue);
+      } else {
+        physics.initialConditions.timeScaleFactor = newValue;
+        sliderText = formatTimescaleForSlider(newValue);
+      }
+
+      sliderLabelElement.innerText = sliderText;
+    }
+
+    function getCurrentSliderSettings() {
+      var sliderSettings;
+
+      if (currentSlider === "mass") {
+        sliderSettings = physics.initialConditions.massSlider;
+      } else {
+        sliderSettings = physics.initialConditions.timeScaleFactorSlider;
+      }
+
+      return sliderSettings;
+    }
+
+    function formatMassForSlider(mass) {
+      var formatted = parseFloat(Math.round(mass * 10000) / 10000).toFixed(4);
 
       if (mass > 10000) {
-        formatted = mass.toExponential(2);
+        formatted = mass.toExponential(4);
       }
 
-      sunsMassElement.innerHTML = formatted;
+      formatted = "Mass " + (currentMassSliderIndex + 1) + " : " + formatted;
 
       if (physics.initialConditions.dimensionless !== true) {
-        sunsMassElement.innerHTML += " kg";
+        formatted += " kg";
       }
+
+      return formatted;
     }
 
-    function didUpdateEccentricitySlider(sliderValue) {
-      var oldMassRatio = physics.state.masses.q;
-      physics.resetStateToInitialConditions();
-      graphics.clearScene(physics.largestDistanceMeters());
-      physics.updateMassFromUserInput(oldMassRatio);
-      physics.updateEccentricityFromUserInput(sliderValue);
-      showEccentricity(sliderValue);
-      graphics.updateObjectSizes(physics.calculateDiameters());
-    }
+    function formatTimescaleForSlider(value) {
+      var formatted = parseFloat(Math.round(value * 10000) / 10000).toFixed(4);
 
-    function showEccentricity(ratio) {
-      var formattedRatio = parseFloat(Math.round(ratio * 100) / 100).toFixed(2);
-      eccentricityElement.innerHTML = formattedRatio;
+      if (value > 10000) {
+        formatted = value.toExponential(4);
+      }
+
+      formatted = "Simulation speed: " + formatted + " seconds per second";
+
+      return formatted;
     }
 
     function didClickRestart() {
@@ -879,36 +974,108 @@ Credits
       return false; // Prevent default
     }
 
-    function resetMassSlider() {
-      showMass(physics.initialConditions.masses[0]);
+    function getCurrentSimulationValue(model) {
+      var simulationValue;
+      if (currentSlider === "mass") {
+        simulationValue = model.masses[currentMassSliderIndex];
+      } else {
+        simulationValue = model.timeScaleFactor;
+      }
+      return simulationValue;
+    }
 
-      massSlider.changePosition((physics.initialConditions.masses[0] - physics.initialConditions.minMass)/
-          (physics.initialConditions.maxMass - physics.initialConditions.minMass));
+    function resetSlider() {
+      cssHelper.removeClass(sliderElement, "EarthOrbitSimulation-sliderSun");
+      cssHelper.removeClass(sliderElement, "EarthOrbitSimulation-sliderEarth");
+      cssHelper.removeClass(sliderElement, "EarthOrbitSimulation-sliderJupiter");
+
+      var sliderSettings = getCurrentSliderSettings();
+      var simulationValue = getCurrentSimulationValue(physics.initialConditions);
+      var sliderText;
+
+      if (currentSlider === "mass") {
+        sliderText = formatMassForSlider(physics.initialConditions.masses[currentMassSliderIndex]);
+
+        switch(currentMassSliderIndex) {
+            case 0:
+                cssHelper.addClass(sliderElement, "EarthOrbitSimulation-sliderSun");
+                break;
+            case 1:
+                cssHelper.addClass(sliderElement, "EarthOrbitSimulation-sliderEarth");
+                break;
+            default:
+                cssHelper.addClass(sliderElement, "EarthOrbitSimulation-sliderJupiter");
+        }
+      } else {
+        sliderText = formatTimescaleForSlider(physics.initialConditions.timeScaleFactor);
+      }
+
+      sliderLabelElement.innerText = sliderText;
+      var sliderPosition = (simulationValue - sliderSettings.min) / (sliderSettings.max - sliderSettings.min);
+
+      if (sliderSettings.power !== undefined) {
+        if (sliderSettings.power % 2 === 1) { // Odd power
+          var defaultOutput = calculateDefaultSliderOutput(sliderSettings);
+          sliderPosition = oddPowerCurve.sliderInputValue(defaultOutput, sliderPosition, sliderSettings.power);
+        } else {
+          sliderPosition = Math.pow(sliderPosition, 1 / sliderSettings.power);
+        }
+      }
+
+      slider.changePosition(sliderPosition);
     }
 
     function didChangeModel(model) {
-      physics.changeInitialConditions(model);
+      currentModel = model;
+      physics.changeInitialConditions(currentModel);
       didClickRestart();
-      resetMassSlider();
+      resetSlider();
+    }
+
+    function didClickMass1() {
+      currentSlider = "mass";
+      currentMassSliderIndex = 0;
+      resetSlider();
+      return false; // Prevent default
+    }
+
+    function didClickMass2() {
+      currentSlider = "mass";
+      currentMassSliderIndex = 1;
+      resetSlider();
+      return false; // Prevent default
+    }
+
+    function didClickMass3() {
+      currentSlider = "mass";
+      currentMassSliderIndex = 2;
+      resetSlider();
+      return false; // Prevent default
+    }
+
+    function didClickSpeed() {
+      currentSlider = "speed";
+      currentMassSliderIndex = 0;
+      resetSlider();
+      return false; // Prevent default
     }
 
     function init() {
-      var initialConditions = simulations.init();
-      physics.changeInitialConditions(initialConditions);
+      currentModel = simulations.init();
+      physics.changeInitialConditions(currentModel);
       simulations.content.didChangeModel = didChangeModel;
 
-      // Mass slider
-      massSlider = SickSlider(".EarthOrbitSimulation-massSlider");
-      massSlider.onSliderChange = didUpdateMassSlider;
-      resetMassSlider();
+      // Slider
+      slider = SickSlider(".EarthOrbitSimulation-slider");
+      slider.onSliderChange = didUpdateSlider;
+      resetSlider();
 
-      // Eccentricity slider
-      eccentricitySlider = SickSlider(".EarthOrbitSimulation-eccentricitySlider");
-      eccentricitySlider.onSliderChange = didUpdateEccentricitySlider;
-      showEccentricity(physics.initialConditions.eccentricity);
-      eccentricitySlider.changePosition(physics.initialConditions.eccentricity);
-
+      // Buttons
       restartButton.onclick = didClickRestart;
+      mass1Button.onclick = didClickMass1;
+      mass2Button.onclick = didClickMass2;
+      mass3Button.onclick = didClickMass3;
+      speedButton.onclick = didClickSpeed;
     }
 
     return {
