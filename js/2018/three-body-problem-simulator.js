@@ -259,7 +259,6 @@ Credits
 
     // Calculate the radius of the body (in meters) based on its mass.
     function calculateRadiusFromMass(mass, density) {
-      if (density === undefined) { density = constants.averageDensity; }
       return Math.pow(3/4 * mass / ( Math.PI * density), 1/3);
     }
 
@@ -269,7 +268,13 @@ Credits
 
       // Loop through the bodies
       for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
-        diameters.push(2 * calculateRadiusFromMass(initialConditions.masses[iBody], initialConditions.density));
+        if (initialConditions.densities !== undefined && initialConditions.densities.length >= initialConditions.bodies-1) {
+          var density = initialConditions.densities[iBody];
+        } else {
+          density = constants.averageDensity;
+        }
+
+        diameters.push(2 * calculateRadiusFromMass(initialConditions.masses[iBody], density));
       }
 
       return diameters;
@@ -427,7 +432,8 @@ Credits
       initialConditions.timeScaleFactor = conditions.timeScaleFactor;
       initialConditions.massSlider = conditions.massSlider;
       initialConditions.timeScaleFactorSlider = conditions.timeScaleFactorSlider;
-      initialConditions.density = conditions.density;
+      initialConditions.densities = conditions.densities;
+      initialConditions.paleOrbitalPaths = conditions.paleOrbitalPaths;
     }
 
     return {
@@ -452,8 +458,10 @@ Credits
       // Updated automatically on first draw
       metersPerPixel = 100,
       minimumSizePixels=10, // Minimum size of an object in pixels.
+      maximumSizePixels=80, // Maximum size of an object in pixels.
       colors = {
-        orbitalPaths: ["#ff8b22","#6c81ff","#4ccd7a"]
+        orbitalPaths: ["#ff8b22","#6c81ff","#4ccd7a"],
+        paleOrbitalPaths: ["#ab681c","#4957ae","#359256"]
       },
       // Previously drawn positions of the two bodies. Used to draw orbital line.
       previousBodyPositions = [
@@ -486,6 +494,10 @@ Credits
 
         if (currentBodySizes[iBody] < minimumSizePixels) {
           currentBodySizes[iBody] = minimumSizePixels;
+        }
+
+        if (currentBodySizes[iBody] > maximumSizePixels) {
+          currentBodySizes[iBody] = maximumSizePixels;
         }
 
         bodyElemenets[iBody].style.width = currentBodySizes[iBody] + "px";
@@ -524,12 +536,13 @@ Credits
     }
 
     // Draws the scene
-    function drawScene(positions) {
+    function drawScene(positions, paleOrbitalPaths) {
       // Loop through the bodies
       for (var iBody = 0; iBody < positions.length; iBody++) {
         var bodyPosition = calculatePosition(positions[iBody]);
         drawBody(bodyPosition, currentBodySizes[iBody], bodyElemenets[iBody]);
-        drawOrbitalLine(bodyPosition, previousBodyPositions[iBody], colors.orbitalPaths[iBody]);
+        var orbitalPathColors = paleOrbitalPaths ? colors.paleOrbitalPaths : colors.orbitalPaths;
+        drawOrbitalLine(bodyPosition, previousBodyPositions[iBody], orbitalPathColors[iBody]);
       }
     }
 
@@ -636,7 +649,7 @@ Credits
         // Decide if we need to draw
         if (i % drawIndex === 0) {
           physics.calculateNewPosition();
-          graphics.drawScene(physics.state.positions);
+          graphics.drawScene(physics.state.positions, physics.initialConditions.paleOrbitalPaths);
         }
       }
 
@@ -653,7 +666,7 @@ Credits
         window.addEventListener('resize', function(event){
           graphics.fitToContainer();
           graphics.clearScene(physics.largestDistanceMeters());
-          graphics.drawScene(physics.state.positions);
+          graphics.drawScene(physics.state.positions, physics.initialConditions.paleOrbitalPaths);
         });
 
         animate();
@@ -722,8 +735,10 @@ Credits
     //        of the Earth go around the Sun
     //    positions: Positions of the bodies in Polar coordinates, r is in meters
     //    velocities: Velocities of the bodies in Polar coordinates, r is in m/s
-    //    density: Optional density (kg/m^3). Used for estimating the radius of an object from its mass.
-    //             if not supplied, an average Sun's density is used.
+    //    densities: Optional densities (kg/m^3). This is a way to tweak object's size, since densities are
+    //                used for estimating the radius of an object from its mass.
+    //                If not supplied, an average Sun's density is used.
+    //    paleOrbitalPaths: If true then the orbital path is paler than usual.
     var allPresets = {
       "FigureEight": {
         dimensionless: true,
@@ -752,11 +767,11 @@ Credits
       },
       "SunEarthJupiter": {
         masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 27)],
-        density: 0.01,
+        densities: [0.01, 0.01, 0.01],
         massSlider: {
           min: 3 * Math.pow(10, 10),
           max: 3 * Math.pow(10, 31),
-          power: 5
+          power: 3
         },
         timeScaleFactor: 3600 * 24 * 365,
         timeScaleFactorSlider: {
@@ -795,7 +810,8 @@ Credits
       },
       "LagrangePoint5": {
         masses: [1.98855 * Math.pow(10, 30), 5.972 * Math.pow(10, 24), 1.898 * Math.pow(10, 28)],
-        density: 0.001,
+        densities: [0.001, 0.0001, 0.0001],
+        paleOrbitalPaths: true,
         massSlider: {
           min: 3 * Math.pow(10, 10),
           max: 3 * Math.pow(10, 31),
@@ -832,6 +848,48 @@ Credits
           },
           {
             r: 13.1 * Math.pow(10, 3),
+            theta: Math.PI/2
+          }
+        ]
+      },
+      "Kepler16": {
+        masses: [0.6897 * 1.98855 * Math.pow(10, 30), 0.20255 * 1.98855 * Math.pow(10, 30), 0.3333 * 1.898 * Math.pow(10, 27)],
+        massSlider: {
+          min: 3 * Math.pow(10, 10),
+          max: 3 * Math.pow(10, 31),
+          power: 5
+        },
+        timeScaleFactor: 3600 * 24 * 41,
+        timeScaleFactorSlider: {
+          min: 0,
+          max: 3600 * 24 * 500 * 30000,
+          power: 5
+        },
+        positions: [ // in Polar coordinates, r is in meters
+          {
+            r: (0.20255 * 0.22431 * 1.496 * Math.pow(10, 11)) / (0.6897 + 0.20255 ),
+            theta: 0
+          },
+          {
+            r: (0.6897 * 0.22431 * 1.496 * Math.pow(10, 11)) / (0.6897 + 0.20255 ),
+            theta: Math.PI
+          },
+          {
+            r: 0.7048 * 1.496 * Math.pow(10, 11),
+            theta: 0
+          }
+        ],
+        velocities: [ // in Polar coordinates, r is in m/s
+          {
+            r: 13 * Math.pow(10, 3),
+            theta: Math.PI/2
+          },
+          {
+            r: 44 * Math.pow(10, 3),
+            theta: 3*Math.PI/2
+          },
+          {
+            r: 33 * Math.pow(10, 3),
             theta: Math.PI/2
           }
         ]
@@ -878,7 +936,7 @@ Credits
         presetElement.onclick = didClick;
       }
 
-      return allPresets.FigureEight;
+      return allPresets.Kepler16;
     }
 
     return {

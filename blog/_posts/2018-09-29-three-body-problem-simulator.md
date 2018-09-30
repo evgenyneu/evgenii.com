@@ -52,6 +52,7 @@ tags: programming science
 <button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button EarthOrbitSimulation-button--isSelected" data-name="FigureEight">Figure eight </button>
 <button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="SunEarthJupiter">Sun, Earth and Jupiter</button>
 <button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="LagrangePoint5">Lagrange point L5</button>
+<button class="EarthOrbitSimulation-preset EarthOrbitSimulation-button" data-name="Kepler16">Kepler-16</button>
 
 
 <p class='EarthOrbitSimulation-debugOutput'></p>
