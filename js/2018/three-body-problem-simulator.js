@@ -1021,7 +1021,8 @@ Credits
       var a = calcualteA(defaultOutput, power);
       if (a === 0) { a = 1; }
       var l = calcualteL(defaultOutput, power);
-      return (Math.pow(output - defaultOutput, 1 / power) - l) / a;
+      var sign = (output - defaultOutput) < 0 ? -1 : 1;
+      return (sign * Math.pow(Math.abs(output - defaultOutput), 1 / power) - l) / a;
     }
 
     // Return the slider output value based on the input and default output values
@@ -1029,7 +1030,6 @@ Credits
       if (power === 0) return 1;
       var a = calcualteA(defaultOutput, power);
       var l = calcualteL(defaultOutput, power);
-
 
       return Math.pow(a * intput + l, power) + defaultOutput;
     }
@@ -1078,7 +1078,6 @@ Credits
 
       var newValue = sliderSettings.min + (sliderSettings.max - sliderSettings.min) * sliderValue;
       newValue = roundSliderValue(newValue);
-      window.console.log(newValue);
 
       if (currentSlider === "mass") {
         physics.initialConditions.masses[currentMassSliderIndex] = newValue;
