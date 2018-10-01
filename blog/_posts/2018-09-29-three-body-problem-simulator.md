@@ -289,7 +289,7 @@ Before the first run, however, we need to choose some initial positions and velo
 At each frame of the animation, we calculate new positions of the three bodies in the `u` array. These position are turned into coordinates of the bodies on computer screen. Here we use the same drawing techniques that we discussed in the [harmonic oscillator tutorial](/blog/programming-harmonic-oscillator/).
 
 
-## 📚🤓📖✨
+## 📚📖✨
 
 If you are into science fiction, The Three-Body Problem novel by Liu Cixin and the other two books of the trilogy could be worth your time, I enjoyed them.
 
