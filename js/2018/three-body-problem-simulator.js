@@ -1031,7 +1031,9 @@ Credits
       var a = calcualteA(defaultOutput, power);
       var l = calcualteL(defaultOutput, power);
 
-      return Math.pow(a * intput + l, power) + defaultOutput;
+      var result = Math.pow(a * intput + l, power) + defaultOutput;
+      if (result < 0) { result = 0; }
+      return result;
     }
 
     return {
