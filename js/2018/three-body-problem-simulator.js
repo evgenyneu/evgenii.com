@@ -349,9 +349,10 @@ Credits
       }
     }
 
-    // Returns the acceleration of the body 'iFromBody'
-    // due to the other bodies.
-    //   iFromBody: the index of body: 0 is first body, 1 is second body.
+    // Calculates the acceleration of the body 'iFromBody'
+    // due to gravity from other bodies,
+    // using Newton's law of gravitation.
+    //   iFromBody: the index of body. 0 is first body, 1 is second body.
     //   coordinate: 0 for x coordinate, 1 for y coordinate
     function acceleration(iFromBody, coordinate) {
       var result = 0;
@@ -363,11 +364,11 @@ Credits
         var iToBodyStart = iToBody * 4; // Starting index for the body in the u array
 
         // Distance between the two bodies
-        var distanceX = state.u[iToBodyStart + 0]
-          - state.u[iFromBodyStart + 0];
+        var distanceX = state.u[iToBodyStart + 0] -
+          state.u[iFromBodyStart + 0];
 
-        var distanceY = state.u[iToBodyStart + 1]
-          - state.u[iFromBodyStart + 1];
+        var distanceY = state.u[iToBodyStart + 1] -
+          state.u[iFromBodyStart + 1];
 
         var distance = Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2));
         var gravitationalConstant = 1;
