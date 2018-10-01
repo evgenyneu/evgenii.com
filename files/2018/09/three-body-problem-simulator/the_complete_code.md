@@ -174,6 +174,16 @@ Credits
   border : 0;
 }
 
+.ThreeBodyProblem-doesChangeOpacityOnHover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+
+.ThreeBodyProblem-doesChangeOpacityOnHover:hover {
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+}
+
 /*
   Reload button
   ---------
