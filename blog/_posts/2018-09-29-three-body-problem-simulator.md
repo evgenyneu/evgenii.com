@@ -6,10 +6,10 @@ meta_description: "Here we program a three-body problem in JavaScript showing th
 tags: programming science
 ---
 
-<link rel="stylesheet" href="/css/2018/three-body-problem-simulator.css">
+<link rel="stylesheet" href="/css/2018/three-body-problem-simulator_2.css">
 
 <!-- Message shown in old browsers. -->
-  <p id="ThreeBodyProblem-notSupportedMessage" class="ThreeBodyProblem-alert ThreeBodyProblem-isHiddenBlock">Please use a newer browser to see the simulation.</p>
+<p id="ThreeBodyProblem-notSupportedMessage" class="ThreeBodyProblem-alert ThreeBodyProblem-isHiddenBlock">Please use a newer browser to see the simulation.</p>
 
 <div class="ThreeBodyProblem-container isFullScreenWide isUnselectable">
     <div class='ThreeBodyProblem-sun'><img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/sun.png' class='ThreeBodyProblem-spin ThreeBodyProblem-bodyImage' alt='Sun' /></div>
@@ -49,7 +49,7 @@ tags: programming science
 
 <p class='ThreeBodyProblem-debugOutput'></p>
 
-<script src="/js/2018/three-body-problem-simulator.js"></script>
+<script src="/js/2018/three-body-problem-simulator_2.js"></script>
 
 <br>
 
