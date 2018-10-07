@@ -765,7 +765,7 @@ Sick Slider
         orbitalPaths: ["#ff8b22","#6c81ff","#4ccd7a"],
         paleOrbitalPaths: ["#ab681c","#4957ae","#359256"]
       },
-      // Positions of three bodies in pixles on screen
+      // Positions of three bodies in pixels on screen
       bodyPositions = [
         {x: null, y: null},
         {x: null, y: null},
@@ -790,6 +790,8 @@ Sick Slider
     function drawBody(position, size, bodyElement) {
       var left = (position.x - size/2) + 1000;
       var top = (position.y - size/2) + 1000;
+      // Using style.transform instead of style.left, since style.left was
+      // noticeably slower on mobile Chrome
       bodyElement.style.transform = "translate(" + left + "px," + top + "px)";
     }
 
@@ -965,7 +967,7 @@ Sick Slider
 
     // Maximum number of times the orbital lines are drawn per frame.
     // To improve performance, we do not draw after each calculation, since drawing can be slow.
-    var drawTimesPerFrame = 20;
+    var drawTimesPerFrame = 10;
 
     // Used to decide if we need to draw at calculations
     var drawIndex =  Math.ceil(calculationsPerFrame / drawTimesPerFrame);
@@ -1244,7 +1246,7 @@ Sick Slider
           max: 10,
           power: 3
         },
-        timeScaleFactor: 3.7472,
+        timeScaleFactor: 3.9335,
         timeScaleFactorSlider: {
           min: 0.00,
           max: 100,

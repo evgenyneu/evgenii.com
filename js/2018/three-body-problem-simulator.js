@@ -485,7 +485,7 @@ Credits
       var left = (position.x - size/2) + 1000;
       var top = (position.y - size/2) + 1000;
       // Using style.transform instead of style.left, since style.left was
-      // noticeably slower on mobile Chrome,
+      // noticeably slower on mobile Chrome
       bodyElement.style.transform = "translate(" + left + "px," + top + "px)";
     }
 
@@ -661,7 +661,7 @@ Credits
 
     // Maximum number of times the orbital lines are drawn per frame.
     // To improve performance, we do not draw after each calculation, since drawing can be slow.
-    var drawTimesPerFrame = 20;
+    var drawTimesPerFrame = 10;
 
     // Used to decide if we need to draw at calculations
     var drawIndex =  Math.ceil(calculationsPerFrame / drawTimesPerFrame);
@@ -940,7 +940,7 @@ Credits
           max: 10,
           power: 3
         },
-        timeScaleFactor: 3.7472,
+        timeScaleFactor: 3.9335,
         timeScaleFactorSlider: {
           min: 0.00,
           max: 100,
