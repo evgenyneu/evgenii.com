@@ -78,7 +78,15 @@ Credits
   position: absolute;
   width: 60px;
   top: -1000px;
+  left: -1000px;
   z-index: 1000;
+}
+
+.ThreeBodyProblem-bodyImage {
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0px;
 }
 
 .ThreeBodyProblem-spin {

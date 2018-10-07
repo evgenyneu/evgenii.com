@@ -237,22 +237,7 @@ Credits
       // State variables used in the differential equations
       // First two elements are x and y positions, and second two are x and y components of velocity
       // repeated for three bodies.
-      u: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      // Current positions of the bodies, in meters
-      positions: [
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        }
-      ]
+      u: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     };
 
     // Initial condition of the model. The conditions are loaded from the currently selected simulation.
@@ -474,6 +459,12 @@ Credits
         orbitalPaths: ["#ff8b22","#6c81ff","#4ccd7a"],
         paleOrbitalPaths: ["#ab681c","#4957ae","#359256"]
       },
+      // Positions of three bodies in pixles on screen
+      bodyPositions = [
+        {x: null, y: null},
+        {x: null, y: null},
+        {x: null, y: null}
+      ],
       // Previously drawn positions of the two bodies. Used to draw orbital line.
       previousBodyPositions = [
         {x: null, y: null},
@@ -489,11 +480,11 @@ Credits
       middleX = 1,
       middleY = 1;
 
+
     function drawBody(position, size, bodyElement) {
-      var left = (position.x - size/2) + "px";
-      var top = (position.y - size/2) + "px";
-      bodyElement.style.left = left;
-      bodyElement.style.top = top;
+      var left = (position.x - size/2) + 1000;
+      var top = (position.y - size/2) + 1000;
+      bodyElement.style.transform = "translate(" + left + "px," + top + "px)";
     }
 
     // Updates the sizes of the objects
@@ -546,12 +537,35 @@ Credits
       };
     }
 
-    // Draws the scene
-    function drawScene(positions, paleOrbitalPaths) {
+    // Calculates the new positions of the bodies on screen
+    // from the given state variables
+    function calculateNewPositions(statePositions) {
       // Loop through the bodies
-      for (var iBody = 0; iBody < positions.length; iBody++) {
-        var bodyPosition = calculatePosition(positions[iBody]);
+      for (var iBody = 0; iBody < statePositions.length / 4; iBody++) {
+        var bodyStart = iBody * 4; // Starting index for current body in the u array
+
+        var x = statePositions[bodyStart + 0];
+        var y = statePositions[bodyStart + 1];
+
+        middleX = Math.floor(canvas.width / 2);
+        middleY = Math.floor(canvas.height / 2);
+        bodyPositions[iBody].x = x / metersPerPixel + middleX;
+        bodyPositions[iBody].y = -y / metersPerPixel + middleY;
+      }
+    }
+
+    function drawBodies() {
+      // Loop through the bodies
+      for (var iBody = 0; iBody < bodyPositions.length; iBody++) {
+        var bodyPosition = bodyPositions[iBody];
         drawBody(bodyPosition, currentBodySizes[iBody], bodyElemenets[iBody]);
+      }
+    }
+
+    function drawOrbitalLines(paleOrbitalPaths) {
+      // Loop through the bodies
+      for (var iBody = 0; iBody < bodyPositions.length; iBody++) {
+        var bodyPosition = bodyPositions[iBody];
         var orbitalPathColors = paleOrbitalPaths ? colors.paleOrbitalPaths : colors.orbitalPaths;
         drawOrbitalLine(bodyPosition, previousBodyPositions[iBody], orbitalPathColors[iBody]);
       }
@@ -626,9 +640,11 @@ Credits
 
     return {
       fitToContainer: fitToContainer,
-      drawScene: drawScene,
+      drawOrbitalLines: drawOrbitalLines,
+      drawBodies: drawBodies,
       updateObjectSizes: updateObjectSizes,
       clearScene: clearScene,
+      calculateNewPositions: calculateNewPositions,
       init: init
     };
   })();
@@ -637,11 +653,11 @@ Credits
   var simulation = (function() {
     // The number of calculations done in one 16 millisecond frame.
     // The higher the number, the more precise are the calculations and the slower the simulation.
-    var calculationsPerFrame = 1000;
+    var calculationsPerFrame = 250;
 
     var framesPerSecond = 60; // Number of frames per second
 
-    // Maximum number of times the scene is drawn per frame.
+    // Maximum number of times the orbital lines are drawn per frame.
     // To improve performance, we do not draw after each calculation, since drawing can be slow.
     var drawTimesPerFrame = 20;
 
@@ -656,12 +672,17 @@ Credits
       for (var i = 0; i < calculationsPerFrame; i++) {
         physics.updatePosition(timestep);
 
-        // Decide if we need to draw
+        // Decide if we need to draw orbital lines
         if (i % drawIndex === 0) {
-          physics.calculateNewPosition();
-          graphics.drawScene(physics.state.positions, physics.initialConditions.paleOrbitalPaths);
+          graphics.calculateNewPositions(physics.state.u);
+          graphics.drawOrbitalLines(physics.initialConditions.paleOrbitalPaths);
         }
       }
+
+      // Move the modies to new a position. This can be slow, because it
+      // updates the position of the DOM elements.
+      // Thus, will call it only once per frame.
+      graphics.drawBodies();
 
       window.requestAnimationFrame(animate);
     }
@@ -676,7 +697,9 @@ Credits
         window.addEventListener('resize', function(event){
           graphics.fitToContainer();
           graphics.clearScene(physics.largestDistanceMeters());
-          graphics.drawScene(physics.state.positions, physics.initialConditions.paleOrbitalPaths);
+          graphics.calculateNewPositions(physics.state.u);
+          graphics.drawOrbitalLines(physics.initialConditions.paleOrbitalPaths);
+          graphics.drawBodies();
         });
 
         animate();
@@ -764,7 +787,7 @@ Credits
         timeScaleFactor: 1,
         timeScaleFactorSlider: {
           min: 0.00,
-          max: 20000,
+          max: 5000,
           power: 5
         },
         positions: [ // in Polar coordinates, r is in meters
@@ -789,7 +812,7 @@ Credits
         timeScaleFactor: 3600 * 24 * 365,
         timeScaleFactorSlider: {
           min: 0,
-          max: 3600 * 24 * 500 * 30000,
+          max: 3600 * 24 * 500 * 10000,
           power: 5
         },
         positions: [ // in Polar coordinates, r is in meters
@@ -833,7 +856,7 @@ Credits
         timeScaleFactor: 3600 * 24 * 1000,
         timeScaleFactorSlider: {
           min: 0,
-          max: 3600 * 24 * 500 * 30000,
+          max: 3600 * 24 * 500 * 10000,
           power: 5
         },
         positions: [ // in Polar coordinates, r is in meters
@@ -875,7 +898,7 @@ Credits
         timeScaleFactor: 3600 * 24 * 41,
         timeScaleFactorSlider: {
           min: 0,
-          max: 3600 * 24 * 500 * 300,
+          max: 3600 * 24 * 500 * 100,
           power: 5
         },
         positions: [ // in Polar coordinates, r is in meters
@@ -915,7 +938,7 @@ Credits
           max: 10,
           power: 3
         },
-        timeScaleFactor: 3.7475,
+        timeScaleFactor: 3.7472,
         timeScaleFactorSlider: {
           min: 0.00,
           max: 100,

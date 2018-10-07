@@ -12,9 +12,9 @@ tags: programming science
   <p id="ThreeBodyProblem-notSupportedMessage" class="ThreeBodyProblem-alert ThreeBodyProblem-isHiddenBlock">Please use a newer browser to see the simulation.</p>
 
 <div class="ThreeBodyProblem-container isFullScreenWide isUnselectable">
-    <img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/sun.png' alt='Sun' class='ThreeBodyProblem-sun ThreeBodyProblem-spin'>
-    <img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/earth.png' alt='Earth' class='ThreeBodyProblem-earth ThreeBodyProblem-spin'>
-    <img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/jupiter_juno.png' alt='Jupiter' class='ThreeBodyProblem-jupiter ThreeBodyProblem-spin'>
+    <div class='ThreeBodyProblem-sun'><img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/sun.png' class='ThreeBodyProblem-spin ThreeBodyProblem-bodyImage' alt='Sun' /></div>
+    <div class='ThreeBodyProblem-earth'><img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/earth.png' alt='Earth' class='ThreeBodyProblem-spin ThreeBodyProblem-bodyImage'/></div>
+    <div class='ThreeBodyProblem-jupiter'><img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/jupiter_juno.png' alt='Jupiter' class='ThreeBodyProblem-spin ThreeBodyProblem-bodyImage' /></div>
     <img src='https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/center_of_mass.png' alt='Center of mass' class='ThreeBodyProblem-centerOfMass'>
 
     <canvas class="ThreeBodyProblem-canvas"></canvas>
