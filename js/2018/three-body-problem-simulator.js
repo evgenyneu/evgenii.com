@@ -459,7 +459,7 @@ Credits
         orbitalPaths: ["#ff8b22","#6c81ff","#4ccd7a"],
         paleOrbitalPaths: ["#ab681c","#4957ae","#359256"]
       },
-      // Positions of three bodies in pixles on screen
+      // Positions of three bodies in pixels on screen
       bodyPositions = [
         {x: null, y: null},
         {x: null, y: null},
@@ -484,6 +484,8 @@ Credits
     function drawBody(position, size, bodyElement) {
       var left = (position.x - size/2) + 1000;
       var top = (position.y - size/2) + 1000;
+      // Using style.transform instead of style.left, since style.left was
+      // noticeably slower on mobile Chrome,
       bodyElement.style.transform = "translate(" + left + "px," + top + "px)";
     }
 
