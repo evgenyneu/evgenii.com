@@ -79,7 +79,7 @@ This is a simulation of a binary star system that also has a planet with a mass 
 
 ### Chaotic
 
-This is an example of how an orderly system can quickly become erratic. When the simulation is running on the computer, small calculation and rounding errors accumulate over time and make the system unpredictable. The simulation is so sensitive to small changes that it may even looks different when you run it with the same settings but in different browsers.
+This is an example of how an orderly system can quickly become erratic. When the simulation is running on the computer, small calculation and rounding errors accumulate over time and make the system unpredictable. The simulation is so sensitive to small changes that it may even look different when you run it with the same settings but in different browsers.
 
 
 
