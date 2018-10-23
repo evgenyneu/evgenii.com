@@ -85,11 +85,11 @@ This is an example of how an orderly system can quickly become erratic. When the
 
 ## The coordinate system
 
-Let's begin implementing our simulation. We will be using a coordinate system with its origin located at the center of mass of the three bodies, as shown in Fig. 1.
+Let's begin implementing our simulation. We will be using a coordinate system with its origin located at the center of mass of the three bodies, as shown in Fig. 1. We use this origin because, as it turns out, the center of mass of any number of bodies remains motionless or moves with constant velocity.
 
 <div class='isTextCentered'>
   <img class='isMax400PxWide' src='/image/blog/2018-09-27-three-body-problem-simulator/010_coordinate_system.png' alt='Coordinate system for a two-body problem'>
-  <p>Figure 1: A coordinate system with the origin at the common center of mass of the two bodies.</p>
+  <p>Figure 1: A coordinate system with the origin at the common center of mass of the three bodies.</p>
 </div>
 
 
@@ -281,7 +281,7 @@ At each frame of the animation, we calculate new positions of the three bodies i
 
 ## 📚📖✨
 
-If you are into science fiction, The Three-Body Problem novel by Liu Cixin and the other two books of the trilogy could be worth your time, I enjoyed them.
+If you are into science fiction, The Three-Body Problem novel by Liu Cixin and the other two books of the trilogy could be worth your time.
 
 
 
