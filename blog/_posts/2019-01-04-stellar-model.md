@@ -10,9 +10,19 @@ tags: programming science
 
 <script src="/js/2019/stellar_model/constants.js"></script>
 <script src="/js/2019/stellar_model/composition.js"></script>
-<script src="/js/2019/stellar_model/initial_model.js"></script>
+<script src="/js/2019/stellar_model/initialModel.js"></script>
 <script src="/js/2019/stellar_model/main.js"></script>
+
+<script>
+  window.stellar.main.start();
+  console.log(window.stellar.initialModel.data);
+</script>
 
 
 <br>
+
+## References
+
+* [The unit tests](/files/2019/01/stellar_model/test/) of the stellar model code.
+
 
