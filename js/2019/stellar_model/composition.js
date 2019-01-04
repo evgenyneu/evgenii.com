@@ -22,25 +22,19 @@ Credits
   window.stellar = window.stellar || {};
   var o = window.stellar;
 
-  // Show debug messages on screen
-  var debug = (function(){
-    var debugOutput = document.querySelector(".StellarModel-debugOutput");
+  // Contains inlined function definitions for information about the composition of the gas
+  var composition = (function(){
 
-    function print(text) {
-      var date = new Date();
-      debugOutput.innerHTML = text + " " + date.getMilliseconds();
+    // Calculate the amount of Helium-4 in the mixture
+    function helium(X, Z)
+    {
+      return (1 - X - Z);
     }
 
     return {
-        print: print,
-      };
+      helium: helium
+    };
   })();
 
-  function init() {
-    window.stellar.constants.init();
-    window.stellar.initialModel.init();
-  }
-
-  init();
-  console.log(window.stellar.initialModel.data);
+  window.stellar.composition = composition;
 })();

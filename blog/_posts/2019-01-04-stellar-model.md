@@ -8,6 +8,9 @@ tags: programming science
 
 <p class='StellarModel-debugOutput'></p>
 
+<script src="/js/2019/stellar_model/constants.js"></script>
+<script src="/js/2019/stellar_model/composition.js"></script>
+<script src="/js/2019/stellar_model/initial_model.js"></script>
 <script src="/js/2019/stellar_model/main.js"></script>
 
 
