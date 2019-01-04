@@ -38,7 +38,16 @@ Credits
 
   function init() {
     window.stellar.constants.init();
-    window.stellar.initialModel.init();
+
+    var initialParameters = {
+      mSolar: 1.2,
+      lSolar: 1.6,
+      tEff: 5700,
+      x: 0.7,
+      z: 0.008
+    };
+
+    window.stellar.initialModel.init(initialParameters);
   }
 
   init();

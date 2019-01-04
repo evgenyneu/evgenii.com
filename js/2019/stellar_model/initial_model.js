@@ -24,16 +24,15 @@ Credits
 
   // The initial parameters of the star
   var initialModel = (function(){
-    var data = {
-      mSolar: 1.2,
-      lSolar: 1.6,
-      tEff: 5700,
-      x: 0.7,
-      z: 0.008
-    };
+    var data = {};
 
-    function init() {
-      data.y = o.composition.helium(data.X, data.Z);
+    function init(parameters) {
+      data.mSolar = parameters.mSolar;
+      data.lSolar = parameters.lSolar;
+      data.tEff = parameters.tEff;
+      data.x = parameters.x;
+      data.z = parameters.z;
+      data.y = o.composition.helium(data.x, data.z);
       data.mS = data.mSolar * o.constants.data.mSun;
       data.lS = data.lSolar * o.constants.data.lSun;
 
