@@ -1,5 +1,8 @@
 "use strict";
 
+/*
+  Custom matchers used in unit tests.
+*/
 beforeEach(function () {
   jasmine.addMatchers({
     toBeApprox: function () {

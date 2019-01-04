@@ -13,7 +13,6 @@ Credits
 
   https://wps.pearsoned.com/aw_carroll_ostlie_astro_2e/48/12319/3153834.cw/index.html
 
-
 */
 
 (function(){

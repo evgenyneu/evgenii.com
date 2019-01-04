@@ -1,3 +1,11 @@
+/*
+
+Unit tests for stellar stellar structure model code:
+
+  https://evgenii.com/blog/stellar-model/
+
+*/
+
 "use strict";
 
 describe("initialModel", function() {
