@@ -1,15 +1,17 @@
 /*
 
-A stellar structure mofrl
+A stellar structure model.
 
-https://evgenii.com/blog/three-body-problem-simulator/
+https://evgenii.com/blog/stellar-model/
 
 License: Public Domain
 
 Credits
 =============
 
-1. This work is based on code from Modern Astrophysics by Bradley W. Carroll and Dale A. Ostlie. The original location of the code on Pearson Education website is https://wps.pearsoned.com/aw_carroll_ostlie_astro_2e/48/12319/3153834.cw/index.html.
+1. This work is based on code from Modern Astrophysics by Bradley W. Carroll and Dale A. Ostlie. The original location of the code on Pearson Education website is
+
+  https://wps.pearsoned.com/aw_carroll_ostlie_astro_2e/48/12319/3153834.cw/index.html
 
 
 */
