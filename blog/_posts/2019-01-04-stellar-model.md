@@ -6,7 +6,7 @@ meta_description: "We code a stellar structure mofr in JavaScript by adopting th
 tags: programming science
 ---
 
-<p class='ThreeBodyProblem-debugOutput'></p>
+<p class='StellarModel-debugOutput'></p>
 
 <script src="/js/2019/stellar_model/main.js"></script>
 
