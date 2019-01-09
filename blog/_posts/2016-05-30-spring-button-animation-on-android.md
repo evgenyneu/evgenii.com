@@ -179,6 +179,7 @@ In this equation, *a* and *w* are the amplitude and frequency values and *t* is 
 * [Source code](https://github.com/evgenyneu/bounce-button-animation-android) for the demo Android app.
 * [Live graph](https://www.desmos.com/calculator/6gbvrm5i0s) of the time interpolator function.
 * Spring button animation [tutorial](https://evgenii.com/blog/spring-button-animation-with-swift/) for iOS/Swift.
+* [A switch control](https://android.jlelse.eu/android-dynamic-custom-view-is-easy-433258cbb80f) that uses bounce interpolator made by Alexander Kolpakov.
 
 
 
