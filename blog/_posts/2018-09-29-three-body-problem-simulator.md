@@ -62,7 +62,7 @@ The little buttons under the slider run the following simulations.
 
 ### Figure eight
 
-This is a stable three-body system discovered by Cris Moore [5]. The system remains stable even if we change the masses off all bodies a little bit, to 0.99 for example. Just for fun, try increasing the speed of this animation by clicking the clock icon and moving the slider. At certain speeds you will see weird stroboscopic effects. Be careful, this can make you dizzy.
+This is a stable three-body system discovered by Cris Moore [5]. The system remains stable even if we change the masses of all bodies a little bit, to 0.99 for example. Just for fun, try increasing the speed of this animation by clicking the clock icon and moving the slider. At certain speeds you will see weird stroboscopic effects. Be careful, this can make you dizzy.
 
 ### Sun, Earth and Jupiter
 
