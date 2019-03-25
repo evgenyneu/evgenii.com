@@ -70,26 +70,6 @@ Autoprefix CSS:
 postcss --use autoprefixer *.css -d build/
 ```
 
-## DNS configuration
-
-### Arvixe configuration
-
-DNS Servers:
-
-ns1.abyssinian.arvixe.com
-ns2.abyssinian.arvixe.com
-
-### Home configuration
-
-DNS Servers:
-
-dns1.name-services.com
-dns2.name-services.com
-dns3.name-services.com
-dns4.name-services.com
-
-A Address: 59.167.177.118
-AAAA Address: 2001:44b8:41d7:f900:20f:13ff:fe50:461
 
 ## License
 
