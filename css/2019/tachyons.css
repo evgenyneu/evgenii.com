@@ -1,0 +1,269 @@
+/*
+
+Three-body problem simulation
+
+https://evgenii.com/blog/three-body-problem-simulator/
+
+License: Public Domain
+
+Credits
+=============
+
+1. This work is based on code and lectures by Dr Rosemary Mardling from Monash University.
+
+2. "The Blue Marble" By  NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans. Sources: http://www.nasa.gov/images/content/115334main_image_feature_329_ys_full.jpg, https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg
+
+3. "The Sun photographed at 304 angstroms" by NASA/SDO (AIA). Sources: http://sdo.gsfc.nasa.gov/assets/img/browse/2010/08/19/20100819_003221_4096_0304.jpg, https://commons.wikimedia.org/wiki/File:The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg
+
+4. **"Jupiter's South Pole"** image: NASA/JPL-Caltech/SwRI/MSSS/Betsy Asher Hall/Gervasio Robles, [source](https://www.nasa.gov/image-feature/jupiters-south-pole).
+
+5. **Figure eight orbit**: Moore, C. 1993, Phys. Rev. Lett., 70, 3675.
+
+6. **Kepler-16 system**: Doyle, L. R., Carter, J. A., Fabrycky, D. C., et al. 2011, Science, 333, 1602.
+
+*/
+
+/*
+  Layout
+  --------
+*/
+
+.ThreeBodyProblem-hasTopMarginSmall {
+  margin-top: 5px;
+}
+
+.ThreeBodyProblem-hasNegativeBottomMarginNormal {
+  margin-bottom: -10px;
+}
+
+/*
+  Elements
+  --------
+*/
+
+.ThreeBodyProblem-alert {
+  color: red;
+  border: 1px solid red;
+  background: #ffeeee;
+  padding: 5px;
+}
+
+.ThreeBodyProblem-container {
+  background-color: #000000;
+  position: relative;
+  height: 600px;
+  background-image: url("https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/starry_night.png");
+  background-position: center bottom;
+  background-repeat: repeat;
+  background-size: 874px 780px;
+}
+
+.ThreeBodyProblem-isTextCentered { text-align: center; }
+.ThreeBodyProblem-isHiddenBlock { display: none; }
+
+
+.ThreeBodyProblem-centerOfMass {
+  position: absolute;
+  width: 11px;
+  top: 50%;
+  left: 50%;
+  margin-left: -5.5px;
+  margin-top: -5.5px;
+  z-index: 998;
+}
+
+.ThreeBodyProblem-earth,
+.ThreeBodyProblem-jupiter,
+.ThreeBodyProblem-sun {
+  position: absolute;
+  width: 60px;
+  top: -1000px;
+  left: -1000px;
+  z-index: 1000;
+}
+
+.ThreeBodyProblem-bodyImage {
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+.ThreeBodyProblem-spin {
+  -webkit-animation:spin .5s linear infinite;
+  -moz-animation:spin .5s linear infinite;
+  animation:spin .5s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
+
+.ThreeBodyProblem-canvas { display: block; }
+
+/* Prevent browser from showing selection when the element is touched */
+.isUnselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  -o-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+/*
+  Hud display
+  ---------
+*/
+
+.ThreeBodyProblem-hudContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+}
+
+.ThreeBodyProblem-hudContainerChild {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+  Left buttons
+  ---------
+*/
+
+
+.ThreeBodyProblem-leftBottomButtonCantainer {
+  position: absolute;
+  display: block;
+  left: 15px;
+  right: 15px;
+  bottom: 10px;
+  height: 40px;
+}
+
+.ThreeBodyProblem-leftBottomButton {
+  display: block;
+  height: 40px;
+  width: 40px;
+  float: left;
+}
+
+.ThreeBodyProblem-leftBottomImage {
+  height: 100%;
+  border : 0;
+}
+
+.ThreeBodyProblem-doesChangeOpacityOnHover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+
+.ThreeBodyProblem-doesChangeOpacityOnHover:hover {
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+}
+
+/*
+  Reload button
+  ---------
+*/
+
+.ThreeBodyProblem-reload {
+  position: absolute;
+  display: block;
+  bottom: 10px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+}
+
+.ThreeBodyProblem-reloadIcon {
+  width: 100%;
+  border : 0;
+}
+
+/*
+  Slider
+  ---------
+*/
+
+.ThreeBodyProblem-slider{
+  margin: 0 auto;
+}
+
+.ThreeBodyProblem-sliderSun .SickSlider-head {
+  background-color: #ff9400;
+}
+
+.ThreeBodyProblem-sliderEarth .SickSlider-head {
+  background-color: #6780FF;
+}
+
+.ThreeBodyProblem-sliderJupiter .SickSlider-head {
+  background-color: #4BCF79;
+}
+
+/*
+
+Button
+--------------
+
+*/
+
+.ThreeBodyProblem-button {
+  margin: 5px;
+  padding: 5px 10px 3px 10px;
+  display: inline-block;
+  background-color: #ff6c00;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30% 10%/80%;
+  border: none;
+  cursor: pointer;
+}
+
+.ThreeBodyProblem-button--isSelected {
+  background-color: #a66000;
+}
+
+/*
+
+Sick Slider
+--------------
+
+*/
+
+.SickSlider {
+  position: relative;
+  height: 60px;
+  cursor: pointer;
+}
+
+.SickSlider-stripe {
+  height: 5px;
+  width: 100%;
+  background-color: #999999;
+  /*border: 1px solid #a66000;*/
+  position: absolute;
+  top: 28px;
+  left: 0px;
+}
+
+.SickSlider-head {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 30px;
+  height: 40px;
+  background-color: #999999;
+  border: 1px solid #FFFFFF;
+}
