@@ -7,7 +7,7 @@ tags: programming
 ---
 
 
-[Swift Package Manager](https://swift.org/package-manager/) allows to download and use external code in a Swift program. In this tutorial I will show how create a Swift library and then use it from a Swift program with Swift Package Manager. This method was tested with Swift 3.0.
+[Swift Package Manager](https://swift.org/package-manager/) allows to download and use external code in a Swift program. In this tutorial I will show how create a Swift library and then use it from a Swift program with Swift Package Manager. This method was tested with Swift 5.0.1
 
 ## Setting up Swift
 
@@ -20,7 +20,7 @@ swift --version
 The command will show the current Swift version that looks like this:
 
 ```
-Apple Swift version 3.0 (swiftlang-800.0.30 clang-800.0.24)
+Apple Swift version 5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)
 ```
 
 If the command did not work please follow the Swift [installation instructions](https://swift.org/getting-started).
@@ -80,15 +80,23 @@ touch Package.swift
 and put the following code in it.
 
 ```Swift
+// swift-tools-version:4.0
+
 import PackageDescription
 
 let package = Package(
     name: "MyLibrary",
-    exclude: ["DirectoryToExclude"]
+    products: [
+        .library(name: "MyLibrary", targets: ["MyLibrary"])
+    ],
+    targets: [
+        .target(
+            name: "MyLibrary",
+            dependencies: [],
+            path: "Sources")
+    ]
 )
 ```
-
-If you have an existing library that has Swift files that you do not want to distribute to users you can exclude them in the **Package.swift** file with the **exclude** option.
 
 
 
@@ -148,11 +156,18 @@ Add the following text to the **Package.swift** file.
 
 
 ```Swift
+// swift-tools-version:4.0
+
 import PackageDescription
 
 let package = Package(
     name: "MyApp",
-    targets: []
+    targets: [
+        .target(
+            name: "MyApp",
+            dependencies: [],
+            path: "Sources")
+    ]
 )
 ```
 
@@ -187,14 +202,20 @@ If everything went well you will see "Hello world!" message in the terminal.
 Now it is time to use our library. Replace the content of the **Package.swift** file with following text.
 
 ```Swift
+// swift-tools-version:4.0
+
 import PackageDescription
 
 let package = Package(
     name: "MyApp",
-    targets: [],
     dependencies: [
-        .Package(url: "https://github.com/evgenyneu/LibraryWithSwiftPackageManager.git",
-                 versions: Version(1,0,0)..<Version(2,0,0))
+        .package(url: "https://github.com/evgenyneu/LibraryWithSwiftPackageManager.git", .upToNextMinor(from: "4.0.0"))
+    ],
+    targets: [
+        .target(
+            name: "MyApp",
+            dependencies: ["MyLibrary"],
+            path: "Sources")
     ]
 )
 ```
