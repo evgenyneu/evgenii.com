@@ -940,7 +940,7 @@ Credits
           max: 10,
           power: 3
         },
-        timeScaleFactor: 3.9335,
+        timeScaleFactor: 3.9348,
         timeScaleFactorSlider: {
           min: 0.00,
           max: 100,
