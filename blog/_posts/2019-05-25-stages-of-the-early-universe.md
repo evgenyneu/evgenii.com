@@ -58,7 +58,7 @@ The Universe becomes less dense as it expands. The density of both particles and
 
 ## Universe at 350,000 years and the cosmic microwave background
 
-Another very important transition happens when the Universe is 350,000 years old. Until 350,000 years, Helium and Hydrogen atoms did not have electrons because it was too hot for the electrons to remain attached to the atoms. An electron that became bound to an atom was immediately knocked off by an energetic photon. As Uiverse expanded, the photons became less energetic, and at 350,000 years most photons could no longer prevent electrons form binding to Helium and Hydrogen. As a result, the atoms captured electrons, and light was able to move freely through space without bumping into free electrons. In other words, the Universe became transparent.
+Another very important transition happens when the Universe is 350,000 years old. Before that time, Helium and Hydrogen atoms did not have electrons because it was too hot for the electrons to remain attached to the atoms. An electron that became bound to an atom was immediately knocked off by an energetic photon. As Uiverse expanded, the photons became less energetic, and at 350,000 years most photons could no longer prevent electrons form binding to Helium and Hydrogen. As a result, the atoms captured electrons, and light was able to move freely through space without bumping into free electrons. In other words, the Universe became transparent.
 
 Some photons that were emitted when the Universe was 350,000 years old are still traveling through space today, and some of those photons are being detected by astronomers. This old light is called [cosmic microwave background](https://en.wikipedia.org/wiki/Cosmic_microwave_background).
 
