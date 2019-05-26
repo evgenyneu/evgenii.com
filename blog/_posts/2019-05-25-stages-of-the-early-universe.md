@@ -18,7 +18,7 @@ The following image shows four stages of evolution of the early Universe, from 1
 
 ## Universe at one second after the Big Bang
 
-At one second after the Big band the Universe was a hot soup of freely moving particles - protons, neutrons and electrons. In these high energy conditions the protons and neutrons were transforming into each other. THe two particles have slightly different masses, and this mass difference determined the neutron-to-proton ratio: for each neutron there were five protons.
+At one second after the Big band the Universe was a hot soup of freely moving particles - protons, neutrons and electrons. In these high energy conditions the protons and neutrons were transforming into each other. The two particles have slightly different masses, and this mass difference determined the neutron-to-proton ratio: for each neutron there were five protons.
 
 
 ## Universe at 340 seconds
