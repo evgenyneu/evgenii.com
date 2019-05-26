@@ -29,7 +29,7 @@ At 340 seconds, the Universe cools down enough for complex atoms like Helium to 
 
 ### Helium abundance is 25%
 
-Another very important quantity that is fixed at 340 seconds and can be observed at present day is the abundance of Helium-4 atoms in the Universe. This abundance is measured to be about 25%, which means that 25% of the the total mass of all the particles in the Universe are in the form of Helium-4. Here is how this abundance can be found theoretically.
+Another very important quantity that is fixed at 340 seconds is the abundance of Helium-4 atoms in the Universe. This abundance is observed in the old globular clusters to be about 25%, which means that 25% of the the total mass of all the particles in the Universe are in the form of Helium-4. Here is how this abundance can be found theoretically.
 
 Firstly, we use the fact that a Helium-4 atom contains two neutrons and two protons. Secondly, we assume that after 340 seconds there is one neutron per seven protons in the Universe. Therefore, for each Helium atom there are also 12 free protons (Figure 2).
 
