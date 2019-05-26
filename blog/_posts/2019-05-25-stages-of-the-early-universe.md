@@ -6,7 +6,7 @@ meta_description: "We show the stages of the evolution of the Universe from 1 se
 tags: science
 ---
 
-The following image shows four stages of evolution of the early Universe, from 1 second to 350 thousand years since the Big Bang. During that period the Universe cooled as it expanded in size. This article is based on excellent textbook "An Introduction to Modern Cosmology" by Andrew Liddle.
+The following image shows four stages of evolution of the early Universe, from 1 second to 350 thousand years since the Big Bang. During that period the Universe cooled as it expanded in size. This article is based on excellent textbook [An Introduction to Modern Cosmology](https://www.wiley.com/en-au/An+Introduction+to+Modern+Cosmology%2C+3rd+Edition-p-9781118502143) by Andrew Liddle.
 
 <div class='isFullScreenWide isTextCentered'>
   <img src='/image/blog/2019-05-25-stages-of-the-early-universe/four_stages_of_the_early_universe.png' alt='Stages of the early Universe' class='isMax900PxWide isTextCentered' >
