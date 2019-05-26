@@ -9,7 +9,7 @@ tags: science
 The following image shows four stages of evolution of the early Universe, from 1 second to 350 thousand years since the Big Bang. During that period the Universe cooled as it expanded in size.
 
 <div class='isFullScreenWide isTextCentered'>
-  <img src='/image/blog/2019-05-25-stages-of-the-early-universe/stages_of_the_early_universe.png' alt='Stages of the early Universe' class='isMax900PxWide isTextCentered' >
+  <img src='/image/blog/2019-05-25-stages-of-the-early-universe/four_stages_of_the_early_universe.png' alt='Stages of the early Universe' class='isMax900PxWide isTextCentered' >
 </div>
 
 <div class='isTextCentered'>
