@@ -9,7 +9,7 @@ tags: science
 The following image shows four stages of evolution of the early Universe, from 1 second to 350 thousand years since the Big Bang. During that period the Universe cooled as it expanded in size. This article is based on excellent textbook [An Introduction to Modern Cosmology](https://www.wiley.com/en-au/An+Introduction+to+Modern+Cosmology%2C+3rd+Edition-p-9781118502143) by Andrew Liddle.
 
 <div class='isFullScreenWide isTextCentered'>
-  <img src='/image/blog/2019-05-25-stages-of-the-early-universe/four_stages_of_the_early_universe.png' alt='Stages of the early Universe' class='isMax900PxWide isTextCentered' >
+  <img src='/image/blog/2019-05-25-stages-of-the-early-universe/four_stages_of_the_early_universe_2.png' alt='Stages of the early Universe' class='isMax900PxWide isTextCentered' >
 </div>
 
 <div class='isTextCentered'>
@@ -23,23 +23,23 @@ At one second after the Big band the Universe was a hot soup of freely moving pa
 
 ## Universe at 340 seconds
 
-At 340 seconds, the Universe cools down enough for complex atoms like Helium to exist. The Helium-4 is made of two protons and two neutrons, and at these temperatures most particles are no longer moving fast enough to break Helium down into free particles. The formation of Helium consumes all existing neutrons, resulting in the Universe consisting mostly of single protons (also called Hydrogen atoms), Helium-4 atoms and free electrons. During the period between 1 and 340 seconds some neutrons decay into protons, which decreases the neutron-to-proton ratio from 1/5 to 1/7. This ratio remains fixed to the present day and can be observed.
+At 340 seconds, the Universe cools down enough for complex nuclei like Helium to exist. The Helium-4 is made of two protons and two neutrons, and at these temperatures most particles are no longer moving fast enough to break Helium down into free particles. The formation of Helium consumes all existing neutrons, resulting in the Universe consisting mostly of single protons (also called Hydrogen nuclei), Helium-4 nuclei and free electrons. During the period between 1 and 340 seconds some neutrons decay into protons, which decreases the neutron-to-proton ratio from 1/5 to 1/7. This ratio remains fixed to the present day and can be observed.
 
 
 
 ### Helium abundance is 25%
 
-Another very important quantity that is fixed at 340 seconds is the abundance of Helium-4 atoms in the Universe. This abundance is observed in the old globular clusters to be about 25%, which means that 25% of the the total mass of all the particles in the Universe are in the form of Helium-4. Here is how this abundance can be found theoretically.
+Another very important quantity that is fixed at 340 seconds is the abundance of Helium-4 nuclei in the Universe. This abundance is observed in the old globular clusters to be about 25%, which means that 25% of the the total mass of all the particles in the Universe are in the form of Helium-4. Here is how this abundance can be found theoretically.
 
-Firstly, we use the fact that a Helium-4 atom contains two neutrons and two protons. Secondly, we assume that after 340 seconds there is one neutron per seven protons in the Universe. Therefore, for each Helium atom there are also 12 free protons (Figure 2).
+Firstly, we use the fact that a Helium-4 nucleus contains two neutrons and two protons. Secondly, we assume that after 340 seconds there is one neutron per seven protons in the Universe. Therefore, for each Helium nucleus there are also 12 free protons (Figure 2).
 
 
 <div class='isTextCentered'>
   <img class='isMax100PercentWide' src='/image/blog/2019-05-25-stages-of-the-early-universe/number_of_helium_and_free_prorons.png' alt='Calculating the number of helium and free protons in the Universe that is 340 seconds old'>
-  <p>Figure 2: Calculating the number of helium atoms and free protons in the Universe, which is 340 seconds old, given the neutron-to-proton ratio of 1/7.</p>
+  <p>Figure 2: Calculating the number of helium nuclei and free protons in the Universe, which is 340 seconds old, given the neutron-to-proton ratio of 1/7.</p>
 </div>
 
-The abundance of Helium-4 is the mass of Helium-4 atoms divided by the mass of all particles (including Helium-4). If we assume that protons and neutrons have the same mass, this ratio turns out to be precisely 1/4 (Figure 3).
+The abundance of Helium-4 is the mass of Helium-4 nuclei divided by the mass of all particles (including Helium-4). If we assume that protons and neutrons have the same mass, this ratio turns out to be precisely 1/4 (Figure 3).
 
 <div class='isTextCentered'>
   <img class='isMax100PercentWide' src='/image/blog/2019-05-25-stages-of-the-early-universe/helium_abundance
@@ -58,7 +58,7 @@ The Universe becomes less dense as it expands. The density of both particles and
 
 ## Universe at 350,000 years and the cosmic microwave background
 
-Another very important transition happens when the Universe is about 350,000 years old. Before that time, Helium and Hydrogen atoms did not have electrons because it was too hot for the electrons to remain attached to the atoms. An electron that became bound to an atom was immediately knocked off by an energetic photon. As Universe expanded, the photons became less energetic, and at 350,000 years most photons could no longer prevent electrons form binding to Helium and Hydrogen. As a result, the atoms captured electrons, and light was able to move freely through space without bumping into free electrons. In other words, **the Universe became transparent**.
+Another very important transition happens when the Universe is about 350,000 years old. Before that time, Helium and Hydrogen nuclei did not have electrons because it was too hot for the electrons to remain attached to the nuclei. An electron that became bound to an nucleus was immediately knocked off by an energetic photon. As Universe expanded, the photons became less energetic, and at 350,000 years most photons could no longer prevent electrons form binding to Helium and Hydrogen. As a result, the nuclei captured electrons, and light was able to move freely through space without bumping into free electrons. In other words, **the Universe became transparent**.
 
 Some photons that were emitted when the Universe was 350,000 years old are still traveling through space today and are being detected by astronomers. This old light is called [cosmic microwave background](https://en.wikipedia.org/wiki/Cosmic_microwave_background).
 
