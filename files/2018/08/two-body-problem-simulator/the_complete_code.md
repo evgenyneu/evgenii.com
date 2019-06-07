@@ -13,15 +13,11 @@ This is the complete source code of the [two-body problem simulator](/blog/two-b
 ```Html
 <!--
 
-  Note that the code uses the images loaded from https://evgenii.com web site. You will need to host these images if you want to make sure the simulation always works and is not dependent on evgenii.com web site.
-
--->
-
-<!--
-
 Two-body problem simulator
 
 https://evgenii.com/blog/two-body-problem-simulator/
+
+You can copy/paste this code into an HTML file (a file with a name that ends with .html). Then this file can be opened locally on your computer or you can put it on your web site. Note that the code uses images loaded from https://evgenii.com web site. You will need to host these images if you want to make sure the simulation always works and is not dependent on evgenii.com web site.
 
 License: Public Domain
 

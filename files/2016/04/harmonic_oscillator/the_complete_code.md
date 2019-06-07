@@ -11,15 +11,15 @@ title: "The complete code for the harmonic oscillator."
 This is the complete source code for the [harmonic oscilaltor simulation](/blog/programming-harmonic-oscillator/). Feel free to use it on any web site.
 
 ```Html
-<!--  To embed this simulator into your web page copy this source code until "Harmonic Oscillator Simulator END" comment. -->
-
 <!--
 
   Harmonic Oscillator Simulator
 
   https://evgenii.com/blog/programming-harmonic-oscillator
 
-  License: MIT
+  You can copy/paste this code into an HTML file (a file with a name that ends with .html). Then this file can be opened locally on your computer or you can put it on your web site.
+
+  License: Public Domain
 
 -->
 
