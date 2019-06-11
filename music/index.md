@@ -1,6 +1,6 @@
 ---
 layout: music
-title: "Songs that I absolutely love (IDM, Glitch, Electronic, Hip Hop, Grunge)"
+title: "Songs that I absolutely love (IDM, Glitch, Electronic, Hip Hop, Rock)"
 layout_class: isTextCentered hasNoHorizontalPadding
 comments: true
 ---
