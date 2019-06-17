@@ -4,7 +4,7 @@ title: My Software Projects
 layout_class: isTextCentered
 ---
 
-# My Software Projects
+# Pushing buttons
 
 {% for post in site.categories.projects %}
   [{{ post.title }}]({{ post.url }})
@@ -13,6 +13,6 @@ layout_class: isTextCentered
 <br>
 <br>
 
-See my [GitHub](//github.com/evgenyneu) projects.
+Look mom I have a [GitHub](//github.com/evgenyneu) account lol.
 
 <br>
