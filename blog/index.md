@@ -1,7 +1,7 @@
 ---
 layout: default
 layout_class: isTextCentered
-title: A tiny blog-like thing
+title: Blog of Evgenii Neumerzhitckii
 ---
 
 # A tiny blog-like thing
