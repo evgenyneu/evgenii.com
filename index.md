@@ -11,9 +11,7 @@ meta_description: "Personal site of Evgenii Neumerzhitckii: blog and projects."
   •ᴥ•
 </h1>
 
-I am Evgenii, an undergraduate astronomy and math student.
-
-I like our planet, life on it, enjoy [music](/music/), science and Harry Potter books, Fortnite game, [programming](/projects/), [drawing](/drawings/) and [blogging](/blog/).
+I am Evgenii,<br>I like playing Fortnite, listen to [music](/music/),<br>also do a little [coding](/projects/),<br>[drawing](/drawings/) and [blogging](/blog/).
 
 ### Want to keep in touch?
 
