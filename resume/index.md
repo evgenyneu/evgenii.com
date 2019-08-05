@@ -143,6 +143,13 @@ Senior .NET/C# developer, independent contractor
 ## Honors & Awards
 
 
+### Dean's List Award (2019)
+
+Monash University, Clayton, Australia, [see certificate](/image/resume/awards/2019/2019_monash_deans_list_award_evgenii_neumerhitckii.jpg).
+
+The Dean's Honours List is an annual award presented to students in recognition of academic excellence in science.
+
+
 ### Dean's Honours List (2018)
 
 Monash University, Clayton, Australia, [see certificate](/image/resume/awards/2018/2018_monash_deans_honours_list_award_evgenii_neumerhitckii.jpg).
