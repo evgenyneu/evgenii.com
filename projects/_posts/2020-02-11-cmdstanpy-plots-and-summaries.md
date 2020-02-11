@@ -1,7 +1,7 @@
 ---
 layout: project
 comments: true
-title:  "Tarpan: plots and summaries for cmdspanpy output"
+title:  "Tarpan: plots and summaries for cmdspanpy library"
 layout_class: isTextCentered
 ---
 
