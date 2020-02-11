@@ -11,7 +11,7 @@ author:
   google_plus_page_url: https://www.google.com/+EvgeniiN
 
 # Build settings
-markdown: redcarpet
+markdown: kramdown
 
 # No syntax highlighter. JavaScript one is used intead.
 highlighter: null
