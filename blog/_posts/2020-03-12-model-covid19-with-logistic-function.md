@@ -90,6 +90,20 @@ In this plot we used values <code>K=8 billion</code>, <code>r=1</code> and <code
 Sick! Literally.
 
 
+## Modelling real data
+
+We can use logistic function to model the spread of COVID-19 infection using real data. These data consists of the number of confirmed cases in different countries at successive days.
+
+<div class='isFullScreenWide isTextCentered'>
+  <img src='/image/blog/2020-03-12-model-covid19-with-logistic-function/0080_covid19_modeling_with_logistic_function.png' alt='Modeling confirmed cases of COVID-19 with logistic function' class='isMax900PxWide isTextCentered' >
+</div>
+
+<div class='isTextCentered'>
+  <p>Figure 3: Modeling confirmed cases of COVID-19 worldwide, exluding China. The orange circles are confirmed cases using logistic function. The solid blue line is the model. The bright shaded region around the model line indicates model's uncertainty and corresponds to 95% DHPI (highest posterior density interval). The data come from <a href="https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv">Johns Hopkins University</a>.</p>
+</div>
+
+For this model, we used the total population of `K=7.8 billion`. And the initial number of infected people was `A=8`.
+
 
 
 ## Links
