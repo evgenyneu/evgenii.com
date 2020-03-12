@@ -1,16 +1,16 @@
 ---
 layout: blog_post
 comments: true
-title: "Modelling COVID-19 infection using Stan and Python"
-meta_description: "I show how to use Star and Python to model COVID-19 confirmed cases data using logistic function."
+title: "Modelling spread of infectious disease with logistic function"
+meta_description: "I show how to use a logistic function to model COVID-19 confirmed cases data using logistic function."
 tags: science
 ---
 
-In this article I want to show how to use logistic function to model the number of confirmed cases of people infected with COVID-19 (coronavirus).
+In this article I want to show how to use logistic function to model the spread of an infectious disease.
 
 ## How infection spreads?
 
-COVID-19 is an infectious disease that spreads from human to human. Since each sick person can infect healthy people around him, the more infected people are in the population, the more people are being infected each day. In math language this means that the rate of change of `N` (the number of infected people) with time `t` is proportional to the number of infected people:
+Infectious disease is the one that can spread from human to human. Since each sick person can infect healthy people around him, the more infected people are in the population, the more people are being infected each day. In math language this means that the rate of change of `N` (the number of infected people) with time `t` is proportional to the number of infected people:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -92,18 +92,19 @@ Sick! Literally.
 
 ## Modelling real data
 
-We can use logistic function to model the spread of COVID-19 infection using real data. These data consists of the number of confirmed cases in different countries at successive days.
+We can use logistic function to model the spread of COVID-19 infection using real data. These data are the number of confirmed cases in different countries at successive days.
 
 <div class='isFullScreenWide isTextCentered'>
   <img src='/image/blog/2020-03-12-model-covid19-with-logistic-function/0080_covid19_modeling_with_logistic_function.png' alt='Modeling confirmed cases of COVID-19 with logistic function' class='isMax900PxWide isTextCentered' >
 </div>
 
 <div class='isTextCentered'>
-  <p>Figure 3: Modeling confirmed cases of COVID-19 worldwide, exluding China. The orange circles are confirmed cases using logistic function. The solid blue line is the model. The bright shaded region around the model line indicates model's uncertainty and corresponds to 95% DHPI (highest posterior density interval). The data come from <a href="https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv">Johns Hopkins University</a>.</p>
+  <p>Figure 3: Modeling confirmed cases of COVID-19 worldwide, excluding China.</p>
 </div>
 
-For this model, we used the total population of `K=7.8 billion`. And the initial number of infected people was `A=8`.
+The orange circles are confirmed cases, and the solid blue line is the model. The bright shaded region around the model line indicates model's uncertainty.
 
+For this model, we used the total population of `K=7.8 billion`. And the initial number of infected people was `A=8`. The model predicted the growth factor to be around `r=0.18`. The code for the model is [here](https://github.com/evgenyneu/covid19), and if you want to understand how it works, there is a [Statistical Rethinking](https://xcelab.net/rm/statistical-rethinking/) textbook by Richard McElreath, which is pure gold, in my opinion. :)
 
 
 ## Links
@@ -111,3 +112,7 @@ For this model, we used the total population of `K=7.8 billion`. And the initial
 * [Model code](https://github.com/evgenyneu/covid19).
 
 * [Source for the Figure 1 in Sketch format](/files/2020/03/exponential_growth.sketch).
+
+* [Source for the Figure 2 in Sketch format](/files/2020/03/logistic_function.sketch).
+
+* [COVID-19 data](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv) from Johns Hopkins University.
