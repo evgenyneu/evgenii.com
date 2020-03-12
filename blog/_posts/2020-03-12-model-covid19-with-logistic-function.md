@@ -10,7 +10,7 @@ In this article I want to show how to use logistic function to model the number 
 
 ## How infection spreads?
 
-COVID-19 is an infectious disease that spreads from human to human. Since each sick person can infect healthy people around him, the more infected people are in the population, the more people are being infected each day. In math language this means that the rate of change of the number of infected people (N) with time (t) is proportional to the number of infected people:
+COVID-19 is an infectious disease that spreads from human to human. Since each sick person can infect healthy people around him, the more infected people are in the population, the more people are being infected each day. In math language this means that the rate of change of `N` (the number of infected people) with time `t` is proportional to the number of infected people:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -27,9 +27,9 @@ where `r` is a number that determines how fast infection spreads (i.e. how infec
   </span>
   <span>(2)</span>
 </div>
-where `A` is initial number of infected people at time zero, and `e` is about 2.718.
+where `A` is initial number of infected people at time zero, and `e` is another number equal to about 2.718.
 
-This is a very simple infection model but it can be accurate at the beginning of an epidemic. If we start with just one infected person (`A=1`) and use `r=1`, then after just five days the number of infected people will be nearly 150 (Fig. 1).
+This is a very simple infection model but it can be accurate at the beginning of an epidemic. If we start with just one infected person (`A=1`) and use rate `r=1`, then after just five days the number of infected people will be nearly 150 (Fig. 1).
 
 <div class='isTextCentered'>
   <img src='/image/blog/2020-03-12-model-covid19-with-logistic-function/0030_exponential_growth_of_infection.png' alt='Exponential growth of infection' class='isMax500PxWide isTextCentered' >
@@ -38,7 +38,7 @@ This is a very simple infection model but it can be accurate at the beginning of
 <p>Figure 1: Exponential growth of infection that starts with one infected person.</p>
 </div>
 
-It spreads fast... like a virus. Remarkably, it will take only 23 days until entire population of Earth (nearly 8 billion people) is infected.
+The virus spreads fast... like a virus. Remarkably, it will take only 23 days until entire population of Earth (nearly 8 billion people) is infected.
 
 ## What happens when we run out of healthy people? Logistic function happens.
 
@@ -74,6 +74,20 @@ where `r` is the growth rate number, `K` is total number of people in the popula
 </div>
 Equation 4 is a famous equation and it is called the Logistic Function. Sal Khan [has made excellent videos](https://www.khanacademy.org/math/differential-equations/first-order-differential-equations/logistic-differential-equation/v/solving-logistic-differential-equation-part-1) where he shows how to derive it from the logistic growth model (Equation 3).
 
+## How does the logistic function look like?
+
+A plot of a logistic function looks like this:
+
+<div class='isTextCentered'>
+  <img src='/image/blog/2020-03-12-model-covid19-with-logistic-function/0070_logistic_growth_of_infection.png' alt='Logistic growth of infection' class='isMax500PxWide isTextCentered' >
+</div>
+<div class='isTextCentered'>
+<p>Figure 2: Logistic growth of infection that starts with one infected person (solid blue line). Orange dashed lines shows exponential growth for comparison.</p>
+</div>
+
+In this plot we used values <code>K=8 billion</code>, <code>r=1</code> and <code>Q=8 billion - 1</code>. You can try different values [on Desmos](https://www.desmos.com/calculator/w4jhte2hol). We can see that initially, logistic and exponential functions are the same. After about day 20, the number of infected people starts to grow more slowly for the logistic function, until `N` levels off at 8 billion people.
+
+Sick! Literally.
 
 
 
