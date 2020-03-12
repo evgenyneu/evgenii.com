@@ -10,7 +10,7 @@ In this article I want to show how to use logistic function to model the spread 
 
 ## How infection spreads?
 
-Infectious disease is the one that can spread from human to human. Since each sick person can infect healthy people around him, the more infected people are in the population, the more people are being infected each day. In math language this means that the rate of change of `N` (the number of infected people) with time `t` is proportional to the number of infected people:
+Infectious disease is the one that can spread from human to human. Since each sick person can infect healthy people around him, the more infected people are there in the population, the more people are being infected each day. In math language this means that the rate of change of `N` (the number of infected people) with time `t` is proportional to the number of infected people:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -42,7 +42,7 @@ The virus spreads fast... like a virus. Remarkably, it will take only 23 days un
 
 ## What happens when we run out of healthy people? Logistic function happens.
 
-The model shown on Fig. 1 can be very accurate at the start, when most people are healthy. But at some point there will be more ill people around, and there will be more interaction between people who are already infected. As a result, the rate if infection of healthy people will slow down. This can be written in math language as
+The model shown on Fig. 1 can be very accurate at the start, when most people are healthy. But at some point there will be more ill people around, so there will be more interaction between people who are already infected. As a result, the rate if infection of healthy people will slow down. This can be written in math language as
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -54,7 +54,7 @@ The model shown on Fig. 1 can be very accurate at the start, when most people ar
 
 where `K` is the total number of people.
 
-At the start of an epidemic, the number of infected people `N` is small, and therefore Equation 3 gives almost the same result as Equation 1. In other words, at the beginning, Equation 3 describes exponential spread of disease. As the number of infected people `N` gets closer to the total number of people `K`, however, the term `N/K` starts to approach 1, and `(1 - N/K)` terms approaches zero. Consequently, the rate of change `dN/dT` also approaches zero. This means that  the spread of the disease slows down when many people are ill.
+At the start of an epidemic, the number of infected people `N` is small, and therefore Equation 3 gives almost the same result as Equation 1. In other words, at the beginning, Equation 3 describes exponential spread of disease. However, as the number of infected people `N` gets closer to the total number of people `K`, the term `N/K` starts to approach 1, and `(1 - N/K)` terms approaches zero. Consequently, the rate of change `dN/dT` also approaches zero. This means that  the spread of the disease slows down when many people are ill.
 
 Equation 3 sounds reasonable and it is called logistic growth model. This equation can be solved symbolically to get the general solution:
 <div class='Equation isTextCentered'>
@@ -85,7 +85,7 @@ A plot of a logistic function looks like this:
 <p>Figure 2: Logistic growth of infection that starts with one infected person (solid blue line). Orange dashed line shows exponential growth, for comparison.</p>
 </div>
 
-In this plot we used values <code>K=8 billion</code>, <code>r=1</code> and <code>Q=8 billion - 1</code>. You can try different values [on Desmos](https://www.desmos.com/calculator/w4jhte2hol). We can see that initially, logistic and exponential functions are the same. After about day 20, the number of infected people starts to grow more slowly for the logistic function, until `N` levels off at 8 billion people.
+In this plot we used values <code>K=8 billion</code>, <code>r=1</code> and <code>Q=8 billion - 1</code>. You can try different values [on Desmos](https://www.desmos.com/calculator/w4jhte2hol). We can see that initially, logistic and exponential functions are the same. But after about 20 days the number of infected people starts to grow more slowly for the logistic function, until `N` levels off at 8 billion people.
 
 Sick! Literally.
 
