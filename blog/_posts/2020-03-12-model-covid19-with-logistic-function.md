@@ -82,7 +82,7 @@ A plot of a logistic function looks like this:
   <img src='/image/blog/2020-03-12-model-covid19-with-logistic-function/0070_logistic_growth_of_infection.png' alt='Logistic growth of infection' class='isMax500PxWide isTextCentered' >
 </div>
 <div class='isTextCentered'>
-<p>Figure 2: Logistic growth of infection that starts with one infected person (solid blue line). Orange dashed line shows exponential growth for comparison.</p>
+<p>Figure 2: Logistic growth of infection that starts with one infected person (solid blue line). Orange dashed line shows exponential growth, for comparison.</p>
 </div>
 
 In this plot we used values <code>K=8 billion</code>, <code>r=1</code> and <code>Q=8 billion - 1</code>. You can try different values [on Desmos](https://www.desmos.com/calculator/w4jhte2hol). We can see that initially, logistic and exponential functions are the same. After about day 20, the number of infected people starts to grow more slowly for the logistic function, until `N` levels off at 8 billion people.
