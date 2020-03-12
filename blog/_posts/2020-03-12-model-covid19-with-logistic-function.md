@@ -95,7 +95,7 @@ Sick! Literally.
 We can use logistic function to model the spread of COVID-19 infection using real data. These data are the number of confirmed cases in different countries at successive days.
 
 <div class='isFullScreenWide isTextCentered'>
-  <img src='/image/blog/2020-03-12-model-covid19-with-logistic-function/0080_covid19_modeling_with_logistic_function.png' alt='Modeling confirmed cases of COVID-19 with logistic function' class='isMax900PxWide isTextCentered' >
+  <img src='/image/blog/2020-03-12-model-covid19-with-logistic-function/0080_covid19_modeling_with_logistic_function_2.png' alt='Modeling confirmed cases of COVID-19 with logistic function' class='isMax900PxWide isTextCentered' >
 </div>
 
 <div class='isTextCentered'>
