@@ -1,8 +1,7 @@
 ---
 layout: blog_post
 comments: true
-title: "Modelling spread of infectious disease with logistic function"
-meta_description: "I show how to use a logistic function to model COVID-19 confirmed cases data using logistic function."
+title: "The logistic function"
 tags: science
 ---
 
