@@ -6,7 +6,7 @@ meta_description: "I show how to use a logistic function to model COVID-19 confi
 tags: science
 ---
 
-In this article I want to show how to use logistic function to model the spread of an infectious disease.
+In this article I want to discuss the logistic function that can be used to describe the spread of an infectious disease.
 
 ## How infection spreads?
 
