@@ -41,7 +41,7 @@ The virus spreads fast... like a virus. Remarkably, it will take only 23 days un
 
 ## What happens when we run out of healthy people? Logistic function happens.
 
-The model shown on Fig. 1 can be very accurate at the start, when most people are healthy. But at some point there will be more ill people around, so there will be more interaction between people who are already infected. As a result, the rate if infection of healthy people will slow down. This can be written in math language as
+The model shown on Fig. 1 can be very accurate at the start, when most people are healthy. But at some point there will be more ill people around, so there will be more interaction between people who are already infected. As a result, the rate of infection of healthy people will slow down. This can be written in math language as
 
 <div class='Equation isTextCentered'>
   <span></span>
