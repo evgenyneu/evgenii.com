@@ -103,7 +103,7 @@ We can use logistic function to model the spread of COVID-19 infection using rea
 
 The orange circles are confirmed cases, and the solid blue line is the model. The bright shaded region around the model line indicates model's uncertainty.
 
-For this model, we used the total population of `K=7.8 billion`. And the initial number of infected people was `A=8`. The model predicted the growth factor to be around `r=0.18`. The code for the model is [here](https://github.com/evgenyneu/covid19), and if you want to understand how it works, there is a [Statistical Rethinking](https://xcelab.net/rm/statistical-rethinking/) textbook by Richard McElreath, which is pure gold, in my opinion. :)
+For this model, we used an arbitrary population size of `K=7.8 million`. And the initial number of infected people was `A=8`. The model predicted the growth factor to be around `r=0.18`. The code for the model is [here](https://github.com/evgenyneu/covid19), and if you want to understand how it works, there is a [Statistical Rethinking](https://xcelab.net/rm/statistical-rethinking/) textbook by Richard McElreath, which is pure gold, in my opinion. :)
 
 
 ## Links
