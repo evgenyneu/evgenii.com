@@ -36,7 +36,7 @@ I am looking for work as an iOS or Android programmer.
 ## Personal Projects
 
 
-* Walk to Circle for Android and iOS: [https://github.com/evgenyneu/walk-to-circle-android)
+* [Walk to Circle for Android and iOS](https://github.com/evgenyneu/walk-to-circle-android)
 * Water Footprint for Android, iOS and Web: <br>[evgenii.com/water-footprint/en/help/](https://evgenii.com/water-footprint/en/help/)
 * AES Crypto for Android, iOS and Web: [aescrypto.com/help/](http://aescrypto.com/help/)
 
