@@ -40,7 +40,7 @@ tags: science
 </div>
 
 
-<h3 id="pythagorean_identities">Pythagorean</h2>
+<h3 id="pythagorean_identities">Pythagorean</h3>
 
 <div class='isTextCentered'>
   <img src='/image/blog/2016-05-18-basic-trigonometric-identities/pythagorean_trigonometric_identities.png' alt='Pythagorean trigonometric indentities' class='isMax200PxWide'>

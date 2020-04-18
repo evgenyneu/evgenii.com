@@ -15,19 +15,19 @@ From my personal experience, code duplication in unit tests is not only acceptab
 
 This is not a dogma or absolute truth. Here I am only sharing what usually works for me personally and why. It may not be the same for everybody. Each of us has unique background, coding style and screen wallpaper.
 
-##Anybody home?##
+## Anybody home?
 
 First of all, let's ask a question. What is the main thing a unit test does? My answer is - unit test verifies behaviour of some 'code'. Important nuance here is the direction. It is the unit test that verifies its 'code' and not the other way around. The 'code' does not verify its unit test.
 
 Ok, then what verifies the unit test? The answer is - nothing. There is nothing that checks if our unit test is bug-free. Except if we decide to write a unit test for our unit test. Which sounds like a good plot for another [Inception](http://en.wikipedia.org/wiki/Inception) movie.
 
-##Coffee powered debugger##
+## Coffee powered debugger
 
 But it is not quite correct, right? There is one thing that validates a unit test. This 'thing' is called a human being. In order to make sure that our test is valid we just look at it. Our eyes scan the unit test line by line. We run a little debugger in our brain simulating execution of the unit test.
 
 And here is the main problem for me. My brain is pretty bad at debugging. This process of checking the unit test with my eyes is hard. It requires a lot of discipline, concentration and time. There is a big risk that I will miss a bug.
 
-##The problem##
+## The problem
 
 Ok, so now I have a issue:
 
@@ -38,7 +38,7 @@ How do we solve this issue? To be honest, I have no solution. The best I can do 
 
 I am very poor at debugging in my brain. That's why I try to make unit test code explicit. In most cases I prefer using simple assertions that verify actual and expected values.
 
-##Simple assertion example##
+## Simple assertion example
 
 Let's look at a real life example of an assertion in a unit test. I will use Ruby RSpec syntax in the examples.
 
@@ -59,7 +59,7 @@ Instead I prefer to explicitly write `'Hello world'` text on the same line with 
 expect(str).to eq 'Hello world'
 ```
 
-##Example explained##
+## Example explained
 
 I prefer the last approach because it makes the unit test easier to read and understand. When I check this unit test with my eyes it is obvious what it does. The test ensures that `str` is `'Hello world'`. And it is easy to notice a problem in this test, because it is so simple.
 
@@ -73,7 +73,7 @@ expect(str).to eq str_expected
 
 we need to jump with our eyes and search for line where `str_expected` is initialised. It does not sound like much work, but it *is* additional work. Which requires more of our energy. Which is a limited resource. Especially at 5pm on Monday.
 
-##Simple duplication example##
+## Simple duplication example
 
 Now let's get closer to the main topic - code duplication in unit tests.
 
@@ -118,7 +118,7 @@ expect(str2).to eq 'My lovely horse'
 
 Win-win! Easy to write. Easy to read.
 
-##More serious duplications##
+## More serious duplications
 
 Now let's get to the main point. What if we have two unit tests with similar logic:
 
@@ -179,7 +179,7 @@ assert(person.name).to eq 'Ivan'
 
 Reading these tests is easy. You just go line by line. No need to jump. No need to return back. Stupid simple. And this is exactly what I need at 5pm on Monday.
 
-##Conclusion##
+## Conclusion
 
 Unit tests are supposed to reveal bugs and not to add new ones. Right?
 
@@ -195,7 +195,7 @@ Things to Avoid
 * Avoid extracting common functionality into helper methods
 * In general, avoid creating complex code in your tests.
 
-##Forget the rules. Do it your way##
+## Forget the rules. Do it your way
 
 Here I shared my own experience in unit testing. I mentioned approaches that help me write better unit tests. I try to follow these principles most of the time. But sometimes there are exceptions. Where it makes sense I do write helper methods, loops and other more complex code in unit tests. It really depends on the situation.
 
@@ -204,4 +204,3 @@ And most importantly - coding should be fun.
 ## Reference
 
 * Stack overflow: [Is duplicated code more tolerable in unit tests?](http://stackoverflow.com/questions/129693/is-duplicated-code-more-tolerable-in-unit-tests)
-
