@@ -13,10 +13,9 @@ layout_class: isTextCentered
 
 <a href='https://itunes.apple.com/us/app/walk-to-circle/id955310614' title='Download Walk to Circle on App Store'><img src='/image/logos/appstore_badge.png' alt='Download Walk to Circle on App Store' class='isMax200PxWide'></a>
 
-<h3><a href="http://walktocircle.com">walktocircle.com</a><h3>
+<h3><a href="http://walktocircle.com">walktocircle.com</a></h3>
 
 
 ### Walk to Circle is open source
 
 Get the source code for <a href='https://github.com/evgenyneu/walk-to-circle-android' title='Source code for Walk to Circle Android app'>Android</a> and <a href='https://github.com/evgenyneu/walk-to-circle-ios' title='Source code for Walk to Circle iOS app'>iOS</a>.
-
