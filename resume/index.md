@@ -33,13 +33,6 @@ I am looking for work as an iOS or Android programmer.
 * Tools: Xcode, Android Studio, Visual Studio.
 
 
-## Personal Projects
-
-
-* [Walk to Circle for Android and iOS](https://github.com/evgenyneu/walk-to-circle-android)
-* Water Footprint for Android, iOS and Web: <br>[evgenii.com/water-footprint/en/help/](https://evgenii.com/water-footprint/en/help/)
-* AES Crypto for Android, iOS and Web: [aescrypto.com/help/](http://aescrypto.com/help/)
-
 
 ## Open Source Projects
 
@@ -48,6 +41,14 @@ I am looking for work as an iOS or Android programmer.
 * Cosmos: [github.com/evgenyneu/Cosmos](https://github.com/evgenyneu/Cosmos)
 * KeychainSwift: [github.com/evgenyneu/keychain-swift](https://github.com/evgenyneu/keychain-swift)
 * JavaScript evaluator for Android: <br>[github.com/evgenyneu/js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
+
+
+## Personal Projects
+
+
+* [Walk to Circle for Android and iOS](https://github.com/evgenyneu/walk-to-circle-android)
+* Water Footprint for Android, iOS and Web: <br>[evgenii.com/water-footprint/en/help/](https://evgenii.com/water-footprint/en/help/)
+* AES Crypto for Android, iOS and Web: [aescrypto.com/help/](http://aescrypto.com/help/)
 
 
 
