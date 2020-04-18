@@ -23,20 +23,20 @@ I am looking for work as an iOS or Android programmer.
 ## Summary of Qualifications
 
 * 16 years of experience as a software developer.
-* Experienced in making Android, iOS and Web applications.
+* Experienced in making Android, iOS, Windows and Web applications.
 * Skilled in writing automated tests.
 
 ## Technical Expertise
 
-* Languages: Swift, Java, HTML, CSS, JavaScript, Ruby on Rails, C#.
+* Languages: Swift, HTML, CSS, JavaScript, Python, C#, C/C++, Ruby on Rails, Java.
 * Databases: PostgreSQL, MySQL, SQLite, SQL Server.
-* Tools: Xcode, Android Studio, Sublime Text, Visual Studio.
+* Tools: Xcode, Android Studio, Visual Studio.
 
 
 ## Personal Projects
 
 
-* Walk to Circle for Android and iOS: [walktocircle.com](http://walktocircle.com)
+* Walk to Circle for Android and iOS: [https://github.com/evgenyneu/walk-to-circle-android)
 * Water Footprint for Android, iOS and Web: <br>[evgenii.com/water-footprint/en/help/](https://evgenii.com/water-footprint/en/help/)
 * AES Crypto for Android, iOS and Web: [aescrypto.com/help/](http://aescrypto.com/help/)
 
@@ -48,15 +48,6 @@ I am looking for work as an iOS or Android programmer.
 * Cosmos: [github.com/evgenyneu/Cosmos](https://github.com/evgenyneu/Cosmos)
 * KeychainSwift: [github.com/evgenyneu/keychain-swift](https://github.com/evgenyneu/keychain-swift)
 * JavaScript evaluator for Android: <br>[github.com/evgenyneu/js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
-
-
-## My working schedule
-
-I am an Australian permanent resident and a full-time student at Monash university Clayton campus. I can work full-time 4 months per year during the breaks between semesters:
-
-* 17 Nov 2017 - 26 Feb 2018
-* 22 Jun 2018 - 23 Jul 2018
-* 16 Nov 2018 - 4 Mar 2019
 
 
 
@@ -142,6 +133,10 @@ Senior .NET/C# developer, independent contractor
 
 ## Honors & Awards
 
+### Best student's talk (2020)
+
+Awarded during conference of Australian Institute for Theoretical Astrophysics, [see certificate](/image/resume/awards/2020/anita_2020_evgenii_neumerzhitckii.jpg).
+
 
 ### Dean's List Award (2019)
 
@@ -186,7 +181,8 @@ Achieved the highest mark of all students enrolled in the following units taken 
 
 Monash University, Clayton, Australia
 
-* Full-time student, learning astrophysics.
+* Currently a last year undergraduate student. Major in astrophysics and applied math, minor in physics.
+
 
 South Ural State University, Chelyabinsk, Russia.
 
