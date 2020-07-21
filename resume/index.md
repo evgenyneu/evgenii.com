@@ -16,7 +16,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 ## Objective
 
-I am looking for work as an iOS or Android programmer.
+I am looking for work as an iOS, Android, JavaScript, Python or Ruby on Rails programmer.
 
 
 
@@ -34,21 +34,20 @@ I am looking for work as an iOS or Android programmer.
 
 
 
-## Open Source Projects
+## Code examples
 
-* Moa: [github.com/evgenyneu/moa/](https://github.com/evgenyneu/moa/)
-* SigmaSwiftStatistics: [github.com/evgenyneu/SigmaSwiftStatistics](https://github.com/evgenyneu/SigmaSwiftStatistics)
-* Cosmos: [github.com/evgenyneu/Cosmos](https://github.com/evgenyneu/Cosmos)
-* KeychainSwift: [github.com/evgenyneu/keychain-swift](https://github.com/evgenyneu/keychain-swift)
-* JavaScript evaluator for Android: <br>[github.com/evgenyneu/js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
-
-
-## Personal Projects
+* Swift: [github.com/evgenyneu/Cosmos](https://github.com/evgenyneu/Cosmos)
+* Javascript: [evgenii.com/blog/three-body-problem-simulator](https://evgenii.com/blog/three-body-problem-simulator)
+* Python: [github.com/evgenyneu/tarpan](https://github.com/evgenyneu/tarpan)
+* Java: [github.com/evgenyneu/js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
+* C: [github.com/evgenyneu/image_compressor_c](https://github.com/evgenyneu/image_compressor_c)
 
 
-* [Walk to Circle for Android and iOS](https://github.com/evgenyneu/walk-to-circle-android)
-* Water Footprint for Android, iOS and Web: <br>[evgenii.com/water-footprint/en/help/](https://evgenii.com/water-footprint/en/help/)
+## App examples
+
 * AES Crypto for Android, iOS and Web: [aescrypto.com/help/](http://aescrypto.com/help/)
+* Water Footprint for Android, iOS and Web: <br>[evgenii.com/water-footprint/en/help/](https://evgenii.com/water-footprint/en/help/)
+* Walk to Circle for Android and iOS: <br>[github.com/evgenyneu/walk-to-circle-android](https://github.com/evgenyneu/walk-to-circle-android)
 
 
 
@@ -60,7 +59,7 @@ I am looking for work as an iOS or Android programmer.
 
 Casual iOS/Rails/Web developer.
 
-* Maintain and program iOS, web apps and the Rails backend.
+* Maintain and program iOS, web apps and Ruby on Rails backend.
 
 
 ### August 2014 - November 2015
@@ -94,7 +93,6 @@ Freelance JavaScript and Ruby on Rails developer
 * Developed mobile web application in CoffeeScript language using jQueryMobile and Backbone.js libraries.
 * Wrote automated tests for client-side code using Jasmine.js library.
 * Added new features for the desktop web application that uses Ruby on Rails framework.
-
 
 
 
@@ -134,59 +132,31 @@ Senior .NET/C# developer, independent contractor
 
 ## Honors & Awards
 
-### Best student's talk (2020)
+* 2020: Best student's talk at an astrophysics conference [certificate](/image/resume/awards/2020/anita_2020_evgenii_neumerzhitckii.jpg).
 
-Awarded during conference of Australian Institute for Theoretical Astrophysics, [see certificate](/image/resume/awards/2020/anita_2020_evgenii_neumerzhitckii.jpg).
+* 2019: Dean's List Award [certificate](/image/resume/awards/2019/2019_monash_deans_list_award_evgenii_neumerhitckii.jpg).
 
+* 2018: Dean's Honours List [certificate](/image/resume/awards/2018/2018_monash_deans_honours_list_award_evgenii_neumerhitckii.jpg).
 
-### Dean's List Award (2019)
+* 2018: Monash Scholarship for Excellence [certificate](/image/resume/awards/2018/2018_monash_scholarship_for_excellence_evgenii_neumerhitckii.jpg).
 
-Monash University, Clayton, Australia, [see certificate](/image/resume/awards/2019/2019_monash_deans_list_award_evgenii_neumerhitckii.jpg).
+* 2016: Highest Academic Performance, semester 1 [certificate](/image/resume/awards/2016/highest_performance_award_semester2_2016.jpg).
 
-The Dean's Honours List is an annual award presented to students in recognition of academic excellence in science.
-
-
-### Dean's Honours List (2018)
-
-Monash University, Clayton, Australia, [see certificate](/image/resume/awards/2018/2018_monash_deans_honours_list_award_evgenii_neumerhitckii.jpg).
-
-The Dean's Honours List is an annual award presented to students in recognition of academic excellence in science.
+* 2016: Highest Academic Performance, semester 2 [certificate](/image/resume/awards/2016/highest_performance_award_semester1_2016.jpg).
 
 
-### Monash Scholarship for Excellence (2018)
-
-Monash University, Clayton, Australia, [see certificate](/image/resume/awards/2018/2018_monash_scholarship_for_excellence_evgenii_neumerhitckii.jpg).
-
-
-### Highest Academic Performance (semester 1 of 2016)
-
-Monash University, Clayton, Australia, [see certificate](/image/resume/awards/2016/highest_performance_award_semester1_2016.jpg).
-
-Achieved the highest mark of all students enrolled in the following units taken in semester 1 of 2016:
-
-* [ASP1010](http://www.monash.edu/pubs/2017handbooks/units/ASP1010.html) - Earth to Cosmos, introductory astronomy.
-* [MTH1010](http://www.monash.edu/pubs/2017handbooks/units/MTH1010.html) - Functions and their applications.
-
-
-### Highest Academic Performance (semester 2 of 2016)
-
-Monash University, Clayton, Australia, [see certificate](/image/resume/awards/2016/highest_performance_award_semester2_2016.jpg).
-
-Achieved the highest mark of all students enrolled in the following units taken in semester 2 of 2016:
-
-* [ASP1022](http://www.monash.edu/pubs/2018handbooks/units/ASP1022.html) - Life in the universe, astrobiology.
-* [MTH1020](http://www.monash.edu/pubs/2018handbooks/units/MTH1020.html) - Analysis of change.
-* [STA1010](http://www.monash.edu/pubs/2018handbooks/units/STA1010.html) - Statistical methods for science.
 
 ## Education
 
 Monash University, Clayton, Australia
 
-* Currently a last year undergraduate student. Major in astrophysics and applied math, minor in physics.
+* Undergraduate degree in science.
+* Major in astrophysics and applied math, minor in physics.
+* Currently studying, finished the last semester, waiting for graduation.
 
 
-South Ural State University, Chelyabinsk, Russia.
+South Ural State University, Chelyabinsk, Russia
 
 * Information Systems in Economy, Economist.
-* Graduated in 2003.
 * Completed a Master's degree equivalent, studied for 5.5 years full-time.
+* Graduated in 2003.
