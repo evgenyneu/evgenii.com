@@ -16,15 +16,16 @@ title: Resume of Evgenii Neumerzhitckii
 
 ## Objective
 
-I am looking for work as an iOS, Android, JavaScript, Python or Ruby on Rails programmer.
+I am looking for work as a programmer.
 
 
 
 ## Summary of Qualifications
 
 * 16 years of experience as a software developer.
-* Experienced in making Android, iOS, Windows and Web applications.
+* Experienced in making Web, iOS, Android and Windows applications.
 * Skilled in writing automated tests.
+
 
 ## Technical Expertise
 
@@ -39,8 +40,9 @@ I am looking for work as an iOS, Android, JavaScript, Python or Ruby on Rails pr
 * Swift: [github.com/evgenyneu/Cosmos](https://github.com/evgenyneu/Cosmos)
 * Javascript: [evgenii.com/blog/three-body-problem-simulator](https://evgenii.com/blog/three-body-problem-simulator)
 * Python: [github.com/evgenyneu/tarpan](https://github.com/evgenyneu/tarpan)
-* Java: [github.com/evgenyneu/js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
 * C: [github.com/evgenyneu/image_compressor_c](https://github.com/evgenyneu/image_compressor_c)
+* Java: [github.com/evgenyneu/js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
+* Ruby: [https://github.com/evgenyneu/siba](https://github.com/evgenyneu/siba)
 
 
 ## App examples
@@ -130,7 +132,7 @@ Senior .NET/C# developer, independent contractor
 * Developed a Windows Forms application (C#) to remotely manage catalog of digital sheet music products.
 
 
-## Honors & Awards
+## Honours & Awards
 
 * 2020: Best student's talk at an astrophysics conference [certificate](/image/resume/awards/2020/anita_2020_evgenii_neumerzhitckii.jpg).
 
@@ -150,13 +152,13 @@ Senior .NET/C# developer, independent contractor
 
 Monash University, Clayton, Australia
 
-* Undergraduate degree in science.
+* Bachelor of Science.
 * Major in astrophysics and applied math, minor in physics.
 * Currently studying, finished the last semester, waiting for graduation.
 
 
 South Ural State University, Chelyabinsk, Russia
 
-* Information Systems in Economy, Economist.
-* Completed a Master's degree equivalent, studied for 5.5 years full-time.
+* Economist, Master's degree equivalent.
+* Major in Information Systems in Economy.
 * Graduated in 2003.
