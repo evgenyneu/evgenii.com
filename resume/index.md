@@ -16,7 +16,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 ## Objective
 
-I am looking for work as a programmer.
+I am looking for part-time work as a programmer.
 
 
 
@@ -42,7 +42,7 @@ I am looking for work as a programmer.
 * Python: [github.com/evgenyneu/tarpan](https://github.com/evgenyneu/tarpan)
 * C: [github.com/evgenyneu/image_compressor_c](https://github.com/evgenyneu/image_compressor_c)
 * Java: [github.com/evgenyneu/js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
-* Ruby: [https://github.com/evgenyneu/siba](https://github.com/evgenyneu/siba)
+* Ruby: [github.com/evgenyneu/siba](https://github.com/evgenyneu/siba)
 
 
 ## App examples
