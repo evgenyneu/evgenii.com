@@ -154,7 +154,7 @@ Monash University, Clayton, Australia
 
 * Bachelor of Science.
 * Major in astrophysics and applied math, minor in physics.
-* Currently studying, finished the last semester, waiting for graduation.
+* Graduated in 2020.
 
 
 South Ural State University, Chelyabinsk, Russia
