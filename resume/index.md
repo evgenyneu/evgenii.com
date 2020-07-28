@@ -134,17 +134,17 @@ Senior .NET/C# developer, independent contractor
 
 ## Honours & Awards
 
-* 2020: Best student's talk at an astrophysics conference [certificate](/image/resume/awards/2020/anita_2020_evgenii_neumerzhitckii.jpg).
+* 2020: Best student's talk at an astrophysics conference, [certificate](/image/resume/awards/2020/anita_2020_evgenii_neumerzhitckii.jpg).
 
-* 2019: Dean's List Award [certificate](/image/resume/awards/2019/2019_monash_deans_list_award_evgenii_neumerhitckii.jpg).
+* 2019: Dean's List Award, [certificate](/image/resume/awards/2019/2019_monash_deans_list_award_evgenii_neumerhitckii.jpg).
 
-* 2018: Dean's Honours List [certificate](/image/resume/awards/2018/2018_monash_deans_honours_list_award_evgenii_neumerhitckii.jpg).
+* 2018: Dean's Honours List, [certificate](/image/resume/awards/2018/2018_monash_deans_honours_list_award_evgenii_neumerhitckii.jpg).
 
-* 2018: Monash Scholarship for Excellence [certificate](/image/resume/awards/2018/2018_monash_scholarship_for_excellence_evgenii_neumerhitckii.jpg).
+* 2018: Monash Scholarship for Excellence, [certificate](/image/resume/awards/2018/2018_monash_scholarship_for_excellence_evgenii_neumerhitckii.jpg).
 
-* 2016: Highest Academic Performance, semester 1 [certificate](/image/resume/awards/2016/highest_performance_award_semester2_2016.jpg).
+* 2016: Highest Academic Performance, semester 1, [certificate](/image/resume/awards/2016/highest_performance_award_semester2_2016.jpg).
 
-* 2016: Highest Academic Performance, semester 2 [certificate](/image/resume/awards/2016/highest_performance_award_semester1_2016.jpg).
+* 2016: Highest Academic Performance, semester 2, [certificate](/image/resume/awards/2016/highest_performance_award_semester1_2016.jpg).
 
 
 
@@ -154,7 +154,7 @@ Monash University, Clayton, Australia
 
 * Bachelor of Science.
 * Major in astrophysics and applied math, minor in physics.
-* WAM: 91.553, GPA: 3.955.
+* WAM: 91.553, GPA: 3.955, [transcript](https://www.myequals.net/sharelink/40d924a5-fb37-4b0e-ad82-7f67d28944b7/14981233-9a15-47ac-87ef-443abd667846).
 * Graduated in 2020.
 
 
