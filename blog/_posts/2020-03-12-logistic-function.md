@@ -9,7 +9,7 @@ In this article I want to discuss the logistic function that can be used to desc
 
 ## How infection spreads?
 
-Infectious disease is the one that can spread from human to human. Since each sick person can infect healthy people around him, the more infected people are there in the population, the more people are being infected each day. In math language this means that the rate of change of `N` (the number of infected people) with time `t` is proportional to the number of infected people:
+Infectious disease is the one that can spread from human to human. Each sick person can infect healthy people around her. And each of those newly infected people will, in turn, give the virus to even more people. In math language this means that the rate of increase of `N` (the number of infected people) with time `t` is proportional to the number of infected people:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -73,7 +73,7 @@ where `r` is the growth rate number, `K` is total number of people in the popula
 </div>
 Equation 4 is a famous equation and it is called the Logistic Function. Sal Khan [has made excellent videos](https://www.khanacademy.org/math/differential-equations/first-order-differential-equations/logistic-differential-equation/v/solving-logistic-differential-equation-part-1) where he shows how to derive it from the logistic growth model (Equation 3).
 
-## How does the logistic function look like?
+## What does the logistic function look like?
 
 A plot of a logistic function looks like this:
 
