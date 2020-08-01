@@ -4,7 +4,6 @@ import m4 from './simulation/m4.js';
 
 
 function startMoving(state, e) {
-  if (typeof e.preventDefault === "function") e.preventDefault();
   state.moving = true;
   state.lastPosition = [e.pageX, e.pageY];
   if (state.didStartRotating) state.didStartRotating();
@@ -12,8 +11,6 @@ function startMoving(state, e) {
 
 
 function startTouching(state, e) {
-  e.preventDefault();
-
   if (e.targetTouches.length === 2) {
     // Touching with two fingers.
     // This is a pinch/zoom gesture, not rotation
@@ -26,10 +23,10 @@ function startTouching(state, e) {
 
 
 function move(state, currentParams, e) {
-  if (typeof e.preventDefault === "function") e.preventDefault();
-
   if (!state.moving) return;
   if (!state.lastPosition) return;
+
+  if (typeof e.preventDefault === "function") e.preventDefault();
 
   // Calculate the x and y shifts of the finger on screen
   // from previous positions
@@ -103,10 +100,8 @@ export function init(hudContainer, currentParams) {
   document.addEventListener("touchmove", (e) => touchMove(state, currentParams, e));
 
   hudContainer.addEventListener("touchmove", (e) => {
-    if (typeof e.preventDefault !== 'undefined' && e.preventDefault !== null) {
-      // Prevent screen from sliding on touch devices when the element is dragged.
-      e.preventDefault();
-    }
+    // Prevent screen from sliding on touch devices when the element is dragged.
+    if (typeof e.preventDefault === "function") e.preventDefault();
   });
 
   // End moving
