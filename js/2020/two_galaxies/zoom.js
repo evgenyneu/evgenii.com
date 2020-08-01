@@ -24,6 +24,8 @@ function onWheel(state, e, currentParams) {
 
 
 function startTouch(state, e) {
+  e.preventDefault();
+
   state.touching = true;
   if (e.targetTouches.length !== 2) return;
 
@@ -32,6 +34,8 @@ function startTouch(state, e) {
 
 
 function touchMove(state, e, currentParams) {
+  e.preventDefault();
+
   if (!state.touching) return;
   if (!state.lastDistance) return;
   if (e.targetTouches.length !== 2) return;

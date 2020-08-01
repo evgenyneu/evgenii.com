@@ -54,7 +54,10 @@
 // Magrins
 // -----------------
 
+.hasTopMarginNormal { margin-top: $iiMarginNormal; }
 .hasTopMarginSmall { margin-top: $iiMarginSmall; }
+.hasBottomMarginSmall { margin-bottom: $iiMarginSmall; }
+.hasBottomMarginMini { margin-bottom: $iiMarginMini; }
 .hasNoBottomMargin { margin-bottom: 0; }
 
 .hasNoHorizontalPadding {

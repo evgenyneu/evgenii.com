@@ -4,6 +4,7 @@ import m4 from './simulation/m4.js';
 
 
 function startMoving(state, e) {
+  if (typeof e.preventDefault === "function") e.preventDefault();
   state.moving = true;
   state.lastPosition = [e.pageX, e.pageY];
   if (state.didStartRotating) state.didStartRotating();
@@ -11,6 +12,8 @@ function startMoving(state, e) {
 
 
 function startTouching(state, e) {
+  e.preventDefault();
+
   if (e.targetTouches.length === 2) {
     // Touching with two fingers.
     // This is a pinch/zoom gesture, not rotation
@@ -23,6 +26,8 @@ function startTouching(state, e) {
 
 
 function move(state, currentParams, e) {
+  if (typeof e.preventDefault === "function") e.preventDefault();
+
   if (!state.moving) return;
   if (!state.lastPosition) return;
 
@@ -48,6 +53,8 @@ function move(state, currentParams, e) {
 
 
 function touchMove(state, currentParams, e) {
+  e.preventDefault();
+
   if (e.targetTouches.length === 2) {
     // Touching with two fingers.
     // This is a pinch/zoom gesture, not rotation
