@@ -220,6 +220,30 @@ tags: science
 <script type="module" src="/js/2020/two_galaxies/main.js"></script>
 
 
+## What's this about?
+
+In this post I want to show how to make a simulation of two interacting galaxies that runs in a Web browser, using HTML, CSS and JavaScript languages. I won't explain everything, because I would need to write a book (maybe several), and I have neither the skill nor the patience for that yet. Instead, here I just want to briefly show the main ideas, in both physics and code, that will hopefully make this simulation appear less magical. The full source code is available [here](https://github.com/evgenyneu/two_galaxies).
+
+## The main idea
+
+This simulation contains two galaxy cores that move around the common center of mass, located at the origin of the coordinate system (Fig. 1). The two cores move in the X-Y plane. If we only consider the cores, then this is just a two-body problem that [we coded previously](/blog/two-body-problem-simulator/). However, this time we want to add stars that move around each core in circular orbits. The stars form discs that are tilted at adjustable angles.
+
+<div class='isTextCentered'>
+  <img class='isMax600PxWide' src='/image/blog/2020-08-01-two-galaxies/0010_main_idea.jpg' alt='The main idea behind the simulation'>
+  <p>Figure 1: The main idea behind the simulation.</p>
+</div>
+
+## A spherical cow
+
+This model includes big a simplification of reality: the stars are massless, they only feel the gravity from the two cores, but not from other stars. This simplification makes the model very unrealistic. In a real galaxy, the mass is not located at the center, but instead contained in the stars and dark matter that is distributed through the galaxy. For example, our Milky Way contains a supermassive black hole Sagittarius A* in its center, but the black hole is "only" about one millionth (0.000001) of the mass of the galaxy.
+
+But unrealistic simplifications are useful. Sometimes, they help us understand something fundamental about complex reality. Without neglecting the everyday effects of friction and gravity, it would have been much harder for Galileo and Newton to discover the central law of physics, that unperturbed bodies move at constant velocity.
+
+
+
+
+
+
 ## Acknowledgements and Links
 
 * Daniel Price ([Monash](http://users.monash.edu.au/~dprice/), [orcid.org](http://orcid.org/0000-0002-4716-4235)): he wrote the Fortran code and the laboratory manual this simulation is based on. He also taught me astrophysics in Monash uni so I can understand the code. In other words, **he is the main reason this work exists**.
@@ -229,8 +253,3 @@ tags: science
 * [Galactic Bridges and Tails](https://github.com/evgenyneu/two_galaxies/raw/master/literature/toomre_1972.pdf): a 1972 paper by Alar and Juri Toomre that analyses similar simulations. I mean, just look at the size and quality of the paper, the attention to detail. Imagine amount of work that went to create all those diagrams. I have not seen anything like that.
 
 * [github.com/evgenyneu/two_galaxies](https://github.com/evgenyneu/two_galaxies): the source code of this simulation. Feel free to use, contribute or fix bugs.
-
-
-## The unlicense
-
-This work is in [public domain](/files/2020/08/LICENSE.txt).
