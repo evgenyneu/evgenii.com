@@ -3,3 +3,9 @@ _site
 _bower_components
 .DS_Store
 .jekyll-cache
+
+
+# LaTeX
+*.log
+*.out
+*.aux

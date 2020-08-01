@@ -1,0 +1,13 @@
+cmd: "PYTHONPATH=. /opt/miniconda3/bin/python -u '{FILE_ACTIVE}'"
+name: "Run Python"
+
+
+targets:
+    LeTeX:
+        cmd: "cd latex && /Library/TeX/texbin/pdflatex main.tex && open -a Skim.app main.pdf"
+
+    LeTeXRemoveAux:
+        cmd: "rm -f 'main.aux'"
+
+    LeTeXBuildBibliography:
+        cmd: "/Library/TeX/texbin/bibtex main"

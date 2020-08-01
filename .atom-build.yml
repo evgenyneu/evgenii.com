@@ -1,0 +1,12 @@
+cmd: "cd '{FILE_ACTIVE_PATH}' && /Library/TeX/texbin/pdflatex '{FILE_ACTIVE}' && open -a Skim.app '{FILE_ACTIVE_PATH}/{FILE_ACTIVE_NAME_BASE}.pdf'"
+name: "Run LaTeX"
+
+
+targets:
+    Python:
+        cmd: "PYTHONPATH=. /opt/miniconda3/bin/python -u '{FILE_ACTIVE}'"
+    LaTeXRemoveAux:
+        cmd: "rm -f '{FILE_ACTIVE_PATH}/{FILE_ACTIVE_NAME_BASE}.aux'"
+
+    LaTeXBuildBibliography:
+        cmd: "/Library/TeX/texbin/bibtex main"
