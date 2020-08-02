@@ -1,5 +1,5 @@
 // The UI for sharing the simulation parameters:
-// button clicks, showing/hiding text area with shared urls, messages etc.
+// button clicks, showing/hiding text area with shared URLs.
 
 import { hideAllControls } from './buttons.js';
 import { getShareURL } from './share.js';
