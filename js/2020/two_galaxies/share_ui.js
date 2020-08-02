@@ -64,6 +64,9 @@ function didClickCopyToClipboard() {
 }
 
 
+/**
+ * Prepare for sharing the parameters of the simulation as a URL.
+ */
 export function initShareUI(initialParams, currentParams) {
   // Share button
   // --------
