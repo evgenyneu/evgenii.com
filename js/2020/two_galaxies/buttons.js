@@ -1,6 +1,7 @@
 // Handle button clicks
 
 import { initShareUI } from './share_ui.js';
+import { show, hide, hideElement } from './html_element.js';
 
 
 /**
@@ -27,7 +28,7 @@ function stopClickPropagation(event, selector) {
  */
 function toggleElements(elements) {
   elements.forEach((element) => {
-    element.classList.toggle('TwoGalaxies-button--isHidden');
+    element.classList.toggle('TwoGalaxies--isHidden');
   });
 }
 
@@ -100,11 +101,10 @@ export function hideAllControls() {
   var sliders = document.querySelectorAll(".SickSlider");
 
   // Hide all sliders
-  sliders.forEach((slider) => slider.classList.add("SickSlider--isHidden"));
+  sliders.forEach((slider) => hideElement(slider));
 
   // Hide share container
-  var container = document.querySelector(".TwoGalaxies-shareContainer");
-  container.classList.add("TwoGalaxies--isHidden");
+  hide(".TwoGalaxies-shareContainer");
 }
 
 
@@ -113,9 +113,7 @@ function didClickSliderButton(selectors) {
     hideAllControls();
 
     // Show the current sliders
-    selectors.forEach((selector) => {
-      document.querySelector(selector).classList.remove("SickSlider--isHidden");
-    });
+    selectors.forEach((selector) => show(selector));
 
     return false; // Prevent default
   };
