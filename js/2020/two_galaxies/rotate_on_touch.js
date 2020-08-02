@@ -50,8 +50,6 @@ function move(state, currentParams, e) {
 
 
 function touchMove(state, currentParams, e) {
-  e.preventDefault();
-
   if (e.targetTouches.length === 2) {
     // Touching with two fingers.
     // This is a pinch/zoom gesture, not rotation
