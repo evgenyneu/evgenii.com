@@ -4,6 +4,7 @@
 import { hideAllControls } from './buttons.js';
 import { getShareURL } from './share.js';
 import { copyToClipboard } from './copy_to_clipboard.js';
+import { show, showElement, hide, hideElement } from './html_element.js';
 
 
 /**
@@ -20,22 +21,21 @@ function didClickShare(initialParams, currentParams) {
     hideAllControls();
     clearSelection();
 
-    var outcomeElement = document.querySelector('.TwoGalaxies-copyOutcome');
-    outcomeElement.innerHTML = "&nbsp;";
+    // Show the share controls: container and copy button
+    show(".TwoGalaxies-shareContainer");
+    show(".TwoGalaxies-copyToClipboardButton");
 
-    var container = document.querySelector(".TwoGalaxies-shareContainer");
-    container.classList.remove("TwoGalaxies--isHidden");
+    // Hide the share success/error message
+    hide(".TwoGalaxies-copyOutcome");
 
+    // Generate the URL for sharing containing the current parameters
+    // of the simulation
     let url = getShareURL(initialParams, currentParams);
 
+    // The the URL in the text area
     let textArea = document.querySelector(".TwoGalaxies-shareText");
+    showElement(textArea);
     textArea.value = url;
-
-    // Show the area and the copy button
-    textArea.classList.remove("TwoGalaxies--isHidden");
-
-    var button = document.querySelector(".TwoGalaxies-copyToClipboardButton");
-    button.classList.remove("TwoGalaxies--isHidden");
 
     return false; // Prevent default
   };
@@ -43,17 +43,24 @@ function didClickShare(initialParams, currentParams) {
 
 
 function didClickCopyToClipboard() {
-    var copyTextarea = document.querySelector('.TwoGalaxies-shareText');
-    var outcomeElement = document.querySelector('.TwoGalaxies-copyOutcome');
+    var copyTextarea = document.querySelector(".TwoGalaxies-shareText");
+    var outcomeElement = document.querySelector(".TwoGalaxies-copyOutcome");
 
     copyToClipboard(copyTextarea).then(
       () => {
+        // Copied successfully. Show the "success" message
+        showElement(outcomeElement);
         outcomeElement.innerHTML = "Copied";
-        let button = document.querySelector(".TwoGalaxies-copyToClipboardButton");
-        copyTextarea.classList.add("TwoGalaxies--isHidden");
-        button.classList.add("TwoGalaxies--isHidden");
+
+        // Hide the share URL and the Share button
+        hideElement(copyTextarea);
+        hide(".TwoGalaxies-copyToClipboardButton");
       },
-      (err) => outcomeElement.innerHTML = "Error: " + err);
+      (err) => {
+        // Failed to copy. Show the error message
+        showElement(outcomeElement);
+        outcomeElement.innerHTML = "Error: " + err;
+      });
 }
 
 
