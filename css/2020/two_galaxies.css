@@ -53,6 +53,8 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 
+.TwoGalaxies--isTextCentered { text-align: center; }
+
 /* Margins */
 .TwoGalaxies--hasBottomMarginSmall { margin-bottom: 10px; }
 .TwoGalaxies--hasHorizontalMarginsSmall { margin-left: 10px; margin-right: 10px; }
@@ -116,7 +118,7 @@ body {
 .TwoGalaxies-button.TwoGalaxies--isHidden { display: none; }
 
 /*
-  Frames per s
+  Frames per sec
   ---------
 */
 
@@ -192,6 +194,7 @@ body {
     text-decoration: none;
     border-radius: 30% 10%/80%;
     border: none;
+    cursor: pointer;
 }
 
 /*
