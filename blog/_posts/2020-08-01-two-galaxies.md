@@ -244,12 +244,12 @@ But unrealistic simplifications are useful. Sometimes, they help us understand s
 
 
 
-## Acknowledgements and Links
+## Thanks 👍 & links
 
 * Daniel Price ([Monash](http://users.monash.edu.au/~dprice/), [orcid.org](http://orcid.org/0000-0002-4716-4235)): he wrote the Fortran code and the laboratory manual this simulation is based on. He also taught me astrophysics in Monash uni so I can understand the code. In other words, **he is the main reason this work exists**.
 
-* [webglfundamentals.org](https://webglfundamentals.org): that's where I learned how to do 3D drawing in the web browser for this simulation. Relevant sections are "Fundamentals", "2D translation, rotation, scale, matrix math" and "3D".
+* [webglfundamentals.org](https://webglfundamentals.org): that's where I learned how to do 3D drawing in the web browser for this simulation. Relevant sections are "Fundamentals", "2D translation, rotation, scale, matrix math" and "3D". My 3D code is based on examples from these chapters.
 
 * [Galactic Bridges and Tails](https://github.com/evgenyneu/two_galaxies/raw/master/literature/toomre_1972.pdf): a 1972 paper by Alar and Juri Toomre that analyses similar simulations. I mean, just look at the size and quality of the paper, the attention to detail. Imagine amount of work that went to create all those diagrams. I have not seen anything like that.
 
-* [github.com/evgenyneu/two_galaxies](https://github.com/evgenyneu/two_galaxies): the source code of this simulation. Feel free to use, contribute or fix bugs.
+* [github.com/evgenyneu/two_galaxies](https://github.com/evgenyneu/two_galaxies): the source code of this simulation. Feel free to criticise, use and fix bugs.

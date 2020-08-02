@@ -1,4 +1,5 @@
 // Initialise the graphics, the canvas and WebGL
+// The code is based on examples from https://webglfundamentals.org.
 
 import { createProgramFromScripts } from './simulation/web_gl_utils.js';
 import m4 from './simulation/m4.js';
@@ -77,6 +78,8 @@ function initTrajectories(drawData) {
  * Prepare for drawing stars on screen:
  * initialize WebGL, create buffers for loading positions and colors of stars
  * into the GPU etc.
+ *
+ * The code is based on examples from https://webglfundamentals.org.
  *
  * @param  {object} initialParams Initial parameters of the simulation.
  * @return {object} Information that will be used later at each animation
