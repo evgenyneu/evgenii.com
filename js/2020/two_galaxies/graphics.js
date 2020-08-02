@@ -15,7 +15,7 @@ function fitToContainer(drawData){
   // If in landscape mode (e.g. big monitor), make the height 150 pixels
   // smaller than the window to make room for the slider controls at the bottom
   // If in portrait (e.g. on a phone), make height equal to width.
-  const canvasHeight = Math.min(window.innerHeight - 150, window.innerWidth);
+  const canvasHeight = Math.max(window.innerHeight - 150, 300);
   document.querySelector(".TwoGalaxies-container").style.height = canvasHeight + 'px';
 
   canvas.style.height = canvasHeight + 'px';
