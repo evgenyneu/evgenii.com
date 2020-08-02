@@ -131,8 +131,8 @@ tags: science
     </div>
   </div>
 
-  <div class="TwoGalaxies-shareContainer TwoGalaxies--isHidden isTextCentered hasTopMarginNormal">
-    <textarea class="TwoGalaxies-shareText hasBottomMarginMini">Hello I'm some text</textarea>
+  <div class="TwoGalaxies-shareContainer TwoGalaxies--isHidden isTextCentered">
+    <textarea class="TwoGalaxies-shareText hasBottomMarginSmall">Hello I'm some text</textarea>
     <button class="TwoGalaxies-copyToClipboardButton hasBottomMarginSmall">Copy to clipboard</button>
     <div class="TwoGalaxies-copyOutcome">&nbsp;</div>
   </div>
