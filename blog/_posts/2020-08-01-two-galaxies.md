@@ -40,100 +40,102 @@ tags: science
   </div>
 </div>
 
-<div class="TwoGalaxies-sliderRings1 TwoGalaxies-sliderColor1 SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
-  <div class='SickSlider-label'>Label text</div>
-  <div class="SickSlider-slider">
-    <div class="SickSlider-stripe"></div>
-    <div class="SickSlider-stripeLeft"></div>
-    <div class="SickSlider-head"></div>
+<div class="TwoGalaxies-controlsContainer">
+  <div class="TwoGalaxies-sliderRings1 TwoGalaxies-sliderColor1 SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
+    <div class='SickSlider-label'>Label text</div>
+    <div class="SickSlider-slider">
+      <div class="SickSlider-stripe"></div>
+      <div class="SickSlider-stripeLeft"></div>
+      <div class="SickSlider-head"></div>
+    </div>
   </div>
-</div>
 
-<div class="TwoGalaxies-sliderRings2 TwoGalaxies-sliderColor2 SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
-  <div class='SickSlider-label'>Label text</div>
-  <div class="SickSlider-slider">
-    <div class="SickSlider-stripe"></div>
-    <div class="SickSlider-stripeLeft"></div>
-    <div class="SickSlider-head"></div>
+  <div class="TwoGalaxies-sliderRings2 TwoGalaxies-sliderColor2 SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
+    <div class='SickSlider-label'>Label text</div>
+    <div class="SickSlider-slider">
+      <div class="SickSlider-stripe"></div>
+      <div class="SickSlider-stripeLeft"></div>
+      <div class="SickSlider-head"></div>
+    </div>
   </div>
-</div>
 
-<div class="TwoGalaxies-sliderMass1 TwoGalaxies-sliderColor1 SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
-  <div class='SickSlider-label'>Label text</div>
-  <div class="SickSlider-slider">
-    <div class="SickSlider-stripe"></div>
-    <div class="SickSlider-stripeLeft"></div>
-    <div class="SickSlider-head"></div>
+  <div class="TwoGalaxies-sliderMass1 TwoGalaxies-sliderColor1 SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
+    <div class='SickSlider-label'>Label text</div>
+    <div class="SickSlider-slider">
+      <div class="SickSlider-stripe"></div>
+      <div class="SickSlider-stripeLeft"></div>
+      <div class="SickSlider-head"></div>
+    </div>
   </div>
-</div>
 
-<div class="TwoGalaxies-sliderMass2 TwoGalaxies-sliderColor2 SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
-  <div class='SickSlider-label'>Label text</div>
-  <div class="SickSlider-slider">
-    <div class="SickSlider-stripe"></div>
-    <div class="SickSlider-stripeLeft"></div>
-    <div class="SickSlider-head"></div>
+  <div class="TwoGalaxies-sliderMass2 TwoGalaxies-sliderColor2 SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
+    <div class='SickSlider-label'>Label text</div>
+    <div class="SickSlider-slider">
+      <div class="SickSlider-stripe"></div>
+      <div class="SickSlider-stripeLeft"></div>
+      <div class="SickSlider-head"></div>
+    </div>
   </div>
-</div>
 
-<div class="TwoGalaxies-sliderDistance SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
-  <div class='SickSlider-label'>Label text</div>
-  <div class="SickSlider-slider">
-    <div class="SickSlider-stripe"></div>
-    <div class="SickSlider-stripeLeft"></div>
-    <div class="SickSlider-head"></div>
+  <div class="TwoGalaxies-sliderDistance SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
+    <div class='SickSlider-label'>Label text</div>
+    <div class="SickSlider-slider">
+      <div class="SickSlider-stripe"></div>
+      <div class="SickSlider-stripeLeft"></div>
+      <div class="SickSlider-head"></div>
+    </div>
   </div>
-</div>
 
-<div class="TwoGalaxies-sliderEccentricity SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
-  <div class='SickSlider-label'>Label text</div>
-  <div class="SickSlider-slider">
-    <div class="SickSlider-stripe"></div>
-    <div class="SickSlider-stripeLeft"></div>
-    <div class="SickSlider-head"></div>
+  <div class="TwoGalaxies-sliderEccentricity SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
+    <div class='SickSlider-label'>Label text</div>
+    <div class="SickSlider-slider">
+      <div class="SickSlider-stripe"></div>
+      <div class="SickSlider-stripeLeft"></div>
+      <div class="SickSlider-head"></div>
+    </div>
   </div>
-</div>
 
-<div class="TwoGalaxies-sliderAngle1 TwoGalaxies-sliderColor1 SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
-  <div class='SickSlider-label'>Label text</div>
-  <div class="SickSlider-slider">
-    <div class="SickSlider-stripe"></div>
-    <div class="SickSlider-stripeLeft"></div>
-    <div class="SickSlider-head"></div>
+  <div class="TwoGalaxies-sliderAngle1 TwoGalaxies-sliderColor1 SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
+    <div class='SickSlider-label'>Label text</div>
+    <div class="SickSlider-slider">
+      <div class="SickSlider-stripe"></div>
+      <div class="SickSlider-stripeLeft"></div>
+      <div class="SickSlider-head"></div>
+    </div>
   </div>
-</div>
 
-<div class="TwoGalaxies-sliderAngle2 TwoGalaxies-sliderColor2 SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
-  <div class='SickSlider-label'>Label text</div>
-  <div class="SickSlider-slider">
-    <div class="SickSlider-stripe"></div>
-    <div class="SickSlider-stripeLeft"></div>
-    <div class="SickSlider-head"></div>
+  <div class="TwoGalaxies-sliderAngle2 TwoGalaxies-sliderColor2 SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
+    <div class='SickSlider-label'>Label text</div>
+    <div class="SickSlider-slider">
+      <div class="SickSlider-stripe"></div>
+      <div class="SickSlider-stripeLeft"></div>
+      <div class="SickSlider-head"></div>
+    </div>
   </div>
-</div>
 
-<div class="TwoGalaxies-sliderRingSeparation SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
-  <div class='SickSlider-label'>Label text</div>
-  <div class="SickSlider-slider">
-    <div class="SickSlider-stripe"></div>
-    <div class="SickSlider-stripeLeft"></div>
-    <div class="SickSlider-head"></div>
+  <div class="TwoGalaxies-sliderRingSeparation SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
+    <div class='SickSlider-label'>Label text</div>
+    <div class="SickSlider-slider">
+      <div class="SickSlider-stripe"></div>
+      <div class="SickSlider-stripeLeft"></div>
+      <div class="SickSlider-head"></div>
+    </div>
   </div>
-</div>
 
-<div class="TwoGalaxies-sliderTimeStep SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
-  <div class='SickSlider-label'>Label text</div>
-  <div class="SickSlider-slider">
-    <div class="SickSlider-stripe"></div>
-    <div class="SickSlider-stripeLeft"></div>
-    <div class="SickSlider-head"></div>
+  <div class="TwoGalaxies-sliderTimeStep SickSlider SickSlider--isHidden hasBottomMarginSmall hasHorizontalMarginsSmall SickSlider--isUnselectable">
+    <div class='SickSlider-label'>Label text</div>
+    <div class="SickSlider-slider">
+      <div class="SickSlider-stripe"></div>
+      <div class="SickSlider-stripeLeft"></div>
+      <div class="SickSlider-head"></div>
+    </div>
   </div>
-</div>
 
-<div class="TwoGalaxies-shareContainer TwoGalaxies--isHidden isTextCentered hasTopMarginNormal">
-  <textarea class="TwoGalaxies-shareText hasBottomMarginMini">Hello I'm some text</textarea>
-  <button class="TwoGalaxies-copyToClipboardButton hasBottomMarginSmall">Copy to clipboard</button>
-  <div class="TwoGalaxies-copyOutcome">&nbsp;</div>
+  <div class="TwoGalaxies-shareContainer TwoGalaxies--isHidden isTextCentered hasTopMarginNormal">
+    <textarea class="TwoGalaxies-shareText hasBottomMarginMini">Hello I'm some text</textarea>
+    <button class="TwoGalaxies-copyToClipboardButton hasBottomMarginSmall">Copy to clipboard</button>
+    <div class="TwoGalaxies-copyOutcome">&nbsp;</div>
+  </div>
 </div>
 
 
