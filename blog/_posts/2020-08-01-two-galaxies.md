@@ -5,6 +5,37 @@ title: "Making a JavaScript simulation of two interacting galaxies"
 tags: science
 ---
 
+<style>
+.TwoGalaxies--thumbnailContainainer {
+    background-color: black;
+    position: relative;
+}
+
+.TwoGalaxies--start {
+    position: absolute;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    bottom: 5%;
+    text-decoration: none;
+    border-radius: 30% 10%/80%;
+    border: none;
+    font-size: 20px;
+    padding: 8px 13px 6px 13px;
+    background-color: #ff6c00;
+}
+
+.TwoGalaxies--start:hover {
+    background-color: #ff8c10;
+}
+</style>
+
+<div class='TwoGalaxies--thumbnailContainainer isFullScreenWide isTextCentered'>
+  <img class='isMax800PxWide' src='/image/blog/2020-08-01-two-galaxies/two_galaxies_thumbnail.jpg' alt='Two galaxies simulation'>
+  <a class="TwoGalaxies--start" href="/files/2020/08/two_galaxies/" target="_blank">Start</a>
+</div>
+
 
 ## What's this about?
 
@@ -35,10 +66,6 @@ This simulation contains two galaxy cores that move around the common center of 
 This model includes big a simplification of reality: the stars in the simulation are massless, they only feel  gravity from the two cores, but not from other stars. This simplification makes the model very unrealistic. In a real galaxy, the mass is not located at the center, but instead contained in the stars and dark matter and distributed throughout the galaxy. For example, our Milky Way contains a supermassive black hole Sagittarius A* in its center, but the black hole is "only" about one millionth (0.000001) of the mass of the galaxy.
 
 But unrealistic simplifications are sometimes useful because they can help us understand something fundamental about nature. For example, it would have been much harder for Galileo and Newton to discover that unperturbed bodies move at constant velocity without ignoring friction and gravity, which are always present in our daily life.
-
-
-
-
 
 
 ## Thanks 👍
