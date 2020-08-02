@@ -224,7 +224,7 @@ tags: science
 
 ## What's this about?
 
-In this post I want to show how to make a simulation of two interacting galaxies that runs in a Web browser, written in HTML, CSS and JavaScript languages. I won't explain everything, because I would need to write another Web development book, and I have neither skills nor patience for that yet. Instead, here I just want to briefly show the main ideas that will hopefully make this simulation appear less magical. The full code of this simulation is available at [github.com/evgenyneu/two_galaxies](https://github.com/evgenyneu/two_galaxies).
+In this post I want to show how to make a simulation of two interacting galaxies that runs in a Web browser, written in HTML, CSS and JavaScript languages. I won't explain everything, because I would need to write books on physics and Web programming, and I have neither skills nor patience for that yet. Instead, here I just want to briefly show the main ideas that will hopefully make this simulation appear less magical. The full code of this simulation is available at [github.com/evgenyneu/two_galaxies](https://github.com/evgenyneu/two_galaxies).
 
 
 ## Who made this possible?
@@ -245,11 +245,12 @@ This simulation contains two galaxy cores that move around the common center of 
   <p>Figure 1: The main idea behind the simulation.</p>
 </div>
 
+
 ## A spherical cow
 
-This model includes big a simplification of reality: the stars are massless, they only feel the gravity from the two cores, but not from other stars. This simplification makes the model very unrealistic. In a real galaxy, the mass is not located at the center, but instead contained in the stars and dark matter that is distributed through the galaxy. For example, our Milky Way contains a supermassive black hole Sagittarius A* in its center, but the black hole is "only" about one millionth (0.000001) of the mass of the galaxy.
+This model includes big a simplification of reality: the stars in the simulation are massless, they only feel  gravity from the two cores, but not from other stars. This simplification makes the model very unrealistic. In a real galaxy, the mass is not located at the center, but instead contained in the stars and dark matter and distributed throughout the galaxy. For example, our Milky Way contains a supermassive black hole Sagittarius A* in its center, but the black hole is "only" about one millionth (0.000001) of the mass of the galaxy.
 
-But unrealistic simplifications are useful. Sometimes, they help us understand something fundamental about complex reality. Without neglecting the everyday effects of friction and gravity, it would have been much harder for Galileo and Newton to discover the central law of physics, that unperturbed bodies move at constant velocity.
+But unrealistic simplifications are sometimes useful because they can help us understand something fundamental about nature. For example, it would have been much harder for Galileo and Newton to discover that unperturbed bodies move at constant velocity without ignoring friction and gravity, which are always present in our daily life.
 
 
 
