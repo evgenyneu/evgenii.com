@@ -39,7 +39,7 @@ tags: science
 
 ## What's this about?
 
-In this post I want to show how to make a simulation of two interacting galaxies that runs in a Web browser, written in HTML, CSS and JavaScript languages. I won't explain everything, because I would need to write books on physics and Web programming, and I have neither skills nor patience for that yet. Instead, here I just want to briefly show the main ideas that will hopefully make this simulation appear less magical. The full code of this simulation is available at [github.com/evgenyneu/two_galaxies](https://github.com/evgenyneu/two_galaxies).
+In this post I want to show how to make a simulation of two interacting galaxies that runs in a Web browser, written in HTML, CSS and JavaScript languages. I won't explain everything, because I would need to write books on physics and Web programming, and I have neither skills nor patience for that yet. Instead, here I just want to briefly show the main ideas that will hopefully make this simulation appear less magical.
 
 
 ## Who made this possible?
@@ -48,7 +48,7 @@ The idea and the physics code of this simulation are not mine. This work is base
 
 I also learned how to simulate moving bodies in space from my Monash astronomy teachers Adelle Goodwin, Melanie Hampel, John Lattanzio and Rosemary Mardling (in alphabetical order).
 
-Lastly, most of the 3D code is not mine, I copy-pasted it from [WebGL Funamentals](https://webglfundamentals.org) tutorials.
+Lastly, most of the 3D code is not mine either, I copy-pasted it from [WebGL Funamentals](https://webglfundamentals.org) tutorials.
 
 
 ## The main idea
@@ -66,6 +66,37 @@ This simulation contains two galaxy cores that move around the common center of 
 This model includes big a simplification of reality: the stars in the simulation are massless, they only feel  gravity from the two cores, but not from other stars. This simplification makes the model very unrealistic. In a real galaxy, the mass is not located at the center, but instead contained in the stars and dark matter and distributed throughout the galaxy. For example, our Milky Way contains a supermassive black hole Sagittarius A* in its center, but the black hole is "only" about one millionth (0.000001) of the mass of the galaxy.
 
 But unrealistic simplifications are sometimes useful because they can help us understand something fundamental about nature. For example, it would have been much harder for Galileo and Newton to discover that unperturbed bodies move at constant velocity without ignoring friction and gravity, which are always present in our daily life.
+
+
+## Downloading the code
+
+Enough talking, let's look at the code, which is located at [github.com/evgenyneu/two_galaxies](https://github.com/evgenyneu). To download the code, open a Terminal app and run
+
+```Bash
+git clone https://github.com/evgenyneu/two_galaxies.git
+```
+
+This requires [Git program](https://git-scm.com) to be installed, and it will download the code into `two_galaxies` directory.
+
+## Looking at the code
+
+Open `two_galaxies` directory in any coding text editor of your preference (Fig. 2). I use [Atom](https://atom.io), other editors I like are [Sublime Text](https://www.sublimetext.com) and [Visual Studio Code](https://code.visualstudio.com).
+
+<div class='isTextCentered'>
+  <img class='isMax100PercentWide hasBorderShade80' src='/image/blog/2020-08-01-two-galaxies/0020_look_at_code.png' alt='Simulation code'>
+  <p>Figure 2: The code of the simulation viewed in Atom editor.</p>
+</div>
+
+The simulation is a web app, and is written in the only three languages any Web browser can understand: HTML, CSS and JavaScript.
+
+### HTML code
+
+The HTML code is located in [index.html](https://github.com/evgenyneu/two_galaxies/blob/master/index.html) file (Fig. 2). It contains the layout of the web page and its elements, such as the black canvas for drawing stars, buttons and sliders. It also contains code written in GLSL ES language , which stands for OpenGL Shading Language. This code is for showing 3D graphics using the graphics processing unit, GPU (if you are a PC gamer you know what I'm talking about).
+
+### CSS code
+
+
+
 
 
 ## Thanks 👍
