@@ -133,7 +133,13 @@ and start the web server:
 python -m http.server
 ```
 
-You can now open [http://0.0.0.0:8000/](http://0.0.0.0:8000/) URL in your web browser and see the simulation.
+You can now open [http://0.0.0.0:8000/](http://0.0.0.0:8000/) URL in your web browser and see the simulation (Fig. 5). If you make any change in the code, you can just refresh the page and see your changes.
+
+<div class='isTextCentered'>
+  <img class='isMax100PercentWide' src='/image/blog/2020-08-01-two-galaxies/0050_running_web_site_locally.png' alt='Running a simulation locally with Python web server.'>
+  <p>Figure 5: Running the simulation locally using Python web server.</p>
+</div>
+
 
 
 ### Running web server with Node.js
