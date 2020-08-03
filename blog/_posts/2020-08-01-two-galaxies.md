@@ -70,30 +70,37 @@ But unrealistic simplifications are sometimes useful because they can help us un
 
 ## Downloading the code
 
-Enough talking, let's look at the code, which is located at [github.com/evgenyneu/two_galaxies](https://github.com/evgenyneu). To download the code, open a Terminal app and run
+Enough talking, let's look at the code, which is located at [github.com/evgenyneu/two_galaxies](https://github.com/evgenyneu/two_galaxies). To download the code, open a Terminal app and run
 
-```Bash
+```
 git clone https://github.com/evgenyneu/two_galaxies.git
 ```
 
 This requires [Git program](https://git-scm.com) to be installed, and it will download the code into `two_galaxies` directory.
 
-## Looking at the code
+## Exploring the code
 
-Open `two_galaxies` directory in any coding text editor of your preference (Fig. 2). I use [Atom](https://atom.io), other editors I like are [Sublime Text](https://www.sublimetext.com) and [Visual Studio Code](https://code.visualstudio.com).
+Open `two_galaxies` directory in any coding text editor of your choice. I use [Atom](https://atom.io) (Fig. 2), other editors I recommend are [Sublime Text](https://www.sublimetext.com) and [Visual Studio Code](https://code.visualstudio.com).
 
 <div class='isTextCentered'>
   <img class='isMax100PercentWide hasBorderShade80' src='/image/blog/2020-08-01-two-galaxies/0020_look_at_code.png' alt='Simulation code'>
-  <p>Figure 2: The code of the simulation viewed in Atom editor.</p>
+  <p>Figure 2: HTML code of the simulation viewed in Atom editor.</p>
 </div>
 
 The simulation is a web app, and is written in the only three languages any Web browser can understand: HTML, CSS and JavaScript.
 
 ### HTML code
 
-The HTML code is located in [index.html](https://github.com/evgenyneu/two_galaxies/blob/master/index.html) file (Fig. 2). It contains the layout of the web page and its elements, such as the black canvas for drawing stars, buttons and sliders. It also contains code written in GLSL ES language , which stands for OpenGL Shading Language. This code is for showing 3D graphics using the graphics processing unit, GPU (if you are a PC gamer you know what I'm talking about).
+The HTML code is located in [index.html](https://github.com/evgenyneu/two_galaxies/blob/master/index.html) file (Fig. 2). It contains the layout of the web page and its elements, such as the black canvas for drawing stars, buttons and sliders. It also contains code written in GLSL ES language, which stands for OpenGL Shading Language. This code is for showing 3D graphics using the graphics processing unit (GPU). If you are a PC gamer you know what I'm talking about.
 
 ### CSS code
+
+The CSS code of the simulation is located in [css/two_galaxies.css](https://github.com/evgenyneu/two_galaxies/blob/master/css/two_galaxies.css) file (Fig. 3). This code is for setting the styles of HTML elements, things like positions, sizes and colors. For example, Fig. 3 shows `.TwoGalaxies-button` style which is used for all square buttons in the simulation. It sets the size of the buttons to be 45 by 45 pixels.
+
+<div class='isTextCentered'>
+  <img class='isMax100PercentWide hasBorderShade80' src='/image/blog/2020-08-01-two-galaxies/0030_css_code.png' alt='CSS code'>
+  <p>Figure 3: CSS code of the simulation.</p>
+</div>
 
 
 
