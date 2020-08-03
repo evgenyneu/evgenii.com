@@ -91,7 +91,7 @@ The simulation is a web app, and is written in the only three languages any Web 
 
 ### HTML code
 
-The HTML code is located in [index.html](https://github.com/evgenyneu/two_galaxies/blob/master/index.html) file (Fig. 2). It contains the layout of the web page and its elements, such as the black canvas for drawing stars, buttons and sliders. It also contains code written in GLSL ES language, which stands for OpenGL Shading Language. This code is for showing 3D graphics using the graphics processing unit (GPU). GPU is a computer hardware that is optimised to draw coloured triangles, points and lines on your screen very fast. This made it possible to animate thousands of stars in real time in this simulation.
+The HTML code is located in [index.html](https://github.com/evgenyneu/two_galaxies/blob/master/index.html) file (Fig. 2). It contains the layout of the web page and its elements, such as the black canvas for drawing stars, buttons and sliders. It also contains code written in GLSL ES language, which stands for OpenGL Shading Language. This code is for showing 3D graphics using the graphics processing unit (GPU). GPU is a computer hardware that is optimised to draw coloured triangles, points and lines on your screen very fast, which makes it possible to animate thousands of stars in real time in this simulation.
 
 
 ### CSS code
@@ -106,7 +106,7 @@ The CSS code of the simulation is located in [css/two_galaxies.css](https://gith
 
 ### JavaScript code
 
-Most of the simulation code is in form of JavaScript, located in [js directory](https://github.com/evgenyneu/two_galaxies/tree/master/js) (Fig. 4). Unlike HTML and CSS, which are languages specific to web development, JavaScript is a general purpose programming language used to encode the logic of the program. For example, Fig. 4 shows a function `numberOfStarsInOneRing` that calculates the number of stars in a ring of a galaxy. The entry point of the program is located in the [main.js](https://github.com/evgenyneu/two_galaxies/blob/master/js/main.js) file.
+Most of the simulation code is in form many JavaScript files, located in [js directory](https://github.com/evgenyneu/two_galaxies/tree/master/js) (Fig. 4). Unlike HTML and CSS, which are languages specific to web development, JavaScript is a general purpose programming language used to encode the logic of the program. For example, Fig. 4 shows a function `numberOfStarsInOneRing` that calculates the number of stars in a ring of a galaxy. The entry point of the program is located in the [main.js](https://github.com/evgenyneu/two_galaxies/blob/master/js/main.js) file.
 
 <div class='isFullScreenWide isTextCentered'>
   <img class='isMax800PxWide hasBorderShade80' src='/image/blog/2020-08-01-two-galaxies/0040_javascript_code.png' alt='JavaScript code'>
@@ -116,10 +116,10 @@ Most of the simulation code is in form of JavaScript, located in [js directory](
 
 ## Run the simulation locally
 
-Next, we want to run the simulation on your computer, so you can tinker with the code and see the effects. In order to do this, you need to install a web server, which is a program that  to runs web sites. There are many web servers available, but the simpler ones come with Python and Node.js.
+Next, we want to run the simulation on your computer, so you can tinker with the code and see the effects. In order to do this, you need to install a web server, which is a program that runs web sites. There are many web servers available, but the simpler ones come with Python and Node.js.
 
 
-### Running web server with Python
+### Running a web server with Python
 
 First, [install Python](https://wiki.python.org/moin/BeginnersGuide/Download). Next, in the Terminal, change to the `two_galaxies` directory where you downloaded the code earlier:
 
@@ -142,7 +142,7 @@ You can now open [http://0.0.0.0:8000/](http://0.0.0.0:8000/) URL in your web br
 
 
 
-### Running web server with Node.js
+### Running a web server with Node.js
 
 Alternatively, instead of Python you can use a web server that comes with Node.js. First, [install Node.js](https://nodejs.org/en/download/). Next, install the web server:
 
