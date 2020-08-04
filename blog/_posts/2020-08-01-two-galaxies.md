@@ -193,7 +193,7 @@ This is done with the following function, located in [js/physics/initial_conditi
 
 ```JavaScript
 export function numberOfStarsInOneRing(ringNumber, multiplier) {
-  return 2 * multiplier + multiplier * (ringNumber - 1);
+  return ringNumber * multiplier;
 }
 ```
 
@@ -202,7 +202,7 @@ This function returns the number of stars in a given ring of a galaxy. The ring 
 Now that you have local web server running, you can experiment with the code and see the effects. For example, change the return statement from
 
 ```JavaScript
-return 2 * multiplier + multiplier * (ringNumber - 1)
+return ringNumber * multiplier;
 ```
 
 to
@@ -238,8 +238,7 @@ export function numberOfStarsInAllRingsOneGalaxy(numberOfRings,
 Here, inside the loop, we call function `numberOfStarsInOneRing` for rings 1, 2, and up to the total number of rings, adding the number of stars in each ring to the galaxy's total.
 
 
-
-## Locating stars in the galaxy
+## Positioning stars in a galaxy
 
 we can calculate their initial positions: This is done by `galaxyStarsPositionsAndVelocities` function in [js/physics/initial_conditions.js](https://github.com/evgenyneu/two_galaxies/blob/master/js/physics/initial_conditions.js) file:
 
