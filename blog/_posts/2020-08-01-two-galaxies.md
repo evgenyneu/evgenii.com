@@ -133,12 +133,14 @@ and start the web server:
 python -m http.server
 ```
 
-You can now open [http://0.0.0.0:8000/](http://0.0.0.0:8000/) URL in your web browser and see the simulation (Fig. 5). If you make any change in the code, you can just refresh the page and see your changes.
+You can now open [http://0.0.0.0:8000/](http://0.0.0.0:8000/) URL in your web browser and see the simulation (Fig. 5).
 
 <div class='isTextCentered'>
   <img class='isMax100PercentWide' src='/image/blog/2020-08-01-two-galaxies/0050_running_web_site_locally.png' alt='Running a simulation locally with Python web server.'>
   <p>Figure 5: Running the simulation locally using Python web server.</p>
 </div>
+
+The purpose of using a local web server is that you can make changes to the code, refresh the web browser and see the effects.
 
 
 
@@ -155,6 +157,107 @@ Finally, from `two_galaxies` directory, start the web server and navigate to [ht
 ```
 npx http-server
 ```
+
+
+## How the simulation works?
+
+Conceptually, this simulation is very simple. All it is doing is showing moving circles on the screen. The trick is to calculate their positions and then change positions  with time. This is done using three steps:
+
+1. First, for each star we calculate three numbers &mdash; its x, y, and z coordinates in 3D space &mdash; and then use them to draw a coloured circle on screen. These are initial positions of the stars, and that's where we see them after the web page is first loaded.
+
+2. Next, after a short time interval, we want to calculate new positions using Newton's second law (we will return to this physics later):
+
+    <div class='Equation isTextCentered'>
+      <span></span>
+      <span>
+        <img class='isMax80PxWide' src='/image/blog/2020-08-01-two-galaxies/0060_newtons_second_law.png' alt="Newton's second law">.
+      </span>
+      <span>(1)</span>
+    </div>
+
+3. Finally, we repeat this 60 times a second (or at a different rate, depending on refresh rate of your monitor), and this gives an impression of a moving collection of stars.
+
+Simple.
+
+
+## Counting the stars
+
+Our first job is to calculate the initial positions of stars. But before that, we need to know the number of stars in each ring of a galaxy (Fig. 6).
+
+<div class='isTextCentered'>
+  <img class='isMax300PxWide' src='/image/blog/2020-08-01-two-galaxies/0070_galaxy_rings.png' alt='A single galaxy.'>
+  <p>Figure 6: A single galaxy is made of stars placed in circular rings.</p>
+</div>
+
+This is done with the following function, located in [js/physics/initial_conditions.js](https://github.com/evgenyneu/two_galaxies/blob/master/js/physics/initial_conditions.js) file:
+
+```JavaScript
+export function numberOfStarsInOneRing(ringNumber, multiplier) {
+  return 2 * multiplier + multiplier * (ringNumber - 1);
+}
+```
+
+This function returns the number of stars in a given ring of a galaxy. The ring number is passed using input parameter `ringNumber`, and the increase in the number of stars in each next ring is specified with `multiplier` parameter. For example, the function will return 12 stars for the first ring when we call `numberOfStarsInOneRing(1, 6)`, 18 for the second ring `numberOfStarsInOneRing(2, 6)`, an so on, adding 6 more stars to the each next ring.
+
+Now that you have local web server running, you can experiment with the code and see the effects. For example, change the return statement from
+
+```JavaScript
+return 2 * multiplier + multiplier * (ringNumber - 1)
+```
+
+to
+
+```
+return 7;
+```
+
+Then refresh the web browser, and you will see funny galaxies shown on Fig. 7.
+
+<div class='isTextCentered'>
+  <img class='isMax400PxWide' src='/image/blog/2020-08-01-two-galaxies/0075_seven_stars_in_a_ring.png' alt='A single galaxy.'>
+  <p>Figure 7: Galaxies with seven stars in each ring.</p>
+</div>
+
+Next, we need to calculate the total number of stars in one galaxy. This is done by  `numberOfStarsInAllRingsOneGalaxy` function:
+
+```JavaScript
+export function numberOfStarsInAllRingsOneGalaxy(numberOfRings,
+                                                 multiplier) {
+  var stars = 0;
+
+  // Loop over each ring, starting from the one closer to the center
+  for(let ringNumber = 1; ringNumber <= numberOfRings; ringNumber++) {
+    // Calculate the number of stars in one ring and add it to total
+    stars += numberOfStarsInOneRing(ringNumber, multiplier);
+  }
+
+  return stars;
+}
+```
+
+Here, inside the loop, we call function `numberOfStarsInOneRing` for rings 1, 2, and up to the total number of rings, adding the number of stars in each ring to the galaxy's total.
+
+
+
+## Locating stars in the galaxy
+
+we can calculate their initial positions: This is done by `galaxyStarsPositionsAndVelocities` function in [js/physics/initial_conditions.js](https://github.com/evgenyneu/two_galaxies/blob/master/js/physics/initial_conditions.js) file:
+
+```JavaScript
+export function galaxyStarsPositionsAndVelocities(args) {
+  let stars = numberOfStarsInAllRingsOneGalaxy(args.numberOfRings);
+  var positions = Array(stars * 3).fill(0);
+  var velocities = Array(stars * 3).fill(0);
+  ...
+```
+
+It starts with calculating the total number of stars in one galaxy, by calling `numberOfStarsInAllRingsOneGalaxy` function.
+
+<div class='isTextCentered'>
+  <img class='isMax500PxWide' src='/image/blog/2020-08-01-two-galaxies/0080_galaxy_angle.png' alt='A single galaxy.'>
+  <p>Figure 8: A galaxy inclination angle of 60 degrees. The angle is measured from the X-Y place, where the galaxy cores are moving.</p>
+</div>
+
 
 ## Thanks 👍
 
