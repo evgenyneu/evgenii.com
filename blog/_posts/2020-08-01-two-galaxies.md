@@ -83,7 +83,7 @@ This requires [Git program](https://git-scm.com) to be installed, and it will do
 Open `two_galaxies` directory in any coding text editor of your choice. I use [Atom](https://atom.io) (Fig. 2), other editors I recommend are [Sublime Text](https://www.sublimetext.com) and [Visual Studio Code](https://code.visualstudio.com).
 
 <div class='isTextCentered'>
-  <img class='isMax100PercentWide hasBorderShade80' src='/image/blog/2020-08-01-two-galaxies/0020_look_at_code.png' alt='Simulation code'>
+  <img class='isMax500PxWide hasBorderShade80' src='/image/blog/2020-08-01-two-galaxies/0020_look_at_code.png' alt='Simulation code'>
   <p>Figure 2: HTML code of the simulation viewed in Atom editor.</p>
 </div>
 
@@ -119,7 +119,7 @@ Most of the simulation code is in form many JavaScript files, located in [js dir
 Next, we want to run the simulation on your computer, so you can tinker with the code and see the effects. In order to do this, you need to install a web server, which is a program that runs web sites. There are many web servers available, but the simpler ones come with Python and Node.js.
 
 
-### Running a web server with Python
+### Option 1: running a web server with Python
 
 First, [install Python](https://wiki.python.org/moin/BeginnersGuide/Download). Next, in the Terminal, change to the `two_galaxies` directory where you downloaded the code earlier:
 
@@ -142,15 +142,15 @@ You can now open [http://0.0.0.0:8000/](http://0.0.0.0:8000/) URL in your web br
 
 
 
-### Running a web server with Node.js
+### Option 2: running a web server with Node.js
 
-Alternatively, instead of Python you can use a web server that comes with Node.js. First, [install Node.js](https://nodejs.org/en/download/). Next, install the web server:
+Alternatively, instead of Python you can use a web server that comes with Node.js. First, [install Node.js](https://nodejs.org/en/download/). Next, from the Terminal, install the web server:
 
 ```
 npm install http-server -g
 ```
 
-Finally, start the web server and navigate to [http://127.0.0.1:8080](http://127.0.0.1:8080) URL in your web browser to see the simulation:
+Finally, from `two_galaxies` directory, start the web server and navigate to [http://127.0.0.1:8080](http://127.0.0.1:8080) URL in your web browser to see the simulation:
 
 ```
 npx http-server
