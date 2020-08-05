@@ -53,19 +53,21 @@ Lastly, most of the 3D code is not mine either, I copy-pasted it from [WebGL Fun
 
 ## The main idea
 
-This simulation contains two galaxy cores that move around the common center of mass, located at the origin of the coordinate system (Fig. 1). The two cores move in the X-Y plane. If we only consider the cores, then this is just a two-body problem that [we coded previously](/blog/two-body-problem-simulator/). However, this time we want to add stars that move around each core in circular orbits. The stars form discs that are tilted at adjustable angles with respect to the X-Y plane.
+This simulation contains two galaxy cores that move around the common center of mass, located at the origin of the coordinate system (Fig. 1).
 
 <div class='isTextCentered'>
   <img class='isMax600PxWide' src='/image/blog/2020-08-01-two-galaxies/0010_main_idea.jpg' alt='The main idea behind the simulation'>
   <p>Figure 1: The main idea behind the simulation.</p>
 </div>
 
+The two cores move in the X-Y plane. If we only consider the cores, then this is just a two-body problem that [we coded previously](/blog/two-body-problem-simulator/). However, this time we want to add stars that move around each core in circular orbits. The stars form discs that are tilted at adjustable angles with respect to the X-Y plane.
+
 
 ## A spherical cow
 
-This model includes a big simplification of reality: the stars in the simulation are massless, they only feel  gravity from the two cores, but not from other stars. This simplification makes the model very unrealistic. In a real galaxy, the mass is not located at the center, but instead contained in the stars and dark matter and distributed throughout the galaxy. For example, our Milky Way contains a supermassive black hole Sagittarius A* in its center, but the black hole is "only" about one millionth (0.000001) of the mass of the galaxy.
+This model includes a big simplification of reality: the stars in the simulation only feel gravity from the two galactic cores, but not from other stars. This simplification makes the model very unrealistic. In a real galaxy, the mass is not located at the center, but instead contained in the stars and dark matter and distributed throughout the galaxy. For example, our Milky Way contains a supermassive black hole Sagittarius A* in its center, but the black hole is "only" about one millionth (0.000001) of the mass of the galaxy.
 
-But unrealistic simplifications are sometimes useful because they can help us understand something fundamental about nature. For example, it would have been much harder for Galileo and Newton to discover that unperturbed bodies move at constant velocity without ignoring friction and gravity, which are always present in our daily life.
+But unrealistic simplifications are sometimes useful because they can help us understand something fundamental about nature. For example, it would have been much harder for Galileo and Newton to discover that an unperturbed object moves at constant velocity without ignoring friction and gravity, which are always present in our daily life.
 
 
 ## Downloading the code
@@ -106,7 +108,7 @@ The CSS code of the simulation is located in [css/two_galaxies.css](https://gith
 
 ### JavaScript code
 
-Most of the simulation code is in form many JavaScript files, located in [js directory](https://github.com/evgenyneu/two_galaxies/tree/master/js) (Fig. 4). Unlike HTML and CSS, which are languages specific to web development, JavaScript is a general purpose programming language used to encode the logic of the program. For example, Fig. 4 shows a function `numberOfStarsInOneRing` that calculates the number of stars in a ring of a galaxy. The entry point of the program is located in the [main.js](https://github.com/evgenyneu/two_galaxies/blob/master/js/main.js) file.
+Most of the simulation code is in JavaScript files, located in [js directory](https://github.com/evgenyneu/two_galaxies/tree/master/js) (Fig. 4). Unlike HTML and CSS, which are languages specific to web development, JavaScript is a general purpose programming language used to encode the logic of a program. For example, Fig. 4 shows a function `numberOfStarsInOneRing` that calculates the number of stars in a ring of a galaxy. The entry point of the program is located in the [main.js](https://github.com/evgenyneu/two_galaxies/blob/master/js/main.js) file.
 
 <div class='isFullScreenWide isTextCentered'>
   <img class='isMax800PxWide hasBorderShade80' src='/image/blog/2020-08-01-two-galaxies/0040_javascript_code.png' alt='JavaScript code'>
@@ -116,7 +118,7 @@ Most of the simulation code is in form many JavaScript files, located in [js dir
 
 ## Run the simulation locally
 
-Next, we want to run the simulation on your computer, so you can tinker with the code and see the effects. In order to do this, you need to install a web server, which is a program that runs web sites. There are many web servers available, but the simpler ones come with Python and Node.js.
+Next, I want to show how to run the simulation on your computer, so you can tinker with the code and see the effects. In order to do this, you need to install a web server, which is a program that runs web sites. There are many web servers available, but the simpler ones come with Python and Node.js.
 
 
 ### Option 1: running a web server with Python
@@ -197,9 +199,9 @@ export function numberOfStarsInOneRing(ringNumber, multiplier) {
 }
 ```
 
-This function returns the number of stars in a given ring of a galaxy. The ring number is passed using input parameter `ringNumber`, and the increase in the number of stars in each next ring is specified with `multiplier` parameter. For example, the function will return 12 stars for the first ring when we call `numberOfStarsInOneRing(1, 6)`, 18 for the second ring `numberOfStarsInOneRing(2, 6)`, an so on, adding 6 more stars to the each next ring.
+This function returns the number of stars in a given ring of a galaxy. The ring number is passed using input parameter `ringNumber`, and the increase in the number of stars in each next ring is specified with `multiplier` parameter. For example, the function will return 6 stars for the first ring when we call `numberOfStarsInOneRing(1, 6)`, 12 for the second ring `numberOfStarsInOneRing(2, 6)`, an so on, adding 6 more stars to the next ring.
 
-Now that you have local web server running, you can experiment with the code and see the effects. For example, change the return statement from
+Now that you have a local web server running, you can experiment with the code and see the effects. For example, change the return statement from
 
 ```JavaScript
 return ringNumber * multiplier;
@@ -300,7 +302,7 @@ let angleBetweenNeighbours = 2 * Math.PI / numberOfStars;
 
 ## Calculating star's speed
 
-Our goal is to calculate the velocity of each star in the galaxy, but first we need to find the speeds of stars. Velocity is a vector, pointing in the direction of movement and having  length equal to the speed. In the code we are dealing with a star at a specific ring number `ringNumber`. Since we want our rings to be circular, all stars in the same ring must have equal speeds, otherwise the symmetry of the circle would be broken. Let's calculate this speed.
+Our goal is to calculate the velocity of each star in the galaxy, but first we need to find the speeds of stars. Velocity is a vector, pointing in the direction of movement. The length of a velocity vector is equal to the speed. Since we want our rings to be circular, all stars in the same ring must have equal speeds, otherwise the symmetry of the circle would be broken. Let's calculate this speed.
 
 Consider a single star. Since we chose to neglect gravity from other stars, the galactic core is the only object that attracts our star (Fig. 10). The core exerts force `F` on the star of mass `m`. This causes the star to accelerate with acceleration `a`, resulting in a circular orbit instead of a straight line.
 
@@ -573,7 +575,7 @@ I will keep extending this article and cover more code from the simulation. Plea
 
 ## Thanks 👍
 
-* [Daniel Price](http://orcid.org/0000-0002-4716-4235): my Monash astronomy teacher, who wrote the Fortran code and the laboratory manual this simulation is based on. **Daniel is the main reason this work exists**.
+* [Daniel Price](http://orcid.org/0000-0002-4716-4235): my Monash astronomy teacher, who wrote the Fortran code and the laboratory manual this simulation is based on.
 
 * [Adelle Goodwin](https://adellej.github.io/), [Melanie Hampel](https://twitter.com/stellarmelanie), [John Lattanzio](https://orcid.org/0000-0003-2952-859X) and [Rosemary Mardling](https://research.monash.edu/en/persons/rosemary-mardling): my Monash teachers, who taught me astronomy and how to make simulate movement of masses in space.
 
