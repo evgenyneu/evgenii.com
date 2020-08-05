@@ -257,7 +257,7 @@ positions[1] will be its y-coordinate. The x-coordinate of the second star is po
 
 Next, we want to use the angle of galaxy inclination (Fig 8) with respect to the x-y plane., which is passed to this function as parameter `args.galaxyAngleDegree`. This angle is chosen by the user in degrees, but we want to convert it to radians, using the fact that 180 degrees is π (3.1415) radians:
 
-```
+```JavaScript
 var galaxyAngleRadians = args.galaxyAngleDegree * Math.PI / 180;
 ```
 
@@ -265,6 +265,39 @@ var galaxyAngleRadians = args.galaxyAngleDegree * Math.PI / 180;
   <img class='isMax500PxWide' src='/image/blog/2020-08-01-two-galaxies/0080_galaxy_angle.png' alt='A single galaxy.'>
   <p>Figure 8: A galaxy inclination angle of 60 degrees. The angle is measured from the X-Y place, where the galaxy cores are moving.</p>
 </div>
+
+Next, we look at each galaxy ring separately, starting with the first ring using the `for` loop:
+
+```JavaScript
+// Loop over the rings of the galaxy
+for(let ringNumber = 1; ringNumber <= args.numberOfRings; ringNumber++) {
+  // Find distance of stars in current ring from the galaxy center
+  let distanceFromCenter = ringNumber * args.ringSeparation;
+
+  // Find number of stars in the ring
+  let numberOfStars = numberOfStarsInOneRing(ringNumber,
+                                             args.ringMultiplier);
+```
+
+Inside the loop, we calculate the distance of the star (and the ring) from galactic center (Fig. 9), which is equal to the ring number times the separation between rings `args.ringSeparation`, which is passed as function's argument.
+
+<div class='isTextCentered'>
+  <img class='isMax300PxWide' src='/image/blog/2020-08-01-two-galaxies/0900_distance_from_center_star_angle.png' alt='Distance from center and angle between neighbours.'>
+  <p>Figure 9: Calculating distance from a star in the third ring to the galaxy center and the angle between two neighbours.</p>
+</div>
+
+Next, we use `numberOfStarsInOneRing` function to calculate the total number of stars in the current ring. We also need an angle between two neighbouring stars in the same ring, in radians (Fig. 9). Since there are `numberOfStars` stars and the full ring in 2π radians, the angle between two stars is `2π / numberOfStars`:
+
+```JavaScript
+// Find number of stars in the ring
+let numberOfStars = numberOfStarsInOneRing(ringNumber,
+                                           args.ringMultiplier);
+
+// Calculate the angle between two neighbouring stars in a ring
+// when viewed from the galaxy center
+let angleBetweenNeighbours = 2 * Math.PI / numberOfStars;
+```
+
 
 
 ## Thanks 👍
