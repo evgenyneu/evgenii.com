@@ -1,6 +1,6 @@
 ---
 layout: blog_post
-comments: false
+comments: true
 title: "Making a JavaScript simulation of two interacting galaxies"
 tags: science
 ---
