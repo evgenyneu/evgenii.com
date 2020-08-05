@@ -39,7 +39,7 @@ tags: science
 
 ## What's this about?
 
-In this post I want to show how to make a simulation of two interacting galaxies that runs in a Web browser, written in HTML, CSS and JavaScript languages. I won't explain everything, because I would need to write books on physics and Web programming, and I have neither skills nor patience for that yet. Instead, here I just want to briefly show the main ideas that will hopefully make this simulation appear less magical.
+In this post I want to show how to make a simulation of two interacting galaxies that runs in a Web browser, written in HTML, CSS and JavaScript languages. I won't explain everything, because I would need to write a post ten times longer than it is (and who wants to read that?). Instead, here I just want to briefly show the main ideas that will hopefully make this simulation appear less magical.
 
 
 ## Who made this possible?
@@ -63,7 +63,7 @@ This simulation contains two galaxy cores that move around the common center of 
 
 ## A spherical cow
 
-This model includes big a simplification of reality: the stars in the simulation are massless, they only feel  gravity from the two cores, but not from other stars. This simplification makes the model very unrealistic. In a real galaxy, the mass is not located at the center, but instead contained in the stars and dark matter and distributed throughout the galaxy. For example, our Milky Way contains a supermassive black hole Sagittarius A* in its center, but the black hole is "only" about one millionth (0.000001) of the mass of the galaxy.
+This model includes a big simplification of reality: the stars in the simulation are massless, they only feel  gravity from the two cores, but not from other stars. This simplification makes the model very unrealistic. In a real galaxy, the mass is not located at the center, but instead contained in the stars and dark matter and distributed throughout the galaxy. For example, our Milky Way contains a supermassive black hole Sagittarius A* in its center, but the black hole is "only" about one millionth (0.000001) of the mass of the galaxy.
 
 But unrealistic simplifications are sometimes useful because they can help us understand something fundamental about nature. For example, it would have been much harder for Galileo and Newton to discover that unperturbed bodies move at constant velocity without ignoring friction and gravity, which are always present in our daily life.
 
@@ -250,12 +250,12 @@ export function galaxyStarsPositionsAndVelocities(args) {
   ...
 ```
 
-It starts with calculating the total number of stars in one galaxy, by calling `numberOfStarsInAllRingsOneGalaxy` function and saving the result in `stars` variable. Then it creates two arrays to store positions and velocities of the stars. Since we are dealing with 3D, each coordinate requires three numbers x, y and z. That's why the size of the arrays is three times larges than the number of stars: `Array(stars * 3)`.
+It starts with calculating the total number of stars in one galaxy, by calling `numberOfStarsInAllRingsOneGalaxy` function and saving the result in `stars` variable. Then it creates two arrays to store positions and velocities of the stars. Since we are dealing with 3D, each coordinate requires three numbers x, y and z. That's why the size of the arrays is three times larger than the number of stars: `Array(stars * 3)`.
 
-We will need to keep this in mind when accessing positions and velocities form these arrays. For example, positions[0] will be the x-coordinate of the first star and
-positions[1] will be its y-coordinate. The x-coordinate of the second star is positions[4], and z-coordinate of the sixth star is positions[3*6 + 2], or positions[20], and so on.
+We will need to keep this in mind when accessing positions and velocities form these arrays. For example, `positions[0]` will be the x-coordinate of the first star and
+`positions[1]` will be its y-coordinate. The x-coordinate of the second star is `positions[4]`, and z-coordinate of the sixth star is `positions[3*6 + 2]`, or `positions[20]`, and so on.
 
-Next, we want to use the angle of galaxy inclination (Fig 8) with respect to the x-y plane., which is passed to this function as parameter `args.galaxyAngleDegree`. This angle is chosen by the user in degrees, but we want to convert it to radians, using the fact that 180 degrees is π (3.1415) radians:
+Next, we want to set the angle of galaxy inclination (Fig 8) with respect to the x-y plane., which is passed to this function as parameter `args.galaxyAngleDegree`. This angle is chosen by the user in degrees, but we want to convert it to radians, using the fact that 180 degrees is π (3.1415) radians:
 
 ```JavaScript
 var galaxyAngleRadians = args.galaxyAngleDegree * Math.PI / 180;
@@ -279,11 +279,11 @@ for(let ringNumber = 1; ringNumber <= args.numberOfRings; ringNumber++) {
                                              args.ringMultiplier);
 ```
 
-Inside the loop, we calculate the distance of the star (and the ring) from galactic center (Fig. 9), which is equal to the ring number times the separation between rings `args.ringSeparation`, which is passed as function's argument.
+Inside the loop, we calculate the distance of the star (and the ring) from galactic center (Fig. 9), which is equal to the ring number times the separation between rings `args.ringSeparation`.
 
 <div class='isTextCentered'>
-  <img class='isMax300PxWide' src='/image/blog/2020-08-01-two-galaxies/0900_distance_from_center_star_angle.png' alt='Distance from center and angle between neighbours.'>
-  <p>Figure 9: Calculating distance from a star in the third ring to the galaxy center and the angle between two neighbours.</p>
+  <img class='isMax300PxWide' src='/image/blog/2020-08-01-two-galaxies/0090_distance_from_center_star_angle.png' alt='Distance from center and angle between neighbours.'>
+  <p>Figure 9: Calculating distance from a star in the third ring to the galactic center and the angle between two neighbours.</p>
 </div>
 
 Next, we use `numberOfStarsInOneRing` function to calculate the total number of stars in the current ring. We also need an angle between two neighbouring stars in the same ring, in radians (Fig. 9). Since there are `numberOfStars` stars and the full ring in 2π radians, the angle between two stars is `2π / numberOfStars`:
@@ -300,17 +300,274 @@ let angleBetweenNeighbours = 2 * Math.PI / numberOfStars;
 
 ## Calculating star's speed
 
-We will calculate the velocity of each star in the galaxy, but first we need to find their speeds. Velocity is a vector, pointing in the direction of movement and having  length equal to the speed. We are inside the loop and dealing with a star at a specific ring number `ringNumber`. Since we want our rings to be circular, all stars in the same ring must have equal speeds, otherwise the symmetry of the circle would be broken. Let's calculate this speed.
+Our goal is to calculate the velocity of each star in the galaxy, but first we need to find the speeds of stars. Velocity is a vector, pointing in the direction of movement and having  length equal to the speed. In the code we are dealing with a star at a specific ring number `ringNumber`. Since we want our rings to be circular, all stars in the same ring must have equal speeds, otherwise the symmetry of the circle would be broken. Let's calculate this speed.
 
-Consider a single star. Since we chose to neglect gravity from other stars, the galaxy core is the only object that attracts our star. The core exerts force `F` on the star of mass `m`. This causes the star to accelerate with acceleration `a`, resulting in a circular orbit instead of a straight line. In math language, this can be expressed with Newton's second law:
+Consider a single star. Since we chose to neglect gravity from other stars, the galactic core is the only object that attracts our star (Fig. 10). The core exerts force `F` on the star of mass `m`. This causes the star to accelerate with acceleration `a`, resulting in a circular orbit instead of a straight line.
+
+<div class='isTextCentered'>
+  <img class='isMax500PxWide' src='/image/blog/2020-08-01-two-galaxies/0100_gravity_force.png' alt='Core exerting gravitational force on the stars.'>
+  <p>Figure 10: Galactic core exerting gravitational force on an orbiting star.</p>
+</div>
+
+In math language, this can be expressed with Newton's second law:
 
 <div class='Equation isTextCentered'>
   <span></span>
   <span>
-    <img class='isMax80PxWide' src='/image/blog/2020-08-01-two-galaxies/0060_newtons_second_law.png' alt="Newton's second law">.
+    <img class='isMax70PxWide' src='/image/blog/2020-08-01-two-galaxies/0110_newtons_second_law_scalar.png' alt="Newton's second law">.
   </span>
-  <span>(1)</span>
+  <span>(2)</span>
 </div>
+
+The acceleration `a`, also called *centripetal acceleration*, for a body moving in a circle of radius `r` with speed `v` is given by
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax60PxWide' src='/image/blog/2020-08-01-two-galaxies/0120_centripetal_acceleration.png' alt="Centripetal acceleration">
+  </span>
+  <span>(3)</span>
+</div>
+
+Substituting `a` into Eq. 2 gives:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax80PxWide' src='/image/blog/2020-08-01-two-galaxies/0130_newtons_law_with_centripetal_acceleration.png' alt="Replacing centripetal acceleration in Newton's law">
+  </span>
+  <span>(4)</span>
+</div>
+
+Next, we use another Newton's discovery - the law of universal gravitation:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax90PxWide' src='/image/blog/2020-08-01-two-galaxies/0140_newtons_law_of_universal_gravitaion.png' alt="Newtons's law of universal gravitation">
+  </span>
+  <span>(5)</span>
+</div>
+which allows to calculate gravitational force `F` between two masses `m` and `M` that are distance `r` apart. Here `G` is a number called *gravitational constant*:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax200PxWide' src='/image/blog/2020-08-01-two-galaxies/0150_gravitation_constant.png' alt="Gravitational constant">
+  </span>
+  <span>(6)</span>
+</div>
+
+Next, we equate equations 4 and 5:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax120PxWide' src='/image/blog/2020-08-01-two-galaxies/0290_calculating_v_almost_there.png' alt="Finding speed">
+  </span>
+  <span>(7)</span>
+</div>
+
+Mass of the star `m` and distance `r` cancels:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax90PxWide' src='/image/blog/2020-08-01-two-galaxies/0300_finding_speed.png' alt="Finding speed">
+  </span>
+  <span>(8)</span>
+</div>
+
+Finally, we take the square root of both sides and get the expression for the speed of the star we wanted:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax90PxWide' src='/image/blog/2020-08-01-two-galaxies/0310_star_speed.png' alt="Star speed">
+  </span>
+  <span>(9)</span>
+</div>
+
+
+Now we return to our `galaxyStarsPositionsAndVelocities` function, and find this equation in the code:
+
+```JavaScript
+let starSpeed = Math.sqrt(args.coreMass / distanceFromCenter);
+```
+
+You might have noticed a small difference. Our JavaScript code does not have constant G. Why? Because we made constant G equal to one.
+
+[reader stares in disbelief]
+
+Let me explain...
+
+
+### Changing units of length, mass and time
+
+You can see that constant G (Eq. 6) has units of
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax50PxWide' src='/image/blog/2020-08-01-two-galaxies/0160_units_of_g.png' alt="Units of G">
+  </span>
+  <span></span>
+</div>
+
+Here `m` (meter) is a unit of length, `kg` (kilogram) is a unit of mass, and `s` (second) is a unit of time. We will now do a trick that I saw astronomers do many times, and which confused me a lot until my teacher John Lattanzio explained it to me. We want to change the units of length, mass and time, such the constant G is equal to one in these units. The point of this is to avoid putting constant G anywhere in the code. Another reason for this, is to make our mass, length and time numbers small, since stellar masses and distances are very large numbers when expressed in meters and kilograms.
+
+Here is one way of changing the units. We first define the new units
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax200PxWide' src='/image/blog/2020-08-01-two-galaxies/0170_new_units.png' alt="New units">
+  </span>
+  <span>(10)</span>
+</div>
+were `a`, `b` and `c` are numbers we want to find. We want to make gravitational constant `G` equal to one in these units. This is done by taking Eq. 6 and replacing the number `6.67e-11` with `1` and also replacing `m`, `kg` and `s` with new `U` units:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax120PxWide' src='/image/blog/2020-08-01-two-galaxies/0180_g_equal_one.png' alt="G equal to one">
+  </span>
+  <span>(11)</span>
+</div>
+
+Next, we substitute new units from Eq. 10:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax250PxWide' src='/image/blog/2020-08-01-two-galaxies/0190_substitute_units.png' alt="Substitute units">
+  </span>
+  <span>(12)</span>
+</div>
+
+Equating this with Eq. 6 gives
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax250PxWide' src='/image/blog/2020-08-01-two-galaxies/0200_finding_unit_constants.png' alt="Equating to G">
+  </span>
+  <span>(13)</span>
+</div>
+
+The units cancel and we get
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax180PxWide' src='/image/blog/2020-08-01-two-galaxies/0210_a_b_c.png' alt="Equation with a, b and c">
+  </span>
+  <span>(14)</span>
+</div>
+
+This equation can not be solved, because it has three unknown variables `a`, `b` and `c`. Since one of our goals was to make new units small (Eq. 10), we can pick some arbitrary large numbers for `a` and `c` and then calculate `b` using Eq. 10. Stellar distances are often measured with a unit of length called *parsec* (pc), which is a typical distance between stars:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax200PxWide' src='/image/blog/2020-08-01-two-galaxies/0220_parsec.png' alt="One parsec to meters">
+  </span>
+  <span>(15)</span>
+</div>
+
+Galactic distances are even larger, and are often measures in thousands of parsecs, or kiloparsecs (kpc). For example, Earth is 8 kiloparsec away from the center of Milky Way. Since we are simulating galaxies, it will make sense to use kiloparsec as our unit of length:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax120PxWide' src='/image/blog/2020-08-01-two-galaxies/0230_unit_of_length.png' alt="Settings unit of length">
+  </span>
+  <span>(16)</span>
+</div>
+
+We can now convert kiloparsecs to meters, use Eq. 10 and calculate `a`:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax250PxWide' src='/image/blog/2020-08-01-two-galaxies/0240_find_a.png' alt="Calculate a">
+  </span>
+  <span>(17)</span>
+</div>
+
+Next, we want to choose a suitable unit of time. It takes about 250 million years for our Solar System to rotate around the center of Milky Way. Thus, a billion years could be a suitable unit for measuring time scales of galactic rotation:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax100PxWide' src='/image/blog/2020-08-01-two-galaxies/0250_unit_of_time.png' alt="Choosing unit of time">
+  </span>
+  <span>(18)</span>
+</div>
+
+Next, we convert unit of time from years to seconds, using the fact that there are 365 days in a common year, 24 hours in a day, 60 minutes in an hour and 60 seconds in a minute:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax400PxWide' src='/image/blog/2020-08-01-two-galaxies/0260_unit_of_time_in_seconds.png' alt="Converting unit of time to seconds">
+  </span>
+  <span>(19)</span>
+</div>
+
+Now we can substitute the unit of time into Eq. 10 and calculate number `c`:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax150PxWide' src='/image/blog/2020-08-01-two-galaxies/0270_calculating_c.png' alt="Calculate number c">
+  </span>
+  <span>(20)</span>
+</div>
+
+Finally, we use Eq. 14, substitute numbers `a` and `c`, and find `b`:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax250PxWide' src='/image/blog/2020-08-01-two-galaxies/0280_calculating_b.png' alt="Find b">
+  </span>
+  <span>(21)</span>
+</div>
+
+We have found that in order to make constant `G` equal to 1 in new units (Eq. 11), we need to choose the unit of mass to be
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax150PxWide' src='/image/blog/2020-08-01-two-galaxies/0280_unit_of_mass.png' alt="Unit of mass">
+  </span>
+  <span>(22)</span>
+</div>
+
+This is approximately 200,000 larger than the mass of the Sun, which makes sense on a galactic scale.
+
+To summarise, we wanted to get rid of constant G in code by making it equal to one. We have done this by choosing new units of length, mass and time, which are more suitable to galactic scales:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax400PxWide' src='/image/blog/2020-08-01-two-galaxies/0320_new_units.png' alt="New units">
+  </span>
+  <span>(23)</span>
+</div>
+
+
+
+## To be continued...
+
+I will keep extending this article and cover more code from the simulation. Please feel free to comment or ask questions.
+
+
+
+
+
+
 
 
 
