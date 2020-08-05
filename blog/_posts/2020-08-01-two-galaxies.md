@@ -240,7 +240,7 @@ Here, inside the loop, we call function `numberOfStarsInOneRing` for rings 1, 2,
 
 ## Positioning stars in a galaxy
 
-Now that we know the number of stars in one galaxy we can calculate their positions. This is done in `galaxyStarsPositionsAndVelocities` function located in [js/physics/initial_conditions.js](https://github.com/evgenyneu/two_galaxies/blob/master/js/physics/initial_conditions.js) file:
+Now that we know the number of stars in one galaxy we can calculate their intial positions and velocities. This is done in `galaxyStarsPositionsAndVelocities` function located in [js/physics/initial_conditions.js](https://github.com/evgenyneu/two_galaxies/blob/master/js/physics/initial_conditions.js) file:
 
 ```JavaScript
 export function galaxyStarsPositionsAndVelocities(args) {
@@ -297,6 +297,20 @@ let numberOfStars = numberOfStarsInOneRing(ringNumber,
 // when viewed from the galaxy center
 let angleBetweenNeighbours = 2 * Math.PI / numberOfStars;
 ```
+
+## Calculating star's speed
+
+We will calculate the velocity of each star in the galaxy, but first we need to find their speeds. Velocity is a vector, pointing in the direction of movement and having  length equal to the speed. We are inside the loop and dealing with a star at a specific ring number `ringNumber`. Since we want our rings to be circular, all stars in the same ring must have equal speeds, otherwise the symmetry of the circle would be broken. Let's calculate this speed.
+
+Consider a single star. Since we chose to neglect gravity from other stars, the galaxy core is the only object that attracts our star. The core exerts force `F` on the star of mass `m`. This causes the star to accelerate with acceleration `a`, resulting in a circular orbit instead of a straight line. In math language, this can be expressed with Newton's second law:
+
+<div class='Equation isTextCentered'>
+  <span></span>
+  <span>
+    <img class='isMax80PxWide' src='/image/blog/2020-08-01-two-galaxies/0060_newtons_second_law.png' alt="Newton's second law">.
+  </span>
+  <span>(1)</span>
+</div>
 
 
 
