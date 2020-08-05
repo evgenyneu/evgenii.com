@@ -2,13 +2,14 @@
 // Initialises graphics and runs the simulation.
 
 import { getInitialParameters, getCurrentParameters } from './params.js';
-import { initGraphics, loadColors, loadStarSizes } from './graphics.js';
-import drawScene from './render.js';
+import { initGraphics, loadColors, loadStarSizes } from './3d/init.js';
+import drawScene from './3d/render.js';
 import * as simulation from './simulation.js';
-import { measureRefreshRate } from './refresh_rate.js';
-import {init as initUserInput} from './user_input.js';
-import * as showFps from './show_fps.js';
-import { updateCameraDistance } from './zoom.js';
+import { measureRefreshRate } from './ui/refresh_rate.js';
+import {init as initUserInput} from './ui/user_input.js';
+import * as showFps from './ui/show_fps.js';
+import { updateCameraDistance } from './ui/zoom.js';
+import { show, hide } from './ui/html_element.js';
 
 
 /**
@@ -30,13 +31,12 @@ function onNextFrame(drawData, initialParams, currentParams, fpsState) {
       // First frame of the animation: calculate initial positions of the bodies
       simulation.setInitial(initialParams, currentParams);
       updateCameraDistance(currentParams, drawData.gl.canvas);
-      console.log(`Number of bodies: ${currentParams.positions.length / 3}`);
     } else {
       // Update positions of the bodies at new time
       simulation.update(initialParams, currentParams);
     }
 
-    // Draw star on screen
+    // Draw stars on screen
     drawScene(drawData, initialParams, currentParams);
 
     // Call onNextFrame function on the next animation frame
@@ -82,6 +82,10 @@ function restart(drawData, initialParams, currentParams, restartParams) {
  *      monitors (i.e. 60 Hz, 144 Hz etc)
  */
 function main(screenRefreshRateFPS) {
+  // Hide loading spinner and show the simulation
+  hide(".TwoGalaxies-loadingImageContainer");
+  show(".TwoGalaxies-layoutFixed");
+
   // Get parameters of the simulation
   var initialParams = getInitialParameters();
   var currentParams = getCurrentParameters(screenRefreshRateFPS);

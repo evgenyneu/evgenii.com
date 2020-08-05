@@ -7,24 +7,27 @@ and accelerations of the stars */
  *
  * @param  {number} rings1 Number of rings in first galaxy
  * @param  {number} rings2 Number of rings in second galaxy
+ * @param  {number} multiplier Increase in number of stars in next ring
  * @return {number}        Total number of bodies.
  */
-export function totalNumberOfBodies(rings1, rings2) {
-  const stars1 = numberOfStarsInAllRingsOneGalaxy(rings1);
-  const stars2 = numberOfStarsInAllRingsOneGalaxy(rings2);
+export function totalNumberOfBodies(rings1, rings2, multiplier) {
+  const stars1 = numberOfStarsInAllRingsOneGalaxy(rings1, multiplier);
+  const stars2 = numberOfStarsInAllRingsOneGalaxy(rings2, multiplier);
   return 2 + stars1 + stars2;
 }
+
 
 /**
  * Calculate the number of stars in a single ring of a galaxy
  *
  * @param  {number} ringNumber  The ring number: 1, 2, 3...
  *    The ring number 1 is the closest ring to the center of the galaxy.
+ * @param  {number} multiplier  Increase in number of stars in next ring
  * @return {number} Number of stars in the ring.
  */
-export function numberOfStarsInOneRing(ringNumber) {
+export function numberOfStarsInOneRing(ringNumber, multiplier) {
   // The rings that are further away from the galaxy center have more stars
-  return 12 + 6 * (ringNumber - 1);
+  return ringNumber * multiplier;
 }
 
 
@@ -32,15 +35,16 @@ export function numberOfStarsInOneRing(ringNumber) {
  * Find the number of stars located in all rings in one galaxy
  *
  * @param  {number} numberOfRings Number of rings in the galaxy
+ * @param  {number} multiplier Increase in number of stars in next ring
  * @return {number}               Total number of stars in the galaxy
  */
-export function numberOfStarsInAllRingsOneGalaxy(numberOfRings) {
+export function numberOfStarsInAllRingsOneGalaxy(numberOfRings, multiplier) {
   var stars = 0;
 
   // Loop over each ring, starting from the one closer to the center
   for(let ringNumber = 1; ringNumber <= numberOfRings; ringNumber++) {
     // Calculate the number of stars in one ring and add it to the total
-    stars += numberOfStarsInOneRing(ringNumber);
+    stars += numberOfStarsInOneRing(ringNumber, multiplier);
   }
 
   return stars;
@@ -60,13 +64,16 @@ export function numberOfStarsInAllRingsOneGalaxy(numberOfRings) {
   *                               to the orbital plane of the core.
   * @param  {number} numberOfRings Number of rings in the galaxy
   * @param  {number} ringSeparation Separation between two rings
+  * @param  {number} ringMultiplier Increase in number of stars in next ring
   * @return {object} An object { positions: [], velocities: [] }
   *                  containing positions and velocities of all stars in the
   *                  galaxy.
   */
 export function galaxyStarsPositionsAndVelocities(args) {
 
-  let stars = numberOfStarsInAllRingsOneGalaxy(args.numberOfRings);
+  let stars = numberOfStarsInAllRingsOneGalaxy(args.numberOfRings,
+                                               args.ringMultiplier);
+
   var positions = Array(stars * 3).fill(0);
   var velocities = Array(stars * 3).fill(0);
   var iStar = 0; // Stores index of current star
@@ -80,7 +87,12 @@ export function galaxyStarsPositionsAndVelocities(args) {
     let distanceFromCenter = ringNumber * args.ringSeparation;
 
     // Find number of stars in the ring
-    let numberOfStars = numberOfStarsInOneRing(ringNumber);
+    let numberOfStars = numberOfStarsInOneRing(ringNumber,
+                                               args.ringMultiplier);
+
+    // Calculate the angle between two neighbouring stars in a ring
+    // when viewed from the galaxy center
+    let angleBetweenNeighbours = 2 * Math.PI / numberOfStars;
 
     // Find the speed of each star circling the galaxy center. We use
     // two physical laws:
@@ -99,7 +111,7 @@ export function galaxyStarsPositionsAndVelocities(args) {
     //            F = G m M / r^2,                (2)
     //
     //      where
-    //        G is gravitational constant, set to 1 for simplicity,
+    //        G is gravitational constant,
     //        M is the mass of a galaxy core,
     //        r is distance between a body and a core.
     //
@@ -115,21 +127,22 @@ export function galaxyStarsPositionsAndVelocities(args) {
     // to keep the star in orbit around the galaxy. This force comes from
     // gravity, so we equate Eq. 4 with Eq. 2:
     //
-    //          m v^2 / r = m M / r^2.
+    //          m v^2 / r = G m M / r^2.
     //
     // Star mass m and one of r cancels:
     //
-    //          v^2 =  M / r.
+    //          v^2 = G M / r.
     //
     // Finally, we take square root of both sides and get the speed we wanted:
     //
-    //          v = sqrt(M / r).
+    //          v = sqrt(G M / r).
+    //
+    // We will also change the units of length, mass and time such that
+    // constant G is equal to one. For derivation, see
+    // section "Changing units of length, mass and time"
+    // in https://evgenii.com/blog/two-galaxies/
     //
     let starSpeed = Math.sqrt(args.coreMass / distanceFromCenter);
-
-    // Calculate the angle between two neighbouring stars in a ring
-    // when viewed from the galaxy center
-    let angleBetweenNeighbours = 2 * Math.PI / numberOfStars;
 
     // Loop over all the stars in the current ring
     for(let starNumber = 1; starNumber <= numberOfStars; starNumber++) {
@@ -183,7 +196,8 @@ export function galaxyStarsPositionsAndVelocities(args) {
  *
  * @param  {array} numberOfRings  Array containing the number of rings in
  *                                two galaxies, i.e. [5, 3]
- * @param  {number} ringSeparation  Distance between the rings.
+ * @param  {number} ringSeparation Distance between the rings.
+ * @param  {number} ringMultiplier Increase in number of stars in next ring
  * @param  {number} minimalGalaxySeparation Minimal separation (periastron)
  *                      between the cores of two galaxies.
  * @param  {array} galaxyInclinationAnglesDegree Array containing inclination
@@ -237,7 +251,8 @@ export function allPositionsAndVelocities(args) {
   // --------
 
   var bodies = totalNumberOfBodies(args.numberOfRings[0],
-                                   args.numberOfRings[1]);
+                                   args.numberOfRings[1],
+                                   args.ringMultiplier);
 
   var positions = Array(bodies * 3).fill(0);
 
@@ -324,7 +339,8 @@ export function allPositionsAndVelocities(args) {
   //            v2 = r m1 / (m1 + m2)
   velocities[4] = v0 * args.masses[0] / totalMass;
 
-  const stars1 = numberOfStarsInAllRingsOneGalaxy(args.numberOfRings[0]);
+  const stars1 = numberOfStarsInAllRingsOneGalaxy(args.numberOfRings[0],
+                                                  args.ringMultiplier);
 
   // Loop through galaxy cores
   for(let galaxyNumber = 0; galaxyNumber < 2; galaxyNumber++) {
@@ -335,7 +351,8 @@ export function allPositionsAndVelocities(args) {
         coreMass: args.masses[galaxyNumber],
         galaxyAngleDegree: args.galaxyInclinationAnglesDegree[galaxyNumber],
         numberOfRings: args.numberOfRings[galaxyNumber],
-        ringSeparation: args.ringSeparation
+        ringSeparation: args.ringSeparation,
+        ringMultiplier: args.ringMultiplier
     });
 
     // Store positions and velocities of the stars

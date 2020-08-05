@@ -9,7 +9,29 @@
     <base href="/files/2020/08/">
   </head>
   <body>
-    <div class='TwoGalaxies-layoutFixed TwoGalaxies-layoutPadding'>
+    <script>
+      /**
+       * Calculate the improved viewport height so it can be used
+       * to set height in CSS: calc(var(--vh, 1vh) * 100.
+       * Based on: https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
+       */
+      function viewportHeight() {
+        // Create a CSS 'vh' variable for the viewport height
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      }
+
+      viewportHeight();
+
+      // Recalculate the viewport heeight when screen is resized
+      window.addEventListener('resize', viewportHeight);
+    </script>
+
+    <div class="TwoGalaxies-loadingImageContainer">
+      <img src='images/loading.svg' alt='Loading' class='TwoGalaxies-loadingImage'>
+    </div>
+
+    <div class='TwoGalaxies-layoutFixed TwoGalaxies-layoutPadding TwoGalaxies--isHidden'>
       <div class="TwoGalaxies-container TwoGalaxies--isFullScreenWide TwoGalaxies--isUnselectable TwoGalaxies--hasBottomMarginSmall">
         <canvas class="TwoGalaxies-canvas"></canvas>
 
@@ -17,26 +39,26 @@
           <div class='TwoGalaxies-FPS'></div>
           <div class='TwoGalaxies-hudContainerChild'>
             <div class='TwoGalaxies-leftTopButtonContainer'>
-              <a class='TwoGalaxies-resetButton TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Reset'><img src='images/reset_icon.svg' alt='Reset' class='TwoGalaxies-bottomImage'></a>
-              <a class='TwoGalaxies-restartButton TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Restart'><img src='images/restart_icon.svg' alt='Restart' class='TwoGalaxies-bottomImage'></a>
-              <a class='TwoGalaxies-fastBackwardButton TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Rewind'><img src='images/fast_backward_icon.svg' alt='Rewind' class='TwoGalaxies-bottomImage'></a>
-              <a class='TwoGalaxies-pauseButton TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Pause'><img src='images/pause_icon.svg' alt='Pause' class='TwoGalaxies-bottomImage'></a>
-              <a class='TwoGalaxies-resumeButton TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover TwoGalaxies--isHidden' href='#' title='Resume'><img src='images/resume_icon.svg' alt='Resume' class='TwoGalaxies-bottomImage'></a>
-              <a class='TwoGalaxies-fastForwardButton TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Fast forward'><img src='images/fast_forward_icon.svg' alt='Fast forward' class='TwoGalaxies-bottomImage'></a>
-              <a class='TwoGalaxies-reverseTimeButton TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Reverse time'><img src='images/reverse_time_icon.svg' alt='Reverse time' class='TwoGalaxies-bottomImage'></a>
-              <a class='TwoGalaxies-reverseTime2Button TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover TwoGalaxies--isHidden' href='#' title='Reverse time'><img src='images/reverse_time2_icon.svg' alt='Reverse time' class='TwoGalaxies-bottomImage'></a>
+              <a class='TwoGalaxies-resetButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Reset'><img src='images/reset_icon.svg' alt='Reset' class='TwoGalaxies-image'></a>
+              <a class='TwoGalaxies-restartButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Restart'><img src='images/restart_icon.svg' alt='Restart' class='TwoGalaxies-image'></a>
+              <a class='TwoGalaxies-fastBackwardButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Rewind'><img src='images/fast_backward_icon.svg' alt='Rewind' class='TwoGalaxies-image'></a>
+              <a class='TwoGalaxies-pauseButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Pause'><img src='images/pause_icon.svg' alt='Pause' class='TwoGalaxies-image'></a>
+              <a class='TwoGalaxies-resumeButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover TwoGalaxies--isHidden' href='#' title='Resume'><img src='images/resume_icon.svg' alt='Resume' class='TwoGalaxies-image'></a>
+              <a class='TwoGalaxies-fastForwardButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Fast forward'><img src='images/fast_forward_icon.svg' alt='Fast forward' class='TwoGalaxies-image'></a>
+              <a class='TwoGalaxies-reverseTimeButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Reverse time'><img src='images/reverse_time_icon.svg' alt='Reverse time' class='TwoGalaxies-image'></a>
+              <a class='TwoGalaxies-reverseTime2Button TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover TwoGalaxies--isHidden' href='#' title='Reverse time'><img src='images/reverse_time2_icon.svg' alt='Reverse time' class='TwoGalaxies-image'></a>
             </div>
             <div class='TwoGalaxies-rightTopButtonContainer'>
-              <a class='TwoGalaxies-shareButton TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Share'><img src='images/share_icon.svg' alt='Share' class='TwoGalaxies-bottomImage'></a>
+              <a class='TwoGalaxies-shareButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Share'><img src='images/share_icon.svg' alt='Share' class='TwoGalaxies-image'></a>
             </div>
             <div class='TwoGalaxies-leftBottomButtonContainer'>
-              <a class='TwoGalaxies-numberOfRingsButton TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Number of rings'><img src='images/number_of_rings_icon.svg' alt='Number of rings' class='TwoGalaxies-bottomImage'></a>
-              <a class='TwoGalaxies-massButton TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Mass'><img src='images/mass_icon.svg' alt='Mass' class='TwoGalaxies-bottomImage'></a>
-              <a class='TwoGalaxies-distanceButton TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Distance'><img src='images/distance_icon.svg' alt='Distance' class='TwoGalaxies-bottomImage'></a>
-              <a class='TwoGalaxies-eccentricityButton TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Eccentricity'><img src='images/eccentricity_icon.svg' alt='Eccentricity' class='TwoGalaxies-bottomImage'></a>
-              <a class='TwoGalaxies-angleButton TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Galaxy inclination'><img src='images/angle_icon.svg' alt='Galaxy inclination' class='TwoGalaxies-bottomImage'></a>
-              <a class='TwoGalaxies-ringSeparationButton TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Ring separation'><img src='images/ring_separation_icon.svg' alt='Ring separation' class='TwoGalaxies-bottomImage'></a>
-              <a class='TwoGalaxies-timeStepButton TwoGalaxies-leftButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Time step'><img src='images/clock_icon.svg' alt='Time step' class='TwoGalaxies-bottomImage'></a>
+              <a class='TwoGalaxies-numberOfRingsButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Number of rings'><img src='images/number_of_rings_icon.svg' alt='Number of rings' class='TwoGalaxies-image'></a>
+              <a class='TwoGalaxies-massButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Mass'><img src='images/mass_icon.svg' alt='Mass' class='TwoGalaxies-image'></a>
+              <a class='TwoGalaxies-distanceButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Distance'><img src='images/distance_icon.svg' alt='Distance' class='TwoGalaxies-image'></a>
+              <a class='TwoGalaxies-eccentricityButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Eccentricity'><img src='images/eccentricity_icon.svg' alt='Eccentricity' class='TwoGalaxies-image'></a>
+              <a class='TwoGalaxies-angleButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Galaxy inclination'><img src='images/angle_icon.svg' alt='Galaxy inclination' class='TwoGalaxies-image'></a>
+              <a class='TwoGalaxies-ringSeparationButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Ring separation and density'><img src='images/ring_separation_icon.svg' alt='Ring separation and density' class='TwoGalaxies-image'></a>
+              <a class='TwoGalaxies-timeStepButton TwoGalaxies-button TwoGalaxies-doesChangeOpacityOnHover' href='#' title='Time step'><img src='images/clock_icon.svg' alt='Time step' class='TwoGalaxies-image'></a>
             </div>
           </div>
         </div>
@@ -51,7 +73,7 @@
         </div>
       </div>
 
-      <div class="TwoGalaxies-sliderRings2 TwoGalaxies-sliderColor2 SickSlider TwoGalaxies--isHidden TwoGalaxies--hasBottomMarginSmall TwoGalaxies--isUnselectable">
+      <div class="TwoGalaxies-sliderRings2 TwoGalaxies-sliderColor2 SickSlider TwoGalaxies--isHidden TwoGalaxies--isUnselectable">
         <div class='SickSlider-label'>Label text</div>
         <div class="SickSlider-slider">
           <div class="SickSlider-stripe"></div>
@@ -69,7 +91,7 @@
         </div>
       </div>
 
-      <div class="TwoGalaxies-sliderMass2 TwoGalaxies-sliderColor2 SickSlider TwoGalaxies--isHidden TwoGalaxies--hasBottomMarginSmall TwoGalaxies--isUnselectable">
+      <div class="TwoGalaxies-sliderMass2 TwoGalaxies-sliderColor2 SickSlider TwoGalaxies--isHidden TwoGalaxies--isUnselectable">
         <div class='SickSlider-label'>Label text</div>
         <div class="SickSlider-slider">
           <div class="SickSlider-stripe"></div>
@@ -105,7 +127,7 @@
         </div>
       </div>
 
-      <div class="TwoGalaxies-sliderAngle2 TwoGalaxies-sliderColor2 SickSlider TwoGalaxies--isHidden TwoGalaxies--hasBottomMarginSmall TwoGalaxies--isUnselectable">
+      <div class="TwoGalaxies-sliderAngle2 TwoGalaxies-sliderColor2 SickSlider TwoGalaxies--isHidden TwoGalaxies--isUnselectable">
         <div class='SickSlider-label'>Label text</div>
         <div class="SickSlider-slider">
           <div class="SickSlider-stripe"></div>
@@ -115,6 +137,15 @@
       </div>
 
       <div class="TwoGalaxies-sliderRingSeparation SickSlider TwoGalaxies--isHidden TwoGalaxies--hasBottomMarginSmall TwoGalaxies--isUnselectable">
+        <div class='SickSlider-label'>Label text</div>
+        <div class="SickSlider-slider">
+          <div class="SickSlider-stripe"></div>
+          <div class="SickSlider-stripeLeft"></div>
+          <div class="SickSlider-head"></div>
+        </div>
+      </div>
+
+      <div class="TwoGalaxies-sliderRingMultiplier SickSlider TwoGalaxies--isHidden TwoGalaxies--hasBottomMarginSmall TwoGalaxies--isUnselectable">
         <div class='SickSlider-label'>Label text</div>
         <div class="SickSlider-slider">
           <div class="SickSlider-stripe"></div>

@@ -1,7 +1,7 @@
 /* Parameters of the simulations */
 
-import { getSharedInitialParameters, getSharedCurrentParameters } from './share.js';
-import m4 from './simulation/m4.js';
+import { getSharedInitialParameters, getSharedCurrentParameters } from './ui/share.js';
+import m4 from './3d/m4.js';
 import * as simulation from './simulation.js';
 
 
@@ -17,6 +17,7 @@ export function getInitialParameters() {
     trajectoryColors: [[0.7, 0.5, 0, 1], [0.0, 0.5, 0.9, 1]],
     starSize: 600 * window.devicePixelRatio,
     ringSeparation: 3,
+    ringMultiplier: 6, // Increase in number of stars in next ring
     minimalGalaxySeparation: 25,
     galaxyInclinationAnglesDegree: [60, 60],
     masses: [1, 1],
