@@ -240,7 +240,7 @@ Here, inside the loop, we call function `numberOfStarsInOneRing` for rings 1, 2,
 
 ## Positioning stars in a galaxy
 
-we can calculate their initial positions: This is done by `galaxyStarsPositionsAndVelocities` function in [js/physics/initial_conditions.js](https://github.com/evgenyneu/two_galaxies/blob/master/js/physics/initial_conditions.js) file:
+Now that we know the number of stars in one galaxy we can calculate their positions. This is done in `galaxyStarsPositionsAndVelocities` function located in [js/physics/initial_conditions.js](https://github.com/evgenyneu/two_galaxies/blob/master/js/physics/initial_conditions.js) file:
 
 ```JavaScript
 export function galaxyStarsPositionsAndVelocities(args) {
@@ -250,7 +250,16 @@ export function galaxyStarsPositionsAndVelocities(args) {
   ...
 ```
 
-It starts with calculating the total number of stars in one galaxy, by calling `numberOfStarsInAllRingsOneGalaxy` function.
+It starts with calculating the total number of stars in one galaxy, by calling `numberOfStarsInAllRingsOneGalaxy` function and saving the result in `stars` variable. Then it creates two arrays to store positions and velocities of the stars. Since we are dealing with 3D, each coordinate requires three numbers x, y and z. That's why the size of the arrays is three times larges than the number of stars: `Array(stars * 3)`.
+
+We will need to keep this in mind when accessing positions and velocities form these arrays. For example, positions[0] will be the x-coordinate of the first star and
+positions[1] will be its y-coordinate. The x-coordinate of the second star is positions[4], and z-coordinate of the sixth star is positions[3*6 + 2], or positions[20], and so on.
+
+Next, we want to use the angle of galaxy inclination (Fig 8) with respect to the x-y plane., which is passed to this function as parameter `args.galaxyAngleDegree`. This angle is chosen by the user in degrees, but we want to convert it to radians, using the fact that 180 degrees is π (3.1415) radians:
+
+```
+var galaxyAngleRadians = args.galaxyAngleDegree * Math.PI / 180;
+```
 
 <div class='isTextCentered'>
   <img class='isMax500PxWide' src='/image/blog/2020-08-01-two-galaxies/0080_galaxy_angle.png' alt='A single galaxy.'>
