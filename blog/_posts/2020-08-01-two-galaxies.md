@@ -258,7 +258,7 @@ It starts with calculating the total number of stars in one galaxy, by calling `
 We will need to keep this in mind when accessing positions and velocities form these arrays. For example, `positions[0]` will be the x-coordinate of the first star and
 `positions[1]` will be its y-coordinate. The x-coordinate of the second star is `positions[4]`, and z-coordinate of the sixth star is `positions[3*6 + 2]`, or `positions[20]`, and so on.
 
-Next, we want to set the angle of galaxy inclination (Fig 8) with respect to the x-y plane., which is passed to this function as parameter `args.galaxyAngleDegree`. This angle is chosen by the user in degrees, but we want to convert it to radians, using the fact that 180 degrees is π (3.1415) radians:
+Next, we want to set the angle of galaxy inclination (Fig. 8) with respect to the x-y plane., which is passed to this function as parameter `args.galaxyAngleDegree`. This angle is chosen by the user in degrees, but we want to convert it to radians, using the fact that 180 degrees is π (3.1415) radians:
 
 ```JavaScript
 var galaxyAngleRadians = args.galaxyAngleDegree * Math.PI / 180;
