@@ -9,6 +9,7 @@ tags: science
 .TwoGalaxies--thumbnailContainainer {
     background-color: black;
     position: relative;
+    min-height: 100px;
 }
 
 .TwoGalaxies--start {
@@ -22,7 +23,7 @@ tags: science
     border-radius: 30% 10%/80%;
     border: none;
     font-size: 20px;
-    padding: 8px 13px 6px 13px;
+    padding: 8px 13px 8px 13px;
     background-color: #ff6c00;
 }
 
