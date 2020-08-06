@@ -428,7 +428,7 @@ Here is one way of changing the units. We first define the new units
   </span>
   <span>(10)</span>
 </div>
-were `a`, `b` and `c` are numbers we want to find. We want to make gravitational constant `G` equal to one in these units. This is done by taking Eq. 6 and replacing the number `6.67e-11` with `1` and also replacing `m`, `kg` and `s` with new `U` units:
+where `a`, `b` and `c` are numbers we want to find. We want to make gravitational constant `G` equal to one in these units. This is done by taking Eq. 6 and replacing the number `6.67e-11` with `1` and also replacing `m`, `kg` and `s` with new `U` units:
 
 <div class='Equation isTextCentered'>
   <span></span>
