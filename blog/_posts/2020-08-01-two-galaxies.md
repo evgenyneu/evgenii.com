@@ -478,7 +478,7 @@ This equation can not be solved, because it has three unknown variables `a`, `b`
   <span>(15)</span>
 </div>
 
-Galactic distances are even larger, and are often measures in thousands of parsecs, or kiloparsecs (kpc). For example, Earth is 8 kiloparsec away from the center of Milky Way. Since we are simulating galaxies, it will make sense to use kiloparsec as our unit of length:
+Galactic distances are even larger, and are often measured in thousands of parsecs, or kiloparsecs (kpc). For example, Earth is 8 kiloparsec away from the center of Milky Way. Since we are simulating galaxies, it will make sense to use kiloparsec as our unit of length:
 
 <div class='Equation isTextCentered'>
   <span></span>
