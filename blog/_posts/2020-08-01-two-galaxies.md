@@ -119,7 +119,7 @@ Most of the simulation code is in JavaScript files, located in [js directory](ht
 
 ## Run the simulation locally
 
-Next, I want to show how to run the simulation on your computer, so you can tinker with the code and see the effects. In order to do this, you need to install a web server, which is a program that runs web sites. There are many web servers available, but the simpler ones come with Python and Node.js.
+Next, I want to show how to run the simulation on your computer so you can tinker with the code and see the effects. In order to do this, you need to install a web server, which is a program that runs web sites. There are many web servers available, but the simpler ones come with Python and Node.js.
 
 
 ### Option 1: running a web server with Python
