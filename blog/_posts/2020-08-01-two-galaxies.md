@@ -342,7 +342,7 @@ Substituting `a` into Eq. 2 gives:
   <span>(4)</span>
 </div>
 
-Next, we use another Newton's discovery - the law of universal gravitation:
+Next, we use another of Newton's discovery - the law of universal gravitation:
 
 <div class='Equation isTextCentered'>
   <span></span>
@@ -351,7 +351,7 @@ Next, we use another Newton's discovery - the law of universal gravitation:
   </span>
   <span>(5)</span>
 </div>
-which allows to calculate gravitational force `F` between two masses `m` and `M` that are distance `r` apart. Here `G` is a number called *gravitational constant*:
+which allows us to calculate gravitational force `F` between two masses `m` and `M` that are distance `r` apart. Here `G` is a number called *gravitational constant*:
 
 <div class='Equation isTextCentered'>
   <span></span>
