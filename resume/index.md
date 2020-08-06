@@ -38,7 +38,7 @@ I am looking for part-time work as a programmer.
 ## Code examples
 
 * Swift: [github.com/evgenyneu/Cosmos](https://github.com/evgenyneu/Cosmos)
-* Javascript: [evgenii.com/blog/three-body-problem-simulator](https://evgenii.com/blog/three-body-problem-simulator)
+* Javascript: [github.com/evgenyneu/two_galaxies](https://github.com/evgenyneu/two_galaxies)
 * Python: [github.com/evgenyneu/tarpan](https://github.com/evgenyneu/tarpan)
 * C: [github.com/evgenyneu/image_compressor_c](https://github.com/evgenyneu/image_compressor_c)
 * Java: [github.com/evgenyneu/js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
@@ -133,6 +133,8 @@ Senior .NET/C# developer, independent contractor
 
 
 ## Honours & Awards
+
+* 2020: Dean's List Award, [certificate](/image/resume/awards/2020/2020_monash_deans_list_award_evgenii_neumerzhitckii.pdf).
 
 * 2020: Best student's talk at an astrophysics conference, [certificate](/image/resume/awards/2020/anita_2020_evgenii_neumerzhitckii.jpg).
 
