@@ -468,7 +468,7 @@ The units cancel and we get
   <span>(14)</span>
 </div>
 
-This equation can not be solved, because it has three unknown variables `a`, `b` and `c`. Since one of our goals was to make new units small (Eq. 10), we can pick some arbitrary large numbers for `a` and `c` and then calculate `b` using Eq. 10. Stellar distances are often measured with a unit of length called *parsec* (pc), which is a typical distance between stars:
+This equation can not be solved, because it has three unknown variables `a`, `b` and `c`. Since one of our goals was to make new units small (Eq. 10), we can pick some arbitrary large numbers for `a` and `c` and then calculate `b` using Eq. 14. Stellar distances are often measured with a unit of length called *parsec* (pc), which is a typical distance between stars:
 
 <div class='Equation isTextCentered'>
   <span></span>
