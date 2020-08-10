@@ -413,9 +413,9 @@ Next, we want to choose a suitable value of \\(b\\) for the unit of mass. We are
 
 $$M_\odot = 2 \times 10^{30} \ \text{kg}.$$
 
-Multiplying the number of stars (\\(10^{11}\\)) with this mass gives the unit of mass we wanted:
+Multiplying the Solar mass by the number of stars (\\(10^{11}\\)) gives the unit of mass we wanted:
 
-$$U_M = (10^{11}) (2 \times 10^{30} \ \text{kg}) = 2 \times 10^{41} \ \text{kg}.$$
+$$U_M = (2 \times 10^{30} \ \text{kg})(10^{11}) = 2 \times 10^{41} \ \text{kg}.$$
 
 Therefore, the number \\(b\\) is
 
@@ -435,7 +435,7 @@ We have found that in order to make constant \\(G\\) equal to one in new units (
 
 $$U_T = 4.7 \times 10^{13} \ \text{s}.$$
 
-This is a very large number, let's convert it to years, using the fact that there are 3600 seconds in one hour, 24 hours in one dat, and 365 days in a typical year:
+This is a very large number, let's convert it to years, using the fact that there are 3600 seconds in one hour, 24 hours in one day, and 365 days in a typical year:
 
 $$
 \begin{aligned}
@@ -444,15 +444,15 @@ U_T &= \left( \frac{4.7 \times 10^{13} \ \cancel{\text{s}}}{1} \right) \left( \f
 \end{aligned}
 $$
 
-We have calculate the new unit of time to be 1.5 million years. Let's see if that makes sense. Our animation advances by about one unit of time after each animation frame. If refresh rate of the computer screen is 60 Hz (a typical screen in 2020), then 90 million years will pass in simulation time after one second of our time. This is comparable to the  250 million years, which is the time it takes the Sun to rotate around the center of Milky Way. This means that unit of time \\(U_T &= 1.5 \times 10^6 \ \text{y} \\) is reasonable.
+We have calculated the new unit of time to be 1.5 million years. Let's see if that makes sense. Our animation advances by about one unit of time after each animation frame. If refresh rate of the computer screen is 60 frames per second (a typical screen in 2020), then 90 million years will pass in simulation time after one second of our time. This is comparable to the  250 million years, which is the time it takes the Sun to rotate around the center of Milky Way. This means that unit of time \\(U_T = 1.5 \times 10^6 \ \text{y}\\) is reasonable.
 
-Let's remind us what we've done. We wanted to get rid of constant \\(G\\) in code by making it equal to one. We have done this by choosing new units of length, mass and time, which are also more suitable to galactic scales:
+Let's remind us what we've done. We wanted to get rid of constant \\(G\\) in code by making it equal to one. We have accomplished this by choosing the following units of length, mass and time, which are also more suitable to galactic scales:
 
 $$
 \begin{aligned}
     \text{Unit of length:} \ U_L &= 3.086 \times 10^{19} \ \text{m} \\
     \text{Unit of mass:} \ U_M &= 2 \times 10^{41} \ \text{kg}  \\
-    \text{Unit of time:} \ U_T &= 4.7 \times 10^{13} \ \text{s}.
+    \text{Unit of time:} \ U_T &= 4.7 \times 10^{13} \ \text{s}. \tag{21}
 \end{aligned}
 $$
 
