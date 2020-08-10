@@ -452,8 +452,8 @@ Let's remind us what we've done. Our goal was to get rid of constant \\(G\\) in 
 
 $$
 \begin{aligned}
-    \text{Unit of length:} \ U_L &= 3.086 \times 10^{19} \ \text{m} \\
-    \text{Unit of mass:} \ U_M &= 2 \times 10^{41} \ \text{kg}  \\
+    \text{Unit of length:} \ U_L &= 3.1 \times 10^{19} \ \text{m} \\
+    \text{Unit of mass:} \ U_M &= 2.0 \times 10^{41} \ \text{kg}  \\
     \text{Unit of time:} \ U_T &= 4.7 \times 10^{13} \ \text{s}. \tag{15}
 \end{aligned}
 $$
