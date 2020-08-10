@@ -171,13 +171,7 @@ Conceptually, this simulation is very simple. All it is doing is showing moving 
 
 2. Next, after a short time interval, we want to calculate new positions using Newton's second law (we will return to this physics later):
 
-    <div class='Equation isTextCentered'>
-      <span></span>
-      <span>
-        <img class='isMax80PxWide' src='/image/blog/2020-08-01-two-galaxies/0060_newtons_second_law.png' alt="Newton's second law">.
-      </span>
-      <span>(1)</span>
-    </div>
+    $$\vec{F} = m \vec{a}. \tag{1}$$
 
 3. Finally, we repeat this 60 times a second (or at a different rate, depending on refresh rate of your monitor), and this gives an impression of a moving collection of stars.
 
@@ -306,7 +300,7 @@ let angleBetweenNeighbours = 2 * Math.PI / numberOfStars;
 
 Our goal is to calculate the velocity of each star in the galaxy, but first we need to find the speeds of stars. Velocity is a vector, pointing in the direction of movement. The length of a velocity vector is equal to the speed. Since we want our rings to be circular, all stars in the same ring must have equal speeds, otherwise the symmetry of the circle would be broken. Let's calculate this speed.
 
-Consider a single star. Since we chose to neglect gravity from other stars, the galactic core is the only object that attracts our star (Fig. 10). The core exerts force `F` on the star of mass `m`. This causes the star to accelerate with acceleration `a`, resulting in a circular orbit instead of a straight line.
+Consider a single star. Since we chose to neglect gravity from other stars, the galactic core is the only object that attracts our star (Fig. 10). The core exerts force \\(F\\) on the star of mass \\(m\\). This causes the star to accelerate with acceleration \\(a\\), resulting in a circular orbit instead of a straight line.
 
 <div class='isTextCentered'>
   <img class='isMax500PxWide' src='/image/blog/2020-08-01-two-galaxies/0100_gravity_force.png' alt='Core exerting gravitational force on the stars.'>
@@ -315,84 +309,35 @@ Consider a single star. Since we chose to neglect gravity from other stars, the 
 
 In math language, this can be expressed with Newton's second law:
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax70PxWide' src='/image/blog/2020-08-01-two-galaxies/0110_newtons_second_law_scalar.png' alt="Newton's second law">.
-  </span>
-  <span>(2)</span>
-</div>
+$$F = m a \tag{2}.$$
 
-The acceleration `a`, also called *centripetal acceleration*, for a body moving in a circle of radius `r` with speed `v` is given by
+The acceleration \\(a\\), also called *centripetal acceleration*, for a body moving in a circle of radius \\(r\\) with speed \\(v\\) is given by
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax60PxWide' src='/image/blog/2020-08-01-two-galaxies/0120_centripetal_acceleration.png' alt="Centripetal acceleration">
-  </span>
-  <span>(3)</span>
-</div>
+$$a = \frac{v^2}{r}. \tag{3}$$
 
-Substituting `a` into Eq. 2 gives:
+Substituting \\(a\\) into Eq. 2 gives:
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax80PxWide' src='/image/blog/2020-08-01-two-galaxies/0130_newtons_law_with_centripetal_acceleration.png' alt="Replacing centripetal acceleration in Newton's law">
-  </span>
-  <span>(4)</span>
-</div>
+$$F = m \frac{v^2}{r}. \tag{4}$$
 
 Next, we use another of Newton's discovery - the law of universal gravitation:
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax90PxWide' src='/image/blog/2020-08-01-two-galaxies/0140_newtons_law_of_universal_gravitaion.png' alt="Newtons's law of universal gravitation">
-  </span>
-  <span>(5)</span>
-</div>
+$$F = \frac{G m M}{r^2}, \tag{5}$$
 
-which allows us to calculate gravitational force `F` between two masses `m` and `M` that are distance `r` apart. Here `G` is a number called *gravitational constant*:
+which allows us to calculate gravitational force \\(F\\) between two masses \\(m\\) and \\(M\\) that are distance \\(r\\) apart. Here \\(G\\) is a number called *gravitational constant*:
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax200PxWide' src='/image/blog/2020-08-01-two-galaxies/0150_gravitation_constant.png' alt="Gravitational constant">
-  </span>
-  <span>(6)</span>
-</div>
+$$G = 6.67 \times 10^{-11} \frac{\text{m}^3}{\text{kg} \ \text{s}^2}. \tag{6}$$
 
 Next, we equate equations 4 and 5:
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax120PxWide' src='/image/blog/2020-08-01-two-galaxies/0290_calculating_v_almost_there.png' alt="Finding speed">
-  </span>
-  <span>(7)</span>
-</div>
+$$m\frac{v^2}{r} = \frac{G m M}{r^2}. \tag{7}$$
 
-Mass of the star `m` and distance `r` cancels:
+Mass of the star \\(m\\) and distance \\(r\\) cancels:
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax90PxWide' src='/image/blog/2020-08-01-two-galaxies/0300_finding_speed.png' alt="Finding speed">
-  </span>
-  <span>(8)</span>
-</div>
+$$v^2 = \frac{GM}{r}. \tag{8}$$
 
 Finally, we take the square root of both sides and get the expression for the speed of the star we wanted:
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax90PxWide' src='/image/blog/2020-08-01-two-galaxies/0310_star_speed.png' alt="Star speed">
-  </span>
-  <span>(9)</span>
-</div>
-
+$$v = \sqrt{\frac{GM}{r}}. \tag{9}$$
 
 Now we return to our `galaxyStarsPositionsAndVelocities` function, and find this equation in the code:
 
