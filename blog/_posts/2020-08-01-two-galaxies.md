@@ -356,7 +356,7 @@ Let me explain...
 
 You can see that constant \\(G\\) (Eq. 6) has units of \\(\frac{\text{m}^3}{\text{kg} \ \text{s}^2}\\). Here \\(\text{m}\\) (meter) is a unit of length, \\(\text{kg}\\) (kilogram) is a unit of mass, and \\(\text{s}\\) (second) is a unit of time. We will now do a trick that I saw astronomers do many times, and which confused me a lot until my teacher John Lattanzio explained it to me.
 
-> We want to change the units of length, mass and time, such the constant \\(G\\) is equal to one in these units.
+> We want to change the units of length, mass and time in order to make constant \\(G\\) equal to one in these units.
 
 The point of this is to avoid putting constant \\(G\\) anywhere in the code. Another reason for this, is to make our mass, length and time numbers small, since stellar masses and distances are very large numbers when expressed in meters and kilograms.
 
@@ -370,7 +370,7 @@ $$
 \end{aligned}
 $$
 
-where \\(a\\),  \\(b\\) and \\(c\\) are numbers we want to find. Out goal is to make gravitational constant \\(G\\) equal to one in these units. This is done by taking Eq. 6, replacing the number \\(6.67 \times 10^{-11}\\) with \\(1\\) and also replacing \\(\text{m}\\), \\(\text{kg}\\) and \\(\text{s}\\) with new units: \\(U_L\\), \\(U_M\\) and \\(U_T\\):
+where \\(a\\),  \\(b\\) and \\(c\\) are numbers we want to find. Our goal is to make gravitational constant \\(G\\) equal to one in these units. This is done by taking Eq. 6, replacing the number \\(6.67 \times 10^{-11}\\) with \\(1\\) and also replacing \\(\text{m}\\), \\(\text{kg}\\) and \\(\text{s}\\) with new units: \\(U_L\\), \\(U_M\\) and \\(U_T\\):
 
 $$G = 1 \frac{U_L^3}{U_M U_T^2} \tag{11}.$$
 
@@ -386,30 +386,32 @@ The units cancel and we get
 
 $$ \frac{a^3}{bc^2} = 6.67 \times 10^{-11}. \tag{14}$$
 
-This equation can not be solved, because it has three unknown variables \\(a\\), \\(b\\) and \\(c\\). Since one of our goals was to make new units small (Eq. 10), we can pick some arbitrary large numbers for \\(a\\) (length) and \\(b\\) (mass) and then calculate \\(c\\) (time) using Eq. 14. Stellar distances are often measured with a unit of length called *parsec* (pc), which is a typical distance between stars:
+This equation can not be solved, because it has three unknown variables \\(a\\), \\(b\\) and \\(c\\). Since one of our goals was to make new units small (Eq. 10), we can pick some arbitrary large numbers for \\(a\\) (length) and \\(b\\) (mass) and then calculate \\(c\\) (time) using Eq. 14.
 
-$$1 \ \text{pc} = 3.086 \times 10^{16} \ \text{m}. \tag{15}$$
+Let's start with with the length \\(U_L\\). Stellar distances are often measured with a unit of length called *parsec* (pc), which is a typical distance between stars:
+
+$$1 \ \text{pc} = 3.086 \times 10^{16} \ \text{m}.$$
 
 Galactic distances are even larger, and are often measured in thousands of parsecs, or kiloparsecs (kpc). For example, Earth is eight kiloparsec away from the center of Milky Way. Since we are simulating galaxies, it will make sense to use kiloparsec as our unit of length:
 
-$$U_L = 1000 \ \text{pc}. \tag{16}$$
+$$U_L = 1000 \ \text{pc}.$$
 
 We can now convert kiloparsecs to meters, use Eq. 10 and calculate \\(a\\):
 
 $$
 \begin{aligned}
     a \ \text{m} &= (1000 \ \text{pc}) \ \frac{3.086 \times 10^{16} \ \text{m}}{1 \ \text{pc}} \\
-    a &= 3.086 \times 10^{19}. \tag{19}
+    a &= 3.086 \times 10^{19}.
 \end{aligned}
 $$
 
 This gives the new unit of length we were looking for:
 
 $$
-U_L = 3.086 \times 10^{19} \ m \tag{20}.
+U_L = 3.086 \times 10^{19} \ m.
 $$
 
-Next, we want to choose a suitable value of \\(b\\) for the unit of mass. We are working with galaxies, so it would be natural to use mass of Milky Way as our mass unit. There are about 300 billion (\\(3 \times 10^{11}\\)) stars in Milky Way, but we will round it to 100 billion (\\(10^{11}\\)). We will assume that the average stellar mass is equal to the mass of the Sun, which is about
+Next, we want to choose a suitable value of \\(b\\) for the unit of mass. We are working with galaxies, so it would be natural to use mass of Milky Way as our mass unit. There are about 300 billion (\\(3 \times 10^{11}\\)) stars in Milky Way, but we will round it to a 100 billion (\\(10^{11}\\)). We will assume that the average stellar mass is equal to the mass of the Sun, which is about
 
 $$M_\odot = 2 \times 10^{30} \ \text{kg}.$$
 
@@ -421,7 +423,7 @@ Therefore, the number \\(b\\) is
 
 $$b = 2 \times 10^{41}.$$
 
-Finally, we use Eq. 14, substitute numbers \\(a\\) and \\(b\\), and find \\(c\\):
+At last, we can calculate the unit of time by using Eq. 14, substituting numbers \\(a\\) and \\(b\\), and finding \\(c\\):
 
 $$
 \begin{aligned}
@@ -444,15 +446,15 @@ U_T &= \left( \frac{4.7 \times 10^{13} \ \cancel{\text{s}}}{1} \right) \left( \f
 \end{aligned}
 $$
 
-We have calculated the new unit of time to be 1.5 million years. Let's see if that makes sense. Our animation advances by about one unit of time after each animation frame. If refresh rate of the computer screen is 60 frames per second (a typical screen in 2020), then 90 million years will pass in simulation time after one second of our time. This is comparable to the  250 million years, which is the time it takes the Sun to rotate around the center of Milky Way. This means that unit of time \\(U_T = 1.5 \times 10^6 \ \text{y}\\) is reasonable.
+We have calculated the new unit of time to be 1.5 million years. Let's see if this number makes sense. Our animation advances by about one unit of time after each animation frame. If refresh rate of the computer screen is 60 frames per second (a typical screen in 2020), then in one second of our time the simulation will advance by 90 million years. This is comparable to the  250 million years, which is the time it takes the Sun to rotate around the center of Milky Way. This means that unit of time \\(U_T = 1.5 \times 10^6 \ \text{y}\\) is reasonable.
 
-Let's remind us what we've done. We wanted to get rid of constant \\(G\\) in code by making it equal to one. We have accomplished this by choosing the following units of length, mass and time, which are also more suitable to galactic scales:
+Let's remind us what we've done. Our goal was to get rid of constant \\(G\\) in code by making it equal to one. We have accomplished this by choosing the following units of length, mass and time, which are also more suitable to galactic scales:
 
 $$
 \begin{aligned}
     \text{Unit of length:} \ U_L &= 3.086 \times 10^{19} \ \text{m} \\
     \text{Unit of mass:} \ U_M &= 2 \times 10^{41} \ \text{kg}  \\
-    \text{Unit of time:} \ U_T &= 4.7 \times 10^{13} \ \text{s}. \tag{21}
+    \text{Unit of time:} \ U_T &= 4.7 \times 10^{13} \ \text{s}. \tag{15}
 \end{aligned}
 $$
 
