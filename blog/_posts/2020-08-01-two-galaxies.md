@@ -345,7 +345,7 @@ Now we return to our `galaxyStarsPositionsAndVelocities` function, and find this
 let starSpeed = Math.sqrt(args.coreMass / distanceFromCenter);
 ```
 
-You might have noticed a small difference. Our JavaScript code does not have constant G. Why? Because we made constant G equal to one.
+You might have noticed a small difference. Our JavaScript code does not have constant \\(G\\). Why? Because we made constant \\(G\\) equal to one.
 
 [reader stares in disbelief]
 
@@ -354,88 +354,54 @@ Let me explain...
 
 ### Changing units of length, mass and time
 
-You can see that constant G (Eq. 6) has units of
+You can see that constant \\(G\\) (Eq. 6) has units of \\(\frac{\text{m}^3}{\text{kg} \ \text{s}^2}\\). Here \\(\text{m}\\) (meter) is a unit of length, \\(\text{kg}\\) (kilogram) is a unit of mass, and \\(\text{s}\\) (second) is a unit of time. We will now do a trick that I saw astronomers do many times, and which confused me a lot until my teacher John Lattanzio explained it to me.
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax50PxWide' src='/image/blog/2020-08-01-two-galaxies/0160_units_of_g.png' alt="Units of G">
-  </span>
-  <span></span>
-</div>
+> We want to change the units of length, mass and time, such the constant \\(G\\) is equal to one in these units.
 
-Here `m` (meter) is a unit of length, `kg` (kilogram) is a unit of mass, and `s` (second) is a unit of time. We will now do a trick that I saw astronomers do many times, and which confused me a lot until my teacher John Lattanzio explained it to me. We want to change the units of length, mass and time, such the constant G is equal to one in these units. The point of this is to avoid putting constant G anywhere in the code. Another reason for this, is to make our mass, length and time numbers small, since stellar masses and distances are very large numbers when expressed in meters and kilograms.
+The point of this is to avoid putting constant \\(G\\) anywhere in the code. Another reason for this, is to make our mass, length and time numbers small, since stellar masses and distances are very large numbers when expressed in meters and kilograms.
 
 Here is one way of changing the units. We first define the new units
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax200PxWide' src='/image/blog/2020-08-01-two-galaxies/0170_new_units.png' alt="New units">
-  </span>
-  <span>(10)</span>
-</div>
-where `a`, `b` and `c` are numbers we want to find. We want to make gravitational constant `G` equal to one in these units. This is done by taking Eq. 6 and replacing the number `6.67e-11` with `1` and also replacing `m`, `kg` and `s` with new `U` units:
+$$
+\begin{aligned}
+    \text{Unit of length:} \ U_L &= a \ \text{m} \\
+    \text{Unit of mass:} \ U_M &= b \ \text{kg} \tag{10} \\
+    \text{Unit of time:} \ U_T &= c \ \text{s},
+\end{aligned}
+$$
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax120PxWide' src='/image/blog/2020-08-01-two-galaxies/0180_g_equal_one.png' alt="G equal to one">
-  </span>
-  <span>(11)</span>
-</div>
+where \\(a\\),  \\(b\\) and \\(c\\) are numbers we want to find. Out goal is to make gravitational constant \\(G\\) equal to one in these units. This is done by taking Eq. 6, replacing the number \\(6.67 \times 10^{-11}\\) with \\(1\\) and also replacing \\(\text{m}\\), \\(\text{kg}\\) and \\(\text{s}\\) with new units: \\(U_L\\), \\(U_M\\) and \\(U_T\\):
+
+$$G = 1 \frac{U_L^3}{U_M U_T^2} \tag{11}.$$
 
 Next, we substitute new units from Eq. 10:
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax250PxWide' src='/image/blog/2020-08-01-two-galaxies/0190_substitute_units.png' alt="Substitute units">
-  </span>
-  <span>(12)</span>
-</div>
+$$G = 1 \frac{(a \ \text{m})^3}{(b \ \text{kg}) (c \ \text{s})^2} = \frac{a^3}{bc^2} \frac{\text{m}^3}{\text{kg} \ \text{s}^2}. \tag{12}$$
 
 Equating this with Eq. 6 gives
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax250PxWide' src='/image/blog/2020-08-01-two-galaxies/0200_finding_unit_constants.png' alt="Equating to G">
-  </span>
-  <span>(13)</span>
-</div>
+$$ \frac{a^3}{bc^2} \cancel{ \frac{\text{m}^3}{\text{kg} \ \text{s}^2} } = 6.67 \times 10^{-11} \cancel{ \frac{\text{m}^3}{\text{kg} \ \text{s}^2} }. \tag{13}$$
 
 The units cancel and we get
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax180PxWide' src='/image/blog/2020-08-01-two-galaxies/0210_a_b_c.png' alt="Equation with a, b and c">
-  </span>
-  <span>(14)</span>
-</div>
+$$ \frac{a^3}{bc^2} = 6.67 \times 10^{-11}. \tag{14}$$
 
-This equation can not be solved, because it has three unknown variables `a`, `b` and `c`. Since one of our goals was to make new units small (Eq. 10), we can pick some arbitrary large numbers for `a` and `c` and then calculate `b` using Eq. 14. Stellar distances are often measured with a unit of length called *parsec* (pc), which is a typical distance between stars:
+This equation can not be solved, because it has three unknown variables \\(a\\), \\(b\\) and \\(c\\). Since one of our goals was to make new units small (Eq. 10), we can pick some arbitrary large numbers for \\(a\\) (length) and \\(b\\) (mass) and then calculate \\(c\\) (time) using Eq. 14. Stellar distances are often measured with a unit of length called *parsec* (pc), which is a typical distance between stars:
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax200PxWide' src='/image/blog/2020-08-01-two-galaxies/0220_parsec.png' alt="One parsec to meters">
-  </span>
-  <span>(15)</span>
-</div>
+$$1 \ \text{pc} = 3.086 \times 10^{16} \ \text{m}. \tag{15}$$
 
-Galactic distances are even larger, and are often measured in thousands of parsecs, or kiloparsecs (kpc). For example, Earth is 8 kiloparsec away from the center of Milky Way. Since we are simulating galaxies, it will make sense to use kiloparsec as our unit of length:
+Galactic distances are even larger, and are often measured in thousands of parsecs, or kiloparsecs (kpc). For example, Earth is eight kiloparsec away from the center of Milky Way. Since we are simulating galaxies, it will make sense to use kiloparsec as our unit of length:
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax120PxWide' src='/image/blog/2020-08-01-two-galaxies/0230_unit_of_length.png' alt="Settings unit of length">
-  </span>
-  <span>(16)</span>
-</div>
+$$U_L = 1000 \ \text{pc}. \tag{16}$$
 
-We can now convert kiloparsecs to meters, use Eq. 10 and calculate `a`:
+We can now convert kiloparsecs to meters, use Eq. 10 and calculate \\(a\\):
+
+$$
+\begin{aligned}
+    a \ \text{m} &= (1000 \ \text{pc}) \ \frac{3.086 \times 10^{16} \ \text{m}}{1 \ \text{pc}} \\
+    a &= 3.086 \times 10^{19}. \tag{19}
+\end{aligned}
+$$
 
 <div class='Equation isTextCentered'>
   <span></span>
