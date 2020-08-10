@@ -28,12 +28,6 @@
 
     {% if page.katex %}
     <link rel="stylesheet" href="/css/lib/katex/katex.min.css">
-
-    <!-- The loading of KaTeX is deferred to speed up page rendering -->
-    <script defer src="/js/lib/katex/katex.min.js"></script>
-
-    <!-- To automatically render math in text elements, include the auto-render extension: -->
-    <script defer src="/js/lib/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
     {% endif %}
 
     <!--[if lt IE 9]>
@@ -53,6 +47,14 @@
         <br>
 
         <script src="/js/script.js"></script>
+
+        {% if page.katex %}
+        <!-- Load KaTeX for LaTeX math rendering -->
+        <script defer src="/js/lib/katex/katex.min.js"></script>
+
+        <!-- Render math in text elements -->
+        <script defer src="/js/lib/katex/auto-render.min.js" onload='renderMathInElement(document.body);'></script>
+        {% endif %}
 
         <br>
         <br>

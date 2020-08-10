@@ -353,20 +353,6 @@ Next, we use another of Newton's discovery - the law of universal gravitation:
   <span>(5)</span>
 </div>
 
-$$
-\begin{aligned}
-    F &= \int_0^1 \frac{G m M}{r^2} \\
-    &= 2
-\end{aligned}
-$$
-
-\\(
-\begin{equation}
-    F = \int_0^1 \frac{G m M}{r^2}
-\end{equation}
-\\)
-
-
 which allows us to calculate gravitational force `F` between two masses `m` and `M` that are distance `r` apart. Here `G` is a number called *gravitational constant*:
 
 <div class='Equation isTextCentered'>
