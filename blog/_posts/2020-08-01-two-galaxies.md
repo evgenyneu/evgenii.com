@@ -403,75 +403,58 @@ $$
 \end{aligned}
 $$
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax250PxWide' src='/image/blog/2020-08-01-two-galaxies/0240_find_a.png' alt="Calculate a">
-  </span>
-  <span>(17)</span>
-</div>
+This gives the new unit of length we were looking for:
 
-Next, we want to choose a suitable unit of time. It takes about 250 million years for our Solar System to rotate around the center of Milky Way. Thus, a billion years could be a suitable unit for measuring time scales of galactic rotation:
+$$
+U_L = 3.086 \times 10^{19} \ m \tag{20}.
+$$
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax100PxWide' src='/image/blog/2020-08-01-two-galaxies/0250_unit_of_time.png' alt="Choosing unit of time">
-  </span>
-  <span>(18)</span>
-</div>
+Next, we want to choose a suitable value of \\(b\\) for the unit of mass. We are working with galaxies, so it would be natural to use mass of Milky Way as our mass unit. There are about 300 billion (\\(3 \times 10^{11}\\)) stars in Milky Way, but we will round it to 100 billion (\\(10^{11}\\)). We will assume that the average stellar mass is equal to the mass of the Sun, which is about
 
-Next, we convert unit of time from years to seconds, using the fact that there are 365 days in a common year, 24 hours in a day, 60 minutes in an hour and 60 seconds in a minute:
+$$M_\odot = 2 \times 10^{30} \ \text{kg}.$$
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax400PxWide' src='/image/blog/2020-08-01-two-galaxies/0260_unit_of_time_in_seconds.png' alt="Converting unit of time to seconds">
-  </span>
-  <span>(19)</span>
-</div>
+Multiplying the number of stars (\\(10^{11}\\)) with this mass gives the unit of mass we wanted:
 
-Now we can substitute the unit of time into Eq. 10 and calculate number `c`:
+$$U_M = (10^{11}) (2 \times 10^{30} \ \text{kg}) = 2 \times 10^{41} \ \text{kg}.$$
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax150PxWide' src='/image/blog/2020-08-01-two-galaxies/0270_calculating_c.png' alt="Calculate number c">
-  </span>
-  <span>(20)</span>
-</div>
+Therefore, the number \\(b\\) is
 
-Finally, we use Eq. 14, substitute numbers `a` and `c`, and find `b`:
+$$b = 2 \times 10^{41}.$$
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax250PxWide' src='/image/blog/2020-08-01-two-galaxies/0280_calculating_b.png' alt="Find b">
-  </span>
-  <span>(21)</span>
-</div>
+Finally, we use Eq. 14, substitute numbers \\(a\\) and \\(b\\), and find \\(c\\):
 
-We have found that in order to make constant `G` equal to 1 in new units (Eq. 11), we need to choose the unit of mass to be
+$$
+\begin{aligned}
+c &= \sqrt{\frac{a^3}{(6.67 \times 10^{-11})(b)}} \\
+  &= \sqrt{\frac{(3.086 \times 10^{19})^3}{(6.67 \times 10^{-11})(2 \times 10^{41})}} \\
+  &\approx 4.7 \times 10^{13}.
+\end{aligned}
+$$
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax150PxWide' src='/image/blog/2020-08-01-two-galaxies/0280_unit_of_mass.png' alt="Unit of mass">
-  </span>
-  <span>(22)</span>
-</div>
+We have found that in order to make constant \\(G\\) equal to one in new units (Eq. 11), we need to choose the unit of time to be
 
-This is approximately 200,000 larger than the mass of the Sun, which makes sense on a galactic scale.
+$$U_T = 4.7 \times 10^{13} \ \text{s}.$$
 
-To summarise, we wanted to get rid of constant G in code by making it equal to one. We have done this by choosing new units of length, mass and time, which are more suitable to galactic scales:
+This is a very large number, let's convert it to years, using the fact that there are 3600 seconds in one hour, 24 hours in one dat, and 365 days in a typical year:
 
-<div class='Equation isTextCentered'>
-  <span></span>
-  <span>
-    <img class='isMax400PxWide' src='/image/blog/2020-08-01-two-galaxies/0320_new_units.png' alt="New units">
-  </span>
-  <span>(23)</span>
-</div>
+$$
+\begin{aligned}
+U_T &= \left( \frac{4.7 \times 10^{13} \ \cancel{\text{s}}}{1} \right) \left( \frac{1 \ \cancel{\text{h}}}{3600 \ \cancel{\text{s}}} \right) \left( \frac{1 \ \cancel{\text{d}}}{24 \ \cancel{\text{h}}} \right) \left( \frac{1 \ \text{y}}{365 \ \cancel{\text{d}}} \right) \\
+  &\approx 1.5 \times 10^6 \ \text{y}.
+\end{aligned}
+$$
+
+We have calculate the new unit of time to be 1.5 million years. Let's see if that makes sense. Our animation advances by about one unit of time after each animation frame. If refresh rate of the computer screen is 60 Hz (a typical screen in 2020), then 90 million years will pass in simulation time after one second of our time. This is comparable to the  250 million years, which is the time it takes the Sun to rotate around the center of Milky Way. This means that unit of time \\(U_T &= 1.5 \times 10^6 \ \text{y} \\) is reasonable.
+
+Let's remind us what we've done. We wanted to get rid of constant \\(G\\) in code by making it equal to one. We have done this by choosing new units of length, mass and time, which are also more suitable to galactic scales:
+
+$$
+\begin{aligned}
+    \text{Unit of length:} \ U_L &= 3.086 \times 10^{19} \ \text{m} \\
+    \text{Unit of mass:} \ U_M &= 2 \times 10^{41} \ \text{kg}  \\
+    \text{Unit of time:} \ U_T &= 4.7 \times 10^{13} \ \text{s}.
+\end{aligned}
+$$
 
 
 

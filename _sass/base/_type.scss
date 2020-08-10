@@ -36,3 +36,12 @@ pre, code {
   font-size: 0.9em;
   background: $shade97;
 }
+
+// Scroll Katex equation if it does not fit on small screens
+@media only screen and (max-width: 600px) {
+  .katex-display > .katex {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
