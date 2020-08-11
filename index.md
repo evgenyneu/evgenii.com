@@ -11,7 +11,7 @@ meta_description: "Personal site of Evgenii Neumerzhitckii: blog and projects."
   •ᴥ•
 </h1>
 
-I am Evgenii,<br>I like to sleep, listen to Harry Potter books and play Fortnite.<br><br>I also do some [coding](/projects/),<br>[drawing](/drawings/) and [blogging](/blog/).
+I am Evgenii,<br>I like to sleep, listen to Harry Potter books and play Fortnite.<br><br>I also do some [blogging](/blog/) and [coding](/projects/).
 
 ### Want to keep in touch?
 
