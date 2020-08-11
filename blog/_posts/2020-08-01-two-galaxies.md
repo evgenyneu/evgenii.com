@@ -459,6 +459,26 @@ $$
 $$
 
 
+## Calculating positions of stars in one galaxy
+
+Let's return to our `galaxyStarsPositionsAndVelocities` function. Remember, we are inside a loop and want to calculate positions of stars for a single ring. We have already calculated the total number of stars `numberOfStars` in that ring. Now we want to go over all stars in the ring and calculate their positions. We start with another a loop:
+
+```JavaScript
+// Loop over all the stars in the current ring
+for(let starNumber = 0; starNumber < numberOfStars; starNumber++) {
+  // Find the angle of the current star relative to the first
+  // star in the ring
+  let starAngle = starNumber * angleBetweenNeighbours;
+```
+
+Inside the loop we go from the the rightmost star counterclockwise, and we want to calculate the angle to the current star with index `starNumber`. This angle is just the star index multiplied by the angle between neighbours, as shown on Fig. 11.
+
+<div class='isTextCentered'>
+  <img class='isMax400PxWide' src='/image/blog/2020-08-01-two-galaxies/0110_star_angle.png' alt='A star angle.'/>
+  <p>Figure 11: Calculating star angle for the blue star. The star is in the third ring, which has 18 stars. The angle between two neighbours is thus \(360 \degree / 18 = 20 \degree\). Since our blue star is the fourth star along the ring, the starNumber index is 3 and star angle is \(3 \times 20 \degree = 60 \degree\).</p>
+</div>
+
+
 
 ## To be continued...
 
