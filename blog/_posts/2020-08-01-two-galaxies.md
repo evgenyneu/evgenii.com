@@ -461,7 +461,7 @@ $$
 
 ## Calculating initial positions of stars in one galaxy
 
-Let's return to our `galaxyStarsPositionsAndVelocities` function. Remember, we are inside a loop and want to calculate positions of stars for a single ring. We have already calculated the total number of stars `numberOfStars` in that ring. Now we want to go over all stars in the ring and calculate their positions. We start with another a loop:
+Let's return to our `galaxyStarsPositionsAndVelocities` function. Remember, we are inside a loop and want to calculate initial positions of stars for a single ring. We have already calculated the total number of stars `numberOfStars` in that ring. Now we want to go over all stars in the ring and calculate their positions. We start with another a loop:
 
 ```JavaScript
 // Loop over all the stars in the current ring
