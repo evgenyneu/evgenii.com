@@ -296,9 +296,9 @@ let numberOfStars = numberOfStarsInOneRing(ringNumber,
 let angleBetweenNeighbours = 2 * Math.PI / numberOfStars;
 ```
 
-## Calculating star's speed
+## Calculating initial speeds of the stars
 
-Our goal is to calculate the velocity of each star in the galaxy, but first we need to find the speeds of stars. Velocity is a vector, pointing in the direction of movement. The length of a velocity vector is equal to the speed. Since we want our rings to be circular, all stars in the same ring must have equal speeds, otherwise the symmetry of the circle would be broken. Let's calculate this speed.
+Our goal is to calculate the initial velocity of each star in the galaxy, but first we need to find the speeds of stars. Velocity is a vector, pointing in the direction of movement. The length of a velocity vector is equal to the speed. When the simulation starts, we want our rings to be circular. This means that all stars in the same ring must have equal speeds, otherwise the symmetry of the circle would be broken. Let's calculate this speed.
 
 Consider a single star. Since we chose to neglect gravity from other stars, the galactic core is the only object that attracts our star (Fig. 10). The core exerts force \\(F\\) on the star of mass \\(m\\). This causes the star to accelerate with acceleration \\(a\\), resulting in a circular orbit instead of a straight line.
 
