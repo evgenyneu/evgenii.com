@@ -284,7 +284,7 @@ Inside the loop, we calculate the distance of the star (and the ring) from galac
   <p>Figure 9: Calculating distance from a star in the third ring to the galactic center and the angle between two neighbours.</p>
 </div>
 
-Next, we use `numberOfStarsInOneRing` function to calculate the total number of stars in the current ring. We also need an angle between two neighbouring stars in the same ring, in radians (Fig. 9). Since there are `numberOfStars` stars and the full ring in 2π radians, the angle between two stars is `2π / numberOfStars`:
+We will later need an angle between two neighbouring stars in the same ring, in radians (Fig. 9). To calculate it, we first use `numberOfStarsInOneRing` function to get the total number of stars in the current ring. Next, we use the fact that the angle of the full ring is 360 degrees, or 2π radians. This means that the angle between two adjacent stars is `2π / numberOfStars`:
 
 ```JavaScript
 // Find number of stars in the ring
