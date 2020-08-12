@@ -471,7 +471,7 @@ for(let starNumber = 0; starNumber < numberOfStars; starNumber++) {
   let starAngle = starNumber * angleBetweenNeighbours;
 ```
 
-Inside the loop we go from the the rightmost star counterclockwise, and we want to calculate the angle to the current star with index `starNumber`. This angle is just the star index multiplied by the angle between neighbours, as shown on Fig. 11.
+Inside the loop we go from the the rightmost star counterclockwise, and we want to calculate the angle to the current star with index `starNumber`. This angle `starAngle` is just the star index multiplied by the angle between neighbours, as shown on Fig. 11.
 
 <div class='isTextCentered'>
   <img class='isMax400PxWide' src='/image/blog/2020-08-01-two-galaxies/0110_star_angle.png' alt='A star angle.'/>
