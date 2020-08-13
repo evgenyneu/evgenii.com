@@ -2,9 +2,9 @@
 
 html { -webkit-text-size-adjust: 100%; }
 body {
-  color: $shade40;
+  color: $shade35;
   font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-  font-size: 17px;
+  font-size: 19px;
   word-wrap: break-word;
 }
 
@@ -38,7 +38,7 @@ pre, code {
 }
 
 // Scroll Katex equation if it does not fit on small screens
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   .katex-display > .katex {
     max-width: 100%;
     overflow-x: auto;
