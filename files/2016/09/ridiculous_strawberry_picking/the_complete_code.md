@@ -204,7 +204,7 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
     transform: translateY(-50%);
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: 700px) {
     .EarthOrbitSimulation-gameoverMessage {
       font-size: 1.2em;
       line-height: 1.5;
@@ -235,7 +235,7 @@ This is the complete source code of the [Ridiculous strawberry picking game](/bl
     position: relative;
     width: 100%;
     height: 100%;
-    max-width: 600px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
   }

@@ -138,7 +138,7 @@ Credits
   position: relative;
   width: 100%;
   height: 100%;
-  max-width: 600px;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }

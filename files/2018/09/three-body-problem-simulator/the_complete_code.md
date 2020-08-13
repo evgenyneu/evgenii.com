@@ -64,7 +64,7 @@ Credits
 .ThreeBodyProblem-container {
   background-color: #000000;
   position: relative;
-  height: 600px;
+  height: 700px;
   background-image: url("https://evgenii.com/image/blog/2018-09-27-three-body-problem-simulator/starry_night.png");
   background-position: center bottom;
   background-repeat: repeat;
@@ -143,7 +143,7 @@ Credits
   position: relative;
   width: 100%;
   height: 100%;
-  max-width: 600px;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -681,7 +681,7 @@ Sick Slider
       // Loop through the bodies
       for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
         // Starting index for current body in the u array
-        var bodyStart = iBody * 4; 
+        var bodyStart = iBody * 4;
 
         du[bodyStart + 0] = state.u[bodyStart + 0 + 2]; // Velocity x
         du[bodyStart + 1] = state.u[bodyStart + 0 + 3]; // Velocity y
