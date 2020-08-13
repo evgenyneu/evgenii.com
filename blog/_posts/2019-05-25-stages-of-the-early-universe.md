@@ -35,14 +35,14 @@ Firstly, we use the fact that a Helium-4 nucleus contains two neutrons and two p
 
 
 <div class='isTextCentered'>
-  <img class='isMax100PercentWide' src='/image/blog/2019-05-25-stages-of-the-early-universe/number_of_helium_and_free_prorons.png' alt='Calculating the number of helium and free protons in the Universe that is 340 seconds old'>
+  <img class='isMax600PxWide' src='/image/blog/2019-05-25-stages-of-the-early-universe/number_of_helium_and_free_prorons.png' alt='Calculating the number of helium and free protons in the Universe that is 340 seconds old'>
   <p>Figure 2: Calculating the number of helium nuclei and free protons in the Universe, which is 340 seconds old, given the neutron-to-proton ratio of 1/7.</p>
 </div>
 
 The abundance of Helium-4 is the mass of Helium-4 nuclei divided by the mass of all particles (including Helium-4). If we assume that protons and neutrons have the same mass, this ratio turns out to be precisely 1/4 (Figure 3).
 
 <div class='isTextCentered'>
-  <img class='isMax100PercentWide' src='/image/blog/2019-05-25-stages-of-the-early-universe/helium_abundance
+  <img class='isMax600PxWide' src='/image/blog/2019-05-25-stages-of-the-early-universe/helium_abundance
 .png' alt='Calculating primordial helium abundance.'>
   <p>Figure 3: Calculating the primordial helium abundance.</p>
 </div>
@@ -73,4 +73,3 @@ Some photons that were emitted when the Universe was 350,000 years old are still
 * [Source for the Figure 2 in Sketch format](/files/2019/05/helium_and_protons.sketch).
 
 * [Source for the Figure 3 in Sketch format](/files/2019/05/helium_abundance.sketch).
-
