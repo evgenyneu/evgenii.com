@@ -61,7 +61,7 @@ I am looking for part-time work as a programmer.
 
 Casual iOS/Rails/Web developer.
 
-* Maintain and program iOS, web apps and Ruby on Rails backend.
+* Maintained and programmed iOS, AngularJS web apps and Ruby on Rails backend.
 
 
 ### August 2014 - November 2015
@@ -83,6 +83,7 @@ Full time Ruby on Rails and JavaScript developer
 
 * Adapted main pages to responsive web design.
 * Developed integration and unit tests.
+* Programmed user interface using AngularJS.
 * Wrote an HTML/CSS style guide to make the web pages look and feel more consistent.
 
 
