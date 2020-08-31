@@ -7,8 +7,7 @@ url: "https://evgenii.com" # the base hostname & protocol for your site
 author:
   name: Evgenii Neumerzhitckii
   email: evgenyneu-at-gmail-com
-  google_plus_url: https://plus.google.com/+EvgeniiNeumerzhitckii
-  google_plus_page_url: https://www.google.com/+EvgeniiN
+  byline_url: https://evgenii.com
 
 # Build settings
 markdown: kramdown
