@@ -59,7 +59,7 @@ I am looking for part-time work as a programmer.
 
 [GoFetch](http://www.go-fetch.com.au) – delivery app for iOS and Web, Melbourne, Australia
 
-Casual iOS/Rails/Web developer.
+Full stack iOS/Rails/Web developer.
 
 * Maintained and programmed iOS, AngularJS web apps and Ruby on Rails backend.
 
@@ -68,7 +68,7 @@ Casual iOS/Rails/Web developer.
 
 [Marketplacer](http://marketplacer.com) – online marketplace, Melbourne, Australia
 
-Full time iOS/Swift developer.
+Full stack iOS/Swift developer.
 
 * Designed and built an online store iOS app.
 * Programmed Ruby on Rails backend for the iOS app.
@@ -79,7 +79,7 @@ Full time iOS/Swift developer.
 
 [BikeExchange.com.au](http://bikeexchange.com.au) – online marketplace, Melbourne, Australia
 
-Full time Ruby on Rails and JavaScript developer
+Full stack Ruby on Rails and JavaScript developer
 
 * Adapted main pages to responsive web design.
 * Developed integration and unit tests.
