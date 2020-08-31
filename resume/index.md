@@ -71,7 +71,7 @@ Full stack iOS/Rails/Web developer.
 Full stack iOS (Swift) and Ruby on Rails developer.
 
 * Designed and built an online store iOS app.
-* Programmed Ruby on Rails backend for the iOS app.
+* Programmed RESTful API in Ruby on Rails for the iOS app.
 * Created unit and end-to-end tests for the iOS project.
 
 
