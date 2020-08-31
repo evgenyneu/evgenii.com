@@ -1,0 +1,28 @@
+@media print
+{
+  body {
+    font-size: 15px;
+  }
+
+  h1:first-child { margin: 10px 0 25px 0; }
+
+  h1 { font-size: 27px; }
+  h2 { font-size: 22px; }
+  h3 { font-size: 19px; }
+  h4 { font-size: 16px; }
+
+  h1, h2, h3, h4, h5 {
+    margin: 40px 0 20px 0;
+  }
+
+  ul, ol {
+    margin-bottom: 1.7em;
+    padding-left: 1.7em;
+  }
+
+  li { margin-bottom: 6px; }
+
+  .isHiddenOnPrint {
+    display: none;
+  }
+}

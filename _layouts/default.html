@@ -56,17 +56,19 @@
         <script defer src="/js/lib/katex/auto-render.min.js" onload='renderMathInElement(document.body);'></script>
         {% endif %}
 
-        <br>
-        <br>
-        <div class='isTextCentered isHiddenOnPrint'>
-          <a href='/' title="Wooooow!"><img src='/image/layout/curious_bug_2016_06_01.png' class='HomeImage' alt="Wooooow!"></a>
+        <div class='isHiddenOnPrint'>
+          <br>
+          <br>
+          <div class='isTextCentered'>
+            <a href='/' title="Wooooow!"><img src='/image/layout/curious_bug_2016_06_01.png' class='HomeImage' alt="Wooooow!"></a>
+          </div>
+
+          {% if page.comments %}
+            {% include comments.html %}
+          {% endif %}
+
+          <br>
         </div>
-
-        {% if page.comments %}
-          {% include comments.html %}
-        {% endif %}
-
-        <br>
       </div>
     </div>
   </body>
