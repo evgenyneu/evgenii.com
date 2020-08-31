@@ -68,7 +68,7 @@ Full stack iOS/Rails/Web developer.
 
 [Marketplacer](http://marketplacer.com) – online marketplace, Melbourne, Australia
 
-Full stack iOS/Swift developer.
+Full stack iOS (Swift) and Ruby on Rails developer.
 
 * Designed and built an online store iOS app.
 * Programmed Ruby on Rails backend for the iOS app.
