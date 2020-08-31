@@ -24,12 +24,12 @@ I am looking for part-time work as a programmer.
 
 * 16 years of experience as a software developer.
 * Experienced in making Web, iOS, Android and Windows applications.
-* Skilled in writing automated tests.
+* Skilled in writing unit and integration tests.
 
 
 ## Technical Expertise
 
-* Languages: Swift, HTML, CSS, JavaScript, Python, C#, C/C++, Ruby on Rails, Java.
+* Languages: Swift, HTML, CSS, JavaScript, Ruby on Rails, Python, C#, C/C++, Java.
 * Databases: PostgreSQL, MySQL, SQLite, SQL Server.
 * Tools: Xcode, Android Studio, Visual Studio.
 
@@ -68,7 +68,7 @@ Full stack iOS/Rails/Web developer.
 
 [Marketplacer](http://marketplacer.com) – online marketplace, Melbourne, Australia
 
-Full stack iOS (Swift) and Ruby on Rails developer.
+Full stack iOS/Swift/Rails developer.
 
 * Designed and built an online store iOS app.
 * Programmed RESTful API in Ruby on Rails for the iOS app.
@@ -103,9 +103,9 @@ Freelance JavaScript and Ruby on Rails developer
 
 [FilmTransfer.com](http://filmtransfer.com) – film and video digitizing company, Northbrook, IL, USA
 
-Freelance web developer
+Full stack .NET/JavaScript developer
 
-* Designed and implemented an eCommerce web site using .NET MVC, jQuery and jQuery UI frameworks.
+* Designed and implemented an eCommerce web site from scratch using .NET MVC, jQuery and jQuery UI frameworks.
 * Developed custom content management system, order and user account management, promotion components.
 * Performed custom integration with Authorize.net and PayPal payment services and UPS shipping service.
 
@@ -131,6 +131,7 @@ Senior .NET/C# developer, independent contractor
 * Migrated legacy ASP system to ASP.NET (C#) platform.
 * Programmed [www.freehandmusic.com](http://www.freehandmusic.com) web site.
 * Developed a Windows Forms application (C#) to remotely manage catalog of digital sheet music products.
+* Programmed a C++ Windows application for editing sheet music.
 
 
 ## Honours & Awards
