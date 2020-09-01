@@ -57,7 +57,7 @@ I am looking for part-time work as a programmer.
 
 ### December 2016 - April 2017
 
-[GoFetch](http://www.go-fetch.com.au) – delivery app for iOS and Web, Melbourne, Australia
+[GoFetch](http://www.go-fetch.com.au) – delivery app for iOS and Web, Melbourne, Australia.
 
 Full stack iOS/Rails/Web developer.
 
@@ -66,7 +66,7 @@ Full stack iOS/Rails/Web developer.
 
 ### August 2014 - November 2015
 
-[Marketplacer](http://marketplacer.com) – online marketplace, Melbourne, Australia
+[Marketplacer](http://marketplacer.com) – online marketplace, Melbourne, Australia.
 
 Full stack iOS/Swift/Rails developer.
 
@@ -77,9 +77,9 @@ Full stack iOS/Swift/Rails developer.
 
 ### August 2012 - July 2014
 
-[BikeExchange.com.au](http://bikeexchange.com.au) – online marketplace, Melbourne, Australia
+[BikeExchange.com.au](http://bikeexchange.com.au) – online marketplace, Melbourne, Australia.
 
-Full stack Ruby on Rails and JavaScript developer
+Full stack Ruby on Rails and JavaScript developer.
 
 * Adapted main pages to responsive web design.
 * Developed integration and unit tests.
@@ -89,9 +89,9 @@ Full stack Ruby on Rails and JavaScript developer
 
 ### February 2012 - July 2012
 
-[DigitalSafe.ch](http://digitalsafe.ch) – data cloud storage solution, Geneva, Switzerland
+[DigitalSafe.ch](http://digitalsafe.ch) – data cloud storage solution, Geneva, Switzerland.
 
-Freelance JavaScript and Ruby on Rails developer
+Freelance JavaScript and Ruby on Rails developer.
 
 * Developed mobile web application in CoffeeScript language using jQueryMobile and Backbone.js libraries.
 * Wrote automated tests for client-side code using Jasmine.js library.
@@ -101,9 +101,9 @@ Freelance JavaScript and Ruby on Rails developer
 
 ### January 2010 - December 2011
 
-[FilmTransfer.com](http://filmtransfer.com) – film and video digitizing company, Northbrook, IL, USA
+[FilmTransfer.com](http://filmtransfer.com) – film and video digitizing company, Northbrook, IL, USA.
 
-Full stack .NET/JavaScript developer
+Full stack .NET/JavaScript developer.
 
 * Designed and implemented an eCommerce web site from scratch using .NET MVC, jQuery and jQuery UI frameworks.
 * Developed custom content management system, order and user account management, promotion components.
@@ -112,9 +112,9 @@ Full stack .NET/JavaScript developer
 
 ### September 2008 – July 2009
 
-[Freehand Systems, Inc](http://www.freehandmusic.com) – digital music company, publisher, Los Altos, CA, USA
+[Freehand Systems, Inc](http://www.freehandmusic.com) – digital music company, publisher, Los Altos, CA, USA.
 
-Senior .NET/C# developer, independent contractor
+Senior .NET/C# developer, independent contractor.
 
 * Participated in development of www.freehandmusic.com web site and two private web sites.
 * Developed solution to make scheduled backups of the web site, catalog and databases to a remote repository.
@@ -124,9 +124,9 @@ Senior .NET/C# developer, independent contractor
 
 ### July 1998 – August 2008
 
-[ZAO "Tipografiya Avtograf"](http://www.bookmusic.ru) – publisher, printing-house – Chelyabinsk, Russia
+[ZAO "Tipografiya Avtograf"](http://www.bookmusic.ru) – publisher, printing-house – Chelyabinsk, Russia.
 
-.NET/C#/C++ developer
+.NET/C#/C++ developer.
 
 * Migrated legacy ASP system to ASP.NET (C#) platform.
 * Programmed [www.freehandmusic.com](http://www.freehandmusic.com) web site.
