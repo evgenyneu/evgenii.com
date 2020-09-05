@@ -479,6 +479,78 @@ Inside the loop we go from the the rightmost star counterclockwise, and we want 
 </div>
 
 
+## Calculating star's position
+
+It has been a long preparation but now we are ready to calculate the initial position of the star:
+
+```JavaScript
+// x coordinate
+positions[iStar * 3] = distanceFromCenter * Math.cos(starAngle) *
+                           Math.cos(galaxyAngleRadians);
+
+// y coordinate
+positions[iStar * 3 + 1] = distanceFromCenter * Math.sin(starAngle);
+
+// z coordinate
+positions[iStar * 3 + 2] = -distanceFromCenter * Math.cos(starAngle) *
+                           Math.sin(galaxyAngleRadians);
+```
+
+In code above we assign x, y and z coordinates to the elements of `positions` array for the star with index `iStar`. This index is 0 for the first star, 1 for the second star, 10 for the eleventh star and so on. I admit, the math looks a bit intimidating, but we can understand it with [trigonometry](https://www.khanacademy.org/math/geometry-home/right-triangles-topic/intro-to-the-trig-ratios-geo/v/basic-trigonometry) and a picture.
+
+To calculate the star's position we need three numbers, which we calculated earlier:
+
+1. `distanceFromCenter`: Distance of the star from the center of the galaxy ([Fig. 9](/image/blog/2020-08-01-two-galaxies/0090_distance_from_center_star_angle.png)).
+
+1. `starAngle`: Star angle ([Fig. 11](/image/blog/2020-08-01-two-galaxies/0110_star_angle.png)).
+
+1. `galaxyAngleRadians`: Galaxy inclination angle ([Fig. 8](/image/blog/2020-08-01-two-galaxies/0080_galaxy_angle.png)).
+
+For simplicity, let's first ignore `galaxyAngleRadians`, which means the galaxy is not tilted and all the stars lie in the X-Y plane, as shown on Fig 12.
+
+<div class='isTextCentered'>
+  <img class='isMax700PxWide' src='/image/blog/2020-08-01-two-galaxies/0120_galaxy_position_xy.png' alt="Calculating star's X and Y positions."/>
+  <p>Figure 12: Calculating a star's position when the galaxy is not inclined and all stars are in the X-Y plane.</p>
+</div>
+
+Then, we multiply the hypotenuse`distanceFromCenter` by the cosine of the angle to get the `x` coordinate, and by the sine for the `y` coordinate. The `z` coordinate is zero, since the galaxy is not tilted:
+
+```JavaScript
+// x coordinate
+positions[iStar * 3] = distanceFromCenter * Math.cos(starAngle);
+
+// y coordinate
+positions[iStar * 3 + 1] = distanceFromCenter * Math.sin(starAngle);
+
+// z coordinate
+positions[iStar * 3 + 2] = 0;
+```
+
+Next, we tilt the galaxy around the Y-axis by `galaxyAngleRadians` angle, as shown on Fig. 13.
+
+<div class='isTextCentered'>
+  <img class='isMax600PxWide' src='/image/blog/2020-08-01-two-galaxies/0130_galaxy_position_xz.png' alt="Calculating star's X and Y positions."/>
+  <p>Figure 13: Calculating a star's position of the tilted galaxy.</p>
+</div>
+
+The key idea here is to think of the galaxy tilt as rotation of the previous x-axis from Fig. 12 around the y axis. The previous `x` value `distanceFromCenter * Math.cos(starAngle)` now becomes the hypotenuse. We then multiply this hypotenuse by `cos(galaxyAngleRadians)` to get the new `x` coordinate, and by `Math.sin(galaxyAngleRadians)` to find the `z` coordinate:
+
+```JavaScript
+// x coordinate
+positions[iStar * 3] = distanceFromCenter * Math.cos(starAngle) *
+                           Math.cos(galaxyAngleRadians);
+
+// y coordinate
+positions[iStar * 3 + 1] = distanceFromCenter * Math.sin(starAngle);
+
+// z coordinate
+positions[iStar * 3 + 2] = -distanceFromCenter * Math.cos(starAngle) *
+                           Math.sin(galaxyAngleRadians);
+```
+
+Notice that we use the negative sign for the `z` coordinate, because we chose to tilt the galaxy counter-clockwise.
+
+
 
 ## To be continued...
 
