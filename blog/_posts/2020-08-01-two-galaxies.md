@@ -548,7 +548,7 @@ positions[iStar * 3 + 2] = -distanceFromCenter * Math.cos(starAngle) *
                            Math.sin(galaxyAngleRadians);
 ```
 
-Notice that we use the negative sign for the `z` coordinate, because we chose to tilt the galaxy counter-clockwise.
+Notice that we use the negative sign for the `z` coordinate because we chose to tilt the galaxy counter-clockwise.
 
 
 
