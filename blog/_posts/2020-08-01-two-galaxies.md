@@ -533,7 +533,7 @@ Next, we tilt the galaxy around the Y-axis by `galaxyAngleRadians` angle, as sho
   <p>Figure 13: Calculating a star's position of the tilted galaxy.</p>
 </div>
 
-The key idea here is to think of the galaxy tilt as rotation of the previous x-axis from Fig. 12 around the y-axis. The previous `x` value `distanceFromCenter * Math.cos(starAngle)` now becomes the hypotenuse. We then multiply this hypotenuse by `cos(galaxyAngleRadians)` to get the new `x` coordinate, and by `Math.sin(galaxyAngleRadians)` to find the `z` coordinate. The `y`-coordinate does not change because the galaxy is tilted around the `y`-axis:
+The key idea here is to think of the galaxy tilt as rotation of the previous x-axis from Fig. 12 around the y-axis. The previous `x` value `distanceFromCenter * cos(starAngle)` now becomes the hypotenuse. We then multiply this hypotenuse by `cos(galaxyAngleRadians)` to get the new `x` coordinate, and by `sin(galaxyAngleRadians)` to find the `z` coordinate. The `y`-coordinate does not change because the galaxy is tilted around the `y`-axis:
 
 ```JavaScript
 // x coordinate
