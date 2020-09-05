@@ -500,9 +500,9 @@ In code above we assign x, y and z coordinates to the elements of `positions` ar
 
 To calculate the star's position we need three numbers, which we found earlier:
 
-1. `distanceFromCenter`: Distance of the star from the center of the galaxy ([Fig. 9](/image/blog/2020-08-01-two-galaxies/0090_distance_from_center_star_angle.png)).
+1. `distanceFromCenter`: Distance of the star from the center of the galaxy ([Fig. 9](/image/blog/2020-08-01-two-galaxies/0090_distance_from_center_star_angle.png)),
 
-1. `starAngle`: Star angle ([Fig. 11](/image/blog/2020-08-01-two-galaxies/0110_star_angle.png)).
+1. `starAngle`: Star angle ([Fig. 11](/image/blog/2020-08-01-two-galaxies/0110_star_angle.png)),
 
 1. `galaxyAngleRadians`: Galaxy inclination angle ([Fig. 8](/image/blog/2020-08-01-two-galaxies/0080_galaxy_angle.png)).
 
