@@ -554,7 +554,7 @@ Notice that we use the negative sign for the `z` coordinate because we chose to 
 
 ## To be continued...
 
-I will keep extending this article and cover more code from the simulation. Please feel free to comment or ask questions.
+I will keep extending this article and cover more code from the simulation.
 
 
 
