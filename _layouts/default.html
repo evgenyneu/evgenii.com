@@ -36,8 +36,6 @@
   <body class='{{ page.layout_class }}'>
 
     <div class='layout-outer'>
-      {% include google_analytics.html %}
-
       <div class='layout-fixed layout-padding'>
         <article class='Content'>
           {{ content }}
@@ -61,10 +59,6 @@
           <div class='isTextCentered'>
             <a href='/' title="Wooooow!"><img src='/image/layout/curious_bug_2016_06_01.png' class='HomeImage' alt="Wooooow!"></a>
           </div>
-
-          {% if page.comments %}
-            {% include comments.html %}
-          {% endif %}
 
           <br>
         </div>
