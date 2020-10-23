@@ -158,7 +158,7 @@ Monash University, Clayton, Australia
 
 * Bachelor of Science.
 * Major in astrophysics and applied math, minor in physics.
-* WAM: 91.553, GPA: 3.955, [transcript](https://www.myequals.net/sharelink/40d924a5-fb37-4b0e-ad82-7f67d28944b7/14981233-9a15-47ac-87ef-443abd667846).
+* WAM: 91.553, GPA: 3.955, [transcript](https://www.myequals.net/sharelink/d68514f0-3ec1-4ed1-b90f-2ffd95c24930/7920d777-4626-49d3-a66f-2154cbc590dc).
 * Graduated in 2020.
 
 
