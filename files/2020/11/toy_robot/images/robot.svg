@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="91px" height="91px" viewBox="0 0 91 91" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>robot</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" stroke="#000000" fill="#CBFF58" cx="45.5" cy="45.5" r="34.5"></circle>
+        <g id="Group" transform="translate(24.000000, 0.000000)">
+            <ellipse id="Oval-2" stroke="#000000" fill="#CAFF58" cx="8.5692135" cy="5.87558662" rx="7.65702952" ry="5"></ellipse>
+            <ellipse id="Oval-3" fill="#000000" cx="8.8551731" cy="5.60659858" rx="3.63608146" ry="2.1018854"></ellipse>
+            <path d="M0.904479407,23.5561231 L0.904479407,6.48960676 C0.904479407,6.48960676 1.57037195,10.8506215 8.55658821,10.8506215 C15.5428045,10.8506215 16.208697,6.43116632 16.208697,6.43116632 L16.1216287,13.7194461 L16.0067039,23.3395303 C16.0067039,23.3395303 16.0067039,28.8981882 8.55658821,28.8609606 C1.10647252,28.823733 0.904479407,23.5561231 0.904479407,23.5561231 Z" id="Line" stroke="#000000" fill="#CAFF58" stroke-linecap="square"></path>
+        </g>
+        <g id="Group" transform="translate(50.000000, 0.000000)">
+            <ellipse id="Oval-2" stroke="#000000" fill="#CAFF58" cx="8.5692135" cy="5.87558662" rx="7.65702952" ry="5"></ellipse>
+            <ellipse id="Oval-3" fill="#000000" cx="8.8551731" cy="5.60659858" rx="3.63608146" ry="2.1018854"></ellipse>
+            <path d="M0.904479407,23.5561231 L0.904479407,6.48960676 C0.904479407,6.48960676 1.57037195,10.8506215 8.55658821,10.8506215 C15.5428045,10.8506215 16.208697,6.43116632 16.208697,6.43116632 L16.1216287,13.7194461 L16.0067039,23.3395303 C16.0067039,23.3395303 16.0067039,28.8981882 8.55658821,28.8609606 C1.10647252,28.823733 0.904479407,23.5561231 0.904479407,23.5561231 Z" id="Line" stroke="#000000" fill="#CAFF58" stroke-linecap="square"></path>
+        </g>
+    </g>
+</svg>

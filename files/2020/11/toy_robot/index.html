@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <title>Toy Robot</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/toy_robot.css">
+  </head>
+  <body>
+    <script nomodule>
+      // Message shown to older web browsers
+      document.write('<div class="ToyRobot-OldBrowser">Please use a newer Web browser.</div>');
+    </script>
+
+    <div class="ToyRobot-layoutFixed ToyRobot-layoutPadding">
+      <h1>Toy Robot Simulation</h1>
+
+      <textarea class="ToyRobot-input hasBottomMarginSmall" placeholder="Enter your commands here: PLACE, MOVE, LEFT, RIGHT, REPORT"></textarea>
+
+      <div class="isTextCentered hasBottomMarginSmall">
+        <button class="ToyRobot-submitButton">Submit</button>
+      </div>
+
+      <div class="ToyRobot-table">
+        <div class="ToyRobot-tableCell"></div>
+      </div>
+
+      <br>
+
+      <h2>Output</h2>
+
+      <div class="ToyRobot-log"></div>
+
+
+      <h2>Source code</h2>
+
+      <a href='https://github.com/evgenyneu/toy_robot'>https://github.com/evgenyneu/toy_robot</a>
+
+      <br><br>
+      <br><br>
+
+    </div>
+
+    <script type="module">
+       import { main } from './js/main.js';
+       main(5, 5);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+/*
+  Type
+  ---------
+*/
+
+* { box-sizing: border-box; }
+
+body {
+  color: #605848;
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-size: 17px;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+h2 {
+  margin-top: 1em;
+}
+
+
+/*
+  Layout
+  ---------
+*/
+
+@media screen and (min-width: 600px) {
+  .ToyRobot-layoutFixed {
+    width: 600px;
+    margin: 0 auto;
+  }
+}
+
+
+.ToyRobot-layoutPadding {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/*
+  States
+  ---------
+*/
+
+/* Margins */
+.hasBottomMarginSmall { margin-bottom: 10px; }
+
+/* Horizontal alignment */
+.isTextCentered { text-align: center; }
+
+
+/*
+  Old browser message
+  ---------
+*/
+
+.ToyRobot-OldBrowser {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+  line-height: 100%;
+  font-size: 20px;
+  color: red;
+  border: 2px solid red;
+}
+
+/*
+  Simulation elements
+  ---------
+*/
+
+.ToyRobot-input {
+  width: 100%;
+  height: 100px;
+  font-size: 17px;
+  padding: 5px;
+}
+
+.ToyRobot-submitButton {
+  background-color: #CBFF58;
+  display: inline-block;
+  border: 1px solid #999;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.ToyRobot-log {
+  height: 300px;
+  border: 1px solid #bbb;
+  overflow: auto;
+  padding: 5px;
+}
+
+/*
+  Table
+  ---------
+*/
+
+:root {
+  --rowNum: 5;
+  --colNum: 5;
+  --gridHeight: calc((min(100vw - 30px, 300px) - (var(--colNum) - 1) * 5px) / var(--colNum));
+}
+
+
+.ToyRobot-table {
+  display: grid;
+  grid-template-rows: repeat(var(--rowNum), var(--gridHeight));
+  grid-template-columns: repeat(var(--colNum), var(--gridHeight));
+  gap: 5px;
+
+  width: 300px;
+  margin: 0 auto;
+}
+
+.ToyRobot-tableCell {
+  grid-column-start: auto;
+  grid-row-start: auto;
+  background-color: #49c;
+}
+
+.ToyRobot-robot {
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+}
+
+.ToyRobot-robotFace-north { /* No rotation */ }
+.ToyRobot-robotFace-south { transform: rotate(180deg); }
+.ToyRobot-robotFace-west { transform: rotate(-90deg); }
+.ToyRobot-robotFace-east { transform: rotate(90deg); }
