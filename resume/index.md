@@ -29,7 +29,7 @@ I am looking for part-time work as a programmer.
 
 ## Technical Expertise
 
-* Languages: Swift, HTML, CSS, JavaScript, Ruby on Rails, Python, C#, C/C++, Java.
+* Languages: HTML, CSS, JavaScript, Ruby on Rails, Swift Python, Swift, C#, C/C++, Java.
 * Databases: PostgreSQL, MySQL, SQLite, SQL Server.
 * Tools: Xcode, Android Studio, Visual Studio.
 
@@ -54,6 +54,16 @@ I am looking for part-time work as a programmer.
 
 
 ## Professional Experience
+
+### December 2020 - present
+
+[Macuject](https://www.macuject.com/) – Clinical decision support software for
+macular disease, Melbourne, Australia.
+
+Full stack Ruby and JavaScript and developer.
+
+* Programmed a React Web app and its Ruby on Rails backend.
+
 
 ### December 2016 - April 2017
 
