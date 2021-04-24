@@ -29,7 +29,7 @@ I am looking for part-time work as a programmer.
 
 ## Technical Expertise
 
-* Languages: HTML, CSS, JavaScript, Ruby on Rails, Swift Python, Swift, C#, C/C++, Java.
+* Languages: HTML, CSS, JavaScript, Ruby on Rails, Python, Swift, C#, C/C++, Java.
 * Databases: PostgreSQL, MySQL, SQLite, SQL Server.
 * Tools: Xcode, Android Studio, Visual Studio.
 
