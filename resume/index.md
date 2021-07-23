@@ -60,9 +60,11 @@ I am looking for part-time work as a programmer.
 [Macuject](https://www.macuject.com/) – Clinical decision support software for
 macular disease, Melbourne, Australia.
 
-Full stack Ruby and JavaScript developer.
+Full stack Ruby, JavaScript and Python developer.
 
-* Programmed a React Web app and its Ruby on Rails backend.
+* Programmed a React Web app, its Ruby on Rails backend and  Python machine learning service.
+
+* Managed AWS and local server infrastructure.
 
 
 ### December 2016 - April 2017
