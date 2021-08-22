@@ -378,7 +378,7 @@ Credits
       // Loop through the bodies
       for (var iBody = 0; iBody < initialConditions.bodies; iBody++) {
         // Starting index for current body in the u array
-        var bodyStart = iBody * 4; 
+        var bodyStart = iBody * 4;
 
         du[bodyStart + 0] = state.u[bodyStart + 0 + 2]; // Velocity x
         du[bodyStart + 1] = state.u[bodyStart + 0 + 3]; // Velocity y
@@ -539,9 +539,108 @@ Credits
       };
     }
 
+    /**
+     * Transform coordinates of the bodies such that the body
+     * with index `bodyIndex` is at the center of the screen.
+     *
+     * @param {number} bodyIndex Index of the body to center, starting with 0.
+     * @param {object} state State array containing positions and velocities
+     *  of all bodies.
+     * @return {object} State array containing the updates positions.
+     */
+    function centerBody(bodyIndex, state) {
+      // Copy array so that we don't modify the original
+      var state = state.slice();
+
+      // Get positions of the `bodyIndex` body
+      var secondBodyX = state[bodyIndex * 4 + 0];
+      var secondBodyY = state[bodyIndex * 4 + 1];
+
+      // Loop through the bodies
+      for (var iBody = 0; iBody < state.length / 4; iBody++) {
+        var bodyStart = iBody * 4; // Starting index for current body in the u array
+        // Adjust positions of bodies such that the `bodyIndex` body
+        // is at the origin (0, 0)
+        state[bodyStart + 0] -= secondBodyX;
+        state[bodyStart + 1] -= secondBodyY;
+      }
+
+      return state;
+    }
+
+    /**
+     * Rotate the bodies such that the bodies with indices
+     * `iBody1` and `iBody2` have the same y coordinate
+     *
+     * @param {number} iBody1 Index of the first body starting with 0.
+     * @param {nuber} iBody2 Index of the first body starting with 0.
+     * @param {object} state State array containing positions and velocities
+     *  of all bodies.
+     * @return {object} State array containing the updates positions.
+     */
+    function rotateToMakeTwoBodiesHorizontal(iBody1, iBody2, state) {
+      // Copy array so that we don't modify the original
+      var state = state.slice();
+
+      // Get coordinates of the two bodies
+      let body1 = [state[iBody1 * 4 + 0], state[iBody1 * 4 + 1]];
+      let body2 = [state[iBody2 * 4 + 0], state[iBody2 * 4 + 1]];
+
+      // Distance between two bodies
+      let dx = body2[0] - body1[0];
+      let dy = body2[1] - body1[1];
+      let distance = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+
+      // Calculate sine and cos of the angle between the line connecting
+      // the two bodies and horizontal line.
+      // --------
+
+      var sin = 0;
+      var cos = 1;
+
+      if (distance > 1e-10) { // Avoid division by small number
+        sin = - (body2[1] - body1[1]) / distance;
+        cos = (body2[0] - body1[0]) / distance;
+      }
+
+      // Loop through the bodies
+      for (var iBody = 0; iBody < state.length / 4; iBody++) {
+        var bodyStart = iBody * 4; // Starting index for current body in the u array
+
+        let x = state[bodyStart + 0];
+        let y = state[bodyStart + 1];
+
+        // Rotate (see demo https://www.desmos.com/calculator/z6frhbzkod)
+        let xNew = x * cos - y * sin;
+        let yNew = x * sin + y * cos;
+
+        state[bodyStart + 0] = xNew;
+        state[bodyStart + 1] = yNew;
+      }
+
+      return state;
+    }
+
+    /**
+     * Change positions of bodies such that second body is at the
+     * center of the screen and it has the same vertical position
+     * as the first body.
+     *
+     * @param {object} state State array containing positions and velocities
+     *  of all bodies.
+     * @return {object} State array containing the updates positions.
+     */
+    function transformCoordinates(state) {
+      state = centerBody(1, state);
+      state = rotateToMakeTwoBodiesHorizontal(0, 1, state);
+      return state
+    }
+
     // Calculates the new positions of the bodies on screen
     // from the given state variables
     function calculateNewPositions(statePositions) {
+      statePositions = transformCoordinates(statePositions);
+
       // Loop through the bodies
       for (var iBody = 0; iBody < statePositions.length / 4; iBody++) {
         var bodyStart = iBody * 4; // Starting index for current body in the u array
