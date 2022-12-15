@@ -12,11 +12,12 @@ server {
   access_log   /var/log/nginx/evgenii.log combined;
 
   # static content
-  location ~ \.(?:ico|jpg|css|png|js|swf|woff|eot|svg|ttf|gif)$ {
+  location ~ \.(?:ico|jpg|css|png|js|swf|woff|eot|svg|ttf|gif|zip)$ {
     access_log  off;
     log_not_found off;
     add_header  Pragma "public";
     add_header  Cache-Control "public";
+    add_header Access-Control-Allow-Origin "*";
     expires     7d;
   }
 
