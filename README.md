@@ -5,21 +5,23 @@ This repository contains my personal web site project: http://evgenii.com.
 ## Installation
 
     git clone git@github.com:evgenyneu/evgenii.com.git
-    gem install jekyll
+    cd evgenii.com
+    rbenv install
+    bundle
 
 
 ### Serve
 
-    jekyll serve
+    bundle exec jekyll serve
 
 
 ### Build
 
-    jekyll build
+    bundle exec jekyll build
 
 ### Deploy
 
-./_scripts/deploy.sh
+    ./_scripts/deploy.sh
 
 
 
