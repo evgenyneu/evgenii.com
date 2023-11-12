@@ -22,7 +22,7 @@ I am looking for part-time work as a programmer.
 
 ## Summary of Qualifications
 
-* 16 years of experience as a software developer.
+* 18 years of experience as a software developer.
 * Experienced in making Web, iOS, Android and Windows applications.
 * Skilled in writing unit and integration tests.
 
@@ -31,7 +31,8 @@ I am looking for part-time work as a programmer.
 
 * Languages: HTML, CSS, JavaScript, Ruby on Rails, Python, Swift, C#, C/C++, Java.
 * Databases: PostgreSQL, MySQL, SQLite, SQL Server.
-* Tools: Xcode, Android Studio, Visual Studio.
+* Infrastructure: AWS (CDK), Heroku, local servers (Ansible).
+* Tools: VS Code, Xcode, Android Studio, Visual Studio.
 
 
 
@@ -60,11 +61,11 @@ I am looking for part-time work as a programmer.
 [Macuject](https://www.macuject.com/) – Clinical decision support software for
 macular disease, Melbourne, Australia.
 
-Full stack Ruby, JavaScript and Python developer.
+Full stack web developer:
 
-* Programmed a React Web app, its Ruby on Rails backend and  Python machine learning service.
+* Programmed a Ruby on Rails web site, React web app and Python machine learning service.
 
-* Managed AWS and local server infrastructure.
+* Wrote infrastructure code for local (Ansible) and AWS servers (Typescript CDK).
 
 
 ### December 2016 - April 2017
