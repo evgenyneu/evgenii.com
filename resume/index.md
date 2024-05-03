@@ -11,20 +11,21 @@ title: Resume of Evgenii Neumerzhitckii
 
 **Phone**: +61 403 574 406
 
-**Web site**: [evgenii.com](https://evgenii.com)
+**Github**: [github.com/evgenyneu](https://github.com/evgenyneu)
+
 
 
 ## Objective
 
-I am looking for part-time work as a programmer.
+I am looking for part-time work as a coder in Melbourne, in office (20 hr per week, non-remote).
 
 
 
 ## Summary of Qualifications
 
-* 18 years of experience as a software developer.
-* Experienced in making Web, iOS, Android and Windows applications.
-* Skilled in writing unit and integration tests.
+* Over 15 years of programming experience.
+* Developed applications for Web, iOS, Android, and Windows platforms.
+* Familiar with writing unit and integration tests.
 
 
 ## Technical Expertise
@@ -49,14 +50,14 @@ I am looking for part-time work as a programmer.
 ## App examples
 
 * AES Crypto for Android, iOS and Web: [aescrypto.com/help/](http://aescrypto.com/help/)
-* Water Footprint for Android, iOS and Web: <br>[evgenii.com/water-footprint/en/help/](https://evgenii.com/water-footprint/en/help/)
-* Walk to Circle for Android and iOS: <br>[github.com/evgenyneu/walk-to-circle-android](https://github.com/evgenyneu/walk-to-circle-android)
+* Water Footprint for Android, iOS and Web: [evgenii.com/water-footprint/en/help/](https://evgenii.com/water-footprint/en/help/)
+* Walk to Circle for Android and iOS: [github.com/evgenyneu/walk-to-circle-android](https://github.com/evgenyneu/walk-to-circle-android)
 
 
 
 ## Professional Experience
 
-### December 2020 - present
+### December 2020 - February 2024
 
 [Macuject](https://www.macuject.com/) – Clinical decision support software for
 macular disease, Melbourne, Australia.
@@ -127,7 +128,7 @@ Full stack .NET/JavaScript developer.
 
 [Freehand Systems, Inc](http://www.freehandmusic.com) – digital music company, publisher, Los Altos, CA, USA.
 
-Senior .NET/C# developer, independent contractor.
+.NET/C# developer
 
 * Participated in development of www.freehandmusic.com web site and two private web sites.
 * Developed solution to make scheduled backups of the web site, catalog and databases to a remote repository.
