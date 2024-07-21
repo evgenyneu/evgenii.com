@@ -11,7 +11,7 @@ meta_description: "Personal site of Evgenii Neumerzhitckii: blog and projects."
   •ᴥ•
 </h1>
 
-I am Evgenii, I like to play League of Legends, <br>do some [blogging](/blog/) and [coding](/projects/).
+I am Evgenii, I make [music](https://sausageskin.bandcamp.com/), <br>do some [blogging](/blog/) and [coding](/projects/).
 
 ### Want to keep in touch?
 
