@@ -22,7 +22,7 @@ I am looking for part-time work as a coder in Melbourne, in office (24 hr per we
 
 ## Summary of Qualifications
 
-* Over 15 years of programming experience.
+* 19 years of programming experience.
 * Developed applications for Web, iOS, Android, and Windows platforms.
 * Familiar with writing unit and integration tests.
 
