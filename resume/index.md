@@ -17,8 +17,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 ## Objective
 
-I am looking for part-time work as a coder in Melbourne, in office (20 hr per week, non-remote).
-
+I am looking for part-time work as a coder in Melbourne, in office (24 hr per week, non-remote).
 
 
 ## Summary of Qualifications
