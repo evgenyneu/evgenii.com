@@ -11,26 +11,28 @@ title: Resume of Evgenii Neumerzhitckii
 
 **Phone**: +61 403 574 406
 
-**Github**: [github.com/evgenyneu](https://github.com/evgenyneu)
+**Website**: [evgenii.com](https://evgenii.com)
 
+**Github**: [github.com/evgenyneu](https://github.com/evgenyneu)
 
 
 ## Objective
 
-I am looking for part-time work as a coder in Melbourne, in office (24 hr per week, non-remote).
+Seeking a programming position in Melbourne.
 
 
 ## Summary of Qualifications
 
 * 19 years of programming experience.
 * Developed applications for Web, iOS, Android, and Windows platforms.
-* Familiar with writing unit and integration tests.
+* Skilled in writing unit and integration tests.
 
 
 ## Technical Expertise
 
-* Languages: HTML, CSS, JavaScript, Ruby on Rails, Python, Swift, C#, C/C++, Java.
+* Languages: HTML, CSS, JavaScript, Ruby, SQL, Python, Swift, C#, C/C++, Java.
 * Databases: PostgreSQL, MySQL, SQLite, SQL Server.
+* Libraries: Ruby on Rails, React, Turbo/Stimulus, Tailwind CSS, Cypress, Jest, AngularJS, Bootstrap, jQuery.  
 * Infrastructure: AWS (CDK), Heroku, local servers (Ansible).
 * Tools: VS Code, Xcode, Android Studio, Visual Studio.
 
@@ -51,7 +53,6 @@ I am looking for part-time work as a coder in Melbourne, in office (24 hr per we
 * AES Crypto for Android, iOS and Web: [aescrypto.com/help/](http://aescrypto.com/help/)
 * Water Footprint for Android, iOS and Web: [evgenii.com/water-footprint/en/help/](https://evgenii.com/water-footprint/en/help/)
 * Walk to Circle for Android and iOS: [github.com/evgenyneu/walk-to-circle-android](https://github.com/evgenyneu/walk-to-circle-android)
-
 
 
 ## Professional Experience
@@ -147,36 +148,17 @@ Full stack .NET/JavaScript developer.
 * Programmed a C++ Windows application for editing sheet music.
 
 
-## Honours & Awards
-
-* 2020: Dean's List Award, [certificate](/image/resume/awards/2020/2020_monash_deans_list_award_evgenii_neumerzhitckii.pdf).
-
-* 2020: Best student's talk at an astrophysics conference, [certificate](/image/resume/awards/2020/anita_2020_evgenii_neumerzhitckii.jpg).
-
-* 2019: Dean's List Award, [certificate](/image/resume/awards/2019/2019_monash_deans_list_award_evgenii_neumerhitckii.jpg).
-
-* 2018: Dean's Honours List, [certificate](/image/resume/awards/2018/2018_monash_deans_honours_list_award_evgenii_neumerhitckii.jpg).
-
-* 2018: Monash Scholarship for Excellence, [certificate](/image/resume/awards/2018/2018_monash_scholarship_for_excellence_evgenii_neumerhitckii.jpg).
-
-* 2016: Highest Academic Performance, semester 1, [certificate](/image/resume/awards/2016/highest_performance_award_semester2_2016.jpg).
-
-* 2016: Highest Academic Performance, semester 2, [certificate](/image/resume/awards/2016/highest_performance_award_semester1_2016.jpg).
-
-
-
 ## Education
 
-Monash University, Clayton, Australia
+Monash University, Clayton, Australia.
 
 * Bachelor of Science.
-* Major in astrophysics and applied math, minor in physics.
-* WAM: 91.553, GPA: 3.955, [transcript](https://www.myequals.net/sharelink/d32d6b00-6f9f-4293-9fc9-6fa5b22c3709/151ae646-0174-41f3-9ea6-9f841d68f269).
+* Major in Astrophysics and Applied Mathematics, minor in Physics [transcript](https://www.myequals.net/sharelink/d32d6b00-6f9f-4293-9fc9-6fa5b22c3709/151ae646-0174-41f3-9ea6-9f841d68f269).
 * Graduated in 2020.
 
 
-South Ural State University, Chelyabinsk, Russia
+South Ural State University, Chelyabinsk, Russia.
 
-* Economist, Master's degree equivalent.
+* Specialist Diploma in Economics and Computer Science.
 * Major in Information Systems in Economy.
 * Graduated in 2003.
