@@ -33,7 +33,7 @@ Seeking a programming position in Melbourne.
 * **Languages**: HTML, CSS, JavaScript, Ruby, SQL, Python, Swift, C#, C/C++, Java.
 * **Databases**: PostgreSQL, MySQL, SQLite, SQL Server.
 * **Libraries**: Ruby on Rails, React, Turbo/Stimulus, Tailwind CSS, Cypress, Jest, AngularJS, Bootstrap, jQuery.  
-* **Infrastructure**: AWS (CDK), Heroku, local servers (Ansible).
+* **Infrastructure**: AWS (CDK), Heroku, Linux local servers (Ansible).
 * **Tools**: VS Code, Xcode, Android Studio, Visual Studio.
 
 
