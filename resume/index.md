@@ -18,7 +18,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 ## Objective
 
-Seeking a programming position to apply my skills and embrace new learning opportunities.
+Seeking a programming position to apply my skills and continue learning.
 
 
 ## Summary of Qualifications
