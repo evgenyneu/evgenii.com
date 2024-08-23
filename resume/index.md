@@ -18,7 +18,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 ## Objective
 
-Seeking a programming position in Melbourne.
+Seeking a programming position in Melbourne where I can contribute my experience while continuing to learn and grow as a developer.
 
 
 ## Summary of Qualifications
