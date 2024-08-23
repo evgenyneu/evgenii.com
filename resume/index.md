@@ -32,7 +32,7 @@ Seeking a programming position in Melbourne.
 
 * **Languages**: HTML, CSS, JavaScript, Ruby, SQL, Python, Swift, C#, C/C++, Java.
 * **Databases**: PostgreSQL, MySQL, SQLite, SQL Server.
-* **Libraries**: Ruby on Rails, React, Turbo/Stimulus, Tailwind CSS, Cypress, Jest, AngularJS, Bootstrap, jQuery.  
+* **Libraries**: Ruby on Rails, React, Turbo/Stimulus, Tailwind CSS, Cypress, Jest, AngularJS, Bootstrap, jQuery.
 * **Infrastructure**: AWS (CDK), Heroku, Linux local servers (Ansible).
 * **Tools**: VS Code, Xcode, Android Studio, Visual Studio.
 
@@ -40,19 +40,19 @@ Seeking a programming position in Melbourne.
 
 ## Code examples
 
-* Swift: [github.com/evgenyneu/Cosmos](https://github.com/evgenyneu/Cosmos)
-* Javascript: [github.com/evgenyneu/two_galaxies](https://github.com/evgenyneu/two_galaxies)
-* Python: [github.com/evgenyneu/tarpan](https://github.com/evgenyneu/tarpan)
-* C: [github.com/evgenyneu/image_compressor_c](https://github.com/evgenyneu/image_compressor_c)
-* Java: [github.com/evgenyneu/js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android)
-* Ruby: [github.com/evgenyneu/siba](https://github.com/evgenyneu/siba)
+* **Swift**: [github.com/evgenyneu/Cosmos](https://github.com/evgenyneu/Cosmos) - A star rating control for iOS/tvOS.
+* **Javascript**: [github.com/evgenyneu/two_galaxies](https://github.com/evgenyneu/two_galaxies) - A simulation of two interacting galaxies.
+* **Python**: [github.com/evgenyneu/tarpan](https://github.com/evgenyneu/tarpan) - Library for analyzing and visualizing Bayesian statistical inference data.
+* **C**: [github.com/evgenyneu/image_compressor_c](https://github.com/evgenyneu/image_compressor_c) - An image compressor program.
+* **Java**: [github.com/evgenyneu/js-evaluator-for-android](https://github.com/evgenyneu/js-evaluator-for-android) - A library for running JavaScript in Android apps.
+* **Ruby**: [github.com/evgenyneu/siba](https://github.com/evgenyneu/siba) - A command-line backup and restore utility.
 
 
 ## App examples
 
-* AES Crypto for Android, iOS and Web: [aescrypto.com/help/](http://aescrypto.com/help/)
-* Water Footprint for Android, iOS and Web: [evgenii.com/water-footprint/en/help/](https://evgenii.com/water-footprint/en/help/)
-* Walk to Circle for Android and iOS: [github.com/evgenyneu/walk-to-circle-android](https://github.com/evgenyneu/walk-to-circle-android)
+* [aescrypto.com/help/](https://aescrypto.com/help/) - An Android, iOS, and Web app for encrypting text messages using AES-256 encryption.
+* [evgenii.com/water-footprint/en/help/](https://evgenii.com/water-footprint/en/help/) - An Android, iOS, and Web app that shows how much water is used to produce food.
+* [github.com/evgenyneu/walk-to-circle-android](https://github.com/evgenyneu/walk-to-circle-android) - An Android and iOS app that generates random destinations for walks.
 
 
 ## Professional Experience
