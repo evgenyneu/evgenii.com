@@ -153,7 +153,7 @@ Full stack .NET/JavaScript developer.
 **Monash University, Clayton, Australia**
 
 * Bachelor of Science.
-* Major in Astrophysics and Applied Mathematics, minor in Physics [transcript](https://www.myequals.net/sharelink/d32d6b00-6f9f-4293-9fc9-6fa5b22c3709/151ae646-0174-41f3-9ea6-9f841d68f269).
+* Major in Astrophysics and Applied Mathematics, minor in Physics ([transcript](https://www.myequals.net/sharelink/d32d6b00-6f9f-4293-9fc9-6fa5b22c3709/151ae646-0174-41f3-9ea6-9f841d68f269)).
 * Graduated in 2020.
 
 
