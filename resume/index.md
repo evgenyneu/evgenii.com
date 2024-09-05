@@ -62,23 +62,23 @@ Seeking a programming position to apply my skills and continue learning.
 [Macuject](https://www.macuject.com/) – Clinical decision support software for
 macular disease, Melbourne, Australia.
 
-Full stack web developer:
+Full Stack Web Developer:
 
-* Programmed and maintained a Ruby on Rails web site that conencted to a PostgreSQL database.
+* Developed and maintained a Ruby on Rails website connected to a PostgreSQL database.
 
-* Worked on web client site code using both vanilla JavaScript, React, Redux and Stimulus libraries.
+* Worked on web client-side code using vanilla JavaScript, React, Redux, and Stimulus libraries.
 
-* Designed and developed CSS for responsive web pages using Bootstrap and Tailwind CSS libraries.
+* Designed and implemented responsive web pages using Bootstrap and Tailwind CSS.
 
-* Used Python to develop new features in machine learning image segmentation service and visualize medical eye scan data (OCT).
+* Utilized Python to develop features for a machine learning image segmentation service and visualize medical eye scan data (OCT).
 
-* Wrote Typescript CDK that deployed Ruby on Rails server and PostgreSQL database to AWS (infrastructure as code).
+* Created a TypeScript CDK that deployed a Ruby on Rails server and PostgreSQL database to AWS (Infrastructure as Code).
 
-* Wrote Ansible script to setup machine learning development environment on local Linux servers.
+* Wrote Ansible scripts to set up a machine learning development environment on local Linux servers.
 
-* Selected components and manually built PCs for machine learning development and model training. 
+* Selected components and built PCs for machine learning development and model training.
 
-* Written unit and integration tests for the Ruby on Rails (Rspec) and JavaScript (Jest, Cypress) code. 
+* Wrote unit and integration tests for Ruby on Rails (RSpec) and JavaScript (Jest, Cypress) code.
 
 * Mentored junior developers.
 
