@@ -62,7 +62,7 @@ Seeking a programming position to apply my skills and continue learning.
 [Macuject](https://www.macuject.com/) – Clinical decision support software for
 macular disease, Melbourne, Australia.
 
-Full Stack Web Developer:
+Full Stack Web Developer (Ruby on Rails, JavaScript, React, TypeScript, Python).
 
 * Developed and maintained a Ruby on Rails website connected to a PostgreSQL database that helped doctors make clinical decisions based on patient data and machine learning analysis of retina scan images (OCT).
 
@@ -89,7 +89,7 @@ Full Stack Web Developer:
 
 [GoFetch](http://www.go-fetch.com.au) – delivery app for iOS and Web, Melbourne, Australia.
 
-Full Stack iOS/Rails/Web Developer.
+Full Stack Web Developer (Ruby on Rails, AngularJS, iOS).
 
 * Developed and maintained a Ruby on Rails backend that served as an API for iOS and Web apps.
 
@@ -104,7 +104,7 @@ Full Stack iOS/Rails/Web Developer.
 
 [Marketplacer](http://marketplacer.com) – online marketplace, Melbourne, Australia.
 
-Full stack iOS/Swift/Rails developer.
+Full Stack Rails/iOS/Swift Developer.
 
 * Designed and built an online store iOS app.
 * Programmed RESTful API in Ruby on Rails for the iOS app.
@@ -115,8 +115,9 @@ Full stack iOS/Swift/Rails developer.
 
 [BikeExchange.com.au](http://bikeexchange.com.au) – online marketplace, Melbourne, Australia.
 
-Full stack Ruby on Rails and JavaScript developer.
+Full Stack Ruby on Rails and JavaScript developer.
 
+* Developed and maintained a Ruby on Rails online store connected to a PostgreSQL database that allows users to buy and sell bicycles.
 * Adapted main pages to responsive web design.
 * Developed integration and unit tests.
 * Programmed user interface using AngularJS.
@@ -139,7 +140,7 @@ Freelance JavaScript and Ruby on Rails developer.
 
 [FilmTransfer.com](http://filmtransfer.com) – film and video digitizing company, Northbrook, IL, USA.
 
-Full stack .NET/JavaScript developer.
+Full Stack .NET/JavaScript Developer.
 
 * Designed and implemented an eCommerce web site from scratch using .NET MVC, jQuery and jQuery UI frameworks.
 * Developed custom content management system, order and user account management, promotion components.
@@ -150,7 +151,7 @@ Full stack .NET/JavaScript developer.
 
 [Freehand Systems, Inc](http://www.freehandmusic.com) – digital music company, publisher, Los Altos, CA, USA.
 
-.NET/C# developer
+.NET/C# Developer
 
 * Participated in development of www.freehandmusic.com web site and two private web sites.
 * Developed solution to make scheduled backups of the web site, catalog and databases to a remote repository.
@@ -162,7 +163,7 @@ Full stack .NET/JavaScript developer.
 
 [ZAO "Tipografiya Avtograf"](http://www.bookmusic.ru) – publisher, printing-house – Chelyabinsk, Russia.
 
-.NET/C#/C++ developer.
+.NET/C#/C++ Developer.
 
 * Migrated legacy ASP system to ASP.NET (C#) platform.
 * Programmed [www.freehandmusic.com](http://www.freehandmusic.com) web site.
