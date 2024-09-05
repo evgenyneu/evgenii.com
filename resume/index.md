@@ -64,9 +64,23 @@ macular disease, Melbourne, Australia.
 
 Full stack web developer:
 
-* Programmed a Ruby on Rails web site, React web app and Python machine learning service.
+* Programmed and maintained a Ruby on Rails web site that conencted to a PostgreSQL database.
 
-* Wrote infrastructure code for local (Ansible) and AWS servers (Typescript CDK).
+* Worked on web client site code using both vanilla JavaScript, React, Redux and Stimulus libraries.
+
+* Designed and developed CSS for responsive web pages using Bootstrap and Tailwind CSS libraries.
+
+* Used Python to develop new features in machine learning image segmentation service and visualize medical eye scan data (OCT).
+
+* Wrote Typescript CDK that deployed Ruby on Rails server and PostgreSQL database to AWS (infrastructure as code).
+
+* Wrote Ansible script to setup machine learning development environment on local Linux servers.
+
+* Selected components and manually built PCs for machine learning development and model training. 
+
+* Written unit and integration tests for the Ruby on Rails (Rspec) and JavaScript (Jest, Cypress) code. 
+
+* Mentored junior developers.
 
 
 ### December 2016 - April 2017
