@@ -64,13 +64,15 @@ macular disease, Melbourne, Australia.
 
 Full Stack Web Developer:
 
-* Developed and maintained a Ruby on Rails website connected to a PostgreSQL database.
+* Developed and maintained a Ruby on Rails website connected to a PostgreSQL database that helped doctors make clinical decisions based on patient data and machine learning analysis of retina scan images (OCT).
 
 * Worked on web client-side code using vanilla JavaScript, React, Redux, and Stimulus libraries.
 
 * Designed and implemented responsive web pages using Bootstrap and Tailwind CSS.
 
 * Utilized Python to develop features for a machine learning image segmentation service and visualize medical eye scan data (OCT).
+
+* Implemented code and storage changes to achieve HIPAA and SOC 2 compliance.
 
 * Created a TypeScript CDK that deployed a Ruby on Rails server and PostgreSQL database to AWS (Infrastructure as Code).
 
@@ -87,9 +89,15 @@ Full Stack Web Developer:
 
 [GoFetch](http://www.go-fetch.com.au) – delivery app for iOS and Web, Melbourne, Australia.
 
-Full stack iOS/Rails/Web developer.
+Full Stack iOS/Rails/Web Developer.
 
-* Maintained and programmed iOS, AngularJS web apps and Ruby on Rails backend.
+* Developed and maintained a Ruby on Rails backend that served as an API for iOS and Web apps.
+
+* Worked on an AngularJS web app that allowed users to book deliveries.
+
+* Implemented unit tests for Ruby on Rails and AngularJS code.
+
+* Built and deployed the iOS app written in Objective-C.
 
 
 ### August 2014 - November 2015
