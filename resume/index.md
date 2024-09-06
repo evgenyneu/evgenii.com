@@ -74,7 +74,7 @@ Full Stack Web Developer (Ruby on Rails, JavaScript, React, TypeScript, Python).
 
 * Implemented code and storage changes to achieve HIPAA and SOC 2 compliance.
 
-* Created a TypeScript CDK code that deployed a Ruby on Rails server and PostgreSQL database to AWS (Infrastructure as Code).
+* Created TypeScript CDK code that deployed a Ruby on Rails server and PostgreSQL database to AWS (Infrastructure as Code).
 
 * Wrote Ansible scripts to set up a machine learning development environment on local Linux servers.
 
