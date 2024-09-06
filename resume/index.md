@@ -70,11 +70,11 @@ Full Stack Web Developer (Ruby on Rails, JavaScript, React, TypeScript, Python).
 
 * Designed and implemented responsive web pages using Bootstrap and Tailwind CSS.
 
-* Utilized Python to develop features for a machine learning image segmentation service and visualize medical eye scan data (OCT).
+* Used Python to develop features for a machine learning image segmentation service and visualize medical eye scan data (OCT).
 
 * Implemented code and storage changes to achieve HIPAA and SOC 2 compliance.
 
-* Created a TypeScript CDK that deployed a Ruby on Rails server and PostgreSQL database to AWS (Infrastructure as Code).
+* Created a TypeScript CDK code that deployed a Ruby on Rails server and PostgreSQL database to AWS (Infrastructure as Code).
 
 * Wrote Ansible scripts to set up a machine learning development environment on local Linux servers.
 
