@@ -7,7 +7,7 @@ title: Resume of Evgenii Neumerzhitckii
 
 **Address**: St Kilda, VIC, Australia
 
-**Email**: {{ site.author.email }}
+**Email**: [evgenyneu@gmail.com](mailto:evgenyneu@gmail.com)
 
 **Phone**: +61 403 574 406
 
@@ -34,7 +34,7 @@ Seeking a programming position to apply my skills and continue learning.
 * **Databases**: PostgreSQL, MySQL, SQLite, SQL Server.
 * **Libraries**: Ruby on Rails, React, Turbo/Stimulus, Tailwind CSS, Cypress, Jest, AngularJS, Bootstrap, jQuery.
 * **Infrastructure**: AWS (CDK), Heroku, Linux local servers (Ansible).
-* **Tools**: VS Code, Xcode, Android Studio, Visual Studio.
+* **Tools/Runtime**: Node.js, VS Code, Xcode, Android Studio, Visual Studio.
 
 
 
@@ -62,11 +62,13 @@ Seeking a programming position to apply my skills and continue learning.
 [Macuject](https://www.macuject.com/) – Clinical decision support software for
 macular disease, Melbourne, Australia.
 
-Full Stack Web Developer (Ruby on Rails, JavaScript, React, TypeScript, Python).
+Full Stack Web Developer (Ruby on Rails, JavaScript, React, Node.js, TypeScript, Python).
 
 * Developed and maintained a Ruby on Rails website connected to a PostgreSQL database that helped doctors make clinical decisions based on patient data and machine learning analysis of retina scan images (OCT).
 
 * Worked on web client-side code using vanilla JavaScript, React, Redux, and Stimulus libraries.
+
+* Utilized Node.js for building JavaScript and CSS bundles, running tests, and general tooling.
 
 * Designed and implemented responsive web pages using Bootstrap and Tailwind CSS.
 
