@@ -11,9 +11,11 @@ meta_description: "Personal site of Evgenii Neumerzhitckii: blog and projects."
   •ᴥ•
 </h1>
 
-I am Evgenii,<br>I like [Ed Winters](https://earthlinged.org/) because he &lt;3  farm animals.
+I am Evgenii,<br>
 
-Also, I generate [AI music slop](https://sausageskin.bandcamp.com/), <br>do some [blogging](/blog/) and [coding](/projects/).
+I generate [AI music slop](https://evgenii.com/sausage-skin/), <br>do some [blogging](/blog/) and [coding](/projects/).
+
+Also, I like [Ed Winters](https://earthlinged.org/) because he &lt;3  farm animals.
 
 ### Want to keep in touch?
 
