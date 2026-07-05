@@ -7,7 +7,8 @@ layout_class: isTextCentered
 
 <div class='embed-container'><iframe src='https://www.youtube.com/embed/kD9XBEwzU1s?rel=0' frameborder='0' allowfullscreen></iframe></div>
 
-### [aescrypto.com](http://aescrypto.com)
+### [https://evgenii.com/aescrypto/](https://evgenii.com/aescrypto/)
+
 
 Web app for encrypting text messages. AES Crypto is open source and available on Android, iOS and Web.
 
