@@ -13,7 +13,7 @@ meta_description: "Personal site of Evgenii Neumerzhitckii: blog and projects."
 
 I am Evgenii,<br>
 
-I do some [blogging](/blog/) and [coding](/projects/).
+I do some [blogging](/blog/), [coding](/projects/) and [ai audio slop](/sausage-skin/).
 
 Also, I like [Ed Winters](https://earthlinged.org/) because he &lt;3  farm animals.
 
