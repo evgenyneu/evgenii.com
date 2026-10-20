@@ -23,19 +23,17 @@ Seeking a programming position to apply my skills and continue learning.
 
 ## Summary of Qualifications
 
-* 19 years of programming experience.
+* 20+ years of programming experience.
 * Developed applications for Web, iOS, Android, and Windows platforms.
 * Skilled in writing unit and integration tests.
 
 
 ## Technical Expertise
 
-* **Languages**: HTML, CSS, JavaScript, Ruby, SQL, Python, Swift, C#, C/C++, Java.
-* **Databases**: PostgreSQL, MySQL, SQLite, SQL Server.
-* **Libraries**: Ruby on Rails, React, Turbo/Stimulus, Tailwind CSS, Cypress, Jest, AngularJS, Bootstrap, jQuery.
-* **Infrastructure**: AWS (CDK), Heroku, Linux local servers (Ansible).
-* **Tools/Runtime**: Node.js, VS Code, Xcode, Android Studio, Visual Studio.
-
+* **Languages**: HTML, CSS, JavaScript, Python, Ruby, SQL, Cypher, Swift, C#, C/C++, Java.
+* **Databases**: PostgreSQL, Neptune, MySQL, SQLite, SQL Server.
+* **Libraries**: Ruby on Rails, Vue.js, React, AngularJS, Bootstrap, jQuery.
+* **Infrastructure**: AWS, Terraform, Helm, Kubernetes, Ansible.
 
 
 ## Code examples
@@ -48,14 +46,28 @@ Seeking a programming position to apply my skills and continue learning.
 * **Ruby**: [github.com/evgenyneu/siba](https://github.com/evgenyneu/siba) - A command-line backup and restore utility.
 
 
-## App examples
-
-* [aescrypto.com/help/](https://aescrypto.com/help/) - An Android, iOS, and Web app for encrypting text messages using AES-256 encryption.
-* [evgenii.com/water-footprint/en/help/](https://evgenii.com/water-footprint/en/help/) - An Android, iOS, and Web app that shows how much water is used to produce food.
-* [github.com/evgenyneu/walk-to-circle-android](https://github.com/evgenyneu/walk-to-circle-android) - An Android and iOS app that generates random destinations for walks.
-
-
 ## Professional Experience
+
+### October 2024 - present
+
+[Mass Dynamics](https://massdynamics.com/) – Software for analysing biological data, Melbourne, Australia.
+
+Senior Developer (Python, Ruby on Rails, JavaScript, Vue.js, Terraform, Helm, AWS), worked on:
+
+* Ruby on Rails web site / API with Vue.js frontend and PostgreSQL database.
+
+* Python web and compute services.
+
+* AWS Neptune database with Cypher queries.
+
+* Terraform/Helm for managing AWS infrastructure (EKS, SQS).
+
+* Kubernetes cluster.
+
+* CI/CD with Buildkite.
+
+* Performance metrics with Prometheus and Grafana.
+
 
 ### December 2020 - February 2024
 
@@ -68,10 +80,6 @@ Full Stack Web Developer (Ruby on Rails, JavaScript, React, Node.js, TypeScript,
 
 * Worked on web client-side code using vanilla JavaScript, React, Redux, and Stimulus libraries.
 
-* Utilized Node.js for building JavaScript and CSS bundles, running tests, and general tooling.
-
-* Designed and implemented responsive web pages using Bootstrap and Tailwind CSS.
-
 * Used Python to develop features for a machine learning image segmentation service and visualize medical eye scan data (OCT).
 
 * Implemented code and storage changes to achieve HIPAA and SOC 2 compliance.
@@ -80,11 +88,6 @@ Full Stack Web Developer (Ruby on Rails, JavaScript, React, Node.js, TypeScript,
 
 * Wrote Ansible scripts to set up a machine learning development environment on local Linux servers.
 
-* Selected components and built PCs for machine learning development and model training.
-
-* Wrote unit and integration tests for Ruby on Rails (RSpec) and JavaScript (Jest, Cypress) code.
-
-* Mentored junior developers.
 
 
 ### December 2016 - April 2017
